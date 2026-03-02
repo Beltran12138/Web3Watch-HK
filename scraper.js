@@ -714,49 +714,56 @@ async function scrapeMexc() {
 }
 
 async function scrapeHtx() {
-  // HTX Cloudflare blocks plain HTTP from cloud IPs — use Puppeteer stealth
-  console.log('Scraping HTX Announcements (Puppeteer stealth)...');
-  const url = 'https://www.htx.com/zh-cn/support/';
+  // HTX internal JSON API — bypasses Cloudflare WAF (no HTML/browser challenge)
+  console.log('Scraping HTX Announcements (internal API)...');
+  const BASE = 'https://www.htx.com/-/x/support/public/getList/v2';
   const importantKeywords = ['上线', '下线', '下架', '暂停', '维护', '新币', 'Listing', 'Delist', 'Suspend', 'Maintenance'];
-  let browser;
-  try {
-    browser = await launchStealth();
-    const page = await browser.newPage();
-    await page.setUserAgent(USER_AGENT);
-    await page.setViewport({ width: 1280, height: 900 });
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
-    await new Promise(r => setTimeout(r, 5000));
+  // Key categories: 最新热点=360000039481, 新币上线=360000039942, 充提/暂停=360000039982, 下架=64971881385864
+  const categories = [
+    { id: '360000039481', label: '最新热点' },
+    { id: '360000039942', label: '新币上线' },
+    { id: '360000039982', label: '充提/暂停' },
+    { id: '64971881385864', label: '下架资讯' }
+  ];
+  const ONE_LEVEL_ID = '360000031902'; // 重要公告 parent category
+  const allItems = [];
+  const seenUrls = new Set();
 
-    const items = await page.evaluate((kws) => {
-      const results = [];
-      document.querySelectorAll('a[href]').forEach(el => {
-        const href = el.href;
-        const title = (el.innerText || el.textContent || '').trim();
-        if (!title || title.length < 5) return;
-        if (!href.match(/\/zh-cn\/support\/\d{10,}/)) return;
-        if (!results.find(r => r.url === href)) {
-          results.push({
-            title: title.split('\n')[0].trim().substring(0, 200),
-            content: '',
-            source: 'HTX',
-            url: href,
-            category: 'Announcement',
-            timestamp: Date.now() - (results.length * 1000 * 60 * 30),
-            is_important: kws.some(k => title.includes(k)) ? 1 : 0
-          });
-        }
+  for (const cat of categories) {
+    try {
+      const url = `${BASE}?language=zh-cn&page=1&limit=20&oneLevelId=${ONE_LEVEL_ID}&twoLevelId=${cat.id}`;
+      const { data } = await axios.get(url, {
+        headers: {
+          'User-Agent': USER_AGENT,
+          'Accept': 'application/json',
+          'Referer': 'https://www.htx.com/zh-cn/support/'
+        },
+        timeout: 15000
       });
-      return results;
-    }, importantKeywords);
 
-    console.log(`HTX: Found ${items.length} items`);
-    return items;
-  } catch (err) {
-    console.error('HTX error:', err.message);
-    return [];
-  } finally {
-    if (browser) await browser.close();
+      const list = data?.data?.list || [];
+      list.forEach((item, i) => {
+        const articleUrl = `https://www.htx.com/zh-cn/support/${item.id}`;
+        if (!item.title || seenUrls.has(articleUrl)) return;
+        seenUrls.add(articleUrl);
+        allItems.push({
+          title: item.title.trim().substring(0, 200),
+          content: item.dealPair ? `Trading pair: ${item.dealPair}` : '',
+          source: 'HTX',
+          url: articleUrl,
+          category: 'Announcement',
+          timestamp: item.showTime || (Date.now() - (allItems.length * 1000 * 60 * 30)),
+          is_important: importantKeywords.some(k => item.title.includes(k)) ? 1 : 0
+        });
+      });
+      console.log(`  HTX [${cat.label}]: +${list.length} items`);
+    } catch (err) {
+      console.warn(`  HTX [${cat.label}] error:`, err.message);
+    }
   }
+
+  console.log(`HTX: Found ${allItems.length} items total`);
+  return allItems;
 }
 
 async function scrapeGate() {
