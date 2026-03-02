@@ -59,7 +59,7 @@ async function saveNews(items) {
       source: item.source,
       url: item.url,
       category: item.category || 'Signals',
-      timestamp: item.timestamp,
+      timestamp: Math.round(item.timestamp),  // Ensure integer for BIGINT column
       is_important: item.is_important || 0
     }));
 
