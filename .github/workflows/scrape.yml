@@ -25,9 +25,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y google-chrome-stable tor
           sudo service tor start
-          # Pre-warm Tor circuits before running scrapers (typically takes 30-60s)
-          curl --silent --max-time 90 --socks5 127.0.0.1:9050 https://check.torproject.org/api/ip || true
-          echo "Tor ready"
+          echo "Tor started (circuits establish during scraping)"
 
       - name: Run Scrapers
         run: node test_scrape.js

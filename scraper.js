@@ -903,8 +903,9 @@ async function scrapePolymarketGeneric(url, sourceName) {
 
 async function runAllScrapers() {
   console.log('--- Starting Global Scrape ---');
-  // Run all scrapers in parallel. 
-  const [tech, pr, bb, tw, osl, th, okx, exio, mp, wb, hkg, kuc, hke, bin, byb, bit, mex, htx, polyB, polyC, gate] = await Promise.all([
+  // Run all scrapers except HTX in parallel first
+  // HTX uses Tor proxy in CI — running it after others complete (~60-90s) lets Tor establish circuits
+  const [tech, pr, bb, tw, osl, th, okx, exio, mp, wb, hkg, kuc, hke, bin, byb, bit, mex, polyB, polyC, gate] = await Promise.all([
     scrapeTechFlow(),
     scrapePRNewswire(),
     scrapeBlockBeats(),
@@ -922,14 +923,15 @@ async function runAllScrapers() {
     scrapeBybit(),
     scrapeBitget(),
     scrapeMexc(),
-    scrapeHtx(),
     scrapePolymarketBreaking(),
     scrapePolymarketChina(),
     scrapeGate()
   ]);
+  // Run HTX last — Tor has now been running for the duration of all other scrapers
+  const htx = await scrapeHtx();
   const allNews = [
     ...tech, ...pr, ...bb, ...tw, ...osl, ...th, ...okx, ...exio, ...mp, ...wb,
-    ...hkg, ...kuc, ...hke, ...bin, ...byb, ...bit, ...mex, ...htx, ...polyB, ...polyC, ...gate
+    ...hkg, ...kuc, ...hke, ...bin, ...byb, ...bit, ...mex, ...polyB, ...polyC, ...gate, ...htx
   ];
   saveNews(allNews);
   console.log(`--- Finished Scrape. Saved ${allNews.length} items. ---`);
