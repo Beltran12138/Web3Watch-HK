@@ -714,8 +714,9 @@ async function scrapeMexc() {
 }
 
 async function scrapeHtx() {
-  // HTX internal JSON API — bypasses Cloudflare WAF (no HTML/browser challenge)
-  console.log('Scraping HTX Announcements (internal API)...');
+  // HTX internal JSON API — uses Tor proxy in CI (GitHub Actions IPs are blocked by Cloudflare WAF)
+  const inCI = process.env.GITHUB_ACTIONS === 'true';
+  console.log(`Scraping HTX Announcements (internal API${inCI ? ' via Tor' : ''})...`);
   const BASE = 'https://www.htx.com/-/x/support/public/getList/v2';
   const importantKeywords = ['上线', '下线', '下架', '暂停', '维护', '新币', 'Listing', 'Delist', 'Suspend', 'Maintenance'];
   // Key categories: 最新热点=360000039481, 新币上线=360000039942, 充提/暂停=360000039982, 下架=64971881385864
@@ -729,20 +730,31 @@ async function scrapeHtx() {
   const allItems = [];
   const seenUrls = new Set();
 
+  let httpsAgent;
+  if (inCI) {
+    try {
+      const { SocksProxyAgent } = require('socks-proxy-agent');
+      httpsAgent = new SocksProxyAgent('socks5://127.0.0.1:9050');
+    } catch (e) {
+      console.warn('  Tor proxy unavailable:', e.message);
+    }
+  }
+
   for (const cat of categories) {
     try {
       const url = `${BASE}?language=zh-cn&page=1&limit=20&oneLevelId=${ONE_LEVEL_ID}&twoLevelId=${cat.id}`;
       const { data } = await axios.get(url, {
+        httpsAgent,
         headers: {
           'User-Agent': USER_AGENT,
           'Accept': 'application/json',
           'Referer': 'https://www.htx.com/zh-cn/support/'
         },
-        timeout: 15000
+        timeout: 30000
       });
 
       const list = data?.data?.list || [];
-      list.forEach((item, i) => {
+      list.forEach((item) => {
         const articleUrl = `https://www.htx.com/zh-cn/support/${item.id}`;
         if (!item.title || seenUrls.has(articleUrl)) return;
         seenUrls.add(articleUrl);
