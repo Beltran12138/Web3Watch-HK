@@ -29,6 +29,7 @@ db.exec(`
     competitor_category TEXT,
     timestamp INTEGER,
     is_important INTEGER DEFAULT 0,
+    sent_to_wecom INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
   CREATE INDEX IF NOT EXISTS idx_timestamp ON news(timestamp DESC);
@@ -40,14 +41,16 @@ const existingCols = db.prepare('PRAGMA table_info(news)').all().map(c => c.name
 if (!existingCols.includes('detail'))               db.exec("ALTER TABLE news ADD COLUMN detail TEXT DEFAULT ''");
 if (!existingCols.includes('business_category'))    db.exec("ALTER TABLE news ADD COLUMN business_category TEXT DEFAULT ''");
 if (!existingCols.includes('competitor_category'))  db.exec("ALTER TABLE news ADD COLUMN competitor_category TEXT DEFAULT ''");
+if (!existingCols.includes('sent_to_wecom'))        db.exec("ALTER TABLE news ADD COLUMN sent_to_wecom INTEGER DEFAULT 0");
 
 async function saveNews(items) {
   // 1. Save to local SQLite
   const insert = db.prepare(`
-    INSERT INTO news (title, content, detail, source, url, category, business_category, competitor_category, timestamp, is_important)
-    VALUES (@title, @content, @detail, @source, @url, @category, @business_category, @competitor_category, @timestamp, @is_important)
+    INSERT INTO news (title, content, detail, source, url, category, business_category, competitor_category, timestamp, is_important, sent_to_wecom)
+    VALUES (@title, @content, @detail, @source, @url, @category, @business_category, @competitor_category, @timestamp, @is_important, @sent_to_wecom)
     ON CONFLICT(url) DO UPDATE SET
       is_important = excluded.is_important,
+      sent_to_wecom = MAX(news.sent_to_wecom, excluded.sent_to_wecom),
       business_category = COALESCE(excluded.business_category, news.business_category),
       competitor_category = COALESCE(excluded.competitor_category, news.competitor_category),
       detail = COALESCE(excluded.detail, news.detail)
@@ -59,7 +62,8 @@ async function saveNews(items) {
         ...item,
         detail: item.detail || '',
         business_category: item.business_category || '',
-        competitor_category: item.competitor_category || ''
+        competitor_category: item.competitor_category || '',
+        sent_to_wecom: item.sent_to_wecom || 0
       });
     }
   });
@@ -81,7 +85,8 @@ async function saveNews(items) {
         business_category: item.business_category || '',
         competitor_category: item.competitor_category || '',
         timestamp: Math.round(item.timestamp),
-        is_important: item.is_important || 0
+        is_important: item.is_important || 0,
+        sent_to_wecom: item.sent_to_wecom || 0
       }));
 
     const { error } = await supabase
@@ -146,12 +151,12 @@ async function getAlreadyProcessed(urls) {
       const chunk = urls.slice(i, i + CHUNK);
       const { data } = await supabase
         .from('news')
-        .select('url, is_important')
+        .select('url, is_important, sent_to_wecom')
         .in('url', chunk)
         .not('business_category', 'eq', '');
       (data || []).forEach(r => {
         processed.add(r.url);
-        if (r.is_important === 1) sentToWeCom.add(r.url);
+        if (r.sent_to_wecom === 1) sentToWeCom.add(r.url);
       });
     }
   } else {
@@ -159,7 +164,7 @@ async function getAlreadyProcessed(urls) {
     const placeholders = urls.map(() => '?').join(',');
     db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND business_category != '' AND business_category IS NOT NULL`)
       .all(...urls).forEach(r => processed.add(r.url));
-    db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND is_important = 1`)
+    db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND sent_to_wecom = 1`)
       .all(...urls).forEach(r => sentToWeCom.add(r.url));
   }
 

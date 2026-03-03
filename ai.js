@@ -23,7 +23,11 @@ async function processWithAI(title, content = '') {
 1. business_category: 必须从以下选项中选择一个：[合规, 监管, 政策, RWA, 稳定币/平台币, 交易/量化, 钱包/支付, toB/机构, 学院/社交/内容, 大客户/VIP, 法币兑换, 理财, 拉新/社媒/社群/pr, 投融资, 其他]
 2. competitor_category: 必须从以下选项中选择一个：[香港合规所, 离岸所, 政策, 香港其他, 传统金融, 其他]
 3. detail: 请用一句话（100字以内）总结该快讯的核心详情，文风要专业、干练，类似于周报中的 Bullet point。
-4. is_important: 如果该消息对公司高层具有重大战略参考价值，返回 1，否则返回 0。
+4. is_important: 如果满足以下【任意一个】判定标准，请返回 1，否则返回 0：
+   - 标准 1：是否和香港（HK）有关的消息（如政策、牌照、香港业务进展等）。
+   - 标准 2：是否主流交易所（Binance, OKX, Bybit, HTX, Gate, Bitget等）的重大动作，但必须【排除】普通的上币（Listing）消息。重大动作包括：监管处罚、高层变动、重大产品升级、重大收购、地区牌照获取等。
+   - 标准 3：是否香港合规交易所（如 HashKey, OSL 等）的任何官方消息。
+   - 标准 4：其他对公司高层具有重大战略参考价值的消息。
 
 示例格式：
 {"business_category":"RWA","competitor_category":"香港合规所","detail":"HashKey Group 推出 RWA 一站式发行解决方案，面向发行方与中介机构赋能。","is_important":1}`;

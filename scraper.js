@@ -292,7 +292,8 @@ async function scrapeTechubNews() {
       title: item.title || '',
       content: item.brief || '',
       source: 'TechubNews',
-      url: `https://www.techub.news/articleDetail/${item.id}`,
+      // Fix: Use original_link if available, fallback to internal detail page
+      url: item.original_link || `https://www.techub.news/articleDetail/${item.id}`,
       category: 'HK',
       timestamp: item.publish_time ? new Date(item.publish_time).getTime() : Date.now() - (i * 1000 * 60 * 30),
       is_important: 0
@@ -989,6 +990,9 @@ async function runAllScrapers() {
         const isRecent = (Date.now() - item.timestamp) <= 48 * 60 * 60 * 1000;
         if (item.is_important === 1 && !alreadySentToWeCom.has(item.url) && isRecent) {
           await sendToWeCom(item);
+          item.sent_to_wecom = 1; // Mark as sent
+        } else if (item.is_important === 1 && alreadySentToWeCom.has(item.url)) {
+          item.sent_to_wecom = 1; // Keep status
         } else if (item.is_important === 1 && !isRecent) {
           console.log(`  [WeCom Skip] Too old: ${item.title.substring(0, 40)}`);
         }
