@@ -28,6 +28,8 @@ runAllScrapers().then(items => {
   }
 
   console.log('\nTOTAL: ' + items.length + ' items');
+  process.exit(0);
 }).catch(e => {
   console.error('Fatal error:', e.message);
+  process.exit(1);
 });

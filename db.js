@@ -88,8 +88,28 @@ async function saveNews(items) {
       .from('news')
       .upsert(cleanItems, { onConflict: 'url' });
 
-    if (error) console.error('[Supabase Error]:', error.message);
-    else console.log('[Supabase Success]: Items synced.');
+    if (error) {
+      console.error('[Supabase Error]:', error.message);
+      if (error.message.includes('column') || error.message.includes('schema cache')) {
+        console.log('[Supabase] Retrying with basic columns only...');
+        const basicItems = cleanItems.map(item => ({
+          title: item.title,
+          content: item.content,
+          source: item.source,
+          url: item.url,
+          category: item.category,
+          timestamp: item.timestamp,
+          is_important: item.is_important
+        }));
+        const { error: retryError } = await supabase
+          .from('news')
+          .upsert(basicItems, { onConflict: 'url' });
+        if (retryError) console.error('[Supabase Retry Error]:', retryError.message);
+        else console.log('[Supabase Success]: Basic items synced. (Please update Supabase schema for AI fields)');
+      }
+    } else {
+      console.log('[Supabase Success]: Items synced.');
+    }
   }
 }
 

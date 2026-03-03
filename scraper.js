@@ -182,7 +182,7 @@ async function scrapeTwitterKOLs() {
           const link = $(el).find('link').text().trim();
           const pubDate = $(el).find('pubDate').text().trim();
           
-          let cleanTitle = title.replace(/^RT by @\w+: /, '').replace(/R/g, '');
+          let cleanTitle = title.replace(/^RT by @\w+: /, '').replace(/^R to @\w+: /, '');
           if (cleanTitle.length > 200) cleanTitle = cleanTitle.substring(0, 197) + '...';
 
           allTweets.push({
