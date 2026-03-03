@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 const puppeteerExtra = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteerExtra.use(StealthPlugin());
-const { saveNews } = require('./db');
+const { saveNews, db } = require('./db');
 
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36';
 
@@ -942,32 +942,55 @@ async function runAllScrapers() {
 
   console.log(`--- Finished Scrape. Found ${allNews.length} items. ---`);
 
-  // --- AI Processing & WeCom Notification ---
-  console.log('--- Processing with AI (Priority Items Only) ---');
-  
+  // --- AI 处理（仅白名单来源）---
+  // 只有这些来源的条目需要经过 AI：加标签、判断重要性、重要则推企微
+  const AI_SOURCES = new Set(['TechubNews', 'Exio', 'OSL', 'WuBlock', 'PRNewswire', 'HTX', 'MEXC', 'Gate']);
+  const MAX_AI_PER_RUN = 50; // 每轮上限，防止 API 超支
+
+  console.log(`--- AI Processing (sources: ${[...AI_SOURCES].join(', ')}) ---`);
+
+  // 从本轮抓取结果中找出白名单来源且有 URL 的条目
+  const aiCandidates = allNews.filter(i => AI_SOURCES.has(i.source) && i.url);
+
+  // 批量查询已 AI 处理过的 URL（有 business_category）→ 跳过，省 API 费用
+  const alreadyProcessed = new Set();
+  // 批量查询已推送过企微的 URL（is_important=1 且在 DB 中）→ 不重复推送
+  const alreadySentToWeCom = new Set();
+
+  if (aiCandidates.length > 0) {
+    const placeholders = aiCandidates.map(() => '?').join(',');
+    const urls = aiCandidates.map(i => i.url);
+
+    db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND business_category != '' AND business_category IS NOT NULL`)
+      .all(...urls).forEach(r => alreadyProcessed.add(r.url));
+
+    db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND is_important = 1`)
+      .all(...urls).forEach(r => alreadySentToWeCom.add(r.url));
+  }
+
+  console.log(`  Candidates: ${aiCandidates.length} | Already processed: ${alreadyProcessed.size} | Already sent to WeCom: ${alreadySentToWeCom.size}`);
+
   const processedNews = [];
-  // 针对标题包含关键字或者初始标记为 important 的，优先 AI 处理
-  const priorityKeywords = ['陈茂波', '证监会', 'SFC', 'HKMA', '金管局', '牌照', 'Listing', 'RWA', '稳定币', '合规', '上线', '暂停'];
-
   let aiCallCount = 0;
-  for (const item of allNews) {
-    const isPriority = item.is_important === 1 || priorityKeywords.some(k => item.title.includes(k));
 
-    if (isPriority && aiCallCount < 30) { // 每轮最多处理 30 条，避免超额
-      console.log(`  AI Processing: ${item.title.substring(0, 40)}...`);
-      if (aiCallCount > 0) await new Promise(r => setTimeout(r, 4000)); // 4s 节流
+  for (const item of allNews) {
+    // 白名单来源 + 未曾 AI 处理 + 未超出每轮上限 → 走 AI
+    if (AI_SOURCES.has(item.source) && !alreadyProcessed.has(item.url) && aiCallCount < MAX_AI_PER_RUN) {
+      console.log(`  [AI] ${item.source}: ${item.title.substring(0, 50)}...`);
+      if (aiCallCount > 0) await new Promise(r => setTimeout(r, 4000)); // 4s 节流，避免 429
       const aiResult = await processWithAI(item.title, item.content);
       aiCallCount++;
       if (aiResult) {
         Object.assign(item, aiResult);
-        if (item.is_important === 1) {
+        // 企微推送：AI 判定重要 且 该 URL 本轮之前未推送过
+        if (item.is_important === 1 && !alreadySentToWeCom.has(item.url)) {
           await sendToWeCom(item);
         }
       }
     }
     processedNews.push(item);
   }
-  console.log(`  AI processed ${aiCallCount} items.`);
+  console.log(`  AI processed ${aiCallCount} items (skipped ${alreadyProcessed.size} already done).`);
 
   await saveNews(processedNews);
   console.log(`--- Finished All. Saved ${processedNews.length} items. ---`);
