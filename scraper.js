@@ -120,14 +120,17 @@ async function scrapeBlockBeats() {
         const isImportant = el.querySelector('.important, .hot, [class*="important"], [class*="hot"], .news-flash-item-important') !== null || 
                            importantKeywords.some(k => text.includes(k));
 
-        if (text.length > 5) {
+        const itemUrl = el.querySelector('a[href*="/flash/"], a[href*="/news/"]')?.href ||
+                         el.querySelector('a[href*="theblockbeats.info"]')?.href || '';
+        // 跳过垃圾条目（Weibo分享链接、空标题、锚点链接）
+        if (text.length > 5 && itemUrl && !itemUrl.includes('weibo.com') && !itemUrl.includes('share.php')) {
           results.push({
             title: text.substring(0, 150) + (text.length > 150 ? '...' : ''),
             content: contentEl ? contentEl.innerText.trim() : text,
             source: 'BlockBeats',
-            url: el.querySelector('a')?.href || window.location.href + '#' + i,
+            url: itemUrl,
             category: 'Newsflash',
-            timestamp: Date.now() - (i * 60000), 
+            timestamp: Date.now() - (i * 60000),
             is_important: isImportant ? 1 : 0
           });
         }
@@ -901,6 +904,9 @@ async function scrapePolymarketGeneric(url, sourceName) {
   }
 }
 
+const { processWithAI } = require('./ai');
+const { sendToWeCom } = require('./wecom');
+
 async function runAllScrapers() {
   console.log('--- Starting Global Scrape ---');
   // Run all scrapers except HTX in parallel first
@@ -933,9 +939,39 @@ async function runAllScrapers() {
     ...tech, ...pr, ...bb, ...tw, ...osl, ...th, ...okx, ...exio, ...mp, ...wb,
     ...hkg, ...kuc, ...hke, ...bin, ...byb, ...bit, ...mex, ...polyB, ...polyC, ...gate, ...htx
   ];
-  saveNews(allNews);
-  console.log(`--- Finished Scrape. Saved ${allNews.length} items. ---`);
-  return allNews;
+
+  console.log(`--- Finished Scrape. Found ${allNews.length} items. ---`);
+
+  // --- AI Processing & WeCom Notification ---
+  console.log('--- Processing with AI (Priority Items Only) ---');
+  
+  const processedNews = [];
+  // 针对标题包含关键字或者初始标记为 important 的，优先 AI 处理
+  const priorityKeywords = ['陈茂波', '证监会', 'SFC', 'HKMA', '金管局', '牌照', 'Listing', 'RWA', '稳定币', '合规', '上线', '暂停'];
+
+  let aiCallCount = 0;
+  for (const item of allNews) {
+    const isPriority = item.is_important === 1 || priorityKeywords.some(k => item.title.includes(k));
+
+    if (isPriority && aiCallCount < 30) { // 每轮最多处理 30 条，避免超额
+      console.log(`  AI Processing: ${item.title.substring(0, 40)}...`);
+      if (aiCallCount > 0) await new Promise(r => setTimeout(r, 4000)); // 4s 节流
+      const aiResult = await processWithAI(item.title, item.content);
+      aiCallCount++;
+      if (aiResult) {
+        Object.assign(item, aiResult);
+        if (item.is_important === 1) {
+          await sendToWeCom(item);
+        }
+      }
+    }
+    processedNews.push(item);
+  }
+  console.log(`  AI processed ${aiCallCount} items.`);
+
+  saveNews(processedNews);
+  console.log(`--- Finished All. Saved ${processedNews.length} items. ---`);
+  return processedNews;
 }
 
 module.exports = { runAllScrapers };
