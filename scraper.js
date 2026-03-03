@@ -969,7 +969,7 @@ async function runAllScrapers() {
   }
   console.log(`  AI processed ${aiCallCount} items.`);
 
-  saveNews(processedNews);
+  await saveNews(processedNews);
   console.log(`--- Finished All. Saved ${processedNews.length} items. ---`);
   return processedNews;
 }
