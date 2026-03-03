@@ -34,6 +34,7 @@ db.exec(`
   );
   CREATE INDEX IF NOT EXISTS idx_timestamp ON news(timestamp DESC);
   CREATE INDEX IF NOT EXISTS idx_source ON news(source);
+  CREATE UNIQUE INDEX IF NOT EXISTS idx_title_source ON news(title, source);
 `);
 
 // Migration: add new columns if they don't exist (safe for existing DBs)
@@ -45,26 +46,45 @@ if (!existingCols.includes('sent_to_wecom'))        db.exec("ALTER TABLE news AD
 
 async function saveNews(items) {
   // 1. Save to local SQLite
+  // We prioritize (title, source) deduplication as URLs are often unstable
   const insert = db.prepare(`
     INSERT INTO news (title, content, detail, source, url, category, business_category, competitor_category, timestamp, is_important, sent_to_wecom)
     VALUES (@title, @content, @detail, @source, @url, @category, @business_category, @competitor_category, @timestamp, @is_important, @sent_to_wecom)
-    ON CONFLICT(url) DO UPDATE SET
-      is_important = excluded.is_important,
+    ON CONFLICT(title, source) DO UPDATE SET
+      url = excluded.url,
+      is_important = MAX(news.is_important, excluded.is_important),
       sent_to_wecom = MAX(news.sent_to_wecom, excluded.sent_to_wecom),
-      business_category = COALESCE(excluded.business_category, news.business_category),
-      competitor_category = COALESCE(excluded.competitor_category, news.competitor_category),
-      detail = COALESCE(excluded.detail, news.detail)
+      business_category = CASE WHEN excluded.business_category != '' THEN excluded.business_category ELSE news.business_category END,
+      competitor_category = CASE WHEN excluded.competitor_category != '' THEN excluded.competitor_category ELSE news.competitor_category END,
+      detail = CASE WHEN excluded.detail != '' THEN excluded.detail ELSE news.detail END,
+      timestamp = news.timestamp -- Keep original timestamp to avoid "refreshing" old news to 48h window
   `);
 
   const transaction = db.transaction((items) => {
     for (const item of items) {
-      insert.run({
-        ...item,
-        detail: item.detail || '',
-        business_category: item.business_category || '',
-        competitor_category: item.competitor_category || '',
-        sent_to_wecom: item.sent_to_wecom || 0
-      });
+      try {
+        insert.run({
+          ...item,
+          detail: item.detail || '',
+          business_category: item.business_category || '',
+          competitor_category: item.competitor_category || '',
+          sent_to_wecom: item.sent_to_wecom || 0
+        });
+      } catch (err) {
+        if (err.message.includes('UNIQUE constraint failed: news.url')) {
+          // If URL is also unique but title/source differed, update by URL
+          db.prepare(`UPDATE news SET 
+            title = @title, content = @content, source = @source, 
+            is_important = MAX(is_important, @is_important), 
+            sent_to_wecom = MAX(sent_to_wecom, @sent_to_wecom)
+            WHERE url = @url`).run({
+              ...item,
+              sent_to_wecom: item.sent_to_wecom || 0
+            });
+        } else {
+          console.error('[DB Error]:', err.message, item.title);
+        }
+      }
     }
   });
   transaction(items);
@@ -91,29 +111,10 @@ async function saveNews(items) {
 
     const { error } = await supabase
       .from('news')
-      .upsert(cleanItems, { onConflict: 'url' });
+      .upsert(cleanItems, { onConflict: 'title,source' });
 
     if (error) {
       console.error('[Supabase Error]:', error.message);
-      if (error.message.includes('column') || error.message.includes('schema cache')) {
-        console.log('[Supabase] Retrying with basic columns only...');
-        const basicItems = cleanItems.map(item => ({
-          title: item.title,
-          content: item.content,
-          source: item.source,
-          url: item.url,
-          category: item.category,
-          timestamp: item.timestamp,
-          is_important: item.is_important
-        }));
-        const { error: retryError } = await supabase
-          .from('news')
-          .upsert(basicItems, { onConflict: 'url' });
-        if (retryError) console.error('[Supabase Retry Error]:', retryError.message);
-        else console.log('[Supabase Success]: Basic items synced. (Please update Supabase schema for AI fields)');
-      }
-    } else {
-      console.log('[Supabase Success]: Items synced.');
     }
   }
 }
@@ -136,39 +137,57 @@ function getNews(limit = 100, source = null, important = 0) {
 }
 
 /**
- * 批量查询哪些 URL 已经过 AI 处理（有 business_category）及已推送企微（is_important=1）
- * 在 GitHub Actions（USE_SUPABASE=true）中查 Supabase，本地模式查 SQLite
+ * 批量查询哪些 URL/Title 已经过 AI 处理及已推送企微
+ * 同时返回已存在的 timestamp 以便严格执行 48h 推送规则
  */
-async function getAlreadyProcessed(urls) {
+async function getAlreadyProcessed(items) {
   const processed = new Set();
   const sentToWeCom = new Set();
-  if (!urls || urls.length === 0) return { processed, sentToWeCom };
+  const existingTimestamps = new Map(); // url -> timestamp
+  if (!items || items.length === 0) return { processed, sentToWeCom, existingTimestamps };
+
+  const urls = items.map(i => i.url).filter(Boolean);
 
   if (USE_SUPABASE && supabase) {
-    // CI 环境：SQLite 是空的，必须查 Supabase
-    const CHUNK = 100; // Supabase IN 子句推荐每批不超过 100 个
-    for (let i = 0; i < urls.length; i += CHUNK) {
-      const chunk = urls.slice(i, i + CHUNK);
+    const CHUNK = 100;
+    for (let i = 0; i < items.length; i += CHUNK) {
+      const chunk = items.slice(i, i + CHUNK);
+      const chunkUrls = chunk.map(c => c.url).filter(Boolean);
       const { data } = await supabase
         .from('news')
-        .select('url, is_important, sent_to_wecom')
-        .in('url', chunk)
-        .not('business_category', 'eq', '');
+        .select('url, title, source, is_important, sent_to_wecom, business_category, timestamp')
+        .in('url', chunkUrls);
+      
       (data || []).forEach(r => {
-        processed.add(r.url);
+        if (r.business_category) processed.add(r.url);
         if (r.sent_to_wecom === 1) sentToWeCom.add(r.url);
+        if (r.timestamp) existingTimestamps.set(r.url, r.timestamp);
       });
     }
   } else {
     // 本地模式：查 SQLite
-    const placeholders = urls.map(() => '?').join(',');
-    db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND business_category != '' AND business_category IS NOT NULL`)
-      .all(...urls).forEach(r => processed.add(r.url));
-    db.prepare(`SELECT url FROM news WHERE url IN (${placeholders}) AND sent_to_wecom = 1`)
-      .all(...urls).forEach(r => sentToWeCom.add(r.url));
+    if (urls.length > 0) {
+      const placeholders = urls.map(() => '?').join(',');
+      db.prepare(`SELECT url, business_category, sent_to_wecom, timestamp FROM news WHERE url IN (${placeholders})`)
+        .all(...urls).forEach(r => {
+          if (r.business_category) processed.add(r.url);
+          if (r.sent_to_wecom === 1) sentToWeCom.add(r.url);
+          if (r.timestamp) existingTimestamps.set(r.url, r.timestamp);
+        });
+    }
+    
+    // 也要通过 title + source 检查
+    for (const item of items) {
+      const row = db.prepare('SELECT url, sent_to_wecom, business_category, timestamp FROM news WHERE title = ? AND source = ?').get(item.title, item.source);
+      if (row) {
+        if (row.business_category) processed.add(item.url);
+        if (row.sent_to_wecom === 1) sentToWeCom.add(item.url);
+        if (row.timestamp) existingTimestamps.set(item.url, row.timestamp);
+      }
+    }
   }
 
-  return { processed, sentToWeCom };
+  return { processed, sentToWeCom, existingTimestamps };
 }
 
 module.exports = { db, saveNews, getNews, getAlreadyProcessed };

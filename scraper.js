@@ -136,6 +136,23 @@ async function scrapeBlockBeats() {
 
         const itemUrl = el.querySelector('a[href*="/flash/"], a[href*="/news/"]')?.href ||
                          el.querySelector('a[href*="theblockbeats.info"]')?.href || '';
+        
+        // Extract time (e.g., "15:20")
+        const timeEl = el.querySelector('.time, [class*="time"]');
+        let timestamp = Date.now() - (i * 60000);
+        if (timeEl) {
+          const timeParts = timeEl.innerText.trim().split(':');
+          if (timeParts.length === 2) {
+            const d = new Date();
+            d.setHours(parseInt(timeParts[0]), parseInt(timeParts[1]), 0, 0);
+            timestamp = d.getTime();
+            // If the time is later than now, it's likely from yesterday
+            if (timestamp > Date.now()) {
+              timestamp -= 24 * 60 * 60 * 1000;
+            }
+          }
+        }
+
         // 跳过垃圾条目（Weibo分享链接、空标题、锚点链接）
         if (text.length > 5 && itemUrl && !itemUrl.includes('weibo.com') && !itemUrl.includes('share.php')) {
           results.push({
@@ -144,7 +161,7 @@ async function scrapeBlockBeats() {
             source: 'BlockBeats',
             url: itemUrl,
             category: 'Newsflash',
-            timestamp: Date.now() - (i * 60000),
+            timestamp,
             is_important: isImportant ? 1 : 0
           });
         }
@@ -247,6 +264,12 @@ async function scrapeOSL() {
         const title = lines[0].trim();
         const dateStr = lines.length > 1 ? lines[1].trim() : '';
         
+        let timestamp = Date.now() - (i * 1000 * 60 * 60 * 5);
+        if (dateStr) {
+          const parsed = new Date(dateStr.replace(/\//g, '-'));
+          if (!isNaN(parsed.getTime())) timestamp = parsed.getTime();
+        }
+
         // Find the closest link
         let href = 'https://www.osl.com/hk/announcement';
         const link = el.querySelector('a') || el.closest('a') || el.parentElement.querySelector('a');
@@ -259,7 +282,7 @@ async function scrapeOSL() {
             source: 'OSL',
             url: href,
             category: 'Announcement',
-            timestamp: Date.now() - (i * 1000 * 60 * 60 * 5), // Artificial separation
+            timestamp,
             is_important: (title.includes('Listing') || title.includes('上架') || title.includes('暂停')) ? 1 : 0
           });
         }
@@ -365,7 +388,6 @@ async function scrapeExio() {
 async function scrapeMatrixport() {
   // Matrixport Intercom Help Center is SSR — direct axios works with the collection URL
   console.log('Scraping Matrixport Announcements (SSR)...');
-  // Direct URL to avoid 301 redirect with non-ASCII Location header (causes axios loop)
   const url = 'https://helpcenter.matrixport.com/zh-CN/collections/10411294-%E5%AE%98%E6%96%B9%E5%85%AC%E5%91%8A';
   const importantKeywords = ['上线', '下架', '维护', '通知', '暂停', '提币', '升级', 'Listing', 'Maintenance'];
   try {
@@ -498,7 +520,6 @@ async function scrapeKuCoin() {
       const fullUrl = href.startsWith('http') ? href : `https://www.kucoin.com${href}`;
       if (items.find(item => item.url === fullUrl)) return;
 
-      // Extract date if present (e.g., 2026/02/27)
       const dateMatch = text.match(/\d{4}\/\d{2}\/\d{2}/);
       let timestamp = Date.now() - (i * 1000 * 60 * 30);
       if (dateMatch) {
@@ -551,7 +572,6 @@ async function scrapeHashKeyExchange() {
 
 async function scrapeBinance() {
   console.log('Scraping Binance Announcements...');
-  // Catalog 48 is "New Crypto Listing", 49 is "Latest Service Updates"
   const catalogs = [48, 49];
   let allItems = [];
   
@@ -621,7 +641,6 @@ async function scrapeBybit() {
 }
 
 async function scrapeBitget() {
-  // Bitget WAF blocks plain axios; use stealth Puppeteer to navigate category pages
   console.log('Scraping Bitget Announcements (stealth)...');
   const categories = [
     { id: '11865590960081', label: '新币上线' },
@@ -668,7 +687,6 @@ async function scrapeBitget() {
         found.forEach(item => {
           if (!allItems.find(i => i.url === item.url)) allItems.push(item);
         });
-        console.log(`  Bitget [${cat.label}]: +${found.length} items`);
       } catch (err) {
         console.warn(`  Bitget [${cat.label}] error:`, err.message);
       }
@@ -678,13 +696,10 @@ async function scrapeBitget() {
   } finally {
     if (browser) await browser.close();
   }
-
-  console.log(`Bitget: Found ${allItems.length} items total`);
   return allItems;
 }
 
 async function scrapeMexc() {
-  // MEXC uses Cloudflare — stealth Puppeteer required
   console.log('Scraping MEXC Announcements (stealth)...');
   const url = 'https://www.mexc.com/zh-CN/announcements/new-listings';
   let browser;
@@ -721,7 +736,6 @@ async function scrapeMexc() {
       });
       return results;
     });
-    console.log(`MEXC: Found ${items.length} items`);
     return items;
   } catch (err) {
     console.error('MEXC error:', err.message);
@@ -732,19 +746,17 @@ async function scrapeMexc() {
 }
 
 async function scrapeHtx() {
-  // HTX internal JSON API — uses Tor proxy in CI (GitHub Actions IPs are blocked by Cloudflare WAF)
   const inCI = process.env.GITHUB_ACTIONS === 'true';
   console.log(`Scraping HTX Announcements (internal API${inCI ? ' via Tor' : ''})...`);
   const BASE = 'https://www.htx.com/-/x/support/public/getList/v2';
   const importantKeywords = ['上线', '下线', '下架', '暂停', '维护', '新币', 'Listing', 'Delist', 'Suspend', 'Maintenance'];
-  // Key categories: 最新热点=360000039481, 新币上线=360000039942, 充提/暂停=360000039982, 下架=64971881385864
   const categories = [
     { id: '360000039481', label: '最新热点' },
     { id: '360000039942', label: '新币上线' },
     { id: '360000039982', label: '充提/暂停' },
     { id: '64971881385864', label: '下架资讯' }
   ];
-  const ONE_LEVEL_ID = '360000031902'; // 重要公告 parent category
+  const ONE_LEVEL_ID = '360000031902';
   const allItems = [];
   const seenUrls = new Set();
 
@@ -786,13 +798,10 @@ async function scrapeHtx() {
           is_important: importantKeywords.some(k => item.title.includes(k)) ? 1 : 0
         });
       });
-      console.log(`  HTX [${cat.label}]: +${list.length} items`);
     } catch (err) {
       console.warn(`  HTX [${cat.label}] error:`, err.message);
     }
   }
-
-  console.log(`HTX: Found ${allItems.length} items total`);
   return allItems;
 }
 
@@ -805,23 +814,9 @@ async function scrapeGate() {
     const page = await browser.newPage();
     await page.setUserAgent(USER_AGENT);
     await page.setViewport({ width: 1280, height: 900 });
-
-    // Intercept the underlying JSON API call Gate's SPA makes
-    let apiData = null;
-    page.on('response', async (response) => {
-      const resUrl = response.url();
-      if (resUrl.includes('/api/') && resUrl.includes('announcement') && response.status() === 200) {
-        try {
-          const json = await response.json();
-          if (!apiData) apiData = json;
-        } catch (_) {}
-      }
-    });
-
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
     await new Promise(resolve => setTimeout(resolve, 10000));
 
-    // Try DOM scraping - look for article links rendered after hydration
     const items = await page.evaluate(() => {
       const results = [];
       const importantKeywords = ['上线', '新币', '下架', '暂停', '维护', '开放', 'Listing', 'Launch', 'Suspend', 'Delist', 'Launchpad'];
@@ -829,19 +824,12 @@ async function scrapeGate() {
       document.querySelectorAll('a[href]').forEach((a) => {
         const href = a.href;
         const text = (a.innerText || a.textContent || '').trim();
-        // Gate announcement articles match these URL patterns
         if (
           text.length > 10 &&
-          (
-            href.includes('/announcements/') ||
-            href.includes('/article/') ||
-            href.includes('/notice/')
-          ) &&
-          !href.endsWith('/zh/announcements') &&
-          !href.endsWith('/announcements')
+          (href.includes('/announcements/') || href.includes('/article/') || href.includes('/notice/')) &&
+          !href.endsWith('/zh/announcements') && !href.endsWith('/announcements')
         ) {
           if (!results.find(r => r.url === href)) {
-            const isImportant = importantKeywords.some(k => text.includes(k));
             results.push({
               title: text.split('\n')[0].trim().substring(0, 200),
               content: '',
@@ -849,15 +837,13 @@ async function scrapeGate() {
               url: href,
               category: 'Announcement',
               timestamp: Date.now() - (results.length * 1000 * 60 * 30),
-              is_important: isImportant ? 1 : 0
+              is_important: importantKeywords.some(k => text.includes(k)) ? 1 : 0
             });
           }
         }
       });
       return results;
     });
-
-    console.log(`Gate: Found ${items.length} items`);
     return items;
   } catch (err) {
     console.error('Gate error:', err.message);
@@ -868,13 +854,11 @@ async function scrapeGate() {
 }
 
 async function scrapePolymarketBreaking() {
-  console.log('Scraping Polymarket Breaking...');
   const url = 'https://polymarket.com/breaking/world';
   return scrapePolymarketGeneric(url, 'Poly-Breaking');
 }
 
 async function scrapePolymarketChina() {
-  console.log('Scraping Polymarket China...');
   const url = 'https://polymarket.com/predictions/china';
   return scrapePolymarketGeneric(url, 'Poly-China');
 }
@@ -909,7 +893,6 @@ async function scrapePolymarketGeneric(url, sourceName) {
       });
       return results;
     }, sourceName);
-    console.log(`${sourceName}: Found ${items.length} items`);
     return items;
   } catch (err) {
     console.error(`${sourceName} error:`, err.message);
@@ -924,83 +907,78 @@ const { sendToWeCom } = require('./wecom');
 
 async function runAllScrapers() {
   console.log('--- Starting Global Scrape ---');
-  // Run all scrapers except HTX in parallel first
-  // HTX uses Tor proxy in CI — running it after others complete (~60-90s) lets Tor establish circuits
-  const [tech, pr, bb, tw, osl, th, okx, exio, mp, wb, hkg, kuc, hke, bin, byb, bit, mex, polyB, polyC, gate] = await Promise.all([
-    scrapeTechFlow(),
-    scrapePRNewswire(),
-    scrapeBlockBeats(),
-    scrapeTwitterKOLs(),
-    scrapeOSL(),
-    scrapeTechubNews(),
-    scrapeOKX(),
-    scrapeExio(),
-    scrapeMatrixport(),
-    scrapeWuBlock(),
-    scrapeHashKeyGroup(),
-    scrapeKuCoin(),
-    scrapeHashKeyExchange(),
-    scrapeBinance(),
-    scrapeBybit(),
-    scrapeBitget(),
-    scrapeMexc(),
-    scrapePolymarketBreaking(),
-    scrapePolymarketChina(),
-    scrapeGate()
-  ]);
-  // Run HTX last — Tor has now been running for the duration of all other scrapers
-  const htx = await scrapeHtx();
-  const allNews = [
-    ...tech, ...pr, ...bb, ...tw, ...osl, ...th, ...okx, ...exio, ...mp, ...wb,
-    ...hkg, ...kuc, ...hke, ...bin, ...byb, ...bit, ...mex, ...polyB, ...polyC, ...gate, ...htx
+  const scrapers = [
+    scrapeTechFlow(), scrapePRNewswire(), scrapeBlockBeats(), scrapeTwitterKOLs(),
+    scrapeOSL(), scrapeTechubNews(), scrapeOKX(), scrapeExio(), scrapeMatrixport(),
+    scrapeWuBlock(), scrapeHashKeyGroup(), scrapeKuCoin(), scrapeHashKeyExchange(),
+    scrapeBinance(), scrapeBybit(), scrapeBitget(), scrapeMexc(),
+    scrapePolymarketBreaking(), scrapePolymarketChina(), scrapeGate()
   ];
+  
+  const results = await Promise.all(scrapers);
+  const htx = await scrapeHtx();
+  const rawNews = [].concat(...results, htx);
 
-  console.log(`--- Finished Scrape. Found ${allNews.length} items. ---`);
+  // Deduplicate by (title, source) to avoid DB conflicts and redundant AI calls
+  const seen = new Set();
+  const allNews = rawNews.filter(item => {
+    const key = `${item.title}|${item.source}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 
-  // --- AI 处理（仅白名单来源）---
-  // 只有这些来源的条目需要经过 AI：加标签、判断重要性、重要则推企微
-  const AI_SOURCES = new Set(['TechubNews', 'Exio', 'OSL', 'WuBlock', 'PRNewswire', 'HTX', 'MEXC', 'Gate']);
-  const MAX_AI_PER_RUN = 50; // 每轮上限，防止 API 超支
+  console.log(`--- Finished Scrape. Found ${allNews.length} items (after deduplication). ---`);
 
-  console.log(`--- AI Processing (sources: ${[...AI_SOURCES].join(', ')}) ---`);
+  // --- 3. AI Processing & Pushing ---
+  // Get already processed/sent status for all news items (based on URL and Title+Source)
+  const { processed: alreadyProcessed, sentToWeCom: alreadySentToWeCom, existingTimestamps } =
+    await getAlreadyProcessed(allNews);
 
-  // 从本轮抓取结果中找出白名单来源且有 URL 的条目
-  const aiCandidates = allNews.filter(i => AI_SOURCES.has(i.source) && i.url);
-
-  // 批量查询：已 AI 处理过的 URL → 跳过（省 API 费）；已推过企微 → 不重推
-  // CI 环境查 Supabase，本地查 SQLite（GitHub Actions 每次是全新空 SQLite）
-  const { processed: alreadyProcessed, sentToWeCom: alreadySentToWeCom } =
-    await getAlreadyProcessed(aiCandidates.map(i => i.url));
-
-  console.log(`  Candidates: ${aiCandidates.length} | Already processed: ${alreadyProcessed.size} | Already sent to WeCom: ${alreadySentToWeCom.size}`);
+  console.log(`  Total items: ${allNews.length} | Already processed: ${alreadyProcessed.size} | Already sent to WeCom: ${alreadySentToWeCom.size}`);
 
   const processedNews = [];
   let aiCallCount = 0;
+  const AI_SOURCES = new Set(['TechubNews', 'Exio', 'OSL', 'WuBlock', 'PRNewswire', 'HTX', 'MEXC', 'Gate']);
+  const MAX_AI_PER_RUN = 50; // Limit per run to save API costs
 
   for (const item of allNews) {
-    // 白名单来源 + 未曾 AI 处理 + 未超出每轮上限 → 走 AI
-    if (AI_SOURCES.has(item.source) && !alreadyProcessed.has(item.url) && aiCallCount < MAX_AI_PER_RUN) {
+    const isAlreadySent = alreadySentToWeCom.has(item.url);
+    const isAlreadyProcessed = alreadyProcessed.has(item.url);
+    const dbTimestamp = existingTimestamps.get(item.url);
+    
+    // Use original discovery timestamp if available in DB
+    const finalTimestamp = dbTimestamp || item.timestamp;
+    
+    // 1. AI Processing
+    if (AI_SOURCES.has(item.source) && !isAlreadyProcessed && aiCallCount < MAX_AI_PER_RUN) {
       console.log(`  [AI] ${item.source}: ${item.title.substring(0, 50)}...`);
-      if (aiCallCount > 0) await new Promise(r => setTimeout(r, 4000)); // 4s 节流，避免 429
+      if (aiCallCount > 0) await new Promise(r => setTimeout(r, 4000)); // 4s throttle
       const aiResult = await processWithAI(item.title, item.content);
       aiCallCount++;
       if (aiResult) {
         Object.assign(item, aiResult);
-        // 企微推送：AI 判定重要 + 未推过 + 内容为当天或前一天（防止旧公告刷屏）
-        const isRecent = (Date.now() - item.timestamp) <= 48 * 60 * 60 * 1000;
-        if (item.is_important === 1 && !alreadySentToWeCom.has(item.url) && isRecent) {
-          await sendToWeCom(item);
-          item.sent_to_wecom = 1; // Mark as sent
-        } else if (item.is_important === 1 && alreadySentToWeCom.has(item.url)) {
-          item.sent_to_wecom = 1; // Keep status
-        } else if (item.is_important === 1 && !isRecent) {
-          console.log(`  [WeCom Skip] Too old: ${item.title.substring(0, 40)}`);
-        }
       }
     }
+
+    // 2. Push to WeCom (All sources)
+    // Conditions: is_important (from scraper or AI) + not sent yet + within 48h
+    const isRecent = (Date.now() - finalTimestamp) <= 48 * 60 * 60 * 1000;
+    
+    if (item.is_important === 1 && !isAlreadySent && isRecent) {
+      console.log(`  [WeCom Push] ${item.source}: ${item.title.substring(0, 50)}`);
+      try {
+        await sendToWeCom(item);
+        item.sent_to_wecom = 1;
+      } catch (err) {
+        console.error(`  [WeCom Error] ${item.source}:`, err.message);
+      }
+    } else if (item.is_important === 1 && isAlreadySent) {
+      item.sent_to_wecom = 1; // Sync status for saveNews
+    }
+
     processedNews.push(item);
   }
-  console.log(`  AI processed ${aiCallCount} items (skipped ${alreadyProcessed.size} already done).`);
 
   await saveNews(processedNews);
   console.log(`--- Finished All. Saved ${processedNews.length} items. ---`);
