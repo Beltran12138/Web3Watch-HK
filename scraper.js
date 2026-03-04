@@ -899,12 +899,20 @@ async function scrapePolymarketGeneric(url, sourceName) {
 function checkImportance(item) {
   const title = item.title.toUpperCase();
   const source = item.source.toUpperCase();
-  
+
+  // ⛔ 硬封锁：以下平台的任何消息禁止推送到企业微信，不受任何其他规则影响
+  const WECOM_BLOCKED = [
+    'TECHFLOW', 'BLOCKBEATS',
+    'POLY-BREAKING', 'POLY-CHINA',
+    'TWITTERAB', 'WUSHUO', 'PHYREX', 'XIEJIAYIN', 'JUSTINSUN'
+  ];
+  if (WECOM_BLOCKED.includes(source)) return 0;
+
   // 规则 3: 香港合规交易所 (HashKey, OSL) 的任何消息均为重要
   if (source.includes('HASHKEY') || source.includes('OSL')) {
     return 1;
   }
-  
+
   // 规则 1: 香港 (HK) 相关政策、牌照、业务进展
   const HK_KEYWORDS = ['香港', 'HK', 'HONG KONG', '牌照', '监管', 'VASP', 'SFC', '证监会'];
   if (item.category === 'HK' || HK_KEYWORDS.some(k => title.includes(k))) {

@@ -153,16 +153,39 @@ async function getAlreadyProcessed(items) {
     for (let i = 0; i < items.length; i += CHUNK) {
       const chunk = items.slice(i, i + CHUNK);
       const chunkUrls = chunk.map(c => c.url).filter(Boolean);
+
+      // 第一轮：按 URL 精确匹配
       const { data } = await supabase
         .from('news')
         .select('url, title, source, is_important, sent_to_wecom, business_category, timestamp')
         .in('url', chunkUrls);
-      
+
+      const foundByUrl = new Set();
       (data || []).forEach(r => {
+        foundByUrl.add(r.url);
         if (r.business_category) processed.add(r.url);
-        if (r.sent_to_wecom === 1) sentToWeCom.add(r.url);
+        if (!!r.sent_to_wecom) sentToWeCom.add(r.url);
         if (r.timestamp) existingTimestamps.set(r.url, r.timestamp);
       });
+
+      // 第二轮：对 URL 未命中的条目，用 title+source 兜底（防止 URL 微变导致重复推送）
+      const notFound = chunk.filter(c => c.url && !foundByUrl.has(c.url));
+      if (notFound.length > 0) {
+        const titleList = notFound.map(c => c.title);
+        const { data: td } = await supabase
+          .from('news')
+          .select('url, title, source, sent_to_wecom, business_category, timestamp')
+          .in('title', titleList);
+
+        (td || []).forEach(r => {
+          const match = notFound.find(i => i.title === r.title && i.source === r.source);
+          if (match) {
+            if (r.business_category) processed.add(match.url);
+            if (!!r.sent_to_wecom) sentToWeCom.add(match.url);
+            if (r.timestamp) existingTimestamps.set(match.url, r.timestamp);
+          }
+        });
+      }
     }
   } else {
     // 本地模式：查 SQLite
@@ -202,10 +225,31 @@ async function updateSentStatus(item) {
   db.prepare('UPDATE news SET sent_to_wecom = 1 WHERE title = ? AND source = ?').run(item.title, item.source);
 
   if (USE_SUPABASE && supabase) {
+    // 先尝试 UPDATE（行已存在时最安全），再 UPSERT 兜底（行尚未入库时防止遗漏）
     await supabase
       .from('news')
       .update({ sent_to_wecom: 1 })
       .match({ title: item.title, source: item.source });
+    await supabase
+      .from('news')
+      .update({ sent_to_wecom: 1 })
+      .eq('url', item.url);
+    // 若行尚不存在（新条目 saveNews 尚未运行），先插入最小记录确保推送状态持久化
+    await supabase
+      .from('news')
+      .upsert({
+        title: item.title,
+        source: item.source,
+        url: item.url || '',
+        content: item.content || '',
+        category: item.category || '',
+        timestamp: item.timestamp || Date.now(),
+        is_important: item.is_important || 1,
+        sent_to_wecom: 1,
+        business_category: item.business_category || '',
+        competitor_category: item.competitor_category || '',
+        detail: item.detail || ''
+      }, { onConflict: 'title,source' });
   }
 }
 
