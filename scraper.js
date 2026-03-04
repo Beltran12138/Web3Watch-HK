@@ -993,14 +993,24 @@ async function runAllScrapers() {
   ]);
   const MAX_AI_PER_RUN = 60;
 
-  for (const item of allNews) {
-    const isAlreadySent = alreadySentToWeCom.has(item.url) || alreadySentToWeCom.has(item.title + '|' + item.source);
-    const isAlreadyProcessed = alreadyProcessed.has(item.url) || alreadyProcessed.has(item.title + '|' + item.source);
-    const dbTimestamp = existingTimestamps.get(item.url) || existingTimestamps.get(item.title + '|' + item.source);
+  // ===== 三重防线：防止重复推送和推送过时消息 =====
+  // 防线1: 只推送「今天」的消息（北京时间 UTC+8 当天 00:00 之后的）
+  const now = new Date();
+  const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime() - 8 * 60 * 60 * 1000; // 北京时间零点对应的 UTC 时间戳
+  console.log(`  [Time Filter] Only pushing news after: ${new Date(todayMidnight).toISOString()}`);
 
-    // 强制执行 48h 规则：优先使用数据库记录的首次发现时间
+  // 防线2: 本次运行内的去重（同一次执行中不允许同标题推送两次）
+  const sentThisRun = new Set();
+
+  for (const item of allNews) {
+    const cacheKey = (item.title || '').trim() + '|' + (item.source || '').trim();
+    const isAlreadySent = alreadySentToWeCom.has(item.url) || alreadySentToWeCom.has(cacheKey);
+    const isAlreadyProcessed = alreadyProcessed.has(item.url) || alreadyProcessed.has(cacheKey);
+    const dbTimestamp = existingTimestamps.get(item.url) || existingTimestamps.get(cacheKey);
+
+    // 强制时间规则：优先使用数据库记录的首次发现时间，只允许当天的消息通过
     const finalTimestamp = dbTimestamp || item.timestamp;
-    const isRecent = (Date.now() - finalTimestamp) <= 48 * 60 * 60 * 1000;
+    const isToday = finalTimestamp >= todayMidnight;
 
     // 3. 启发式预判重要性
     item.is_important = checkImportance(item);
@@ -1032,19 +1042,39 @@ async function runAllScrapers() {
       item.is_important = 0;
     }
 
-    // 5. 企业微信推送
-    if (item.is_important === 1 && !isAlreadySent && isRecent) {
+    // 5. 企业微信推送 — 三重防线全部通过才允许推送
+    if (item.is_important === 1 && !isAlreadySent && isToday) {
+      // 防线2 检查: 本次运行内是否已经发过同标题的消息
+      if (sentThisRun.has(cacheKey)) {
+        console.log(`  [BLOCKED-本次已发] ${item.source}: ${item.title.substring(0, 50)}`);
+        item.sent_to_wecom = 1;
+        processedNews.push(item);
+        continue;
+      }
+
+      // 防线3 检查: 发送前再次实时查询数据库，确认绝对没有发送过
+      const dbCheck = db.prepare('SELECT sent_to_wecom FROM news WHERE (url = ? OR (title = ? AND source = ?)) AND sent_to_wecom = 1').get(item.url, item.title, item.source);
+      if (dbCheck) {
+        console.log(`  [BLOCKED-DB已发] ${item.source}: ${item.title.substring(0, 50)}`);
+        item.sent_to_wecom = 1;
+        processedNews.push(item);
+        continue;
+      }
+
       console.log(`  [WeCom Push] ${item.source}: ${item.title.substring(0, 50)}`);
       try {
         await sendToWeCom(item);
         item.sent_to_wecom = 1;
-        // 关键修复：发送成功后立即更新数据库状态，防止后续逻辑报错导致重复发送
+        sentThisRun.add(cacheKey);
+        // 发送成功后立即更新数据库状态，防止后续逻辑报错导致重复发送
         await updateSentStatus(item);
       } catch (err) {
         console.error(`  [WeCom Error] ${item.source}:`, err.message);
       }
     } else if (item.is_important === 1 && isAlreadySent) {
       item.sent_to_wecom = 1;
+    } else if (item.is_important === 1 && !isToday) {
+      console.log(`  [BLOCKED-非当天] ${item.source}: ${item.title.substring(0, 40)} ts=${new Date(finalTimestamp).toISOString()}`);
     }
 
     processedNews.push(item);
