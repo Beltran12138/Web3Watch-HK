@@ -86,10 +86,9 @@ async function scrapePRNewswire() {
       title = title.replace(/^\d{1,2}\s+\w{3},\s+\d{4},?\s+[\d:]+\s*[A-Z]+\s*/i, '').trim();
       if (!title || title.length < 15) return;
 
-      // 从父容器找时间戳
-      const timeStr = $(el).closest('.card, .row, article, li').find('small, time, [class*="date"], [class*="time"]').first().text().trim();
+      const timeStr = $(el).closest('.card, .row, article, li, .col-sm-12').find('small, time, [class*="date"], [class*="time"], h3 + p').first().text().trim();
       const ts = timeStr ? new Date(timeStr).getTime() : 0;
-      const timestamp = (ts && !isNaN(ts)) ? ts : Date.now() - (items.length * 1000 * 60 * 60);
+      const timestamp = (ts && !isNaN(ts)) ? ts : (Date.now() - (items.length * 1000 * 60 * 60));
 
       items.push({
         title: title.substring(0, 200),
@@ -102,8 +101,9 @@ async function scrapePRNewswire() {
       });
     });
 
-    console.log(`PRNewswire: Found ${items.length} items`);
-    return items;
+    const validItems = items.filter(item => item.timestamp && !isNaN(item.timestamp));
+    console.log(`PRNewswire: Found ${validItems.length} items`);
+    return validItems;
   } catch (err) {
     console.error('PRNewswire error:', err.message);
     return [];
