@@ -1,306 +1,281 @@
-const Database = require('better-sqlite3');
+'use strict';
+
+const Database     = require('better-sqlite3');
 const { createClient } = require('@supabase/supabase-js');
-const path = require('path');
+const path         = require('path');
+const { DB }       = require('./config');
 require('dotenv').config();
 
 const USE_SUPABASE = process.env.USE_SUPABASE === 'true';
 
 let supabase = null;
 if (USE_SUPABASE) {
-  supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_KEY
-  );
+  supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 }
 
 const db = new Database(path.join(__dirname, 'alpha_radar.db'));
 
-// Helper for fuzzy deduplication
-// 注意：这个函数用于生成归一化 key，但保留足够的区分度以避免误判
+// ── 归一化 key（用于模糊去重）─────────────────────────────────────────────────
 function normalizeKey(title, source) {
   const normalized = (title || '')
     .trim()
     .toLowerCase()
-    // 只移除最常见的标点符号，保留更多字符以提高区分度
-    .replace(/[\s\-_,.:;!?()\[\]{}"'\/|\\@#$%^&*+=<>~`]+/g, '');
-
-  if (source) {
-    return normalized + '|' + source.trim().toLowerCase();
-  }
-  return normalized;
+    .replace(/[\s\-_,.:;!?()\[\]{}"'\\/|@#$%^&*+=<>~`]+/g, '');
+  return source ? `${normalized}|${source.trim().toLowerCase()}` : normalized;
 }
 
-// SQLite setup (always runs for local caching/fallback)
+// ── 建表 + 索引 ───────────────────────────────────────────────────────────────
 db.exec(`
   CREATE TABLE IF NOT EXISTS news (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     title TEXT NOT NULL,
     normalized_title TEXT,
     content TEXT,
-    detail TEXT,
+    detail TEXT DEFAULT '',
     source TEXT NOT NULL,
     url TEXT UNIQUE,
     category TEXT,
-    business_category TEXT,
-    competitor_category TEXT,
+    business_category TEXT DEFAULT '',
+    competitor_category TEXT DEFAULT '',
     timestamp INTEGER,
     is_important INTEGER DEFAULT 0,
     sent_to_wecom INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
-  CREATE INDEX IF NOT EXISTS idx_timestamp ON news(timestamp DESC);
-  CREATE INDEX IF NOT EXISTS idx_source ON news(source);
+  CREATE INDEX IF NOT EXISTS idx_timestamp       ON news(timestamp DESC);
+  CREATE INDEX IF NOT EXISTS idx_source          ON news(source);
+  CREATE INDEX IF NOT EXISTS idx_is_important    ON news(is_important);
+  CREATE INDEX IF NOT EXISTS idx_business_cat    ON news(business_category);
+  CREATE INDEX IF NOT EXISTS idx_sent_wecom      ON news(sent_to_wecom);
   CREATE UNIQUE INDEX IF NOT EXISTS idx_title_source ON news(title, source);
 `);
 
-// Migration: add new columns if they don't exist (safe for existing DBs)
+// ── 安全迁移（已有数据库补列）────────────────────────────────────────────────
 const existingCols = db.prepare('PRAGMA table_info(news)').all().map(c => c.name);
-if (!existingCols.includes('detail')) db.exec("ALTER TABLE news ADD COLUMN detail TEXT DEFAULT ''");
-if (!existingCols.includes('business_category')) db.exec("ALTER TABLE news ADD COLUMN business_category TEXT DEFAULT ''");
-if (!existingCols.includes('competitor_category')) db.exec("ALTER TABLE news ADD COLUMN competitor_category TEXT DEFAULT ''");
-if (!existingCols.includes('sent_to_wecom')) db.exec("ALTER TABLE news ADD COLUMN sent_to_wecom INTEGER DEFAULT 0");
-if (!existingCols.includes('normalized_title')) {
-  db.exec("ALTER TABLE news ADD COLUMN normalized_title TEXT DEFAULT ''");
-  db.exec("CREATE INDEX IF NOT EXISTS idx_normalized_title ON news(normalized_title)");
-}
+const migrations = [
+  ['detail',               "ALTER TABLE news ADD COLUMN detail TEXT DEFAULT ''"],
+  ['business_category',    "ALTER TABLE news ADD COLUMN business_category TEXT DEFAULT ''"],
+  ['competitor_category',  "ALTER TABLE news ADD COLUMN competitor_category TEXT DEFAULT ''"],
+  ['sent_to_wecom',        'ALTER TABLE news ADD COLUMN sent_to_wecom INTEGER DEFAULT 0'],
+  ['normalized_title',     "ALTER TABLE news ADD COLUMN normalized_title TEXT DEFAULT ''; CREATE INDEX IF NOT EXISTS idx_normalized_title ON news(normalized_title)"],
+];
+migrations.forEach(([col, sql]) => {
+  if (!existingCols.includes(col)) { db.exec(sql); console.log(`[DB] Migrated: +${col}`); }
+});
 
-async function saveNews(items) {
-  // 1. Save to local SQLite
-  const insert = db.prepare(`
-    INSERT INTO news (title, normalized_title, content, detail, source, url, category, business_category, competitor_category, timestamp, is_important, sent_to_wecom)
-    VALUES (@title, @normalized_title, @content, @detail, @source, @url, @category, @business_category, @competitor_category, @timestamp, @is_important, @sent_to_wecom)
+// ── 预编译 SQL（性能优化）────────────────────────────────────────────────────
+const STMT = {
+  insert: db.prepare(`
+    INSERT INTO news
+      (title, normalized_title, content, detail, source, url, category,
+       business_category, competitor_category, timestamp, is_important, sent_to_wecom)
+    VALUES
+      (@title, @normalized_title, @content, @detail, @source, @url, @category,
+       @business_category, @competitor_category, @timestamp, @is_important, @sent_to_wecom)
     ON CONFLICT(title, source) DO UPDATE SET
-      url = CASE WHEN excluded.url IS NOT NULL AND excluded.url != '' THEN excluded.url ELSE news.url END,
-      normalized_title = excluded.normalized_title,
-      is_important = MAX(news.is_important, excluded.is_important),
-      sent_to_wecom = MAX(news.sent_to_wecom, excluded.sent_to_wecom),
-      business_category = CASE WHEN excluded.business_category != '' THEN excluded.business_category ELSE news.business_category END,
+      url                 = CASE WHEN excluded.url != '' THEN excluded.url ELSE news.url END,
+      normalized_title    = excluded.normalized_title,
+      is_important        = MAX(news.is_important, excluded.is_important),
+      sent_to_wecom       = MAX(news.sent_to_wecom, excluded.sent_to_wecom),
+      business_category   = CASE WHEN excluded.business_category != '' THEN excluded.business_category ELSE news.business_category END,
       competitor_category = CASE WHEN excluded.competitor_category != '' THEN excluded.competitor_category ELSE news.competitor_category END,
-      timestamp = news.timestamp, -- Keep original timestamp
-      created_at = news.created_at
-  `);
+      detail              = CASE WHEN excluded.detail != ''              THEN excluded.detail             ELSE news.detail END,
+      timestamp           = news.timestamp,   -- 保留首次入库时间
+      created_at          = news.created_at
+  `),
 
-  const transaction = db.transaction((items) => {
-    for (const item of items) {
+  updateByUrl:   db.prepare('UPDATE news SET sent_to_wecom=1 WHERE url=?'),
+  updateByTitle: db.prepare('UPDATE news SET sent_to_wecom=1 WHERE title=? AND source=?'),
+  updateByNorm:  db.prepare('UPDATE news SET sent_to_wecom=1 WHERE normalized_title=?'),
+
+  getByUrls:     (placeholders) => db.prepare(
+    `SELECT url, title, normalized_title, source, business_category, sent_to_wecom, timestamp FROM news WHERE url IN (${placeholders})`
+  ),
+  getByNorm:     db.prepare(
+    'SELECT url, sent_to_wecom, business_category, timestamp FROM news WHERE normalized_title=? ORDER BY sent_to_wecom DESC, timestamp DESC LIMIT 1'
+  ),
+  checkSent:     db.prepare(
+    'SELECT sent_to_wecom FROM news WHERE (url=? OR normalized_title=?) AND sent_to_wecom=1 LIMIT 1'
+  ),
+
+  // 统计
+  countAll:      db.prepare('SELECT COUNT(*) as n FROM news'),
+  countImportant:db.prepare('SELECT COUNT(*) as n FROM news WHERE is_important=1'),
+  countByCat:    db.prepare('SELECT business_category, COUNT(*) as n FROM news WHERE timestamp > ? AND business_category != \'\' GROUP BY business_category ORDER BY n DESC'),
+  countBySrc:    db.prepare('SELECT source, COUNT(*) as n FROM news GROUP BY source ORDER BY n DESC LIMIT 30'),
+};
+
+// ── saveNews ──────────────────────────────────────────────────────────────────
+async function saveNews(items) {
+  // 1. SQLite 事务批量写入
+  const tx = db.transaction((rows) => {
+    for (const item of rows) {
+      const nTitle = normalizeKey(item.title, '').split('|')[0];
+      const row    = {
+        ...item,
+        normalized_title:    nTitle,
+        detail:              item.detail              || '',
+        business_category:   item.business_category   || '',
+        competitor_category: item.competitor_category || '',
+        sent_to_wecom:       item.sent_to_wecom        || 0,
+        content:             (item.content || '').substring(0, 500),
+      };
       try {
-        const nTitle = normalizeKey(item.title, '').split('|')[0];
-        insert.run({
-          ...item,
-          normalized_title: nTitle,
-          detail: item.detail || '',
-          business_category: item.business_category || '',
-          competitor_category: item.competitor_category || '',
-          sent_to_wecom: item.sent_to_wecom || 0
-        });
+        STMT.insert.run(row);
       } catch (err) {
         if (err.message.includes('UNIQUE constraint failed: news.url')) {
-          try {
-            db.prepare(`UPDATE news SET 
-              title = @title, 
-              normalized_title = @normalized_title,
-              content = @content, source = @source, 
-              is_important = MAX(is_important, @is_important), 
-              sent_to_wecom = MAX(sent_to_wecom, @sent_to_wecom),
-              business_category = CASE WHEN @business_category != '' THEN @business_category ELSE business_category END,
-              competitor_category = CASE WHEN @competitor_category != '' THEN @competitor_category ELSE competitor_category END,
-              detail = CASE WHEN @detail != '' THEN @detail ELSE detail END
-              WHERE url = @url`).run({
-              ...item,
-              normalized_title: normalizeKey(item.title, '').split('|')[0],
-              business_category: item.business_category || '',
-              competitor_category: item.competitor_category || '',
-              detail: item.detail || '',
-              sent_to_wecom: item.sent_to_wecom || 0
-            });
-          } catch (e2) {
-            console.warn('[DB Error during URL-update]:', e2.message);
-          }
+          // URL 冲突单独处理（更新除时间戳外的字段）
+          db.prepare(`
+            UPDATE news SET
+              title               = @title,
+              normalized_title    = @normalized_title,
+              is_important        = MAX(is_important, @is_important),
+              sent_to_wecom       = MAX(sent_to_wecom, @sent_to_wecom),
+              business_category   = CASE WHEN @business_category!='' THEN @business_category ELSE business_category END,
+              competitor_category = CASE WHEN @competitor_category!='' THEN @competitor_category ELSE competitor_category END,
+              detail              = CASE WHEN @detail!='' THEN @detail ELSE detail END
+            WHERE url = @url
+          `).run(row);
         } else {
-          console.warn('[DB Error during Insert]:', err.message, item.title);
+          console.warn('[DB insert]', err.message?.substring(0, 80), '|', item.title?.substring(0, 40));
         }
       }
     }
   });
-  
-  try {
-    transaction(items);
-  } catch (fatalErr) {
-    console.error('[DB Fatal Error in saveNews]:', fatalErr.message);
-  }
 
-  // 2. Sync to Supabase if enabled
-  if (USE_SUPABASE && supabase) {
-    console.log(`[Supabase] Syncing ${items.length} items...`);
-    const seen = new Set();
-    const cleanItems = items
-      .filter(item => item.url && !seen.has(item.url) && seen.add(item.url))
-      .map(item => ({
-        title: item.title,
-        content: item.content || '',
-        detail: item.detail || '',
-        source: item.source,
-        url: item.url,
-        category: item.category || 'Signals',
-        business_category: item.business_category || '',
-        competitor_category: item.competitor_category || '',
-        timestamp: Math.round(item.timestamp),
-        is_important: item.is_important || 0,
-        sent_to_wecom: item.sent_to_wecom || 0
+  try { tx(items); } catch (e) { console.error('[DB saveNews fatal]', e.message); }
+
+  // 2. Supabase 同步（批量 upsert）
+  if (USE_SUPABASE && supabase && items.length > 0) {
+    const seen      = new Set();
+    const cleanRows = items
+      .filter(i => i.url && !seen.has(i.url) && seen.add(i.url))
+      .map(i => ({
+        title:               i.title,
+        content:             (i.content || '').substring(0, 500),
+        detail:              i.detail              || '',
+        source:              i.source,
+        url:                 i.url,
+        category:            i.category            || 'Signals',
+        business_category:   i.business_category   || '',
+        competitor_category: i.competitor_category || '',
+        timestamp:           Math.round(i.timestamp || 0),
+        is_important:        i.is_important         || 0,
+        sent_to_wecom:       i.sent_to_wecom        || 0,
       }));
 
-    const { error } = await supabase
-      .from('news')
-      .upsert(cleanItems, { onConflict: 'title,source' });
-
-    if (error) {
-      console.error('[Supabase Error]:', error.message);
+    // 分批 upsert（Supabase 单次上限 ~500 行）
+    for (let i = 0; i < cleanRows.length; i += DB.SUPABASE_CHUNK_SIZE) {
+      const chunk = cleanRows.slice(i, i + DB.SUPABASE_CHUNK_SIZE);
+      const { error } = await supabase.from('news').upsert(chunk, { onConflict: 'title,source' });
+      if (error) console.error('[Supabase upsert]', error.message);
     }
   }
 }
 
-function getNews(limit = 100, source = null, important = 0) {
-  let query = 'SELECT * FROM news WHERE 1=1 ';
+// ── getNews（增加搜索参数）───────────────────────────────────────────────────
+function getNews(limit = 100, source = null, important = 0, search = '') {
+  let sql    = 'SELECT * FROM news WHERE 1=1 ';
   const params = [];
 
-  if (important == 1) {
-    query += 'AND is_important = 1 ';
+  if (important === 1) {
+    sql += 'AND is_important=1 ';
   } else if (source && source !== 'All') {
-    query += 'AND source = ? ';
+    sql += 'AND source=? ';
     params.push(source);
   }
 
-  query += 'ORDER BY timestamp DESC LIMIT ?';
+  if (search) {
+    sql += "AND (title LIKE ? OR content LIKE ? OR detail LIKE ?) ";
+    const like = `%${search}%`;
+    params.push(like, like, like);
+  }
+
+  sql += 'ORDER BY timestamp DESC LIMIT ?';
   params.push(limit);
 
-  return db.prepare(query).all(...params);
+  return db.prepare(sql).all(...params);
 }
 
-/**
- * 批量查询哪些 URL/Title 已经过 AI 处理及已推送企微
- * 同时返回已存在的 timestamp 以便严格执行 48h 推送规则
- */
+// ── getStats（供健康检查 + 前端图表使用）──────────────────────────────────────
+function getStats(since = 0) {
+  const sinceTs = since || (Date.now() - 7 * 24 * 3600 * 1000);
+  return {
+    total:      STMT.countAll.get().n,
+    important:  STMT.countImportant.get().n,
+    categories: STMT.countByCat.all(sinceTs),
+    sources:    STMT.countBySrc.all(),
+  };
+}
+
+// ── getAlreadyProcessed（批量查询，性能优化版）────────────────────────────────
 async function getAlreadyProcessed(items) {
-  const processed = new Set();
-  const sentToWeCom = new Set();
-  const existingTimestamps = new Map(); // url -> timestamp
-  if (!items || items.length === 0) return { processed, sentToWeCom, existingTimestamps };
+  const processed        = new Set();
+  const sentToWeCom      = new Set();
+  const existingTimestamps = new Map();
+  if (!items?.length) return { processed, sentToWeCom, existingTimestamps };
 
   const urls = items.map(i => i.url).filter(Boolean);
 
   if (USE_SUPABASE && supabase) {
-    const CHUNK = 100;
-    for (let i = 0; i < items.length; i += CHUNK) {
-      const chunk = items.slice(i, i + CHUNK);
-      const chunkUrls = chunk.map(c => c.url).filter(Boolean);
+    // Supabase: 分批批量查询
+    for (let i = 0; i < items.length; i += DB.SUPABASE_CHUNK_SIZE) {
+      const chunk      = items.slice(i, i + DB.SUPABASE_CHUNK_SIZE);
+      const chunkUrls  = chunk.map(c => c.url).filter(Boolean);
 
-      // 第一轮：按 URL 精确匹配
-      const { data } = await supabase
-        .from('news')
-        .select('url, title, source, is_important, sent_to_wecom, business_category, timestamp')
+      const { data }   = await supabase.from('news')
+        .select('url, title, source, business_category, sent_to_wecom, timestamp')
         .in('url', chunkUrls);
 
-      const foundByUrl = new Set();
+      const foundUrls  = new Set();
       (data || []).forEach(r => {
-        foundByUrl.add(r.url);
+        foundUrls.add(r.url);
         const nKey = normalizeKey(r.title, r.source);
-        if (r.business_category) {
-          processed.add(r.url);
-          processed.add(nKey);
-        }
-        if (!!r.sent_to_wecom) {
-          sentToWeCom.add(r.url);
-          sentToWeCom.add(nKey);
-        }
-        if (r.timestamp) {
-          existingTimestamps.set(r.url, r.timestamp);
-          existingTimestamps.set(nKey, r.timestamp);
-        }
+        if (r.business_category)  { processed.add(r.url);   processed.add(nKey); }
+        if (r.sent_to_wecom)      { sentToWeCom.add(r.url); sentToWeCom.add(nKey); }
+        if (r.timestamp)          { existingTimestamps.set(r.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); }
       });
 
-      // 第二轮：对 URL 未命中的条目，用 title+source 兜底（防止 URL 微变导致重复推送）
-      const notFound = chunk.filter(c => c.url && !foundByUrl.has(c.url));
+      // 二轮：URL未命中的用 title 查
+      const notFound = chunk.filter(c => c.url && !foundUrls.has(c.url));
       if (notFound.length > 0) {
-        const titleList = notFound.map(c => c.title);
-        const { data: td } = await supabase
-          .from('news')
+        const { data: td } = await supabase.from('news')
           .select('url, title, source, sent_to_wecom, business_category, timestamp')
-          .in('title', titleList);
-
+          .in('title', notFound.map(c => c.title));
         (td || []).forEach(r => {
-          // Find matching item using loose title match
-          // But here we rely on Supabase exact match for 'in' query.
-          // We can double check using normalizeKey.
-          const nKeyR = normalizeKey(r.title, r.source);
-          
-          const match = notFound.find(i => normalizeKey(i.title, i.source) === nKeyR);
-          if (match) {
-            if (r.business_category) {
-              processed.add(match.url);
-              processed.add(nKeyR);
-            }
-            if (!!r.sent_to_wecom) {
-              sentToWeCom.add(match.url);
-              sentToWeCom.add(nKeyR);
-            }
-            if (r.timestamp) {
-              existingTimestamps.set(match.url, r.timestamp);
-              existingTimestamps.set(nKeyR, r.timestamp);
-            }
-          }
+          const nKey = normalizeKey(r.title, r.source);
+          const m    = notFound.find(i => normalizeKey(i.title, i.source) === nKey);
+          if (!m) return;
+          if (r.business_category)  { processed.add(m.url);   processed.add(nKey); }
+          if (r.sent_to_wecom)      { sentToWeCom.add(m.url); sentToWeCom.add(nKey); }
+          if (r.timestamp)          { existingTimestamps.set(m.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); }
         });
       }
     }
   } else {
-    // 本地模式：查 SQLite
+    // SQLite：批量 IN 查询（避免逐条查询）
     if (urls.length > 0) {
-      const placeholders = urls.map(() => '?').join(',');
-      db.prepare(`SELECT url, title, normalized_title, source, business_category, sent_to_wecom, timestamp FROM news WHERE url IN (${placeholders})`)
-        .all(...urls).forEach(r => {
-          const nKey = r.normalized_title + '|' + (r.source || '').trim().toLowerCase();
-          const nTitle = r.normalized_title;
-          if (r.business_category) {
-            processed.add(r.url);
-            processed.add(nKey);
-            processed.add(nTitle);
-          }
-          if (r.sent_to_wecom === 1) {
-            sentToWeCom.add(r.url);
-            sentToWeCom.add(nKey);
-            sentToWeCom.add(nTitle);
-          }
-          if (r.timestamp) {
-            existingTimestamps.set(r.url, r.timestamp);
-            existingTimestamps.set(nKey, r.timestamp);
-            existingTimestamps.set(nTitle, r.timestamp);
-          }
-        });
+      const ph = urls.map(() => '?').join(',');
+      STMT.getByUrls(ph).all(...urls).forEach(r => {
+        const nKey   = r.normalized_title + '|' + (r.source || '').toLowerCase();
+        const nTitle = r.normalized_title;
+        if (r.business_category)  { processed.add(r.url);   processed.add(nKey); processed.add(nTitle); }
+        if (r.sent_to_wecom === 1){ sentToWeCom.add(r.url); sentToWeCom.add(nKey); sentToWeCom.add(nTitle); }
+        if (r.timestamp)          { existingTimestamps.set(r.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); }
+      });
     }
 
-    // 也要通过 normalized_title 检查
+    // 补充：通过 normalized_title 匹配（URL 可能已变）
     for (const item of items) {
       const nTitle = normalizeKey(item.title, '').split('|')[0];
-      const nKey = nTitle + '|' + (item.source || '').trim().toLowerCase();
-      
-      if ((processed.has(item.url) || processed.has(nKey) || processed.has(nTitle)) &&
-        (sentToWeCom.has(item.url) || sentToWeCom.has(nKey) || sentToWeCom.has(nTitle))) continue;
+      const nKey   = `${nTitle}|${(item.source || '').toLowerCase()}`;
+      if (processed.has(nTitle) && sentToWeCom.has(nTitle)) continue;
 
-      // Use normalized_title for more robust matching (CROSS-SOURCE)
-      const row = db.prepare('SELECT url, sent_to_wecom, business_category, timestamp FROM news WHERE normalized_title = ? ORDER BY sent_to_wecom DESC, timestamp DESC LIMIT 1').get(nTitle);
+      const row = STMT.getByNorm.get(nTitle);
       if (row) {
-        if (row.business_category) {
-          if (item.url) processed.add(item.url);
-          processed.add(nKey);
-          processed.add(nTitle);
-        }
-        if (row.sent_to_wecom === 1) {
-          if (item.url) sentToWeCom.add(item.url);
-          sentToWeCom.add(nKey);
-          sentToWeCom.add(nTitle);
-        }
-        if (row.timestamp) {
-          if (item.url) existingTimestamps.set(item.url, row.timestamp);
-          existingTimestamps.set(nKey, row.timestamp);
-        }
+        if (row.business_category)  { processed.add(nKey);   processed.add(nTitle); }
+        if (row.sent_to_wecom === 1){ sentToWeCom.add(nKey); sentToWeCom.add(nTitle); if (item.url) sentToWeCom.add(item.url); }
+        if (row.timestamp)          { existingTimestamps.set(nKey, row.timestamp); if (item.url) existingTimestamps.set(item.url, row.timestamp); }
       }
     }
   }
@@ -308,85 +283,38 @@ async function getAlreadyProcessed(items) {
   return { processed, sentToWeCom, existingTimestamps };
 }
 
-/**
- * 立即更新单条新闻的推送状态
- * 使用事务确保原子性更新
- */
+// ── updateSentStatus ──────────────────────────────────────────────────────────
 async function updateSentStatus(item) {
   const nTitle = normalizeKey(item.title, '').split('|')[0];
-
   try {
-    // 使用事务包装所有更新操作，确保原子性
-    const updateTransaction = db.transaction(() => {
-      // 1. 更新匹配的 URL
-      if (item.url) {
-        db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
-      }
-      // 2. 更新匹配的 title + source
-      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE title = ? AND source = ?`).run(item.title, item.source);
-      // 3. 更新匹配的 normalized_title + source
-      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE normalized_title = ? AND source = ?`).run(nTitle, item.source);
-      // 4. 更新所有匹配 normalized_title 的记录（跨源去重）
-      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE normalized_title = ?`).run(nTitle);
-    });
-
-    updateTransaction();
-
-    // 5. 尝试插入新记录（如果不存在）
-    try {
-      const upsert = db.prepare(`
-        INSERT INTO news (title, normalized_title, source, url, content, sent_to_wecom, is_important, timestamp, category, created_at)
-        VALUES (@title, @normalized_title, @source, @url, @content, 1, @is_important, @timestamp, @category, CURRENT_TIMESTAMP)
-        ON CONFLICT(title, source) DO UPDATE SET sent_to_wecom = 1
-      `);
-
-      upsert.run({
-        title: item.title,
-        normalized_title: nTitle,
-        source: item.source,
-        url: item.url || null,
-        content: item.content || '',
-        is_important: item.is_important || 0,
-        timestamp: item.timestamp || Date.now(),
-        category: item.category || ''
-      });
-    } catch (upsertErr) {
-      // 如果是 URL 唯一约束冲突，单独处理
-      if (upsertErr.message.includes('UNIQUE constraint failed: news.url')) {
-        db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
-      } else {
-        throw upsertErr;
-      }
-    }
+    db.transaction(() => {
+      if (item.url) STMT.updateByUrl.run(item.url);
+      STMT.updateByTitle.run(item.title, item.source);
+      STMT.updateByNorm.run(nTitle);
+    })();
   } catch (e) {
-    console.warn('[updateSentStatus Warning]:', e.message, item.title);
+    console.warn('[updateSentStatus SQLite]', e.message?.substring(0, 60));
   }
 
-  // Supabase 同步（异步执行，不阻塞主流程）
   if (USE_SUPABASE && supabase) {
     try {
-      // 并行执行多个更新操作
-      await Promise.all([
-        supabase.from('news').update({ sent_to_wecom: 1 }).match({ title: item.title, source: item.source }),
-        supabase.from('news').update({ sent_to_wecom: 1 }).eq('url', item.url),
-        supabase.from('news').upsert({
-          title: item.title,
-          source: item.source,
-          url: item.url || '',
-          content: item.content || '',
-          category: item.category || '',
-          timestamp: item.timestamp || Date.now(),
-          is_important: item.is_important || 1,
-          sent_to_wecom: 1,
-          business_category: item.business_category || '',
-          competitor_category: item.competitor_category || '',
-          detail: item.detail || ''
-        }, { onConflict: 'title,source' })
-      ]);
-    } catch (supabaseErr) {
-      console.warn('[updateSentStatus Supabase Warning]:', supabaseErr.message);
+      await supabase.from('news').upsert({
+        title:               item.title,
+        source:              item.source,
+        url:                 item.url   || '',
+        content:             (item.content || '').substring(0, 500),
+        category:            item.category            || '',
+        business_category:   item.business_category   || '',
+        competitor_category: item.competitor_category || '',
+        detail:              item.detail              || '',
+        timestamp:           item.timestamp           || Date.now(),
+        is_important:        item.is_important         || 1,
+        sent_to_wecom:       1,
+      }, { onConflict: 'title,source' });
+    } catch (e) {
+      console.warn('[updateSentStatus Supabase]', e.message?.substring(0, 60));
     }
   }
 }
 
-module.exports = { db, saveNews, getNews, getAlreadyProcessed, updateSentStatus, normalizeKey };
+module.exports = { db, saveNews, getNews, getStats, getAlreadyProcessed, updateSentStatus, normalizeKey };

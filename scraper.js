@@ -1174,10 +1174,6 @@ function checkImportance(item) {
     return 1;
   }
 
-  // 其他来源默认不推送
-  return 0;
-}
-
   // 规则 1: 香港 (HK) 相关政策、牌照、业务进展
   const HK_KEYWORDS = ['香港', 'HK', 'HONG KONG', '牌照', '监管', 'VASP', 'SFC', '证监会'];
   if (item.category === 'HK' || HK_KEYWORDS.some(k => title.includes(k))) {
@@ -1206,7 +1202,6 @@ function checkImportance(item) {
 
   return item.is_important || 0;
 }
-
 async function runAllScrapers() {
   console.log('--- Starting Global Scrape ---');
   const scraperFuncs = [

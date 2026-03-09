@@ -1,111 +1,153 @@
-const express = require('express');
-const cors = require('cors');
-const cron = require('node-cron');
-const { getNews, saveNews } = require('./db');
-const { runAllScrapers } = require('./scraper');
-const { runDailyReport, runWeeklyReport } = require('./report');
+'use strict';
 
-const app = express();
-const PORT = process.env.PORT || 3001;
-const path = require('path');
+const express = require('express');
+const cors    = require('cors');
+const cron    = require('node-cron');
+const path    = require('path');
+const { getNews, getStats } = require('./db');
+const { runAllScrapers }    = require('./scrapers/index');
+const { runDailyReport, runWeeklyReport } = require('./report');
+const { SERVER } = require('./config');
+
+const app  = express();
+const PORT = SERVER.PORT;
+
+// ── 启动时间，用于 /api/health ──────────────────────────────────────────────
+const START_TIME = new Date();
+
+// ── 简单 API Key 保护（可选，设置 API_SECRET 环境变量后生效）──────────────
+function apiKeyGuard(req, res, next) {
+  const secret = process.env.API_SECRET;
+  if (!secret) return next(); // 未配置则跳过
+  const provided = req.headers['x-api-key'] || req.query.apiKey;
+  if (provided !== secret) {
+    return res.status(401).json({ success: false, error: 'Unauthorized' });
+  }
+  next();
+}
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// API: Get news
-app.get('/api/news', (req, res) => {
-  const source = req.query.source || 'All';
-  const important = req.query.important || 0;
-  const limit = (source === 'All' || important == 1) ? 500 : 100;
-  const news = getNews(limit, source, important);
+// ── 健康检查（无需认证）────────────────────────────────────────────────────
+app.get('/api/health', (req, res) => {
+  const stats = getStats();
   res.json({
-    success: true,
-    count: news.length,
-    lastUpdate: new Date().toISOString(),
-    data: news
+    status: 'ok',
+    uptime: Math.floor((Date.now() - START_TIME) / 1000),
+    startedAt: START_TIME.toISOString(),
+    db: {
+      total: stats.total,
+      important: stats.important,
+      sources: stats.sources,
+    },
+    version: require('./package.json').version,
   });
 });
 
-// API: Manual trigger scrape
-app.post('/api/refresh', async (req, res) => {
+// ── GET /api/news ──────────────────────────────────────────────────────────
+// 修复 SQL 注入：source 参数改为白名单校验，而非直接拼入查询
+const VALID_SOURCES = new Set([
+  'All', 'Important',
+  'Binance', 'OKX', 'Bybit', 'Gate', 'MEXC', 'Bitget', 'HTX', 'KuCoin',
+  'BlockBeats', 'TechFlow', 'PRNewswire',
+  'HashKeyGroup', 'HashKeyExchange', 'WuBlock', 'OSL', 'Exio', 'TechubNews', 'Matrixport',
+  'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin', 'TwitterAB',
+  'Poly-Breaking', 'Poly-China',
+]);
+
+app.get('/api/news', (req, res) => {
+  let source    = req.query.source    || 'All';
+  const important = req.query.important === '1' ? 1 : 0;
+  const page    = Math.max(1, parseInt(req.query.page, 10) || 1);
+  const perPage = Math.min(500, Math.max(1, parseInt(req.query.limit, 10) || (source === 'All' || important ? 500 : 100)));
+  const search  = (req.query.q || '').trim().slice(0, 100); // 搜索关键词，最长100字符
+
+  // 白名单校验，防止 SQL 注入
+  if (!VALID_SOURCES.has(source)) source = 'All';
+
+  const news = getNews(perPage, source === 'Important' ? 'All' : source, important, search);
+  res.json({
+    success:    true,
+    count:      news.length,
+    page,
+    lastUpdate: new Date().toISOString(),
+    data:       news,
+  });
+});
+
+// ── 统计接口（供前端图表使用）────────────────────────────────────────────────
+app.get('/api/stats', (req, res) => {
+  const since = parseInt(req.query.since, 10) || (Date.now() - 7 * 24 * 3600 * 1000);
+  const stats = getStats(since);
+  res.json({ success: true, data: stats });
+});
+
+// ── 以下写操作需要 API Key 保护 ───────────────────────────────────────────────
+app.post('/api/refresh', apiKeyGuard, async (req, res) => {
   try {
     const data = await runAllScrapers();
-    res.json({
-      success: true,
-      count: data.length,
-      data: data.slice(0, 10) // Only return top 10 for speed
-    });
+    res.json({ success: true, count: data.length, data: data.slice(0, 10) });
   } catch (err) {
+    console.error('[API /refresh]', err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-// API: Manual trigger daily report
-app.post('/api/daily-report', async (req, res) => {
+app.post('/api/daily-report', apiKeyGuard, async (req, res) => {
   try {
     const dryRun = req.query.dryRun === 'true';
     const report = await runDailyReport(dryRun);
-    res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '...' : null });
+    res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '…' : null });
   } catch (err) {
+    console.error('[API /daily-report]', err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-// API: Manual trigger weekly report
-app.post('/api/weekly-report', async (req, res) => {
+app.post('/api/weekly-report', apiKeyGuard, async (req, res) => {
   try {
     const dryRun = req.query.dryRun === 'true';
     const report = await runWeeklyReport(dryRun);
-    res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '...' : null });
+    res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '…' : null });
   } catch (err) {
+    console.error('[API /weekly-report]', err.message);
     res.status(500).json({ success: false, error: err.message });
   }
 });
 
-// Scheduled task: Run scrapers every 15 minutes
-cron.schedule('*/15 * * * *', async () => {
-  console.log('[CRON] Running scheduled scrape...');
-  await runAllScrapers();
+// ── 定时任务 ─────────────────────────────────────────────────────────────────
+cron.schedule(SERVER.SCRAPE_CRON, async () => {
+  console.log('[CRON] Running scheduled scrape…');
+  try { await runAllScrapers(); } catch (e) { console.error('[CRON] Scrape error:', e.message); }
 });
 
-// Scheduled task: Daily report at 18:00 Beijing Time (= 10:00 UTC)
-cron.schedule('0 10 * * *', async () => {
-  console.log('[CRON] Running daily report (18:00 BJT)...');
-  try {
-    await runDailyReport(false);
-  } catch (err) {
-    console.error('[CRON] Daily report error:', err.message);
-  }
+cron.schedule(SERVER.DAILY_REPORT_CRON, async () => {
+  console.log('[CRON] Daily report (18:00 BJT)…');
+  try { await runDailyReport(false); } catch (e) { console.error('[CRON] Daily report error:', e.message); }
 }, { timezone: 'UTC' });
 
-// Scheduled task: Weekly report at 18:00 Beijing Time every Friday (= 10:00 UTC Friday)
-cron.schedule('0 10 * * 5', async () => {
-  console.log('[CRON] Running weekly report (Friday 18:00 BJT)...');
-  try {
-    await runWeeklyReport(false);
-  } catch (err) {
-    console.error('[CRON] Weekly report error:', err.message);
-  }
+cron.schedule(SERVER.WEEKLY_REPORT_CRON, async () => {
+  console.log('[CRON] Weekly report (Friday 18:00 BJT)…');
+  try { await runWeeklyReport(false); } catch (e) { console.error('[CRON] Weekly report error:', e.message); }
 }, { timezone: 'UTC' });
 
-// Catch-all route to serve the frontend
-app.get('/', (req, res) => {
+// ── SPA fallback ──────────────────────────────────────────────────────────────
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Start server
+// ── 启动 ──────────────────────────────────────────────────────────────────────
 app.listen(PORT, async () => {
-  console.log(`[SERVER] Alpha Radar Backend running on http://localhost:${PORT}`);
-  console.log('[SERVER] Cron jobs registered:');
-  console.log('  - Scraper: every 15 min');
-  console.log('  - Daily report: 18:00 BJT (10:00 UTC) every day');
-  console.log('  - Weekly report: 18:00 BJT (10:00 UTC) every Friday');
+  console.log(`[SERVER] Alpha Radar running on http://localhost:${PORT}`);
+  console.log(`[SERVER] Scrape cron : ${SERVER.SCRAPE_CRON}`);
+  console.log(`[SERVER] Daily  cron : ${SERVER.DAILY_REPORT_CRON}  (UTC)`);
+  console.log(`[SERVER] Weekly cron : ${SERVER.WEEKLY_REPORT_CRON} (UTC)`);
 
-  // Initial scrape if database is empty
-  const currentNews = getNews(1);
-  if (currentNews.length === 0) {
-    console.log('[INIT] Database empty, running initial scrape...');
-    await runAllScrapers();
+  const current = getNews(1);
+  if (current.length === 0) {
+    console.log('[INIT] DB empty — running initial scrape…');
+    await runAllScrapers().catch(e => console.error('[INIT] Scrape error:', e.message));
   }
 });

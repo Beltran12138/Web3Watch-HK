@@ -1,6 +1,38 @@
+# Dependencies
 node_modules/
-.env
-*.db
-*.log
 
-.vercel
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database files (local only, do NOT commit)
+*.db
+*.db-shm
+*.db-wal
+
+# Generated reports
+Weekly_Report_*.md
+Daily_Report_*.md
+
+# Test / debug files
+test_*.js
+debug_*.js
+check_schema.js
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Build output
+dist/
+build/
