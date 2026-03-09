@@ -28,7 +28,7 @@ jobs:
           echo "Tor started (circuits establish during scraping)"
 
       - name: Run Scrapers
-        run: node test_scrape.js
+        run: npm run scrape
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}

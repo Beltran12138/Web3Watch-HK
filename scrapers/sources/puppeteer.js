@@ -48,8 +48,8 @@ async function scrapeBlockBeats() {
             if (timestamp > Date.now()) timestamp -= 86400000;
           }
         }
-        // 无时间戳时用位置偏移（不伪造"刚刚"）
-        if (!timestamp) timestamp = Date.now() - i * 60000;
+        // 严格模式：无时间戳直接跳过，不伪造"刚刚"
+        if (!timestamp) return;
 
         results.push({
           title:   text.substring(0, 150),
@@ -98,8 +98,11 @@ async function scrapeOSL() {
         seen.add(href);
         const container  = link.closest('li,article,[class*="item"],[class*="card"]') || link.parentElement;
         const dateMatch  = (container?.innerText || '').match(/\d{4}[.\/-]\d{1,2}[.\/-]\d{1,2}/);
-        const ts         = dateMatch ? new Date(dateMatch[0].replace(/[./]/g, '-')).getTime() : Date.now();
-        results.push({ title, source: 'OSL', url: href, category: 'Announcement', timestamp: isNaN(ts) ? Date.now() : ts, is_important: 0, content: '' });
+        // 严格模式：无日期直接跳过
+        if (!dateMatch) return;
+        const ts         = new Date(dateMatch[0].replace(/[./]/g, '-')).getTime();
+        if (isNaN(ts)) return;
+        results.push({ title, source: 'OSL', url: href, category: 'Announcement', timestamp: ts, is_important: 0, content: '' });
       });
       return results.slice(0, 20);
     });
@@ -218,7 +221,8 @@ async function scrapeBitget() {
                 if (dm) timestamp = new Date(dm[0]).getTime();
               }
             }
-            if (!timestamp) timestamp = Date.now();
+            // 严格模式：无时间戳直接跳过
+            if (!timestamp) return;
 
             results.push({ title: text.split('\n')[0].trim().substring(0, 200), content: '', source: 'Bitget', url: href, category: 'Announcement', timestamp, is_important: 0 });
           });

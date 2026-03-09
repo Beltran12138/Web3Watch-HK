@@ -17,10 +17,21 @@ const db = new Database(path.join(__dirname, 'alpha_radar.db'));
 
 // ── 归一化 key（用于模糊去重）─────────────────────────────────────────────────
 function normalizeKey(title, source) {
-  const normalized = (title || '')
-    .trim()
-    .toLowerCase()
-    .replace(/[\s\-_,.:;!?()\[\]{}"'\\/|@#$%^&*+=<>~`]+/g, '');
+  if (!title) return '';
+  
+  let normalized = title.trim().toLowerCase();
+  
+  // 1. 移除常见的新闻后缀/前缀（如 [Update], (Updated), [ANN] 等）
+  normalized = normalized
+    .replace(/\[[^\]]+\]/g, '') // 移除 [xxx]
+    .replace(/\([^)]+\)/g, '')  // 移除 (xxx)
+    .replace(/【[^】]+】/g, '') // 移除 【xxx】
+    .replace(/(updated|update|new|announcement|ann|official|official announcement|latest)/gi, '')
+    .trim();
+
+  // 2. 移除非字母数字字符
+  normalized = normalized.replace(/[\s\-_,.:;!?()\[\]{}"'\\/|@#$%^&*+=<>~`]+/g, '');
+  
   return source ? `${normalized}|${source.trim().toLowerCase()}` : normalized;
 }
 

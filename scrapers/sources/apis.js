@@ -98,7 +98,7 @@ async function scrapeTechubNews() {
         title:     item.title || '',
         content:   `Original Link: ${item.original_link || 'N/A'}\n${item.brief || ''}`,
         source:    'TechubNews',
-        url:       `https://www.techub.news/articleDetail/${item.id}`,
+        url:       `https://www.techub.news/articleDetail/${item.uid || item.id}`,
         category:  'HK',
         timestamp,
       }));
@@ -161,10 +161,11 @@ async function scrapeHashKeyGroup() {
       const container = $(el).closest('div, li, tr, section, article');
       const timestamp = extractTimestamp(container.text());
 
+      // 严格模式：无时间戳直接跳过，避免旧稿混入
+      if (!timestamp) return;
+
       items.push(makeItem({
-        title, source: 'HashKeyGroup', url: fullUrl, category: 'Announcement',
-        // 如果没有解析到时间戳，用偏移量（保证顺序，不伪造时间）
-        timestamp: timestamp || (Date.now() - items.length * 3_600_000),
+        title, source: 'HashKeyGroup', url: fullUrl, category: 'Announcement', timestamp,
       }));
     });
     console.log(`[Scraper] HashKeyGroup: ${items.length}`);
@@ -266,7 +267,9 @@ async function scrapeKuCoin() {
       if (items.find(it => it.url === fullUrl)) return;
 
       const dateMatch = text.match(/\d{4}\/\d{2}\/\d{2}/);
-      let timestamp   = dateMatch ? new Date(dateMatch[0]).getTime() : (Date.now() - i * 1_800_000);
+      // 严格模式：无日期直接跳过，不使用 Date.now() fallback
+      if (!dateMatch) return;
+      let timestamp   = new Date(dateMatch[0]).getTime();
       if (dateMatch) text = text.replace(dateMatch[0], '').trim();
 
       items.push(makeItem({ title: text, source: 'KuCoin', url: fullUrl, category: 'Announcement', timestamp }));

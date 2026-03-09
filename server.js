@@ -134,7 +134,7 @@ cron.schedule(SERVER.WEEKLY_REPORT_CRON, async () => {
 }, { timezone: 'UTC' });
 
 // ── SPA fallback ──────────────────────────────────────────────────────────────
-app.get('*', (req, res) => {
+app.get('/{*path}', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 

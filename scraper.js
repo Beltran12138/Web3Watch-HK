@@ -394,7 +394,7 @@ async function scrapeTechubNews() {
 
       // 2. Stable URL Construction
       // Always use the internal ID-based URL to prevent duplicates from external link variations
-      const stableUrl = `https://www.techub.news/articleDetail/${item.id}`;
+      const stableUrl = `https://www.techub.news/articleDetail/${item.uid || item.id}`;
 
       items.push({
         title: item.title || '',

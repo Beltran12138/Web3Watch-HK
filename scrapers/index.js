@@ -22,6 +22,9 @@ const {
   getAlreadyProcessed,
   updateSentStatus,
   normalizeKey,
+  getSourceConfig,
+  canPushMessage,
+  updateSourcePush,
 } = require('../db');
 const { processWithAI }    = require('../ai');
 const { sendToWeCom }      = require('../wecom');
@@ -140,12 +143,30 @@ async function runAllScrapers() {
     const isAlreadyProcessed = alreadyProcessed.has(item.url) || alreadyProcessed.has(cacheKey) || alreadyProcessed.has(nTitle);
     const dbTs               = existingTimestamps.get(item.url) || existingTimestamps.get(cacheKey);
 
+    // 如果已在数据库中标记为已发送，直接跳过（不浪费时间戳检查）
+    if (isAlreadySent) {
+      item.sent_to_wecom = 1;
+      processedNews.push(item);
+      continue;
+    }
+
     // 稳定时间戳：保留首次入库时间；真正没有时间戳的用 Date.now()（有 log 标记）
     if (dbTs) {
       item.timestamp = dbTs;
     } else if (!item.timestamp) {
       console.warn(`[Scrape] No timestamp, using now: ${item.title?.substring(0, 50)}`);
       item.timestamp = Date.now();
+    }
+
+    // 时间戳新鲜度检查：只推送最近 30 分钟内的消息（防止旧稿混入）
+    const FRESHNESS_THRESHOLD = 30 * 60 * 1000; // 30 分钟（毫秒）
+    const messageAge = Date.now() - item.timestamp;
+    if (messageAge > FRESHNESS_THRESHOLD) {
+      const minutesOld = Math.floor(messageAge / 60000);
+      console.log(`[SKIP] 消息过旧 (${minutesOld}分钟前): ${item.title?.substring(0, 50)}`);
+      item.sent_to_wecom = 1;  // 标记为已处理，避免下次还检查
+      processedNews.push(item);
+      continue;
     }
 
     // 重要性预判
@@ -174,6 +195,17 @@ async function runAllScrapers() {
 
     // 推送逻辑
     if (item.is_important === 1 && !isAlreadySent) {
+      // 获取源配置
+      const sourceConfig = getSourceConfig(item.source);
+      
+      // 检查源级别冷却时间
+      if (!canPushMessage(item.source, item.title, item.timestamp, sourceConfig.pushCooldownHours)) {
+        console.log(`[SKIP COOLDOWN] ${item.source}: 冷却期内 (${sourceConfig.pushCooldownHours}h): ${item.title.substring(0, 40)}`);
+        item.sent_to_wecom = 1;
+        processedNews.push(item);
+        continue;
+      }
+
       if (sentThisRun.has(nTitle) || pushLock.has(nTitle)) {
         item.sent_to_wecom = 1;
         processedNews.push(item);
@@ -200,18 +232,21 @@ async function runAllScrapers() {
         item.sent_to_wecom = 1;
         sentThisRun.add(nTitle);
 
-        // 先写 DB，再发消息（防重复）
-        const tx = db.transaction(() => {
-          if (item.url) db.prepare('UPDATE news SET sent_to_wecom=1 WHERE url=?').run(item.url);
-          db.prepare('UPDATE news SET sent_to_wecom=1 WHERE normalized_title=? AND source=?').run(nTitle, item.source);
-        });
-        tx();
+        // 先保存到数据库以锁定状态（如果是新纪录则插入，旧纪录则更新）
+        // 这样即使 sendToWeCom 失败或耗时较长，并发的下一次运行也不会重复推送
+        await saveNews([item]);
 
+        // 实际发送消息
         await sendToWeCom(item);
+        
+        // 更新源追踪信息
+        updateSourcePush(item.source, item.timestamp, item.title);
+        
         updateSentStatus(item).catch(e => console.warn('[Supabase update]', e.message));
       } catch (err) {
         console.error('[Push error]', item.source, err.message);
-        item.sent_to_wecom = 0;
+        // 发送失败建议仍保留已发送标记，防止短时间重复重试
+        item.sent_to_wecom = 1;
       } finally {
         pushLock.delete(nTitle);
       }
