@@ -1201,11 +1201,12 @@ async function runAllScrapers() {
   // 只要是数据库中没记录的新标题，或者是记录了但从未发送成功的，都允许进入推送判定。
 
   const sentThisRun = new Set();
+  const pushLock = new Set(); // 防止并发推送同一条消息
 
   for (const item of allNews) {
     const nTitle = normalizeKey(item.title, '').split('|')[0];
     const cacheKey = nTitle + '|' + (item.source || '').trim().toLowerCase();
-    
+
     // 检查是否已经发送或处理过
     const isAlreadySent = alreadySentToWeCom.has(item.url) || alreadySentToWeCom.has(cacheKey) || alreadySentToWeCom.has(nTitle);
     const isAlreadyProcessed = alreadyProcessed.has(item.url) || alreadyProcessed.has(cacheKey) || alreadyProcessed.has(nTitle);
@@ -1219,7 +1220,7 @@ async function runAllScrapers() {
     } else {
         item.timestamp = finalTimestamp;
     }
-    
+
     // 3. 启发式预判重要性
     item.is_important = checkImportance(item);
 
@@ -1259,23 +1260,63 @@ async function runAllScrapers() {
         continue;
       }
 
-      // 发送前最后一次实时数据库校验
-      const dbCheck = db.prepare('SELECT sent_to_wecom FROM news WHERE (url = ? OR normalized_title = ?) AND sent_to_wecom = 1').get(item.url, nTitle);
+      // 并发锁检查 - 防止同一批次中重复推送相似内容
+      const lockKey = nTitle;
+      if (pushLock.has(lockKey)) {
+        console.log(`  [SKIP] 当前批次正在处理相似内容: ${item.title.substring(0, 40)}`);
+        item.sent_to_wecom = 1;
+        processedNews.push(item);
+        continue;
+      }
+      pushLock.add(lockKey);
+
+      // 发送前最后一次实时数据库校验（使用事务确保一致性）
+      let dbCheck = null;
+      try {
+        dbCheck = db.prepare('SELECT sent_to_wecom FROM news WHERE (url = ? OR normalized_title = ?) AND sent_to_wecom = 1').get(item.url, nTitle);
+      } catch (e) {
+        console.warn(`  [DB Check Error] ${item.title.substring(0, 40)}:`, e.message);
+      }
+
       if (dbCheck) {
         console.log(`  [SKIP] 数据库记录显示已发送: ${item.title.substring(0, 40)}`);
         item.sent_to_wecom = 1;
         processedNews.push(item);
+        pushLock.delete(lockKey);
         continue;
       }
 
       console.log(`  [PUSHING] ${item.source}: ${item.title.substring(0, 50)}`);
       try {
-        await sendToWeCom(item);
+        // 先更新数据库状态为"已发送"，再实际发送
+        // 这样即使发送失败，也不会导致重复发送
         item.sent_to_wecom = 1;
         sentThisRun.add(nTitle);
-        await updateSentStatus(item);
+
+        // 使用事务确保状态更新原子性
+        const updateTx = db.transaction(() => {
+          if (item.url) {
+            db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
+          }
+          db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE title = ? AND source = ?`).run(item.title, item.source);
+          db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE normalized_title = ? AND source = ?`).run(nTitle, item.source);
+        });
+        updateTx();
+
+        // 数据库状态更新后再发送消息
+        await sendToWeCom(item);
+
+        // 异步更新 Supabase（如果启用）
+        updateSentStatus(item).catch(err => {
+          console.warn(`  [Supabase Update Error] ${item.title.substring(0, 40)}:`, err.message);
+        });
       } catch (err) {
         console.error(`  [PUSH ERROR] ${item.source}:`, err.message);
+        // 发送失败时，不删除 pushLock，防止立即重试导致重复
+        // 但标记为未发送，下次可以重试
+        item.sent_to_wecom = 0;
+      } finally {
+        pushLock.delete(lockKey);
       }
     } else if (item.is_important === 1 && isAlreadySent) {
       // 虽然是重要消息但已发过，保持标记

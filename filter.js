@@ -30,6 +30,41 @@ const JUNK_TITLE_EXACT = [
 const MIN_TITLE_LENGTH = 8;
 
 /**
+ * 生成用于去重的标题 key
+ * 保留更多字符以提高区分度，避免不同标题被误判为重复
+ */
+function generateDedupKey(title) {
+    return (title || '')
+        .trim()
+        .toLowerCase()
+        // 保留中文、英文、数字，但移除多余空格和标点
+        .replace(/\s+/g, ' ')
+        .replace(/^[\s\-:]+/, '')
+        .replace(/[\s\-:]+$/, '');
+}
+
+/**
+ * 判断两条标题是否足够相似（可能是重复）
+ * 使用更严格的匹配规则
+ */
+function isSimilarTitle(title1, title2) {
+    const key1 = generateDedupKey(title1);
+    const key2 = generateDedupKey(title2);
+
+    // 完全相同视为重复
+    if (key1 === key2) return true;
+
+    // 如果长度差异太大，不视为重复
+    if (Math.abs(key1.length - key2.length) > 10) return false;
+
+    // 检查是否一个是另一个的子串（且长度足够）
+    if (key1.length > 20 && key2.includes(key1)) return true;
+    if (key2.length > 20 && key1.includes(key2)) return true;
+
+    return false;
+}
+
+/**
  * 判断一条新闻是否为垃圾数据
  * @param {Object} item - 新闻条目 {title, url, source, ...}
  * @returns {boolean} true = 应该被过滤掉
@@ -59,23 +94,32 @@ function isJunkItem(item) {
  * @returns {Array} 清洗后的条目
  */
 function filterNewsItems(items) {
-    const seen = new Set();
+    const seenUrls = new Set();
+    const seenTitles = [];
+
     return items.filter(item => {
         if (isJunkItem(item)) return false;
 
-        // 标题去重（忽略前后空格、统一大小写）
-        const titleKey = (item.title || '').trim().toLowerCase();
-        const urlKey = (item.url || '').trim();
-        // 联合去重
-        const compositeKey = `${titleKey}|${urlKey}`;
+        const title = (item.title || '').trim();
+        const url = (item.url || '').trim();
 
-        if (seen.has(compositeKey)) return false;
-        seen.add(compositeKey);
-        // 同时也防止仅标题极其相似（完全相同）的霸屏，加入到另一种查重中可以考虑，这里暂时只防 url+title。
-        // 但是不同的源可能发一模一样的标题。为了保留多源， composite 也行。如果发现纯标题重复太多，也可以加回来。
-        // 为了"根治"重复：很多时候不同交易所公告或者新闻是完全相同的标题。我们在这里按标题去重即可，忽略不同来源的重复发送。
-        if (seen.has(titleKey)) return false;
-        seen.add(titleKey);
+        // 1. URL 去重（最严格的去重）
+        if (url) {
+            const normalizedUrl = url.replace(/[?#].*$/, ''); // 移除查询参数和锚点
+            if (seenUrls.has(normalizedUrl)) {
+                return false;
+            }
+            seenUrls.add(normalizedUrl);
+        }
+
+        // 2. 标题相似度去重（更宽松的匹配）
+        // 只检查与已保留标题的相似度，不跨源去重
+        for (const seenTitle of seenTitles) {
+            if (isSimilarTitle(title, seenTitle)) {
+                return false;
+            }
+        }
+        seenTitles.push(title);
 
         return true;
     });

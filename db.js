@@ -16,8 +16,18 @@ if (USE_SUPABASE) {
 const db = new Database(path.join(__dirname, 'alpha_radar.db'));
 
 // Helper for fuzzy deduplication
+// 注意：这个函数用于生成归一化 key，但保留足够的区分度以避免误判
 function normalizeKey(title, source) {
-  return (title || '').trim().toLowerCase().replace(/[^\w\u4e00-\u9fa5]/g, '') + '|' + (source || '').trim().toLowerCase();
+  const normalized = (title || '')
+    .trim()
+    .toLowerCase()
+    // 只移除最常见的标点符号，保留更多字符以提高区分度
+    .replace(/[\s\-_,.:;!?()\[\]{}"'\/|\\@#$%^&*+=<>~`]+/g, '');
+
+  if (source) {
+    return normalized + '|' + source.trim().toLowerCase();
+  }
+  return normalized;
 }
 
 // SQLite setup (always runs for local caching/fallback)
@@ -300,75 +310,82 @@ async function getAlreadyProcessed(items) {
 
 /**
  * 立即更新单条新闻的推送状态
+ * 使用事务确保原子性更新
  */
 async function updateSentStatus(item) {
   const nTitle = normalizeKey(item.title, '').split('|')[0];
-  
-  try {
-    // 1. First, try updating any existing record that matches either the URL or Title+Source
-    if (item.url) {
-      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
-    }
-    db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE title = ? AND source = ?`).run(item.title, item.source);
-    db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE normalized_title = ? AND source = ?`).run(nTitle, item.source);
 
-    // 2. Then, try to insert a new record if it doesn't exist yet (based on title+source as the main key)
-    // We use ON CONFLICT DO UPDATE to handle the case where it exists but wasn't updated above (e.g. slight race condition)
-    const upsert = db.prepare(`
-      INSERT INTO news (title, normalized_title, source, url, content, sent_to_wecom, is_important, timestamp, category, created_at)
-      VALUES (@title, @normalized_title, @source, @url, @content, 1, @is_important, @timestamp, @category, CURRENT_TIMESTAMP)
-      ON CONFLICT(title, source) DO UPDATE SET sent_to_wecom = 1
-    `);
-    
-    upsert.run({
-      title: item.title,
-      normalized_title: nTitle,
-      source: item.source,
-      url: item.url || null,
-      content: item.content || '',
-      is_important: item.is_important || 0,
-      timestamp: item.timestamp || Date.now(),
-      category: item.category || ''
+  try {
+    // 使用事务包装所有更新操作，确保原子性
+    const updateTransaction = db.transaction(() => {
+      // 1. 更新匹配的 URL
+      if (item.url) {
+        db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
+      }
+      // 2. 更新匹配的 title + source
+      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE title = ? AND source = ?`).run(item.title, item.source);
+      // 3. 更新匹配的 normalized_title + source
+      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE normalized_title = ? AND source = ?`).run(nTitle, item.source);
+      // 4. 更新所有匹配 normalized_title 的记录（跨源去重）
+      db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE normalized_title = ?`).run(nTitle);
     });
-  } catch (e) {
-    // If it fails (e.g. URL unique constraint violation), we catch it here to prevent pipeline crash
-    if (e.message.includes('UNIQUE constraint failed: news.url')) {
-       // It means another record with this URL exists, let's just update its status
-       try {
-         db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
-       } catch (e2) {}
-    } else {
-       console.warn('[updateSentStatus Warning]:', e.message, item.title);
+
+    updateTransaction();
+
+    // 5. 尝试插入新记录（如果不存在）
+    try {
+      const upsert = db.prepare(`
+        INSERT INTO news (title, normalized_title, source, url, content, sent_to_wecom, is_important, timestamp, category, created_at)
+        VALUES (@title, @normalized_title, @source, @url, @content, 1, @is_important, @timestamp, @category, CURRENT_TIMESTAMP)
+        ON CONFLICT(title, source) DO UPDATE SET sent_to_wecom = 1
+      `);
+
+      upsert.run({
+        title: item.title,
+        normalized_title: nTitle,
+        source: item.source,
+        url: item.url || null,
+        content: item.content || '',
+        is_important: item.is_important || 0,
+        timestamp: item.timestamp || Date.now(),
+        category: item.category || ''
+      });
+    } catch (upsertErr) {
+      // 如果是 URL 唯一约束冲突，单独处理
+      if (upsertErr.message.includes('UNIQUE constraint failed: news.url')) {
+        db.prepare(`UPDATE news SET sent_to_wecom = 1 WHERE url = ?`).run(item.url);
+      } else {
+        throw upsertErr;
+      }
     }
+  } catch (e) {
+    console.warn('[updateSentStatus Warning]:', e.message, item.title);
   }
 
+  // Supabase 同步（异步执行，不阻塞主流程）
   if (USE_SUPABASE && supabase) {
-    // ... Supabase logic remains same or similarly updated ...
-    // 先尝试 UPDATE（行已存在时最安全），再 UPSERT 兜底（行尚未入库时防止遗漏）
-    await supabase
-      .from('news')
-      .update({ sent_to_wecom: 1 })
-      .match({ title: item.title, source: item.source });
-    await supabase
-      .from('news')
-      .update({ sent_to_wecom: 1 })
-      .eq('url', item.url);
-    // 若行尚不存在（新条目 saveNews 尚未运行），先插入最小记录确保推送状态持久化
-    await supabase
-      .from('news')
-      .upsert({
-        title: item.title,
-        source: item.source,
-        url: item.url || '',
-        content: item.content || '',
-        category: item.category || '',
-        timestamp: item.timestamp || Date.now(),
-        is_important: item.is_important || 1,
-        sent_to_wecom: 1,
-        business_category: item.business_category || '',
-        competitor_category: item.competitor_category || '',
-        detail: item.detail || ''
-      }, { onConflict: 'title,source' });
+    try {
+      // 并行执行多个更新操作
+      await Promise.all([
+        supabase.from('news').update({ sent_to_wecom: 1 }).match({ title: item.title, source: item.source }),
+        supabase.from('news').update({ sent_to_wecom: 1 }).eq('url', item.url),
+        supabase.from('news').upsert({
+          title: item.title,
+          source: item.source,
+          url: item.url || '',
+          content: item.content || '',
+          category: item.category || '',
+          timestamp: item.timestamp || Date.now(),
+          is_important: item.is_important || 1,
+          sent_to_wecom: 1,
+          business_category: item.business_category || '',
+          competitor_category: item.competitor_category || '',
+          detail: item.detail || ''
+        }, { onConflict: 'title,source' })
+      ]);
+    } catch (supabaseErr) {
+      console.warn('[updateSentStatus Supabase Warning]:', supabaseErr.message);
+    }
   }
 }
 
