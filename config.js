@@ -177,6 +177,64 @@ const DB = {
   NEWS_FETCH_LIMIT: 500,
 };
 
+// ── 消息源级别配置 ────────────────────────────────────────────────────────────
+/**
+ * 每个消息源的独立配置：
+ * - maxAgeHours: 允许抓取的最大消息年龄（小时），超过此时间的消息直接丢弃
+ * - enableStrictTimestamp: 是否启用严格时间戳模式（无有效时间戳则丢弃）
+ * - dedupMode: 去重模式 ('strict' | 'normal' | 'loose')
+ *   - strict: URL+ 标题归一化 + 内容指纹三重验证
+ *   - normal: URL+ 标题归一化
+ *   - loose: 仅 URL 去重
+ * - pushCooldownHours: 推送冷却时间（小时），同一来源的相似消息在此时间内不重复推送
+ */
+const SOURCE_CONFIGS = {
+  // 香港合规板块 - 较宽松的时间窗口（消息价值较高）
+  'OSL':            { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'Exio':           { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'TechubNews':     { maxAgeHours: 168, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
+  'Matrixport':     { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'HashKeyGroup':   { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'HashKeyExchange':{ maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'WuBlock':        { maxAgeHours: 168, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
+
+  // PRNewswire - 严格时间戳（经常有旧闻混入）
+  'PRNewswire':     { maxAgeHours: 48, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 24 },
+
+  // 主流交易所 - 中等严格度
+  'Binance':        { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'OKX':            { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'Bybit':          { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'HTX':            { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'Gate':           { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'MEXC':           { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'Bitget':         { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'KuCoin':         { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+
+  // 社交媒体/KOL-严格去重
+  'TwitterAB':      { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  'WuShuo':         { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  'Phyrex':         { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  'JustinSun':      { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  'XieJiayin':      { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+
+  // 媒体/快讯 - 严格时间窗口
+  'BlockBeats':     { maxAgeHours: 12, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 6 },
+  'TechFlow':       { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+
+  // Prediction Markets - 严格去重
+  'Poly-Breaking':  { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  'Poly-China':     { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+};
+
+// 默认配置（未明确配置的消息源使用此默认值）
+const DEFAULT_SOURCE_CONFIG = {
+  maxAgeHours: 48,
+  enableStrictTimestamp: false,
+  dedupMode: 'normal',
+  pushCooldownHours: 24,
+};
+
 // ── 服务器 ────────────────────────────────────────────────────────────────────
 const SERVER = {
   PORT: process.env.PORT || 3001,
@@ -211,4 +269,6 @@ module.exports = {
   WECOM,
   DB,
   SERVER,
+  SOURCE_CONFIGS,
+  DEFAULT_SOURCE_CONFIG,
 };

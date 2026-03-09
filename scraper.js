@@ -4,10 +4,11 @@ const puppeteer = require('puppeteer');
 const puppeteerExtra = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth');
 puppeteerExtra.use(StealthPlugin());
-const { saveNews, db, getAlreadyProcessed, updateSentStatus, normalizeKey } = require('./db');
+const { saveNews, db, getAlreadyProcessed, updateSentStatus, normalizeKey, updateSourcePush, canPushMessage } = require('./db');
 const { processWithAI } = require('./ai');
 const { sendToWeCom } = require('./wecom');
-const { filterNewsItems } = require('./filter');
+const { filterNewsItems, getSourceConfig } = require('./filter');
+const { SOURCE_CONFIGS, DEFAULT_SOURCE_CONFIG } = require('./config');
 
 const MAX_RETRIES = 3;
 const USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36';
@@ -176,7 +177,7 @@ async function scrapeBlockBeats() {
 
         // Extract time (e.g., "15:20")
         const timeEl = el.querySelector('.time, [class*="time"]');
-        let timestamp = Date.now() - (i * 60000);
+        let timestamp = 0;
         if (timeEl) {
           const timeParts = timeEl.innerText.trim().split(':');
           if (timeParts.length === 2) {
@@ -188,6 +189,12 @@ async function scrapeBlockBeats() {
               timestamp -= 24 * 60 * 60 * 1000;
             }
           }
+        }
+        
+        // ⚠️ REMOVED: Fallback timestamp (Date.now() - i * 60000)
+        // Skip items without valid timestamp (strict mode for BlockBeats)
+        if (!timestamp) {
+          return;
         }
 
         // 跳过垃圾条目（Weibo分享链接、空标题、锚点链接）
@@ -606,8 +613,12 @@ async function scrapeHashKeyGroup() {
          if (!isNaN(d.getTime())) timestamp = d.getTime();
       }
 
-      // Fallback: use current time offset by position (so newer items stay on top)
-      if (!timestamp) timestamp = Date.now() - items.length * 60 * 60 * 1000;
+      // ⚠️ REMOVED: Fallback timestamp that could cause old news to appear new
+      // If no valid timestamp found, skip this item (strict mode for HashKeyGroup)
+      if (!timestamp) {
+        console.log(`  [SKIP] HashKeyGroup: No valid timestamp for "${title.substring(0, 40)}"`);
+        return;
+      }
 
       items.push({
         title,
@@ -644,10 +655,15 @@ async function scrapeKuCoin() {
       if (items.find(item => item.url === fullUrl)) return;
 
       const dateMatch = text.match(/\d{4}\/\d{2}\/\d{2}/);
-      let timestamp = Date.now() - (i * 1000 * 60 * 30);
+      let timestamp = 0;
       if (dateMatch) {
         timestamp = new Date(dateMatch[0]).getTime();
         text = text.replace(dateMatch[0], '').trim();
+      } else {
+        // ⚠️ REMOVED: Fallback timestamp that could cause old news to appear new
+        // Skip items without valid timestamp
+        console.log(`  [SKIP] KuCoin: No valid timestamp for "${text.substring(0, 40)}"`);
+        return;
       }
 
       items.push({
@@ -825,8 +841,11 @@ async function scrapeBitget() {
                  }
               }
               
-              // If no date found, use current time as fallback (dedup handled by URL)
-              if (!timestamp) timestamp = Date.now();
+              // If no date found, skip item (strict timestamp policy for Bitget)
+              if (!timestamp) {
+                console.log(`  [SKIP] Bitget: No valid timestamp for "${text.substring(0, 40)}"`);
+                return;
+              }
 
               results.push({
                 title: text.split('\n')[0].trim().substring(0, 200),
@@ -1102,8 +1121,12 @@ async function scrapePolymarketGeneric(url, sourceName) {
   }
 }
 
+const { WECOM_BLOCK_SOURCES, HK_SOURCES, PR_HK_COMPANIES, PR_TOP_EXCHANGES, 
+        MAINSTREAM_EXCHANGES, EXCHANGE_EXCLUDE_KEYWORDS, EXCHANGE_MAJOR_KEYWORDS,
+        HK_KEYWORDS } = require('./config');
+
 /**
- * 严格按规则判定重要性
+ * 严格按规则判定重要性 (使用 config.js 中的配置)
  * 规则：
  * - BLOCK_LIST: 不推送
  * - HK_SOURCES: 全部推送
@@ -1116,39 +1139,20 @@ function checkImportance(item) {
   const titleLower = title.toLowerCase();
   const sourceUpper = source.toUpperCase();
 
-  // 🚫 BLOCK_LIST: 不推送
-  const BLOCK_LIST = [
-    'TwitterAB', 'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin',
-    'Poly-Breaking', 'Poly-China',
-    'TechFlow', 'BlockBeats'
-  ];
-  if (BLOCK_LIST.some(s => sourceUpper.includes(s))) {
+  // 🚫 BLOCK_LIST: 不推送 (from config)
+  if (WECOM_BLOCK_SOURCES.has(sourceUpper)) {
     return 0;
   }
 
-  // ✅ HK_SOURCES: 香港板块全部推送
-  const HK_SOURCES = [
-    'OSL', 'Exio', 'TechubNews', 'Matrixport',
-    'HashKeyGroup', 'HashKeyExchange', 'WuBlock'
-  ];
-  if (HK_SOURCES.some(s => sourceUpper.includes(s))) {
+  // ✅ HK_SOURCES: 香港板块全部推送 (from config)
+  if (HK_SOURCES.has(sourceUpper)) {
     return 1;
   }
 
-  // ⚠️ PRNewswire: 仅香港相关或头部离岸所
+  // ⚠️ PRNewswire: 仅香港相关或头部离岸所 (from config)
   if (sourceUpper === 'PRNEWswire') {
-    // 香港相关公司
-    const HK_COMPANIES = [
-      'hashkey', 'osl', 'exio', 'matrixport', 'finloop',
-      'bitv', 'bitvalve', 'victory', 'hong kong', 'hk'
-    ];
-    // 头部离岸所
-    const TOP_EXCHANGES = [
-      'gate', 'okx', 'htx', 'bybit', 'mexc', 'bitget', 'binance', 'kucoin'
-    ];
-    
-    const isHKRelated = HK_COMPANIES.some(c => titleLower.includes(c));
-    const isTopExchange = TOP_EXCHANGES.some(e => titleLower.includes(e));
+    const isHKRelated = PR_HK_COMPANIES.some(c => titleLower.includes(c));
+    const isTopExchange = PR_TOP_EXCHANGES.some(e => titleLower.includes(e));
     
     if (isHKRelated || isTopExchange) {
       return 1;
@@ -1156,18 +1160,10 @@ function checkImportance(item) {
     return 0;
   }
 
-  // ⚠️ MAINSTREAM_EXCHANGES: 排除上币/链上类后推送
-  const MAINSTREAM_EXCHANGES = [
-    'Gate', 'OKX', 'HTX', 'Bybit', 'MEXC', 'Bitget', 'Binance', 'KuCoin'
-  ];
-  if (MAINSTREAM_EXCHANGES.some(e => sourceUpper.includes(e))) {
-    // 排除关键词
-    const EXCLUDE_KEYWORDS = [
-      'listing', '上线', '上架', '新币', 'launch', 'launchpool',
-      'launchpad', 'airdrop', '空投', 'defi', '币', 'new pair'
-    ];
-    
-    const shouldExclude = EXCLUDE_KEYWORDS.some(kw => titleLower.includes(kw));
+  // ⚠️ MAINSTREAM_EXCHANGES: 排除上币/链上类后推送 (from config)
+  if (MAINSTREAM_EXCHANGES.has(sourceUpper)) {
+    // 排除关键词 (from config)
+    const shouldExclude = EXCHANGE_EXCLUDE_KEYWORDS.some(kw => titleLower.includes(kw));
     if (shouldExclude) {
       return 0;
     }
@@ -1303,6 +1299,17 @@ async function runAllScrapers() {
 
     // 5. 企业微信推送 — 只要没发过且判定为重要，就允许发送
     if (item.is_important === 1 && !isAlreadySent) {
+      // 获取源配置
+      const sourceConfig = getSourceConfig(item.source);
+      
+      // 检查源级别冷却时间
+      if (!canPushMessage(item.source, item.title, item.timestamp, sourceConfig.pushCooldownHours)) {
+        console.log(`  [SKIP COOLDOWN] ${item.source}: 冷却期内 (${sourceConfig.pushCooldownHours}h): ${item.title.substring(0, 40)}`);
+        item.sent_to_wecom = 1;
+        processedNews.push(item);
+        continue;
+      }
+    
       // 本次运行内的内存去重
       if (sentThisRun.has(nTitle)) {
         console.log(`  [SKIP] 本次运行已发送过相似内容: ${item.title.substring(0, 40)}`);
@@ -1356,6 +1363,9 @@ async function runAllScrapers() {
 
         // 数据库状态更新后再发送消息
         await sendToWeCom(item);
+        
+        // ✅ 新增：更新源追踪信息（记录最后推送的消息和时间）
+        updateSourcePush(item.source, item.timestamp, item.title);
 
         // 异步更新 Supabase（如果启用）
         updateSentStatus(item).catch(err => {

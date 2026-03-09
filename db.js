@@ -42,12 +42,21 @@ db.exec(`
     sent_to_wecom INTEGER DEFAULT 0,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
   );
+  CREATE TABLE IF NOT EXISTS source_tracking (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    source TEXT UNIQUE NOT NULL,
+    last_pushed_timestamp INTEGER,
+    last_pushed_title TEXT,
+    last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
+  );
   CREATE INDEX IF NOT EXISTS idx_timestamp       ON news(timestamp DESC);
   CREATE INDEX IF NOT EXISTS idx_source          ON news(source);
   CREATE INDEX IF NOT EXISTS idx_is_important    ON news(is_important);
   CREATE INDEX IF NOT EXISTS idx_business_cat    ON news(business_category);
   CREATE INDEX IF NOT EXISTS idx_sent_wecom      ON news(sent_to_wecom);
   CREATE UNIQUE INDEX IF NOT EXISTS idx_title_source ON news(title, source);
+  CREATE INDEX IF NOT EXISTS idx_normalized_title ON news(normalized_title);
+  CREATE INDEX IF NOT EXISTS idx_source_tracking ON source_tracking(source);
 `);
 
 // ── 安全迁移（已有数据库补列）────────────────────────────────────────────────
@@ -317,4 +326,109 @@ async function updateSentStatus(item) {
   }
 }
 
-module.exports = { db, saveNews, getNews, getStats, getAlreadyProcessed, updateSentStatus, normalizeKey };
+// ── 内容指纹（用于增强去重）────────────────────────────────────────────────────
+/**
+ * 生成内容指纹（简化版 hash，用于快速比较）
+ */
+function contentFingerprint(content) {
+  if (!content) return '';
+  // 移除 HTML 标签、空白、标点，只保留核心文本
+  const clean = content
+    .replace(/<[^>]*>/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .toLowerCase();
+  
+  // 简单 hash：取前 200 字符的 CRC32 风格校验和
+  let hash = 0;
+  const str = clean.substring(0, 200);
+  for (let i = 0; i < str.length; i++) {
+    const char = str.charCodeAt(i);
+    hash = ((hash << 5) - hash) + char;
+    hash = hash & hash; // Convert to 32bit integer
+  }
+  return hash.toString(36);
+}
+
+// ── 消息源追踪 ────────────────────────────────────────────────────────────────
+const sourceTrackingStmts = {
+  get: db.prepare('SELECT * FROM source_tracking WHERE source = ?'),
+  upsert: db.prepare(`
+    INSERT INTO source_tracking (source, last_pushed_timestamp, last_pushed_title)
+    VALUES (?, ?, ?)
+    ON CONFLICT(source) DO UPDATE SET
+      last_pushed_timestamp = excluded.last_pushed_timestamp,
+      last_pushed_title = excluded.last_pushed_title,
+      last_updated = CURRENT_TIMESTAMP
+  `),
+  getAll: db.prepare('SELECT * FROM source_tracking ORDER BY source'),
+};
+
+/**
+ * 获取某消息源的最后推送时间戳
+ */
+function getSourceLastPush(source) {
+  const row = sourceTrackingStmts.get.get(source);
+  return row ? row.last_pushed_timestamp : 0;
+}
+
+/**
+ * 更新某消息源的最后推送时间戳
+ */
+function updateSourcePush(source, timestamp, title) {
+  try {
+    sourceTrackingStmts.upsert.run(source, timestamp, title);
+  } catch (e) {
+    console.warn('[updateSourcePush]', e.message?.substring(0, 60));
+  }
+}
+
+/**
+ * 获取所有消息源的追踪信息
+ */
+function getAllSourceTracking() {
+  return sourceTrackingStmts.getAll.all();
+}
+
+/**
+ * 检查消息是否应该被推送（基于来源冷却时间）
+ * @param {string} source - 消息来源
+ * @param {string} title - 消息标题
+ * @param {number} timestamp - 消息时间戳
+ * @param {number} cooldownHours - 冷却时间（小时）
+ * @returns {boolean} - 是否可以推送
+ */
+function canPushMessage(source, title, timestamp, cooldownHours = 24) {
+  const lastPush = getSourceLastPush(source);
+  if (!lastPush) return true; // 从未推送过，允许推送
+  
+  // 检查距离上次推送是否已过冷却期
+  const cooldownMs = cooldownHours * 60 * 60 * 1000;
+  if (Date.now() - lastPush < cooldownMs) {
+    // 还在冷却期内，检查是否是相似标题
+    const row = sourceTrackingStmts.get.get(source);
+    if (row && row.last_pushed_title) {
+      const normalizedNew = normalizeKey(title, '').split('|')[0];
+      const normalizedLast = normalizeKey(row.last_pushed_title, '').split('|')[0];
+      if (normalizedNew === normalizedLast) {
+        return false; // 相似标题，跳过
+      }
+    }
+  }
+  return true;
+}
+
+module.exports = { 
+  db, 
+  saveNews, 
+  getNews, 
+  getStats, 
+  getAlreadyProcessed, 
+  updateSentStatus, 
+  normalizeKey,
+  contentFingerprint,
+  getSourceLastPush,
+  updateSourcePush,
+  getAllSourceTracking,
+  canPushMessage,
+};
