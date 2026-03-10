@@ -586,11 +586,19 @@ async function scrapeWuBlock() {
          }
          
          seenUrls.add(normalizedUrl);
-         seenTitles.add(normalizedTitle);
+          seenTitles.add(normalizedTitle);
+           results.push({
+             title,
+             content: '',
+             source: 'WuBlock',
+             url: href,
+             category: 'HK',
+             timestamp: Date.now(),
+             is_important: 0
+           });
           }
-        }
-      });
-      return results;
+        });
+       return results;
     });
     console.log(`WuBlock: Found ${items.length} items`);
     return items;
