@@ -573,8 +573,6 @@ async function scrapeWuBlock() {
    const results = [];
   const seenUrls = new Set();
   const seenTitles = new Set();
-  const seenUrls = new Set();
-  const seenTitles = new Set();
       document.querySelectorAll('a').forEach((a, i) => {
         const href = a.href;
         const title = a.innerText.trim();
