@@ -460,57 +460,88 @@
                 ) : filteredNews.length === 0 ? (
                   <div className="text-center py-24 text-slate-300 italic font-medium">暂无雷达信号</div>
                 ) : (
-                  <div className="max-w-4xl flex flex-col gap-4">
-                    {filteredNews.map(item => {
-                      const isRead   = readIds.has(item.id);
-                      const caMatch  = (item.title + (item.content||'')).match(/0x[a-fA-F0-9]{40}/);
+                    {(() => {
+                      let prevDateStr = '';
+                      const WEEKS = ['周日','周一','周二','周三','周四','周五','周六'];
+                      
+                      return filteredNews.map(item => {
+                        const isRead   = readIds.has(item.id);
+                        const caMatch  = (item.title + (item.content||'')).match(/0x[a-fA-F0-9]{40}/);
+                        
+                        // Date parsing
+                        const d = new Date(item.timestamp || Date.now());
+                        const dateStr = `${d.getMonth()+1}月${d.getDate()}日, ${WEEKS[d.getDay()]}`;
+                        const timeStr = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
+                        
+                        const showHeader = dateStr !== prevDateStr;
+                        prevDateStr = dateStr;
 
-                      return (
-                        <div key={item.id}
-                          onClick={() => { markAsRead(item.id); window.open(item.url,'_blank'); }}
-                          className={`depth-card p-6 rounded-2xl cursor-pointer relative ${isRead ? 'feed-read':''} ${item.is_important ? 'urgent-border':''}`}>
+                        return (
+                          <React.Fragment key={item.id}>
+                            {showHeader && (
+                              <div className="flex items-center mt-6 mb-4 first:mt-0">
+                                <h2 className="text-xl font-bold text-slate-800 tracking-tight">{dateStr}</h2>
+                              </div>
+                            )}
 
-                          {/* 标签行 */}
-                          <div className="flex justify-between items-start mb-3">
-                            <div className="flex items-center gap-2 flex-wrap">
-                              <span className={`badge ${getSourceStyle(item.source)}`}>{item.source}</span>
-                              {item.is_important === 1 && <span className="badge bg-red-100 text-red-600">重要</span>}
-                              {item.business_category && (
-                                <span className="badge bg-emerald-50 text-emerald-700">{item.business_category}</span>
-                              )}
-                              {item.competitor_category && (
-                                <span className="badge bg-amber-50 text-amber-700">{item.competitor_category}</span>
-                              )}
+                            <div className="flex gap-4 group relative mb-2">
+                              {/* 时间轴左侧 */}
+                              <div className="w-16 shrink-0 flex items-start justify-end pt-1 gap-2">
+                                <span className="text-[13px] font-medium text-slate-400 mt-[2px]">{timeStr}</span>
+                                <div className="w-2 h-2 rounded-full bg-blue-600 mt-[7px] shrink-0 outline outline-4 outline-[#fcfcfd]" />
+                              </div>
+
+                              {/* 内容卡片 */}
+                              <div 
+                                onClick={() => { markAsRead(item.id); window.open(item.url,'_blank'); }}
+                                className={`flex-1 bg-white p-5 rounded-xl border border-slate-150 shadow-[0_2px_8px_-4px_rgba(0,0,0,0.05)] cursor-pointer transition-all hover:shadow-md hover:-translate-y-[1px] ${isRead ? 'feed-read':''} ${item.is_important ? 'border-l-4 border-l-red-500':''}`}>
+                                
+                                {/* 标题 */}
+                                <h3 className="text-[16px] font-bold leading-relaxed text-slate-900 mb-2">
+                                  {highlight(item.title, search)}
+                                </h3>
+
+                                {/* 内容 / 摘要 */}
+                                {item.detail ? (
+                                  <p className="text-[14px] text-slate-600 leading-relaxed mb-4">
+                                    {highlight(item.detail, search)}
+                                  </p>
+                                ) : item.content ? (
+                                  <p className="text-[14px] text-slate-500 leading-relaxed line-clamp-2 mb-4">
+                                    {item.content}
+                                  </p>
+                                ) : null}
+
+                                {/* 底部标签 & Action */}
+                                <div className="flex justify-between items-end mt-auto pt-2">
+                                  <div className="flex items-center gap-2 flex-wrap">
+                                    <span className="text-[11px] px-2 py-0.5 rounded-md bg-slate-50 text-slate-500 border border-slate-100 font-medium">
+                                      {item.source}
+                                    </span>
+                                    {item.is_important === 1 && <span className="text-[11px] px-2 py-0.5 rounded-md bg-red-50 text-red-600 font-bold border border-red-100 flex items-center gap-1"><i className="fa-solid fa-star text-[9px]"></i> 重要信号</span>}
+                                    {item.business_category && (
+                                      <span className="text-[11px] px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-600 font-medium border border-emerald-100 flex items-center gap-1">
+                                        <i className="fa-solid fa-tag text-[9px]"></i> {item.business_category}
+                                      </span>
+                                    )}
+                                    {caMatch && (
+                                      <button onClick={e=>{e.stopPropagation();navigator.clipboard.writeText(caMatch[0])}}
+                                        className="text-[11px] font-bold text-indigo-500 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-2 py-0.5 rounded-md border border-indigo-100 transition-colors flex items-center gap-1">
+                                        <i className="fa-regular fa-copy"></i> CA
+                                      </button>
+                                    )}
+                                  </div>
+                                  <div className="flex gap-3 text-slate-300">
+                                    <button className="hover:text-amber-500 transition-colors"><i className="fa-regular fa-star"></i></button>
+                                    <button className="hover:text-blue-500 transition-colors"><i className="fa-solid fa-share-nodes"></i></button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div className="flex items-center gap-3 shrink-0">
-                              {caMatch && (
-                                <button onClick={e=>{e.stopPropagation();navigator.clipboard.writeText(caMatch[0])}}
-                                  className="text-[10px] font-bold text-indigo-500 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-2 py-0.5 rounded transition-colors">
-                                  复制合约
-                                </button>
-                              )}
-                              <span className="text-[11px] font-mono font-medium text-slate-400">{formatTime(item.timestamp)}</span>
-                            </div>
-                          </div>
-
-                          {/* 标题（含搜索高亮）*/}
-                          <h3 className="text-[16px] font-semibold leading-[1.6] text-slate-900">
-                            {highlight(item.title, search)}
-                          </h3>
-
-                          {/* AI 摘要 */}
-                          {item.detail && (
-                            <p className="mt-2 text-[13px] text-emerald-700 bg-emerald-50 rounded-lg px-3 py-2 leading-relaxed border-l-2 border-emerald-400">
-                              {highlight(item.detail, search)}
-                            </p>
-                          )}
-                          {!item.detail && item.content && (
-                            <p className="mt-2 text-[13px] text-slate-500 line-clamp-2 leading-relaxed">{item.content}</p>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
+                          </React.Fragment>
+                        );
+                      });
+                    })()}
                 )}
               </div>
             )}
