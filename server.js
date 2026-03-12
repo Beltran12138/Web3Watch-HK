@@ -78,7 +78,7 @@ function createApp() {
   app.use(express.static(path.join(__dirname, 'public')));
 
   // ── 健康检查（无需认证）─────────────────────────────────────────────────────
-  app.get('/api/health', async (req, res) => {
+  const healthHandler = async (req, res) => {
     try {
       const stats = await getStats();
       res.json({
@@ -96,25 +96,26 @@ function createApp() {
       console.error('[health] Error:', e.message, e.stack);
       res.status(500).json({ status: 'error', error: e.message });
     }
-  });
+  };
+  app.get('/api/health', healthHandler);
+  app.get('/health', healthHandler);
 
   // ── GET /api/news ──────────────────────────────────────────────────────────
-  const VALID_SOURCES = new Set([
-    'All', 'Important',
-    'Binance', 'OKX', 'Bybit', 'Gate', 'MEXC', 'Bitget', 'HTX', 'KuCoin',
-    'BlockBeats', 'TechFlow', 'PRNewswire',
-    'HashKeyGroup', 'HashKeyExchange', 'WuBlock', 'OSL', 'Exio', 'TechubNews', 'Matrixport',
-    'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin', 'TwitterAB',
-    'Poly-Breaking', 'Poly-China',
-  ]);
-
-  app.get('/api/news', async (req, res) => {
+  const newsHandler = async (req, res) => {
     let source    = req.query.source    || 'All';
     const important = req.query.important === '1' ? 1 : 0;
     const page    = Math.max(1, parseInt(req.query.page, 10) || 1);
     const perPage = Math.min(500, Math.max(1, parseInt(req.query.limit, 10) || (source === 'All' || important ? 500 : 100)));
     const search  = (req.query.q || '').trim().slice(0, 100);
 
+    const VALID_SOURCES = new Set([
+      'All', 'Important',
+      'Binance', 'OKX', 'Bybit', 'Gate', 'MEXC', 'Bitget', 'HTX', 'KuCoin',
+      'BlockBeats', 'TechFlow', 'PRNewswire',
+      'HashKeyGroup', 'HashKeyExchange', 'WuBlock', 'OSL', 'Exio', 'TechubNews', 'Matrixport',
+      'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin', 'TwitterAB',
+      'Poly-Breaking', 'Poly-China',
+    ]);
     if (!VALID_SOURCES.has(source)) source = 'All';
 
     const news = await getNews(perPage, source === 'Important' ? 'All' : source, important, search);
@@ -125,14 +126,18 @@ function createApp() {
       lastUpdate: new Date().toISOString(),
       data:       news,
     });
-  });
+  };
+  app.get('/api/news', newsHandler);
+  app.get('/news', newsHandler);
 
-  // ── 统计接口（供前端图表使用）───────────────────────────────────────────────
-  app.get('/api/stats', async (req, res) => {
+  // ── 统计接口 ───────────────────────────────────────────────────────────────
+  const statsHandler = async (req, res) => {
     const since = parseInt(req.query.since, 10) || (Date.now() - 7 * 24 * 3600 * 1000);
     const stats = await getStats(since);
     res.json({ success: true, data: stats });
-  });
+  };
+  app.get('/api/stats', statsHandler);
+  app.get('/stats', statsHandler);
 
   // ── 以下写操作需要 API Key 保护 ────────────────────────────────────────────
   app.post('/api/refresh', apiKeyGuard, async (req, res) => {
