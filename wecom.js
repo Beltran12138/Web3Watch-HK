@@ -1,7 +1,7 @@
 const axios = require('axios');
 require('dotenv').config();
 
-const WECOM_WEBHOOK_URL = process.env.WECOM_WEBHOOK_URL;
+const WECOM_WEBHOOK_URL = (process.env.WECOM_WEBHOOK_URL || '').trim();
 
 // 企业微信 Markdown 消息字符限制
 const WECOM_MARKDOWN_LIMIT = 4096;

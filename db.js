@@ -11,12 +11,12 @@ try {
   DB = { SUPABASE_CHUNK_SIZE: 100, NEWS_FETCH_LIMIT: 500 };
 }
 
-const USE_SUPABASE = process.env.USE_SUPABASE === 'true';
+const USE_SUPABASE = (process.env.USE_SUPABASE || '').trim() === 'true';
 const IS_VERCEL = process.env.VERCEL === 'true';
 
 let supabase = null;
 if (USE_SUPABASE && process.env.SUPABASE_URL && process.env.SUPABASE_KEY) {
-  supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
+  supabase = createClient(process.env.SUPABASE_URL.trim(), process.env.SUPABASE_KEY.trim());
 } else if (USE_SUPABASE) {
   console.log('[DB] Supabase enabled but missing credentials');
 }
