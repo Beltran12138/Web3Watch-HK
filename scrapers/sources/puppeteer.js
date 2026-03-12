@@ -123,13 +123,41 @@ async function scrapeWuBlock() {
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 45000 });
     const items = await page.evaluate(() => {
       const results = [];
+      const seenUrls = new Set();
+      const seenTitles = new Set();
+
       document.querySelectorAll('a').forEach(a => {
         const href  = a.href;
         const title = a.innerText.trim();
         if (href.includes('a=show') && title.length > 10 && title.includes('香港')) {
-          if (!results.find(r => r.url === href)) {
-            results.push({ title, content: '', source: 'WuBlock', url: href, category: 'HK', timestamp: 0, is_important: 0 });
+          const normalizedUrl = href.split('#')[0].replace(/\/$/, '');
+          const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+
+          if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
+          seenUrls.add(normalizedUrl);
+          seenTitles.add(normalizedTitle);
+
+          // 尝试从页面提取时间戳
+          let timestamp = 0;
+          const container = a.closest('.article-item, .news-item, li, div');
+          if (container) {
+            const timeText = container.querySelector('.time, .date, span')?.innerText || '';
+            const dateMatch = timeText.match(/(\d{4}[-/.]\d{1,2}[-/.]\d{1,2})|(\d{1,2}:\d{2})/);
+            if (dateMatch) {
+              const d = new Date(dateMatch[0].replace(/\./g, '-'));
+              if (!isNaN(d.getTime())) timestamp = d.getTime();
+            }
           }
+
+          results.push({ 
+            title, 
+            content: '', 
+            source: 'WuBlock', 
+            url: href, 
+            category: 'HK', 
+            timestamp: timestamp || 0, 
+            is_important: 0 
+          });
         }
       });
       return results;

@@ -37,10 +37,11 @@ const {
   HK_SOURCES,
   PR_HK_COMPANIES,
   PR_TOP_EXCHANGES,
-  MAINSTREAM_EXCHANGES,
   EXCHANGE_EXCLUDE_KEYWORDS,
   EXCHANGE_MAJOR_KEYWORDS,
   HK_KEYWORDS,
+  HIGH_FREQ_SOURCES,
+  LOW_FREQ_SOURCES,
 } = require('../config');
 
 // ── 爬虫函数注册表 ─────────────────────────────────────────────────────────────
@@ -58,13 +59,16 @@ const {
   scrapeTwitterKOLs,
 } = require('./sources/puppeteer');
 
-const ALL_SCRAPERS = [
-  scrapeSFC, scrapeTechFlow, scrapePRNewswire, scrapeBlockBeats, scrapeTwitterKOLs,
-  scrapeOSL, scrapeTechubNews, scrapeOKX, scrapeExio, scrapeMatrixport,
-  scrapeWuBlock, scrapeHashKeyGroup, scrapeKuCoin, scrapeHashKeyExchange,
-  scrapeBinance, scrapeBybit, scrapeBitget, scrapeMexc,
-  scrapePolymarketBreaking, scrapePolymarketChina, scrapeGate, scrapeHtx,
-];
+const SCRAPERS_MAP = {
+  SFC: scrapeSFC, TechFlow: scrapeTechFlow, PRNewswire: scrapePRNewswire, BlockBeats: scrapeBlockBeats,
+  TwitterKOLs: scrapeTwitterKOLs, OSL: scrapeOSL, TechubNews: scrapeTechubNews, OKX: scrapeOKX,
+  Exio: scrapeExio, Matrixport: scrapeMatrixport, WuBlock: scrapeWuBlock, HashKeyGroup: scrapeHashKeyGroup,
+  KuCoin: scrapeKuCoin, HashKeyExchange: scrapeHashKeyExchange, Binance: scrapeBinance, Bybit: scrapeBybit,
+  Bitget: scrapeBitget, Mexc: scrapeMexc, PolymarketBreaking: scrapePolymarketBreaking,
+  PolymarketChina: scrapePolymarketChina, Gate: scrapeGate, Htx: scrapeHtx
+};
+
+const ALL_SCRAPERS = Object.values(SCRAPERS_MAP);
 
 // ── 重要性判定（原 checkImportance，现从 config 读配置）─────────────────────────
 function checkImportance(item) {
@@ -95,16 +99,25 @@ function checkImportance(item) {
 }
 
 // ── 主调度器 ──────────────────────────────────────────────────────────────────
-async function runAllScrapers() {
-  console.log('=== [Scrape] Start ===');
+async function runAllScrapers(tier = 'all') {
+  console.log(`=== [Scrape] Start (Tier: ${tier}) ===`);
   const startMs = Date.now();
 
-  // 1. 分批并发执行所有爬虫
+  let targetScrapers = [];
+  if (tier === 'high') {
+    targetScrapers = HIGH_FREQ_SOURCES.map(key => SCRAPERS_MAP[key]).filter(Boolean);
+  } else if (tier === 'low') {
+    targetScrapers = LOW_FREQ_SOURCES.map(key => SCRAPERS_MAP[key]).filter(Boolean);
+  } else {
+    targetScrapers = ALL_SCRAPERS;
+  }
+
+  // 1. 分批并发执行目标爬虫
   let rawResults = [];
-  for (let i = 0; i < ALL_SCRAPERS.length; i += SCRAPER.BATCH_SIZE) {
-    const batch   = ALL_SCRAPERS.slice(i, i + SCRAPER.BATCH_SIZE);
+  for (let i = 0; i < targetScrapers.length; i += SCRAPER.BATCH_SIZE) {
+    const batch   = targetScrapers.slice(i, i + SCRAPER.BATCH_SIZE);
     const batchNo = Math.floor(i / SCRAPER.BATCH_SIZE) + 1;
-    const total   = Math.ceil(ALL_SCRAPERS.length / SCRAPER.BATCH_SIZE);
+    const total   = Math.ceil(targetScrapers.length / SCRAPER.BATCH_SIZE);
     console.log(`[Scrape] Batch ${batchNo}/${total}`);
 
     const results = await Promise.allSettled(batch.map(fn => fn()));
@@ -113,7 +126,7 @@ async function runAllScrapers() {
       else console.error(`[Scrape] Scraper #${i + idx} error:`, r.reason?.message);
     });
 
-    if (i + SCRAPER.BATCH_SIZE < ALL_SCRAPERS.length) {
+    if (i + SCRAPER.BATCH_SIZE < targetScrapers.length) {
       await new Promise(r => setTimeout(r, SCRAPER.BATCH_DELAY_MS));
     }
   }
@@ -270,11 +283,15 @@ module.exports = { runAllScrapers, checkImportance };
 
 // Allow direct execution (e.g., from npm run scrape)
 if (require.main === module) {
-  runAllScrapers().then(() => {
-    console.log('[Main] Scraper execution completed successfully.');
+  let tier = 'all';
+  if (process.argv.includes('--tier=high')) tier = 'high';
+  if (process.argv.includes('--tier=low')) tier = 'low';
+
+  runAllScrapers(tier).then(() => {
+    console.log(`[Main] Scraper execution (${tier}) completed successfully.`);
     process.exit(0);
   }).catch(err => {
-    console.error('[Main] Fatal error during scraper execution:', err);
+    console.error(`[Main] Fatal error during scraper execution (${tier}):`, err);
     process.exit(1);
   });
 }

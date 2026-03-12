@@ -91,14 +91,27 @@ async function scrapeTechubNews() {
     });
     const articles = data?.data?.list || [];
     const items    = [];
+    const seenUrls = new Set();
+    const seenTitles = new Set();
+
     articles.forEach(item => {
       const timestamp = parseTimestamp(item.created_at || item.publish_time);
       if (!timestamp) return; // 严格模式：无时间戳直接跳过
+
+      // 修复 URL 格式：使用 article 而非 articleDetail
+      const actualUrl = item.link || item.url || `https://www.techub.news/article/${item.uid || item.id}`;
+      const normalizedUrl = actualUrl.split('?')[0].replace(/#.*$/, '').replace(/\/$/, '');
+      const normalizedTitle = (item.title || '').toLowerCase().replace(/\s+/g, ' ').trim();
+
+      if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
+      seenUrls.add(normalizedUrl);
+      seenTitles.add(normalizedTitle);
+
       items.push(makeItem({
         title:     item.title || '',
         content:   `Original Link: ${item.original_link || 'N/A'}\n${item.brief || ''}`,
         source:    'TechubNews',
-        url:       `https://www.techub.news/articleDetail/${item.uid || item.id}`,
+        url:       actualUrl,
         category:  'HK',
         timestamp,
       }));
@@ -127,13 +140,40 @@ async function scrapeMatrixport() {
     });
     const $     = cheerio.load(data);
     const items = [];
+    const seenUrls = new Set();
+    const seenTitles = new Set();
+
     $('a[href*="/zh-CN/articles/"]').each((_, el) => {
       const href  = $(el).attr('href') || '';
       const title = $(el).text().trim();
       if (!title || title.length < 5) return;
+      
       const fullUrl = href.startsWith('http') ? href : `https://helpcenter.matrixport.com${href}`;
-      if (items.find(i => i.url === fullUrl)) return;
-      items.push(makeItem({ title, source: 'Matrixport', url: fullUrl, category: 'Announcement', timestamp: 0 }));
+      const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
+      const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+
+      // 双重去重：URL + 标题
+      if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
+      seenUrls.add(normalizedUrl);
+      seenTitles.add(normalizedTitle);
+
+      // 尝试提取时间戳（从列表项容器中查找）
+      let timestamp = 0;
+      const container = $(el).closest('.article-list-item, li, .card');
+      if (container.length) {
+        const timeText = container.find('.meta-item, .date, time, .updated-at').first().text().trim();
+        if (timeText) {
+          timestamp = extractTimestamp(timeText);
+        }
+      }
+
+      items.push(makeItem({ 
+        title, 
+        source: 'Matrixport', 
+        url: fullUrl, 
+        category: 'Announcement', 
+        timestamp: timestamp || 0 // 如果没有找到时间戳，设为 0 以触发 index.js 中的 fallback
+      }));
     });
     console.log(`[Scraper] Matrixport: ${items.length}`);
     return items;
@@ -151,12 +191,21 @@ async function scrapeHashKeyGroup() {
     const { data } = await axios.get(url, { headers: { 'User-Agent': UA }, timeout: 15000 });
     const $        = cheerio.load(data);
     const items    = [];
+    const seenUrls = new Set();
+    const seenTitles = new Set();
+
     $('a[href*="/newsroom/"]').each((_, el) => {
       const title = $(el).text().trim();
       const href  = $(el).attr('href');
       if (!title || title.length < 10) return;
+      
       const fullUrl = href.startsWith('http') ? href : `https://group.hashkey.com${href}`;
-      if (items.find(i => i.url === fullUrl)) return;
+      const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
+      const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+
+      if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
+      seenUrls.add(normalizedUrl);
+      seenTitles.add(normalizedTitle);
 
       const container = $(el).closest('div, li, tr, section, article');
       const timestamp = extractTimestamp(container.text());
@@ -185,36 +234,33 @@ async function scrapePRNewswire() {
     const $         = cheerio.load(data);
     const items     = [];
     const seenUrls  = new Set();
+    const seenTitles = new Set();
 
     $('a[href*="/news-releases/"][href$=".html"]').each((_, el) => {
       const href = $(el).attr('href');
       if (!href) return;
+      
       const fullUrl = href.startsWith('http') ? href : `https://www.prnewswire.com${href}`;
-      if (seenUrls.has(fullUrl)) return;
-      seenUrls.add(fullUrl);
+      const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
+      
+      if (seenUrls.has(normalizedUrl)) return;
+      seenUrls.add(normalizedUrl);
 
       const titleEl = $(el).find('h3, h2, .title, [class*="title"], [class*="headline"]').first();
       let title     = (titleEl.length ? titleEl.text() : $(el).text()).trim();
+      // 移除日期前缀
       title         = title.replace(/^\d{1,2}\s+\w{3},\s+\d{4},?\s+[\d:]+\s*[A-Z]+\s*/i, '').trim();
-      if (!title || title.length < 15) return;
+      const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+
+      if (!title || title.length < 15 || seenTitles.has(normalizedTitle)) return;
+      seenTitles.add(normalizedTitle);
 
       const timeStr = $(el).closest('.card, .row, article, li, .col-sm-12')
         .find('small, time, [class*="date"], [class*="time"], h3 + p').first().text().trim();
 
       // 严格时间解析 — 无时间戳则丢弃（避免旧稿混入）
-      let timestamp = 0;
-      if (timeStr) {
-        const clean     = timeStr.replace(/\s+(HKT|CST|EST|PST|GMT)/i, '').trim();
-        const timeMatch = clean.match(/(\d{1,2}:\d{2})/);
-        if (timeMatch) {
-          const now = new Date();
-          const [h, m] = timeMatch[1].split(':').map(Number);
-          timestamp = new Date(now.getFullYear(), now.getMonth(), now.getDate(), h, m).getTime();
-          if (timestamp > Date.now() + 3_600_000) timestamp -= 86_400_000;
-        } else {
-          timestamp = parseTimestamp(clean) || extractTimestamp(clean);
-        }
-      }
+      let timestamp = extractTimestamp(timeStr);
+      
       if (!timestamp) return;
 
       items.push(makeItem({ title, source: 'PRNewswire', url: fullUrl, category: 'PR', timestamp }));

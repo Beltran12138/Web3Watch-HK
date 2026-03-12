@@ -195,11 +195,11 @@ const SOURCE_CONFIGS = {
   // 香港合规板块 - 较宽松的时间窗口（消息价值较高）
   'OSL':            { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   'Exio':           { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'TechubNews':     { maxAgeHours: 168, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
-  'Matrixport':     { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'HashKeyGroup':   { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'HashKeyExchange':{ maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'WuBlock':        { maxAgeHours: 168, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
+  'TechubNews':     { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
+  'Matrixport':     { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'HashKeyGroup':   { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'HashKeyExchange':{ maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  'WuBlock':        { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
 
   // PRNewswire - 严格时间戳（经常有旧闻混入）
   'PRNewswire':     { maxAgeHours: 48, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 24 },
@@ -238,12 +238,29 @@ const DEFAULT_SOURCE_CONFIG = {
   pushCooldownHours: 24,
 };
 
+// ── 拉取频率分层 ────────────────────────────────────────────────────────────
+// 高频拉取源（T0：极度敏感，建议 3-5 分钟级别）
+const HIGH_FREQ_SOURCES = [
+  'SFC', 'Binance', 'OKX', 
+  'TwitterKOLs',             // 包含所有的 KOL (TwitterAB, WuShuo 等)
+  'PolymarketBreaking', 'PolymarketChina'
+];
+
+// 低频拉取源（T1：常规快讯与公关，建议 15-30 分钟级别）
+const LOW_FREQ_SOURCES = [
+  'TechFlow', 'PRNewswire', 'BlockBeats',
+  'OSL', 'TechubNews', 'Exio', 'Matrixport',
+  'WuBlock', 'HashKeyGroup', 'KuCoin', 'HashKeyExchange',
+  'Bybit', 'Bitget', 'Mexc', 'Gate', 'Htx'
+];
+
 // ── 服务器 ────────────────────────────────────────────────────────────────────
 const SERVER = {
   PORT: process.env.PORT || 3001,
   NEWS_LIMIT_ALL: 500,
   NEWS_LIMIT_SOURCE: 100,
-  SCRAPE_CRON: '*/15 * * * *',
+  SCRAPE_HIGH_CRON: '*/5 * * * *',    // 高频 5 分钟
+  SCRAPE_LOW_CRON: '*/30 * * * *',    // 低频 30 分钟
   DAILY_REPORT_CRON: '0 10 * * 1-4',  // UTC 10:00 = 北京 18:00 (周一至周四)
   WEEKLY_REPORT_CRON: '0 10 * * 5',   // 每周五 UTC 10:00 = 北京 18:00
 };
@@ -274,4 +291,6 @@ module.exports = {
   SERVER,
   SOURCE_CONFIGS,
   DEFAULT_SOURCE_CONFIG,
+  HIGH_FREQ_SOURCES,
+  LOW_FREQ_SOURCES,
 };

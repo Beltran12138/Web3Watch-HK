@@ -6,6 +6,8 @@ const WECOM_WEBHOOK_URL = process.env.WECOM_WEBHOOK_URL;
 // 企业微信 Markdown 消息字符限制
 const WECOM_MARKDOWN_LIMIT = 4096;
 
+const DASHBOARD_URL = process.env.DASHBOARD_URL || 'http://localhost:3001';
+
 /**
  * 推送单条消息到企业微信
  */
@@ -17,31 +19,66 @@ async function sendToWeCom(item) {
 
   // 视觉增强：根据评分和影响类型选择 Emoji
   const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡');
-  const impactEmoji = item.impact === '利好' ? '🟢' : (item.impact === '利空' ? '🔴' : '⚪️');
-  
-  // 构建消息模板
-  const content = `
-## ${scoreEmoji} Alpha 信号预警
-
-**【${item.business_category || '快讯'}】** ${item.title}
-
-> **得分:** \`${item.alpha_score || (item.is_important ? 85 : 50)}\` | **影响:** ${impactEmoji} **${item.impact || '待评估'}**
-> **提炼:** ${item.detail || '暂无详情'}
-> **建议:** **${item.bitv_action || '建议保持关注动态'}**
-> **来源:** ${item.source} | [查看原文](${item.url})
-
----
-*由 Alpha-Radar 战略分析引擎提供支持*
-  `.trim();
+  let impactColor = 3; // 默认灰色
+  let impactText = item.impact || '待评估';
+  if (item.impact === '利好') impactColor = 1; // 红色（股票红涨）或蓝色，看语境，这里企微模板里 1 是红色/重要，2 是绿色/打分，3 灰色
+  else if (item.impact === '利空') impactColor = 2; // 绿色（绿跌）
 
   try {
-    await axios.post(WECOM_WEBHOOK_URL, {
-      msgtype: 'markdown',
-      markdown: { content }
-    });
-    console.log(`[WeCom] Sent: ${item.title}`);
+    const payload = {
+      msgtype: "template_card",
+      template_card: {
+        card_type: "text_notice",
+        source: {
+          icon_url: "https://files.catbox.moe/ksw38s.png", // 一个雷达小图标示例
+          desc: "Alpha-Radar 战略预警",
+          desc_color: 1
+        },
+        main_title: {
+          title: item.title,
+          desc: `${scoreEmoji} ${item.business_category || '快讯'} | 价值分: ${item.alpha_score || (item.is_important ? 85 : 50)}`
+        },
+        sub_title_text: item.detail || '（暂无摘要）',
+        horizontal_content_list: [
+          {
+            keyname: "情报维度",
+            value: item.competitor_category || '常规市场'
+          },
+          {
+            keyname: "业务影响",
+            value: impactText,
+            type: impactColor
+          },
+          {
+            keyname: "来源渠道",
+            value: item.source || '未知'
+          }
+        ],
+        jump_list: [
+          {
+            type: 1,
+            url: item.url || DASHBOARD_URL,
+            title: "阅读原文"
+          },
+          {
+            type: 1,
+            url: DASHBOARD_URL,
+            title: item.bitv_action ? `🚀 建议: ${item.bitv_action}` : "前往大盘核实"
+          }
+        ],
+        card_action: {
+          type: 1,
+          url: DASHBOARD_URL,
+          appid: "",
+          pagepath: ""
+        }
+      }
+    };
+
+    await axios.post(WECOM_WEBHOOK_URL, payload);
+    console.log(`[WeCom] Sent (Card): ${item.title}`);
   } catch (err) {
-    console.error('[WeCom Error]:', err.message);
+    console.error('[WeCom Error]:', err.response?.data || err.message);
   }
 }
 

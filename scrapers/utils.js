@@ -69,7 +69,27 @@ function parseTimestamp(raw) {
 function extractTimestamp(text) {
   if (!text) return 0;
 
-  // HH:MM（当天时间）
+  // 1. 优先尝试完整的日期格式 (YYYY-MM-DD 或 YYYY/MM/DD 或 DD.MM.YYYY)
+  const datePatterns = [
+    /(\d{4}[-/]\d{1,2}[-/]\d{1,2})/,
+    /(\d{1,2})\.(\d{1,2})\.(\d{4})/,  // DD.MM.YYYY
+    /([A-Za-z]{3,9}\.?\s+\d{1,2},?\s+\d{4})/,  // Jan 1, 2025
+  ];
+  for (const re of datePatterns) {
+    const m = text.match(re);
+    if (m) {
+      let dStr = m[0];
+      // DD.MM.YYYY → YYYY-MM-DD
+      if (/^\d{1,2}\.\d{1,2}\.\d{4}$/.test(dStr)) {
+        const parts = dStr.split('.');
+        dStr = `${parts[2]}-${parts[1]}-${parts[0]}`;
+      }
+      const ts = new Date(dStr).getTime();
+      if (ts > 1_577_836_800_000) return ts;
+    }
+  }
+
+  // 2. HH:MM（当天时间）- 仅当没有找到日期时尝试，且必须符合 HH:MM 格式
   const timeMatch = text.match(/(\d{1,2}):(\d{2})/);
   if (timeMatch) {
     const now = new Date();
@@ -81,26 +101,6 @@ function extractTimestamp(text) {
     // 未来时间说明是昨天
     if (ts > Date.now() + 3_600_000) ts -= 86_400_000;
     return ts;
-  }
-
-  // YYYY-MM-DD 或 YYYY/MM/DD 或 DD.MM.YYYY
-  const datePatterns = [
-    /(\d{4}[-/]\d{2}[-/]\d{2})/,
-    /(\d{2})\.(\d{2})\.(\d{4})/,  // DD.MM.YYYY
-    /([A-Za-z]{3,9}\.?\s+\d{1,2},?\s+\d{4})/,  // Jan 1, 2025
-  ];
-  for (const re of datePatterns) {
-    const m = text.match(re);
-    if (m) {
-      let dStr = m[0];
-      // DD.MM.YYYY → YYYY-MM-DD
-      if (/^\d{2}\.\d{2}\.\d{4}$/.test(dStr)) {
-        const [dd, mm, yyyy] = dStr.split('.');
-        dStr = `${yyyy}-${mm}-${dd}`;
-      }
-      const ts = new Date(dStr).getTime();
-      if (ts > 1_577_836_800_000) return ts;
-    }
   }
 
   return 0;

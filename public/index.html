@@ -167,6 +167,10 @@
     const [searchInput, setSearchInput] = useState('');
     const [timeRange, setTimeRange]     = useState('week'); // today|week|month|all
     const [readIds, setReadIds]         = useState(new Set(JSON.parse(localStorage.getItem('readIds')||'[]')));
+    const [bookmarks, setBookmarks]     = useState(new Set(JSON.parse(localStorage.getItem('bookmarks')||'[]')));
+    const [syncCode, setSyncCode]       = useState(localStorage.getItem('syncCode') || '');
+    const [syncInput, setSyncInput]     = useState('');
+    const [isSyncing, setIsSyncing]     = useState(false);
     const [countdown, setCountdown]     = useState(300);
     const [viewMode, setViewMode]       = useState('feed'); // feed|chart
     const [menuOpen, setMenuOpen]       = useState(false);
@@ -268,12 +272,79 @@
       return () => window.removeEventListener('keydown', handler);
     }, []);
 
+    // ── 云端同步（极简 6 位码） ──────────────────────────────────────────────────
+    const generateSyncCode = async () => {
+      const code = Math.random().toString(36).substring(2, 8).toUpperCase();
+      setSyncCode(code);
+      localStorage.setItem('syncCode', code);
+      if (sbClient) {
+        setIsSyncing(true);
+        try {
+          await sbClient.from('user_preferences').upsert({
+            sync_code: code,
+            read_ids: [...readIds],
+            bookmarks: [...bookmarks],
+          });
+        } catch(e) { console.error('Sync code generation failed', e); }
+        finally { setIsSyncing(false); }
+      }
+    };
+
+    const loadFromSync = async () => {
+      const code = syncInput.trim().toUpperCase();
+      if (!code || code.length !== 6 || !sbClient) return;
+      setIsSyncing(true);
+      try {
+        const { data, error } = await sbClient.from('user_preferences').select('*').eq('sync_code', code).single();
+        if (data) {
+          const loadedReads = new Set(data.read_ids || []);
+          const loadedBookmarks = new Set(data.bookmarks || []);
+          setReadIds(loadedReads);
+          setBookmarks(loadedBookmarks);
+          localStorage.setItem('readIds', JSON.stringify([...loadedReads]));
+          localStorage.setItem('bookmarks', JSON.stringify([...loadedBookmarks]));
+          setSyncCode(code);
+          localStorage.setItem('syncCode', code);
+          alert('同步成功！已恢复云端书签与已读历史。');
+        } else {
+          alert('找不到该同步码，请检查是否输入正确。');
+        }
+      } catch (e) {
+        console.error('Load sync code failed', e);
+        alert('同步失败，请稍后重试。');
+      } finally { setIsSyncing(false); }
+    };
+
+    const syncToCloud = useCallback(async (rIds, bMarks) => {
+      if (!syncCode || !sbClient) return;
+      try {
+        await sbClient.from('user_preferences').upsert({
+          sync_code: syncCode,
+          read_ids: [...rIds],
+          bookmarks: [...bMarks],
+        }, { onConflict: 'sync_code' });
+      } catch(e) { console.error('Auto sync failed', e); }
+    }, [syncCode]);
+
     const markAsRead = (id) => {
+      if (readIds.has(id)) return;
       const next = new Set(readIds); next.add(id);
       setReadIds(next);
       localStorage.setItem('readIds', JSON.stringify([...next]));
+      syncToCloud(next, bookmarks);
     };
 
+    const toggleBookmark = (e, id) => {
+      e.stopPropagation();
+      const next = new Set(bookmarks);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      setBookmarks(next);
+      localStorage.setItem('bookmarks', JSON.stringify([...next]));
+      syncToCloud(readIds, next);
+    };
+
+    // 搜索与其他工具
     const handleSearch = (e) => { if (e.key === 'Enter') setSearch(searchInput.trim()); };
     const clearSearch  = () => { setSearch(''); setSearchInput(''); };
 
@@ -350,7 +421,34 @@
           {sidebarNav}
 
           {/* 底部状态 */}
-          <div className="pt-4 border-t border-slate-100 space-y-2">
+          <div className="pt-4 border-t border-slate-100 space-y-3">
+            {/* 云同步挂件 */}
+            <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 relative group">
+              <div className="flex justify-between items-center mb-2">
+                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">云端同步</span>
+                {isSyncing && <i className="fa-solid fa-circle-notch fa-spin text-slate-300 text-xs"></i>}
+              </div>
+              
+              {syncCode ? (
+                <div className="flex justify-between items-center gap-2">
+                  <div className="bg-white px-2 py-1 flex-1 rounded text-center border border-slate-200">
+                    <span className="font-mono text-sm font-bold tracking-[0.2em] text-slate-700">{syncCode}</span>
+                  </div>
+                  <button onClick={() => {setSyncCode(''); setSyncInput(''); localStorage.removeItem('syncCode');}} className="text-[10px] text-slate-400 hover:text-red-500 underline" title="解除绑定">解绑</button>
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  <div className="flex gap-1">
+                    <input type="text" value={syncInput} onChange={e=>setSyncInput(e.target.value.toUpperCase())} maxLength={6} placeholder="输入 6 位码" className="w-full text-xs font-mono uppercase bg-white border border-slate-200 rounded px-2 py-1 focus:outline-blue-400" />
+                    <button onClick={loadFromSync} className="bg-slate-200 hover:bg-slate-300 text-slate-600 px-2 py-1 rounded text-xs font-medium transition-colors">加载</button>
+                  </div>
+                  <button onClick={generateSyncCode} className="w-full text-[11px] text-blue-500 hover:text-blue-600 font-medium py-1 border border-blue-100 bg-blue-50 hover:bg-blue-100 rounded transition-colors text-center">
+                    <i className="fa-solid fa-plus mr-1 text-[10px]"></i>新建同步设备
+                  </button>
+                </div>
+              )}
+            </div>
+
             {health && (
               <div className="flex items-center justify-between px-2 text-xs text-slate-400">
                 <span>数据库</span>
@@ -467,6 +565,7 @@
                       
                       return filteredNews.map(item => {
                         const isRead   = readIds.has(item.id);
+                        const isBookmarked = bookmarks.has(item.id);
                         const caMatch  = (item.title + (item.content||'')).match(/0x[a-fA-F0-9]{40}/);
                         
                         // Date parsing
@@ -533,8 +632,10 @@
                                     )}
                                   </div>
                                   <div className="flex gap-3 text-slate-300">
-                                    <button className="hover:text-amber-500 transition-colors"><i className="fa-regular fa-star"></i></button>
-                                    <button className="hover:text-blue-500 transition-colors"><i className="fa-solid fa-share-nodes"></i></button>
+                                    <button onClick={(e) => toggleBookmark(e, item.id)} className={`transition-colors text-lg ${isBookmarked ? 'text-amber-400 drop-shadow-[0_0_2px_rgba(251,191,36,0.5)]' : 'hover:text-amber-400'}`}>
+                                      <i className={isBookmarked ? "fa-solid fa-star" : "fa-regular fa-star"}></i>
+                                    </button>
+                                    <button onClick={(e) => {e.stopPropagation(); window.open(item.url, '_blank')}} className="hover:text-blue-500 transition-colors text-lg"><i className="fa-solid fa-arrow-up-right-from-square"></i></button>
                                   </div>
                                 </div>
                               </div>
