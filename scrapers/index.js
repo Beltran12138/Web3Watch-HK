@@ -266,3 +266,14 @@ async function runAllScrapers() {
 }
 
 module.exports = { runAllScrapers, checkImportance };
+
+// Allow direct execution (e.g., from npm run scrape)
+if (require.main === module) {
+  runAllScrapers().then(() => {
+    console.log('[Main] Scraper execution completed successfully.');
+    process.exit(0);
+  }).catch(err => {
+    console.error('[Main] Fatal error during scraper execution:', err);
+    process.exit(1);
+  });
+}
