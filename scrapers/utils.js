@@ -94,6 +94,17 @@ function extractTimestamp(text, allowTimeOnly = false) {
     }
   }
 
+  // DD Mon YYYY [HH:MM] (如 "12 Mar, 2026, 22:27 CST" / "12 Mar 2026")
+  const ddMonYyyy = text.match(/\b(\d{1,2})\s+([A-Za-z]{3,9}),?\s+(\d{4})\b/);
+  if (ddMonYyyy) {
+    let dateStr = `${ddMonYyyy[2]} ${ddMonYyyy[1]}, ${ddMonYyyy[3]}`;
+    // 尝试同时提取时间，避免仅使用午夜造成时间偏差
+    const timeMatch = text.match(/,?\s+(\d{1,2}):(\d{2})\b/);
+    if (timeMatch) dateStr += ` ${timeMatch[1]}:${timeMatch[2]}`;
+    const ts = new Date(dateStr).getTime();
+    if (ts > 1_577_836_800_000 && !isNaN(ts)) return ts;
+  }
+
   // 2. 相对时间（如 "3 hours ago"、"2 days ago"、"更新于 5 小时前"）
   const relTs = parseRelativeTime(text);
   if (relTs > 0) return relTs;

@@ -214,13 +214,12 @@ async function scrapeMatrixport() {
         }
       }
 
-      // 严格模式：没有时间戳的消息直接丢弃，防止旧稿混入
+      // Matrixport 帮助中心列表页不显示日期，用首次入库时间（DB 去重保护防止重复）
       if (!timestamp) {
-        console.log(`  [Matrixport SKIP] No timestamp: ${title.substring(0, 40)}`);
-        return;
+        timestamp = Date.now();
       }
 
-      // 爬虫层年龄过滤：超过 24h 的直接丢弃
+      // 爬虫层年龄过滤：超过 24h 的直接丢弃（仅对有真实时间戳的条目生效）
       if (Date.now() - timestamp > FRESHNESS_MS) {
         console.log(`  [Matrixport SKIP] Too old (${Math.floor((Date.now() - timestamp) / 3600000)}h): ${title.substring(0, 40)}`);
         return;
@@ -305,23 +304,27 @@ async function scrapePRNewswire() {
       if (seenUrls.has(normalizedUrl)) return;
       seenUrls.add(normalizedUrl);
 
+      const rawText = $(el).text();
       const titleEl = $(el).find('h3, h2, .title, [class*="title"], [class*="headline"]').first();
-      let title     = (titleEl.length ? titleEl.text() : $(el).text()).trim();
-      
+      let title     = (titleEl.length ? titleEl.text() : rawText).trim();
+
       // 清理标题：移除日期前缀、多余空白、换行符、制表符
       title = title
         .replace(/^\d{1,2}\s+\w{3},\s+\d{4},?\s+[\d:]+\s*[A-Z]+\s*/i, '')  // 日期前缀
         .replace(/[\t\n\r]+/g, ' ')  // 换行/制表符转空格
         .replace(/\s+/g, ' ')        // 多个空格合并
         .trim();
-      
+
       const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
 
       if (!title || title.length < 15 || seenTitles.has(normalizedTitle)) return;
       seenTitles.add(normalizedTitle);
 
-      const timeStr = $(el).closest('.card, .row, article, li, .col-sm-12')
-        .find('small, time, [class*="date"], [class*="time"], h3 + p').first().text().trim();
+      // 时间戳优先从链接原始文本开头提取（格式 "12 Mar, 2026, 22:27 CST..."）
+      // 再 fallback 到传统 DOM 查找
+      const timeStr = rawText.trim().substring(0, 40) ||
+        $(el).closest('.card, .row, article, li, .col-sm-12, [class*="news"]')
+          .find('small, time, [class*="date"], [class*="time"], h3 + p').first().text().trim();
 
       // 严格时间解析 — 无时间戳则丢弃（避免旧稿混入）
       // 注意：不允许 HH:MM-only 匹配，防止旧文章被标为今天

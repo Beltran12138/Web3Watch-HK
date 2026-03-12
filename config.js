@@ -196,7 +196,7 @@ const SOURCE_CONFIGS = {
   'OSL':            { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   'Exio':           { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   'TechubNews':     { maxAgeHours: 24,  enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 48 },
-  'Matrixport':     { maxAgeHours: 24,  enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 24 },
+  'Matrixport':     { maxAgeHours: 24,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   'HashKeyGroup':   { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   'HashKeyExchange':{ maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   'WuBlock':        { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
