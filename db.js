@@ -293,27 +293,52 @@ async function getStats(since = 0) {
 }
 
 async function getStatsFromSupabase(since = 0) {
-  console.log('[getStatsFromSupabase] Called, supabase:', !!supabase, 'USE_SUPABASE:', USE_SUPABASE);
   if (!supabase) {
-    console.log('[getStatsFromSupabase] No supabase client');
     return { total: 0, important: 0, categories: [], sources: [] };
   }
   
   const sinceTs = since || (Date.now() - 7 * 24 * 3600 * 1000);
   
   try {
-    const [{ count: total }, { count: important }, { data: categories }, { data: sources }] = await Promise.all([
+    // Supabase JS client doesn't support GROUP BY — fetch counts + raw columns, aggregate in JS
+    const [
+      { count: total },
+      { count: important },
+      { data: catRows },
+      { data: srcRows },
+    ] = await Promise.all([
       supabase.from('news').select('*', { count: 'exact', head: true }),
       supabase.from('news').select('*', { count: 'exact', head: true }).eq('is_important', 1),
-      supabase.from('news').select('business_category, count').gte('timestamp', sinceTs).neq('business_category', ''),
-      supabase.from('news').select('source, count').limit(30)
+      supabase.from('news').select('business_category').gte('timestamp', sinceTs).neq('business_category', ''),
+      supabase.from('news').select('source'),
     ]);
+
+    // Aggregate categories client-side
+    const catMap = {};
+    (catRows || []).forEach(r => {
+      const c = r.business_category;
+      if (c) catMap[c] = (catMap[c] || 0) + 1;
+    });
+    const categories = Object.entries(catMap)
+      .map(([business_category, n]) => ({ business_category, n }))
+      .sort((a, b) => b.n - a.n);
+
+    // Aggregate sources client-side
+    const srcMap = {};
+    (srcRows || []).forEach(r => {
+      const s = r.source;
+      if (s) srcMap[s] = (srcMap[s] || 0) + 1;
+    });
+    const sources = Object.entries(srcMap)
+      .map(([source, n]) => ({ source, n }))
+      .sort((a, b) => b.n - a.n)
+      .slice(0, 30);
     
     return {
       total: total || 0,
       important: important || 0,
-      categories: (categories || []).map(c => ({ business_category: c.business_category, n: c.count })),
-      sources: (sources || []).map(s => ({ source: s.source, n: s.count }))
+      categories,
+      sources,
     };
   } catch (e) {
     console.error('[getStatsFromSupabase]', e.message);
@@ -588,14 +613,30 @@ async function canPushMessage(source, title, timestamp, cooldownHours = 24) {
 async function checkIfSent(url, nTitle) {
   if (USE_SUPABASE && supabase) {
     try {
-      const { data, error } = await supabase
-        .from('news')
-        .select('sent_to_wecom')
-        .or(`url.eq."${url}",normalized_title.eq."${nTitle}"`)
-        .eq('sent_to_wecom', 1)
-        .limit(1)
-        .maybeSingle();
-      return !!data;
+      // Use separate .eq() filters combined via Supabase .or() with safe column filters
+      // Avoid string interpolation to prevent PostgREST filter injection
+      let found = false;
+      if (url) {
+        const { data } = await supabase
+          .from('news')
+          .select('sent_to_wecom')
+          .eq('url', url)
+          .eq('sent_to_wecom', 1)
+          .limit(1)
+          .maybeSingle();
+        if (data) found = true;
+      }
+      if (!found && nTitle) {
+        const { data } = await supabase
+          .from('news')
+          .select('sent_to_wecom')
+          .eq('normalized_title', nTitle)
+          .eq('sent_to_wecom', 1)
+          .limit(1)
+          .maybeSingle();
+        if (data) found = true;
+      }
+      return found;
     } catch (e) {
       return false;
     }

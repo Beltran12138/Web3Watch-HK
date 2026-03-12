@@ -1165,20 +1165,20 @@ function checkImportance(item) {
   const title = item.title;
   const source = item.source;
   const titleLower = title.toLowerCase();
-  const sourceUpper = source.toUpperCase();
+  const titleUpper = title.toUpperCase();
 
   // 🚫 BLOCK_LIST: 不推送 (from config)
   if (WECOM_BLOCK_SOURCES.has(source)) {
     return 0;
   }
 
-  // ✅ HK_SOURCES: 香港板块全部推送 (from config)
-  if (HK_SOURCES.has(sourceUpper)) {
+  // ✅ HK_SOURCES: 香港板块全部推送 (from config) — use original case
+  if (HK_SOURCES.has(source)) {
     return 1;
   }
 
-  // ⚠️ PRNewswire: 仅香港相关或头部离岸所 (from config)
-  if (sourceUpper === 'PRNEWswire') {
+  // ⚠️ PRNewswire: 仅香港相关或头部离岸所 (from config) — use original case
+  if (source === 'PRNewswire') {
     const isHKRelated = PR_HK_COMPANIES.some(c => titleLower.includes(c));
     const isTopExchange = PR_TOP_EXCHANGES.some(e => titleLower.includes(e));
     
@@ -1188,18 +1188,21 @@ function checkImportance(item) {
     return 0;
   }
 
-  // ⚠️ MAINSTREAM_EXCHANGES: 排除上币/链上类后推送 (from config)
-  if (MAINSTREAM_EXCHANGES.has(sourceUpper)) {
+  // ⚠️ MAINSTREAM_EXCHANGES: 排除上币/链上类后推送 (from config) — use original case
+  if (MAINSTREAM_EXCHANGES.has(source)) {
     // 排除关键词 (from config)
     const shouldExclude = EXCHANGE_EXCLUDE_KEYWORDS.some(kw => titleLower.includes(kw));
     if (shouldExclude) {
       return 0;
     }
-    return 1;
+    if (EXCHANGE_MAJOR_KEYWORDS.some(kw => titleUpper.includes(kw))) return 1;
+    if ((title.includes('维护') || title.includes('升级')) && (title.includes('全站') || title.includes('系统') || !title.includes('-'))) {
+      return 1;
+    }
+    return 0;
   }
 
-  // 规则 1: 香港 (HK) 相关政策、牌照、业务进展
-  const HK_KEYWORDS = ['香港', 'HK', 'HONG KONG', '牌照', '监管', 'VASP', 'SFC', '证监会'];
+  // 规则 1: 香港 (HK) 相关政策、牌照、业务进展 — use imported HK_KEYWORDS from config
   if (item.category === 'HK' || HK_KEYWORDS.some(k => title.includes(k))) {
     return 1;
   }

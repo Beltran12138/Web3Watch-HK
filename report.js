@@ -43,17 +43,37 @@ function formatDateBJ(ts) {
 // ── 数据获取 ──────────────────────────────────────────────────────────────────
 async function fetchNewsForReport(since, limit = 500) {
   if (USE_SUPABASE && supabase) {
-    const { data, error } = await supabase
-      .from('news')
-      .select('*')
-      .gte('timestamp', since)
-      .order('alpha_score', { ascending: false })
-      .order('timestamp',    { ascending: false })
-      .limit(limit);
-    if (error) { console.error('[Report] Supabase error:', error.message); return []; }
-    return data || [];
+    try {
+      // 先尝试按 alpha_score 排序（如果列存在）
+      let query = supabase
+        .from('news')
+        .select('*')
+        .gte('timestamp', since)
+        .order('timestamp', { ascending: false })
+        .limit(limit);
+      
+      const { data, error } = await query;
+      
+      if (error) {
+        // 如果失败，可能是 alpha_score 列不存在，尝试只用 timestamp 排序
+        console.log('[Report] Retrying without alpha_score sort...');
+        const { data: data2, error: error2 } = await supabase
+          .from('news')
+          .select('*')
+          .gte('timestamp', since)
+          .order('timestamp', { ascending: false })
+          .limit(limit);
+        if (error2) { console.error('[Report] Supabase error:', error2.message); return []; }
+        return data2 || [];
+      }
+      return data || [];
+    } catch (e) {
+      console.error('[Report] Supabase fetch error:', e.message);
+      return [];
+    }
   }
   if (!db) return [];
+  // SQLite 使用 alpha_score（本地数据库有该列）
   return db.prepare(
     'SELECT * FROM news WHERE timestamp > ? ORDER BY alpha_score DESC, timestamp DESC LIMIT ?'
   ).all(since, limit);
@@ -108,15 +128,32 @@ function buildStatsPanel(items, period = '今日') {
 // ═══════════════════════════════════════════════════════════════════════
 async function runDailyReport(dryRun = false) {
   console.log('[DailyReport] Start…');
+  console.log(`[DailyReport] dryRun=${dryRun}, Time: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`);
+  
   const since   = getTodayMidnightBJ();
   const dateStr = formatDateBJ(Date.now());
-  const rawRows = await fetchNewsForReport(since);
+  console.log(`[DailyReport] Fetching news since: ${new Date(since).toISOString()}`);
+  
+  let rawRows = [];
+  try {
+    rawRows = await fetchNewsForReport(since);
+    console.log(`[DailyReport] Fetched ${rawRows.length} raw rows`);
+  } catch (err) {
+    console.error('[DailyReport] Error fetching news:', err.message);
+    return null;
+  }
 
   // 双层过滤：通用过滤 + 报告噪声过滤
   let rows = filterNewsItems(rawRows).filter(r => !isReportNoise(r));
+  console.log(`[DailyReport] After filtering: ${rows.length} rows`);
 
   if (rows.length === 0) {
     console.log('[DailyReport] No qualifying news today.');
+    // 即使没有新闻，也发送一个空报告通知，避免用户以为系统故障
+    if (!dryRun) {
+      const { sendReportToWeCom } = require('./wecom');
+      await sendReportToWeCom(`📋 **Alpha-Radar 行业日报 | ${dateStr}**\n\n今日暂无符合条件的行业动态。\n\n---\n*Alpha-Radar 战略分析引擎*`, '日报');
+    }
     return null;
   }
 

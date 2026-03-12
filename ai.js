@@ -38,9 +38,11 @@ async function callDeepSeek(messages, { temperature = 0.1, max_tokens = 2000, js
       });
       return res.data?.choices?.[0]?.message?.content?.trim() || null;
     } catch (err) {
-      if (err.response?.status === 429 && attempt < 3) {
-        const wait = attempt * 8000;
-        console.warn(`[AI] Rate limit, retry in ${wait / 1000}s…`);
+      const isRateLimit  = err.response?.status === 429;
+      const isNetworkErr = !err.response && ['ECONNRESET', 'ETIMEDOUT', 'ECONNABORTED', 'ENOTFOUND'].some(c => err.code === c || err.message?.includes(c));
+      if ((isRateLimit || isNetworkErr) && attempt < 3) {
+        const wait = attempt * (isRateLimit ? 10000 : 5000);
+        console.warn(`[AI] ${isRateLimit ? 'Rate limit' : 'Network error (' + err.code + ')'}, retry in ${wait / 1000}s… (attempt ${attempt}/3)`);
         await new Promise(r => setTimeout(r, wait));
       } else {
         console.error('[AI]', err.response?.data?.error?.message || err.message);

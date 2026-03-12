@@ -226,5 +226,10 @@ if (require.main === module) {
   });
 }
 
-// Vercel Serverless 导出
-module.exports = createApp();
+// Vercel Serverless 导出 - 需要导出 handler 函数
+const appInstance = createApp();
+
+// Vercel serverless handler
+module.exports = (req, res) => {
+  return appInstance(req, res);
+};

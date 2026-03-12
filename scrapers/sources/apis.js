@@ -95,20 +95,41 @@ async function scrapeTechubNews() {
     const seenTitles = new Set();
 
     articles.forEach(item => {
-      const timestamp = parseTimestamp(item.created_at || item.publish_time);
-      if (!timestamp) return; // 严格模式：无时间戳直接跳过
+      // TechubNews API 返回的时间戳可能是秒级（10位）或毫秒级（13位）
+      let rawTime = item.created_at || item.publish_time;
+      let timestamp = 0;
+      
+      if (rawTime) {
+        // 处理字符串数字
+        if (typeof rawTime === 'string' && /^\d+$/.test(rawTime)) {
+          rawTime = parseInt(rawTime, 10);
+        }
+        // 秒级转毫秒
+        if (typeof rawTime === 'number' && rawTime < 10000000000) {
+          rawTime = rawTime * 1000;
+        }
+        timestamp = parseTimestamp(rawTime);
+      }
+      
+      if (!timestamp) {
+        console.log(`  [TechubNews SKIP] No valid timestamp: ${(item.title || '').substring(0, 40)}`);
+        return;
+      }
 
       // 修复 URL 格式：使用 article 而非 articleDetail
       const actualUrl = item.link || item.url || `https://www.techub.news/article/${item.uid || item.id}`;
       const normalizedUrl = actualUrl.split('?')[0].replace(/#.*$/, '').replace(/\/$/, '');
-      const normalizedTitle = (item.title || '').toLowerCase().replace(/\s+/g, ' ').trim();
+      
+      // 清理标题中的多余空白
+      let title = (item.title || '').replace(/\s+/g, ' ').trim();
+      const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
 
       if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
       seenUrls.add(normalizedUrl);
       seenTitles.add(normalizedTitle);
 
       items.push(makeItem({
-        title:     item.title || '',
+        title,
         content:   `Original Link: ${item.original_link || 'N/A'}\n${item.brief || ''}`,
         source:    'TechubNews',
         url:       actualUrl,
@@ -145,8 +166,11 @@ async function scrapeMatrixport() {
 
     $('a[href*="/zh-CN/articles/"]').each((_, el) => {
       const href  = $(el).attr('href') || '';
-      const title = $(el).text().trim();
+      let title = $(el).text().trim();
       if (!title || title.length < 5) return;
+      
+      // 清理标题中的多余空白字符
+      title = title.replace(/\s+/g, ' ').trim();
       
       const fullUrl = href.startsWith('http') ? href : `https://helpcenter.matrixport.com${href}`;
       const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
@@ -159,12 +183,24 @@ async function scrapeMatrixport() {
 
       // 尝试提取时间戳（从列表项容器中查找）
       let timestamp = 0;
-      const container = $(el).closest('.article-list-item, li, .card');
+      const container = $(el).closest('.article-list-item, li, .card, article');
       if (container.length) {
-        const timeText = container.find('.meta-item, .date, time, .updated-at').first().text().trim();
+        const timeText = container.find('.meta-item, .date, time, .updated-at, [class*="date"], [class*="time"]').first().text().trim();
         if (timeText) {
           timestamp = extractTimestamp(timeText);
         }
+      }
+      
+      // 如果容器内没找到，尝试从标题附近找
+      if (!timestamp) {
+        const parentText = $(el).parent().text();
+        timestamp = extractTimestamp(parentText);
+      }
+
+      // 严格模式：没有时间戳的消息直接丢弃，防止旧稿混入
+      if (!timestamp) {
+        console.log(`  [Matrixport SKIP] No timestamp: ${title.substring(0, 40)}`);
+        return;
       }
 
       items.push(makeItem({ 
@@ -172,7 +208,7 @@ async function scrapeMatrixport() {
         source: 'Matrixport', 
         url: fullUrl, 
         category: 'Announcement', 
-        timestamp: timestamp || 0 // 如果没有找到时间戳，设为 0 以触发 index.js 中的 fallback
+        timestamp
       }));
     });
     console.log(`[Scraper] Matrixport: ${items.length}`);
@@ -248,8 +284,14 @@ async function scrapePRNewswire() {
 
       const titleEl = $(el).find('h3, h2, .title, [class*="title"], [class*="headline"]').first();
       let title     = (titleEl.length ? titleEl.text() : $(el).text()).trim();
-      // 移除日期前缀
-      title         = title.replace(/^\d{1,2}\s+\w{3},\s+\d{4},?\s+[\d:]+\s*[A-Z]+\s*/i, '').trim();
+      
+      // 清理标题：移除日期前缀、多余空白、换行符、制表符
+      title = title
+        .replace(/^\d{1,2}\s+\w{3},\s+\d{4},?\s+[\d:]+\s*[A-Z]+\s*/i, '')  // 日期前缀
+        .replace(/[\t\n\r]+/g, ' ')  // 换行/制表符转空格
+        .replace(/\s+/g, ' ')        // 多个空格合并
+        .trim();
+      
       const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
 
       if (!title || title.length < 15 || seenTitles.has(normalizedTitle)) return;
@@ -261,7 +303,10 @@ async function scrapePRNewswire() {
       // 严格时间解析 — 无时间戳则丢弃（避免旧稿混入）
       let timestamp = extractTimestamp(timeStr);
       
-      if (!timestamp) return;
+      if (!timestamp) {
+        console.log(`  [PRNewswire SKIP] No timestamp: ${title.substring(0, 40)}`);
+        return;
+      }
 
       items.push(makeItem({ title, source: 'PRNewswire', url: fullUrl, category: 'PR', timestamp }));
     });

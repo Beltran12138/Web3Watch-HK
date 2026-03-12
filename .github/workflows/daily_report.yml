@@ -29,4 +29,6 @@ jobs:
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           WECOM_WEBHOOK_URL: ${{ secrets.WECOM_WEBHOOK_URL }}
-          USE_SUPABASE: true
+          USE_SUPABASE: 'true'
+          # 添加调试日志
+          DEBUG: 'true'
