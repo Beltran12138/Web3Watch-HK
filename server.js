@@ -5,14 +5,14 @@ let app;
 // 初始化 app 的函数
 function createApp() {
   if (app) return app;
-  
+
   const express = require('express');
   const cors    = require('cors');
   const cron    = require('node-cron');
   const path    = require('path');
 
-  let getNews, getStats, runAllScrapers, runDailyReport, runWeeklyReport, SERVER;
-  
+  let getNews, getStats, runAllScrapers, runDailyReport, runWeeklyReport, SERVER, DATA_RETENTION;
+
   try {
     const db = require('./db');
     getNews = db.getNews;
@@ -23,7 +23,7 @@ function createApp() {
     getNews = async () => [];
     getStats = async () => ({ total: 0, important: 0, sources: [], categories: [] });
   }
-  
+
   try {
     const scrapers = require('./scrapers/index');
     runAllScrapers = scrapers.runAllScrapers;
@@ -31,7 +31,7 @@ function createApp() {
     console.error('[server] Failed to load scrapers:', e.message);
     runAllScrapers = async () => [];
   }
-  
+
   try {
     const report = require('./report');
     runDailyReport = report.runDailyReport;
@@ -41,17 +41,19 @@ function createApp() {
     runDailyReport = async () => 'Report unavailable';
     runWeeklyReport = async () => 'Report unavailable';
   }
-  
+
   try {
-    SERVER = require('./config').SERVER;
+    const config = require('./config');
+    SERVER = config.SERVER;
+    DATA_RETENTION = config.DATA_RETENTION;
   } catch (e) {
     console.error('[server] Failed to load config:', e.message);
-    SERVER = { 
-      PORT: 3001, 
-      SCRAPE_HIGH_CRON: '*/5 * * * *', 
-      SCRAPE_LOW_CRON: '*/30 * * * *', 
-      DAILY_REPORT_CRON: '0 18 * * *', 
-      WEEKLY_REPORT_CRON: '0 18 * * 5' 
+    SERVER = {
+      PORT: 3001,
+      SCRAPE_HIGH_CRON: '*/5 * * * *',
+      SCRAPE_LOW_CRON: '*/30 * * * *',
+      DAILY_REPORT_CRON: '0 18 * * *',
+      WEEKLY_REPORT_CRON: '0 18 * * 5'
     };
   }
 
@@ -61,6 +63,29 @@ function createApp() {
 
   // ── 启动时间，用于 /api/health ──────────────────────────────────────────────
   const START_TIME = new Date();
+
+  // ── 初始化数据生命周期管理 ─────────────────────────────────────────────────
+  let lifecycleManager = null;
+  try {
+    const { DataLifecycleManager } = require('./data-lifecycle');
+    const dbModule = require('./db');
+    if (dbModule.db) {
+      lifecycleManager = new DataLifecycleManager(dbModule.db);
+      console.log('[server] Data lifecycle manager initialized');
+    }
+  } catch (e) {
+    console.warn('[server] Failed to init lifecycle manager:', e.message);
+  }
+
+  // ── 初始化推送管理器 ───────────────────────────────────────────────────────
+  let pushManager = null;
+  try {
+    const { pushManager: pm } = require('./push-channel');
+    pushManager = pm;
+    console.log('[server] Push manager initialized with', pushManager.getEnabledChannels().length, 'channels');
+  } catch (e) {
+    console.warn('[server] Failed to init push manager:', e.message);
+  }
 
   // ── 简单 API Key 保护（可选，设置 API_SECRET 环境变量后生效）──────────────
   function apiKeyGuard(req, res, next) {
@@ -73,7 +98,14 @@ function createApp() {
     next();
   }
 
-  app.use(cors());
+  // ── CORS 配置 ──────────────────────────────────────────────────────────────
+  const corsOptions = {
+    origin: process.env.CORS_ORIGIN || '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key'],
+  };
+
+  app.use(cors(corsOptions));
   app.use(express.json());
   app.use(express.static(path.join(__dirname, 'public')));
 
@@ -81,6 +113,28 @@ function createApp() {
   const healthHandler = async (req, res) => {
     try {
       const stats = await getStats();
+
+      // 获取 AI 状态
+      let aiStatus = null;
+      try {
+        const { getAIStatus } = require('./ai-enhanced');
+        aiStatus = getAIStatus();
+      } catch (e) {
+        // ignore
+      }
+
+      // 获取推送渠道状态
+      let pushStatus = null;
+      if (pushManager) {
+        pushStatus = pushManager.getStatus();
+      }
+
+      // 获取存储统计
+      let storageStats = null;
+      if (lifecycleManager) {
+        storageStats = lifecycleManager.getStorageStats();
+      }
+
       res.json({
         status: 'ok',
         uptime: Math.floor((Date.now() - START_TIME) / 1000),
@@ -90,6 +144,9 @@ function createApp() {
           important: stats.important,
           sources: stats.sources,
         },
+        ai: aiStatus,
+        push: pushStatus,
+        storage: storageStats,
         version: require('./package.json').version,
       });
     } catch (e) {
@@ -138,6 +195,128 @@ function createApp() {
   };
   app.get('/api/stats', statsHandler);
   app.get('/stats', statsHandler);
+
+  // ── 归档数据查询接口 ───────────────────────────────────────────────────────
+  app.get('/api/archive', async (req, res) => {
+    if (!lifecycleManager) {
+      return res.status(503).json({ success: false, error: 'Lifecycle manager not available' });
+    }
+
+    try {
+      const options = {
+        source: req.query.source,
+        startDate: req.query.startDate,
+        endDate: req.query.endDate,
+        limit: Math.min(500, parseInt(req.query.limit, 10) || 100),
+      };
+
+      const data = lifecycleManager.queryArchive(options);
+      res.json({ success: true, count: data.length, data });
+    } catch (err) {
+      console.error('[API /archive]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── 统计数据查询接口 ───────────────────────────────────────────────────────
+  app.get('/api/history-stats', async (req, res) => {
+    if (!lifecycleManager) {
+      return res.status(503).json({ success: false, error: 'Lifecycle manager not available' });
+    }
+
+    try {
+      const options = {
+        source: req.query.source,
+        startDate: req.query.startDate,
+        endDate: req.query.endDate,
+      };
+
+      const data = lifecycleManager.queryStats(options);
+      res.json({ success: true, count: data.length, data });
+    } catch (err) {
+      console.error('[API /history-stats]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── 数据清理接口（需要 API Key）────────────────────────────────────────────
+  app.post('/api/cleanup', apiKeyGuard, async (req, res) => {
+    if (!lifecycleManager) {
+      return res.status(503).json({ success: false, error: 'Lifecycle manager not available' });
+    }
+
+    try {
+      const stats = await lifecycleManager.cleanup();
+      res.json({ success: true, stats });
+    } catch (err) {
+      console.error('[API /cleanup]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── 推送渠道状态接口 ───────────────────────────────────────────────────────
+  app.get('/api/push-status', (req, res) => {
+    if (!pushManager) {
+      return res.json({ success: true, channels: [] });
+    }
+
+    res.json({
+      success: true,
+      channels: pushManager.getEnabledChannels(),
+    });
+  });
+
+  // ── 测试推送接口（需要 API Key）────────────────────────────────────────────
+  app.post('/api/push-test', apiKeyGuard, async (req, res) => {
+    if (!pushManager) {
+      return res.status(503).json({ success: false, error: 'Push manager not available' });
+    }
+
+    const { channel, message } = req.body;
+    const testMessage = message || {
+      title: 'Alpha Radar 测试消息',
+      content: '这是一条测试推送消息。\n\n如果您收到此消息，说明推送配置正确。\n\n时间：' + new Date().toLocaleString('zh-CN'),
+      type: 'markdown',
+    };
+
+    try {
+      let result;
+      if (channel) {
+        result = await pushManager.pushTo(channel, testMessage);
+      } else {
+        result = await pushManager.pushToAll(testMessage);
+      }
+
+      res.json({ success: true, result });
+    } catch (err) {
+      console.error('[API /push-test]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── Twitter 抓取状态接口 ───────────────────────────────────────────────────
+  app.get('/api/twitter-status', (req, res) => {
+    try {
+      const { getStats } = require('./scrapers/sources/twitter-enhanced');
+      const stats = getStats();
+      res.json({ success: true, stats });
+    } catch (err) {
+      console.error('[API /twitter-status]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── AI 状态接口 ────────────────────────────────────────────────────────────
+  app.get('/api/ai-status', (req, res) => {
+    try {
+      const { getAIStatus } = require('./ai-enhanced');
+      const status = getAIStatus();
+      res.json({ success: true, status });
+    } catch (err) {
+      console.error('[API /ai-status]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
 
   // ── 以下写操作需要 API Key 保护 ────────────────────────────────────────────
   app.post('/api/refresh', apiKeyGuard, async (req, res) => {
@@ -193,10 +372,27 @@ function createApp() {
       console.log('[CRON] Weekly report (Friday 18:00 BJT)…');
       try { await runWeeklyReport(false); } catch (e) { console.error('[CRON] Weekly report error:', e.message); }
     }, { timezone: 'Asia/Shanghai' });
+
+    // 数据自动清理任务
+    if (DATA_RETENTION?.AUTO_CLEANUP_CRON && lifecycleManager) {
+      cron.schedule(DATA_RETENTION.AUTO_CLEANUP_CRON, async () => {
+        console.log('[CRON] Running data cleanup…');
+        try {
+          const stats = await lifecycleManager.cleanup();
+          console.log('[CRON] Cleanup completed:', stats);
+        } catch (e) {
+          console.error('[CRON] Cleanup error:', e.message);
+        }
+      });
+    }
   }
 
-  // ── SPA fallback ────────────────────────────────────────────────────────────
-  app.use((req, res) => {
+  // ── SPA fallback (只捕获非 API 路由) ───────────────────────────────────────
+  app.use((req, res, next) => {
+    // API 路由不应该被 SPA fallback 捕获
+    if (req.path.startsWith('/api/') || req.path.startsWith('/health') || req.path.startsWith('/news') || req.path.startsWith('/stats')) {
+      return res.status(404).json({ success: false, error: 'API endpoint not found' });
+    }
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
 
@@ -207,7 +403,7 @@ function createApp() {
 if (require.main === module) {
   const app = createApp();
   const PORT = app.locals.PORT || 3001;
-  
+
   app.listen(PORT, async () => {
     console.log(`[SERVER] Alpha Radar running on http://localhost:${PORT}`);
     const SERVER_CONFIG = require('./config').SERVER || {};

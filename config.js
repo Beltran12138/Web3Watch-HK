@@ -177,6 +177,24 @@ const DB = {
   NEWS_FETCH_LIMIT: 500,
 };
 
+// ── 数据生命周期管理 ──────────────────────────────────────────────────────────
+const DATA_RETENTION = {
+  // 热数据（7天）：完整字段，高频查询
+  HOT_DAYS: 7,
+
+  // 温数据（30天）：精简字段，归档存储
+  WARM_DAYS: 30,
+
+  // 冷数据（90天）：仅保留统计维度
+  COLD_DAYS: 90,
+
+  // 自动清理任务（Cron 表达式）
+  AUTO_CLEANUP_CRON: '0 2 * * *', // 每天凌晨2点
+
+  // 压缩阈值：内容字段超过此长度将被截断
+  CONTENT_COMPRESS_THRESHOLD: 200,
+};
+
 // ── 消息源级别配置 ────────────────────────────────────────────────────────────
 /**
  * 每个消息源的独立配置：
@@ -288,6 +306,7 @@ module.exports = {
   REPORT,
   WECOM,
   DB,
+  DATA_RETENTION,
   SERVER,
   SOURCE_CONFIGS,
   DEFAULT_SOURCE_CONFIG,
