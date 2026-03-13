@@ -125,8 +125,10 @@ async function scrapeTechubNews() {
         return;
       }
 
-      // 修复 URL 格式：使用 article 而非 articleDetail
-      const actualUrl = item.link || item.url || `https://www.techub.news/article/${item.uid || item.id}`;
+      // 修复 URL 格式：统一使用 /article/ 路径，避免 /articleDetail/ 造成的重复
+      let actualUrl = item.link || item.url || `https://www.techub.news/article/${item.uid || item.id}`;
+      // 标准化 TechubNews URL：将 /articleDetail/ 替换为 /article/
+      actualUrl = actualUrl.replace(/\/articleDetail\//, '/article/');
       const normalizedUrl = actualUrl.split('?')[0].replace(/#.*$/, '').replace(/\/$/, '');
       
       // 清理标题中的多余空白
@@ -299,7 +301,10 @@ async function scrapePRNewswire() {
       const href = $(el).attr('href');
       if (!href) return;
       
-      const fullUrl = href.startsWith('http') ? href : `https://www.prnewswire.com${href}`;
+      // 标准化 PRNewswire URL：统一域名，避免 apac 子域名造成的重复
+      let fullUrl = href.startsWith('http') ? href : `https://www.prnewswire.com${href}`;
+      // 将所有 PRNewswire 域名统一为 www.prnewswire.com
+      fullUrl = fullUrl.replace(/^https?:\/\/[^\/]*prnewswire\.com/, 'https://www.prnewswire.com');
       const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
       
       if (seenUrls.has(normalizedUrl)) return;
