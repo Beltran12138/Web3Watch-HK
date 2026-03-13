@@ -214,9 +214,10 @@ async function scrapeMatrixport() {
         }
       }
 
-      // Matrixport 帮助中心列表页不显示日期，用首次入库时间（DB 去重保护防止重复）
+      // 无法确定发布时间则直接跳过（避免帮助中心旧文章每次被当作新消息轰炸推送）
       if (!timestamp) {
-        timestamp = Date.now();
+        console.log(`  [Matrixport SKIP] No timestamp: ${title.substring(0, 40)}`);
+        return;
       }
 
       // 爬虫层年龄过滤：超过 24h 的直接丢弃（仅对有真实时间戳的条目生效）

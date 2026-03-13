@@ -75,30 +75,46 @@ async function scrapeBlockBeats() {
 // ── OSL ───────────────────────────────────────────────────────────────────────
 async function scrapeOSL() {
   console.log('[Scraper] OSL...');
-  const url  = 'https://www.osl.com/hk/announcement?channel=7rm1br';
+  const url  = 'https://www.osl.com/hk/press-release';
   const page = await newPage();
   try {
-    await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-    await page.waitForSelector(
-      'a[href*="/announcement/"], .ant-list-item, [class*="news"], [class*="article"]',
-      { timeout: 30000 }
-    ).catch(() => {});
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
+    await page.waitForSelector('a[href*="/press-release/"]', { timeout: 30000 }).catch(() => {});
     await sleep(5000);
 
     const items = await page.evaluate(() => {
       const results = [];
       const seen    = new Set();
-      document.querySelectorAll('a[href*="/announcement/"]').forEach(link => {
-        const title = (link.innerText || '').trim().split('\n')[0].trim();
+      document.querySelectorAll('a[href*="/press-release/"]').forEach(link => {
         const href  = link.href;
+        // 排除列表页自身
+        if (href.endsWith('/press-release') || href.endsWith('/press-release/')) return;
+        const rawText = (link.innerText || '').trim();
+        // 标题取第一行（日期在第二行），忽略纯日期行
+        const lines   = rawText.split('\n').map(s => s.trim()).filter(Boolean);
+        const title   = lines[0] || '';
         if (!title || title.length < 8 || seen.has(href)) return;
         seen.add(href);
-        const container  = link.closest('li,article,[class*="item"],[class*="card"]') || link.parentElement;
-        const dateMatch  = (container?.innerText || '').match(/\d{4}[.\/-]\d{1,2}[.\/-]\d{1,2}/);
-        // 严格模式：无日期直接跳过
-        if (!dateMatch) return;
-        const ts         = new Date(dateMatch[0].replace(/[./]/g, '-')).getTime();
-        if (isNaN(ts)) return;
+        // 尝试从链接文本或容器中找日期
+        // OSL格式示例："2月 26, 2026" / "Feb 26, 2026" / "2026-02-26"
+        const fullText = (link.closest('li,article,[class*="item"],[class*="card"]') || link.parentElement || link).innerText || rawText;
+        let ts = 0;
+        // 中文月份：1月-12月 DD, YYYY
+        const cnMatch = fullText.match(/(\d{1,2})\s*月\s*(\d{1,2}),?\s*(\d{4})/);
+        if (cnMatch) {
+          ts = new Date(parseInt(cnMatch[3]), parseInt(cnMatch[1]) - 1, parseInt(cnMatch[2])).getTime();
+        }
+        // 英文月份：Feb 26, 2026
+        if (!ts) {
+          const enMatch = fullText.match(/([A-Za-z]{3,})\s+(\d{1,2}),?\s+(\d{4})/);
+          if (enMatch) { const d = new Date(enMatch[0]); if (!isNaN(d.getTime())) ts = d.getTime(); }
+        }
+        // ISO格式：2026-02-26
+        if (!ts) {
+          const isoMatch = fullText.match(/(\d{4})[-\/](\d{1,2})[-\/](\d{1,2})/);
+          if (isoMatch) ts = new Date(isoMatch[0]).getTime();
+        }
+        if (!ts || isNaN(ts)) return; // 无日期跳过
         results.push({ title, source: 'OSL', url: href, category: 'Announcement', timestamp: ts, is_important: 0, content: '' });
       });
       return results.slice(0, 20);

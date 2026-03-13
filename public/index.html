@@ -175,7 +175,7 @@
     const [activeFilter, setActiveFilter] = useState('All');
     const [search, setSearch]           = useState('');
     const [searchInput, setSearchInput] = useState('');
-    const [timeRange, setTimeRange]     = useState('week'); // today|week|month|all
+    const [timeRange, setTimeRange]     = useState('month'); // today|week|month|all
     const [readIds, setReadIds]         = useState(new Set(JSON.parse(localStorage.getItem('readIds')||'[]')));
     const [bookmarks, setBookmarks]     = useState(new Set(JSON.parse(localStorage.getItem('bookmarks')||'[]')));
     const [syncCode, setSyncCode]       = useState(localStorage.getItem('syncCode') || '');

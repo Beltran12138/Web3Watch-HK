@@ -63,7 +63,7 @@ async function sendToWeCom(item) {
           {
             type: 1,
             url: DASHBOARD_URL,
-            title: item.bitv_action ? `🚀 建议: ${item.bitv_action}` : "前往大盘核实"
+            title: item.bitv_action ? `建议: ${item.bitv_action}` : "查看情报看板"
           }
         ],
         card_action: {
