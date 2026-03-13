@@ -10,8 +10,11 @@ const DASHBOARD_URL = process.env.DASHBOARD_URL || 'http://localhost:3001';
 
 /**
  * 推送单条消息到企业微信
+ * @param {Object} item - 新闻条目
+ * @param {Object} options - 推送选项
+ * @param {boolean} options.urgent - 是否为紧急消息（alpha_score >= CRITICAL_SCORE_THRESHOLD）
  */
-async function sendToWeCom(item) {
+async function sendToWeCom(item, options = {}) {
   if (!WECOM_WEBHOOK_URL) {
     console.warn('[WeCom] No Webhook URL found, skipping push.');
     return;
@@ -19,6 +22,7 @@ async function sendToWeCom(item) {
 
   // 视觉增强：根据评分和影响类型选择 Emoji
   const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡');
+  const urgentPrefix = options.urgent ? '🚨 [紧急] ' : '';
   let impactColor = 3; // 默认灰色
   let impactText = item.impact || '待评估';
   if (item.impact === '利好') impactColor = 1; // 红色（股票红涨）或蓝色，看语境，这里企微模板里 1 是红色/重要，2 是绿色/打分，3 灰色
@@ -35,7 +39,7 @@ async function sendToWeCom(item) {
           desc_color: 1
         },
         main_title: {
-          title: item.title,
+          title: urgentPrefix + item.title,
           desc: `${scoreEmoji} ${item.business_category || '快讯'} | 价值分: ${item.alpha_score || (item.is_important ? 85 : 50)}`
         },
         sub_title_text: item.detail || '（暂无摘要）',

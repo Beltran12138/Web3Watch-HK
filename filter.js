@@ -111,6 +111,65 @@ function isSimilarTitle(t1, t2) {
 }
 
 /**
+ * 跨源语义去重：基于标题字符级 Jaccard 相似度
+ * 同一事件被多家媒体报道时，保留 alpha_score 最高的版本
+ */
+function jaccardSimilarity(title1, title2) {
+  if (!title1 || !title2) return 0;
+  const set1 = new Set(title1.split(''));
+  const set2 = new Set(title2.split(''));
+  const intersection = [...set1].filter(c => set2.has(c)).length;
+  return intersection / (set1.size + set2.size - intersection);
+}
+
+/**
+ * 对已过滤的条目列表进行跨源语义去重
+ * 相似度 > 0.6 视为同一事件，保留 alpha_score 最高的版本
+ */
+function semanticDedup(items, threshold = 0.6) {
+  const kept = [];
+  const removed = new Set();
+
+  for (let i = 0; i < items.length; i++) {
+    if (removed.has(i)) continue;
+    let bestIdx = i;
+
+    for (let j = i + 1; j < items.length; j++) {
+      if (removed.has(j)) continue;
+      // Only check cross-source duplicates
+      if (items[bestIdx].source === items[j].source) continue;
+
+      const cleanA = dedupKeyWithTitle(items[bestIdx].title);
+      const cleanB = dedupKeyWithTitle(items[j].title);
+      const sim = jaccardSimilarity(cleanA, cleanB);
+
+      if (sim > threshold) {
+        // Keep the one with higher alpha_score
+        const scoreA = items[bestIdx].alpha_score || 0;
+        const scoreB = items[j].alpha_score || 0;
+        if (scoreB > scoreA) {
+          removed.add(bestIdx);
+          bestIdx = j;
+        } else {
+          removed.add(j);
+        }
+        console.log(`  [SEMANTIC DUP] ${items[j].source}: "${items[j].title.substring(0, 30)}" ≈ ${items[i].source} (sim=${sim.toFixed(2)})`);
+      }
+    }
+
+    if (!removed.has(bestIdx)) {
+      kept.push(items[bestIdx]);
+      // Mark bestIdx as consumed so it won't be processed again when outer loop reaches it
+      if (bestIdx !== i) {
+        removed.add(bestIdx);
+      }
+    }
+  }
+
+  return kept;
+}
+
+/**
  * 判断单条新闻是否为垃圾数据
  */
 function isJunkItem(item) {
@@ -161,13 +220,14 @@ function isReportNoise(item) {
  * - 源级别时间戳验证
  * - 内容指纹去重（strict 模式）
  * - URL 规范化去重
+ * - 跨源语义去重（Jaccard 相似度）
  */
 function filterNewsItems(items) {
   const seenUrls = new Set();
   const seenTitles = new Map(); // title -> source (用于跨源去重)
   const seenFullKeys = new Set(); // strict 模式使用
   
-  return items.filter(item => {
+  const filtered = items.filter(item => {
     // 1. 基础垃圾过滤
     if (isJunkItem(item)) return false;
     
@@ -227,6 +287,13 @@ function filterNewsItems(items) {
     
     return true;
   });
+
+  // 跨源语义去重
+  const deduped = semanticDedup(filtered);
+  if (deduped.length < filtered.length) {
+    console.log(`  [SEMANTIC DEDUP] ${filtered.length} → ${deduped.length} (removed ${filtered.length - deduped.length} cross-source duplicates)`);
+  }
+  return deduped;
 }
 
 module.exports = { 
@@ -236,4 +303,6 @@ module.exports = {
   validateTimestamp,
   getSourceConfig,
   fullDedupKey,
+  jaccardSimilarity,
+  semanticDedup,
 };

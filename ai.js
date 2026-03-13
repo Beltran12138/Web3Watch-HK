@@ -9,7 +9,7 @@
  */
 
 const axios = require('axios');
-const { BUSINESS_CATEGORIES, COMPETITOR_CATEGORIES, REPORT } = require('./config');
+const { BUSINESS_CATEGORIES, COMPETITOR_CATEGORIES, REPORT, AI_COST } = require('./config');
 require('dotenv').config();
 
 const API_KEY = process.env.DEEPSEEK_API_KEY;
@@ -18,9 +18,68 @@ const API_URL = 'https://api.deepseek.com/chat/completions';
 const CAT_OPTIONS      = BUSINESS_CATEGORIES.join(', ');
 const COMP_OPTIONS     = COMPETITOR_CATEGORIES.join(', ');
 
+// ── AI 成本追踪 ────────────────────────────────────────────────────────────────
+const aiCostTracker = {
+  dailyTokens: 0,
+  dailyCostUSD: 0,
+  lastResetDate: new Date().toDateString(),
+  totalCalls: 0,
+  alertSent: false,
+
+  reset() {
+    const today = new Date().toDateString();
+    if (today !== this.lastResetDate) {
+      this.dailyTokens = 0;
+      this.dailyCostUSD = 0;
+      this.lastResetDate = today;
+      this.alertSent = false;
+    }
+  },
+
+  track(tokens) {
+    this.reset();
+    this.dailyTokens += tokens;
+    this.dailyCostUSD = (this.dailyTokens / 1000) * (AI_COST?.COST_PER_1K_TOKENS || 0.001);
+    this.totalCalls++;
+
+    // Alert if approaching budget
+    const budget = AI_COST?.DAILY_BUDGET_USD || 10;
+    const threshold = AI_COST?.ALERT_THRESHOLD || 0.8;
+    if (!this.alertSent && this.dailyCostUSD >= budget * threshold) {
+      console.warn(`[AI COST] WARNING: Daily cost $${this.dailyCostUSD.toFixed(4)} approaching budget $${budget} (${(this.dailyCostUSD / budget * 100).toFixed(1)}%)`);
+      this.alertSent = true;
+    }
+  },
+
+  isOverBudget() {
+    this.reset();
+    const budget = AI_COST?.DAILY_BUDGET_USD || 10;
+    return this.dailyCostUSD >= budget;
+  },
+
+  getStatus() {
+    this.reset();
+    const budget = AI_COST?.DAILY_BUDGET_USD || 10;
+    return {
+      dailyTokens: this.dailyTokens,
+      dailyCostUSD: this.dailyCostUSD.toFixed(4),
+      budgetUSD: budget,
+      budgetUsedPercent: (this.dailyCostUSD / budget * 100).toFixed(1),
+      totalCalls: this.totalCalls,
+      isOverBudget: this.dailyCostUSD >= budget,
+    };
+  },
+};
+
 // ── 底层调用（含重试）─────────────────────────────────────────────────────────
 async function callDeepSeek(messages, { temperature = 0.1, max_tokens = 2000, json = false } = {}) {
   if (!API_KEY) { console.warn('[AI] No DEEPSEEK_API_KEY, skipping.'); return null; }
+
+  // Check daily budget
+  if (aiCostTracker.isOverBudget()) {
+    console.warn('[AI] Daily budget exceeded, skipping API call.');
+    return null;
+  }
 
   for (let attempt = 1; attempt <= 3; attempt++) {
     try {
@@ -36,6 +95,13 @@ async function callDeepSeek(messages, { temperature = 0.1, max_tokens = 2000, js
         headers: { Authorization: `Bearer ${API_KEY}`, 'Content-Type': 'application/json' },
         timeout: 45000,
       });
+
+      // Track token usage
+      const usage = res.data?.usage;
+      if (usage) {
+        aiCostTracker.track(usage.total_tokens || 0);
+      }
+
       return res.data?.choices?.[0]?.message?.content?.trim() || null;
     } catch (err) {
       const isRateLimit  = err.response?.status === 429;
@@ -270,4 +336,4 @@ ${catBar}
   return await callDeepSeek([{ role: 'user', content: prompt }], { temperature: 0.4, max_tokens: 2000 });
 }
 
-module.exports = { processWithAI, batchClassify, generateDailySummary, generateWeeklySummary };
+module.exports = { processWithAI, batchClassify, generateDailySummary, generateWeeklySummary, aiCostTracker };

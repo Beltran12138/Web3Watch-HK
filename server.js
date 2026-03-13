@@ -196,6 +196,154 @@ function createApp() {
   app.get('/api/stats', statsHandler);
   app.get('/stats', statsHandler);
 
+  // ── 趋势数据接口（按天统计各 business_category 的消息量）──────────────────
+  app.get('/api/trend', async (req, res) => {
+    const days = Math.min(90, Math.max(1, parseInt(req.query.days, 10) || 7));
+    const category = (req.query.category || '').trim();
+
+    try {
+      const since = Date.now() - days * 24 * 3600 * 1000;
+
+      // Try SQLite first
+      const dbModule = require('./db');
+      if (dbModule.db) {
+        let sql, params;
+
+        if (category) {
+          sql = `
+            SELECT date(datetime(timestamp/1000, 'unixepoch')) as date,
+                   COUNT(*) as count
+            FROM news
+            WHERE timestamp > ? AND business_category = ?
+            GROUP BY date
+            ORDER BY date ASC
+          `;
+          params = [since, category];
+        } else {
+          sql = `
+            SELECT date(datetime(timestamp/1000, 'unixepoch')) as date,
+                   business_category as category,
+                   COUNT(*) as count
+            FROM news
+            WHERE timestamp > ? AND business_category != ''
+            GROUP BY date, business_category
+            ORDER BY date ASC
+          `;
+          params = [since];
+        }
+
+        const rows = dbModule.db.prepare(sql).all(...params);
+        return res.json({ success: true, days, category: category || 'all', data: rows });
+      }
+
+      // Fallback: build trend from /api/news data
+      const news = await getNews(1000, 'All', 0, '');
+      const filtered = news.filter(n => (n.timestamp || 0) >= since && n.business_category);
+      const trendMap = {};
+      filtered.forEach(n => {
+        const d = new Date(n.timestamp).toISOString().split('T')[0];
+        const cat = category || n.business_category;
+        if (category && n.business_category !== category) return;
+        const key = `${d}|${cat}`;
+        if (!trendMap[key]) trendMap[key] = { date: d, category: cat, count: 0 };
+        trendMap[key].count++;
+      });
+      const rows = Object.values(trendMap).sort((a, b) => a.date.localeCompare(b.date));
+      res.json({ success: true, days, category: category || 'all', data: rows });
+    } catch (err) {
+      console.error('[API /trend]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── 数据源健康度接口 ────────────────────────────────────────────────────────
+  app.get('/api/source-health', async (req, res) => {
+    try {
+      const dbModule = require('./db');
+      let allTracking = [];
+      try {
+        allTracking = await dbModule.getAllSourceTracking();
+      } catch (_) {}
+
+      // 从 news 表获取各源最新一条的时间
+      let latestBySource = [];
+      if (dbModule.db) {
+        latestBySource = dbModule.db.prepare(`
+          SELECT source, MAX(timestamp) as latest_timestamp, COUNT(*) as total_count
+          FROM news
+          GROUP BY source
+          ORDER BY latest_timestamp DESC
+        `).all();
+      } else {
+        // Supabase fallback: build from news data
+        const news = await getNews(500, 'All', 0, '');
+        const srcMap = {};
+        news.forEach(n => {
+          if (!srcMap[n.source]) srcMap[n.source] = { source: n.source, latest_timestamp: 0, total_count: 0 };
+          srcMap[n.source].total_count++;
+          if ((n.timestamp || 0) > srcMap[n.source].latest_timestamp) {
+            srcMap[n.source].latest_timestamp = n.timestamp;
+          }
+        });
+        latestBySource = Object.values(srcMap).sort((a, b) => b.latest_timestamp - a.latest_timestamp);
+      }
+
+      const now = Date.now();
+      const TWO_HOURS = 2 * 60 * 60 * 1000;
+      const sourceHealth = latestBySource.map(row => {
+        const tracking = allTracking.find(t => t.source === row.source);
+        const timeSinceUpdate = now - (row.latest_timestamp || 0);
+        return {
+          source: row.source,
+          latest_timestamp: row.latest_timestamp,
+          total_count: row.total_count,
+          last_pushed_timestamp: tracking?.last_pushed_timestamp || null,
+          last_pushed_title: tracking?.last_pushed_title || null,
+          status: timeSinceUpdate > TWO_HOURS ? 'stale' : 'healthy',
+          hours_since_update: Math.floor(timeSinceUpdate / (60 * 60 * 1000)),
+        };
+      });
+
+      res.json({ success: true, data: sourceHealth });
+    } catch (err) {
+      console.error('[API /source-health]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── 数据导出接口（CSV）─────────────────────────────────────────────────────
+  app.get('/api/export', async (req, res) => {
+    try {
+      const format = req.query.format || 'csv';
+      const days = Math.min(90, Math.max(1, parseInt(req.query.days, 10) || 7));
+      const since = Date.now() - days * 24 * 3600 * 1000;
+
+      const news = await getNews(1000, 'All', 0, '');
+      const filtered = news.filter(n => (n.timestamp || 0) >= since);
+
+      if (format === 'csv') {
+        const headers = ['id', 'title', 'source', 'business_category', 'competitor_category', 'alpha_score', 'is_important', 'detail', 'url', 'timestamp'];
+        const csvRows = [headers.join(',')];
+        filtered.forEach(row => {
+          csvRows.push(headers.map(h => {
+            let val = row[h] ?? '';
+            if (typeof val === 'string') val = '"' + val.replace(/"/g, '""') + '"';
+            return val;
+          }).join(','));
+        });
+        const csv = csvRows.join('\n');
+        res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+        res.setHeader('Content-Disposition', `attachment; filename=alpha-radar-export-${days}d.csv`);
+        res.send('\uFEFF' + csv); // BOM for Excel compatibility
+      } else {
+        res.json({ success: true, count: filtered.length, data: filtered });
+      }
+    } catch (err) {
+      console.error('[API /export]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   // ── 归档数据查询接口 ───────────────────────────────────────────────────────
   app.get('/api/archive', async (req, res) => {
     if (!lifecycleManager) {
@@ -350,7 +498,15 @@ function createApp() {
     try {
       const { getAIStatus } = require('./ai-enhanced');
       const status = getAIStatus();
-      res.json({ success: true, status });
+
+      // Include cost tracking from ai.js
+      let costStatus = null;
+      try {
+        const { aiCostTracker } = require('./ai');
+        costStatus = aiCostTracker.getStatus();
+      } catch (_) {}
+
+      res.json({ success: true, status, cost: costStatus });
     } catch (err) {
       console.error('[API /ai-status]', err.message);
       res.status(500).json({ success: false, error: err.message });
@@ -372,7 +528,12 @@ function createApp() {
     try {
       const dryRun = req.query.dryRun === 'true';
       const report = await runDailyReport(dryRun);
-      res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '…' : null });
+      if (dryRun) {
+        // Dry-run 模式返回完整报告内容供前端预览
+        res.json({ success: true, dryRun, report: report || null });
+      } else {
+        res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '…' : null });
+      }
     } catch (err) {
       console.error('[API /daily-report]', err.message);
       res.status(500).json({ success: false, error: err.message });
@@ -383,7 +544,11 @@ function createApp() {
     try {
       const dryRun = req.query.dryRun === 'true';
       const report = await runWeeklyReport(dryRun);
-      res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '…' : null });
+      if (dryRun) {
+        res.json({ success: true, dryRun, report: report || null });
+      } else {
+        res.json({ success: true, dryRun, report: report ? report.substring(0, 500) + '…' : null });
+      }
     } catch (err) {
       console.error('[API /weekly-report]', err.message);
       res.status(500).json({ success: false, error: err.message });

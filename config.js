@@ -165,6 +165,16 @@ const REPORT = {
   ],
 };
 
+// ── 紧急推送 ──────────────────────────────────────────────────────────────────
+const CRITICAL_SCORE_THRESHOLD = 95; // alpha_score >= 此值触发即时推送，不等批次
+
+// ── AI 成本控制 ───────────────────────────────────────────────────────────────
+const AI_COST = {
+  DAILY_BUDGET_USD: 10,           // 每日预算上限（美元）
+  COST_PER_1K_TOKENS: 0.001,     // DeepSeek V3 定价
+  ALERT_THRESHOLD: 0.8,          // 消耗 80% 时告警
+};
+
 // ── 企业微信 ──────────────────────────────────────────────────────────────────
 const WECOM = {
   MARKDOWN_LIMIT: 4096,
@@ -314,4 +324,6 @@ module.exports = {
   DEFAULT_SOURCE_CONFIG,
   HIGH_FREQ_SOURCES,
   LOW_FREQ_SOURCES,
+  CRITICAL_SCORE_THRESHOLD,
+  AI_COST,
 };

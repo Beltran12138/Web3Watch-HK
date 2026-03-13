@@ -45,6 +45,7 @@ const {
   LOW_FREQ_SOURCES,
   MAINSTREAM_EXCHANGES,
   SOURCE_CONFIGS,
+  CRITICAL_SCORE_THRESHOLD,
 } = require('../config');
 
 // ── 爬虫函数注册表 ─────────────────────────────────────────────────────────────
@@ -118,6 +119,56 @@ function checkImportance(item) {
   if (item.category === 'HK' || HK_KEYWORDS.some(k => item.title.includes(k))) return 1;
 
   return item.is_important || 0;
+}
+
+// ── 规则预筛（AI 前置过滤器，减少约 40-60% 的无效 API 调用）─────────────
+/**
+ * 基于规则判断条目是否可跳过 AI 分类（低价值噪音）
+ * 返回 true 表示跳过 AI，false 表示需要 AI 处理
+ * 
+ * 优化流程：抓取 → 规则预筛(去掉噪音) → AI分类(精选) → 推送
+ */
+function ruleBasedPreFilter(item) {
+  const title = (item.title || '').toLowerCase();
+  const source = item.source || '';
+
+  // 1. 常规上币/交易对公告 — 低价值，跳过 AI
+  if (/(?:listing|will list|上线|上架|new pair|新增交易|下架|delisting)/i.test(item.title)) {
+    // 但 HK 合规所的上币公告仍需 AI 分析
+    if (!source.includes('HashKey') && !source.includes('OSL') && !source.includes('Exio')) {
+      item.business_category = item.business_category || '交易/量化';
+      item.alpha_score = item.alpha_score || 25;
+      return true;
+    }
+  }
+
+  // 2. 资金费率/永续合约类 — 纯量化数据
+  if (/(?:资金费率|永续合约资金|funding rate)/i.test(title)) {
+    item.business_category = item.business_category || '交易/量化';
+    item.alpha_score = item.alpha_score || 15;
+    return true;
+  }
+
+  // 3. 爆仓/清算/鲸鱼类 — 市场噪声
+  if (/(?:爆仓|清算|鲸鱼|whale|liquidat)/i.test(title)) {
+    item.business_category = item.business_category || '交易/量化';
+    item.alpha_score = item.alpha_score || 20;
+    return true;
+  }
+
+  // 4. Meme/空投/Launchpool 类 — 营销噪声
+  if (/(?:meme|空投|airdrop|launchpool|launchpad)/i.test(title)) {
+    item.business_category = item.business_category || '拉新/社媒/社群/pr';
+    item.alpha_score = item.alpha_score || 20;
+    return true;
+  }
+
+  // 5. 极短标题（< 10 字且非 HK 源）— 可能是碎片或无意义的 hashtag
+  if (item.title && item.title.length < 10 && !HK_SOURCES.has(source)) {
+    return true;
+  }
+
+  return false;
 }
 
 // ── 主调度器 ──────────────────────────────────────────────────────────────────
@@ -210,8 +261,11 @@ async function runAllScrapers(tier = 'all') {
     // 重要性预判
     item.is_important = checkImportance(item);
 
-    // AI 分类（仅对未处理 + 指定来源 + 配额内）
-    if (AI_SOURCES.has(item.source) && !isAlreadyProcessed && aiCallCount < SCRAPER.MAX_AI_PER_RUN) {
+    // 规则预筛：跳过明显低价值条目，不浪费 AI 配额
+    const shouldSkipAI = ruleBasedPreFilter(item);
+
+    // AI 分类（仅对未处理 + 指定来源 + 配额内 + 通过预筛）
+    if (AI_SOURCES.has(item.source) && !isAlreadyProcessed && aiCallCount < SCRAPER.MAX_AI_PER_RUN && !shouldSkipAI) {
       const isListing = /Listing|上线|上架|New Pair/i.test(item.title);
       if (!isListing || item.source.includes('HashKey') || item.source.includes('OSL')) {
         if (aiCallCount > 0) await new Promise(r => setTimeout(r, SCRAPER.AI_DELAY_MS));
@@ -236,13 +290,20 @@ async function runAllScrapers(tier = 'all') {
       // 获取源配置
       const sourceConfig = getSourceConfig(item.source);
       
-      // 检查源级别冷却时间
-      if (!(await canPushMessage(item.source, item.title, item.timestamp, sourceConfig.pushCooldownHours))) {
+      // 紧急通道：alpha_score >= CRITICAL_SCORE_THRESHOLD 时跳过冷却期，即时推送
+      const isCritical = (item.alpha_score || 0) >= CRITICAL_SCORE_THRESHOLD;
+      
+      // 检查源级别冷却时间（紧急消息跳过冷却检查）
+      if (!isCritical && !(await canPushMessage(item.source, item.title, item.timestamp, sourceConfig.pushCooldownHours))) {
         console.log(`[SKIP COOLDOWN] ${item.source}: 冷却期内 (${sourceConfig.pushCooldownHours}h): ${item.title.substring(0, 40)}`);
         item.sent_to_wecom = 1;
         await saveNews([item]).catch(e => console.warn('[Save skip cooldown]', e.message));
         processedNews.push(item);
         continue;
+      }
+
+      if (isCritical) {
+        console.log(`[CRITICAL] 紧急推送 (score=${item.alpha_score}): ${item.title.substring(0, 50)}`);
       }
 
       if (sentThisRun.has(nTitle) || pushLock.has(nTitle)) {
@@ -273,7 +334,7 @@ async function runAllScrapers(tier = 'all') {
         await saveNews([item]);
 
         // 实际发送消息
-        await sendToWeCom(item);
+        await sendToWeCom(item, { urgent: isCritical });
         
         // 更新源追踪信息
         await updateSourcePush(item.source, item.timestamp, item.title);
@@ -299,7 +360,7 @@ async function runAllScrapers(tier = 'all') {
   return processedNews;
 }
 
-module.exports = { runAllScrapers, checkImportance };
+module.exports = { runAllScrapers, checkImportance, ruleBasedPreFilter };
 
 // Allow direct execution (e.g., from npm run scrape)
 if (require.main === module) {
