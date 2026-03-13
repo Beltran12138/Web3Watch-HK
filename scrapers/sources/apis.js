@@ -125,10 +125,10 @@ async function scrapeTechubNews() {
         return;
       }
 
-      // 修复 URL 格式：统一使用 /article/ 路径，避免 /articleDetail/ 造成的重复
-      let actualUrl = item.link || item.url || `https://www.techub.news/article/${item.uid || item.id}`;
-      // 标准化 TechubNews URL：将 /articleDetail/ 替换为 /article/
-      actualUrl = actualUrl.replace(/\/articleDetail\//, '/article/');
+      // 修复 URL 格式：统一使用 /articleDetail/ 路径（这是正确的路径）
+      let actualUrl = item.link || item.url || `https://www.techub.news/articleDetail/${item.uid || item.id}`;
+      // 标准化 TechubNews URL：将 /article/ 替换为 /articleDetail/（确保链接可访问）
+      actualUrl = actualUrl.replace(/\/article\//, '/articleDetail/');
       const normalizedUrl = actualUrl.split('?')[0].replace(/#.*$/, '').replace(/\/$/, '');
       
       // 清理标题中的多余空白
