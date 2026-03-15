@@ -95,10 +95,16 @@ class WeComChannel extends PushChannel {
 
     this.checkRateLimit();
 
+    const VERCEL_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+    const deepAskUrl = `${VERCEL_URL}/?deep_ask=true&q=${encodeURIComponent(message.title || '')}`;
+    const dashboardUrl = `${VERCEL_URL}`;
+
+    const interactiveFooter = `\n\n---\n[🔍 深度追问](${deepAskUrl}) | [📊 行业看板](${dashboardUrl})`;
+
     const payload = {
       msgtype: message.type || 'markdown',
       markdown: {
-        content: message.content,
+        content: message.content + (message.type === 'markdown' ? interactiveFooter : ''),
       },
     };
 

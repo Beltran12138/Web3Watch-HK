@@ -61,6 +61,8 @@ const {
   CRITICAL_SCORE_THRESHOLD,
 } = require('../config');
 
+const { monitor }       = require('../monitoring/monitor');
+
 // ── 爬虫函数注册表 ─────────────────────────────────────────────────────────────
 const {
   scrapeOKX, scrapeBinance, scrapeHashKeyExchange,
@@ -397,6 +399,15 @@ async function runAllScrapers(tier = 'all') {
   }
 
   await saveNews(processedNews);
+
+  // 4. 实时情报密度监控 (Proactive Alerting)
+  try {
+    const { monitor } = require('../monitoring/monitor');
+    await monitor.checkDensity();
+  } catch (e) {
+    console.error('[Monitor] Alert check failed:', e.message);
+  }
+
   const elapsed = ((Date.now() - startMs) / 1000).toFixed(1);
   console.log(`=== [Scrape] Done. Saved ${processedNews.length} items in ${elapsed}s ===`);
   return processedNews;

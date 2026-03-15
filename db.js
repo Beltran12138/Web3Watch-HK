@@ -75,6 +75,15 @@ if (!USE_SUPABASE) {
       last_pushed_title TEXT,
       last_updated DATETIME DEFAULT CURRENT_TIMESTAMP
     );
+    CREATE TABLE IF NOT EXISTS insights (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      trend_key TEXT UNIQUE,
+      summary TEXT,
+      evidence_count INTEGER DEFAULT 1,
+      first_seen INTEGER,
+      last_updated INTEGER,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
     CREATE INDEX IF NOT EXISTS idx_timestamp       ON news(timestamp DESC);
     CREATE INDEX IF NOT EXISTS idx_source          ON news(source);
     CREATE INDEX IF NOT EXISTS idx_is_important    ON news(is_important);
@@ -84,6 +93,8 @@ if (!USE_SUPABASE) {
     CREATE UNIQUE INDEX IF NOT EXISTS idx_title_source ON news(title, source);
     CREATE INDEX IF NOT EXISTS idx_normalized_title ON news(normalized_title);
     CREATE INDEX IF NOT EXISTS idx_source_tracking ON source_tracking(source);
+    CREATE INDEX IF NOT EXISTS idx_insight_key     ON insights(trend_key);
+    CREATE INDEX IF NOT EXISTS idx_insight_updated ON insights(last_updated DESC);
   `);
 
   // ── 安全迁移（已有数据库补列）────────────────────────────────────────────────
@@ -141,6 +152,17 @@ if (!USE_SUPABASE) {
     checkSent:     db.prepare(
       'SELECT sent_to_wecom FROM news WHERE (url=? OR normalized_title=?) AND sent_to_wecom=1 LIMIT 1'
     ),
+
+    // Insights
+    insertInsight: db.prepare(`
+      INSERT INTO insights (trend_key, summary, evidence_count, first_seen, last_updated)
+      VALUES (@trend_key, @summary, @evidence_count, @first_seen, @last_updated)
+      ON CONFLICT(trend_key) DO UPDATE SET
+        summary = excluded.summary,
+        evidence_count = insights.evidence_count + 1,
+        last_updated = excluded.last_updated
+    `),
+    getInsights: db.prepare('SELECT * FROM insights ORDER BY last_updated DESC LIMIT ?'),
 
     // 统计
     countAll:      db.prepare('SELECT COUNT(*) as n FROM news'),

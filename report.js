@@ -12,6 +12,8 @@
 const { db }                    = require('./db');
 const { isReportNoise } = require('./filter');
 const { batchClassify, generateDailySummary, generateWeeklySummary } = require('./ai');
+const { callAI } = require('./ai-provider');
+const { insightDAO } = require('./dao');
 const { sendReportToWeCom }     = require('./wecom');
 const { createClient }          = require('@supabase/supabase-js');
 const { REPORT }                = require('./config');
@@ -213,6 +215,54 @@ async function runDailyReport(dryRun = false) {
   return report;
 }
 
+// ── 趋势提炼（记忆系统核心） ───────────────────────────────────────────────
+/**
+ * 从周报数据中提炼 1-3 条长期趋势/共识，存入记忆系统
+ */
+async function extractAndSaveTrends(rows) {
+  if (!rows || rows.length < 5) return;
+
+  const topItems = rows
+    .filter(r => r.alpha_score >= 75)
+    .slice(0, 30)
+    .map(r => `- ${r.title}: ${r.detail || ''}`)
+    .join('\n');
+
+  const prompt = `你是一个行业研究主管。请根据以下本周的重点情报，提炼出 1-3 条“行业共识”或“重要长期趋势”。
+这些趋势将作为系统的“长期记忆”，用于指导未来的分析。
+
+本周重点：
+${topItems}
+
+请输出 JSON 数组，每个对象包含：
+- trend_key: 趋势简称（如 "RWA合规化加速"）
+- summary: 一句话深度总结趋势背后的逻辑
+- evidence_count: 基于以上情报，该趋势被引证的次数
+
+注意：只提炼具有长期影响（>1个月）的趋势，不要记录短期新闻。
+示例：[{"trend_key":"稳定币监管落地","summary":"SFC 明确了法币稳定币发行商牌照框架，标志着香港进入合规支付新阶段。","evidence_count":3}]`;
+
+  try {
+    const text = await callAI([{ role: 'user', content: prompt }], { json: true, temperature: 0.3 });
+    if (text) {
+      let cleanJson = text;
+      if (text.includes('```')) {
+        const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        if (match) cleanJson = match[1];
+      }
+      const trends = JSON.parse(cleanJson);
+      if (Array.isArray(trends)) {
+        for (const trend of trends) {
+          await insightDAO.saveInsight(trend);
+        }
+        console.log(`[Insight] Successfully recorded ${trends.length} new trends.`);
+      }
+    }
+  } catch (e) {
+    console.error('[Insight] Trend extraction failed:', e.message);
+  }
+}
+
 // ═══════════════════════════════════════════════════════════════════════
 //  周报（精选模式）
 // ═══════════════════════════════════════════════════════════════════════
@@ -291,6 +341,12 @@ async function runWeeklyReport(dryRun = false) {
 
   await sendReportToWeCom(report, '周报');
   console.log('[WeeklyReport] Done.');
+
+  // 4. 提炼并保存行业趋势（记忆系统）
+  if (!dryRun) {
+    extractAndSaveTrends(rows).catch(e => console.error('[Insight] background task error:', e));
+  }
+
   return report;
 }
 

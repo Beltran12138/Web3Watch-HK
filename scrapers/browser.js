@@ -98,4 +98,34 @@ async function newPage() {
   return page;
 }
 
-module.exports = { getBrowser, releaseBrowser, closeBrowser, newPage };
+const crypto = require('crypto');
+
+/**
+ * 计算核心 DOM 结构的哈希值（忽略动态内容如广告/评论）
+ * @param {object} page - Puppeteer page 实例
+ * @param {string} selector - 核心内容容器的选择器
+ */
+async function getDomHash(page, selector = 'body') {
+  try {
+    const structure = await page.evaluate((sel) => {
+      const el = document.querySelector(sel);
+      if (!el) return '';
+      // 仅保留标签名和 class，过滤文本和动态属性
+      const walk = (node) => {
+        let res = `<${node.tagName.toLowerCase()} class="${node.className}">`;
+        for (const child of node.children) {
+          res += walk(child);
+        }
+        return res + `</${node.tagName.toLowerCase()}>`;
+      };
+      return walk(el);
+    }, selector);
+
+    return crypto.createHash('md5').update(structure).digest('hex');
+  } catch (e) {
+    console.warn('[Browser] getDomHash error:', e.message);
+    return null;
+  }
+}
+
+module.exports = { getBrowser, releaseBrowser, closeBrowser, newPage, getDomHash };

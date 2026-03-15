@@ -193,6 +193,19 @@ function createApp() {
   app.get('/health', healthHandler);
 
   // ── GET /api/news ──────────────────────────────────────────────────────────
+  // ── 行业记忆 (Insights) 接口 ──────────────────────────────────────────────
+  app.get('/api/insights', async (req, res) => {
+    try {
+      const { insightDAO } = require('./dao');
+      const limit = Math.min(50, Math.max(1, parseInt(req.query.limit, 10) || 10));
+      const data = await insightDAO.getRecent(limit);
+      res.json({ success: true, data });
+    } catch (err) {
+      console.error('[API /insights]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
   const newsHandler = async (req, res) => {
     let source    = req.query.source    || 'All';
     const important = req.query.important === '1' ? 1 : 0;

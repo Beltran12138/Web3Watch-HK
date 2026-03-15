@@ -12,9 +12,14 @@ const CAT_OPTIONS = BUSINESS_CATEGORIES.join(', ');
 const COMP_OPTIONS = COMPETITOR_CATEGORIES.join(', ');
 
 // ── 单条新闻分类（带降级）────────────────────────────────────────────────────
-async function processWithAI(title, content = '', source = '') {
+async function processWithAI(title, content = '', source = '', recentInsights = []) {
+  const memoryStr = recentInsights.length > 0 
+    ? `【行业记忆 - 已记录趋势】：\n${recentInsights.map(i => `- ${i.trend_key}: ${i.summary}`).join('\n')}\n`
+    : '';
+
   const prompt = `你是一个加密货币行业顶级战略分析师，专注于香港 Web3 监管与合规市场。
-请对以下快讯进行深度分析。
+${memoryStr}
+请对以下快讯进行深度分析。如果该快讯与已记录趋势相关，请在分析中明确指出（引证）。
 
 快讯内容：
 标题: ${title}
@@ -31,16 +36,24 @@ async function processWithAI(title, content = '', source = '') {
    - 40-69: 中。普通业务上线、常规行业新闻。
    - <40: 低。常规市场波动、KOL 言论、重复性快讯。
 5. impact: "利好", "利空", 或 "中性"（站在香港合规所 BitV 的立场）
-6. bitv_action: 针对此情报，BitV 应该采取的 1 条具体动作建议（如：对标分析、更新合规手册、调整公关话术等）
+6. bitv_action: 针对此情报，BitV 应该采取的具体动作建议。如果与趋势相关，请体现。
+7. trend_reference: 如果与已知趋势相关，填入对应 trend_key，否则留空。
 
-示例：{"business_category":"合规","competitor_category":"香港合规所","detail":"HashKey 获准向零售用户提供服务。","alpha_score":95,"impact":"利空","bitv_action":"立即调研其零售开户流程，评估对我司获客策略的冲击。"}`;
+示例：{"business_category":"合规","competitor_category":"香港合规所","detail":"...","alpha_score":95,"impact":"利空","bitv_action":"...","trend_reference":""}`;
 
   const text = await callAI([{ role: 'user', content: prompt }], { json: true });
 
   if (text) {
     try {
-      const parsed = JSON.parse(text);
-      parsed.is_important = parsed.alpha_score >= 85 ? 1 : 0;
+      // 增强 JSON 提取逻辑
+      let cleanJson = text;
+      if (text.includes('```')) {
+        const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
+        if (match) cleanJson = match[1];
+      }
+      
+      const parsed = JSON.parse(cleanJson);
+      parsed.is_important = (parsed.alpha_score || 0) >= 85 ? 1 : 0;
       parsed._ai_source = getStatus().currentProvider;
       return parsed;
     } catch (e) {

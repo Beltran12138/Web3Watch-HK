@@ -418,7 +418,41 @@
     );
   }
 
-  // ── 图表组件 ───────────────────────────────────────────────────────────────
+  // ── 行业记忆 (Insights) 组件 ──────────────────────────────────────────
+  function InsightsPanel() {
+    const [insights, setInsights] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+      fetch('/api/insights')
+        .then(r => r.json())
+        .then(d => { if (d.success) setInsights(d.data); })
+        .catch(() => {})
+        .finally(() => setLoading(false));
+    }, []);
+
+    if (loading) return <div className="p-8 text-center text-slate-400">洞察加载中...</div>;
+    if (insights.length === 0) return null;
+
+    return (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+        {insights.map(i => (
+          <div key={i.id} className="depth-card p-5 rounded-2xl border-l-4 border-l-indigo-500 bg-indigo-50/30">
+            <div className="flex justify-between items-start mb-2">
+              <span className="text-[10px] font-black uppercase text-indigo-500 tracking-wider">
+                <i className="fa-solid fa-brain mr-1"></i> 行业共识
+              </span>
+              <span className="text-[10px] font-bold text-slate-400">引证 {i.evidence_count} 次</span>
+            </div>
+            <h3 className="text-sm font-black text-slate-800 mb-2">{i.trend_key}</h3>
+            <p className="text-xs text-slate-600 leading-relaxed italic">"{i.summary}"</p>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  // ── 动态竞速图组件 ─────────────────────────────────────────────────────────
   function StatsChart({ news }) {
     const containerRef = useRef(null);
 
@@ -426,57 +460,53 @@
       if (!containerRef.current || !news.length) return;
       const chart = echarts.init(containerRef.current);
 
-      // 分类统计
-      const catMap = {};
-      news.forEach(n => { const c = n.business_category || '其他'; catMap[c] = (catMap[c] || 0) + 1; });
-      const sorted = Object.entries(catMap).filter(([c]) => c).sort((a,b) => b[1]-a[1]).slice(0,12);
+      // 准备动态增长数据（按时间排序后累加）
+      const sortedNews = [...news].sort((a, b) => (a.timestamp || 0) - (b.timestamp || 0));
+      const categories = [...new Set(news.map(n => n.business_category || '其他'))];
+      
+      const updateData = () => {
+        const catMap = {};
+        categories.forEach(c => catMap[c] = 0);
+        
+        // 此处仅展示静态汇总，但增加了入场动画
+        news.forEach(n => { const c = n.business_category || '其他'; catMap[c] = (catMap[c] || 0) + 1; });
+        const sorted = Object.entries(catMap).sort((a,b) => a[1]-b[1]);
 
-      // 来源统计（前10）
-      const srcMap = {};
-      news.forEach(n => { srcMap[n.source] = (srcMap[n.source] || 0) + 1; });
-      const topSrc = Object.entries(srcMap).sort((a,b) => b[1]-a[1]).slice(0,10);
-
-      chart.setOption({
-        backgroundColor: 'transparent',
-        grid: [
-          { left: '5%', right: '55%', top: '8%', bottom: '12%' },
-          { left: '55%', right: '5%', top: '8%', bottom: '12%' },
-        ],
-        xAxis: [
-          { gridIndex:0, type:'value', axisLine:{show:false}, splitLine:{lineStyle:{color:'#f1f5f9'}} },
-          { gridIndex:1, type:'value', axisLine:{show:false}, splitLine:{lineStyle:{color:'#f1f5f9'}} },
-        ],
-        yAxis: [
-          { gridIndex:0, type:'category', data:sorted.map(([c])=>c), axisLabel:{fontSize:11,color:'#64748b'} },
-          { gridIndex:1, type:'category', data:topSrc.map(([s])=>s), axisLabel:{fontSize:11,color:'#64748b'} },
-        ],
-        series: [
-          {
-            type:'bar', xAxisIndex:0, yAxisIndex:0, barMaxWidth:18,
+        chart.setOption({
+          animationDuration: 2000,
+          backgroundColor: 'transparent',
+          grid: { left: '15%', right: '10%', top: '5%', bottom: '5%' },
+          xAxis: { type: 'value', splitLine: { show: false } },
+          yAxis: { 
+            type: 'category', 
+            data: sorted.map(([c]) => c),
+            axisLabel: { fontWeight: 'bold' },
+            inverse: false
+          },
+          series: [{
+            type: 'bar',
             data: sorted.map(([,n]) => n),
-            itemStyle:{ color:'#3b82f6', borderRadius:[0,4,4,0] },
-            label:{ show:true, position:'right', fontSize:11, color:'#1e40af' },
-          },
-          {
-            type:'bar', xAxisIndex:1, yAxisIndex:1, barMaxWidth:18,
-            data: topSrc.map(([,n]) => n),
-            itemStyle:{ color:'#10b981', borderRadius:[0,4,4,0] },
-            label:{ show:true, position:'right', fontSize:11, color:'#065f46' },
-          },
-        ],
-        title: [
-          { text:'业务分类分布', left:'2%', top:'1%', textStyle:{fontSize:12,fontWeight:'bold',color:'#334155'} },
-          { text:'来源分布', left:'52%', top:'1%', textStyle:{fontSize:12,fontWeight:'bold',color:'#334155'} },
-        ],
-        tooltip: { trigger:'axis', axisPointer:{ type:'shadow' } },
-      });
+            realtimeSort: true,
+            seriesLayoutBy: 'column',
+            itemStyle: {
+              color: function(param) {
+                const colors = ['#3b82f6', '#10b981', '#f59e0b', '#ef4444', '#8b5cf6'];
+                return colors[param.dataIndex % colors.length];
+              },
+              borderRadius: [0, 4, 4, 0]
+            },
+            label: { show: true, position: 'right', valueAnimation: true }
+          }]
+        });
+      };
 
+      updateData();
       const ro = new ResizeObserver(() => chart.resize());
       ro.observe(containerRef.current);
       return () => { chart.dispose(); ro.disconnect(); };
     }, [news]);
 
-    return <div ref={containerRef} style={{ height:'360px', width:'100%' }} />;
+    return <div ref={containerRef} style={{ height:'400px', width:'100%' }} />;
   }
 
   // ── 趋势折线图组件 ─────────────────────────────────────────────────────────
@@ -743,6 +773,19 @@
       }
       return items;
     }, [displayNews, search, timeFilterTs]);
+
+    useEffect(() => {
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get('q');
+      const isDeepAsk = params.get('deep_ask') === 'true';
+      
+      if (query && isDeepAsk) {
+        setSearch(query);
+        setSearchInput(query);
+        // 自动聚焦到对应的条目或显示 AI 对话引导
+        console.log('[DeepAsk] Auto-searching for:', query);
+      }
+    }, []);
 
     // ── 数据拉取 ──────────────────────────────────────────────────────────────
     const fetchNews = useCallback(async (source) => {
@@ -1135,8 +1178,18 @@
               </div>
             ) : viewMode === 'trend' ? (
               <div className="p-8">
+                <header className="mb-8">
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight">
+                    <i className="fa-solid fa-chart-line text-blue-500 mr-2"></i>
+                    趋势洞察
+                  </h2>
+                </header>
+                
+                {/* 行业记忆看板 */}
+                <InsightsPanel />
+
                 <div className="depth-card p-6 rounded-2xl">
-                  <h2 className="text-lg font-black mb-1 text-slate-900">趋势分析</h2>
+                  <h2 className="text-lg font-black mb-1 text-slate-900">业务热度走势</h2>
                   <p className="text-xs text-slate-400 mb-4">
                     各业务分类消息量随时间变化
                   </p>
