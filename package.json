@@ -1,6 +1,6 @@
 {
   "name": "alpha-radar",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Web3/Crypto 行业情报聚合系统 — 多源抓取 + AI 分类 + 多渠道推送",
   "main": "server.js",
   "engines": {
@@ -17,7 +17,10 @@
     "daily-report:dry": "node run_daily_report.js --dry-run",
     "weekly-report:dry": "node run_weekly_report.js --dry-run",
     "cleanup": "node -e \"const {DataLifecycleManager} = require('./data-lifecycle'); const {db} = require('./db'); const m = new DataLifecycleManager(db); m.cleanup().then(s => console.log(s))\"",
-    "test-push": "node -e \"const {pushManager} = require('./push-channel'); pushManager.pushToAll({title:'测试', content:'测试消息'}).then(r => console.log(r))\""
+    "test-push": "node -e \"const {pushManager} = require('./push-channel'); pushManager.pushToAll({title:'测试', content:'测试消息'}).then(r => console.log(r))\"",
+    "test": "jest --forceExit --detectOpenHandles",
+    "test:unit": "jest tests/unit --forceExit --detectOpenHandles",
+    "test:watch": "jest --watch --forceExit"
   },
   "keywords": [
     "web3",

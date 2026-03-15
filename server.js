@@ -64,6 +64,36 @@ function createApp() {
   // ── 启动时间，用于 /api/health ──────────────────────────────────────────────
   const START_TIME = new Date();
 
+  // ── 初始化监控系统 ───────────────────────────────────────────────────────────
+  let alertManager = null;
+  try {
+    const { alertManager: am } = require('./monitoring/alert-manager');
+    alertManager = am;
+    console.log('[server] Alert manager initialized');
+  } catch (e) {
+    console.warn('[server] Failed to init alert manager:', e.message);
+  }
+
+  // ── 初始化查询缓存 ───────────────────────────────────────────────────────────
+  let queryCache = null;
+  try {
+    const { queryCache: qc } = require('./pipeline');
+    queryCache = qc;
+    console.log('[server] Query cache initialized');
+  } catch (e) {
+    console.warn('[server] Failed to init query cache:', e.message);
+  }
+
+  // ── 初始化数据质量检查器 ─────────────────────────────────────────────────────
+  let qualityChecker = null;
+  try {
+    const { qualityChecker: qch } = require('./quality');
+    qualityChecker = qch;
+    console.log('[server] Quality checker initialized');
+  } catch (e) {
+    console.warn('[server] Failed to init quality checker:', e.message);
+  }
+
   // ── 初始化数据生命周期管理 ─────────────────────────────────────────────────
   let lifecycleManager = null;
   try {
@@ -511,6 +541,54 @@ function createApp() {
       console.error('[API /ai-status]', err.message);
       res.status(500).json({ success: false, error: err.message });
     }
+  });
+
+  // ── 监控状态接口 ────────────────────────────────────────────────────────────
+  app.get('/api/monitoring', (req, res) => {
+    if (!alertManager) {
+      return res.json({ success: true, data: null, message: 'Alert manager not initialized' });
+    }
+    res.json({ success: true, data: alertManager.getStatus() });
+  });
+
+  // ── 监控日报接口 ────────────────────────────────────────────────────────────
+  app.get('/api/monitoring/digest', (req, res) => {
+    if (!alertManager) {
+      return res.json({ success: true, digest: 'Alert manager not initialized' });
+    }
+    res.json({ success: true, digest: alertManager.generateDigest() });
+  });
+
+  // ── 数据质量统计接口 ────────────────────────────────────────────────────────
+  app.get('/api/quality', (req, res) => {
+    if (!qualityChecker) {
+      return res.json({ success: true, data: null, message: 'Quality checker not initialized' });
+    }
+    res.json({ success: true, data: qualityChecker.getStats() });
+  });
+
+  // ── 批量数据质量检查接口 ────────────────────────────────────────────────────
+  app.post('/api/quality/check', async (req, res) => {
+    if (!qualityChecker) {
+      return res.status(503).json({ success: false, error: 'Quality checker not initialized' });
+    }
+    try {
+      const limit = Math.min(100, parseInt(req.query.limit, 10) || 20);
+      const news = await getNews(limit);
+      const result = qualityChecker.validateBatch(news);
+      res.json({ success: true, summary: result.summary });
+    } catch (err) {
+      console.error('[API /quality/check]', err.message);
+      res.status(500).json({ success: false, error: err.message });
+    }
+  });
+
+  // ── 查询缓存状态接口 ────────────────────────────────────────────────────────
+  app.get('/api/cache-status', (req, res) => {
+    if (!queryCache) {
+      return res.json({ success: true, data: null, message: 'Query cache not initialized' });
+    }
+    res.json({ success: true, data: queryCache.getStats() });
   });
 
   // ── 以下写操作需要 API Key 保护 ────────────────────────────────────────────

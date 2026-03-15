@@ -16,6 +16,7 @@
 const puppeteerExtra = require('puppeteer-extra');
 const StealthPlugin  = require('puppeteer-extra-plugin-stealth');
 const { SCRAPER }    = require('../config');
+const { getRandomUA, enhancePage } = require('./middleware');
 
 puppeteerExtra.use(StealthPlugin());
 
@@ -92,7 +93,8 @@ async function closeBrowser() {
 async function newPage() {
   const browser = await getBrowser();
   const page    = await browser.newPage();
-  await page.setUserAgent(SCRAPER.USER_AGENT);
+  // Apply anti-detection enhancements from middleware
+  await enhancePage(page);
   return page;
 }
 

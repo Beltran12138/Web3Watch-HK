@@ -46,13 +46,23 @@ async function scrapeBinance() {
     try {
       const { data }    = await axios.get(url, { headers: { 'User-Agent': UA } });
       const articles    = data?.data?.catalogs?.[0]?.articles || [];
-      articles.forEach(item => allItems.push(makeItem({
-        title:     item.title || '',
-        source:    'Binance',
-        url:       `https://www.binance.com/zh-CN/support/announcement/${item.code}`,
-        category:  cid === 48 ? 'Listing' : 'Announcement',
-        timestamp: parseTimestamp(item.releaseDate),
-      })));
+      articles.forEach(item => {
+        const timestamp = parseTimestamp(item.releaseDate);
+
+        // 爬虫层年龄过滤：超过 48h 的直接丢弃（Binance 消息有效期较长）
+        if (timestamp && Date.now() - timestamp > 48 * 60 * 60 * 1000) {
+          console.log(`  [Binance SKIP] Too old (${Math.floor((Date.now() - timestamp) / 3600000)}h): ${(item.title || '').substring(0, 40)}`);
+          return;
+        }
+
+        allItems.push(makeItem({
+          title:     item.title || '',
+          source:    'Binance',
+          url:       `https://www.binance.com/zh-CN/support/announcement/${item.code}`,
+          category:  cid === 48 ? 'Listing' : 'Announcement',
+          timestamp,
+        }));
+      });
     } catch (err) {
       console.error(`[Binance cat=${cid}]`, err.message);
     }

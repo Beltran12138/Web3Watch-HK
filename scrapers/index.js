@@ -30,6 +30,19 @@ const { processWithAI }    = require('../ai');
 const { sendToWeCom }      = require('../wecom');
 const { filterNewsItems, getSourceConfig } = require('../filter');
 const { closeBrowser }     = require('./browser');
+const { delayWithJitter }  = require('./middleware');
+
+// ── Monitoring integration ──────────────────────────────────────────────────
+let alertManager = null;
+try {
+  alertManager = require('../monitoring/alert-manager').alertManager;
+} catch (_) {}
+
+// ── Data quality integration ────────────────────────────────────────────────
+let qualityChecker = null;
+try {
+  qualityChecker = require('../quality').qualityChecker;
+} catch (_) {}
 
 const {
   SCRAPER,
@@ -179,6 +192,12 @@ async function runAllScrapers(tier = 'all') {
   // 过滤禁用的源
   const enabledScrapersMap = getEnabledScrapers(SCRAPERS_MAP);
 
+  // Build source name mapping for monitoring
+  const scraperSourceMap = new Map();
+  for (const [name, fn] of Object.entries(enabledScrapersMap)) {
+    scraperSourceMap.set(fn, name);
+  }
+
   let targetScrapers = [];
   if (tier === 'high') {
     targetScrapers = HIGH_FREQ_SOURCES.map(key => enabledScrapersMap[key]).filter(Boolean);
@@ -198,12 +217,22 @@ async function runAllScrapers(tier = 'all') {
 
     const results = await Promise.allSettled(batch.map(fn => fn()));
     results.forEach((r, idx) => {
-      if (r.status === 'fulfilled') rawResults.push(...(r.value || []));
-      else console.error(`[Scrape] Scraper #${i + idx} error:`, r.reason?.message);
+      const sourceName = scraperSourceMap.get(batch[idx]) || `scraper#${i + idx}`;
+      if (r.status === 'fulfilled') {
+        const items = r.value || [];
+        rawResults.push(...items);
+        // Record scraper success in monitoring
+        if (alertManager) alertManager.recordScraperResult(sourceName, true, items.length);
+        if (alertManager) alertManager.updateSourceHealth(sourceName, items.length);
+      } else {
+        console.error(`[Scrape] ${sourceName} error:`, r.reason?.message);
+        // Record scraper failure in monitoring
+        if (alertManager) alertManager.recordScraperResult(sourceName, false, 0, r.reason?.message);
+      }
     });
 
     if (i + SCRAPER.BATCH_SIZE < targetScrapers.length) {
-      await new Promise(r => setTimeout(r, SCRAPER.BATCH_DELAY_MS));
+      await delayWithJitter(SCRAPER.BATCH_DELAY_MS, 500);
     }
   }
 
@@ -213,6 +242,18 @@ async function runAllScrapers(tier = 'all') {
   // 2. 过滤 + 内存去重
   const allNews = filterNewsItems(rawResults);
   console.log(`[Scrape] After filter: ${rawResults.length} → ${allNews.length}`);
+
+  // 2.5 Data quality check (non-blocking, informational)
+  if (qualityChecker && allNews.length > 0) {
+    const qReport = qualityChecker.validateBatch(allNews);
+    console.log(`[Quality] Batch: ${qReport.summary.total} items, pass rate: ${qReport.summary.passRate}, avg score: ${qReport.summary.avgScore}`);
+    if (qReport.summary.failed > 0) {
+      console.warn(`[Quality] ${qReport.summary.failed} items failed quality check`);
+      if (alertManager) {
+        alertManager.log('warn', 'quality', `${qReport.summary.failed}/${qReport.summary.total} items failed quality check`);
+      }
+    }
+  }
 
   // 3. 批量查询 DB 状态
   const { processed: alreadyProcessed, sentToWeCom: alreadySent, existingTimestamps } =
@@ -247,12 +288,13 @@ async function runAllScrapers(tier = 'all') {
       item.timestamp = Date.now();
     }
 
-    // 时间戳新鲜度检查：只推送最近 24 小时内的消息（防止旧稿混入）
-    const FRESHNESS_THRESHOLD = 24 * 60 * 60 * 1000; // 24 小时（毫秒）
+    // 时间戳新鲜度检查：根据源配置动态判断（尊重 config.js 中的 maxAgeHours）
+    const sourceConfig = getSourceConfig(item.source);
+    const maxAgeMs = sourceConfig.maxAgeHours * 60 * 60 * 1000;
     const messageAge = Date.now() - item.timestamp;
-    if (messageAge > FRESHNESS_THRESHOLD) {
+    if (messageAge > maxAgeMs) {
       const hoursOld = Math.floor(messageAge / (60 * 60 * 1000));
-      console.log(`[SKIP] 消息过旧 (${hoursOld}小时前): ${item.title?.substring(0, 50)}`);
+      console.log(`[SKIP] ${item.source}: 消息过旧 (${hoursOld}h > ${sourceConfig.maxAgeHours}h): ${item.title?.substring(0, 50)}`);
       item.sent_to_wecom = 1;  // 标记为已处理，避免下次还检查
       processedNews.push(item);
       continue;
