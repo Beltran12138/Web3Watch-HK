@@ -381,7 +381,7 @@ class ThirdPartyScraper extends TwitterScraper {
           return tweets;
         }
       } catch (err) {
-        console.warn(`[Twitter] TwitterAPI.io failed:`, err.message);
+        console.warn('[Twitter] TwitterAPI.io failed:', err.message);
       }
     }
 
@@ -428,7 +428,7 @@ class ThirdPartyScraper extends TwitterScraper {
           return tweets;
         }
       } catch (err) {
-        console.warn(`[Twitter] Scrapfly failed:`, err.message);
+        console.warn('[Twitter] Scrapfly failed:', err.message);
       }
     }
 

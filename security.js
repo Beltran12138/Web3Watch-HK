@@ -10,17 +10,17 @@ function applySecurity(app) {
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
-        scriptSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net", "https://unpkg.com", "https://statics.moonshot.cn"],
-        imgSrc: ["'self'", "data:", "https:", "blob:"],
-        fontSrc: ["'self'", "https://cdn.jsdelivr.net", "https://unpkg.com"],
-        connectSrc: ["'self'", "https:", "wss:"],
+        styleSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net', 'https://unpkg.com'],
+        scriptSrc: ["'self'", "'unsafe-inline'", 'https://cdn.jsdelivr.net', 'https://unpkg.com', 'https://statics.moonshot.cn'],
+        imgSrc: ["'self'", 'data:', 'https:', 'blob:'],
+        fontSrc: ["'self'", 'https://cdn.jsdelivr.net', 'https://unpkg.com'],
+        connectSrc: ["'self'", 'https:', 'wss:'],
         frameSrc: ["'self'"],
         objectSrc: ["'none'"],
         upgradeInsecureRequests: [],
       },
     },
-    crossOriginEmbedderPolicy: false
+    crossOriginEmbedderPolicy: false,
   }));
 
   // 2. CORS - 统一配置，生产环境必须设置 CORS_ORIGIN
@@ -39,7 +39,7 @@ function applySecurity(app) {
     origin: corsOrigin,
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key']
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-API-Key'],
   }));
 
   // 3. 读操作限流 (1000 req/15min) - 查询接口
@@ -49,7 +49,7 @@ function applySecurity(app) {
     standardHeaders: true,
     legacyHeaders: false,
     message: { success: false, error: 'Too many read requests, please try again later' },
-    skip: (req) => req.method !== 'GET' && req.method !== 'HEAD'
+    skip: (req) => req.method !== 'GET' && req.method !== 'HEAD',
   });
   app.use(readLimiter);
 
@@ -59,7 +59,7 @@ function applySecurity(app) {
     max: 10,
     standardHeaders: true,
     legacyHeaders: false,
-    message: { success: false, error: 'Too many write requests, please slow down' }
+    message: { success: false, error: 'Too many write requests, please slow down' },
   });
   app.use('/api/refresh', writeLimiter);
   app.use('/api/daily-report', writeLimiter);

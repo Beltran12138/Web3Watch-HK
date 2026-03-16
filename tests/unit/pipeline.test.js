@@ -33,9 +33,7 @@ describe('Pipeline', () => {
       throw new Error('Stage failed');
     }, { continueOnError: true });
 
-    pipeline.addStage('succeeding', async (items) => {
-      return items.map(i => ({ ...i, processed: true }));
-    });
+    pipeline.addStage('succeeding', async (items) => items.map(i => ({ ...i, processed: true })));
 
     const result = await pipeline.execute([{ id: 1 }]);
     expect(result.errors).toHaveLength(1);
@@ -49,9 +47,7 @@ describe('Pipeline', () => {
       throw new Error('Fatal');
     }, { continueOnError: false });
 
-    pipeline.addStage('never-reached', async (items) => {
-      return items.map(i => ({ ...i, reached: true }));
-    });
+    pipeline.addStage('never-reached', async (items) => items.map(i => ({ ...i, reached: true })));
 
     const result = await pipeline.execute([{ id: 1 }]);
     expect(result.errors).toHaveLength(1);
@@ -112,11 +108,11 @@ describe('Pipeline', () => {
     const pipeline = new Pipeline('test');
 
     pipeline.addStage('filter', createFilterStage(
-      (items) => items.filter(i => i.value > 5)
+      (items) => items.filter(i => i.value > 5),
     ));
 
     const result = await pipeline.execute([
-      { value: 3 }, { value: 8 }, { value: 10 }, { value: 1 }
+      { value: 3 }, { value: 8 }, { value: 10 }, { value: 1 },
     ]);
     expect(result.items).toHaveLength(2);
   });

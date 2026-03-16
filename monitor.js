@@ -45,7 +45,7 @@ function log(message, color = 'reset') {
   const timestamp = new Date().toISOString();
   const coloredMsg = `${colors[color]}[${timestamp}] ${message}${colors.reset}`;
   console.log(coloredMsg);
-  
+
   // 写入日志文件
   fs.appendFileSync(CONFIG.LOG_FILE, `[${timestamp}] ${message}\n`);
 }
@@ -65,40 +65,40 @@ async function checkHealth(url) {
     });
 
     const data = res.data;
-    
+
     // 基本状态
     const status = data.status === 'ok' ? '✅' : '❌';
     log(`${status} Health: ${data.status}`, data.status === 'ok' ? 'green' : 'red');
-    
+
     // 运行时间
     const uptime = `${Math.floor(data.uptime / 3600)}h ${Math.floor((data.uptime % 3600) / 60)}m`;
     log(`⏱️  Uptime: ${uptime}`, 'blue');
-    
+
     // 数据库状态
     const dbStatus = data.db.total > 0 ? '✅' : '⚠️ ';
-    log(`${dbStatus} Database: ${data.db.total} items (${data.db.important} important)`, 
-        data.db.total > 0 ? 'green' : 'yellow');
-    
+    log(`${dbStatus} Database: ${data.db.total} items (${data.db.important} important)`,
+      data.db.total > 0 ? 'green' : 'yellow');
+
     // AI 状态
     if (data.ai) {
       const aiStatus = data.ai.providers.some(p => p.enabled) ? '✅' : '⚠️ ';
       const activeProvider = data.ai.providers.find(p => p.isActive)?.name || 'None';
       log(`${aiStatus} AI: ${activeProvider} (Fallbacks: ${data.ai.fallbackCount})`,
-          data.ai.providers.some(p => p.enabled) ? 'green' : 'yellow');
+        data.ai.providers.some(p => p.enabled) ? 'green' : 'yellow');
     }
-    
+
     // 推送渠道
     if (data.push) {
       const pushStatus = data.push.channels.length > 0 ? '✅' : '⚠️ ';
       log(`${pushStatus} Push: ${data.push.channels.length} channels`,
-          data.push.channels.length > 0 ? 'green' : 'yellow');
+        data.push.channels.length > 0 ? 'green' : 'yellow');
     }
-    
+
     // 存储状态
     if (data.storage) {
       log(`💾 Storage: ${data.storage.fileSizeMB} MB`, 'blue');
     }
-    
+
     return true;
   } catch (err) {
     log(`❌ Health check failed: ${err.message}`, 'red');
@@ -115,13 +115,13 @@ async function checkAPIs(url) {
   ];
 
   log('\n--- API Checks ---', 'gray');
-  
+
   for (const api of apis) {
     try {
       const res = await axios.get(`${url}${api.path}`, {
         timeout: CONFIG.TIMEOUT,
       });
-      
+
       const success = res.data?.success ?? (res.status === 200);
       log(`✅ ${api.name}: OK`, 'green');
     } catch (err) {
@@ -133,10 +133,10 @@ async function checkAPIs(url) {
 async function runCheck(url) {
   log(`\n🔍 Monitoring Alpha-Radar at ${url}`, 'blue');
   log('=' .repeat(50), 'gray');
-  
+
   const healthOk = await checkHealth(url);
   await checkAPIs(url);
-  
+
   log('=' .repeat(50), 'gray');
   return healthOk;
 }
@@ -144,23 +144,23 @@ async function runCheck(url) {
 async function main() {
   if (options.watch) {
     log(`🚀 Starting continuous monitoring (interval: ${CONFIG.INTERVAL/1000}s)`, 'blue');
-    log(`Press Ctrl+C to stop\n`, 'gray');
-    
+    log('Press Ctrl+C to stop\n', 'gray');
+
     // 立即执行一次
     await runCheck(options.url);
-    
+
     // 设置定时器
     const timer = setInterval(async () => {
       await runCheck(options.url);
     }, CONFIG.INTERVAL);
-    
+
     // 优雅退出
     process.on('SIGINT', () => {
       log('\n🛑 Stopping monitor...', 'yellow');
       clearInterval(timer);
       process.exit(0);
     });
-    
+
   } else {
     // 单次检查
     const ok = await runCheck(options.url);

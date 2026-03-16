@@ -64,7 +64,7 @@ module.exports = {
    */
   batch(items, startIdx = 0) {
     const listStr = items.map((it, j) =>
-      `${startIdx + j + 1}. 标题：${it.title} | 来源：${it.source}`
+      `${startIdx + j + 1}. 标题：${it.title} | 来源：${it.source}`,
     ).join('\n');
 
     return {
@@ -109,7 +109,7 @@ ${listStr}
    */
   dailySummary(newsItems, topSources) {
     const digest = newsItems.map((item, i) =>
-      `${i + 1}. [${item.business_category || item.source}] ${item.title}${item.detail ? ' — ' + item.detail : ''}`
+      `${i + 1}. [${item.business_category || item.source}] ${item.title}${item.detail ? ' — ' + item.detail : ''}`,
     ).join('\n');
 
     const today = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });

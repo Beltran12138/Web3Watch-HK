@@ -31,6 +31,7 @@ const { sendToWeCom }      = require('../wecom');
 const { filterNewsItems, getSourceConfig } = require('../filter');
 const { closeBrowser }     = require('./browser');
 const { delayWithJitter }  = require('./middleware');
+const { processBatchSmart } = require('../ai-optimizer'); // AI 成本优化器
 
 // ── Monitoring integration ──────────────────────────────────────────────────
 let alertManager = null;
@@ -74,6 +75,14 @@ const {
 } = require('../config');
 
 const { monitor }       = require('../monitoring/monitor');
+
+// ── Source Health Monitor integration ────────────────────────────────────────
+let sourceHealthMonitor = null;
+try {
+  sourceHealthMonitor = require('../monitoring/source-health').sourceHealthMonitor;
+} catch (_) {
+  // Source health monitor not available
+}
 
 // ── 爬虫函数注册表 ─────────────────────────────────────────────────────────────
 const {
@@ -457,6 +466,27 @@ async function runAllScrapers(tier = 'all') {
 
   const elapsed = ((Date.now() - startMs) / 1000).toFixed(1);
   console.log(`=== [Scrape] Done. Saved ${processedNews.length} items in ${elapsed}s ===`);
+
+  // 6. 源健康监控记录（按源聚合本次抓取结果）
+  if (sourceHealthMonitor) {
+    const sourceStats = new Map();
+    for (const item of processedNews) {
+      const source = item.source || 'Unknown';
+      if (!sourceStats.has(source)) {
+        sourceStats.set(source, 0);
+      }
+      sourceStats.set(source, sourceStats.get(source) + 1);
+    }
+    // 记录所有目标爬虫的健康状态（包括无结果的）
+    for (const scraperFn of targetScrapers) {
+      const sourceName = scraperSourceMap.get(scraperFn);
+      if (sourceName) {
+        const itemCount = sourceStats.get(sourceName) || 0;
+        sourceHealthMonitor.recordFetch(sourceName, itemCount, false);
+      }
+    }
+  }
+
   return processedNews;
 }
 

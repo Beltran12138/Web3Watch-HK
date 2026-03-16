@@ -109,7 +109,7 @@ class AlertManager extends EventEmitter {
         this._sendAlert(
           `Scraper Alert: ${source}`,
           `${source} 连续失败 ${existing.consecutive} 次\n最近错误: ${error}`,
-          { source, consecutive: existing.consecutive }
+          { source, consecutive: existing.consecutive },
         );
       }
     }
@@ -142,7 +142,7 @@ class AlertManager extends EventEmitter {
       this._sendAlert(
         'AI Service Degradation',
         `AI 服务已完全降级至规则引擎\n原因: ${reason}\n原提供商: ${from}`,
-        { from, to, reason }
+        { from, to, reason },
       );
     }
 
@@ -219,7 +219,7 @@ class AlertManager extends EventEmitter {
       this._sendAlert(
         'AI Budget Exceeded',
         `AI 每日预算已超出: $${costUSD.toFixed(4)} / $${budgetUSD}`,
-        { costUSD, budgetUSD }
+        { costUSD, budgetUSD },
       );
     }
   }
@@ -309,13 +309,13 @@ class AlertManager extends EventEmitter {
     }
 
     let digest = '## 📊 Alpha-Radar 监控日报\n\n';
-    digest += `**时间范围**: 最近 24 小时\n`;
+    digest += '**时间范围**: 最近 24 小时\n';
     digest += `**错误数**: ${errors.length} | **警告数**: ${warnings.length}\n\n`;
 
     digest += '### 爬虫状态\n';
     digest += scraperLines.join('\n') + '\n\n';
 
-    digest += `### AI 服务\n`;
+    digest += '### AI 服务\n';
     digest += `当前提供商: **${this.aiProviderState.current}**\n`;
     if (this.aiProviderState.degradedAt) {
       const hours = Math.floor((now - this.aiProviderState.degradedAt) / 3600000);

@@ -47,15 +47,15 @@ async function fetchNewsForReport(since, limit = 500) {
   if (USE_SUPABASE && supabase) {
     try {
       // 先尝试按 alpha_score 排序（如果列存在）
-      let query = supabase
+      const query = supabase
         .from('news')
         .select('*')
         .gte('timestamp', since)
         .order('timestamp', { ascending: false })
         .limit(limit);
-      
+
       const { data, error } = await query;
-      
+
       if (error) {
         // 如果失败，可能是 alpha_score 列不存在，尝试只用 timestamp 排序
         console.log('[Report] Retrying without alpha_score sort...');
@@ -77,7 +77,7 @@ async function fetchNewsForReport(since, limit = 500) {
   if (!db) return [];
   // SQLite 使用 alpha_score（本地数据库有该列）
   return db.prepare(
-    'SELECT * FROM news WHERE timestamp > ? ORDER BY alpha_score DESC, timestamp DESC LIMIT ?'
+    'SELECT * FROM news WHERE timestamp > ? ORDER BY alpha_score DESC, timestamp DESC LIMIT ?',
   ).all(since, limit);
 }
 
@@ -88,7 +88,7 @@ async function fetchNewsForReport(since, limit = 500) {
  */
 async function fillMissingCategories(rows) {
   const unclassified = rows.filter(r =>
-    !r.business_category || r.business_category === '' || r.business_category === '其他'
+    !r.business_category || r.business_category === '' || r.business_category === '其他',
   ).slice(0, REPORT.MAX_ITEMS_FOR_AI);
 
   if (unclassified.length === 0) return rows;
@@ -131,11 +131,11 @@ function buildStatsPanel(items, period = '今日') {
 async function runDailyReport(dryRun = false) {
   console.log('[DailyReport] Start…');
   console.log(`[DailyReport] dryRun=${dryRun}, Time: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`);
-  
+
   const since   = getTodayMidnightBJ();
   const dateStr = formatDateBJ(Date.now());
   console.log(`[DailyReport] Fetching news since: ${new Date(since).toISOString()}`);
-  
+
   let rawRows = [];
   try {
     rawRows = await fetchNewsForReport(since);
@@ -176,7 +176,7 @@ async function runDailyReport(dryRun = false) {
   });
 
   const sortedCats = Object.keys(categorized).sort(
-    (a, b) => REPORT.CATEGORY_ORDER.indexOf(a) - REPORT.CATEGORY_ORDER.indexOf(b)
+    (a, b) => REPORT.CATEGORY_ORDER.indexOf(a) - REPORT.CATEGORY_ORDER.indexOf(b),
   );
 
   let newsList = '';
@@ -187,7 +187,7 @@ async function runDailyReport(dryRun = false) {
       const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡');
       const impactLabel = item.impact ? `[${item.impact}]` : '';
       const comp = item.competitor_category ? ` \`${item.competitor_category}\`` : '';
-      
+
       newsList += `${i + 1}. ${scoreEmoji}${item.title}${comp} \`${item.alpha_score || ''}\` ${impactLabel}\n`;
       if (item.detail) newsList += `   > ${item.detail}\n`;
       if (item.bitv_action) newsList += `   > 💡 **建议:** ${item.bitv_action}\n`;
@@ -307,7 +307,7 @@ async function runWeeklyReport(dryRun = false) {
   });
 
   const sortedCats = Object.keys(categorized).sort(
-    (a, b) => REPORT.CATEGORY_ORDER.indexOf(a) - REPORT.CATEGORY_ORDER.indexOf(b)
+    (a, b) => REPORT.CATEGORY_ORDER.indexOf(a) - REPORT.CATEGORY_ORDER.indexOf(b),
   );
 
   let appendix = '';
@@ -320,7 +320,7 @@ async function runWeeklyReport(dryRun = false) {
       const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '');
       const impactLabel = item.impact ? `[${item.impact}]` : '';
       const comp = item.competitor_category ? ` \`${item.competitor_category}\`` : '';
-      
+
       appendix += `${i + 1}. ${scoreEmoji}${item.title}${comp} \`${item.alpha_score || ''}\` ${impactLabel}\n`;
       appendix += `   > ${item.detail}\n`;
       if (item.bitv_action) appendix += `   > 💡 **分析:** ${item.bitv_action}\n`;

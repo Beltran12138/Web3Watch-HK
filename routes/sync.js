@@ -22,7 +22,7 @@ module.exports = function createSyncRoutes() {
       if (dbModule.supabase) {
         await dbModule.supabase.from('user_preferences').upsert(
           { sync_code, read_ids: read_ids || [], bookmarks: bookmarks || [] },
-          { onConflict: 'sync_code' }
+          { onConflict: 'sync_code' },
         );
         logger.info({ sync_code }, 'User preferences saved');
         return res.json({ success: true });

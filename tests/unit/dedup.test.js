@@ -66,7 +66,7 @@ describe('cross-source dedup scenarios', () => {
   test('same event reported by different sources should be detected', () => {
     const sim = jaccardSimilarity(
       'hashkey exchange 获得 sfc 零售牌照批准',
-      'hashkey exchange 获得香港 sfc 零售牌照正式批准'
+      'hashkey exchange 获得香港 sfc 零售牌照正式批准',
     );
     expect(sim).toBeGreaterThan(0.6);
   });
@@ -74,7 +74,7 @@ describe('cross-source dedup scenarios', () => {
   test('unrelated news should not match', () => {
     const sim = jaccardSimilarity(
       'binance 上线新交易对 btc/usdt',
-      'sfc 发布虚拟资产监管新规'
+      'sfc 发布虚拟资产监管新规',
     );
     expect(sim).toBeLessThan(0.3);
   });

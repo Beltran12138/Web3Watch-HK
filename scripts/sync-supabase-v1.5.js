@@ -2,7 +2,7 @@
 
 /**
  * scripts/sync-supabase-v1.5.js — 自动化同步 Supabase 表结构
- * 
+ *
  * 职责：
  *   利用现有环境变量，尝试在 Supabase 上创建新表和列。
  */
@@ -26,10 +26,10 @@ async function sync() {
   // 注意：Supabase JS SDK 不支持直接运行 DDL (CREATE/ALTER)，
   // 除非通过特定的 RPC 函数。
   // 我们尝试通过一个通用的方式来检查和引导用户。
-  
+
   console.log('\n⚠️  重要提示：Supabase 的 JavaScript SDK 权限有限，无法直接执行高级 SQL (DDL)。');
   console.log('请复制以下经过严格校对的 SQL 代码，粘贴到您的 Supabase SQL Editor 中运行：\n');
-  
+
   const sql = `
 -- 1. 创建行业趋势洞察表
 CREATE TABLE IF NOT EXISTS insights (
@@ -53,7 +53,7 @@ CREATE INDEX IF NOT EXISTS idx_insight_updated ON insights(last_updated DESC);
   console.log('==================== SQL START ====================');
   console.log(sql);
   console.log('====================  SQL END  ====================');
-  
+
   console.log('\n💡 运行步骤：');
   console.log('1. 访问 https://app.supabase.com/');
   console.log('2. 进入您的项目: mowgraixlfvmjlqxbgsc');

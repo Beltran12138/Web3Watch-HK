@@ -1,0 +1,247 @@
+# Alpha Radar 数据源配置文件
+# 使用 YAML 格式，便于动态添加/修改数据源而无需改代码
+
+# =============================================================================
+# 高频数据源（T0：3-5 分钟级别）
+# =============================================================================
+high_frequency:
+  - name: SFC
+    type: rss
+    url: https://www.sfc.hk/en/RSS-feed/Regulatory-news
+    tier: high
+    enabled: true
+    maxAgeHours: 168
+    pushCooldownHours: 48
+    description: "香港证监会监管新闻"
+
+  - name: Binance
+    type: rss
+    url: https://www.binance.com/en/feed/news
+    tier: high
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "币安官方新闻"
+
+  - name: OKX
+    type: rss
+    url: https://www.okx.com/webapi/common/rss?lang=en-US
+    tier: high
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "OKX 官方新闻"
+
+  - name: TwitterKOLs
+    type: twitter
+    accounts:
+      - username: _FORAB
+        name: TwitterAB
+      - username: colinwu
+        name: WuShuo
+      - username: PhyrexNi
+        name: Phyrex
+      - username: justinsuntron
+        name: JustinSun
+      - username: xiejiayinBitget
+        name: XieJiayin
+    tier: high
+    enabled: true
+    maxAgeHours: 24
+    pushCooldownHours: 12
+    description: "KOL Twitter 账号聚合"
+
+  - name: PolymarketBreaking
+    type: rss
+    url: https://polymarket.com/rss/breaking
+    tier: high
+    enabled: true
+    maxAgeHours: 24
+    pushCooldownHours: 12
+    description: "Polymarket 突发新闻"
+
+  - name: PolymarketChina
+    type: rss
+    url: https://polymarket.com/rss/china
+    tier: high
+    enabled: true
+    maxAgeHours: 24
+    pushCooldownHours: 12
+    description: "Polymarket 中国相关新闻"
+
+# =============================================================================
+# 低频数据源（T1：15-30 分钟级别）
+# =============================================================================
+low_frequency:
+  - name: TechFlow
+    type: rss
+    url: https://www.techflowpost.com/rss
+    tier: low
+    enabled: true
+    maxAgeHours: 72
+    pushCooldownHours: 24
+    description: "TechFlow 科技媒体"
+
+  - name: PRNewswire
+    type: rss
+    url: https://www.prnewswire.com/rss/news-provides-general-news-feeds
+    tier: low
+    enabled: true
+    maxAgeHours: 24
+    pushCooldownHours: 24
+    description: "美通社企业新闻稿"
+    keywords:
+      include: ["hashkey", "osl", "exio", "matrixport", "bitv", "binance", "okx"]
+      exclude: []
+
+  - name: BlockBeats
+    type: puppeteer
+    url: https://www.blockbeats.news
+    tier: low
+    enabled: true
+    maxAgeHours: 12
+    pushCooldownHours: 6
+    description: "链闻 BlockBeats"
+    note: "需要 Puppeteer 渲染"
+
+  - name: OSL
+    type: rss
+    url: https://www.osl.com/hk/blog/
+    tier: low
+    enabled: true
+    maxAgeHours: 72
+    pushCooldownHours: 24
+    description: "OSL 博客"
+
+  - name: TechubNews
+    type: rss
+    url: https://techubnews.com/feed
+    tier: low
+    enabled: true
+    maxAgeHours: 24
+    pushCooldownHours: 48
+    description: "Techub News 科技媒体"
+
+  - name: Exio
+    type: rss
+    url: https://www.exio.com/zh/blog
+    tier: low
+    enabled: true
+    maxAgeHours: 72
+    pushCooldownHours: 24
+    description: "Exio 交易所博客"
+
+  - name: WuBlock
+    type: rss
+    url: https://wublock123.com/feed
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 48
+    description: "吴说区块链"
+
+  - name: HashKeyGroup
+    type: rss
+    url: https://www.hashkey.com/blog
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "HashKey 集团博客"
+
+  - name: HashKeyExchange
+    type: rss
+    url: https://hashkey.pro/zh/blog
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "HashKey 交易所博客"
+
+  - name: KuCoin
+    type: rss
+    url: https://www.kucoin.com/zh/rss
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "KuCoin 交易所新闻"
+
+  - name: Bybit
+    type: rss
+    url: https://announcements.bybit.com/en-US/feed/
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "Bybit 交易所公告"
+
+  - name: Bitget
+    type: rss
+    url: https://www.bitget.com/zh-Hans/rss
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "Bitget 交易所新闻"
+
+  - name: MEXC
+    type: rss
+    url: https://www.mexc.com/support/articles/rss
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "MEXC 交易所新闻"
+
+  - name: Gate
+    type: rss
+    url: https://www.gate.io/zh/rss
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "Gate.io 交易所新闻"
+
+  - name: HTX
+    type: rss
+    url: https://www.htx.com/support/zh-cn/rss/
+    tier: low
+    enabled: true
+    maxAgeHours: 48
+    pushCooldownHours: 24
+    description: "HTX 交易所新闻"
+
+  - name: Matrixport
+    type: puppeteer
+    url: https://view.matrixport.com/
+    tier: low
+    enabled: false  # 已禁用：帮助中心页面无时间信息
+    maxAgeHours: 24
+    pushCooldownHours: 24
+    description: "Matrixport 观点"
+    note: "因无有效时间戳已禁用"
+
+# =============================================================================
+# 全局设置
+# =============================================================================
+settings:
+  # 默认配置（未明确配置的源使用此默认值）
+  defaults:
+    maxAgeHours: 48
+    enableStrictTimestamp: false
+    dedupMode: normal  # strict | normal | loose
+    pushCooldownHours: 24
+  
+  # 爬虫批次设置
+  scraper:
+    batchSize: 4
+    batchDelayMs: 2000
+    aiDelayMs: 2000
+    maxAiCallsPerRun: 60
+  
+  # AI 成本控制
+  ai:
+    dailyBudgetUsd: 10
+    costPer1kTokens: 0.001
+    alertThreshold: 0.8

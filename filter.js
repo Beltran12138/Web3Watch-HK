@@ -47,7 +47,7 @@ function getSourceConfig(source) {
 function validateTimestamp(item) {
   const source = item.source || 'Unknown';
   const config = getSourceConfig(source);
-  
+
   // 没有时间戳的处理
   if (!item.timestamp || isNaN(item.timestamp)) {
     if (config.enableStrictTimestamp) {
@@ -57,22 +57,22 @@ function validateTimestamp(item) {
     item.timestamp = Date.now();
     return true;
   }
-  
+
   // 检查消息年龄
   const ageMs = Date.now() - item.timestamp;
   const maxAgeMs = config.maxAgeHours * 60 * 60 * 1000;
-  
+
   if (ageMs > maxAgeMs) {
     console.log(`  [SKIP] ${source}: 消息过旧 (${Math.floor(ageMs / (60*60*1000))}h > ${config.maxAgeHours}h): ${item.title?.substring(0, 40)}`);
     return false;
   }
-  
+
   // 检查未来时间（容错 5 分钟）
   if (item.timestamp > Date.now() + 5 * 60 * 1000) {
     console.log(`  [SKIP] ${source}: 未来时间戳：${item.title?.substring(0, 40)}`);
     return false;
   }
-  
+
   return true;
 }
 
@@ -226,19 +226,19 @@ function filterNewsItems(items) {
   const seenUrls = new Set();
   const seenTitles = new Map(); // title -> source (用于跨源去重)
   const seenFullKeys = new Set(); // strict 模式使用
-  
+
   const filtered = items.filter(item => {
     // 1. 基础垃圾过滤
     if (isJunkItem(item)) return false;
-    
+
     // 2. 源级别时间戳验证
     if (!validateTimestamp(item)) return false;
-    
+
     const title = (item.title || '').trim();
     const url = (item.url || '').trim();
     const source = (item.source || '').trim();
     const config = getSourceConfig(source);
-    
+
     // 3. URL 去重（去掉查询参数和锚点）
     if (url) {
       const normalizedUrl = url.replace(/[?#].*$/, '');
@@ -248,7 +248,7 @@ function filterNewsItems(items) {
       }
       seenUrls.add(normalizedUrl);
     }
-    
+
     // 4. 根据 dedupMode 进行不同级别的去重
     if (config.dedupMode === 'strict') {
       // Strict 模式：URL+ 标题归一化 + 内容指纹三重验证
@@ -258,7 +258,7 @@ function filterNewsItems(items) {
         return false;
       }
       seenFullKeys.add(fullKey);
-      
+
       // 额外检查：同一标题不同来源（防止跨源重复）
       const titleKey = dedupKeyWithTitle(title);
       if (seenTitles.has(titleKey)) {
@@ -269,7 +269,7 @@ function filterNewsItems(items) {
         }
       }
       seenTitles.set(titleKey, source);
-      
+
     } else if (config.dedupMode === 'normal') {
       // Normal 模式：URL+ 标题相似度
       for (const [seenTitle, seenSource] of seenTitles.entries()) {
@@ -279,12 +279,12 @@ function filterNewsItems(items) {
         }
       }
       seenTitles.set(dedupKeyWithTitle(title), source);
-      
+
     } else {
       // Loose 模式：仅 URL 去重（已在上面处理）
       seenTitles.set(dedupKeyWithTitle(title), source);
     }
-    
+
     return true;
   });
 
@@ -296,10 +296,10 @@ function filterNewsItems(items) {
   return deduped;
 }
 
-module.exports = { 
-  isJunkItem, 
-  isReportNoise, 
-  filterNewsItems, 
+module.exports = {
+  isJunkItem,
+  isReportNoise,
+  filterNewsItems,
   validateTimestamp,
   getSourceConfig,
   fullDedupKey,

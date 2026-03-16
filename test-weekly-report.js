@@ -8,7 +8,7 @@ async function test() {
   try {
     console.log('Starting weekly report test (dry run)...');
     const report = await runWeeklyReport(true);
-    
+
     if (report) {
       console.log('✅ Report generated successfully!');
       console.log('Length:', report.length);

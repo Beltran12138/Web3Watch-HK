@@ -275,9 +275,9 @@ const DEFAULT_SOURCE_CONFIG = {
 // ── 拉取频率分层 ────────────────────────────────────────────────────────────
 // 高频拉取源（T0：极度敏感，建议 3-5 分钟级别）
 const HIGH_FREQ_SOURCES = [
-  'SFC', 'Binance', 'OKX', 
+  'SFC', 'Binance', 'OKX',
   'TwitterKOLs',             // 包含所有的 KOL (TwitterAB, WuShuo 等)
-  'PolymarketBreaking', 'PolymarketChina'
+  'PolymarketBreaking', 'PolymarketChina',
 ];
 
 // 低频拉取源（T1：常规快讯与公关，建议 15-30 分钟级别）
@@ -285,7 +285,7 @@ const LOW_FREQ_SOURCES = [
   'TechFlow', 'PRNewswire', 'BlockBeats',
   'OSL', 'TechubNews', 'Exio',
   'WuBlock', 'HashKeyGroup', 'KuCoin', 'HashKeyExchange',
-  'Bybit', 'Bitget', 'Mexc', 'Gate', 'Htx'
+  'Bybit', 'Bitget', 'Mexc', 'Gate', 'Htx',
 ];
 
 // ── 服务器 ────────────────────────────────────────────────────────────────────

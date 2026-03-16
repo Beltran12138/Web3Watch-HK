@@ -267,7 +267,7 @@ async function callAI(messages, { temperature = 0.1, max_tokens = 2000, json = f
       if (currentProvider === name) {
         fallbackCount++;
         if (fallbackCount >= MAX_FALLBACK) {
-          console.warn(`[AI] Max fallback reached, switching to next provider`);
+          console.warn('[AI] Max fallback reached, switching to next provider');
         }
       }
 

@@ -13,13 +13,13 @@ const { runWeeklyReport } = require('./report');
 const dryRun = process.argv.includes('--dry-run');
 
 (async () => {
-    try {
-        console.log(`[WeeklyReport] Starting... (dryRun=${dryRun})`);
-        console.log(`[WeeklyReport] Time: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`);
-        await runWeeklyReport(dryRun);
-        console.log('[WeeklyReport] Completed.');
-    } catch (err) {
-        console.error('[WeeklyReport] Fatal error:', err);
-        process.exit(1);
-    }
+  try {
+    console.log(`[WeeklyReport] Starting... (dryRun=${dryRun})`);
+    console.log(`[WeeklyReport] Time: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`);
+    await runWeeklyReport(dryRun);
+    console.log('[WeeklyReport] Completed.');
+  } catch (err) {
+    console.error('[WeeklyReport] Fatal error:', err);
+    process.exit(1);
+  }
 })();

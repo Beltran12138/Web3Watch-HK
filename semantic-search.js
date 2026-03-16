@@ -6,7 +6,7 @@ let supabase = null;
 if (process.env.SUPABASE_URL && process.env.SUPABASE_KEY) {
   supabase = createClient(
     process.env.SUPABASE_URL.trim(),
-    process.env.SUPABASE_KEY.trim()
+    process.env.SUPABASE_KEY.trim(),
   );
 }
 
@@ -24,12 +24,12 @@ async function getEmbedding(text) {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.DEEPSEEK_API_KEY}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         model: EMBEDDING_MODEL,
-        input: text.substring(0, 8000)
-      })
+        input: text.substring(0, 8000),
+      }),
     });
 
     if (!response.ok) {
@@ -58,7 +58,7 @@ async function saveEmbedding(newsId, text) {
   try {
     const { error } = await supabase.from('news_embeddings').insert({
       news_id: newsId,
-      embedding: embedding
+      embedding,
     });
 
     if (error) {
@@ -90,12 +90,12 @@ async function semanticSearch(query, options = {}) {
     const { data, error } = await supabase.rpc('match_news', {
       query_embedding: queryEmbedding,
       match_threshold: threshold,
-      match_count: limit
+      match_count: limit,
     });
 
     if (error) {
       console.error('[Semantic] RPC error:', error.message);
-      
+
       const { data: fallback, error: fallbackErr } = await supabase
         .from('news_embeddings')
         .select('news_id, embedding, created_at')
@@ -109,7 +109,7 @@ async function semanticSearch(query, options = {}) {
         .map(row => ({
           news_id: row.news_id,
           similarity: cosineSimilarity(queryEmbedding, row.embedding),
-          created_at: row.created_at
+          created_at: row.created_at,
         }))
         .filter(r => r.similarity >= threshold)
         .sort((a, b) => b.similarity - a.similarity)
@@ -140,17 +140,17 @@ async function semanticSearch(query, options = {}) {
 
 function cosineSimilarity(a, b) {
   if (!a || !b || a.length !== b.length) return 0;
-  
+
   let dotProduct = 0;
   let normA = 0;
   let normB = 0;
-  
+
   for (let i = 0; i < a.length; i++) {
     dotProduct += a[i] * b[i];
     normA += a[i] * a[i];
     normB += b[i] * b[i];
   }
-  
+
   const denominator = Math.sqrt(normA) * Math.sqrt(normB);
   return denominator === 0 ? 0 : dotProduct / denominator;
 }
@@ -185,11 +185,11 @@ async function generateEmbeddingsForRecentNews(count = 100) {
     const text = [item.title, item.content, item.detail]
       .filter(Boolean)
       .join(' | ');
-    
+
     const saved = await saveEmbedding(item.id, text);
     if (saved) success++;
     else failed++;
-    
+
     await new Promise(r => setTimeout(r, 100));
   }
 
@@ -201,5 +201,5 @@ module.exports = {
   saveEmbedding,
   semanticSearch,
   generateEmbeddingsForRecentNews,
-  cosineSimilarity
+  cosineSimilarity,
 };

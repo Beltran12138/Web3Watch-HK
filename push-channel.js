@@ -293,8 +293,18 @@ class SlackChannel extends PushChannel {
 class TelegramChannel extends PushChannel {
   constructor() {
     super(CHANNEL_CONFIG.telegram);
+    // 支持频道广播模式（可选配置频道 ID）
+    this.channelId = process.env.TELEGRAM_CHANNEL_ID;
   }
 
+  /**
+   * 发送消息到 Telegram
+   * @param {Object} message - 消息对象
+   * @param {string} message.content - 消息内容（Markdown 格式）
+   * @param {string} [message.title] - 消息标题
+   * @param {Array} [message.buttons] - Inline buttons 配置
+   * @param {boolean} [message.broadcast] - 是否使用频道广播模式
+   */
   async send(message) {
     if (!this.config.enabled) {
       console.warn('[Push] Telegram not configured');
@@ -305,12 +315,22 @@ class TelegramChannel extends PushChannel {
 
     const url = `https://api.telegram.org/bot${this.config.token}/sendMessage`;
 
+    // 确定目标聊天 ID（广播模式使用频道 ID，否则使用个人/群组 ID）
+    const chatId = (message.broadcast && this.channelId) ? this.channelId : this.config.chatId;
+
     const payload = {
-      chat_id: this.config.chatId,
+      chat_id: chatId,
       text: message.content,
       parse_mode: 'Markdown',
-      disable_web_page_preview: true,
+      disable_web_page_preview: message.disablePreview !== false, // 默认关闭链接预览
     };
+
+    // 添加 inline buttons（如果提供）
+    if (message.buttons && Array.isArray(message.buttons)) {
+      payload.reply_markup = {
+        inline_keyboard: this.buildInlineKeyboard(message.buttons),
+      };
+    }
 
     try {
       const res = await axios.post(url, payload, {
@@ -326,6 +346,108 @@ class TelegramChannel extends PushChannel {
     } catch (err) {
       console.error('[Push] Telegram send error:', err.message);
       return false;
+    }
+  }
+
+  /**
+   * 构建 inline keyboard 布局
+   * @param {Array} buttons - Button 配置数组
+   * @returns {Array} Inline keyboard 布局
+   */
+  buildInlineKeyboard(buttons) {
+    // 每行最多 2 个按钮
+    const keyboard = [];
+    for (let i = 0; i < buttons.length; i += 2) {
+      const row = [];
+      row.push({
+        text: buttons[i].text,
+        callback_data: buttons[i].data || buttons[i].action,
+        ...(buttons[i].url ? { url: buttons[i].url } : {}),
+      });
+      if (buttons[i + 1]) {
+        row.push({
+          text: buttons[i + 1].text,
+          callback_data: buttons[i + 1].data || buttons[i + 1].action,
+          ...(buttons[i + 1].url ? { url: buttons[i + 1].url } : {}),
+        });
+      }
+      keyboard.push(row);
+    }
+    return keyboard;
+  }
+
+  /**
+   * 发送带交互按钮的消息（情报推送专用）
+   * @param {Object} item - 情报条目
+   * @param {string} item.title - 标题
+   * @param {string} item.content - 内容
+   * @param {string} item.url - 原文链接
+   * @param {number} item.alpha_score - 重要性评分
+   */
+  async sendIntelligence(item) {
+    const VERCEL_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+    const deepAskUrl = `${VERCEL_URL}/?deep_ask=true&q=${encodeURIComponent(item.title || '')}`;
+    const dashboardUrl = `${VERCEL_URL}`;
+
+    // 根据评分决定紧急程度标记
+    const urgencyEmoji = item.alpha_score >= 85 ? '🔴' : item.alpha_score >= 60 ? '🟡' : '🔵';
+    const scoreLabel = item.alpha_score >= 85 ? '[紧急]' : item.alpha_score >= 60 ? '[重要]' : '[关注]';
+
+    const content = `${urgencyEmoji} ${scoreLabel}\n\n*${item.title}*\n\n${item.content || item.detail || ''}\n\n` +
+                    `来源：${item.source}\n` +
+                    `评分：${item.alpha_score}/100`;
+
+    const buttons = [
+      { text: '📊 查看详情', url: deepAskUrl },
+      { text: '📈 行业看板', url: dashboardUrl },
+      { text: '🔗 原文链接', url: item.url },
+    ];
+
+    return await this.send({
+      content,
+      buttons,
+      broadcast: item.alpha_score >= 95, // 极高分使用频道广播
+    });
+  }
+
+  /**
+   * 监听 Telegram 频道消息（用于抓取 KOL 频道）
+   * 需要使用 Bot API 的 getUpdates 或 Webhook
+   */
+  async monitorChannel(channelUsername, options = {}) {
+    const { limit = 10, offset = 0 } = options;
+
+    try {
+      // 使用 getUpdates 获取最新消息
+      const url = `https://api.telegram.org/bot${this.config.token}/getUpdates`;
+      const params = {
+        offset,
+        limit,
+        timeout: 30,
+      };
+
+      const res = await axios.get(url, { params, timeout: 35000 });
+
+      if (!res.data?.ok) {
+        console.error('[Telegram] Failed to get updates:', res.data);
+        return [];
+      }
+
+      // 过滤指定频道的消息
+      const messages = res.data.result
+        .filter(update => update.channel_post?.chat?.username === channelUsername)
+        .map(update => ({
+          messageId: update.channel_post.message_id,
+          date: update.channel_post.date,
+          text: update.channel_post.text,
+          entities: update.channel_post.entities,
+          link: `https://t.me/${channelUsername}/${update.channel_post.message_id}`,
+        }));
+
+      return messages;
+    } catch (err) {
+      console.error('[Telegram] Monitor channel error:', err.message);
+      return [];
     }
   }
 
@@ -352,6 +474,7 @@ class TelegramChannel extends PushChannel {
     for (let i = 0; i < segments.length; i++) {
       const result = await this.send({
         content: segments[i],
+        ...options,
       });
       results.push(result);
 
@@ -361,6 +484,14 @@ class TelegramChannel extends PushChannel {
     }
 
     return results.every(r => r);
+  }
+
+  /**
+   * 清理资源
+   */
+  cleanup() {
+    super.cleanup();
+    console.log('[Telegram] Channel cleaned up');
   }
 }
 
@@ -413,6 +544,96 @@ class EmailChannel extends PushChannel {
   }
 }
 
+// ── 飞书（Feishu）渠道 ─────────────────────────────────────────────────────────
+class FeishuChannel extends PushChannel {
+  constructor() {
+    super({
+      name: 'Feishu',
+      enabled: !!process.env.FEISHU_WEBHOOK_URL,
+      webhook: process.env.FEISHU_WEBHOOK_URL,
+      secret: process.env.FEISHU_SECRET,
+      supportsMarkdown: true,
+      rateLimit: 20,
+    });
+  }
+
+  /**
+   * 生成飞书签名
+   */
+  generateSign(timestamp) {
+    const crypto = require('crypto');
+    const stringToSign = `${timestamp}\n${this.config.secret}`;
+    const sign = crypto.createHmac('sha256', this.config.secret)
+      .update(stringToSign)
+      .digest('base64');
+    return sign;
+  }
+
+  async send(message) {
+    if (!this.config.enabled) {
+      console.warn('[Push] Feishu not configured');
+      return false;
+    }
+
+    this.checkRateLimit();
+
+    const timestamp = Date.now();
+    const sign = this.generateSign(timestamp);
+
+    const payload = {
+      msg_type: 'interactive',
+      card: {
+        header: {
+          template: message.template || 'blue',
+          title: {
+            tag: 'plain_text',
+            content: message.title || 'Alpha Radar 通知',
+          },
+        },
+        elements: [
+          {
+            tag: 'markdown',
+            content: message.content,
+          },
+          {
+            tag: 'action',
+            actions: [
+              {
+                tag: 'button',
+                text: {
+                  tag: 'plain_text',
+                  content: '查看详情',
+                },
+                url: message.url || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '#',
+                type: 'default',
+              },
+            ],
+          },
+        ],
+      },
+    };
+
+    try {
+      const res = await axios.post(this.config.webhook, payload, {
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (res.data?.StatusCode !== 0 && res.data?.code !== 0) {
+        console.error('[Push] Feishu error:', res.data);
+        return false;
+      }
+
+      return true;
+    } catch (err) {
+      console.error('[Push] Feishu send error:', err.message);
+      return false;
+    }
+  }
+}
+
 // ── 推送管理器 ───────────────────────────────────────────────────────────────
 class PushManager {
   constructor() {
@@ -436,6 +657,11 @@ class PushManager {
     }
     if (CHANNEL_CONFIG.email.enabled) {
       this.channels.set('email', new EmailChannel());
+    }
+    // Feishu channel (independent config)
+    const feishuChannel = new FeishuChannel();
+    if (feishuChannel.config.enabled) {
+      this.channels.set('feishu', feishuChannel);
     }
 
     console.log(`[PushManager] Initialized with ${this.channels.size} channels:`,
@@ -559,5 +785,6 @@ module.exports = {
   SlackChannel,
   TelegramChannel,
   EmailChannel,
+  FeishuChannel,
   CHANNEL_CONFIG,
 };

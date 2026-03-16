@@ -17,7 +17,7 @@ const START_TIME = new Date();
 let app;
 
 // 模块依赖（在 createApp 中初始化）
-let deps = {};
+const deps = {};
 
 /**
  * 初始化模块依赖
@@ -71,7 +71,7 @@ function initDependencies() {
       SCRAPE_HIGH_CRON: '*/5 * * * *',
       SCRAPE_LOW_CRON: '*/30 * * * *',
       DAILY_REPORT_CRON: '0 18 * * *',
-      WEEKLY_REPORT_CRON: '0 18 * * 5'
+      WEEKLY_REPORT_CRON: '0 18 * * 5',
     };
   }
 
@@ -82,6 +82,15 @@ function initDependencies() {
     logger.info('Alert manager initialized');
   } catch (e) {
     logger.warn({ err: e }, 'Failed to init alert manager');
+  }
+
+  // 数据源健康监控
+  try {
+    const { sourceHealthMonitor } = require('./monitoring/source-health');
+    deps.sourceHealthMonitor = sourceHealthMonitor;
+    logger.info('Source health monitor initialized');
+  } catch (e) {
+    logger.warn({ err: e }, 'Failed to init source health monitor');
   }
 
   // 查询缓存
@@ -191,15 +200,32 @@ function createApp() {
     next();
   }, createMonitoringRoutes(deps));
 
+  // 数据源健康监控路由
+  const healthRoutes = require('./routes/health');
+  app.use('/api/health', healthRoutes);
+
   // 同步接口路由
   const createSyncRoutes = require('./routes/sync');
   app.use('/api/sync', createSyncRoutes());
+
+  // RSS/JSON 输出路由
+  const feedRoutes = require('./routes/feed');
+  app.use('/api', feedRoutes);
+  app.use('/feed', feedRoutes); // 兼容旧路径
+
+  // 第三方集成路由
+  const integrationsRoutes = require('./routes/integrations');
+  app.use('/api/integrations', integrationsRoutes);
 
   // ── SPA fallback (只捕获非 API 路由) ───────────────────────────────────────
   app.use((req, res, next) => {
     // API 路由不应该被 SPA fallback 捕获
     if (req.path.startsWith('/api/') || req.path.startsWith('/health') || req.path.startsWith('/news') || req.path.startsWith('/stats')) {
       return res.status(404).json({ success: false, error: 'API endpoint not found' });
+    }
+    // 特殊页面路由
+    if (req.path === '/health-monitor' || req.path === '/health-dashboard') {
+      return res.sendFile(path.join(__dirname, 'public', 'health.html'));
     }
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
   });
@@ -212,7 +238,7 @@ function createApp() {
     res.status(err.status || 500).json({
       success: false,
       error: isDev ? err.message : 'Internal server error',
-      ...(isDev && { stack: err.stack })
+      ...(isDev && { stack: err.stack }),
     });
   });
 
@@ -283,6 +309,84 @@ function startCronJobs() {
     });
   }
 
+  // 数据源健康检查（每小时）
+  if (deps.sourceHealthMonitor) {
+    cron.schedule('0 * * * *', async () => {
+      logger.info('Running source health check');
+      try {
+        const alerts = await deps.sourceHealthMonitor.checkHealthAndAlert();
+        if (alerts.length > 0) {
+          logger.warn({ alertCount: alerts.length }, 'Source health alerts triggered');
+        }
+      } catch (e) {
+        logger.error({ err: e }, 'Source health check error');
+      }
+    });
+  }
+
+  // 每日情报导出到 GitHub Release（每天 00:30）
+  if (process.env.GITHUB_TOKEN && process.env.GITHUB_REPO) {
+    cron.schedule('30 0 * * *', async () => {
+      logger.info('Running daily export to GitHub Release');
+      try {
+        const githubIntegration = require('./integrations/github').githubIntegration;
+        if (githubIntegration.client.enabled) {
+          const yesterday = new Date();
+          yesterday.setDate(yesterday.getDate() - 1);
+          const dateStr = yesterday.toISOString().split('T')[0];
+
+          const { db } = require('./db');
+          const startOfDay = new Date(dateStr).getTime();
+          const endOfDay = startOfDay + 86400000;
+
+          const stmt = db.prepare(`
+            SELECT * FROM news 
+            WHERE timestamp >= ? AND timestamp < ?
+            ORDER BY alpha_score DESC
+          `);
+          const items = stmt.all(startOfDay, endOfDay);
+
+          if (items.length > 0) {
+            const result = await githubIntegration.exportDailyToRelease(items, dateStr);
+            logger.info({ result }, 'Daily export completed');
+          } else {
+            logger.info('No items to export for ' + dateStr);
+          }
+        }
+      } catch (e) {
+        logger.error({ err: e }, 'Daily export error');
+      }
+    }, { timezone: 'Asia/Shanghai' });
+  }
+
+  // 高价值情报同步到 Notion（每 6 小时）
+  if (process.env.NOTION_API_KEY && process.env.NOTION_DATABASE_ID) {
+    cron.schedule('0 */6 * * *', async () => {
+      logger.info('Running sync to Notion');
+      try {
+        const notionIntegration = require('./integrations/notion').notionIntegration;
+        if (notionIntegration.client.enabled) {
+          const { db } = require('./db');
+          const sixHoursAgo = Date.now() - 6 * 60 * 60 * 1000;
+
+          const stmt = db.prepare(`
+            SELECT * FROM news 
+            WHERE timestamp >= ? AND alpha_score >= 85
+            ORDER BY timestamp DESC
+          `);
+          const items = stmt.all(sixHoursAgo);
+
+          if (items.length > 0) {
+            const result = await notionIntegration.syncBatch(items, { minScore: 85, limit: 20 });
+            logger.info({ result }, 'Notion sync completed');
+          }
+        }
+      } catch (e) {
+        logger.error({ err: e }, 'Notion sync error');
+      }
+    });
+  }
+
   logger.info('Cron jobs scheduled');
 }
 
@@ -303,6 +407,19 @@ if (require.main === module) {
     // 启动定时任务
     startCronJobs();
 
+    // 启动 Telegram Callback 服务器（如果配置了）
+    if (process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_WEBHOOK_PORT) {
+      try {
+        const { telegramCallbackHandler } = require('./telegram-callbacks');
+        const publicUrl = process.env.APP_URL || `http://localhost:${PORT}`;
+        await telegramCallbackHandler.setupWebhook(publicUrl);
+        telegramCallbackHandler.startServer();
+        logger.info('Telegram callback server started');
+      } catch (e) {
+        logger.error({ err: e }, 'Failed to start Telegram callback server');
+      }
+    }
+
     // 数据库为空时执行初始抓取
     try {
       const current = await deps.getNews(1);
@@ -319,6 +436,4 @@ if (require.main === module) {
 // Vercel Serverless 导出
 const appInstance = createApp();
 
-module.exports = (req, res) => {
-  return appInstance(req, res);
-};
+module.exports = (req, res) => appInstance(req, res);

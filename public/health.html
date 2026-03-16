@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha Radar - 数据源健康监控</title>
+  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card-bg: white;
+      --text: #1e293b;
+      --border: #e2e8f0;
+    }
+    .dark {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f1f5f9;
+      --border: #334155;
+    }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .status-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .status-healthy { background: #10b981; }
+    .status-warning { background: #f59e0b; }
+    .status-critical { background: #ef4444; }
+    .status-error { background: #dc2626; }
+    .status-empty { background: #fbbf24; }
+    .status-unknown { background: #94a3b8; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  
+  <script>
+    const { useState, useEffect, useMemo } = React;
+
+    // ── 健康监控仪表板组件 ───────────────────────────────────────────────────────
+    function HealthDashboard() {
+      const [healthData, setHealthData] = useState(null);
+      const [loading, setLoading] = useState(true);
+      const [error, setError] = useState(null);
+      const [filter, setFilter] = useState('all');
+      const [darkMode, setDarkMode] = useState(false);
+
+      // 获取健康数据
+      const fetchHealthData = async () => {
+        try {
+          const res = await fetch('/api/health/sources');
+          if (!res.ok) throw new Error('Failed to fetch health data');
+          const result = await res.json();
+          setHealthData(result.data);
+          setError(null);
+        } catch (err) {
+          setError(err.message);
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      useEffect(() => {
+        fetchHealthData();
+        const interval = setInterval(fetchHealthData, 30000); // 30 秒刷新
+        return () => clearInterval(interval);
+      }, []);
+
+      // 切换暗黑模式
+      useEffect(() => {
+        document.documentElement.classList.toggle('dark', darkMode);
+      }, [darkMode]);
+
+      // 统计数据
+      const stats = useMemo(() => {
+        if (!healthData) return null;
+        
+        return {
+          total: healthData.length,
+          healthy: healthData.filter(s => s.status === 'healthy').length,
+          warning: healthData.filter(s => s.status === 'warning').length,
+          critical: healthData.filter(s => s.status === 'critical' || s.status === 'error').length,
+          empty: healthData.filter(s => s.status === 'empty').length,
+        };
+      }, [healthData]);
+
+      // 过滤数据
+      const filteredData = useMemo(() => {
+        if (!healthData) return [];
+        if (filter === 'all') return healthData;
+        if (filter === 'issues') {
+          return healthData.filter(s => 
+            ['warning', 'critical', 'error', 'empty'].includes(s.status)
+          );
+        }
+        return healthData.filter(s => s.status === filter);
+      }, [healthData, filter]);
+
+      // 获取状态样式
+      const getStatusStyle = (status) => {
+        const styles = {
+          healthy: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+          warning: 'bg-amber-50 text-amber-700 border-amber-200',
+          critical: 'bg-red-50 text-red-700 border-red-200',
+          error: 'bg-red-50 text-red-700 border-red-200',
+          empty: 'bg-yellow-50 text-yellow-700 border-yellow-200',
+          unknown: 'bg-gray-50 text-gray-700 border-gray-200',
+          never: 'bg-gray-50 text-gray-700 border-gray-200',
+        };
+        return styles[status] || styles.unknown;
+      };
+
+      const getStatusDotClass = (status) => {
+        const classes = {
+          healthy: 'status-healthy',
+          warning: 'status-warning',
+          critical: 'status-critical',
+          error: 'status-error',
+          empty: 'status-empty',
+          unknown: 'status-unknown',
+          never: 'status-unknown',
+        };
+        return classes[status] || 'status-unknown';
+      };
+
+      const getStatusText = (status) => {
+        const texts = {
+          healthy: '正常',
+          warning: '警告',
+          critical: '严重',
+          error: '错误',
+          empty: '无数据',
+          unknown: '未知',
+          never: '未抓取',
+        };
+        return texts[status] || status;
+      };
+
+      if (loading) {
+        return (
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center">
+              <i className="fa-solid fa-circle-notch fa-spin text-4xl text-blue-500 mb-4"></i>
+              <p className="text-lg">加载中...</p>
+            </div>
+          </div>
+        );
+      }
+
+      if (error) {
+        return (
+          <div className="min-h-screen flex items-center justify-center">
+            <div className="text-center text-red-500">
+              <i className="fa-solid fa-triangle-exclamation text-4xl mb-4"></i>
+              <p className="text-lg">错误：{error}</p>
+              <button 
+                onClick={fetchHealthData}
+                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+              >
+                重试
+              </button>
+            </div>
+          </div>
+        );
+      }
+
+      return (
+        <div className="min-h-screen p-6">
+          {/* 顶部导航栏 */}
+          <div className="max-w-7xl mx-auto mb-6">
+            <div className="flex justify-between items-center">
+              <div>
+                <h1 className="text-2xl font-bold">📊 数据源健康监控</h1>
+                <p className="text-sm text-gray-500 mt-1">
+                  最后更新：{new Date().toLocaleTimeString('zh-CN')}
+                </p>
+              </div>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setDarkMode(!darkMode)}
+                  className="px-3 py-2 rounded-lg border hover:bg-gray-100 dark:hover:bg-gray-800"
+                  title="切换暗黑模式"
+                >
+                  <i className={`fa-solid ${darkMode ? 'fa-sun' : 'fa-moon'}`}></i>
+                </button>
+                <button
+                  onClick={fetchHealthData}
+                  className="px-3 py-2 rounded-lg border hover:bg-gray-100 dark:hover:bg-gray-800"
+                  title="刷新数据"
+                >
+                  <i className="fa-solid fa-rotate-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* 统计卡片 */}
+          {stats && (
+            <div className="max-w-7xl mx-auto mb-6 grid grid-cols-2 md:grid-cols-5 gap-4">
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border shadow-sm">
+                <div className="text-sm text-gray-500">总数据源</div>
+                <div className="text-2xl font-bold mt-1">{stats.total}</div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border shadow-sm">
+                <div className="text-sm text-green-500">✅ 正常</div>
+                <div className="text-2xl font-bold mt-1 text-green-600">{stats.healthy}</div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border shadow-sm">
+                <div className="text-sm text-amber-500">⚠️ 警告</div>
+                <div className="text-2xl font-bold mt-1 text-amber-600">{stats.warning}</div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border shadow-sm">
+                <div className="text-sm text-red-500">🔴 异常</div>
+                <div className="text-2xl font-bold mt-1 text-red-600">{stats.critical}</div>
+              </div>
+              <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border shadow-sm">
+                <div className="text-sm text-yellow-500">🟡 无数据</div>
+                <div className="text-2xl font-bold mt-1 text-yellow-600">{stats.empty}</div>
+              </div>
+            </div>
+          )}
+
+          {/* 过滤器 */}
+          <div className="max-w-7xl mx-auto mb-4">
+            <div className="flex gap-2 flex-wrap">
+              {[
+                ['all', '全部'],
+                ['healthy', '正常'],
+                ['warning', '警告'],
+                ['critical', '异常'],
+                ['empty', '无数据'],
+                ['issues', '仅问题'],
+              ].map(([value, label]) => (
+                <button
+                  key={value}
+                  onClick={() => setFilter(value)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                    filter === value
+                      ? 'bg-blue-500 text-white'
+                      : 'bg-white dark:bg-gray-800 border hover:bg-gray-50 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  {label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* 数据源列表 */}
+          <div className="max-w-7xl mx-auto space-y-3">
+            {filteredData.length === 0 ? (
+              <div className="text-center text-gray-500 py-12">
+                <i className="fa-solid fa-inbox text-4xl mb-4"></i>
+                <p>暂无数据</p>
+              </div>
+            ) : (
+              filteredData.map((source) => (
+                <div
+                  key={source.source}
+                  className="bg-white dark:bg-gray-800 rounded-lg p-4 border shadow-sm hover:shadow-md transition-shadow"
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex items-start gap-3 flex-1">
+                      <span className={`status-dot mt-1 ${getStatusDotClass(source.status)}`}></span>
+                      <div className="flex-1">
+                        <div className="flex items-center gap-2">
+                          <h3 className="font-semibold text-lg">{source.source}</h3>
+                          <span className={`text-xs px-2 py-1 rounded-full border ${getStatusStyle(source.status)}`}>
+                            {getStatusText(source.status)}
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-2 text-sm text-gray-500">
+                          <div>
+                            <span className="text-gray-400">最后抓取:</span>{' '}
+                            <span className="font-medium">{source.lastFetchTime || '从未'}</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">距现在:</span>{' '}
+                            <span className={`font-medium ${
+                              source.hoursSinceFetch !== null && source.hoursSinceFetch > 2
+                                ? 'text-red-500'
+                                : ''
+                            }`}>
+                              {source.hoursSinceFetch !== null ? `${source.hoursSinceFetch}小时` : 'N/A'}
+                            </span>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">今日条数:</span>{' '}
+                            <span className="font-medium">{source.todayCount || 0}</span>
+                          </div>
+                          <div>
+                            <span className="text-gray-400">总抓取次数:</span>{' '}
+                            <span className="font-medium">{source.totalFetches || 0}</span>
+                          </div>
+                        </div>
+                        {source.consecutiveEmptyCycles > 0 && (
+                          <div className="mt-2 text-sm text-amber-600">
+                            <i className="fa-solid fa-triangle-exclamation mr-1"></i>
+                            连续 {source.consecutiveEmptyCycles} 次无新数据
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={async () => {
+                          try {
+                            await fetch(`/api/health/sources/${source.source}/reset`, { method: 'POST' });
+                            fetchHealthData();
+                          } catch (err) {
+                            alert('重置失败：' + err.message);
+                          }
+                        }}
+                        className="px-3 py-1 text-sm rounded border hover:bg-gray-50 dark:hover:bg-gray-700"
+                        title="重置状态"
+                      >
+                        <i className="fa-solid fa-rotate-right"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      );
+    }
+
+    // ── 渲染应用 ───────────────────────────────────────────────────────────────
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(React.createElement(HealthDashboard));
+  </script>
+</body>
+</html>

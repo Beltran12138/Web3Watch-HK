@@ -33,7 +33,7 @@ const after = db.prepare("SELECT COUNT(*) as n FROM news WHERE source = 'Matrixp
 console.log('删除后剩余:', after.n, '条');
 
 // 总数据量
-const total = db.prepare("SELECT COUNT(*) as n FROM news").get();
+const total = db.prepare('SELECT COUNT(*) as n FROM news').get();
 console.log('数据库总条数:', total.n);
 
 db.close();

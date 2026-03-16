@@ -20,6 +20,9 @@
     "weekly-report:dry": "node run_weekly_report.js --dry-run",
     "cleanup": "node -e \"const {DataLifecycleManager} = require('./data-lifecycle'); const {db} = require('./db'); const m = new DataLifecycleManager(db); m.cleanup().then(s => console.log(s))\"",
     "test-push": "node -e \"const {pushManager} = require('./push-channel'); pushManager.pushToAll({title:'测试', content:'测试消息'}).then(r => console.log(r))\"",
+    "test:notion": "node -e \"const {notionIntegration} = require('./integrations/notion'); console.log(notionIntegration.getStatus())\"",
+    "test:github": "node -e \"const {githubIntegration} = require('./integrations/github'); console.log(githubIntegration.getStatus())\"",
+    "test:health": "node -e \"const {sourceHealthMonitor} = require('./monitoring/source-health'); console.log(sourceHealthMonitor.getHealthStatus())\"",
     "test": "jest --forceExit --detectOpenHandles",
     "test:unit": "jest tests/unit --forceExit --detectOpenHandles",
     "test:watch": "jest --watch --forceExit",
@@ -29,7 +32,8 @@
     "format:check": "prettier --check \"**/*.js\"",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "install:optional": "npm install js-yaml @notionhq/client @octokit/rest"
   },
   "keywords": [
     "web3",
@@ -70,5 +74,13 @@
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "standard-version": "^9.5.0"
+  },
+  "optionalDependencies": {
+    "js-yaml": "^4.1.0",
+    "@notionhq/client": "^2.2.15",
+    "@octokit/rest": "^21.0.0"
+  },
+  "peerDependencies": {
+    "node": ">=20.x"
   }
 }

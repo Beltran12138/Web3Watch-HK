@@ -2,7 +2,7 @@
 
 /**
  * monitoring/monitor.js — 情报密度监控器 (Proactive Alerting)
- * 
+ *
  * 职责：
  *   1. 监控短时间内（如 30 分钟）跨信源的关键词出现频率
  *   2. 如果密度超过阈值（如 3 个不同来源提到"稳定币新规"），触发高能预警
@@ -26,10 +26,10 @@ class IntelligenceDensityMonitor {
    */
   async checkDensity() {
     console.log('[Monitor] Checking intelligence density...');
-    
+
     const since = Date.now() - this.windowMs;
     const recentNews = await newsDAO.list(100, { since });
-    
+
     if (recentNews.length < this.threshold) return;
 
     // 关键词提取与跨源统计
@@ -38,7 +38,7 @@ class IntelligenceDensityMonitor {
 
     for (const item of recentNews) {
       const keywords = this.extractKeywords(item.title + ' ' + (item.content || ''));
-      
+
       for (const kw of keywords) {
         if (!topicMap.has(kw)) {
           topicMap.set(kw, new Set());
@@ -78,7 +78,7 @@ class IntelligenceDensityMonitor {
       '合并', '裁员', '破产', '黑客', '漏洞', '制裁',
       'HashKey', 'OSL', 'Gate', 'Binance', 'OKX', 'Bybit',
     ];
-    
+
     return sensitiveWords.filter(word => text.includes(word));
   }
 
@@ -91,8 +91,8 @@ class IntelligenceDensityMonitor {
     const content = `> 系统检测到 **${topic}** 在 30 分钟内被 **${sources.length}** 个不同来源提及。\n\n` +
                     `**涉及来源：** ${sources.join(', ')}\n\n` +
                     `**相关快讯：**\n${topTitles}\n\n` +
-                    `**情报建议：** 请立即关注此动向，可能涉及重大市场变化或合规调整。`;
-    
+                    '**情报建议：** 请立即关注此动向，可能涉及重大市场变化或合规调整。';
+
     console.log(`[Monitor] ALERT TRIGGERED: ${topic} (${sources.length} sources)`);
     try {
       await pushManager.sendImportant(title, content);

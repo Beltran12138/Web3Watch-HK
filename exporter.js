@@ -2,7 +2,7 @@
 
 /**
  * exporter.js — 数据导出工具
- * 
+ *
  * 职责：
  *   1. 筛选高质量（alpha_score >= 90）的情报数据
  *   2. 脱敏处理（移除 URL、PII 等）
@@ -24,24 +24,24 @@ function escapeCsvValue(value) {
 
 function convertToCSV(data) {
   if (!data || data.length === 0) return '';
-  
+
   const headers = Object.keys(data[0]);
   const rows = [headers.join(',')];
-  
+
   for (const row of data) {
     const values = headers.map(h => escapeCsvValue(row[h]));
     rows.push(values.join(','));
   }
-  
+
   return rows.join('\n');
 }
 
 async function exportForTraining(outputPath = 'training_data.jsonl', format = 'jsonl') {
   console.log(`[Exporter] Starting data export for training (format: ${format})...`);
-  
+
   const news = await newsDAO.list(1000, { important: 1 });
   const highValue = news.filter(n => n.alpha_score >= 90);
-  
+
   console.log(`[Exporter] Found ${highValue.length} high-value items.`);
 
   const processedData = highValue.map(item => ({
@@ -52,8 +52,8 @@ async function exportForTraining(outputPath = 'training_data.jsonl', format = 'j
       detail: item.detail,
       alpha_score: item.alpha_score,
       impact: item.impact,
-      bitv_action: item.bitv_action
-    })
+      bitv_action: item.bitv_action,
+    }),
   }));
 
   let content;
@@ -76,7 +76,7 @@ async function exportForTraining(outputPath = 'training_data.jsonl', format = 'j
 
   const fullPath = path.join(process.cwd(), finalPath);
   fs.writeFileSync(fullPath, content, 'utf8');
-  
+
   console.log(`[Exporter] Exported ${processedData.length} items to ${fullPath}`);
   return { path: fullPath, count: processedData.length };
 }
@@ -95,7 +95,7 @@ async function exportNews(options = {}) {
   console.log(`[Exporter] Exporting news (format: ${format})...`);
 
   const news = await newsDAO.list(limit, { source, important, startDate, endDate });
-  
+
   const exportData = news.map(item => ({
     id: item.id,
     title: item.title,
@@ -145,7 +145,7 @@ if (require.main === module) {
   exportForTraining(undefined, format).catch(console.error);
 }
 
-module.exports = { 
+module.exports = {
   exportForTraining,
   exportNews,
   convertToCSV,

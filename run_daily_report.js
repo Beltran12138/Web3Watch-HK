@@ -13,13 +13,13 @@ const { runDailyReport } = require('./report');
 const dryRun = process.argv.includes('--dry-run');
 
 (async () => {
-    try {
-        console.log(`[DailyReport] Starting... (dryRun=${dryRun})`);
-        console.log(`[DailyReport] Time: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`);
-        await runDailyReport(dryRun);
-        console.log('[DailyReport] Completed.');
-    } catch (err) {
-        console.error('[DailyReport] Fatal error:', err);
-        process.exit(1);
-    }
+  try {
+    console.log(`[DailyReport] Starting... (dryRun=${dryRun})`);
+    console.log(`[DailyReport] Time: ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}`);
+    await runDailyReport(dryRun);
+    console.log('[DailyReport] Completed.');
+  } catch (err) {
+    console.error('[DailyReport] Fatal error:', err);
+    process.exit(1);
+  }
 })();

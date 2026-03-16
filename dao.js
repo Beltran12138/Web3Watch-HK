@@ -2,23 +2,23 @@
 
 /**
  * dao.js — 数据访问对象 (DAO) 层
- * 
+ *
  * 职责：
  *   1. 封装所有数据库操作（SQLite + Supabase）
  *   2. 提供统一的业务接口，隐藏底层 SQL/API 细节
  *   3. 支持记忆系统 (Insights) 的持久化
  */
 
-const { 
-  db, 
-  supabase, 
-  saveNews: rawSaveNews, 
-  getNews: rawGetNews, 
+const {
+  db,
+  supabase,
+  saveNews: rawSaveNews,
+  getNews: rawGetNews,
   getStats: rawGetStats,
   getAlreadyProcessed: rawGetProcessed,
   updateSentStatus: rawUpdateSentStatus,
   checkIfSent: rawCheckSent,
-  updateSourcePush: rawUpdateSourcePush
+  updateSourcePush: rawUpdateSourcePush,
 } = require('./db');
 
 /**
@@ -145,7 +145,7 @@ class InsightDAO {
     } catch (e) {
       console.warn('[InsightDAO getRecent SQLite]', e.message);
     }
-    
+
     return [];
   }
 }
@@ -153,5 +153,5 @@ class InsightDAO {
 module.exports = {
   newsDAO:    new NewsDAO(),
   sourceDAO:  new SourceDAO(),
-  insightDAO: new InsightDAO()
+  insightDAO: new InsightDAO(),
 };

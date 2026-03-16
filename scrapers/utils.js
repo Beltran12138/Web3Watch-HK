@@ -117,7 +117,7 @@ function extractTimestamp(text, allowTimeOnly = false) {
       const now = new Date();
       const d   = new Date(
         now.getFullYear(), now.getMonth(), now.getDate(),
-        parseInt(timeMatch[1]), parseInt(timeMatch[2])
+        parseInt(timeMatch[1]), parseInt(timeMatch[2]),
       );
       let ts = d.getTime();
       // 未来时间说明是昨天

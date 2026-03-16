@@ -148,7 +148,7 @@ const LIFECYCLE_SQL = {
   `,
 
   // VACUUM
-  vacuum: `VACUUM;`,
+  vacuum: 'VACUUM;',
 };
 
 // ── 生命周期管理类 ───────────────────────────────────────────────────────────
@@ -344,7 +344,7 @@ class DataLifecycleManager {
         tables: stats,
         fileSize,
         fileSizeMB: (fileSize / 1024 / 1024).toFixed(2),
-        retention: retention,
+        retention,
       };
     } catch (err) {
       console.error('[Lifecycle] Get storage stats error:', err);

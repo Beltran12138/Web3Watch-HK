@@ -2,7 +2,7 @@
 
 /**
  * i18n.js — 国际化模块
- * 
+ *
  * 支持中文/英文双语切换
  */
 
@@ -134,7 +134,7 @@ function getLocale() {
 function t(key, params = {}) {
   const keys = key.split('.');
   let value = translations[currentLocale];
-  
+
   for (const k of keys) {
     if (value && typeof value === 'object') {
       value = value[k];
@@ -146,7 +146,7 @@ function t(key, params = {}) {
   if (typeof value === 'string') {
     return value.replace(/\{(\w+)\}/g, (_, k) => params[k] ?? `{${k}}`);
   }
-  
+
   return key;
 }
 

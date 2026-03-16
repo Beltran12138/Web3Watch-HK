@@ -1,18 +1,18 @@
 /**
  * fix-supabase-schema.js — 自动修复 Supabase 表结构
- * 
+ *
  * 问题：Supabase 数据库缺少关键的去重字段，导致 TechubNews 和 PRNewswire 重复推送
- * 
+ *
  * 缺失的字段：
  *   - news.sent_to_wecom (标记是否已推送)
  *   - news.normalized_title (用于去重)
  *   - news.alpha_score (重要性评分)
  *   - news.impact (影响评估)
  *   - news.bitv_action (建议行动)
- * 
+ *
  * 缺失的表：
  *   - source_tracking (追踪每个源的最后推送时间)
- * 
+ *
  * 使用方法：
  *   node fix-supabase-schema.js
  */
@@ -21,7 +21,7 @@ const { createClient } = require('@supabase/supabase-js');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
-  process.env.SUPABASE_KEY
+  process.env.SUPABASE_KEY,
 );
 
 // Supabase 服务角色密钥（需要管理员权限来执行 DDL）

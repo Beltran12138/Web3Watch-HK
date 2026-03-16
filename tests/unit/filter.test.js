@@ -117,7 +117,7 @@ describe('jaccardSimilarity', () => {
   test('similar strings return high score', () => {
     const sim = jaccardSimilarity(
       'hashkey获准提供零售服务',
-      'hashkey获准向零售用户提供服务'
+      'hashkey获准向零售用户提供服务',
     );
     expect(sim).toBeGreaterThan(0.5);
   });

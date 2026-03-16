@@ -111,7 +111,7 @@ async function scrapeTechubNews() {
       // TechubNews API 返回的时间戳可能是秒级（10位）或毫秒级（13位）
       let rawTime = item.created_at || item.publish_time;
       let timestamp = 0;
-      
+
       if (rawTime) {
         // 处理字符串数字
         if (typeof rawTime === 'string' && /^\d+$/.test(rawTime)) {
@@ -123,7 +123,7 @@ async function scrapeTechubNews() {
         }
         timestamp = parseTimestamp(rawTime);
       }
-      
+
       if (!timestamp) {
         console.log(`  [TechubNews SKIP] No valid timestamp: ${(item.title || '').substring(0, 40)}`);
         return;
@@ -140,9 +140,9 @@ async function scrapeTechubNews() {
       // 标准化 TechubNews URL：将 /article/ 替换为 /articleDetail/（确保链接可访问）
       actualUrl = actualUrl.replace(/\/article\//, '/articleDetail/');
       const normalizedUrl = actualUrl.split('?')[0].replace(/#.*$/, '').replace(/\/$/, '');
-      
+
       // 清理标题中的多余空白
-      let title = (item.title || '').replace(/\s+/g, ' ').trim();
+      const title = (item.title || '').replace(/\s+/g, ' ').trim();
       const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
 
       if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
@@ -189,10 +189,10 @@ async function scrapeMatrixport() {
       const href  = $(el).attr('href') || '';
       let title = $(el).text().trim();
       if (!title || title.length < 5) return;
-      
+
       // 清理标题中的多余空白字符
       title = title.replace(/\s+/g, ' ').trim();
-      
+
       const fullUrl = href.startsWith('http') ? href : `https://helpcenter.matrixport.com${href}`;
       const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
       const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
@@ -216,7 +216,7 @@ async function scrapeMatrixport() {
           }
         }
       }
-      
+
       // 如果容器内没找到，尝试从标题附近找
       if (!timestamp) {
         const parentText = $(el).parent().text();
@@ -238,12 +238,12 @@ async function scrapeMatrixport() {
         return;
       }
 
-      items.push(makeItem({ 
-        title, 
-        source: 'Matrixport', 
-        url: fullUrl, 
-        category: 'Announcement', 
-        timestamp
+      items.push(makeItem({
+        title,
+        source: 'Matrixport',
+        url: fullUrl,
+        category: 'Announcement',
+        timestamp,
       }));
     });
     console.log(`[Scraper] Matrixport: ${items.length}`);
@@ -269,7 +269,7 @@ async function scrapeHashKeyGroup() {
       const title = $(el).text().trim();
       const href  = $(el).attr('href');
       if (!title || title.length < 10) return;
-      
+
       const fullUrl = href.startsWith('http') ? href : `https://group.hashkey.com${href}`;
       const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
       const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
@@ -310,13 +310,13 @@ async function scrapePRNewswire() {
     $('a[href*="/news-releases/"][href$=".html"]').each((_, el) => {
       const href = $(el).attr('href');
       if (!href) return;
-      
+
       // 标准化 PRNewswire URL：统一域名，避免 apac 子域名造成的重复
       let fullUrl = href.startsWith('http') ? href : `https://www.prnewswire.com${href}`;
       // 将所有 PRNewswire 域名统一为 www.prnewswire.com
       fullUrl = fullUrl.replace(/^https?:\/\/[^\/]*prnewswire\.com/, 'https://www.prnewswire.com');
       const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
-      
+
       if (seenUrls.has(normalizedUrl)) return;
       seenUrls.add(normalizedUrl);
 
@@ -344,8 +344,8 @@ async function scrapePRNewswire() {
 
       // 严格时间解析 — 无时间戳则丢弃（避免旧稿混入）
       // 注意：不允许 HH:MM-only 匹配，防止旧文章被标为今天
-      let timestamp = extractTimestamp(timeStr, false);
-      
+      const timestamp = extractTimestamp(timeStr, false);
+
       if (!timestamp) {
         console.log(`  [PRNewswire SKIP] No timestamp: ${title.substring(0, 40)}`);
         return;
@@ -409,7 +409,7 @@ async function scrapeKuCoin() {
       const dateMatch = text.match(/\d{4}\/\d{2}\/\d{2}/);
       // 严格模式：无日期直接跳过，不使用 Date.now() fallback
       if (!dateMatch) return;
-      let timestamp   = new Date(dateMatch[0]).getTime();
+      const timestamp   = new Date(dateMatch[0]).getTime();
       if (dateMatch) text = text.replace(dateMatch[0], '').trim();
 
       items.push(makeItem({ title: text, source: 'KuCoin', url: fullUrl, category: 'Announcement', timestamp }));
@@ -438,7 +438,7 @@ async function scrapeExio() {
       if (items.find(it => it.url === fullUrl)) return;
 
       const container = $(el).closest('li, div, article');
-      let dateText    = container.find('span, small, .date, time').text().trim() || container.text();
+      const dateText    = container.find('span, small, .date, time').text().trim() || container.text();
       const timestamp = extractTimestamp(dateText);
       if (!timestamp) return; // 严格模式
 
@@ -511,39 +511,39 @@ async function scrapeSFC() {
   console.log('[Scraper] SFC Circulars...');
   const url = 'https://www.sfc.hk/tc/Rules-and-standards/Circulars';
   try {
-    const { data } = await axios.get(url, { 
+    const { data } = await axios.get(url, {
       headers: { 'User-Agent': UA, 'Accept-Language': 'zh-CN,zh;q=0.9' },
-      timeout: 20000 
+      timeout: 20000,
     });
     const $ = cheerio.load(data);
     const items = [];
-    
+
     // SFC 的通函列表通常在特定的表格或列表结构中
     $('.table-row, .list-item, tr').each((_, el) => {
       const a = $(el).find('a').first();
       const title = a.text().trim();
       const href = a.attr('href');
-      
+
       if (!title || !href || title.length < 5) return;
       if (!href.includes('/Circulars/')) return;
-      
+
       const fullUrl = href.startsWith('http') ? href : `https://www.sfc.hk${href}`;
-      
+
       // 提取日期：SFC 列表通常有一列是日期
       const dateText = $(el).find('.date, .time, td').first().text().trim();
       const timestamp = extractTimestamp(dateText) || 0;
-      
+
       if (items.find(i => i.url === fullUrl)) return;
-      
+
       items.push(makeItem({
         title: `[SFC通函] ${title}`,
         source: 'SFC',
         url: fullUrl,
         category: 'Regulation',
-        timestamp: timestamp
+        timestamp,
       }));
     });
-    
+
     console.log(`[Scraper] SFC: ${items.length}`);
     return items;
   } catch (err) {

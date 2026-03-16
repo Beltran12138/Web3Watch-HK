@@ -61,7 +61,7 @@ describe('ruleEngine.calculateImportance', () => {
     const score = ruleEngine.calculateImportance(
       'SFC 牌照 监管 处罚 CEO 收购',
       '被盗 hack merger',
-      'SFC'
+      'SFC',
     );
     expect(score).toBeLessThanOrEqual(100);
   });

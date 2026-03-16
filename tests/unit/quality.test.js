@@ -69,7 +69,7 @@ describe('DataQualityChecker', () => {
         competitor_category: '香港合规所',
       }));
       const catIssues = report.issues.filter(i =>
-        i.field === 'business_category' || i.field === 'competitor_category'
+        i.field === 'business_category' || i.field === 'competitor_category',
       );
       expect(catIssues).toHaveLength(0);
     });

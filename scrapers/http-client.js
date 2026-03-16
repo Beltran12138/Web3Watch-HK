@@ -118,7 +118,7 @@ async function fetchBatch(urls, options = {}) {
   for (let i = 0; i < urls.length; i += concurrency) {
     const batch = urls.slice(i, i + concurrency);
     const batchResults = await Promise.allSettled(
-      batch.map(url => fetch(url, options).catch(err => ({ error: err.message, url })))
+      batch.map(url => fetch(url, options).catch(err => ({ error: err.message, url }))),
     );
     results.push(...batchResults.map(r => r.status === 'fulfilled' ? r.value : r.reason));
 

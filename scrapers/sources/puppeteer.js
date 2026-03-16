@@ -165,14 +165,14 @@ async function scrapeWuBlock() {
             }
           }
 
-          results.push({ 
-            title, 
-            content: '', 
-            source: 'WuBlock', 
-            url: href, 
-            category: 'HK', 
-            timestamp: timestamp || 0, 
-            is_important: 0 
+          results.push({
+            title,
+            content: '',
+            source: 'WuBlock',
+            url: href,
+            category: 'HK',
+            timestamp: timestamp || 0,
+            is_important: 0,
           });
         }
       });
@@ -386,7 +386,7 @@ async function scrapePolymarketGeneric(url, sourceName) {
         if (href.includes('/event/') && text.length > 15 && !results.find(r => r.url === href)) {
           results.push({
             title: text.replace(/^\d+\s+/, '').replace(/\n/g, ' ').trim(),
-            content: `Prediction Market`,
+            content: 'Prediction Market',
             source: src, url: href, category: 'Market', timestamp: 0, is_important: 0,
           });
         }
@@ -427,7 +427,7 @@ async function scrapeTwitterKOLs() {
 
         $('item').each((i, el) => {
           if (i >= 15) return;
-          let title   = $(el).find('title').text().trim()
+          const title   = $(el).find('title').text().trim()
             .replace(/^RT by @\w+: /, '')
             .replace(/^R to @\w+: /, '')
             .substring(0, 200);

@@ -83,7 +83,7 @@ describe('retryWithBackoff', () => {
     await expect(
       retryWithBackoff(async () => { throw new Error('always fail'); }, {
         maxRetries: 2, baseDelayMs: 50,
-      })
+      }),
     ).rejects.toThrow('always fail');
   });
 
@@ -97,7 +97,7 @@ describe('retryWithBackoff', () => {
         maxRetries: 3,
         baseDelayMs: 50,
         shouldRetry: () => false,
-      })
+      }),
     ).rejects.toThrow('do not retry');
 
     expect(attempts).toBe(1);

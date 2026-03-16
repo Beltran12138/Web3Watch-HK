@@ -24,68 +24,68 @@ async function sendToWeCom(item, options = {}) {
   const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡');
   const urgentPrefix = options.urgent ? '🚨 [紧急] ' : '';
   let impactColor = 3; // 默认灰色
-  let impactText = item.impact || '待评估';
+  const impactText = item.impact || '待评估';
   if (item.impact === '利好') impactColor = 1; // 红色（股票红涨）或蓝色，看语境，这里企微模板里 1 是红色/重要，2 是绿色/打分，3 灰色
   else if (item.impact === '利空') impactColor = 2; // 绿色（绿跌）
 
   try {
     const payload = {
-      msgtype: "template_card",
+      msgtype: 'template_card',
       template_card: {
-        card_type: "text_notice",
+        card_type: 'text_notice',
         source: {
-          icon_url: "https://files.catbox.moe/ksw38s.png", // 一个雷达小图标示例
-          desc: "Alpha-Radar 战略预警",
-          desc_color: 1
+          icon_url: 'https://files.catbox.moe/ksw38s.png', // 一个雷达小图标示例
+          desc: 'Alpha-Radar 战略预警',
+          desc_color: 1,
         },
         main_title: {
           title: urgentPrefix + item.title,
-          desc: `${scoreEmoji} ${item.business_category || '快讯'} | 价值分: ${item.alpha_score || (item.is_important ? 85 : 50)}`
+          desc: `${scoreEmoji} ${item.business_category || '快讯'} | 价值分: ${item.alpha_score || (item.is_important ? 85 : 50)}`,
         },
         sub_title_text: (item.detail || '（暂无摘要）') + (item.bitv_action ? `\n💡 建议: ${item.bitv_action}` : ''),
         horizontal_content_list: [
           {
-            keyname: "情报维度",
-            value: item.competitor_category || '常规市场'
+            keyname: '情报维度',
+            value: item.competitor_category || '常规市场',
           },
           {
-            keyname: "业务影响",
+            keyname: '业务影响',
             value: impactText,
-            type: impactColor
+            type: impactColor,
           },
           {
-            keyname: "来源渠道",
-            value: item.source || '未知'
+            keyname: '来源渠道',
+            value: item.source || '未知',
           },
           {
-            keyname: "趋势关联",
-            value: item.trend_reference || '暂无'
-          }
+            keyname: '趋势关联',
+            value: item.trend_reference || '暂无',
+          },
         ],
         jump_list: [
           {
             type: 1,
             url: item.url || DASHBOARD_URL,
-            title: "阅读原文"
+            title: '阅读原文',
           },
           {
             type: 1,
             url: `${DASHBOARD_URL}/?q=${encodeURIComponent(item.title)}&deep_ask=true`,
-            title: "深度追问"
+            title: '深度追问',
           },
           {
             type: 1,
             url: DASHBOARD_URL,
-            title: item.bitv_action ? `建议: ${item.bitv_action}` : "查看情报看板"
-          }
+            title: item.bitv_action ? `建议: ${item.bitv_action}` : '查看情报看板',
+          },
         ],
         card_action: {
           type: 1,
           url: `${DASHBOARD_URL}/?q=${encodeURIComponent(item.title)}&deep_ask=true`,
-          appid: "",
-          pagepath: ""
-        }
-      }
+          appid: '',
+          pagepath: '',
+        },
+      },
     };
 
     await axios.post(WECOM_WEBHOOK_URL, payload);
@@ -113,10 +113,10 @@ async function sendReportToWeCom(reportContent, reportType = '日报') {
   }
 
   // 添加报告头部
-  const header = reportType === '周报' 
-    ? '## 📅 周报汇总' 
+  const header = reportType === '周报'
+    ? '## 📅 周报汇总'
     : '## 📋 日报汇总';
-  
+
   const formattedContent = header + '\n\n' + reportContent;
 
   // 将内容按段落拆分，确保每段不超过限制
@@ -135,7 +135,7 @@ async function sendReportToWeCom(reportContent, reportType = '日报') {
     try {
       await axios.post(WECOM_WEBHOOK_URL, {
         msgtype: 'markdown',
-        markdown: { content }
+        markdown: { content },
       });
       console.log(`[WeCom] ${reportType} segment ${i + 1}/${segments.length} sent.`);
 

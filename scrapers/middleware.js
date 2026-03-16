@@ -290,7 +290,7 @@ async function safeRequest(url, options = {}) {
         if (status === 403 || status === 404) return false; // Don't retry these
         return true;
       },
-    }
+    },
   );
 }
 

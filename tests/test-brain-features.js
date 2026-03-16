@@ -16,7 +16,7 @@ async function runTests() {
   const testInsight = {
     trend_key: 'RWA-TREND-2026',
     summary: 'RWA (Real World Assets) 领域在香港市场持续升温。',
-    evidence_count: 5
+    evidence_count: 5,
   };
   await insightDAO.saveInsight(testInsight);
   const insights = await insightDAO.getRecent(1);
@@ -28,12 +28,12 @@ async function runTests() {
 
   // 2. 模拟高能预警 (Intelligence Density Monitor)
   console.log('\n[Test 2] Testing IntelligenceDensityMonitor...');
-  
+
   // 模拟 3 条来自不同来源的关于“稳定币”的新闻
   const mockNews = [
     { title: '香港拟下月发布稳定币监管框架', source: 'SFC', timestamp: Date.now(), url: 't1' },
     { title: '消息称某稳定币发行商正申请香港牌照', source: 'WuBlock', timestamp: Date.now() - 1000, url: 't2' },
-    { title: '解读：香港稳定币新规对交易所的影响', source: 'BlockBeats', timestamp: Date.now() - 2000, url: 't3' }
+    { title: '解读：香港稳定币新规对交易所的影响', source: 'BlockBeats', timestamp: Date.now() - 2000, url: 't3' },
   ];
 
   console.log('[Test 2] Injecting mock news into DB...');

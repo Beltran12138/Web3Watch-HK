@@ -2,40 +2,38 @@
 
 /**
  * validation.js — Zod 输入验证中间件
- * 
+ *
  * 为 Express API 提供 schema 验证
  */
 
 const { z } = require('zod');
 const { ZodError } = require('zod');
 
-const validationMiddleware = (schema) => {
-  return (req, res, next) => {
-    try {
-      schema.parse({
-        body: req.body,
-        query: req.query,
-        params: req.params,
-      });
-      next();
-    } catch (error) {
-      if (error instanceof ZodError) {
-        const errors = error.errors.map((err) => ({
-          field: err.path.join('.'),
-          message: err.message,
-        }));
-        return res.status(400).json({
-          status: 'error',
-          message: 'Validation failed',
-          errors,
-        });
-      }
-      return res.status(500).json({
+const validationMiddleware = (schema) => (req, res, next) => {
+  try {
+    schema.parse({
+      body: req.body,
+      query: req.query,
+      params: req.params,
+    });
+    next();
+  } catch (error) {
+    if (error instanceof ZodError) {
+      const errors = error.errors.map((err) => ({
+        field: err.path.join('.'),
+        message: err.message,
+      }));
+      return res.status(400).json({
         status: 'error',
-        message: 'Internal validation error',
+        message: 'Validation failed',
+        errors,
       });
     }
-  };
+    return res.status(500).json({
+      status: 'error',
+      message: 'Internal validation error',
+    });
+  }
 };
 
 const createQuerySchema = (schema) => z.object({ query: schema });

@@ -93,7 +93,7 @@ try {
   console.log(`  ✓ 去重测试: ${testItems.length} → ${filtered.length} items (expected: 3)`);
 
   if (filtered.length !== 3) {
-    console.log(`  ⚠ 去重结果不符合预期，可能存在问题`);
+    console.log('  ⚠ 去重结果不符合预期，可能存在问题');
   }
 } catch (err) {
   console.log(`  ✗ Failed to test filter: ${err.message}`);

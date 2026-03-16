@@ -25,11 +25,11 @@ function createWebhookReceiver() {
     const expected = crypto
       .createHmac('sha256', WEBHOOK_SECRET)
       .update(JSON.stringify(payload))
-    .digest('hex');
+      .digest('hex');
 
     return crypto.timingSafeEqual(
       Buffer.from(signature),
-      Buffer.from(expected)
+      Buffer.from(expected),
     );
   }
 

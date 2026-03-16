@@ -13,7 +13,7 @@ const COMP_OPTIONS = COMPETITOR_CATEGORIES.join(', ');
 
 // ── 单条新闻分类（带降级）────────────────────────────────────────────────────
 async function processWithAI(title, content = '', source = '', recentInsights = []) {
-  const memoryStr = recentInsights.length > 0 
+  const memoryStr = recentInsights.length > 0
     ? `【行业记忆 - 已记录趋势】：\n${recentInsights.map(i => `- ${i.trend_key}: ${i.summary}`).join('\n')}\n`
     : '';
 
@@ -51,7 +51,7 @@ ${memoryStr}
         const match = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
         if (match) cleanJson = match[1];
       }
-      
+
       const parsed = JSON.parse(cleanJson);
 
       // Validate required fields and types
@@ -164,7 +164,7 @@ async function generateDailySummary(newsItems) {
   }
 
   const digest = newsItems.slice(0, REPORT.MAX_ITEMS_FOR_AI).map((item, i) =>
-    `${i + 1}. [${item.business_category || item.source}] ${item.title}${item.detail ? ' — ' + item.detail : ''}`
+    `${i + 1}. [${item.business_category || item.source}] ${item.title}${item.detail ? ' — ' + item.detail : ''}`,
   ).join('\n');
 
   const sourceStats = {};
@@ -265,7 +265,7 @@ async function generateWeeklySummary(newsItems, stats = {}) {
   // Step 1: 精选 TOP N
   const selectN = REPORT.WEEKLY_SELECT_TOP;
   const selectList = newsItems.slice(0, 120).map((it, i) =>
-    `${i + 1}. [${it.business_category || '?'}][${it.source}] ${it.title}${it.detail ? ' — ' + it.detail : ''}`
+    `${i + 1}. [${it.business_category || '?'}][${it.source}] ${it.title}${it.detail ? ' — ' + it.detail : ''}`,
   ).join('\n');
 
   const selectPrompt = `你是 BitV 战略分析师。从以下本周行业动态中，精选出对 BitV（香港 SFC VATP 申请者）最具战略价值的 ${selectN} 条，用 JSON 数组返回序号列表。
@@ -302,7 +302,7 @@ ${selectList}`;
   const offshoreItems = selectedItems.filter(it => it.competitor_category === '离岸所');
   const policyItems = selectedItems.filter(it => ['政策', '合规', '监管'].includes(it.business_category));
   const otherItems = selectedItems.filter(it =>
-    !hkItems.includes(it) && !offshoreItems.includes(it) && !policyItems.includes(it)
+    !hkItems.includes(it) && !offshoreItems.includes(it) && !policyItems.includes(it),
   );
 
   const fmt = (items) => items.map(it => `  - ${it.source}: ${it.detail || it.title}`).join('\n') || '  （本周暂无）';

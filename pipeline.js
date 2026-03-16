@@ -85,7 +85,7 @@ class Pipeline extends EventEmitter {
         const result = await this._executeWithTimeout(
           stage.handler(currentItems, context),
           stage.options.timeoutMs,
-          stage.name
+          stage.name,
         );
 
         currentItems = Array.isArray(result) ? result : currentItems;
@@ -139,7 +139,7 @@ class Pipeline extends EventEmitter {
     return Promise.race([
       promise,
       new Promise((_, reject) =>
-        setTimeout(() => reject(new Error(`Stage "${stageName}" timed out after ${timeoutMs}ms`)), timeoutMs)
+        setTimeout(() => reject(new Error(`Stage "${stageName}" timed out after ${timeoutMs}ms`)), timeoutMs),
       ),
     ]);
   }
@@ -255,7 +255,7 @@ function createPushStage(pushFn, filterFn) {
         await pushFn(item);
         pushed++;
       } catch (err) {
-        console.warn(`[Pipeline:Push] Failed to push:`, err.message);
+        console.warn('[Pipeline:Push] Failed to push:', err.message);
       }
     }
 

@@ -13,7 +13,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function checkTable() {
   console.log('Verifying user_preferences table in Supabase...');
-  
+
   const { data, error } = await supabase
     .from('user_preferences')
     .select('*')
