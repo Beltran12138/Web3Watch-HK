@@ -27,9 +27,9 @@ let STMT = null;
 // ── 归一化 key（用于模糊去重）─────────────────────────────────────────────────
 function normalizeKey(title, source) {
   if (!title) return '';
-  
+
   let normalized = title.trim().toLowerCase();
-  
+
   // 1. 移除常见的新闻后缀/前缀（如 [Update], (Updated), [ANN] 等）
   normalized = normalized
     .replace(/\[[^\]]+\]/g, '') // 移除 [xxx]
@@ -40,7 +40,7 @@ function normalizeKey(title, source) {
 
   // 2. 移除非字母数字字符
   normalized = normalized.replace(/[\s\-_,.:;!?()\[\]{}"'\\/|@#$%^&*+=<>~`]+/g, '');
-  
+
   return source ? `${normalized}|${source.trim().toLowerCase()}` : normalized;
 }
 
@@ -126,7 +126,7 @@ const migrations = [
   ['normalized_title',     "ALTER TABLE news ADD COLUMN normalized_title TEXT DEFAULT ''; CREATE INDEX IF NOT EXISTS idx_normalized_title ON news(normalized_title)"],
 ];
 migrations.forEach(([col, sql]) => {
-  if (!existingCols.includes(col)) { 
+  if (!existingCols.includes(col)) {
     try { db.exec(sql); console.log(`[DB] Migrated: +${col}`); } catch(e) { console.error(`[DB] Migration failed for ${col}:`, e.message); }
   }
 });
@@ -160,13 +160,13 @@ STMT = {
   updateByNorm:  db.prepare('UPDATE news SET sent_to_wecom=1 WHERE normalized_title=?'),
 
   getByUrls:     (placeholders) => db.prepare(
-    `SELECT url, title, normalized_title, source, business_category, sent_to_wecom, timestamp FROM news WHERE url IN (${placeholders})`
+    `SELECT url, title, normalized_title, source, business_category, sent_to_wecom, timestamp FROM news WHERE url IN (${placeholders})`,
   ),
   getByNorm:     db.prepare(
-    'SELECT url, sent_to_wecom, business_category, timestamp FROM news WHERE normalized_title=? ORDER BY sent_to_wecom DESC, timestamp DESC LIMIT 1'
+    'SELECT url, sent_to_wecom, business_category, timestamp FROM news WHERE normalized_title=? ORDER BY sent_to_wecom DESC, timestamp DESC LIMIT 1',
   ),
   checkSent:     db.prepare(
-    'SELECT sent_to_wecom FROM news WHERE (url=? OR normalized_title=?) AND sent_to_wecom=1 LIMIT 1'
+    'SELECT sent_to_wecom FROM news WHERE (url=? OR normalized_title=?) AND sent_to_wecom=1 LIMIT 1',
   ),
 
   // Insights
@@ -265,7 +265,7 @@ async function getNews(limit = 100, source = null, important = 0, search = '') {
   if (USE_SUPABASE && supabase) {
     return await getNewsFromSupabase(limit, source, important, search);
   }
-  
+
   let sql    = 'SELECT * FROM news WHERE 1=1 ';
   const params = [];
 
@@ -277,7 +277,7 @@ async function getNews(limit = 100, source = null, important = 0, search = '') {
   }
 
   if (search) {
-    sql += "AND (title LIKE ? OR content LIKE ? OR detail LIKE ?) ";
+    sql += 'AND (title LIKE ? OR content LIKE ? OR detail LIKE ?) ';
     const like = `%${search}%`;
     params.push(like, like, like);
   }
@@ -292,19 +292,19 @@ async function getNewsFromSupabase(limit = 100, source = null, important = 0, se
   if (!supabase) {
     return [];
   }
-  
+
   let query = supabase.from('news').select('*').order('timestamp', { ascending: false }).limit(limit);
-  
+
   if (important === 1) {
     query = query.eq('is_important', 1);
   } else if (source && source !== 'All') {
     query = query.eq('source', source);
   }
-  
+
   if (search) {
     query = query.or(`title.ilike.%${search}%,content.ilike.%${search}%,detail.ilike.%${search}%`);
   }
-  
+
   const { data, error } = await query;
   if (error) {
     console.error('[Supabase getNews]', error.message);
@@ -318,7 +318,7 @@ async function getStats(since = 0) {
   if (USE_SUPABASE && supabase) {
     return await getStatsFromSupabase(since);
   }
-  
+
   const sinceTs = since || (Date.now() - 7 * 24 * 3600 * 1000);
   return {
     total:      STMT.countAll.get().n,
@@ -332,9 +332,9 @@ async function getStatsFromSupabase(since = 0) {
   if (!supabase) {
     return { total: 0, important: 0, categories: [], sources: [] };
   }
-  
+
   const sinceTs = since || (Date.now() - 7 * 24 * 3600 * 1000);
-  
+
   try {
     // Use server-side aggregation RPCs (see sql/stats-rpc.sql)
     const [
@@ -372,7 +372,7 @@ async function getStatsFromSupabase(since = 0) {
       (srcRows || []).forEach(r => { const s = r.source; if (s) srcMap[s] = (srcMap[s] || 0) + 1; });
       sources = Object.entries(srcMap).map(([source, n]) => ({ source, n })).sort((a, b) => b.n - a.n).slice(0, 30);
     }
-    
+
     return {
       total: total || 0,
       important: important || 0,
@@ -463,7 +463,7 @@ async function getAlreadyProcessed(items) {
 // ── updateSentStatus ──────────────────────────────────────────────────────────
 async function updateSentStatus(item) {
   const nTitle = normalizeKey(item.title, '').split('|')[0];
-  
+
   if (!USE_SUPABASE) {
     try {
       db.transaction(() => {
@@ -509,7 +509,7 @@ function contentFingerprint(content) {
     .replace(/\s+/g, ' ')
     .trim()
     .toLowerCase();
-  
+
   // 简单 hash：取前 200 字符的 CRC32 风格校验和
   let hash = 0;
   const str = clean.substring(0, 200);
@@ -572,7 +572,7 @@ async function updateSourcePush(source, timestamp, title) {
           source,
           last_pushed_timestamp: timestamp,
           last_pushed_title: title,
-          last_updated: new Date().toISOString()
+          last_updated: new Date().toISOString(),
         }, { onConflict: 'source' });
       if (error) throw error;
     } catch (e) {
@@ -580,7 +580,7 @@ async function updateSourcePush(source, timestamp, title) {
     }
     return;
   }
-  
+
   try {
     sourceTrackingStmts.upsert.run(source, timestamp, title);
   } catch (e) {
@@ -619,7 +619,7 @@ async function getAllSourceTracking() {
 async function canPushMessage(source, title, timestamp, cooldownHours = 24) {
   const lastPush = await getSourceLastPush(source);
   if (!lastPush) return true; // 从未推送过，允许推送
-  
+
   // 检查距离上次推送是否已过冷却期
   const cooldownMs = cooldownHours * 60 * 60 * 1000;
   if (Date.now() - lastPush < cooldownMs) {
@@ -629,7 +629,9 @@ async function canPushMessage(source, title, timestamp, cooldownHours = 24) {
       try {
         const { data } = await supabase.from('source_tracking').select('last_pushed_title').eq('source', source).maybeSingle();
         lastPushedTitle = data?.last_pushed_title || '';
-      } catch (_) {}
+      } catch (_) {
+        // Ignore supabase errors, use fallback
+      }
     } else {
       const row = sourceTrackingStmts.get.get(source);
       lastPushedTitle = row?.last_pushed_title || '';
@@ -687,15 +689,15 @@ async function checkIfSent(url, nTitle) {
   }
 }
 
-module.exports = { 
-  db, 
+module.exports = {
+  db,
   supabase,
   STMT,
-  saveNews, 
-  getNews, 
-  getStats, 
-  getAlreadyProcessed, 
-  updateSentStatus, 
+  saveNews,
+  getNews,
+  getStats,
+  getAlreadyProcessed,
+  updateSentStatus,
   normalizeKey,
   contentFingerprint,
   getSourceLastPush,

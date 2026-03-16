@@ -36,19 +36,25 @@ const { delayWithJitter }  = require('./middleware');
 let alertManager = null;
 try {
   alertManager = require('../monitoring/alert-manager').alertManager;
-} catch (_) {}
+} catch (_) {
+  // Alert manager not available
+}
 
 // ── Memory system: load recent insights for AI context ──────────────────────
 let insightDAO = null;
 try {
   insightDAO = require('../dao').insightDAO;
-} catch (_) {}
+} catch (_) {
+  // Insight DAO not available
+}
 
 // ── Data quality integration ────────────────────────────────────────────────
 let qualityChecker = null;
 try {
   qualityChecker = require('../quality').qualityChecker;
-} catch (_) {}
+} catch (_) {
+  // Quality checker not available
+}
 
 const {
   SCRAPER,
@@ -90,7 +96,7 @@ const SCRAPERS_MAP = {
   Exio: scrapeExio, Matrixport: scrapeMatrixport, WuBlock: scrapeWuBlock, HashKeyGroup: scrapeHashKeyGroup,
   KuCoin: scrapeKuCoin, HashKeyExchange: scrapeHashKeyExchange, Binance: scrapeBinance, Bybit: scrapeBybit,
   Bitget: scrapeBitget, Mexc: scrapeMexc, PolymarketBreaking: scrapePolymarketBreaking,
-  PolymarketChina: scrapePolymarketChina, Gate: scrapeGate, Htx: scrapeHtx
+  PolymarketChina: scrapePolymarketChina, Gate: scrapeGate, Htx: scrapeHtx,
 };
 
 // 检查源是否被禁用
@@ -146,7 +152,7 @@ function checkImportance(item) {
 /**
  * 基于规则判断条目是否可跳过 AI 分类（低价值噪音）
  * 返回 true 表示跳过 AI，false 表示需要 AI 处理
- * 
+ *
  * 优化流程：抓取 → 规则预筛(去掉噪音) → AI分类(精选) → 推送
  */
 function ruleBasedPreFilter(item) {
@@ -216,7 +222,7 @@ async function runAllScrapers(tier = 'all') {
   }
 
   // 1. 分批并发执行目标爬虫
-  let rawResults = [];
+  const rawResults = [];
   for (let i = 0; i < targetScrapers.length; i += SCRAPER.BATCH_SIZE) {
     const batch   = targetScrapers.slice(i, i + SCRAPER.BATCH_SIZE);
     const batchNo = Math.floor(i / SCRAPER.BATCH_SIZE) + 1;
@@ -349,10 +355,10 @@ async function runAllScrapers(tier = 'all') {
     if (item.is_important === 1 && !isAlreadySent) {
       // 获取源配置
       const sourceConfig = getSourceConfig(item.source);
-      
+
       // 紧急通道：alpha_score >= CRITICAL_SCORE_THRESHOLD 时跳过冷却期，即时推送
       const isCritical = (item.alpha_score || 0) >= CRITICAL_SCORE_THRESHOLD;
-      
+
       // 检查源级别冷却时间（紧急消息跳过冷却检查）
       if (!isCritical && !(await canPushMessage(item.source, item.title, item.timestamp, sourceConfig.pushCooldownHours))) {
         console.log(`[SKIP COOLDOWN] ${item.source}: 冷却期内 (${sourceConfig.pushCooldownHours}h): ${item.title.substring(0, 40)}`);
@@ -395,10 +401,10 @@ async function runAllScrapers(tier = 'all') {
 
         // 实际发送消息
         await sendToWeCom(item, { urgent: isCritical });
-        
+
         // 更新源追踪信息
         await updateSourcePush(item.source, item.timestamp, item.title);
-        
+
         updateSentStatus(item).catch(e => console.warn('[Supabase update]', e.message));
       } catch (err) {
         console.error('[Push error]', item.source, err.message);
@@ -444,7 +450,7 @@ async function runAllScrapers(tier = 'all') {
       alertManager._sendAlert(
         'Scraper Batch Alert',
         `本轮爬取失败率过高：${(failRate * 100).toFixed(0)}% (${failedCount}/${totalScrapers})\n\n失败来源：\n${failedSources.join('\n')}`,
-        { failRate, failedCount, totalScrapers }
+        { failRate, failedCount, totalScrapers },
       );
     }
   }

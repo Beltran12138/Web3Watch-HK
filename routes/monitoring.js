@@ -95,7 +95,9 @@ module.exports = function createMonitoringRoutes(deps) {
       try {
         const { aiCostTracker } = require('../ai');
         costStatus = aiCostTracker.getStatus();
-      } catch (_) {}
+      } catch (_) {
+        // AI cost tracking not available
+      }
 
       res.json({ success: true, status, cost: costStatus });
     } catch (err) {

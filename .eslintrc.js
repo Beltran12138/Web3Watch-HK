@@ -4,6 +4,7 @@ module.exports = {
     node: true,
     es2022: true,
     jest: true,
+    browser: true, // 浏览器环境（PUPPeteer/前端）
   },
   extends: [
     'eslint:recommended',
@@ -20,6 +21,7 @@ module.exports = {
     'no-duplicate-imports': 'error',
     'no-unreachable': 'error',
     'no-constant-condition': 'warn',
+    'no-useless-escape': 'off', // 正则表达式中的转义字符可以提高可读性
 
     // 最佳实践
     'eqeqeq': ['error', 'always', { null: 'ignore' }],
@@ -49,6 +51,22 @@ module.exports = {
       files: ['tests/**/*.js', '*.test.js'],
       rules: {
         'no-console': 'off',
+      },
+    },
+    {
+      // Service Worker 文件 (public/sw.js)
+      files: ['public/sw.js'],
+      env: {
+        serviceworker: true,
+      },
+    },
+    {
+      // Puppeteer 页面环境脚本
+      files: ['scrapers/sources/puppeteer.js', 'scrapers/middleware.js', 'scrapers/browser.js', 'inspect_dom.js'],
+      globals: {
+        document: 'readonly',
+        window: 'readonly',
+        navigator: 'readonly',
       },
     },
   ],

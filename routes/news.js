@@ -87,7 +87,7 @@ module.exports = function createNewsRoutes(deps) {
       const semantic = require('../semantic-search');
       const results = await semantic.semanticSearch(q, {
         limit: Math.min(50, Math.max(1, parseInt(limit, 10) || 10)),
-        threshold: Math.min(1, Math.max(0, parseFloat(threshold) || 0.5))
+        threshold: Math.min(1, Math.max(0, parseFloat(threshold) || 0.5)),
       });
 
       res.json({ success: true, count: results.length, data: results });
@@ -174,7 +174,9 @@ module.exports = function createNewsRoutes(deps) {
       let allTracking = [];
       try {
         allTracking = await db.getAllSourceTracking();
-      } catch (_) {}
+      } catch (_) {
+        // Source tracking not available
+      }
 
       // 从 news 表获取各源最新一条的时间
       let latestBySource = [];
