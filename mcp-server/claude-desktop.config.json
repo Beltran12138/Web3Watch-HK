@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "alpha-radar": {
+      "command": "node",
+      "args": [
+        "server.js"
+      ],
+      "cwd": "${workspaceFolder}/mcp-server",
+      "env": {
+        "API_BASE_URL": "http://localhost:3001/api",
+        "API_SECRET": ""
+      }
+    }
+  }
+}

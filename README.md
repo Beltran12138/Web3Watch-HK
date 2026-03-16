@@ -91,6 +91,21 @@ docker-compose up -d
 
 ### 方案 C：本地开发
 
+#### 快速安装（推荐）
+
+**Windows:**
+```bash
+setup-windows.bat
+```
+
+**macOS/Linux:**
+```bash
+chmod +x setup.sh
+./setup.sh
+```
+
+#### 手动安装
+
 ```bash
 # 安装依赖
 npm install
