@@ -11,8 +11,8 @@ const express = require('express');
 
 const router = express.Router();
 
-// 从数据库获取新闻
-const { db } = require('../db');
+// 从数据库获取新闻（支持 Supabase 自动回退）
+const { getNews } = require('../db');
 
 /**
  * 生成 RSS 2.0 格式的 XML
@@ -169,28 +169,16 @@ router.get('/feed.rss', async (req, res) => {
       source,
     } = req.query;
 
-    // 构建查询
-    let query = `
-      SELECT * FROM news
-      WHERE is_important = 1 OR alpha_score >= ?
-    `;
-    const params = [parseInt(min_score) || 60];
+    const minScore = parseInt(min_score) || 60;
+    const maxLimit = parseInt(limit) || 50;
 
-    if (category) {
-      query += ` AND business_category = ?`;
-      params.push(category);
-    }
+    // 使用 getNews 兼容 Supabase（生产）和 SQLite（本地）
+    let items = await getNews(maxLimit * 3, source || null, 0, '');
 
-    if (source) {
-      query += ` AND source = ?`;
-      params.push(source);
-    }
-
-    query += ` ORDER BY timestamp DESC LIMIT ?`;
-    params.push(parseInt(limit) || 50);
-
-    const stmt = db.prepare(query);
-    const items = stmt.all(...params);
+    // 内存过滤：重要条目 OR 高分
+    items = items.filter(item => item.is_important || (item.alpha_score || 0) >= minScore);
+    if (category) items = items.filter(item => item.business_category === category);
+    items = items.slice(0, maxLimit);
 
     // 生成 RSS
     const rssXml = generateRSS(items, {
@@ -240,14 +228,12 @@ router.get('/feed.json', async (req, res) => {
       min_score = 60,
     } = req.query;
 
-    const stmt = db.prepare(`
-      SELECT * FROM news
-      WHERE is_important = 1 OR alpha_score >= ?
-      ORDER BY timestamp DESC
-      LIMIT ?
-    `);
+    const minScore = parseInt(min_score) || 60;
+    const maxLimit = parseInt(limit) || 50;
 
-    const items = stmt.all(parseInt(min_score) || 60, parseInt(limit) || 50);
+    let items = await getNews(maxLimit * 3, null, 0, '');
+    items = items.filter(item => item.is_important || (item.alpha_score || 0) >= minScore);
+    items = items.slice(0, maxLimit);
 
     res.json({
       success: true,
