@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  alpha-radar:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: alpha-radar
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=production
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - WECOM_WEBHOOK_URL=${WECOM_WEBHOOK_URL}
+      - DINGTALK_WEBHOOK_URL=${DINGTALK_WEBHOOK_URL}
+      - DINGTALK_SECRET=${DINGTALK_SECRET}
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+      - USE_SUPABASE=${USE_SUPABASE:-false}
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_KEY=${SUPABASE_KEY}
+      - API_SECRET=${API_SECRET}
+      - PORT=3001
+    volumes:
+      - alpha-radar-data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3001/api/health', (r) => { process.exit(r.statusCode === 200 ? 0 : 1) })"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    networks:
+      - alpha-radar-network
+
+  # 可选：开发环境
+  alpha-radar-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: alpha-radar-dev
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+      - DEEPSEEK_API_KEY=${DEEPSEEK_API_KEY}
+      - WECOM_WEBHOOK_URL=${WECOM_WEBHOOK_URL}
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run dev
+    networks:
+      - alpha-radar-network
+
+volumes:
+  alpha-radar-data:
+
+networks:
+  alpha-radar-network:
+    driver: bridge

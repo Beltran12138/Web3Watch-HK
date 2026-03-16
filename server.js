@@ -144,6 +144,17 @@ function createApp() {
   app.use(express.json());
   app.use(express.static(path.join(__dirname, 'public')));
 
+  // ── Swagger API 文档 ─────────────────────────────────────────────────────────
+  if (process.env.NODE_ENV !== 'production') {
+    try {
+      const { setupSwagger } = require('./swagger');
+      setupSwagger(app);
+      console.log('[server] Swagger docs available at /api-docs');
+    } catch (e) {
+      console.warn('[server] Failed to init Swagger:', e.message);
+    }
+  }
+
   // ── 健康检查（无需认证）─────────────────────────────────────────────────────
   const healthHandler = async (req, res) => {
     try {

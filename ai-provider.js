@@ -21,22 +21,44 @@ const PROVIDERS = {
     key: process.env.DEEPSEEK_API_KEY,
     priority: 1,
     enabled: !!process.env.DEEPSEEK_API_KEY,
+    supportsJson: true,
   },
   openrouter: {
     name: 'OpenRouter',
     url: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'anthropic/claude-3.5-sonnet',
+    model: process.env.OPENROUTER_MODEL || 'anthropic/claude-3.5-sonnet',
     key: process.env.OPENROUTER_API_KEY,
     priority: 2,
     enabled: !!process.env.OPENROUTER_API_KEY,
+    supportsJson: true,
   },
   openai: {
     name: 'OpenAI',
     url: 'https://api.openai.com/v1/chat/completions',
-    model: 'gpt-4o-mini',
+    model: process.env.OPENAI_MODEL || 'gpt-4o-mini',
     key: process.env.OPENAI_API_KEY,
     priority: 3,
     enabled: !!process.env.OPENAI_API_KEY,
+    supportsJson: true,
+  },
+  anthropic: {
+    name: 'Anthropic',
+    url: 'https://api.anthropic.com/v1/messages',
+    model: process.env.ANTHROPIC_MODEL || 'claude-3-5-sonnet-20241022',
+    key: process.env.ANTHROPIC_API_KEY,
+    priority: 4,
+    enabled: !!process.env.ANTHROPIC_API_KEY,
+    supportsJson: false,
+    authHeader: { 'anthropic-version': '2023-06-01' },
+  },
+  google: {
+    name: 'Google Gemini',
+    url: `https://generativelanguage.googleapis.com/v1beta/models/${process.env.GEMINI_MODEL || 'gemini-2.0-flash'}:generateContent`,
+    key: process.env.GEMINI_API_KEY,
+    priority: 5,
+    enabled: !!process.env.GEMINI_API_KEY,
+    supportsJson: true,
+    isGoogle: true,
   },
 };
 
@@ -164,6 +186,61 @@ async function callAI(messages, { temperature = 0.1, max_tokens = 2000, json = f
       if (name === 'openrouter') {
         headers['HTTP-Referer'] = process.env.APP_URL || 'https://alpha-radar.vercel.app';
         headers['X-Title'] = 'Alpha Radar';
+      }
+
+      // Anthropic 需要不同的 API 格式
+      if (name === 'anthropic') {
+        const anthropicPayload = {
+          model: provider.model,
+          messages,
+          max_tokens,
+          temperature,
+          ...(json ? { system: 'You are a helpful assistant that responds in JSON format.' } : {}),
+        };
+        const res = await axios.post(provider.url, anthropicPayload, {
+          headers: {
+            ...headers,
+            ...provider.authHeader,
+            'x-api-key': provider.key,
+          },
+          timeout: 45000,
+        });
+        const content = res.data?.content?.[0]?.text?.trim();
+        if (content) {
+          if (currentProvider !== name) {
+            console.log(`[AI] Switched to ${provider.name}`);
+            currentProvider = name;
+            fallbackCount = 0;
+          }
+          return content;
+        }
+        continue;
+      }
+
+      // Google Gemini 需要不同的 API 格式
+      if (name === 'google') {
+        const googlePayload = {
+          contents: messages.map(m => ({ role: m.role, parts: [{ text: m.content }] })),
+          generationConfig: {
+            temperature,
+            maxOutputTokens: max_tokens,
+            ...(json ? { responseMimeType: 'application/json' } : {}),
+          },
+        };
+        const res = await axios.post(`${provider.url}?key=${provider.key}`, googlePayload, {
+          headers,
+          timeout: 45000,
+        });
+        const content = res.data?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+        if (content) {
+          if (currentProvider !== name) {
+            console.log(`[AI] Switched to ${provider.name}`);
+            currentProvider = name;
+            fallbackCount = 0;
+          }
+          return content;
+        }
+        continue;
       }
 
       const res = await axios.post(provider.url, payload, {
