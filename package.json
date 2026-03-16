@@ -1,13 +1,13 @@
 {
   "name": "alpha-radar",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Web3/Crypto 行业情报聚合系统 — 多源抓取 + AI 分类 + 多渠道推送",
   "main": "server.js",
   "engines": {
     "node": "20.x"
   },
   "scripts": {
-    "build:frontend": "npx esbuild public/src/app.jsx --outfile=public/app.js --jsx=transform --jsx-factory=React.createElement --jsx-fragment=React.Fragment --minify --charset=utf8",
+    "build:frontend": "node scripts/build-frontend.js",
     "build": "npm run build:frontend",
     "start": "node server.js",
     "dev": "node --watch server.js",
@@ -22,7 +22,14 @@
     "test-push": "node -e \"const {pushManager} = require('./push-channel'); pushManager.pushToAll({title:'测试', content:'测试消息'}).then(r => console.log(r))\"",
     "test": "jest --forceExit --detectOpenHandles",
     "test:unit": "jest tests/unit --forceExit --detectOpenHandles",
-    "test:watch": "jest --watch --forceExit"
+    "test:watch": "jest --watch --forceExit",
+    "lint": "eslint . --ext .js",
+    "lint:fix": "eslint . --ext .js --fix",
+    "format": "prettier --write \"**/*.js\"",
+    "format:check": "prettier --check \"**/*.js\"",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:major": "standard-version --release-as major"
   },
   "keywords": [
     "web3",
@@ -48,6 +55,7 @@
     "helmet": "^8.1.0",
     "node-cron": "^4.2.1",
     "nodemailer": "^6.10.1",
+    "pino": "^8.19.0",
     "puppeteer": "^24.37.5",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
@@ -58,6 +66,9 @@
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "@types/jest": "^29.5.14"
+    "@types/jest": "^29.5.14",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "standard-version": "^9.5.0"
   }
 }

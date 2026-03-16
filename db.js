@@ -84,14 +84,29 @@ if (!USE_SUPABASE) {
       last_updated INTEGER,
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
+    -- 核心查询索引
     CREATE INDEX IF NOT EXISTS idx_timestamp       ON news(timestamp DESC);
     CREATE INDEX IF NOT EXISTS idx_source          ON news(source);
     CREATE INDEX IF NOT EXISTS idx_is_important    ON news(is_important);
-    CREATE INDEX IF NOT EXISTS idx_alpha_score     ON news(alpha_score);
+    CREATE INDEX IF NOT EXISTS idx_alpha_score     ON news(alpha_score DESC);
     CREATE INDEX IF NOT EXISTS idx_business_cat    ON news(business_category);
     CREATE INDEX IF NOT EXISTS idx_sent_wecom      ON news(sent_to_wecom);
     CREATE UNIQUE INDEX IF NOT EXISTS idx_title_source ON news(title, source);
     CREATE INDEX IF NOT EXISTS idx_normalized_title ON news(normalized_title);
+
+    -- 复合索引（优化常见查询模式）
+    CREATE INDEX IF NOT EXISTS idx_source_timestamp ON news(source, timestamp DESC);
+    CREATE INDEX IF NOT EXISTS idx_business_timestamp ON news(business_category, timestamp DESC);
+    CREATE INDEX IF NOT EXISTS idx_important_timestamp ON news(is_important, timestamp DESC);
+    CREATE INDEX IF NOT EXISTS idx_alpha_timestamp ON news(alpha_score DESC, timestamp DESC);
+
+    -- 趋势查询优化（按日期聚合）
+    CREATE INDEX IF NOT EXISTS idx_timestamp_business ON news(timestamp, business_category);
+
+    -- 搜索优化（全文搜索前置）
+    CREATE INDEX IF NOT EXISTS idx_title_search ON news(title COLLATE NOCASE);
+
+    -- 其他表索引
     CREATE INDEX IF NOT EXISTS idx_source_tracking ON source_tracking(source);
     CREATE INDEX IF NOT EXISTS idx_insight_key     ON insights(trend_key);
     CREATE INDEX IF NOT EXISTS idx_insight_updated ON insights(last_updated DESC);

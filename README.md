@@ -2,7 +2,7 @@
 
 > Web3/Crypto 行业聚合 + AI 分类摘要 + 多渠道推送 — 为决策者提供高信噪比情报
 
-![Version](https://img.shields.io/badge/version-1.4.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ---
