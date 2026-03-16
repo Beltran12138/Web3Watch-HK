@@ -213,6 +213,10 @@ function createApp() {
   app.use('/api', feedRoutes);
   app.use('/feed', feedRoutes); // 兼容旧路径
 
+  // AI 兴趣筛选路由
+  const interestRoutes = require('./routes/interest');
+  app.use('/api/interest', interestRoutes);
+
   // 第三方集成路由
   const integrationsRoutes = require('./routes/integrations');
   app.use('/api/integrations', integrationsRoutes);

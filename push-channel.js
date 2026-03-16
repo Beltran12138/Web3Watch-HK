@@ -2,7 +2,7 @@
 /**
  * push-channel.js — 推送渠道抽象层
  *
- * 支持多渠道推送：企业微信、钉钉、Slack、Telegram、Email
+ * 支持多渠道推送：企业微信、钉钉、Slack、Telegram、Email、飞书
  * 统一接口，便于扩展
  */
 
@@ -51,6 +51,30 @@ const CHANNEL_CONFIG = {
     to: process.env.EMAIL_TO,
     supportsMarkdown: false,
     rateLimit: 10,
+  },
+  feishu: {
+    name: '飞书',
+    enabled: !!process.env.FEISHU_WEBHOOK_URL,
+    webhook: process.env.FEISHU_WEBHOOK_URL,
+    secret: process.env.FEISHU_SECRET,
+    supportsMarkdown: true,
+    rateLimit: 20,
+  },
+  ntfy: {
+    name: 'ntfy',
+    enabled: !!process.env.NTFY_TOPIC,
+    topic: process.env.NTFY_TOPIC,
+    server: process.env.NTFY_SERVER || 'https://ntfy.sh',
+    supportsMarkdown: false,
+    rateLimit: 60,
+  },
+  bark: {
+    name: 'Bark',
+    enabled: !!process.env.BARK_DEVICE_KEY,
+    deviceKey: process.env.BARK_DEVICE_KEY,
+    server: process.env.BARK_SERVER || 'https://api.day.app',
+    supportsMarkdown: false,
+    rateLimit: 60,
   },
 };
 
@@ -547,18 +571,11 @@ class EmailChannel extends PushChannel {
 // ── 飞书（Feishu）渠道 ─────────────────────────────────────────────────────────
 class FeishuChannel extends PushChannel {
   constructor() {
-    super({
-      name: 'Feishu',
-      enabled: !!process.env.FEISHU_WEBHOOK_URL,
-      webhook: process.env.FEISHU_WEBHOOK_URL,
-      secret: process.env.FEISHU_SECRET,
-      supportsMarkdown: true,
-      rateLimit: 20,
-    });
+    super(CHANNEL_CONFIG.feishu);
   }
 
   /**
-   * 生成飞书签名
+   * 生成飞书签名（签名机制与钉钉相同）
    */
   generateSign(timestamp) {
     const crypto = require('crypto');
@@ -579,12 +596,20 @@ class FeishuChannel extends PushChannel {
 
     const timestamp = Date.now();
     const sign = this.generateSign(timestamp);
+    const url = `${this.config.webhook}&timestamp=${timestamp}&sign=${sign}`;
+
+    const VERCEL_URL = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000';
+    const deepAskUrl = `${VERCEL_URL}/?deep_ask=true&q=${encodeURIComponent(message.title || '')}`;
+    const dashboardUrl = `${VERCEL_URL}`;
+
+    // 飞书富文本卡片格式
+    const contentWithFooter = message.content + `\n\n---\n[🔍 深度追问](${deepAskUrl}) | [📊 行业看板](${dashboardUrl})`;
 
     const payload = {
       msg_type: 'interactive',
       card: {
         header: {
-          template: message.template || 'blue',
+          template: this.getTemplate(message),
           title: {
             tag: 'plain_text',
             content: message.title || 'Alpha Radar 通知',
@@ -593,28 +618,14 @@ class FeishuChannel extends PushChannel {
         elements: [
           {
             tag: 'markdown',
-            content: message.content,
-          },
-          {
-            tag: 'action',
-            actions: [
-              {
-                tag: 'button',
-                text: {
-                  tag: 'plain_text',
-                  content: '查看详情',
-                },
-                url: message.url || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : '#',
-                type: 'default',
-              },
-            ],
+            content: contentWithFooter,
           },
         ],
       },
     };
 
     try {
-      const res = await axios.post(this.config.webhook, payload, {
+      const res = await axios.post(url, payload, {
         timeout: 10000,
         headers: {
           'Content-Type': 'application/json',
@@ -631,6 +642,241 @@ class FeishuChannel extends PushChannel {
       console.error('[Push] Feishu send error:', err.message);
       return false;
     }
+  }
+
+  /**
+   * 根据消息类型获取卡片模板颜色
+   */
+  getTemplate(message) {
+    if (message.alphaScore >= 85) return 'red';      // 紧急
+    if (message.alphaScore >= 60) return 'orange';   // 重要
+    if (message.type === 'report') return 'blue';    // 报告
+    return 'green';                                  // 默认
+  }
+
+  // 分段发送长消息
+  async sendLong(content, options = {}) {
+    const MAX_LENGTH = 4096;
+    const segments = [];
+
+    const paragraphs = content.split('\n\n');
+    let currentSegment = '';
+
+    for (const para of paragraphs) {
+      if ((currentSegment + para).length > MAX_LENGTH) {
+        if (currentSegment) segments.push(currentSegment);
+        currentSegment = para;
+      } else {
+        currentSegment += (currentSegment ? '\n\n' : '') + para;
+      }
+    }
+    if (currentSegment) segments.push(currentSegment);
+
+    const results = [];
+    for (let i = 0; i < segments.length; i++) {
+      const result = await this.send({
+        content: segments[i],
+        ...options,
+      });
+      results.push(result);
+
+      if (i < segments.length - 1) {
+        await new Promise(r => setTimeout(r, 1000));
+      }
+    }
+
+    return results.every(r => r);
+  }
+}
+
+// ── ntfy 渠道 ────────────────────────────────────────────────────────────────
+class NtfyChannel extends PushChannel {
+  constructor() {
+    super(CHANNEL_CONFIG.ntfy);
+  }
+
+  async send(message) {
+    if (!this.config.enabled) {
+      console.warn('[Push] ntfy not configured');
+      return false;
+    }
+
+    this.checkRateLimit();
+
+    const url = `${this.config.server}/${this.config.topic}`;
+
+    // 根据评分设置优先级和标签
+    const priority = message.alphaScore >= 85 ? 'urgent' : message.alphaScore >= 60 ? 'high' : 'default';
+    const tags = this.getTags(message);
+
+    const payload = {
+      topic: this.config.topic,
+      title: message.title || 'Alpha Radar 通知',
+      message: message.content,
+      priority,
+      tags,
+      click: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    };
+
+    try {
+      const res = await axios.post(url, JSON.stringify(payload), {
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      return true;
+    } catch (err) {
+      console.error('[Push] ntfy send error:', err.message);
+      return false;
+    }
+  }
+
+  /**
+   * 根据消息内容获取标签
+   */
+  getTags(message) {
+    const tags = ['information_source'];
+    
+    if (message.alphaScore >= 85) {
+      tags.push('rotating_light', 'exclamation');
+    } else if (message.alphaScore >= 60) {
+      tags.push('warning');
+    }
+
+    // 根据分类添加标签
+    const category = (message.business_category || '').toLowerCase();
+    if (category.includes('合规') || category.includes('监管')) {
+      tags.push('law');
+    } else if (category.includes('安全')) {
+      tags.push('shield');
+    } else if (category.includes('技术')) {
+      tags.push('computer');
+    }
+
+    return tags.join(',');
+  }
+
+  // 分段发送长消息
+  async sendLong(content, options = {}) {
+    const MAX_LENGTH = 4096;
+    const segments = [];
+
+    const paragraphs = content.split('\n\n');
+    let currentSegment = '';
+
+    for (const para of paragraphs) {
+      if ((currentSegment + para).length > MAX_LENGTH) {
+        if (currentSegment) segments.push(currentSegment);
+        currentSegment = para;
+      } else {
+        currentSegment += (currentSegment ? '\n\n' : '') + para;
+      }
+    }
+    if (currentSegment) segments.push(currentSegment);
+
+    const results = [];
+    for (let i = 0; i < segments.length; i++) {
+      const result = await this.send({
+        content: segments[i],
+        ...options,
+      });
+      results.push(result);
+
+      if (i < segments.length - 1) {
+        await new Promise(r => setTimeout(r, 1000));
+      }
+    }
+
+    return results.every(r => r);
+  }
+}
+
+// ── Bark 渠道（iOS 推送）──────────────────────────────────────────────────────
+class BarkChannel extends PushChannel {
+  constructor() {
+    super(CHANNEL_CONFIG.bark);
+  }
+
+  async send(message) {
+    if (!this.config.enabled) {
+      console.warn('[Push] Bark not configured');
+      return false;
+    }
+
+    this.checkRateLimit();
+
+    const url = `${this.config.server}/push`;
+
+    // 根据评分设置声音和重要性
+    const sound = message.alphaScore >= 85 ? 'alarm' : message.alphaScore >= 60 ? 'bell' : 'notification';
+    const isCritical = message.alphaScore >= 85 ? 1 : 0;
+
+    const payload = {
+      device_key: this.config.deviceKey,
+      title: message.title || 'Alpha Radar 通知',
+      body: message.content,
+      sound,
+      is_critical: isCritical,
+      level: message.alphaScore >= 85 ? 'active' : 'timeSensitive',
+      group: 'AlphaRadar',
+      icon: 'https://raw.githubusercontent.com/Beltran12138/industry-feeds/main/public/favicon.ico',
+      url: process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
+    };
+
+    try {
+      const res = await axios.post(url, payload, {
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (res.data?.code !== 200) {
+        console.error('[Push] Bark error:', res.data);
+        return false;
+      }
+
+      return true;
+    } catch (err) {
+      console.error('[Push] Bark send error:', err.message);
+      return false;
+    }
+  }
+
+  // 分段发送长消息
+  async sendLong(content, options = {}) {
+    const MAX_LENGTH = 2000; // Bark 限制较短
+    const segments = [];
+
+    const paragraphs = content.split('\n\n');
+    let currentSegment = '';
+
+    for (const para of paragraphs) {
+      if ((currentSegment + para).length > MAX_LENGTH) {
+        if (currentSegment) segments.push(currentSegment);
+        currentSegment = para;
+      } else {
+        currentSegment += (currentSegment ? '\n\n' : '') + para;
+      }
+    }
+    if (currentSegment) segments.push(currentSegment);
+
+    const results = [];
+    for (let i = 0; i < segments.length; i++) {
+      const result = await this.send({
+        content: segments[i],
+        ...options,
+      });
+      results.push(result);
+
+      if (i < segments.length - 1) {
+        await new Promise(r => setTimeout(r, 2000)); // Bark 间隔稍长
+      }
+    }
+
+    return results.every(r => r);
   }
 }
 
@@ -658,10 +904,14 @@ class PushManager {
     if (CHANNEL_CONFIG.email.enabled) {
       this.channels.set('email', new EmailChannel());
     }
-    // Feishu channel (independent config)
-    const feishuChannel = new FeishuChannel();
-    if (feishuChannel.config.enabled) {
-      this.channels.set('feishu', feishuChannel);
+    if (CHANNEL_CONFIG.feishu.enabled) {
+      this.channels.set('feishu', new FeishuChannel());
+    }
+    if (CHANNEL_CONFIG.ntfy.enabled) {
+      this.channels.set('ntfy', new NtfyChannel());
+    }
+    if (CHANNEL_CONFIG.bark.enabled) {
+      this.channels.set('bark', new BarkChannel());
     }
 
     console.log(`[PushManager] Initialized with ${this.channels.size} channels:`,
@@ -786,5 +1036,7 @@ module.exports = {
   TelegramChannel,
   EmailChannel,
   FeishuChannel,
+  NtfyChannel,
+  BarkChannel,
   CHANNEL_CONFIG,
 };
