@@ -257,9 +257,18 @@ async function saveNews(items) {
     for (const item of rows) {
       const nTitle = normalizeKey(item.title, '').split('|')[0];
       const row    = {
+        title:               item.title               || '',
+        source:              item.source              || '',
+        url:                 item.url                 || '',
+        category:            item.category            || 'Announcement',
+        timestamp:           item.timestamp           || Date.now(),
+        is_important:        item.is_important        || 0,
+        alpha_score:         item.alpha_score         || 0,
         ...item,
         normalized_title:    nTitle,
         detail:              item.detail              || '',
+        impact:              item.impact              || '中性',
+        bitv_action:         item.bitv_action         || '关注后续发展',
         business_category:   item.business_category   || '',
         competitor_category: item.competitor_category || '',
         sent_to_wecom:       item.sent_to_wecom        || 0,
