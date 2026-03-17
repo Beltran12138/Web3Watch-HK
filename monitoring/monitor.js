@@ -72,8 +72,8 @@ class IntelligenceDensityMonitor {
    */
   extractKeywords(text) {
     const sensitiveWords = [
-      '稳定币', 'RWA', '牌照', '证监会', 'SFC', '处罚', '收购', '上线',
-      '新规', 'ETF', '合规', '审计', 'VATP', '监管', '冻结', '清退',
+      '稳定币', 'RWA', '牌照', '证监会', 'SFC', '处罚', '收购',
+      '新规', '合规', '审计', 'VATP', '监管', '冻结', '清退',
       'MiCA', '央行', '比特币', 'Bitcoin', '以太坊', 'Ethereum',
       '合并', '裁员', '破产', '黑客', '漏洞', '制裁',
       'HashKey', 'OSL', 'Gate', 'Binance', 'OKX', 'Bybit',
