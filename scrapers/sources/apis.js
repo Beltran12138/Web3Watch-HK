@@ -10,11 +10,23 @@ const cheerio = require('cheerio');
 const { SocksProxyAgent } = require('socks-proxy-agent');
 const { SCRAPER } = require('../../config');
 const { makeItem, parseTimestamp, extractTimestamp, parseRelativeTime } = require('../utils');
+const { cleanChineseText } = require('../../db'); // 导入中文清理函数
 
 const UA = SCRAPER.USER_AGENT;
 
 // 24 小时新鲜度阈值（毫秒），用于在爬虫层直接丢弃超龄消息
 const FRESHNESS_MS = 24 * 60 * 60 * 1000;
+
+/**
+ * 清理项目中的文本字段（标题、内容）
+ */
+function cleanItemText(item) {
+  if (!item) return item;
+  const cleaned = {...item};
+  if (cleaned.title) cleaned.title = cleanChineseText(cleaned.title);
+  if (cleaned.content) cleaned.content = cleanChineseText(cleaned.content);
+  return cleaned;
+}
 
 // ── OKX ──────────────────────────────────────────────────────────────────────
 async function scrapeOKX() {
@@ -23,13 +35,15 @@ async function scrapeOKX() {
   try {
     const { data } = await axios.get(url, { headers: { 'User-Agent': UA }, timeout: 15000 });
     const details  = data?.data?.[0]?.details || [];
-    return details.map(item => makeItem({
+    const items = details.map(item => makeItem({
       title:     item.title || '',
       source:    'OKX',
       url:       item.url || '',
       category:  'Announcement',
       timestamp: parseTimestamp(item.pTime),
     }));
+    // 清理编码问题
+    return items.map(cleanItemText);
   } catch (err) {
     console.error('[OKX]', err.message);
     return [];
@@ -68,7 +82,8 @@ async function scrapeBinance() {
     }
   }
   console.log(`[Scraper] Binance: ${allItems.length}`);
-  return allItems;
+  // 清理编码问题
+  return allItems.map(cleanItemText);
 }
 
 // ── HashKey Exchange (Zendesk API) ────────────────────────────────────────────
@@ -545,24 +560,38 @@ async function scrapeSFC() {
     });
 
     console.log(`[Scraper] SFC: ${items.length}`);
-    return items;
+    // 清理编码问题
+    return items.map(cleanItemText);
   } catch (err) {
     console.error('[SFC]', err.message);
     return [];
   }
 }
 
+// ── 导出爬虫函数（自动添加编码清理包装）──────────────────────────────────────
+function wrapClean(fn) {
+  return async function(...args) {
+    try {
+      const results = await fn.apply(this, args);
+      // 确保结果已经过清理（双重保险）
+      return Array.isArray(results) ? results.map(cleanItemText) : results;
+    } catch (err) {
+      throw err;
+    }
+  };
+}
+
 module.exports = {
-  scrapeOKX,
-  scrapeBinance,
-  scrapeHashKeyExchange,
-  scrapeTechubNews,
-  scrapeMatrixport,
-  scrapeHashKeyGroup,
-  scrapePRNewswire,
-  scrapeTechFlow,
-  scrapeKuCoin,
-  scrapeExio,
-  scrapeHtx,
-  scrapeSFC,
+  scrapeOKX: wrapClean(scrapeOKX),
+  scrapeBinance: wrapClean(scrapeBinance),
+  scrapeHashKeyExchange: wrapClean(scrapeHashKeyExchange),
+  scrapeTechubNews: wrapClean(scrapeTechubNews),
+  scrapeMatrixport: wrapClean(scrapeMatrixport),
+  scrapeHashKeyGroup: wrapClean(scrapeHashKeyGroup),
+  scrapePRNewswire: wrapClean(scrapePRNewswire),
+  scrapeTechFlow: wrapClean(scrapeTechFlow),
+  scrapeKuCoin: wrapClean(scrapeKuCoin),
+  scrapeExio: wrapClean(scrapeExio),
+  scrapeHtx: wrapClean(scrapeHtx),
+  scrapeSFC: wrapClean(scrapeSFC),
 };

@@ -12,15 +12,28 @@ const sleep = ms => new Promise(r => setTimeout(r, ms));
 
 /**
  * 构建标准新闻条目骨架
+ * 
+ * 优化点：
+ * - 时间戳为 0 时，使用当前时间作为 fallback（但会在控制台警告）
+ * - 确保所有文本字段都经过基本清理
  */
 function makeItem({ title, content = '', source, url, category = 'Announcement', timestamp = 0 }) {
+  // 时间戳有效性检查
+  let finalTimestamp = timestamp;
+  if (!finalTimestamp || finalTimestamp <= 0) {
+    // 没有有效时间戳时使用当前时间（fallback）
+    // 这比存储 null/0 要好，便于后续查询和排序
+    finalTimestamp = Date.now();
+    console.log(`  [Timestamp Fallback] Using current time for: "${(title || '').substring(0, 60)}"`);
+  }
+  
   return {
     title:       (title || '').trim().substring(0, SCRAPER.TITLE_MAX_LEN),
     content:     (content || '').substring(0, SCRAPER.CONTENT_MAX_LEN),
     source,
     url:         (url || '').trim(),
     category,
-    timestamp,
+    timestamp:   finalTimestamp,
     is_important: 0,
   };
 }

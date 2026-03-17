@@ -4,6 +4,66 @@ const { createClient } = require('@supabase/supabase-js');
 const path         = require('path');
 require('dotenv').config();
 
+// ── UTF-8 文本清理工具（修复中文乱码）──────────────────────────────────────────
+/**
+ * 清理和规范化中文字符串，移除乱码字符
+ * @param {string} text - 输入文本
+ * @returns {string} - 清理后的文本
+ */
+function cleanChineseText(text) {
+  if (!text || typeof text !== 'string') return '';
+  
+  // 1. 移除常见的乱码字符（Unicode 替换字符、控制字符等）
+  let cleaned = text
+    .replace(/\uFFFD/g, '')           // 移除 Unicode 替换字符 ()
+    .replace(/[\u0000-\u001F\u007F-\u009F]/g, '') // 移除控制字符
+    .replace(/\s+/g, ' ')             // 合并多余空白
+    .trim();
+  
+  // 2. 检测并修复重复编码的中文（如 "鏁" 这种典型的双 UTF-8 编码问题）
+  // 这些字符通常是 GBK 被误认为 UTF-8 再次编码产生的
+  const mojibakePatterns = [
+    [/[\u0080-\u00FF]{2,}/g, ''],     // 连续的高位拉丁字母（可能是双编码）
+    [/[\u0100-\u017F]{2,}/g, ''],     // 带音调的拉丁字母
+  ];
+  
+  for (const [pattern, replacement] of mojibakePatterns) {
+    // 只在检测到明显乱码时才应用
+    const testMatch = cleaned.match(pattern);
+    if (testMatch && testMatch.length > 2) {
+      cleaned = cleaned.replace(pattern, replacement);
+    }
+  }
+  
+  // 3. 确保至少包含一些有效字符（防止清理后为空）
+  const hasValidChars = /[\u4e00-\u9fa5a-zA-Z0-9]/.test(cleaned);
+  if (!hasValidChars && text.length > 0) {
+    // 如果清理后没有任何有效字符，返回原文本（保守策略）
+    return text.trim();
+  }
+  
+  return cleaned;
+}
+
+/**
+ * 深度清理对象中的所有字符串字段
+ * @param {Object} obj - 输入对象
+ * @returns {Object} - 清理后的对象
+ */
+function cleanObjectStrings(obj) {
+  if (!obj || typeof obj !== 'object') return obj;
+  
+  const cleaned = {};
+  for (const [key, value] of Object.entries(obj)) {
+    if (typeof value === 'string') {
+      cleaned[key] = cleanChineseText(value);
+    } else {
+      cleaned[key] = value;
+    }
+  }
+  return cleaned;
+}
+
 let DB;
 try {
   DB = require('./config').DB;
@@ -189,6 +249,9 @@ STMT = {
 
 // ── saveNews ──────────────────────────────────────────────────────────────────
 async function saveNews(items) {
+  // 预处理：清理所有文本字段的编码问题
+  const cleanedItems = items.map(item => cleanObjectStrings(item));
+  
   // 1. SQLite 事务批量写入 (Always run as primary or backup storage)
   const tx = db.transaction((rows) => {
     for (const item of rows) {
@@ -225,7 +288,7 @@ async function saveNews(items) {
     }
   });
 
-  try { tx(items); } catch (e) { console.error('[DB saveNews fatal]', e.message); }
+  try { tx(cleanedItems); } catch (e) { console.error('[DB saveNews fatal]', e.message); }
 
 
   // 2. Supabase 同步（批量 upsert）
@@ -265,6 +328,24 @@ async function getNews(limit = 100, source = null, important = 0, search = '') {
   if (USE_SUPABASE && supabase) {
     return await getNewsFromSupabase(limit, source, important, search);
   }
+  
+  // 生成缓存键
+  const cacheKey = `news:${limit}:${source || 'all'}:${important}:${search.substring(0, 20)}`;
+  
+  // 尝试从 Redis 获取（仅当无搜索条件时）
+  if (!search) {
+    try {
+      const cache = require('./lib/redis-cache');
+      if (cache.isEnabled) {
+        const cached = await cache.get(cacheKey);
+        if (cached) {
+          return cached;
+        }
+      }
+    } catch (e) {
+      // 忽略缓存错误
+    }
+  }
 
   let sql    = 'SELECT * FROM news WHERE 1=1 ';
   const params = [];
@@ -285,7 +366,21 @@ async function getNews(limit = 100, source = null, important = 0, search = '') {
   sql += 'ORDER BY timestamp DESC LIMIT ?';
   params.push(limit);
 
-  return db.prepare(sql).all(...params);
+  const result = db.prepare(sql).all(...params);
+  
+  // 存入 Redis 缓存（2 分钟，新闻更新频繁）
+  if (!search) {
+    try {
+      const cache = require('./lib/redis-cache');
+      if (cache.isEnabled && cache.isConnected()) {
+        await cache.set(cacheKey, result, 120);
+      }
+    } catch (e) {
+      // 忽略缓存错误
+    }
+  }
+  
+  return result;
 }
 
 async function getNewsFromSupabase(limit = 100, source = null, important = 0, search = '') {
@@ -315,17 +410,50 @@ async function getNewsFromSupabase(limit = 100, source = null, important = 0, se
 
 // ── getStats（供健康检查 + 前端图表使用）──────────────────────────────────────
 async function getStats(since = 0) {
-  if (USE_SUPABASE && supabase) {
-    return await getStatsFromSupabase(since);
+  // 尝试从 Redis 缓存获取（如果启用）
+  let cacheKey = `stats:${since || 'all'}`;
+  let cached = null;
+  
+  try {
+    const cache = require('./lib/redis-cache');
+    if (cache.isEnabled) {
+      cached = await cache.get(cacheKey);
+      if (cached) {
+        return cached;
+      }
+    }
+  } catch (e) {
+    // Redis 不可用，继续使用 SQLite
   }
-
-  const sinceTs = since || (Date.now() - 7 * 24 * 3600 * 1000);
-  return {
-    total:      STMT.countAll.get().n,
-    important:  STMT.countImportant.get().n,
-    categories: STMT.countByCat.all(sinceTs),
-    sources:    STMT.countBySrc.all(),
+  
+  // 优先使用本地 SQLite 统计（保证数据一致性）
+  // 即使配置了 Supabase，也先返回本地数据（更快、更可靠）
+  const total = STMT.countAll.get().n;
+  const important = STMT.countImportant.get().n;
+  const sources = STMT.countBySrc.all();
+  
+  // 分类统计支持时间范围过滤（用于趋势分析），默认不过滤
+  const sinceTs = since || 0;
+  const categories = STMT.countByCat.all(sinceTs);
+  
+  const result = {
+    total,
+    important,
+    categories,
+    sources,
   };
+  
+  // 存入 Redis 缓存（5 分钟）
+  try {
+    const cache = require('./lib/redis-cache');
+    if (cache.isEnabled && cache.isConnected()) {
+      await cache.set(cacheKey, result, 300);
+    }
+  } catch (e) {
+    // 忽略缓存错误
+  }
+  
+  return result;
 }
 
 async function getStatsFromSupabase(since = 0) {
@@ -705,4 +833,15 @@ module.exports = {
   getAllSourceTracking,
   canPushMessage,
   checkIfSent,
+  // UTF-8 清理工具
+  cleanChineseText,
+  cleanObjectStrings,
 };
+
+// ── 注册 SQLite 自定义函数（模拟 Supabase RPC）──────────────────────────────
+try {
+  const { registerFunctions } = require('./sqlite-functions');
+  registerFunctions(db);
+} catch (e) {
+  // SQLite functions module not available
+}

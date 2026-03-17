@@ -12,6 +12,18 @@
 const { newPage, releaseBrowser } = require('../browser');
 const { SCRAPER }                 = require('../../config');
 const { makeItem, parseTimestamp, extractTimestamp, parseRelativeTime, sleep } = require('../utils');
+const { cleanChineseText }        = require('../../db'); // 导入中文清理函数
+
+/**
+ * 清理项目中的文本字段（标题、内容）
+ */
+function cleanItemText(item) {
+  if (!item) return item;
+  const cleaned = {...item};
+  if (cleaned.title) cleaned.title = cleanChineseText(cleaned.title);
+  if (cleaned.content) cleaned.content = cleanChineseText(cleaned.content);
+  return cleaned;
+}
 
 // ── BlockBeats ────────────────────────────────────────────────────────────────
 async function scrapeBlockBeats() {
@@ -373,11 +385,12 @@ async function scrapeGate() {
 }
 
 // ── Polymarket ────────────────────────────────────────────────────────────────
-async function scrapePolymarketGeneric(url, sourceName) {
+async function scrapePolymarketGeneric(url, sourceName, options = {}) {
+  const { gotoTimeout = 60000, sleepMs = 10000 } = options;
   const page = await newPage();
   try {
-    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 90000 });
-    await sleep(12000);
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: gotoTimeout });
+    await sleep(sleepMs);
     const items = await page.evaluate((src) => {
       const results = [];
       document.querySelectorAll('a').forEach(a => {
@@ -404,64 +417,62 @@ async function scrapePolymarketGeneric(url, sourceName) {
   }
 }
 
-const scrapePolymarketBreaking = () => scrapePolymarketGeneric('https://polymarket.com/breaking/world',      'Poly-Breaking');
-const scrapePolymarketChina    = () => scrapePolymarketGeneric('https://polymarket.com/predictions/china', 'Poly-China');
+const scrapePolymarketBreaking = () => scrapePolymarketGeneric('https://polymarket.com/breaking/world',      'Poly-Breaking', { gotoTimeout: 60000, sleepMs: 10000 });
+const scrapePolymarketChina    = () => scrapePolymarketGeneric('https://polymarket.com/predictions/china', 'Poly-China',    { gotoTimeout: 30000, sleepMs: 6000 });
 
-// ── Twitter KOLs (RSS) ─────────────────────────────────────────────────────────
-const axios   = require('axios');
-const cheerio = require('cheerio');
-const { KOL_LIST, RSS_BASE_URLS, SCRAPER: CFG } = require('../../config');
+// ── Twitter KOLs (多级降级：Nitter → RSSHub → TwitterAPI.io → Scrapfly) ────────
+const { KOL_LIST } = require('../../config');
+const { scrapeKOLs } = require('./twitter-enhanced');
 
 async function scrapeTwitterKOLs() {
   console.log('[Scraper] Twitter KOLs...');
+  const results = await scrapeKOLs(KOL_LIST);
   const allTweets = [];
 
-  for (const kol of KOL_LIST) {
-    let success = false;
-    for (const baseUrl of RSS_BASE_URLS) {
-      if (success) break;
-      try {
-        const url     = baseUrl.includes('nitter') ? `${baseUrl}/${kol.username}/rss` : `${baseUrl}/${kol.username}`;
-        const { data } = await axios.get(url, { headers: { 'User-Agent': CFG.USER_AGENT }, timeout: 10000 });
-        const $       = cheerio.load(data, { xmlMode: true });
-
-        $('item').each((i, el) => {
-          if (i >= 15) return;
-          const title   = $(el).find('title').text().trim()
-            .replace(/^RT by @\w+: /, '')
-            .replace(/^R to @\w+: /, '')
-            .substring(0, 200);
-          const link    = $(el).find('link').text().trim();
-          const pubDate = $(el).find('pubDate').text().trim();
-          const ts      = pubDate ? new Date(pubDate).getTime() : 0;
-
-          allTweets.push(makeItem({
-            title:     title || `Tweet from ${kol.name}`,
-            content:   $(el).find('description').text().replace(/<[^>]*>/g, '').substring(0, 500),
-            source:    kol.name,
-            url:       link || `https://x.com/${kol.username}`,
-            category:  'KOL',
-            timestamp: ts,
-          }));
-        });
-        success = true;
-      } catch (_) { /* try next source */ }
+  for (const [kolName, data] of Object.entries(results)) {
+    if (!data.success || !data.tweets.length) continue;
+    for (const tweet of data.tweets.slice(0, 15)) {
+      const title = (tweet.content || `Tweet from ${kolName}`)
+        .replace(/^RT by @\w+:\s*/i, '')
+        .replace(/^R to @\w+:\s*/i, '')
+        .substring(0, 200);
+      allTweets.push(makeItem({
+        title,
+        content:   (tweet.content || '').substring(0, 500),
+        source:    kolName,
+        url:       tweet.url || `https://x.com/${data.username}`,
+        category:  'KOL',
+        timestamp: tweet.timestamp || Date.now(),
+      }));
     }
-    if (!success) console.warn(`[KOL] ${kol.name} all RSS sources failed`);
   }
+
   console.log(`[Scraper] KOLs total: ${allTweets.length}`);
-  return allTweets;
+  // 清理编码问题
+  return allTweets.map(cleanItemText);
+}
+
+// ── 导出爬虫函数（自动添加编码清理包装）──────────────────────────────────────
+function wrapClean(fn) {
+  return async function(...args) {
+    try {
+      const results = await fn.apply(this, args);
+      return Array.isArray(results) ? results.map(cleanItemText) : results;
+    } catch (err) {
+      throw err;
+    }
+  };
 }
 
 module.exports = {
-  scrapeBlockBeats,
-  scrapeOSL,
-  scrapeWuBlock,
-  scrapeBybit,
-  scrapeBitget,
-  scrapeMexc,
-  scrapeGate,
-  scrapePolymarketBreaking,
-  scrapePolymarketChina,
-  scrapeTwitterKOLs,
+  scrapeBlockBeats: wrapClean(scrapeBlockBeats),
+  scrapeOSL: wrapClean(scrapeOSL),
+  scrapeWuBlock: wrapClean(scrapeWuBlock),
+  scrapeBybit: wrapClean(scrapeBybit),
+  scrapeBitget: wrapClean(scrapeBitget),
+  scrapeMexc: wrapClean(scrapeMexc),
+  scrapeGate: wrapClean(scrapeGate),
+  scrapePolymarketBreaking: wrapClean(scrapePolymarketBreaking),
+  scrapePolymarketChina: wrapClean(scrapePolymarketChina),
+  scrapeTwitterKOLs: wrapClean(scrapeTwitterKOLs),
 };

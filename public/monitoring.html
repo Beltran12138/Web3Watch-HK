@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alpha Radar - 监控面板</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --bg-primary: #0f172a;
+      --bg-card: #1e293b;
+      --text-primary: #e2e8f0;
+      --text-secondary: #94a3b8;
+      --accent: #3b82f6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+    
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    
+    .card {
+      background-color: var(--bg-card);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--accent), #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .status-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 8px;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+    
+    .status-online { background-color: var(--success); }
+    .status-warning { background-color: var(--warning); }
+    .status-offline { background-color: var(--danger); }
+    
+    .chart-container {
+      position: relative;
+      height: 300px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-8">
+  <!-- 顶部导航 -->
+  <div class="max-w-7xl mx-auto mb-8">
+    <div class="flex items-center justify-between">
+      <h1 class="text-3xl font-bold">📊 Alpha Radar 监控面板</h1>
+      <div class="flex items-center gap-4">
+        <span id="serverStatus" class="flex items-center text-sm">
+          <span class="status-indicator status-online"></span>
+          <span id="statusText">运行中</span>
+        </span>
+        <button onclick="refreshData()" class="px-4 py-2 bg-blue-600 rounded-lg hover:bg-blue-700 transition">
+          🔄 刷新
+        </button>
+      </div>
+    </div>
+    <p class="text-gray-400 mt-2">实时监控爬虫、AI 和系统状态</p>
+  </div>
+
+  <!-- 主要统计卡片 -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+    <div class="card">
+      <div class="text-gray-400 text-sm mb-2">总新闻数</div>
+      <div class="stat-value" id="totalNews">-</div>
+      <div class="mt-2 text-sm text-gray-400">
+        <span class="text-green-400">↑</span>
+        <span id="newsGrowth">+0</span> 今日
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="text-gray-400 text-sm mb-2">重要新闻</div>
+      <div class="stat-value" id="importantNews">-</div>
+      <div class="mt-2 text-sm text-gray-400">
+        占比 <span id="importantRate">0%</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="text-gray-400 text-sm mb-2">活跃数据源</div>
+      <div class="stat-value" id="activeSources">-</div>
+      <div class="mt-2 text-sm text-gray-400">
+        <span id="healthySources">0</span> 健康
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="text-gray-400 text-sm mb-2">AI 调用次数</div>
+      <div class="stat-value" id="aiCalls">-</div>
+      <div class="mt-2 text-sm text-gray-400">
+        成本 $<span id="aiCost">0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 图表区域 -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+    <div class="card">
+      <h3 class="text-lg font-semibold mb-4">📈 7 日新闻趋势</h3>
+      <div class="chart-container">
+        <canvas id="trendChart"></canvas>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3 class="text-lg font-semibold mb-4">📊 数据源分布</h3>
+      <div class="chart-container">
+        <canvas id="sourceChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- 系统状态 -->
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+    <div class="card">
+      <h3 class="text-lg font-semibold mb-4">🤖 AI 状态</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between">
+          <span class="text-gray-400">当前提供商</span>
+          <span id="aiProvider" class="font-medium">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">降级次数</span>
+          <span id="aiFallback" class="font-medium">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">日预算使用</span>
+          <span id="aiBudget" class="font-medium">-</span>
+        </div>
+        <div class="mt-4">
+          <div class="text-sm text-gray-400 mb-2">可用提供商</div>
+          <div id="aiProviders" class="flex flex-wrap gap-2"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3 class="text-lg font-semibold mb-4">📡 推送渠道</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between">
+          <span class="text-gray-400">启用渠道</span>
+          <span id="pushChannels" class="font-medium">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">今日推送</span>
+          <span id="pushCount" class="font-medium">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">速率限制</span>
+          <span id="rateLimit" class="font-medium">-</span>
+        </div>
+        <div class="mt-4">
+          <div id="channelStatus" class="space-y-2"></div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <h3 class="text-lg font-semibold mb-4">💾 存储状态</h3>
+      <div class="space-y-3">
+        <div class="flex justify-between">
+          <span class="text-gray-400">数据库大小</span>
+          <span id="dbSize" class="font-medium">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">记录总数</span>
+          <span id="dbRecords" class="font-medium">-</span>
+        </div>
+        <div class="flex justify-between">
+          <span class="text-gray-400">保留策略</span>
+          <span id="retention" class="font-medium">-</span>
+        </div>
+        <div class="mt-4">
+          <div class="text-sm text-gray-400 mb-2">表统计</div>
+          <div id="tableStats" class="space-y-2"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 爬虫状态表格 -->
+  <div class="max-w-7xl mx-auto card mb-8">
+    <h3 class="text-lg font-semibold mb-4">🕷️ 爬虫健康状态</h3>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-gray-700">
+            <th class="text-left py-3 px-4">数据源</th>
+            <th class="text-center py-3 px-4">状态</th>
+            <th class="text-center py-3 px-4">成功数</th>
+            <th class="text-center py-3 px-4">失败数</th>
+            <th class="text-center py-3 px-4">成功率</th>
+            <th class="text-right py-3 px-4">最后更新</th>
+          </tr>
+        </thead>
+        <tbody id="scraperTable"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <script>
+    // ── 全局变量 ──────────────────────────────────────────────────────────────
+    let trendChartInstance = null;
+    let sourceChartInstance = null;
+    
+    // ── 初始化 ────────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', () => {
+      refreshData();
+      // 每 30 秒自动刷新
+      setInterval(refreshData, 30000);
+    });
+    
+    // ── 数据获取 ──────────────────────────────────────────────────────────────
+    async function refreshData() {
+      try {
+        const response = await fetch('/api/health');
+        const data = await response.json();
+        
+        if (data.status === 'ok') {
+          updateDashboard(data);
+          updateServerStatus(true);
+        } else {
+          updateServerStatus(false);
+        }
+      } catch (err) {
+        console.error('Failed to fetch health data:', err);
+        updateServerStatus(false);
+      }
+    }
+    
+    // ── 更新仪表板 ────────────────────────────────────────────────────────────
+    function updateDashboard(data) {
+      // 主要统计
+      document.getElementById('totalNews').textContent = data.db?.total || 0;
+      document.getElementById('importantNews').textContent = data.db?.important || 0;
+      document.getElementById('importantRate').textContent = 
+        calculatePercentage(data.db?.important, data.db?.total);
+      document.getElementById('activeSources').textContent = data.db?.sources?.length || 0;
+      document.getElementById('healthySources').textContent = data.db?.sources?.length || 0;
+      
+      // AI 状态
+      if (data.ai) {
+        document.getElementById('aiProvider').textContent = data.ai.currentProvider || '-';
+        document.getElementById('aiFallback').textContent = data.ai.fallbackCount || 0;
+        
+        const budgetUsed = calculateBudgetUsed(data.ai);
+        document.getElementById('aiBudget').textContent = budgetUsed;
+        
+        updateAIProviders(data.ai.providers);
+      }
+      
+      // 推送状态
+      if (data.push) {
+        document.getElementById('pushChannels').textContent = data.push.channels?.length || 0;
+        document.getElementById('pushCount').textContent = data.push.totalPushes || 0;
+        updateChannelStatus(data.push.channels);
+      }
+      
+      // 存储状态
+      if (data.storage) {
+        document.getElementById('dbSize').textContent = data.storage.fileSizeMB || '0 MB';
+        const totalRecords = data.storage.tables?.[0]?.count || 0;
+        document.getElementById('dbRecords').textContent = totalRecords;
+        updateTableStats(data.storage.tables);
+      }
+      
+      // 更新图表
+      updateCharts(data);
+    }
+    
+    // ── 辅助函数 ──────────────────────────────────────────────────────────────
+    function calculatePercentage(part, total) {
+      if (!total || total === 0) return '0%';
+      return ((part / total) * 100).toFixed(1) + '%';
+    }
+    
+    function calculateBudgetUsed(ai) {
+      // 简化计算，实际需要更多信息
+      return ai.fallbackCount > 0 ? `${ai.fallbackCount} 次降级` : '正常';
+    }
+    
+    function updateServerStatus(isOnline) {
+      const indicator = document.querySelector('#serverStatus .status-indicator');
+      const text = document.getElementById('statusText');
+      
+      if (isOnline) {
+        indicator.className = 'status-indicator status-online';
+        text.textContent = '运行中';
+      } else {
+        indicator.className = 'status-indicator status-offline';
+        text.textContent = '离线';
+      }
+    }
+    
+    function updateAIProviders(providers) {
+      const container = document.getElementById('aiProviders');
+      container.innerHTML = providers.map(p => `
+        <span class="px-3 py-1 rounded-full text-xs ${
+          p.isActive ? 'bg-green-600' : p.enabled ? 'bg-blue-600' : 'bg-gray-600'
+        }">
+          ${p.name} ${p.isActive ? '✓' : ''}
+        </span>
+      `).join('');
+    }
+    
+    function updateChannelStatus(channels) {
+      const container = document.getElementById('channelStatus');
+      if (!channels || channels.length === 0) {
+        container.innerHTML = '<div class="text-gray-400">无可用渠道</div>';
+        return;
+      }
+      
+      container.innerHTML = channels.map(ch => `
+        <div class="flex items-center justify-between text-sm">
+          <span class="flex items-center">
+            <span class="status-indicator ${ch.enabled ? 'status-online' : 'status-offline'}"></span>
+            ${ch.name}
+          </span>
+          <span class="text-gray-400">${ch.pushCount || 0} 条</span>
+        </div>
+      `).join('');
+    }
+    
+    function updateTableStats(tables) {
+      const container = document.getElementById('tableStats');
+      if (!tables || tables.length === 0) {
+        container.innerHTML = '<div class="text-gray-400">无数据</div>';
+        return;
+      }
+      
+      container.innerHTML = tables.map(t => `
+        <div class="flex justify-between text-sm py-1">
+          <span>${t.table_name}</span>
+          <span class="text-gray-400">${t.count} 条</span>
+        </div>
+      `).join('');
+    }
+    
+    // ── 图表更新 ──────────────────────────────────────────────────────────────
+    function updateCharts(data) {
+      // 这里需要额外的 API 来获取历史数据
+      // 暂时使用模拟数据
+      updateTrendChart();
+      updateSourceChart(data.db?.sources || []);
+    }
+    
+    function updateTrendChart() {
+      const ctx = document.getElementById('trendChart').getContext('2d');
+      
+      // 模拟数据（实际应从 API 获取）
+      const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+      const data = [120, 190, 150, 220, 180, 160, 200];
+      
+      if (trendChartInstance) {
+        trendChartInstance.destroy();
+      }
+      
+      trendChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels,
+          datasets: [{
+            label: '新闻数量',
+            data,
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            tension: 0.4,
+            fill: true,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(255, 255, 255, 0.1)' },
+              ticks: { color: '#94a3b8' },
+            },
+            x: {
+              grid: { display: false },
+              ticks: { color: '#94a3b8' },
+            },
+          },
+        },
+      });
+    }
+    
+    function updateSourceChart(sources) {
+      const ctx = document.getElementById('sourceChart').getContext('2d');
+      
+      // 取前 10 个数据源
+      const topSources = sources.slice(0, 10);
+      const labels = topSources.map(s => s.source);
+      const data = topSources.map(s => s.n);
+      
+      if (sourceChartInstance) {
+        sourceChartInstance.destroy();
+      }
+      
+      sourceChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [{
+            label: '新闻数量',
+            data,
+            backgroundColor: [
+              '#3b82f6', '#8b5cf6', '#10b981', '#f59e0b', '#ef4444',
+              '#ec4899', '#6366f1', '#14b8a6', '#f97316', '#84cc16',
+            ],
+            borderRadius: 8,
+          }],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: { display: false },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              grid: { color: 'rgba(255, 255, 255, 0.1)' },
+              ticks: { color: '#94a3b8' },
+            },
+            x: {
+              grid: { display: false },
+              ticks: { 
+                color: '#94a3b8',
+                maxRotation: 45,
+                minRotation: 45,
+              },
+            },
+          },
+        },
+      });
+    }
+  </script>
+</body>
+</html>
