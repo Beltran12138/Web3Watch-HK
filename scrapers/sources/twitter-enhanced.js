@@ -354,7 +354,7 @@ class ThirdPartyScraper extends TwitterScraper {
         console.log(`[Twitter] Fetching ${username} from TwitterAPI.io`);
 
         const res = await axios.get(apiConfig.url, {
-          params: { username },
+          params: { userName: username },
           headers: {
             'X-API-Key': apiConfig.key,
           },
@@ -365,12 +365,12 @@ class ThirdPartyScraper extends TwitterScraper {
           const tweets = res.data.tweets.map(t => ({
             id: t.id,
             content: t.text,
-            timestamp: new Date(t.created_at).getTime(),
-            url: `https://twitter.com/${username}/status/${t.id}`,
+            timestamp: new Date(t.createdAt).getTime(),
+            url: t.url || `https://twitter.com/${username}/status/${t.id}`,
             stats: {
-              replies: t.reply_count,
-              retweets: t.retweet_count,
-              likes: t.like_count,
+              replies: t.replyCount,
+              retweets: t.retweetCount,
+              likes: t.likeCount,
             },
             source: 'Twitter',
             author: username,

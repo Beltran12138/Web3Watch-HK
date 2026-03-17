@@ -299,6 +299,32 @@ const SERVER = {
   WEEKLY_REPORT_CRON: '0 18 * * 5',   // 每周五北京时间 18:00 (需配合 timezone: Asia/Shanghai)
 };
 
+// ── 监控告警配置 ──────────────────────────────────────────────────────────────
+const MONITORING = {
+  // 爬虫失败告警阈值
+  SCRAPER_FAIL_THRESHOLD: parseInt(process.env.SCRAPER_FAIL_THRESHOLD || '3', 10),
+  
+  // 健康检查间隔（毫秒）
+  HEALTH_CHECK_INTERVAL_MS: parseInt(process.env.HEALTH_CHECK_INTERVAL_MS || '300000', 10), // 5 分钟
+  
+  // 告警冷却时间（毫秒）- 同一告警多久内不重复发送
+  ALERT_COOLDOWN_MS: parseInt(process.env.ALERT_COOLDOWN_MS || '3600000', 10), // 1 小时
+  
+  // AI 成本告警
+  AI_DAILY_BUDGET_USD: parseFloat(process.env.AI_DAILY_BUDGET_USD || '10'),
+  AI_ALERT_THRESHOLD: parseFloat(process.env.AI_ALERT_THRESHOLD || '0.8'), // 80% 预算时告警
+  
+  // 数据源健康度阈值
+  SOURCE_HEALTH_MIN_SUCCESS_RATE: parseFloat(process.env.SOURCE_HEALTH_MIN_SUCCESS_RATE || '0.7'), // 70% 成功率
+  SOURCE_HEALTH_MIN_ITEMS: parseInt(process.env.SOURCE_HEALTH_MIN_ITEMS || '5', 10), // 最少抓取数量
+  
+  // 数据库大小告警（MB）
+  DB_SIZE_WARN_MB: parseInt(process.env.DB_SIZE_WARN_MB || '100', 10),
+  
+  // 内存使用告警（MB）
+  MEMORY_WARN_MB: parseInt(process.env.MEMORY_WARN_MB || '500', 10),
+};
+
 module.exports = {
   SCRAPER,
   KOL_LIST,
@@ -324,6 +350,7 @@ module.exports = {
   DB,
   DATA_RETENTION,
   SERVER,
+  MONITORING, // 新增监控配置
   SOURCE_CONFIGS,
   DEFAULT_SOURCE_CONFIG,
   HIGH_FREQ_SOURCES,
