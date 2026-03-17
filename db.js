@@ -317,6 +317,9 @@ async function saveNews(items) {
           category:            i.category            || 'Signals',
           business_category:   i.business_category   || '',
           competitor_category: i.competitor_category || '',
+          impact:              i.impact              || '',
+          bitv_action:         i.bitv_action         || '',
+          alpha_score:         i.alpha_score         || 0,
           timestamp:           Math.round(i.timestamp || 0),
           is_important:        i.is_important         || 0,
           sent_to_wecom:       i.sent_to_wecom        || 0,
@@ -545,9 +548,10 @@ async function getAlreadyProcessed(items) {
       (data || []).forEach(r => {
         foundUrls.add(r.url);
         const nKey = normalizeKey(r.title, r.source);
-        if (r.business_category)  { processed.add(r.url);   processed.add(nKey); }
-        if (r.sent_to_wecom)      { sentToWeCom.add(r.url); sentToWeCom.add(nKey); }
-        if (r.timestamp)          { existingTimestamps.set(r.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); }
+        const nTitle = normalizeKey(r.title, '').split('|')[0];
+        if (r.business_category)  { processed.add(r.url);   processed.add(nKey); processed.add(nTitle); }
+        if (r.sent_to_wecom)      { sentToWeCom.add(r.url); sentToWeCom.add(nKey); sentToWeCom.add(nTitle); }
+        if (r.timestamp)          { existingTimestamps.set(r.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); existingTimestamps.set(nTitle, r.timestamp); }
       });
 
       // 二轮：URL未命中的用 title 查
@@ -558,11 +562,12 @@ async function getAlreadyProcessed(items) {
           .in('title', notFound.map(c => c.title));
         (td || []).forEach(r => {
           const nKey = normalizeKey(r.title, r.source);
+          const nTitle = normalizeKey(r.title, '').split('|')[0];
           const m    = notFound.find(i => normalizeKey(i.title, i.source) === nKey);
           if (!m) return;
-          if (r.business_category)  { processed.add(m.url);   processed.add(nKey); }
-          if (r.sent_to_wecom)      { sentToWeCom.add(m.url); sentToWeCom.add(nKey); }
-          if (r.timestamp)          { existingTimestamps.set(m.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); }
+          if (r.business_category)  { processed.add(m.url);   processed.add(nKey); processed.add(nTitle); }
+          if (r.sent_to_wecom)      { sentToWeCom.add(m.url); sentToWeCom.add(nKey); sentToWeCom.add(nTitle); }
+          if (r.timestamp)          { existingTimestamps.set(m.url, r.timestamp); existingTimestamps.set(nKey, r.timestamp); existingTimestamps.set(nTitle, r.timestamp); }
         });
       }
     }
@@ -623,11 +628,15 @@ async function updateSentStatus(item) {
         category:            item.category            || '',
         business_category:   item.business_category   || '',
         competitor_category: item.competitor_category || '',
+        impact:              item.impact              || '',
+        bitv_action:         item.bitv_action         || '',
+        alpha_score:         item.alpha_score         || 0,
+        normalized_title:    nTitle,
         detail:              item.detail              || '',
         timestamp:           item.timestamp           || Date.now(),
         is_important:        item.is_important         || 1,
         sent_to_wecom:       1,
-      }, { onConflict: 'title,source' });
+      }, { onConflict: 'url' });
     } catch (e) {
       console.warn('[updateSentStatus Supabase]', e.message?.substring(0, 60));
     }

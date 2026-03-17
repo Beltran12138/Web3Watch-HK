@@ -158,11 +158,12 @@ async function scrapeTechubNews() {
 
       // 清理标题中的多余空白
       const title = (item.title || '').replace(/\s+/g, ' ').trim();
-      const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
+      // 更加激进的标题标准化，移除所有非中文字符和字母数字，用于本地去重
+      const normalizedTitle = title.toLowerCase().replace(/[^\u4e00-\u9fa5a-z0-9]/g, '').trim();
 
-      if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
+      if (seenUrls.has(normalizedUrl) || (normalizedTitle && seenTitles.has(normalizedTitle))) return;
+      if (normalizedTitle) seenTitles.add(normalizedTitle);
       seenUrls.add(normalizedUrl);
-      seenTitles.add(normalizedTitle);
 
       items.push(makeItem({
         title,
