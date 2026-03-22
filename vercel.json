@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "alpha-radar",
+  "installCommand": "npm install --ignore-scripts",
   "buildCommand": "",
   "outputDirectory": "public"
 }
