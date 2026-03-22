@@ -254,7 +254,7 @@ function createApp() {
  * 启动定时任务（仅本地环境，Vercel 使用 GitHub Actions）
  */
 function startCronJobs() {
-  if (process.env.VERCEL === 'true') {
+  if (process.env.VERCEL || process.env.VERCEL_ENV) {
     logger.info('Running on Vercel, cron jobs disabled (use GitHub Actions)');
     return;
   }

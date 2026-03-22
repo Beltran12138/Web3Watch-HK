@@ -22,7 +22,6 @@ async function sendToWeCom(item, options = {}) {
 
   // 视觉增强：根据评分和影响类型选择 Emoji
   const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡');
-  const urgentPrefix = options.urgent ? '🚨 [紧急] ' : '';
   let impactColor = 3; // 默认灰色
   const impactText = item.impact || '待评估';
   if (item.impact === '利好') impactColor = 1; // 红色（股票红涨）或蓝色，看语境，这里企微模板里 1 是红色/重要，2 是绿色/打分，3 灰色
@@ -39,7 +38,7 @@ async function sendToWeCom(item, options = {}) {
           desc_color: 1,
         },
         main_title: {
-          title: urgentPrefix + item.title,
+          title: item.title,
           desc: `${scoreEmoji} ${item.business_category || '快讯'}`,
         },
         sub_title_text: item.detail || '（暂无摘要）',

@@ -72,7 +72,7 @@ try {
 }
 
 const USE_SUPABASE = (process.env.USE_SUPABASE || '').trim() === 'true';
-const IS_VERCEL = process.env.VERCEL === 'true';
+const IS_VERCEL = !!(process.env.VERCEL || process.env.VERCEL_ENV);
 
 let supabase = null;
 if ((USE_SUPABASE || IS_VERCEL) && process.env.SUPABASE_URL && process.env.SUPABASE_KEY) {
