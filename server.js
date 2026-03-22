@@ -193,12 +193,13 @@ function createApp() {
 
   // 监控接口路由
   const createMonitoringRoutes = require('./routes/monitoring');
-  app.use('/api', createMonitoringRoutes(deps));
+  const monitoringRouter = createMonitoringRoutes(deps);
+  app.use('/api', monitoringRouter);
+  // /health 别名：直接调用 router 函数（不经过 app.use 挂载剥离前缀），设 req.url=/health 匹配 router.get('/health')
   app.use('/health', (req, res, next) => {
-    // 健康检查别名
-    req.url = '/api/health';
-    next();
-  }, createMonitoringRoutes(deps));
+    req.url = '/health';
+    monitoringRouter(req, res, next);
+  });
 
   // 数据源健康监控路由
   const healthRoutes = require('./routes/health');
