@@ -1,0 +1,29 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies (including devDeps for esbuild)
+        run: npm ci
+
+      - name: Build frontend bundle
+        run: npm run build:frontend
+
+      - name: Deploy to Vercel (Production)
+        run: npx vercel --prod --token=${{ secrets.VERCEL_TOKEN }} --yes
+        env:
+          VERCEL_ORG_ID: team_r4Rp8mm8E4BhSG6ivnXAWXS6
+          VERCEL_PROJECT_ID: prj_2dhU1U41ad60yN8vTULzpJ6F4rnC
