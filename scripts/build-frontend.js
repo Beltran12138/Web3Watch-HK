@@ -19,7 +19,7 @@ try {
   esbuild = require('esbuild');
 } catch (e) {
   console.log('esbuild not installed, using fallback build method');
-  process.exit(0); // 不阻断，使用原始 CDN 方式
+  esbuild = null;
 }
 
 async function build() {
