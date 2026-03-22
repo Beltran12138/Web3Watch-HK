@@ -1,21 +1,14 @@
 name: Alpha Radar Cron Jobs
 
 on:
-  schedule:
-    # 高频抓取 - 每 5 分钟（UTC 时间）
-    - cron: '*/5 * * * *'
-    # 低频抓取 - 每 30 分钟（UTC 时间）
-    - cron: '*/30 * * * *'
-    # 健康检查 - 每小时
-    - cron: '0 * * * *'
-    # 日报 - 每天 10:00 UTC (18:00 北京时间)
-    - cron: '0 10 * * *'
-    # 周报 - 每周五 10:00 UTC (18:00 北京时间)
-    - cron: '0 10 * * 5'
-    # Notion 同步 - 每 6 小时
-    - cron: '0 */6 * * *'
-    # GitHub 每日导出 - 每天 16:30 UTC (00:30 北京时间次日)
-    - cron: '30 16 * * *'
+  # 已禁用自动触发 — 功能已拆分到 scrape_high.yml / scrape.yml / daily_report.yml / weekly_report.yml
+  # 保留 workflow_dispatch 供手动触发调试使用
+  workflow_dispatch:
+    inputs:
+      schedule:
+        description: '模拟的调度类型 (high/low/health/daily/weekly)'
+        required: false
+        default: 'high'
 
 jobs:
   scrape-high:
