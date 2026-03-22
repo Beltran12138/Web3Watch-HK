@@ -41,42 +41,39 @@
     .view-tab-active{background:white;color:#0f172a;box-shadow:0 1px 2px rgba(0,0,0,.05)}
     .dark .view-tab-active{background:var(--bg-card);color:var(--text)}
     .keyboard-focus{outline:2px solid #3b82f6;outline-offset:2px;box-shadow:0 0 0 4px rgba(59,130,246,.15)}
-    /* Dark mode overrides for Tailwind classes used inline */
+    /* Dark mode overrides for Tailwind classes */
     .dark .bg-white{background:var(--bg-card) !important}
-    .dark .bg-slate-50,.dark .bg-\\[\\#fcfcfd\\]{background:var(--bg) !important}
+    .dark .bg-slate-50{background:var(--bg) !important}
     .dark .bg-slate-100{background:#334155 !important}
+    .dark .bg-slate-200{background:#475569 !important}
+    .dark .bg-slate-300{background:#64748b !important}
+    .dark .bg-blue-50{background:#1e3a5f !important}
+    .dark .bg-red-50{background:#450a0a !important}
+    .dark .bg-emerald-50{background:#052e16 !important}
+    .dark .bg-indigo-50{background:#1e1b4b !important}
     .dark .border-slate-200,.dark .border-slate-100,.dark .border-slate-150{border-color:var(--border) !important}
+    .dark .border-red-100{border-color:#7f1d1d !important}
+    .dark .border-blue-100{border-color:#1e3a8a !important}
+    .dark .border-emerald-100{border-color:#064e3b !important}
+    .dark .border-indigo-100{border-color:#312e81 !important}
     .dark .text-slate-900,.dark .text-slate-800,.dark .text-slate-700{color:#e2e8f0 !important}
     .dark .text-slate-600{color:#cbd5e1 !important}
     .dark .text-slate-500{color:#94a3b8 !important}
     .dark .text-slate-400{color:#64748b !important}
     .dark .text-slate-300{color:#475569 !important}
-    .dark .hover\\:bg-slate-100:hover{background:#334155 !important}
-    .dark .hover\\:bg-slate-50:hover{background:#1e293b !important}
-    .dark .bg-slate-200{background:#475569 !important}
-    .dark .hover\\:bg-slate-200:hover{background:#475569 !important}
-    .dark .bg-slate-300{background:#64748b !important}
-    .dark .bg-blue-50{background:#1e3a5f !important}
-    .dark .text-blue-600,.dark .text-blue-500{color:#60a5fa !important}
-    .dark .bg-red-50{background:#450a0a !important}
-    .dark .bg-emerald-50{background:#052e16 !important}
-    .dark .bg-indigo-50{background:#1e1b4b !important}
-    /* Dark mode: colored text */
-    .dark .text-red-600{color:#f87171 !important}
-    .dark .text-red-500{color:#f87171 !important}
+    .dark .text-red-600,.dark .text-red-500{color:#f87171 !important}
     .dark .text-emerald-600{color:#34d399 !important}
+    .dark .text-blue-600,.dark .text-blue-500{color:#60a5fa !important}
     .dark .text-indigo-500{color:#818cf8 !important}
-    .dark .hover\:text-indigo-700:hover{color:#818cf8 !important}
-    .dark .hover\:text-black:hover{color:#f1f5f9 !important}
-    /* Dark mode: colored borders */
-    .dark .border-red-100{border-color:#7f1d1d !important}
-    .dark .border-blue-100{border-color:#1e3a8a !important}
-    .dark .border-emerald-100{border-color:#064e3b !important}
-    .dark .border-indigo-100{border-color:#312e81 !important}
-    /* Dark mode: hover backgrounds */
-    .dark .hover\:bg-blue-100:hover{background:#1e3a5f !important}
-    .dark .hover\:bg-indigo-100:hover{background:#312e81 !important}
-    /* Dark mode: indigo-50/30 opacity variant */
+    /* hover states — use :is() to avoid backslash-escaping colon in class names */
+    .dark :is(.hover\:bg-slate-50):hover{background:var(--bg) !important}
+    .dark :is(.hover\:bg-slate-100):hover{background:#334155 !important}
+    .dark :is(.hover\:bg-slate-200):hover{background:#475569 !important}
+    .dark :is(.hover\:bg-blue-100):hover{background:#1e3a5f !important}
+    .dark :is(.hover\:bg-indigo-100):hover{background:#312e81 !important}
+    .dark :is(.hover\:text-black):hover{color:#f1f5f9 !important}
+    .dark :is(.hover\:text-indigo-700):hover{color:#818cf8 !important}
+    /* opacity variant */
     .dark .bg-indigo-50\/30{background:rgba(49,46,129,0.25) !important}
     /* Export modal */
     .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:50;display:flex;align-items:center;justify-content:center}

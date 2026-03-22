@@ -514,16 +514,28 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
   }
 
   // ── 竞对雷达组件 ───────────────────────────────────────────────────────────
+  const HK_SOURCES = ['hashkeygroup','hashkeyexchange','osl','exio','hashkey'];
+  const OFFSHORE_SOURCES = ['binance','okx','bybit','gate','mexc','bitget','htx','kucoin'];
+
+  function inferCompetitorCat(item) {
+    const src = (item.source || '').toLowerCase();
+    const title = (item.title || '').toLowerCase();
+    if (HK_SOURCES.some(k => src.includes(k) || title.includes(k))) return '香港合规所';
+    if (OFFSHORE_SOURCES.some(k => src.includes(k))) return '离岸所';
+    return null;
+  }
+
   function CompetitorRadar({ news }) {
-    // Group by competitor_category
+    // Group by competitor_category (infer from source if stored value is missing/其他)
     const grouped = useMemo(() => {
       const map = {};
       const now = Date.now();
       const weekAgo = now - 7 * 24 * 3600 * 1000;
 
       news.forEach(n => {
-        const cat = n.competitor_category;
-        if (!cat || cat === '其他') return;
+        const stored = n.competitor_category;
+        const cat = (stored && stored !== '其他') ? stored : inferCompetitorCat(n);
+        if (!cat) return;
         if (!map[cat]) map[cat] = { items: [], recent: 0, total: 0 };
         map[cat].items.push(n);
         map[cat].total++;
@@ -927,7 +939,7 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
     );
 
     return (
-      <div className="flex h-screen overflow-hidden bg-[#fcfcfd]">
+      <div className="flex h-screen overflow-hidden bg-[var(--bg)]">
 
         {/* ── 移动端遮罩 ──────────────────────────────────────── */}
         {menuOpen && (
@@ -936,7 +948,7 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
 
         {/* ── 侧边栏（桌面常驻 + 移动端抽屉）──────────────────── */}
         <aside className={`
-          fixed md:static inset-y-0 left-0 z-30 w-72 border-r border-slate-200 p-6 flex flex-col gap-6 bg-[#fcfcfd]
+          fixed md:static inset-y-0 left-0 z-30 w-72 border-r border-slate-200 p-6 flex flex-col gap-6 bg-[var(--bg)]
           transform transition-transform duration-200
           ${menuOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}
         `}>
