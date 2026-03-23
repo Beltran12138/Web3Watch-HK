@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Rebuild native modules
+        run: npm rebuild better-sqlite3
+
       - name: Run Daily Report
         id: report
         run: node run_daily_report.js
