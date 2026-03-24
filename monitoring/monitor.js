@@ -5,13 +5,12 @@
  *
  * 职责：
  *   1. 监控短时间内（如 30 分钟）跨信源的关键词出现频率
- *   2. 如果密度超过阈值（如 3 个不同来源提到"稳定币新规"），触发高能预警
+ *   2. 如果密度超过阈值（如 3 个不同来源提到"稳定币新规"），写入 Insights 记忆系统
  *   3. 高密度热点自动写入 Insights 记忆系统
  *   4. 去重：同一关键词 2 小时内不重复告警
  */
 
 const { newsDAO, insightDAO } = require('../dao');
-const { pushManager } = require('../push-channel');
 
 class IntelligenceDensityMonitor {
   constructor() {
@@ -61,7 +60,6 @@ class IntelligenceDensityMonitor {
 
         this._alertHistory.set(topic, Date.now());
         const items = topicItems.get(topic) || [];
-        await this.triggerAlert(topic, Array.from(sources), items);
         await this.saveToInsights(topic, Array.from(sources), items);
       }
     }
@@ -80,25 +78,6 @@ class IntelligenceDensityMonitor {
     ];
 
     return sensitiveWords.filter(word => text.includes(word));
-  }
-
-  /**
-   * 触发高能预警推送
-   */
-  async triggerAlert(topic, sources, items) {
-    const topTitles = items.slice(0, 5).map(i => `- ${i.source}: ${i.title}`).join('\n');
-    const title = `高能预警：发现行业热点 [${topic}]`;
-    const content = `> 系统检测到 **${topic}** 在 30 分钟内被 **${sources.length}** 个不同来源提及。\n\n` +
-                    `**涉及来源：** ${sources.join(', ')}\n\n` +
-                    `**相关快讯：**\n${topTitles}\n\n` +
-                    '**情报建议：** 请立即关注此动向，可能涉及重大市场变化或合规调整。';
-
-    console.log(`[Monitor] ALERT TRIGGERED: ${topic} (${sources.length} sources)`);
-    try {
-      await pushManager.sendImportant(title, content);
-    } catch (e) {
-      console.error('[Monitor] Push failed:', e.message);
-    }
   }
 
   /**
