@@ -16,6 +16,7 @@ const { callAI } = require('./ai-provider');
 const { insightDAO } = require('./dao');
 const { sendReportToWeCom }     = require('./wecom');
 const { fetchMacroPanel, fetchMacroContext } = require('./macro-market');
+const { sendWeeklyReportEmail } = require('./email-report');
 const { createClient }          = require('@supabase/supabase-js');
 const { REPORT }                = require('./config');
 require('dotenv').config();
@@ -421,6 +422,10 @@ async function runWeeklyReport(dryRun = false) {
   }
 
   await sendReportToWeCom(report, '周报');
+
+  // 邮件发送给领导层（SMTP 未配置时自动跳过）
+  await sendWeeklyReportEmail(report, startDate, endDate);
+
   console.log('[WeeklyReport] Done.');
 
   // 4. 提炼并保存行业趋势（记忆系统）
