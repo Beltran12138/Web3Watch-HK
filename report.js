@@ -376,55 +376,31 @@ async function runWeeklyReport(dryRun = false) {
   const aiInput   = rows.filter(r => r.alpha_score >= 70 || r.detail?.length > 5);
   const aiSummary = await generateWeeklySummary(aiInput.length >= 5 ? aiInput : rows.slice(0, 80), stats);
 
-  // 按分类汇总附录
-  const categorized = {};
-  rows.forEach(item => {
-    const cat = item.business_category || '其他';
-    if (!categorized[cat]) categorized[cat] = [];
-    categorized[cat].push(item);
-  });
-
-  const sortedCats = Object.keys(categorized).sort(
-    (a, b) => REPORT.CATEGORY_ORDER.indexOf(a) - REPORT.CATEGORY_ORDER.indexOf(b),
-  );
-
-  let appendix = '';
-  sortedCats.forEach(cat => {
-    const items    = categorized[cat];
-    const topItems = items.filter(i => i.detail?.length > 5).slice(0, REPORT.WEEKLY_TOP_PER_CAT);
-    if (topItems.length === 0) return;
-    appendix += `\n**${cat}** (共 ${items.length} 条)\n`;
-    topItems.forEach((item, i) => {
-      const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '');
-      const impactLabel = item.impact ? `[${item.impact}]` : '';
-      const comp = item.competitor_category ? ` \`${item.competitor_category}\`` : '';
-
-      appendix += `${i + 1}. ${scoreEmoji}${item.title}${comp} \`${item.alpha_score || ''}\` ${impactLabel}\n`;
-      appendix += `   > ${item.detail}\n`;
-      if (item.bitv_action) appendix += `   > 💡 **分析:** ${item.bitv_action}\n`;
-    });
-  });
-
-  // 竞品矩阵
+  // 竞品矩阵（详细版，仅用于邮件）
   const competitorMatrix = buildCompetitorMatrix(rows);
 
-  // 组装周报：头部 → 统计 → AI总结 → 竞品矩阵 → 分类附录
-  let report = `📰 **Web3Watch HK 行业周报 | ${startDate} ~ ${endDate}**\n\n`;
-  report    += buildStatsPanel(rows, '本周') + '\n\n';
-  if (aiSummary) report += `---\n\n${aiSummary}\n\n`;
-  if (competitorMatrix.trim()) report += `---\n\n🏢 **竞品动态矩阵** | 本周各主要玩家行动汇总\n${competitorMatrix}\n`;
-  if (appendix.trim()) report += `---\n\n📌 **本周分类策略详情**\n${appendix}\n`;
-  report    += `\n---\n*Web3Watch HK 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
+  // ── 企微版：只发 AI 总结，严格控制长度 ──────────────────────────────────────
+  const wecomHeader = `📰 **Web3Watch HK 行业周报 | ${startDate} ~ ${endDate}**\n`;
+  const wecomReport = wecomHeader + '\n' + (aiSummary || '本周暂无 AI 总结。');
+
+  // ── 邮件版：完整内容（总结 + 竞品矩阵详情）────────────────────────────────
+  let emailReport = `📰 **Web3Watch HK 行业周报 | ${startDate} ~ ${endDate}**\n\n`;
+  if (aiSummary) emailReport += aiSummary + '\n\n';
+  if (competitorMatrix.trim()) {
+    emailReport += `---\n\n🏢 **竞品动态矩阵** | 本周各主要玩家行动汇总\n${competitorMatrix}\n`;
+  }
+  emailReport += `\n---\n*Web3Watch HK 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
 
   if (dryRun) {
-    console.log('\n=== WEEKLY REPORT (DRY RUN) ===\n', report, '\n=== END ===\n');
-    return report;
+    console.log('\n=== WEEKLY REPORT WeCom (DRY RUN) ===\n', wecomReport, '\n=== END ===\n');
+    console.log('\n=== WEEKLY REPORT Email (DRY RUN) ===\n', emailReport, '\n=== END ===\n');
+    return emailReport;
   }
 
-  await sendReportToWeCom(report, '周报');
+  await sendReportToWeCom(wecomReport, '周报');
 
   // 邮件发送给领导层（SMTP 未配置时自动跳过）
-  await sendWeeklyReportEmail(report, startDate, endDate);
+  await sendWeeklyReportEmail(emailReport, startDate, endDate);
 
   console.log('[WeeklyReport] Done.');
 
@@ -433,7 +409,7 @@ async function runWeeklyReport(dryRun = false) {
     extractAndSaveTrends(rows).catch(e => console.error('[Insight] background task error:', e));
   }
 
-  return report;
+  return emailReport;
 }
 
 module.exports = { runDailyReport, runWeeklyReport };

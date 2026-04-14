@@ -326,7 +326,7 @@ ${selectList}`;
   const wEnd = new Date(now); wEnd.setDate(now.getDate() + (7 - now.getDay()));
   const dateRange = `${wStart.toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' })}-${wEnd.toLocaleDateString('zh-CN', { month: 'numeric', day: 'numeric' })}`;
 
-  const prompt = `你是 BitV 战略分析师。请根据以下精选动态撰写本周调研简报。
+  const prompt = `你是 BitV 战略分析师，负责为公司领导层撰写香港 Web3 行业周报。
 
 【香港合规所动态】
 ${fmt(hkItems)}
@@ -340,25 +340,34 @@ ${fmt(policyItems)}
 【其他重要信号】
 ${fmt(otherItems)}
 
-请输出简报（极度易读）：
+请严格按以下格式输出（总字数 ≤550 字，不用 # 号标题，不输出分类统计图表）：
 
-📅 **调研周期**: ${dateRange}
+[开头用2-3句话概括本周整体趋势，直接写结论，不要写"本周"开头的套话]
 
-📊 **本周总结论** (3-4句，概括整体趋势)
+**重要大事件**
+• [最重要的3-5条，每条1句话，突出核心信息]
 
-🏆 **竞品格局**
-• **香港合规所**（HashKey/OSL/Exio）: [本周动作]
-• **头部离岸所**（OKX/Bybit/Gate/MEXC等）: [本周动作]
-• **政策环境**: [监管趋势]
+**AI & 智能化动态**（本周有相关内容时才输出此节）
+• [AI/Agent/智能化相关动态]
 
-💡 **对 BitV 的战略建议** (3-5条，每条单独成段，具体可执行)
+**合规动态**
+• [监管政策、牌照、合规要求相关]
 
-📊 **本周分类分布**
-${catBar}
+**产品动态**
+• [新产品、新功能、业务拓展相关]
 
-📈 **数据概览**: 共 ${newsItems.length} 条 | 重要信号 ${importantCount} 条 | ${sourceCount} 个来源
+---
 
-要求：大量加粗核心信息；短段落+bullet；总字数 ≤800 字；不用 # 号标题。`;
+**竞品格局**
+• 香港合规所（HashKey/OSL/Exio）: [本周核心动作，1-2句]
+• 头部离岸所（Binance/OKX/Bybit等）: [本周核心动作，1-2句]
+
+---
+
+**对 BitV 的建议**
+• [建议1，具体可执行]
+• [建议2，具体可执行]
+• [建议3，具体可执行]`;
 
   const result = await callAI([{ role: 'user', content: prompt }], { temperature: 0.4, max_tokens: 2000 });
 
