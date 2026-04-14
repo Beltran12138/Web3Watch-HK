@@ -117,6 +117,70 @@ async function fillMissingCategories(rows) {
   return rows;
 }
 
+// ── 竞品动态矩阵 ───────────────────────────────────────────────────────────────
+/**
+ * 按数据源（交易所/香港合规所）分组，生成本周各竞品主要动作的矩阵视图。
+ * 只展示有实质动态（alpha_score >= 65 或 is_important）的来源。
+ */
+function buildCompetitorMatrix(rows) {
+  // 香港合规所（优先展示）
+  const HK_SOURCES = ['HashKeyExchange', 'HashKeyGroup', 'OSL', 'Exio', 'TechubNews'];
+  // 头部离岸所
+  const OFFSHORE_SOURCES = ['Binance', 'OKX', 'Bybit', 'Gate', 'MEXC', 'Bitget', 'HTX', 'KuCoin'];
+  const ALL_COMPETITOR_SOURCES = [...HK_SOURCES, ...OFFSHORE_SOURCES];
+
+  const SOURCE_LABEL = {
+    'HashKeyExchange': 'HashKey Exchange',
+    'HashKeyGroup':    'HashKey Group',
+    'TechubNews':      'TechubNews（HashKey媒体）',
+  };
+
+  // 按来源分桶，只保留有价值的条目
+  const bySource = {};
+  rows
+    .filter(r =>
+      ALL_COMPETITOR_SOURCES.includes(r.source) &&
+      (r.alpha_score >= 65 || r.is_important === 1) &&
+      (r.detail?.length > 5 || r.title?.length > 8),
+    )
+    .forEach(r => {
+      if (!bySource[r.source]) bySource[r.source] = [];
+      bySource[r.source].push(r);
+    });
+
+  // 每个来源内部按 alpha_score 降序
+  Object.values(bySource).forEach(items =>
+    items.sort((a, b) => (b.alpha_score || 0) - (a.alpha_score || 0)),
+  );
+
+  // 排序：有动态的 HK 来源在前，离岸所在后；各组内按条目数降序
+  const sortedSources = [
+    ...HK_SOURCES.filter(s => bySource[s]).sort((a, b) => bySource[b].length - bySource[a].length),
+    ...OFFSHORE_SOURCES.filter(s => bySource[s]).sort((a, b) => bySource[b].length - bySource[a].length),
+  ];
+
+  if (sortedSources.length === 0) return '';
+
+  let matrix = '';
+  sortedSources.forEach(source => {
+    const items = bySource[source];
+    const name  = SOURCE_LABEL[source] || source;
+    const tag   = HK_SOURCES.includes(source) ? '🏛️' : '🌐';
+
+    matrix += `\n${tag} **${name}** · ${items.length}条重要动态\n`;
+    items.slice(0, 3).forEach(item => {
+      const emoji = item.alpha_score >= 90 ? '🔥' : item.alpha_score >= 70 ? '⭐️' : '📡';
+      const cat   = item.business_category ? ` \`${item.business_category}\`` : '';
+      const score = item.alpha_score ? ` \`${item.alpha_score}\`` : '';
+      matrix += `${emoji} ${item.title}${cat}${score}\n`;
+      if (item.detail) matrix += `   > ${item.detail}\n`;
+      if (item.bitv_action) matrix += `   > 💡 ${item.bitv_action}\n`;
+    });
+  });
+
+  return matrix;
+}
+
 // ── 统计面板 ──────────────────────────────────────────────────────────────────
 function buildStatsPanel(items, period = '今日') {
   const total      = items.length;
@@ -161,13 +225,14 @@ async function runDailyReport(dryRun = false) {
     return null;
   }
 
-  // 并行：补充分类 + 拉取宏观数据
+  // 并行：补充分类 + 拉取宏观数据 + 读取历史趋势记忆
   [rows] = await Promise.all([
     fillMissingCategories(rows),
   ]);
-  const [macroPanel, macroContext] = await Promise.all([
+  const [macroPanel, macroContext, recentTrends] = await Promise.all([
     fetchMacroPanel(),
     fetchMacroContext(),
+    insightDAO.getRecent(4).catch(() => []),
   ]);
 
   // 重要条目列表（权重优先）
@@ -201,11 +266,12 @@ async function runDailyReport(dryRun = false) {
     });
   });
 
-  // AI 总结（注入宏观上下文，让 AI 总结有市场温度计参考）
+  // AI 总结（注入宏观上下文 + 历史趋势记忆）
   const aiInput   = rows.filter(r => r.detail || r.alpha_score >= 70);
   const aiSummary = await generateDailySummary(
     aiInput.length ? aiInput : rows.slice(0, 30),
     macroContext || '',
+    recentTrends,
   );
 
   // 组装报告：头部 → 数据概览 → 宏观背景 → AI总结 → 重点动态
@@ -338,10 +404,14 @@ async function runWeeklyReport(dryRun = false) {
     });
   });
 
-  // 组装周报
+  // 竞品矩阵
+  const competitorMatrix = buildCompetitorMatrix(rows);
+
+  // 组装周报：头部 → 统计 → AI总结 → 竞品矩阵 → 分类附录
   let report = `📰 **Alpha-Radar 行业周报 | ${startDate} ~ ${endDate}**\n\n`;
   report    += buildStatsPanel(rows, '本周') + '\n\n';
   if (aiSummary) report += `---\n\n${aiSummary}\n\n`;
+  if (competitorMatrix.trim()) report += `---\n\n🏢 **竞品动态矩阵** | 本周各主要玩家行动汇总\n${competitorMatrix}\n`;
   if (appendix.trim()) report += `---\n\n📌 **本周分类策略详情**\n${appendix}\n`;
   report    += `\n---\n*Alpha-Radar 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
 
