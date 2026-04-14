@@ -1,4 +1,4 @@
-# Industry-Feeds | 香港 Web3 动态追踪
+# Web3Watch HK | 香港 Web3 产品行研情报系统
 
 > 自动聚合香港合规所与头部离岸所动态，AI 提炼竞品洞察，每日定时推送至企业微信
 
@@ -9,7 +9,7 @@
 
 ## 📖 项目简介
 
-Industry-Feeds聚焦两个核心场景：
+Web3Watch HK 是一个**为产品/行研团队设计的内部情报系统**，聚焦两个核心场景：
 
 1. **香港合规赛道监控** — SFC 政策、VATP 牌照进展、OSL/HashKey/Exio 等香港持牌所动态
 2. **头部离岸所产品动作** — Binance/OKX/Bybit 等 8 家头部所的合规、产品、战略动向
@@ -77,7 +77,7 @@ Polymarket Breaking、Polymarket China
 
 ### 日报结构
 ```
-📋 Industry-Feeds 行业日报 | 2026-03-25
+📋 Web3Watch HK 行业日报 | 2026-03-25
 
 📊 今日数据概览
 > 抓取 124 条 | 重要 18 条 | AI摘要 96 条 | 来源 14 个
@@ -97,7 +97,7 @@ Polymarket Breaking、Polymarket China
 
 ### 周报结构
 ```
-📰 Industry-Feeds 行业周报 | 03/17 ~ 03/21
+📰 Web3Watch HK 行业周报 | 03/17 ~ 03/21
 
 [AI 本周总结论 + 竞品格局 + BitV 战略建议]
 
