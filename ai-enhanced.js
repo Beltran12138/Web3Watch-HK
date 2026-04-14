@@ -153,7 +153,7 @@ ${listStr}
 }
 
 // ── 日报总结（带降级）────────────────────────────────────────────────────────
-async function generateDailySummary(newsItems, macroContext = '') {
+async function generateDailySummary(newsItems, macroContext = '', recentTrends = []) {
   if (!newsItems?.length) return null;
 
   const status = getStatus();
@@ -172,9 +172,15 @@ async function generateDailySummary(newsItems, macroContext = '') {
   const topSources = Object.entries(sourceStats).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([s, c]) => `${s}(${c})`).join('、');
 
   const today = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
-  const macroLine = macroContext ? `\n当前宏观背景：${macroContext}` : '';
 
-  const prompt = `你是香港 Web3 行业专家，负责 BitV（BitValve，正在申请 SFC VATP 牌照）的研究规划。${macroLine}
+  const macroLine = macroContext
+    ? `\n【当前宏观背景】${macroContext}` : '';
+
+  const trendsLine = recentTrends.length > 0
+    ? `\n【历史趋势记忆（近期持续观察中的行业走向，供参考与纵向对比）】\n${recentTrends.map(t => `- ${t.trend_key}：${t.summary}`).join('\n')}`
+    : '';
+
+  const prompt = `你是香港 Web3 行业专家，负责 BitV（BitValve，正在申请 SFC VATP 牌照）的研究规划。${macroLine}${trendsLine}
 
 今日行业动态（共 ${newsItems.length} 条）：
 ${digest}
@@ -183,7 +189,7 @@ ${digest}
 
 📅 **日期**: ${today}
 
-📊 **总结论** (2-3句，结合今日行情背景概括整体态势)
+📊 **总结论** (2-3句，结合今日行情背景概括整体态势；若有历史趋势，点出今日是否有延续或变化)
 
 🔍 **分板块动态**
 • **合规/监管**: [关键动态]

@@ -1,328 +1,239 @@
-# Alpha-Radar | 行业情报引擎
+# Alpha-Radar | 香港 Web3 产品行研情报系统
 
-> Web3/Crypto 行业聚合 + AI 分类摘要 + 多渠道推送 — 为决策者提供高信噪比情报
+> 面向加密交易所产品研究团队的内部情报工具 — 自动聚合香港合规所与头部离岸所动态，AI 提炼竞品洞察，每日定时推送至企业微信
 
-![Version](https://img.shields.io/badge/version-2.1.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ---
 
 ## 📖 项目简介
 
-Alpha-Radar 是一个**面向香港 Web3 合规交易所（VATP 申请者）**的行业情报系统，自动抓取 **20+ 数据源**（交易所公告、KOL 推文、媒体快讯、预测市场），通过 **DeepSeek AI** 进行智能分类、摘要提炼和重要性判定，支持**多渠道推送**（企业微信/钉钉/Slack/Telegram/Email），并提供日报/周报自动生成。
+Alpha-Radar 是一个**为产品/行研团队设计的内部情报系统**，聚焦两个核心场景：
+
+1. **香港合规赛道监控** — SFC 政策、VATP 牌照进展、OSL/HashKey/Exio 等香港持牌所动态
+2. **头部离岸所产品动作** — Binance/OKX/Bybit 等 8 家头部所的合规、产品、战略动向
+
+系统通过 GitHub Actions 全自动运行（无需服务器），抓取 **25 个数据源**，使用 **DeepSeek AI** 进行分类与摘要，每日 18:00 推送日报至**企业微信群**。
 
 ### 核心能力
 
 | 能力 | 描述 |
 |------|------|
-| 🔍 **多源抓取** | 20+ 数据源：Binance/OKX/Bybit 等 8 家交易所 + HashKey/OSL 等香港合规所 + BlockBeats/TechFlow 等媒体 + KOL Twitter + Polymarket |
-| 🤖 **AI 分类** | DeepSeek V3 模型 + 三级降级策略（备用 OpenRouter/OpenAI + 本地规则引擎） |
-| ⚡ **多渠道推送** | 企业微信/钉钉/Slack/Telegram/Email 五大渠道，统一推送接口 |
-| 📊 **可视化前端** | React + ECharts，支持搜索、时间筛选、分类统计图表、移动端适配 |
-| 📰 **自动报告** | 每日 18:00 推送日报，每周五 18:00 推送周报（精选 Top 30 + 竞品格局分析） |
-| 🗄️ **数据生命周期** | 热/温/冷三级存储，自动归档清理，数据库体积可控 |
+| 🔍 **多源抓取** | 25 个数据源：8 家交易所公告 + 5 家香港合规所 + 媒体/KOL/预测市场 |
+| 🤖 **AI 分类** | DeepSeek V3 主力 + OpenRouter 备用 + 规则引擎兜底，三级降级策略 |
+| 📊 **宏观市场背景** | 每日自动拉取 BTC/ETH 价格、总市值、BTC 主导率、恐惧贪婪指数 |
+| 📰 **AI 日报** | 每日 18:00 推送，含宏观背景 + 历史趋势对比 + 重点动态分析 |
+| 🏢 **竞品动态矩阵** | 周报按竞品来源分组，直接看每家机构本周做了什么 |
+| 🧠 **历史趋势记忆** | AI 总结可参照近期行业共识趋势，做纵向对比而非每次从零开始 |
+| 🗄️ **双存储** | SQLite 本地 + Supabase 云端，热/温/冷三级数据生命周期管理 |
 
 ---
 
-## ️ 架构图
+## 📐 架构
 
 ```
-─────────────────────────────────────────────────────────────────────┐
-│                        GitHub Actions (定时调度)                      │
-│  ┌──────────┐  ┌──────────┐  ┌──────────┐  ┌──────────┐            │
-│  │ Exchange │  │   HK     │  │  Media   │  │  Social  │            │
-│  │ Scrapers │  │ Scrapers │  │ Scrapers │  │ Scrapers │            │
-│  └────┬─────┘  └────┬─────┘  └────┬─────┘  └────┬─────┘            │
-│       └─────────────┴─────────────┴─────────────┘                   │
-│                              │                                       │
-│                    [filter.js 清洗去重]                               │
-│                              │                                       │
-│              ┌───────────────┴───────────────┐                       │
-│              │  AI 分类 (三级降级策略)         │                       │
-│              │  L1: DeepSeek V3 (主要)        │                       │
-│              │  L2: OpenRouter/OpenAI (备用)  │                       │
-│              │  L3: 本地规则引擎 (兜底)        │                       │
-│              └───────────────┬───────────────┘                       │
-│                              │                                       │
-│           ┌──────────────────┼──────────────────┐                   │
-│           │                  │                  │                   │
-│    [SQLite 本地缓存]   [Supabase 云端同步]   [多渠道推送]            │
-│    [数据生命周期管理]                        [企业微信/钉钉/Slack]   │
-│           │                  │                  │                   │
-│    ┌──────┴──────    ┌─────┴─────┐    ┌────────────┐             │
-│    │  Web 前端    │    │  多端访问  │    │  领导看板   │             │
-│    └─────────────┘    └───────────┘    └─────────────┘             │
-└─────────────────────────────────────────────────────────────────────┘
+GitHub Actions (全自动调度，无需服务器)
+│
+├── 每 15 分钟  →  scrapers/   抓取 25 个数据源
+│                  filter.js   清洗 + 去重
+│                  AI 分类     business_category / alpha_score / bitv_action
+│                  db.js       写入 SQLite + Supabase
+│
+├── 每日 18:00  →  macro-market.js  拉取宏观数据（CoinGecko + Fear&Greed）
+│                  insightDAO        读取历史趋势记忆
+│                  report.js         生成日报
+│                  wecom.js          推送企业微信
+│
+└── 每周五 18:00 →  report.js        生成周报（AI总结 + 竞品矩阵 + 分类附录）
+                    wecom.js          推送企业微信
 ```
 
 ---
 
-## 🚀 快速部署
+## 📊 数据源列表（25 个）
 
-### 方案 A：Vercel 一键部署（推荐）
+### 香港合规所（5 家）
+OSL、HashKey Group、HashKey Exchange、Exio、TechubNews（HashKey 媒体）
 
-1. Fork 本仓库到你的 GitHub
-2. 在 Vercel 导入项目，关联你的 GitHub 仓库
-3. 在 Vercel 项目设置中添加环境变量：
-   ```bash
-   DEEPSEEK_API_KEY=sk-xxxxxxxx
-   WECOM_WEBHOOK_URL=https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=xxxx
-   SUPABASE_URL=https://xxxxx.supabase.co
-   SUPABASE_KEY=sb_publishable_xxxxx
-   ```
-4. 部署完成！访问 `https://your-project.vercel.app` 即可使用
+### 头部离岸所（8 家）
+Binance、OKX、Bybit、Gate、MEXC、Bitget、HTX、KuCoin
 
-### 方案 B：Docker 部署（自托管）
+### 监管机构（1 个）
+SFC（香港证监会官网）
 
-```bash
-# 1. 克隆仓库
-git clone https://github.com/Beltran12138/industry-feeds.git
-cd industry-feeds
+### Web3 媒体（3 家）
+BlockBeats、TechFlow、WuBlock、PR Newswire
 
-# 2. 配置环境变量
-cp .env.example .env
-# 编辑 .env 填入 API Key 等配置
+### KOL Twitter（5 位）
+吴硕、Phyrex、Justin Sun、XieJiayin、Twitter AB
 
-# 3. Docker Compose 启动
-docker-compose up -d
+### 预测市场（2 个）
+Polymarket Breaking、Polymarket China
 
-# 4. 访问 http://localhost:3001
+---
+
+## 📰 报告示例
+
+### 日报结构
+```
+📋 Alpha-Radar 行业日报 | 2026-03-25
+
+📊 今日数据概览
+> 抓取 124 条 | 重要 18 条 | AI摘要 96 条 | 来源 14 个
+
+🌐 宏观市场背景
+> BTC $84,230 ▲2.1%  |  ETH $3,180 ▼0.8%
+> 总市值 $2.9T ▲1.8%  |  BTC 主导率 57.3%
+> 市场情绪 中性 😐 (52)
+
+---
+[AI 今日简报，含历史趋势对比]
+
+---
+🔍 重点动态分析
+  合规 (3)  /  产品 (5)  /  投融资 (2)  ...
 ```
 
-### 方案 C：本地开发
+### 周报结构
+```
+📰 Alpha-Radar 行业周报 | 03/17 ~ 03/21
 
-#### 快速安装（推荐）
+[AI 本周总结论 + 竞品格局 + BitV 战略建议]
 
-**Windows:**
-```bash
-setup-windows.bat
+---
+🏢 竞品动态矩阵 | 本周各主要玩家行动汇总
+
+🏛️ HashKey Exchange · 3条重要动态
+  🔥 获批向零售开放加密服务  `合规` `95`
+     > SFC 批准其面向零售投资者提供服务，市场影响显著。
+     > 💡 立即研究其零售开户流程，评估对我司获客策略冲击。
+
+🌐 Binance · 2条重要动态
+  ⭐ 推出新合规框架  `合规` `78`
+  ...
+
+---
+📌 本周分类策略详情（按业务线）
 ```
 
-**macOS/Linux:**
+---
+
+## 🚀 部署（GitHub Actions，无需服务器）
+
+### 1. Fork 仓库
+
 ```bash
-chmod +x setup.sh
-./setup.sh
+# Fork 本仓库到你的 GitHub 账号
 ```
 
-#### 手动安装
+### 2. 配置 GitHub Secrets
+
+在仓库 Settings → Secrets and variables → Actions 中添加：
+
+| Secret | 必需 | 说明 |
+|--------|------|------|
+| `DEEPSEEK_API_KEY` | ✅ | DeepSeek AI API Key（主要 AI 提供商） |
+| `WECOM_WEBHOOK_URL` | ✅ | 企业微信机器人 Webhook URL |
+| `SUPABASE_URL` | 推荐 | Supabase 项目 URL（数据云端备份） |
+| `SUPABASE_KEY` | 推荐 | Supabase Publishable Key |
+| `OPENROUTER_API_KEY` | 可选 | AI 备用提供商（DeepSeek 故障时使用） |
+
+### 3. 启用 GitHub Actions
+
+仓库 Actions 页面 → 手动触发一次 `CI / Scrape` 验证配置。
+
+之后自动按以下 cron 运行：
+- **每 15 分钟**：抓取数据
+- **每日 18:00 (北京)**：推送日报
+- **每周五 18:00 (北京)**：推送周报
+
+### 4. 本地开发（可选）
 
 ```bash
-# 安装依赖
 npm install
-
-# 配置环境变量
 cp .env.example .env
-# 编辑 .env
+# 编辑 .env 填入 API Key
 
-# 启动服务（Express + 定时任务）
-npm start
-
-# 或开发模式（热重载）
-npm run dev
-
-# 手动触发爬虫
-npm run scrape
-
-# 测试日报/周报（dry-run 模式）
+# 测试日报生成（不推送）
 npm run daily-report:dry
+
+# 测试周报生成（不推送）
 npm run weekly-report:dry
+
+# 手动触发抓取
+npm run scrape
 ```
 
 ---
 
-## 📁 项目结构
+## ⚙️ 关键配置（`config.js`）
+
+```js
+// 推送过滤规则
+WECOM_BLOCK_SOURCES = ['TechFlow', 'BlockBeats', 'Poly-*', 'KOL']  // 不推送实时通知
+HK_SOURCES = ['OSL', 'HashKey*', 'Exio', 'TechubNews']             // 全量推送
+EXCHANGE_EXCLUDE_KEYWORDS = ['listing', '上线', '新币', ...]        // 排除普通上币公告
+
+// AI 评分标准
+alpha_score 90-100: SFC 政策突变、重要牌照获批/撤销、主流所重大合规处罚
+alpha_score 70-89:  香港市场重要业务进展、RWA/稳定币新规、头部所战略调整
+alpha_score 40-69:  普通业务上线、常规行业新闻
+alpha_score < 40:   常规市场波动（不进入报告）
+
+// 报告推送时间
+DAILY_REPORT:  每日 18:00 北京时间（cron: 0 10 * * *）
+WEEKLY_REPORT: 每周五 18:00 北京时间（cron: 0 10 * * 5）
+```
+
+---
+
+## 📁 主要文件说明
 
 ```
 alpha-radar/
-├── config.js                 # 全局配置中心（所有魔数/清单集中管理）
+├── config.js              # 全局配置（数据源规则、AI 参数、推送规则）
 ├── scrapers/
-│   ├── index.js              # 主调度器（runAllScrapers）
-│   ├── browser.js            # 共享浏览器池（复用 Chrome 实例）
-│   ├── utils.js              # 公共工具（时间戳解析、item 构建）
+│   ├── index.js           # 爬虫调度器
 │   └── sources/
-│       ├── apis.js           # HTTP/API 类爬虫（OKX/Binance 等）
-│       ├── puppeteer.js      # 浏览器渲染类爬虫（BlockBeats/Bybit 等）
-│       └── twitter-enhanced.js # Twitter KOL 多源冗余抓取
-├── ai.js                     # DeepSeek AI 处理（原版）
-├── ai-provider.js            # AI 多提供商管理（三级降级）
-├── ai-enhanced.js            # AI 处理增强版（支持降级策略）
-├── filter.js                 # 噪声过滤 + 去重逻辑
-├── db.js                     # SQLite + Supabase 双存储
-├── data-lifecycle.js         # 数据生命周期管理（热/温/冷三级存储）
-├── push-channel.js           # 推送渠道抽象层（企业微信/钉钉/Slack/Telegram/Email）
-├── wecom.js                  # 企业微信推送（兼容旧版）
-├── report.js                 # 日报/周报生成（精选模式）
-├── server.js                 # Express 后端（API + 健康检查 + 定时任务）
-├── public/
-│   └── index.html            # React 前端（搜索/图表/移动端）
-├── tests/                    # 测试文件目录
-├── .github/workflows/
-│   ├── scrape.yml            # 每 30 分钟低频抓取
-│   ├── scrape_high.yml       # 每 5 分钟高频抓取
-│   ├── daily_report.yml      # 每日 18:00 日报
-│   └── weekly_report.yml     # 每周五 18:00 周报
-├── vercel.json               # Vercel 部署配置
-├── package.json
-├── .gitignore
-├── .env.example
-├── CHANGELOG-v1.4.md         # v1.4 更新日志
-└── README.md
+│       ├── apis.js        # HTTP/API 类爬虫（OKX/Binance/HashKey 等）
+│       ├── puppeteer.js   # 浏览器渲染类爬虫
+│       └── twitter-enhanced.js  # Twitter KOL 多源冗余抓取
+├── ai-enhanced.js         # AI 分类/摘要（三级降级策略）
+├── filter.js              # 噪声过滤 + 去重
+├── db.js                  # SQLite + Supabase 双存储
+├── macro-market.js        # 宏观市场数据（CoinGecko + Fear&Greed）
+├── report.js              # 日报/周报生成（含竞品矩阵、历史记忆）
+├── wecom.js               # 企业微信推送
+├── dao.js                 # 数据访问层（含 Insights 记忆系统）
+└── .github/workflows/
+    ├── ci.yml             # 每 15 分钟抓取
+    ├── daily_report.yml   # 每日日报
+    └── weekly_report.yml  # 每周周报
 ```
-
----
-
-## ⚙️ 配置说明
-
-### 环境变量（`.env`）
-
-#### 必需配置
-
-| 变量 | 说明 |
-|------|------|
-| `DEEPSEEK_API_KEY` | DeepSeek AI API Key（主要 AI 提供商） |
-| `WECOM_WEBHOOK_URL` | 企业微信机器人 Webhook URL |
-
-#### AI 备用提供商（推荐）
-
-| 变量 | 说明 |
-|------|------|
-| `OPENROUTER_API_KEY` | OpenRouter API Key（支持 Claude/GPT 等多种模型） |
-| `OPENAI_API_KEY` | OpenAI API Key（直接使用 GPT 模型） |
-
-#### 推送渠道（可选）
-
-| 变量 | 说明 |
-|------|------|
-| `DINGTALK_WEBHOOK_URL` | 钉钉机器人 Webhook URL |
-| `DINGTALK_SECRET` | 钉钉机器人签名密钥 |
-| `SLACK_WEBHOOK_URL` | Slack Webhook URL |
-| `TELEGRAM_BOT_TOKEN` | Telegram Bot Token |
-| `TELEGRAM_CHAT_ID` | Telegram Chat ID |
-| `SMTP_HOST` | SMTP 服务器地址 |
-| `SMTP_USER` | SMTP 用户名 |
-| `SMTP_PASS` | SMTP 密码 |
-| `EMAIL_TO` | 邮件接收地址 |
-
-#### Twitter 抓取（可选）
-
-| 变量 | 说明 |
-|------|------|
-| `TWITTERAPI_KEY` | twitterapi.io API Key |
-| `SCRAPFLY_KEY` | Scrapfly API Key |
-
-#### 其他配置
-
-| 变量 | 说明 |
-|------|------|
-| `USE_SUPABASE` | 是否启用 Supabase 云端同步（默认 `false`） |
-| `SUPABASE_URL` | Supabase 项目 URL |
-| `SUPABASE_KEY` | Supabase Publishable Key |
-| `PORT` | 服务端口（默认 `3001`） |
-| `API_SECRET` | API 端点保护密钥（设置后需 `X-API-Key` header） |
-| `CORS_ORIGIN` | CORS 允许的来源（生产环境建议配置） |
-
-### 核心配置（`config.js`）
-
-```js
-// 爬虫批次大小 / 间隔
-SCRAPER.BATCH_SIZE = 4
-SCRAPER.BATCH_DELAY_MS = 2000
-
-// AI 调用限额（防止超支）
-SCRAPER.MAX_AI_PER_RUN = 60
-
-// 重要性判定规则
-WECOM_BLOCK_SOURCES = ['TechFlow', 'BlockBeats', 'Poly-*', 'KOLs']  // 不推送
-HK_SOURCES = ['OSL', 'HashKey*', 'Exio', 'TechubNews']              // 全推送
-EXCHANGE_EXCLUDE_KEYWORDS = ['listing', '上线', '新币', ... ]        // 排除普通上币
-```
-
----
-
-## 📊 数据源列表
-
-### 交易所（8 家）
-- Binance, OKX, Bybit, Gate, MEXC, Bitget, HTX, KuCoin
-
-### 香港合规所（5 家）
-- OSL, HashKey Group, HashKey Exchange, Exio, Techub News, WuBlock
-
-### 媒体（3 家）
-- BlockBeats, TechFlow, PR Newswire
-
-### KOL（5 位）
-- 吴硕、Phyrex、Justin Sun、XieJiayin、Twitter AB
-
-### 预测市场（2 个）
-- Polymarket Breaking, Polymarket China
-
----
-
-## 🎯 优化亮点（对比 TrendRadar）
-
-| 维度 | TrendRadar | Alpha-Radar |
-|------|------------|-------------|
-| **定位** | 通用热点聚合 | 香港 VATP 竞品情报 |
-| **AI 覆盖** | 部分条目 | 批量补充机制（消灭"其他"分类） |
-| **AI 可用性** | 单点故障 | 三级降级策略（99.9% 可用） |
-| **报告质量** | 全量 dump | AI 精选 Top 30 + 竞品维度组织 |
-| **噪声过滤** | 基础关键词 | 双层过滤（通用 + 报告专用） |
-| **浏览器池** | 每次 launch | 共享实例（节省 70% 内存） |
-| **前端功能** | 基础列表 | 搜索 + 图表 + 时间筛选 + 移动端 |
-| **安全性** | 无认证 | API Key 保护 + SQL 注入防护 + 前端密钥移除 |
-| **推送渠道** | 单一渠道 | 五大渠道统一接口 |
-| **数据存储** | 无限增长 | 生命周期管理（90天自动归档） |
-| **Twitter 抓取** | 单源不稳定 | 多源冗余（95%+ 成功率） |
-
----
-
-## 🛠️ 常见问题
-
-### Q: 如何添加新的数据源？
-A: 在 `scrapers/sources/apis.js` 或 `puppeteer.js` 中新增爬虫函数，然后在 `scrapers/index.js` 的 `ALL_SCRAPERS` 数组中注册即可。
-
-### Q: AI 分类不准确怎么办？
-A: 调整 `ai.js` 中的 prompt，或在 `config.js` 中修改 `BUSINESS_CATEGORIES` / `COMPETITOR_CATEGORIES` 选项。
-
-### Q: 如何关闭某些数据源？
-A: 在 `scrapers/index.js` 的 `ALL_SCRAPERS` 数组中注释掉对应爬虫函数。
-
-### Q: 日报/周报推送时间能改吗？
-A: 修改 `.github/workflows/daily_report.yml` 和 `weekly_report.yml` 中的 cron 表达式，或在 `server.js` 中调整 `SERVER.DAILY_REPORT_CRON`。
 
 ---
 
 ## 📝 更新日志
 
+### v2.2.0 (2026-03-25)
+- 📊 **宏观市场背景**：日报新增 BTC/ETH 价格、总市值、BTC 主导率、恐惧贪婪指数面板
+- 🏢 **竞品动态矩阵**：周报新增按竞品来源分组的动态矩阵视图
+- 🧠 **历史趋势记忆**：日报 AI 总结注入近期行业趋势，支持纵向对比
+- 🔍 **WeCom errcode 检查**：推送失败不再静默，日志中直接显示企微 API 错误码
+
+### v2.1.0 (2026-03-23)
+- 🔧 **better-sqlite3 编译修复**：彻底解决 GitHub Actions Node.js 版本导致的 NMV 不匹配问题
+- 🚫 **移除"高能预警"推送**：停止单条实时推送，仅保留日报/周报汇总推送
+
 ### v1.4.0 (2026-03-13)
-- 🤖 **AI 三级降级策略**: DeepSeek → OpenRouter/OpenAI → 本地规则引擎
-- 📦 **数据生命周期管理**: 热/温/冷三级存储，自动归档清理
-- 📢 **多渠道推送**: 企业微信/钉钉/Slack/Telegram/Email 五大渠道
-- 🐦 **Twitter 多源抓取**: Nitter 池 + RSSHub + 第三方 API 冗余策略
-- 🔒 **安全加固**: 移除前端硬编码密钥，API Key 保护
-- 📊 **新增 API 端点**: `/api/ai-status`, `/api/push-status`, `/api/archive`, `/api/history-stats`
-- 🛠️ **NPM 脚本增强**: `npm run cleanup`, `npm run test-push`
-
-### v1.3.0 (2026-03-09)
-- ✨ 前端增强：搜索功能、ECharts 统计图表、时间范围筛选、移动端菜单
-- 🤖 AI 批量分类补充（消灭周报"其他 650 条"现象）
-- 🧹 双层噪声过滤（日报/周报更精简）
-- 🔒 安全修复：SQL 注入防护、API Key 认证
-- 🏗️ 架构重构：拆分 scraper.js 为模块化 scrapers/ 目录
-- 🐛 修复 Date.now() fallback 导致旧新闻被标记为"刚刚"的问题
-- 📦 完善 .gitignore、package.json、vercel.json
-
-### v1.2.0
-- 初始开源版本
-
----
-
-## 🙏 致谢
-
-灵感来自 [TrendRadar](https://github.com/sansan0/TrendRadar) — 一个优秀的多平台热点聚合项目。
+- 🤖 AI 三级降级策略
+- 📦 数据生命周期管理（热/温/冷三级存储）
+- 📢 多渠道推送（企业微信/钉钉/Slack/Telegram/Email）
+- 🐦 Twitter 多源冗余抓取
 
 ---
 
 ## 📄 License
 
-MIT © [Alpha-Radar Team](https://github.com/Beltran12138/industry-feeds)
+MIT
