@@ -15,6 +15,7 @@ const { batchClassify, generateDailySummary, generateWeeklySummary } = require('
 const { callAI } = require('./ai-provider');
 const { insightDAO } = require('./dao');
 const { sendReportToWeCom }     = require('./wecom');
+const { fetchMacroPanel, fetchMacroContext } = require('./macro-market');
 const { createClient }          = require('@supabase/supabase-js');
 const { REPORT }                = require('./config');
 require('dotenv').config();
@@ -160,8 +161,14 @@ async function runDailyReport(dryRun = false) {
     return null;
   }
 
-  // 补充分类
-  rows = await fillMissingCategories(rows);
+  // 并行：补充分类 + 拉取宏观数据
+  [rows] = await Promise.all([
+    fillMissingCategories(rows),
+  ]);
+  const [macroPanel, macroContext] = await Promise.all([
+    fetchMacroPanel(),
+    fetchMacroContext(),
+  ]);
 
   // 重要条目列表（权重优先）
   const importantItems = rows
@@ -194,13 +201,17 @@ async function runDailyReport(dryRun = false) {
     });
   });
 
-  // AI 总结
+  // AI 总结（注入宏观上下文，让 AI 总结有市场温度计参考）
   const aiInput   = rows.filter(r => r.detail || r.alpha_score >= 70);
-  const aiSummary = await generateDailySummary(aiInput.length ? aiInput : rows.slice(0, 30));
+  const aiSummary = await generateDailySummary(
+    aiInput.length ? aiInput : rows.slice(0, 30),
+    macroContext || '',
+  );
 
-  // 组装报告
+  // 组装报告：头部 → 数据概览 → 宏观背景 → AI总结 → 重点动态
   let report = `📋 **Alpha-Radar 行业日报 | ${dateStr}**\n\n`;
   report    += buildStatsPanel(rows, '今日') + '\n\n';
+  if (macroPanel) report += `${macroPanel}\n\n`;
   if (aiSummary) report += `---\n\n${aiSummary}\n\n`;
   if (newsList.trim()) report += `---\n\n🔍 **重点动态分析**\n${newsList}\n`;
   report    += `\n---\n*Alpha-Radar 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
