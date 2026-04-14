@@ -153,7 +153,7 @@ ${listStr}
 }
 
 // ── 日报总结（带降级）────────────────────────────────────────────────────────
-async function generateDailySummary(newsItems) {
+async function generateDailySummary(newsItems, macroContext = '') {
   if (!newsItems?.length) return null;
 
   const status = getStatus();
@@ -172,8 +172,9 @@ async function generateDailySummary(newsItems) {
   const topSources = Object.entries(sourceStats).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([s, c]) => `${s}(${c})`).join('、');
 
   const today = new Date().toLocaleDateString('zh-CN', { year: 'numeric', month: 'long', day: 'numeric' });
+  const macroLine = macroContext ? `\n当前宏观背景：${macroContext}` : '';
 
-  const prompt = `你是香港 Web3 行业专家，负责 BitV（BitValve，正在申请 SFC VATP 牌照）的研究规划。
+  const prompt = `你是香港 Web3 行业专家，负责 BitV（BitValve，正在申请 SFC VATP 牌照）的研究规划。${macroLine}
 
 今日行业动态（共 ${newsItems.length} 条）：
 ${digest}
@@ -182,7 +183,7 @@ ${digest}
 
 📅 **日期**: ${today}
 
-📊 **总结论** (2-3句，概括今日整体态势)
+📊 **总结论** (2-3句，结合今日行情背景概括整体态势)
 
 🔍 **分板块动态**
 • **合规/监管**: [关键动态]
