@@ -180,28 +180,32 @@ async function generateDailySummary(newsItems, macroContext = '', recentTrends =
     ? `\n【历史趋势记忆（近期持续观察中的行业走向，供参考与纵向对比）】\n${recentTrends.map(t => `- ${t.trend_key}：${t.summary}`).join('\n')}`
     : '';
 
-  const prompt = `你是香港 Web3 行业专家，负责 BitV（BitValve，正在申请 SFC VATP 牌照）的研究规划。${macroLine}${trendsLine}
+  const prompt = `你是 BitV 战略分析师，负责为公司产品团队撰写香港 Web3 行业日报。${macroLine}${trendsLine}
 
 今日行业动态（共 ${newsItems.length} 条）：
 ${digest}
 
-请撰写今日行业简报（极度易读）：
+请严格按以下格式输出（总字数 ≤400 字，不用 # 号标题，不输出数据统计）：
 
-📅 **日期**: ${today}
+[开头1-2句话概括今日整体态势，结合宏观背景，有历史趋势时指出今日是否延续或有新变化]
 
-📊 **总结论** (2-3句，结合今日行情背景概括整体态势；若有历史趋势，点出今日是否有延续或变化)
+**重要动态**
+• [今日最重要的3-5条，每条1句话，加粗核心信息]
 
-🔍 **分板块动态**
-• **合规/监管**: [关键动态]
-• **交易所**: [头部交易所动作]
-• **香港市场**: [牌照与业务进展]
-• **投融资**: [重要融资事件]
+**合规 & 监管**（本日有相关内容时才输出此节）
+• [监管政策、牌照、合规要求相关动态]
 
-💡 **对 BitV 的启示** (1-2条具体可执行建议)
+**AI & 智能化**（本日有相关内容时才输出此节）
+• [AI/Agent/智能化相关动态]
 
-📈 **今日数据**: 抓取 ${newsItems.length} 条 | 来源: ${topSources}
+**产品 & 业务**（本日有相关内容时才输出此节）
+• [新产品、新功能、业务拓展相关]
 
-要求：大量加粗高亮核心信息；短段落+bullet；总字数 ≤400 字；不用 # 号标题。`;
+---
+
+**对 BitV 的启示**
+• [建议1，具体可执行]
+• [建议2，具体可执行]`;
 
   const result = await callAI([{ role: 'user', content: prompt }], { temperature: 0.3, max_tokens: 1000 });
 
