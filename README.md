@@ -1,6 +1,6 @@
-# Alpha-Radar | 香港 Web3 产品行研情报系统
+# Industry-Feeds | 香港 Web3 动态追踪
 
-> 面向加密交易所产品研究团队的内部情报工具 — 自动聚合香港合规所与头部离岸所动态，AI 提炼竞品洞察，每日定时推送至企业微信
+> 自动聚合香港合规所与头部离岸所动态，AI 提炼竞品洞察，每日定时推送至企业微信
 
 ![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -9,7 +9,7 @@
 
 ## 📖 项目简介
 
-Alpha-Radar 是一个**为产品/行研团队设计的内部情报系统**，聚焦两个核心场景：
+Industry-Feeds聚焦两个核心场景：
 
 1. **香港合规赛道监控** — SFC 政策、VATP 牌照进展、OSL/HashKey/Exio 等香港持牌所动态
 2. **头部离岸所产品动作** — Binance/OKX/Bybit 等 8 家头部所的合规、产品、战略动向
@@ -54,7 +54,7 @@ GitHub Actions (全自动调度，无需服务器)
 ## 📊 数据源列表（25 个）
 
 ### 香港合规所（5 家）
-OSL、HashKey Group、HashKey Exchange、Exio、TechubNews（HashKey 媒体）
+OSL、HashKey Group、HashKey Exchange、Exio、TechubNews
 
 ### 头部离岸所（8 家）
 Binance、OKX、Bybit、Gate、MEXC、Bitget、HTX、KuCoin
@@ -66,7 +66,7 @@ SFC（香港证监会官网）
 BlockBeats、TechFlow、WuBlock、PR Newswire
 
 ### KOL Twitter（5 位）
-吴硕、Phyrex、Justin Sun、XieJiayin、Twitter AB
+吴说、Phyrex、Justin Sun、XieJiayin、Twitter AB
 
 ### 预测市场（2 个）
 Polymarket Breaking、Polymarket China
@@ -77,7 +77,7 @@ Polymarket Breaking、Polymarket China
 
 ### 日报结构
 ```
-📋 Alpha-Radar 行业日报 | 2026-03-25
+📋 Industry-Feeds 行业日报 | 2026-03-25
 
 📊 今日数据概览
 > 抓取 124 条 | 重要 18 条 | AI摘要 96 条 | 来源 14 个
@@ -97,7 +97,7 @@ Polymarket Breaking、Polymarket China
 
 ### 周报结构
 ```
-📰 Alpha-Radar 行业周报 | 03/17 ~ 03/21
+📰 Industry-Feeds 行业周报 | 03/17 ~ 03/21
 
 [AI 本周总结论 + 竞品格局 + BitV 战略建议]
 
@@ -191,7 +191,7 @@ WEEKLY_REPORT: 每周五 18:00 北京时间（cron: 0 10 * * 5）
 ## 📁 主要文件说明
 
 ```
-alpha-radar/
+industry-feeds/
 ├── config.js              # 全局配置（数据源规则、AI 参数、推送规则）
 ├── scrapers/
 │   ├── index.js           # 爬虫调度器
