@@ -1,6 +1,6 @@
 'use strict';
 /**
- * mcp-server/index.js — MCP Server for Alpha-Radar
+ * mcp-server/index.js — MCP Server for Web3Watch HK
  *
  * 让 Claude Desktop、Cursor 等 AI 客户端能用自然语言查询新闻情报
  *
@@ -538,7 +538,7 @@ class MCPServer {
    */
   getInfo() {
     return {
-      name: 'Alpha-Radar MCP Server',
+      name: 'Web3Watch HK MCP Server',
       version: '1.0.0',
       description: 'Web3/Crypto 行业情报聚合系统 MCP 接口',
       tools: this.tools.map(t => ({ name: t.name, description: t.description })),

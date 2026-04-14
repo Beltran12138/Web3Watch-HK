@@ -220,7 +220,7 @@ async function runDailyReport(dryRun = false) {
     // 即使没有新闻，也发送一个空报告通知，避免用户以为系统故障
     if (!dryRun) {
       const { sendReportToWeCom } = require('./wecom');
-      await sendReportToWeCom(`📋 **Alpha-Radar 行业日报 | ${dateStr}**\n\n今日暂无符合条件的行业动态。\n\n---\n*Alpha-Radar 战略分析引擎*`, '日报');
+      await sendReportToWeCom(`📋 **Web3Watch HK 行业日报 | ${dateStr}**\n\n今日暂无符合条件的行业动态。\n\n---\n*Web3Watch HK 战略分析引擎*`, '日报');
     }
     return null;
   }
@@ -275,12 +275,12 @@ async function runDailyReport(dryRun = false) {
   );
 
   // 组装报告：头部 → 数据概览 → 宏观背景 → AI总结 → 重点动态
-  let report = `📋 **Alpha-Radar 行业日报 | ${dateStr}**\n\n`;
+  let report = `📋 **Web3Watch HK 行业日报 | ${dateStr}**\n\n`;
   report    += buildStatsPanel(rows, '今日') + '\n\n';
   if (macroPanel) report += `${macroPanel}\n\n`;
   if (aiSummary) report += `---\n\n${aiSummary}\n\n`;
   if (newsList.trim()) report += `---\n\n🔍 **重点动态分析**\n${newsList}\n`;
-  report    += `\n---\n*Alpha-Radar 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
+  report    += `\n---\n*Web3Watch HK 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
 
   if (dryRun) {
     console.log('\n=== DAILY REPORT (DRY RUN) ===\n', report, '\n=== END ===\n');
@@ -408,12 +408,12 @@ async function runWeeklyReport(dryRun = false) {
   const competitorMatrix = buildCompetitorMatrix(rows);
 
   // 组装周报：头部 → 统计 → AI总结 → 竞品矩阵 → 分类附录
-  let report = `📰 **Alpha-Radar 行业周报 | ${startDate} ~ ${endDate}**\n\n`;
+  let report = `📰 **Web3Watch HK 行业周报 | ${startDate} ~ ${endDate}**\n\n`;
   report    += buildStatsPanel(rows, '本周') + '\n\n';
   if (aiSummary) report += `---\n\n${aiSummary}\n\n`;
   if (competitorMatrix.trim()) report += `---\n\n🏢 **竞品动态矩阵** | 本周各主要玩家行动汇总\n${competitorMatrix}\n`;
   if (appendix.trim()) report += `---\n\n📌 **本周分类策略详情**\n${appendix}\n`;
-  report    += `\n---\n*Alpha-Radar 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
+  report    += `\n---\n*Web3Watch HK 战略分析引擎 | ${new Date().toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}*`;
 
   if (dryRun) {
     console.log('\n=== WEEKLY REPORT (DRY RUN) ===\n', report, '\n=== END ===\n');
