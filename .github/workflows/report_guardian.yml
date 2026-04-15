@@ -1,0 +1,43 @@
+name: Report Guardian
+
+on:
+  schedule:
+    # 北京时间 18:30 和 19:30 各检查一次（UTC 10:30 / 11:30）
+    - cron: '30 10 * * *'
+    - cron: '30 11 * * *'
+  workflow_dispatch:
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if daily report ran today, trigger if missed
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          HOUR_UTC=$(date -u +%H)
+
+          echo "[Guardian] Checking date: $TODAY, UTC hour: $HOUR_UTC"
+
+          # 只在 UTC 10:00（北京18:00）之后才需要补发
+          if [ "$HOUR_UTC" -lt 10 ]; then
+            echo "[Guardian] Before 18:00 Beijing time, no action needed."
+            exit 0
+          fi
+
+          # 检查今天 daily_report 是否已成功运行或正在运行
+          RUNS=$(gh run list \
+            --workflow=daily_report.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --json createdAt,status,conclusion \
+            --jq "[.[] | select(.createdAt | startswith(\"$TODAY\")) | select(.conclusion == \"success\" or .status == \"in_progress\")] | length")
+
+          echo "[Guardian] Successful/in-progress runs today: $RUNS"
+
+          if [ "$RUNS" = "0" ]; then
+            echo "[Guardian] Daily report missed! Triggering now..."
+            gh workflow run daily_report.yml --repo "$GITHUB_REPOSITORY"
+          else
+            echo "[Guardian] Daily report already ran today. All good."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
