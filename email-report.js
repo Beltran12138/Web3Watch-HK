@@ -177,4 +177,137 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
   }
 }
 
-module.exports = { sendWeeklyReportEmail };
+// ── 人工周报邮件（自定义标题 + 结论 + 图片 + PDF 附件）──────────────────────────
+
+/**
+ * 构建人工周报 HTML 邮件正文
+ * @param {string} summary  - 本周结论/正文文字
+ * @param {boolean} hasImage - 是否有内嵌图片
+ */
+function buildManualEmailHtml(summary, hasImage) {
+  // 将纯文本结论转为 HTML 段落（按换行分段）
+  const summaryHtml = summary
+    .split('\n')
+    .map(line => line.trim())
+    .filter(line => line.length > 0)
+    .map(line => `<div style="margin:6px 0;line-height:1.8;">${line}</div>`)
+    .join('\n');
+
+  const imageSection = hasImage
+    ? `<tr><td style="padding:0 32px 24px;">
+        <img src="cid:weekly_report_image" alt="周报图片"
+          style="width:100%;max-width:616px;border-radius:4px;border:1px solid #eee;">
+      </td></tr>`
+    : '';
+
+  return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+</head>
+<body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:24px 0;">
+    <tr><td align="center">
+      <table width="680" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+
+        <!-- Header -->
+        <tr>
+          <td style="background:#00A7E1;padding:24px 32px;">
+            <div style="color:#ffffff;font-size:20px;font-weight:700;letter-spacing:0.5px;">
+              Web3Watch HK 行业周报
+            </div>
+            <div style="color:rgba(255,255,255,0.8);font-size:13px;margin-top:6px;">
+              自动发送
+            </div>
+          </td>
+        </tr>
+
+        <!-- Summary -->
+        <tr>
+          <td style="padding:28px 32px 20px;color:#333;font-size:14px;line-height:1.8;">
+            ${summaryHtml}
+          </td>
+        </tr>
+
+        <!-- Image -->
+        ${imageSection}
+
+        <!-- Footer -->
+        <tr>
+          <td style="background:#fafafa;border-top:1px solid #eee;padding:16px 32px;">
+            <div style="color:#999;font-size:12px;">
+              本邮件由 Web3Watch HK 自动发送 · 如需调整请联系 ZHAO
+            </div>
+          </td>
+        </tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+/**
+ * 发送人工周报邮件（自定义标题 + 结论 + 图片正文 + PDF 附件）
+ * @param {string} subject   - 邮件标题
+ * @param {string} summary   - 本周结论文字
+ * @param {string|null} imagePath - 周报图片路径（weekly/image.png），可为 null
+ * @param {string|null} pdfPath   - 周报 PDF 路径（weekly/report.pdf），可为 null
+ */
+async function sendManualWeeklyEmail(subject, summary, imagePath, pdfPath) {
+  const fs = require('fs');
+
+  const smtpHost   = process.env.SMTP_HOST;
+  const smtpUser   = process.env.SMTP_USER;
+  const smtpPass   = process.env.SMTP_PASS;
+  const smtpPort   = parseInt(process.env.SMTP_PORT || '465', 10);
+  const recipients = (process.env.WEEKLY_EMAIL_TO || process.env.EMAIL_TO || '').trim();
+
+  if (!smtpHost || !smtpUser || !smtpPass) {
+    console.log('[Email] SMTP not configured, skipping.');
+    return false;
+  }
+  if (!recipients) {
+    console.warn('[Email] No recipients configured, skipping.');
+    return false;
+  }
+
+  const hasImage = !!(imagePath && fs.existsSync(imagePath));
+  const hasPdf   = !!(pdfPath   && fs.existsSync(pdfPath));
+
+  if (!hasImage) console.warn('[Email] Image not found, sending without inline image.');
+  if (!hasPdf)   console.warn('[Email] PDF not found, sending without attachment.');
+
+  const html = buildManualEmailHtml(summary, hasImage);
+
+  const attachments = [];
+  if (hasImage) attachments.push({ filename: 'weekly-report.png', path: imagePath, cid: 'weekly_report_image' });
+  if (hasPdf)   attachments.push({ filename: `${subject}.pdf`,    path: pdfPath });
+
+  const transporter = nodemailer.createTransport({
+    host:   smtpHost,
+    port:   smtpPort,
+    secure: smtpPort === 465,
+    auth:   { user: smtpUser, pass: smtpPass },
+  });
+
+  try {
+    const info = await transporter.sendMail({
+      from:        `"Web3Watch HK" <${smtpUser}>`,
+      to:          recipients,
+      subject,
+      text:        summary,
+      html,
+      attachments,
+    });
+    console.log(`[Email] Manual weekly email sent → ${recipients} (messageId: ${info.messageId})`);
+    return true;
+  } catch (err) {
+    console.error('[Email] Failed to send manual weekly email:', err.message);
+    return false;
+  }
+}
+
+module.exports = { sendWeeklyReportEmail, sendManualWeeklyEmail };
