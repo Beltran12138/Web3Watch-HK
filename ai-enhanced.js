@@ -153,7 +153,7 @@ ${listStr}
 }
 
 // ── 日报总结（带降级）────────────────────────────────────────────────────────
-async function generateDailySummary(newsItems, macroContext = '', recentTrends = []) {
+async function generateDailySummary(newsItems, macroContext = '', recentTrends = [], wikiContext = '') {
   if (!newsItems?.length) return null;
 
   const status = getStatus();
@@ -180,12 +180,15 @@ async function generateDailySummary(newsItems, macroContext = '', recentTrends =
     ? `\n【历史趋势记忆（近期持续观察中的行业走向，供参考与纵向对比）】\n${recentTrends.map(t => `- ${t.trend_key}：${t.summary}`).join('\n')}`
     : '';
 
-  const prompt = `你是 BitV 战略分析师，负责为公司产品团队撰写香港 Web3 行业日报。${macroLine}${trendsLine}
+  // wikiContext 由 wiki-context.js 动态注入，包含产品优先级矩阵、竞品弱点、监管背景等
+  const wikiLine = wikiContext || '';
+
+  const prompt = `你是 BitV 战略分析师，负责为公司产品团队撰写香港 Web3 行业日报。${macroLine}${trendsLine}${wikiLine}
 
 今日行业动态（共 ${newsItems.length} 条）：
 ${digest}
 
-请严格按以下格式输出（总字数 ≤400 字，不用 # 号标题，不输出数据统计）：
+请严格按以下格式输出（总字数 ≤500 字，不用 # 号标题，不输出数据统计）：
 
 [开头1-2句话概括今日整体态势，结合宏观背景，有历史趋势时指出今日是否延续或有新变化]
 
@@ -203,9 +206,9 @@ ${digest}
 
 ---
 
-**对 BitV 的启示**
-• [建议1，具体可执行]
-• [建议2，具体可执行]`;
+**对 BitV 的启示**（结合行研Wiki中的产品优先级和竞品弱点，给出具体可执行建议）
+• [建议1：针对今日事件，与Tier 1/2产品方向的关联，具体行动]
+• [建议2：竞品动作对我司窗口期的影响]`;
 
   const result = await callAI([{ role: 'user', content: prompt }], { temperature: 0.3, max_tokens: 1000 });
 

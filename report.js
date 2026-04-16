@@ -17,6 +17,7 @@ const { insightDAO } = require('./dao');
 const { sendReportToWeCom }     = require('./wecom');
 const { fetchMacroPanel, fetchMacroContext } = require('./macro-market');
 const { sendWeeklyReportEmail } = require('./email-report');
+const { getWikiContext }        = require('./wiki-context');
 const { createClient }          = require('@supabase/supabase-js');
 const { REPORT }                = require('./config');
 require('dotenv').config();
@@ -236,12 +237,17 @@ async function runDailyReport(dryRun = false) {
     insightDAO.getRecent(4).catch(() => []),
   ]);
 
-  // AI 总结（注入宏观上下文 + 历史趋势记忆）
+  // Pattern A: 注入行研知识库战略上下文
+  const wikiContext = getWikiContext(rows);
+  if (wikiContext) console.log('[DailyReport] Wiki context injected:', wikiContext.length, 'chars');
+
+  // AI 总结（注入宏观上下文 + 历史趋势记忆 + 行研知识库）
   const aiInput   = rows.filter(r => r.detail || r.alpha_score >= 70);
   const aiSummary = await generateDailySummary(
     aiInput.length ? aiInput : rows.slice(0, 30),
     macroContext || '',
     recentTrends,
+    wikiContext,
   );
 
   // 组装报告：头部 → 宏观背景 → AI总结
