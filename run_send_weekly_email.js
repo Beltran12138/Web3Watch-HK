@@ -32,6 +32,20 @@ function findFile(...names) {
   return found ? path.join(WEEKLY_DIR, found) : null;
 }
 
+// 检查文件是否是新上传的（48小时内），防止旧文件被误发
+function checkFileIsFresh(filePath, maxAgeHours = 48) {
+  if (!filePath) return true; // 文件不存在，跳过检查
+  const stat = fs.statSync(filePath);
+  const ageHours = (Date.now() - stat.mtimeMs) / 3600000;
+  if (ageHours > maxAgeHours) {
+    console.error(`[WeeklyEmail] ❌ 文件 ${path.basename(filePath)} 已超过 ${maxAgeHours} 小时（上次修改: ${stat.mtime.toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai' })}），疑似上次发送失败残留的旧文件。`);
+    console.error(`[WeeklyEmail] 请重新上传本周的文件后再触发。`);
+    return false;
+  }
+  console.log(`[WeeklyEmail] ✓ ${path.basename(filePath)} 上传时间正常（${ageHours.toFixed(1)} 小时前）`);
+  return true;
+}
+
 (async () => {
   const imagePath = findFile('image.png', 'image.jpg', 'image.jpeg');
   const pdfPath   = findFile('report.pdf');
@@ -39,6 +53,11 @@ function findFile(...names) {
   console.log(`[WeeklyEmail] 标题: ${subject}`);
   console.log(`[WeeklyEmail] 图片: ${imagePath ? `✓ ${path.basename(imagePath)}` : '✗ 未找到'}`);
   console.log(`[WeeklyEmail] PDF:  ${pdfPath   ? `✓ ${path.basename(pdfPath)}`   : '✗ 未找到'}`);
+
+  // 校验文件新鲜度，防止旧文件被误发
+  const imageOk = checkFileIsFresh(imagePath);
+  const pdfOk   = checkFileIsFresh(pdfPath);
+  if (!imageOk || !pdfOk) process.exit(1);
 
   const ok = await sendManualWeeklyEmail(subject, summary, imagePath, pdfPath);
 
