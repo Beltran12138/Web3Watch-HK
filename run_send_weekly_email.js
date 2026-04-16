@@ -14,7 +14,8 @@ const path = require('path');
 const { sendManualWeeklyEmail } = require('./email-report');
 
 const subject   = (process.env.EMAIL_SUBJECT   || '').trim();
-const summary   = (process.env.EMAIL_SUMMARY   || '').trim();
+// 用 | 作为换行符，方便在单行输入框中输入多段文字
+const summary   = (process.env.EMAIL_SUMMARY   || '').trim().replace(/\|/g, '\n');
 const dateRange = (process.env.EMAIL_DATE_RANGE || '').trim();
 
 if (!subject || !summary) {

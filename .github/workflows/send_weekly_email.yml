@@ -10,7 +10,7 @@ on:
         description: '周期（如：0407 ~ 0411，用于邮件正文和落款）'
         required: true
       summary:
-        description: '本周结论（正文内容，支持多行和 **粗体** 标记）'
+        description: '本周结论（用 | 换行，用 **文字** 加粗。例：第一段。|第二段。|**重点内容**）'
         required: true
 
 jobs:
