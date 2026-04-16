@@ -259,9 +259,20 @@ function buildManualEmailHtml(summary, hasImage, dateRange) {
         <tr><td style="padding:20px 32px 8px;color:#888;font-size:12px;">本周行业动态一览</td></tr>
         ${imageSection}
 
+        <!-- Weekly Report Link -->
+        <tr>
+          <td style="padding:0 32px 20px;">
+            <div style="background:#f0f9ff;border-radius:6px;padding:12px 16px;font-size:13px;">
+              📄 完整周报文档：
+              <a href="https://doc.weixin.qq.com/doc/w3_ARMAsQbTANACNGOlT0neMRK64hCk5?scode=ANEAUgd7AFo0Aba4VCARMAsQbTANA"
+                style="color:#00A7E1;text-decoration:none;font-weight:500;">点击查看</a>
+            </div>
+          </td>
+        </tr>
+
         <!-- Signature -->
         <tr>
-          <td style="padding:20px 32px 28px;color:#555;font-size:13px;line-height:2;">
+          <td style="padding:0 32px 28px;color:#555;font-size:13px;line-height:2;">
             <div>如有疑问，欢迎随时沟通交流。</div>
             <div style="margin-top:16px;color:#333;">
               <div>此致</div>
