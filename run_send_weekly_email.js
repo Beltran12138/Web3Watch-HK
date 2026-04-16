@@ -21,31 +21,35 @@ if (!subject || !summary) {
   process.exit(1);
 }
 
-const IMAGE_PATH = path.join(__dirname, 'weekly', 'image.png');
-const PDF_PATH   = path.join(__dirname, 'weekly', 'report.pdf');
+const WEEKLY_DIR = path.join(__dirname, 'weekly');
+
+// 大小写不敏感地在 weekly/ 中查找文件（兼容 Report.pdf / report.pdf 等各种命名）
+function findFile(...names) {
+  if (!fs.existsSync(WEEKLY_DIR)) return null;
+  const files = fs.readdirSync(WEEKLY_DIR);
+  const lower = names.map(n => n.toLowerCase());
+  const found = files.find(f => lower.includes(f.toLowerCase()));
+  return found ? path.join(WEEKLY_DIR, found) : null;
+}
 
 (async () => {
-  console.log(`[WeeklyEmail] 标题: ${subject}`);
-  console.log(`[WeeklyEmail] 图片: ${fs.existsSync(IMAGE_PATH) ? '✓ 已找到' : '✗ 未找到'}`);
-  console.log(`[WeeklyEmail] PDF:  ${fs.existsSync(PDF_PATH)   ? '✓ 已找到' : '✗ 未找到'}`);
+  const imagePath = findFile('image.png', 'image.jpg', 'image.jpeg');
+  const pdfPath   = findFile('report.pdf');
 
-  const ok = await sendManualWeeklyEmail(
-    subject,
-    summary,
-    fs.existsSync(IMAGE_PATH) ? IMAGE_PATH : null,
-    fs.existsSync(PDF_PATH)   ? PDF_PATH   : null,
-  );
+  console.log(`[WeeklyEmail] 标题: ${subject}`);
+  console.log(`[WeeklyEmail] 图片: ${imagePath ? `✓ ${path.basename(imagePath)}` : '✗ 未找到'}`);
+  console.log(`[WeeklyEmail] PDF:  ${pdfPath   ? `✓ ${path.basename(pdfPath)}`   : '✗ 未找到'}`);
+
+  const ok = await sendManualWeeklyEmail(subject, summary, imagePath, pdfPath);
 
   if (!ok) {
     process.exit(1);
   }
 
   // 发送成功后清理文件（保留 README.md）
-  [IMAGE_PATH, PDF_PATH].forEach(f => {
-    if (fs.existsSync(f)) {
-      fs.unlinkSync(f);
-      console.log(`[WeeklyEmail] 已清理: ${path.basename(f)}`);
-    }
+  [imagePath, pdfPath].filter(Boolean).forEach(f => {
+    fs.unlinkSync(f);
+    console.log(`[WeeklyEmail] 已清理: ${path.basename(f)}`);
   });
 
   console.log('[WeeklyEmail] 完成。');
