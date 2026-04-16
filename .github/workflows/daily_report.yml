@@ -13,7 +13,34 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Skip if already ran today
+        id: check
+        run: |
+          TODAY=$(date -u +%Y-%m-%d)
+          RUNS=$(gh run list \
+            --workflow=daily_report.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --json createdAt,conclusion \
+            --jq "[.[] | select(.createdAt | startswith(\"$TODAY\")) | select(.conclusion == \"success\")] | length")
+          echo "Successful runs today: $RUNS"
+          if [ "$RUNS" -gt "0" ]; then
+            echo "should_run=false" >> $GITHUB_OUTPUT
+            echo "[Check] Daily report already ran successfully today. Skipping."
+          else
+            echo "should_run=true" >> $GITHUB_OUTPUT
+            echo "[Check] No successful run today. Proceeding."
+          fi
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   daily-report:
+    needs: check
+    if: needs.check.outputs.should_run == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
