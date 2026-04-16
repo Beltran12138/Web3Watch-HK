@@ -4,27 +4,31 @@ on:
   workflow_dispatch:
     inputs:
       subject:
-        description: '邮件标题（如：Web3Watch HK 行业周报 | 04/07 ~ 04/11）'
+        description: '邮件标题（如：Web3Watch HK 行业周报 | 0407 ~ 0411）'
+        required: true
+      date_range:
+        description: '周期（如：0407 ~ 0411，用于邮件正文和落款）'
         required: true
       summary:
-        description: '本周结论（正文内容，多行请直接换行输入）'
+        description: '本周结论（正文内容，支持多行和 **粗体** 标记）'
         required: true
 
 jobs:
   send-email:
     runs-on: ubuntu-latest
     permissions:
-      contents: write   # 允许 workflow 清理文件后 commit
+      contents: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Check for report files
+      - name: Check for image file
         run: |
           echo "--- 检查 weekly/ 文件夹 ---"
-          ls -la weekly/ || echo "文件夹为空或不存在"
-          [ -f weekly/image.png ] && echo "✓ image.png 已找到" || echo "⚠ image.png 未上传（邮件将不含图片）"
-          [ -f weekly/report.pdf ] && echo "✓ report.pdf 已找到" || echo "⚠ report.pdf 未上传（邮件将无 PDF 附件）"
+          ls -la weekly/ 2>/dev/null || echo "文件夹为空"
+          ls weekly/*.png weekly/*.jpg weekly/*.jpeg 2>/dev/null \
+            && echo "✓ 图片已找到" \
+            || echo "⚠ 未找到图片（邮件将不含图片）"
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -43,13 +47,13 @@ jobs:
           SMTP_PASS:        ${{ secrets.SMTP_PASS }}
           WEEKLY_EMAIL_TO:  ${{ secrets.WEEKLY_EMAIL_TO }}
           EMAIL_SUBJECT:    ${{ inputs.subject }}
+          EMAIL_DATE_RANGE: ${{ inputs.date_range }}
           EMAIL_SUMMARY:    ${{ inputs.summary }}
 
-      - name: Commit cleanup (remove sent files)
+      - name: Commit cleanup (remove sent image)
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add weekly/
-          # 只有文件变化时才 commit
-          git diff --staged --quiet || git commit -m "chore: clean up weekly report files after email sent"
+          git diff --staged --quiet || git commit -m "chore: clean up weekly image after email sent"
           git push || true
