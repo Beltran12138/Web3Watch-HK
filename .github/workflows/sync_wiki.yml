@@ -1,0 +1,46 @@
+name: Sync Wiki from hk-web3-wiki
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'   # 每周一 02:00 UTC（北京时间 10:00）
+  workflow_dispatch:        # 支持手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Web3Watch-HK
+        uses: actions/checkout@v4
+
+      - name: Pull latest wiki from hk-web3-wiki
+        run: |
+          # 克隆公开 wiki 仓库（无需 token）
+          git clone --depth 1 https://github.com/Beltran12138/hk-web3-wiki.git /tmp/wiki-source
+
+          mkdir -p wiki
+
+          # 同步内容类 md（排除 Docsify 配置和文档文件）
+          rsync -av \
+            --delete \
+            --exclude='.git' \
+            --exclude='.github' \
+            --exclude='index.html' \
+            --exclude='_sidebar.md' \
+            --exclude='.nojekyll' \
+            --exclude='README.md' \
+            --exclude='CONTRIBUTING.md' \
+            --exclude='LICENSE' \
+            /tmp/wiki-source/ wiki/
+
+      - name: Commit & push if changed
+        run: |
+          git config user.name  "wiki-sync[bot]"
+          git config user.email "wiki-sync[bot]@users.noreply.github.com"
+          git add wiki/
+          git diff --cached --quiet && echo "Wiki already up to date." || (
+            git commit -m "chore(wiki): sync from hk-web3-wiki $(date +'%Y-%m-%d')" &&
+            git push
+          )
