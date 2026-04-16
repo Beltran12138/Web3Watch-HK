@@ -1,0 +1,55 @@
+name: 周报邮件发送
+
+on:
+  workflow_dispatch:
+    inputs:
+      subject:
+        description: '邮件标题（如：Web3Watch HK 行业周报 | 04/07 ~ 04/11）'
+        required: true
+      summary:
+        description: '本周结论（正文内容，多行请直接换行输入）'
+        required: true
+
+jobs:
+  send-email:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # 允许 workflow 清理文件后 commit
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Check for report files
+        run: |
+          echo "--- 检查 weekly/ 文件夹 ---"
+          ls -la weekly/ || echo "文件夹为空或不存在"
+          [ -f weekly/image.png ] && echo "✓ image.png 已找到" || echo "⚠ image.png 未上传（邮件将不含图片）"
+          [ -f weekly/report.pdf ] && echo "✓ report.pdf 已找到" || echo "⚠ report.pdf 未上传（邮件将无 PDF 附件）"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies (skip scripts)
+        run: npm ci --ignore-scripts
+
+      - name: Send weekly email
+        run: node run_send_weekly_email.js
+        env:
+          SMTP_HOST:        ${{ secrets.SMTP_HOST }}
+          SMTP_PORT:        ${{ secrets.SMTP_PORT }}
+          SMTP_USER:        ${{ secrets.SMTP_USER }}
+          SMTP_PASS:        ${{ secrets.SMTP_PASS }}
+          WEEKLY_EMAIL_TO:  ${{ secrets.WEEKLY_EMAIL_TO }}
+          EMAIL_SUBJECT:    ${{ inputs.subject }}
+          EMAIL_SUMMARY:    ${{ inputs.summary }}
+
+      - name: Commit cleanup (remove sent files)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add weekly/
+          # 只有文件变化时才 commit
+          git diff --staged --quiet || git commit -m "chore: clean up weekly report files after email sent"
+          git push || true
