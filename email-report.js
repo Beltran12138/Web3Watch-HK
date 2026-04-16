@@ -177,28 +177,38 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
   }
 }
 
-// ── 人工周报邮件（自定义标题 + 结论 + 图片 + PDF 附件）──────────────────────────
+// ── 人工周报邮件（自定义标题 + 结论 + 图片）─────────────────────────────────────
 
 /**
  * 构建人工周报 HTML 邮件正文
- * @param {string} summary  - 本周结论/正文文字
+ * @param {string} summary   - 本周结论/正文文字（支持空行分段、**粗体**标记）
  * @param {boolean} hasImage - 是否有内嵌图片
+ * @param {string} dateRange - 周期字符串，如 "0327 ~ 0409"，用于落款日期
  */
-function buildManualEmailHtml(summary, hasImage) {
-  // 将纯文本结论转为 HTML 段落（按换行分段）
-  const summaryHtml = summary
-    .split('\n')
-    .map(line => line.trim())
-    .filter(line => line.length > 0)
-    .map(line => `<div style="margin:6px 0;line-height:1.8;">${line}</div>`)
-    .join('\n');
+function buildManualEmailHtml(summary, hasImage, dateRange) {
+  // 将纯文本结论转为 HTML：
+  //   - 空行 → 段落间距
+  //   - **文字** → 加粗
+  //   - 普通行 → 正文段落
+  const paragraphs = summary.split('\n');
+  const summaryHtml = paragraphs.map(line => {
+    const trimmed = line.trim();
+    if (!trimmed) return '<div style="height:10px;"></div>';
+    // **粗体** 语法支持
+    const formatted = trimmed.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    return `<div style="margin:4px 0;line-height:1.9;color:#333;">${formatted}</div>`;
+  }).join('\n');
 
   const imageSection = hasImage
-    ? `<tr><td style="padding:0 32px 24px;">
-        <img src="cid:weekly_report_image" alt="周报图片"
-          style="width:100%;max-width:616px;border-radius:4px;border:1px solid #eee;">
+    ? `<tr><td style="padding:0 32px 28px;">
+        <img src="cid:weekly_report_image" alt="本周行业动态"
+          style="width:100%;max-width:616px;border-radius:4px;border:1px solid #eee;display:block;">
       </td></tr>`
     : '';
+
+  const today = new Date().toLocaleDateString('zh-CN', {
+    timeZone: 'Asia/Shanghai', year: 'numeric', month: 'long', day: 'numeric',
+  });
 
   return `<!DOCTYPE html>
 <html lang="zh-CN">
@@ -217,28 +227,54 @@ function buildManualEmailHtml(summary, hasImage) {
             <div style="color:#ffffff;font-size:20px;font-weight:700;letter-spacing:0.5px;">
               Web3Watch HK 行业周报
             </div>
-            <div style="color:rgba(255,255,255,0.8);font-size:13px;margin-top:6px;">
-              自动发送
+            <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:6px;">
+              ${dateRange}
             </div>
+          </td>
+        </tr>
+
+        <!-- Greeting -->
+        <tr>
+          <td style="padding:28px 32px 4px;color:#333;font-size:14px;line-height:1.9;">
+            <div style="margin-bottom:16px;">尊敬的各位领导，您好：</div>
+            <div style="margin-bottom:12px;">以下是本周（${dateRange}）香港 Web3 行业动态摘要，供参考。</div>
           </td>
         </tr>
 
         <!-- Summary -->
         <tr>
-          <td style="padding:28px 32px 20px;color:#333;font-size:14px;line-height:1.8;">
-            ${summaryHtml}
+          <td style="padding:0 32px 24px;color:#333;font-size:14px;line-height:1.9;border-left:3px solid #00A7E1;margin-left:32px;">
+            <div style="background:#f8fcff;border-left:3px solid #00A7E1;padding:14px 18px;border-radius:0 4px 4px 0;">
+              ${summaryHtml}
+            </div>
           </td>
         </tr>
 
+        <!-- Divider -->
+        <tr><td style="padding:0 32px;">
+          <hr style="border:none;border-top:1px solid #eee;margin:0;">
+        </td></tr>
+
         <!-- Image -->
+        <tr><td style="padding:20px 32px 8px;color:#888;font-size:12px;">本周行业动态一览</td></tr>
         ${imageSection}
+
+        <!-- Signature -->
+        <tr>
+          <td style="padding:20px 32px 28px;color:#555;font-size:13px;line-height:2;">
+            <div>如有疑问，欢迎随时沟通交流。</div>
+            <div style="margin-top:16px;color:#333;">
+              <div>此致</div>
+              <div style="margin-top:8px;font-weight:600;color:#00A7E1;">产品部行研组</div>
+              <div style="color:#888;font-size:12px;margin-top:2px;">${today}</div>
+            </div>
+          </td>
+        </tr>
 
         <!-- Footer -->
         <tr>
-          <td style="background:#fafafa;border-top:1px solid #eee;padding:16px 32px;">
-            <div style="color:#999;font-size:12px;">
-              本邮件由 Web3Watch HK 自动发送 · 如需调整请联系 ZHAO
-            </div>
+          <td style="background:#fafafa;border-top:1px solid #eee;padding:14px 32px;">
+            <div style="color:#bbb;font-size:11px;">本邮件由 Web3Watch HK 系统自动发送</div>
           </td>
         </tr>
 
@@ -250,13 +286,13 @@ function buildManualEmailHtml(summary, hasImage) {
 }
 
 /**
- * 发送人工周报邮件（自定义标题 + 结论 + 图片正文 + PDF 附件）
- * @param {string} subject   - 邮件标题
- * @param {string} summary   - 本周结论文字
+ * 发送人工周报邮件（自定义标题 + 结论 + 图片内嵌，无 PDF 附件）
+ * @param {string} subject    - 邮件标题
+ * @param {string} summary    - 本周结论文字
+ * @param {string} dateRange  - 周期字符串，如 "0327 ~ 0409"
  * @param {string|null} imagePath - 周报图片路径（weekly/image.png），可为 null
- * @param {string|null} pdfPath   - 周报 PDF 路径（weekly/report.pdf），可为 null
  */
-async function sendManualWeeklyEmail(subject, summary, imagePath, pdfPath) {
+async function sendManualWeeklyEmail(subject, summary, dateRange, imagePath) {
   const fs = require('fs');
 
   const smtpHost   = process.env.SMTP_HOST;
@@ -275,16 +311,13 @@ async function sendManualWeeklyEmail(subject, summary, imagePath, pdfPath) {
   }
 
   const hasImage = !!(imagePath && fs.existsSync(imagePath));
-  const hasPdf   = !!(pdfPath   && fs.existsSync(pdfPath));
-
   if (!hasImage) console.warn('[Email] Image not found, sending without inline image.');
-  if (!hasPdf)   console.warn('[Email] PDF not found, sending without attachment.');
 
-  const html = buildManualEmailHtml(summary, hasImage);
+  const html = buildManualEmailHtml(summary, hasImage, dateRange);
 
-  const attachments = [];
-  if (hasImage) attachments.push({ filename: 'weekly-report.png', path: imagePath, cid: 'weekly_report_image' });
-  if (hasPdf)   attachments.push({ filename: `${subject}.pdf`,    path: pdfPath });
+  const attachments = hasImage
+    ? [{ filename: 'weekly-report.png', path: imagePath, cid: 'weekly_report_image' }]
+    : [];
 
   const transporter = nodemailer.createTransport({
     host:   smtpHost,
