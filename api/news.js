@@ -1,59 +1,38 @@
 'use strict';
 
-const { createClient } = require('@supabase/supabase-js');
-
-const VALID_SOURCES = new Set([
-  'All', 'Important',
-  'Binance', 'OKX', 'Bybit', 'Gate', 'MEXC', 'Bitget', 'HTX', 'KuCoin',
-  'BlockBeats', 'TechFlow', 'PRNewswire',
-  'HashKeyGroup', 'HashKeyExchange', 'WuBlock', 'OSL', 'Exio', 'TechubNews',
-  'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin', 'TwitterAB',
-  'Poly-Breaking', 'Poly-China',
-]);
-
+// 直接用 Node 18 内置 fetch 调 Supabase REST API，不依赖任何 npm 包
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  try {
-    const supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_KEY
-    );
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_KEY;
+  if (!url || !key) return res.status(500).json({ success: false, error: 'Missing Supabase credentials' });
 
-    let source = req.query.source || 'All';
-    if (!VALID_SOURCES.has(source)) source = 'All';
-    const important = req.query.important === '1' ? 1 : 0;
+  try {
+    const source = req.query.source || 'All';
+    const important = req.query.important === '1';
     const limit = Math.min(500, Math.max(1, parseInt(req.query.limit, 10) || 500));
     const search = (req.query.q || '').trim().slice(0, 100);
 
-    let query = supabase
-      .from('news')
-      .select('*')
-      .order('timestamp', { ascending: false })
-      .limit(limit);
+    let apiUrl = `${url}/rest/v1/news?select=*&order=timestamp.desc&limit=${limit}`;
 
-    if (important === 1) {
-      query = query.eq('is_important', 1);
-    } else if (source !== 'All') {
-      query = query.eq('source', source);
+    if (important) {
+      apiUrl += '&is_important=eq.1';
+    } else if (source && source !== 'All' && source !== 'Important') {
+      apiUrl += `&source=eq.${encodeURIComponent(source)}`;
     }
 
     if (search) {
-      query = query.or(`title.ilike.%${search}%,content.ilike.%${search}%,detail.ilike.%${search}%`);
+      apiUrl += `&or=(title.ilike.*${encodeURIComponent(search)}*,detail.ilike.*${encodeURIComponent(search)}*)`;
     }
 
-    const { data, error } = await query;
-    if (error) throw new Error(error.message);
-
-    res.json({
-      success: true,
-      count: (data || []).length,
-      lastUpdate: new Date().toISOString(),
-      data: data || [],
+    const resp = await fetch(apiUrl, {
+      headers: { apikey: key, Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     });
+    const data = await resp.json();
+
+    res.json({ success: true, count: data.length, lastUpdate: new Date().toISOString(), data });
   } catch (err) {
     res.status(500).json({ success: false, error: err.message });
   }

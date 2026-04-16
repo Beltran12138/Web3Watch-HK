@@ -1,40 +1,34 @@
 'use strict';
 
-const { createClient } = require('@supabase/supabase-js');
-
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
-
   if (req.method === 'OPTIONS') return res.status(200).end();
 
-  try {
-    const supabase = createClient(
-      process.env.SUPABASE_URL,
-      process.env.SUPABASE_KEY
-    );
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_KEY;
+  if (!url || !key) return res.status(500).json({ success: false, error: 'Missing Supabase credentials' });
 
+  try {
     const days = Math.min(90, Math.max(1, parseInt(req.query.days, 10) || 7));
     const category = (req.query.category || '').trim();
     const since = Date.now() - days * 24 * 3600 * 1000;
 
-    let query = supabase
-      .from('news')
-      .select('timestamp,business_category')
-      .gte('timestamp', since)
-      .neq('business_category', '');
+    let apiUrl = `${url}/rest/v1/news?select=timestamp,business_category&timestamp=gte.${since}&business_category=neq.`;
+    if (category) apiUrl += `&business_category=eq.${encodeURIComponent(category)}`;
 
-    if (category) query = query.eq('business_category', category);
-
-    const { data, error } = await query;
-    if (error) throw new Error(error.message);
+    const resp = await fetch(apiUrl, {
+      headers: { apikey: key, Authorization: `Bearer ${key}` },
+    });
+    const data = await resp.json();
 
     const trendMap = {};
-    (data || []).forEach(n => {
+    (Array.isArray(data) ? data : []).forEach(n => {
       const d = new Date(n.timestamp).toISOString().split('T')[0];
       const cat = category || n.business_category;
-      const key = `${d}|${cat}`;
-      if (!trendMap[key]) trendMap[key] = { date: d, category: cat, count: 0 };
-      trendMap[key].count++;
+      if (!cat) return;
+      const k = `${d}|${cat}`;
+      if (!trendMap[k]) trendMap[k] = { date: d, category: cat, count: 0 };
+      trendMap[k].count++;
     });
 
     const rows = Object.values(trendMap).sort((a, b) => a.date.localeCompare(b.date));
