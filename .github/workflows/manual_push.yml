@@ -1,0 +1,83 @@
+name: 人工快讯推送
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: '📰 快讯标题（必填）'
+        required: true
+      detail:
+        description: '📝 内容摘要（必填，1-2句话说明核心信息）'
+        required: true
+      url:
+        description: '🔗 原文链接（可选）'
+        required: false
+        default: ''
+      source:
+        description: '📌 来源（如 HashKey、OKX、SFC、彭博等）'
+        required: false
+        default: '人工录入'
+      category:
+        description: '🏷️ 业务分类'
+        required: false
+        default: '合规'
+        type: choice
+        options:
+          - 合规
+          - 产品
+          - 市场
+          - 技术
+          - 投融资
+          - 其他
+      score:
+        description: '⭐ Alpha评分 (0-100)，70以上为重要'
+        required: false
+        default: '80'
+      impact:
+        description: '📊 对 BitV 的影响方向'
+        required: false
+        default: '中性'
+        type: choice
+        options:
+          - 利好
+          - 利空
+          - 中性
+      bitv_action:
+        description: '💡 对 BitV 的行动建议（可选）'
+        required: false
+        default: ''
+
+jobs:
+  manual-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dependencies (skip scripts)
+        run: npm ci --ignore-scripts
+
+      - name: Build better-sqlite3 from source
+        run: npx node-gyp rebuild --release
+        working-directory: node_modules/better-sqlite3
+
+      - name: Push manual news
+        run: node run_manual_push.js
+        env:
+          WECOM_WEBHOOK_URL:   ${{ secrets.WECOM_WEBHOOK_URL }}
+          SUPABASE_URL:        ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY:        ${{ secrets.SUPABASE_KEY }}
+          USE_SUPABASE:        'true'
+          MANUAL_TITLE:        ${{ inputs.title }}
+          MANUAL_DETAIL:       ${{ inputs.detail }}
+          MANUAL_URL:          ${{ inputs.url }}
+          MANUAL_SOURCE:       ${{ inputs.source }}
+          MANUAL_CATEGORY:     ${{ inputs.category }}
+          MANUAL_SCORE:        ${{ inputs.score }}
+          MANUAL_IMPACT:       ${{ inputs.impact }}
+          MANUAL_BITV_ACTION:  ${{ inputs.bitv_action }}
