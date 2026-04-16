@@ -1,233 +1,548 @@
 {
   "SFC": {
-    "lastFetchTime": 1773762904777,
+    "lastFetchTime": 1774189650538,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 25,
-    "totalFetches": 25,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 61,
+    "totalFetches": 14,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 30,
+        "errorCount": 0,
+        "timestamp": 1773763701543
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 17,
+        "errorCount": 0,
+        "timestamp": 1774185720396
+      }
+    ]
   },
   "Binance": {
-    "lastFetchTime": 1773762904777,
-    "lastItemCount": 7,
-    "todayCount": 175,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 0,
-    "totalFetches": 25,
+    "lastFetchTime": 1774189650539,
+    "lastItemCount": 0,
+    "todayCount": 8,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 6,
+    "totalFetches": 14,
     "totalErrors": 0,
-    "status": "healthy",
-    "history": []
+    "status": "empty",
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 200,
+        "fetchCount": 30,
+        "errorCount": 0,
+        "timestamp": 1773763701546
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 106,
+        "fetchCount": 17,
+        "errorCount": 0,
+        "timestamp": 1774185720397
+      }
+    ]
   },
   "OKX": {
-    "lastFetchTime": 1773762904778,
+    "lastFetchTime": 1774189650540,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 25,
-    "totalFetches": 25,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 61,
+    "totalFetches": 14,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 30,
+        "errorCount": 0,
+        "timestamp": 1773763701546
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 17,
+        "errorCount": 0,
+        "timestamp": 1774185720398
+      }
+    ]
   },
   "TwitterKOLs": {
-    "lastFetchTime": 1773762904778,
+    "lastFetchTime": 1774189650563,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 25,
-    "totalFetches": 25,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 61,
+    "totalFetches": 14,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 30,
+        "errorCount": 0,
+        "timestamp": 1773763701547
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 17,
+        "errorCount": 0,
+        "timestamp": 1774185720399
+      }
+    ]
   },
   "PolymarketBreaking": {
-    "lastFetchTime": 1773762904779,
+    "lastFetchTime": 1774189650583,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 25,
-    "totalFetches": 25,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 61,
+    "totalFetches": 14,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 30,
+        "errorCount": 0,
+        "timestamp": 1773763701563
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 17,
+        "errorCount": 0,
+        "timestamp": 1774185720414
+      }
+    ]
   },
   "PolymarketChina": {
-    "lastFetchTime": 1773762904797,
+    "lastFetchTime": 1774189650584,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 25,
-    "totalFetches": 25,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 61,
+    "totalFetches": 14,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 30,
+        "errorCount": 0,
+        "timestamp": 1773763701578
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 17,
+        "errorCount": 0,
+        "timestamp": 1774185720415
+      }
+    ]
   },
   "TechFlow": {
-    "lastFetchTime": 1773762643973,
+    "lastFetchTime": 1774188195735,
     "lastItemCount": 10,
-    "todayCount": 40,
-    "todayDate": "Tue Mar 17 2026",
+    "todayCount": 20,
+    "todayDate": "Sun Mar 22 2026",
     "consecutiveEmptyCycles": 0,
-    "totalFetches": 4,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "healthy",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 40,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924873
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 50,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321481
+      }
+    ]
   },
   "PRNewswire": {
-    "lastFetchTime": 1773762643974,
+    "lastFetchTime": 1774188195736,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 2,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924874
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 32,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321482
+      }
+    ]
   },
   "BlockBeats": {
-    "lastFetchTime": 1773762643974,
-    "lastItemCount": 10,
-    "todayCount": 40,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 0,
-    "totalFetches": 4,
+    "lastFetchTime": 1774188195737,
+    "lastItemCount": 0,
+    "todayCount": 10,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 1,
+    "totalFetches": 2,
     "totalErrors": 0,
-    "status": "healthy",
-    "history": []
+    "status": "empty",
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 40,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924875
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 40,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321483
+      }
+    ]
   },
   "OSL": {
-    "lastFetchTime": 1773762643975,
+    "lastFetchTime": 1774188195756,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924876
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321483
+      }
+    ]
   },
   "TechubNews": {
-    "lastFetchTime": 1773762643996,
-    "lastItemCount": 4,
-    "todayCount": 16,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 0,
-    "totalFetches": 4,
+    "lastFetchTime": 1774188195776,
+    "lastItemCount": 0,
+    "todayCount": 0,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 2,
+    "totalFetches": 2,
     "totalErrors": 0,
-    "status": "healthy",
-    "history": []
+    "status": "empty",
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 16,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924877
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 16,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321499
+      }
+    ]
   },
   "Exio": {
-    "lastFetchTime": 1773762643996,
+    "lastFetchTime": 1774188195795,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924911
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321513
+      }
+    ]
   },
   "WuBlock": {
-    "lastFetchTime": 1773762643997,
+    "lastFetchTime": 1774188195814,
     "lastItemCount": 1,
     "todayCount": 2,
-    "todayDate": "Tue Mar 17 2026",
+    "todayDate": "Sun Mar 22 2026",
     "consecutiveEmptyCycles": 0,
-    "totalFetches": 4,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "healthy",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 2,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924911
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 4,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321514
+      }
+    ]
   },
   "HashKeyGroup": {
-    "lastFetchTime": 1773762643998,
+    "lastFetchTime": 1774188195834,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924912
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321528
+      }
+    ]
   },
   "KuCoin": {
-    "lastFetchTime": 1773762644016,
-    "lastItemCount": 2,
-    "todayCount": 8,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 0,
-    "totalFetches": 4,
+    "lastFetchTime": 1774188195853,
+    "lastItemCount": 0,
+    "todayCount": 0,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 2,
+    "totalFetches": 2,
     "totalErrors": 0,
-    "status": "healthy",
-    "history": []
+    "status": "empty",
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 6,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924913
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 2,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321542
+      }
+    ]
   },
   "HashKeyExchange": {
-    "lastFetchTime": 1773762644016,
+    "lastFetchTime": 1774188195872,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924926
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321557
+      }
+    ]
   },
   "Bybit": {
-    "lastFetchTime": 1773762644034,
-    "lastItemCount": 0,
+    "lastFetchTime": 1774188195873,
+    "lastItemCount": 14,
     "todayCount": 28,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 1,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 0,
+    "totalFetches": 2,
     "totalErrors": 0,
-    "status": "empty",
-    "history": []
+    "status": "healthy",
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 28,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924927
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 42,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321558
+      }
+    ]
   },
   "Bitget": {
-    "lastFetchTime": 1773762644035,
+    "lastFetchTime": 1774188195874,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924928
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321559
+      }
+    ]
   },
   "Mexc": {
-    "lastFetchTime": 1773762644035,
+    "lastFetchTime": 1774188195893,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924942
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321559
+      }
+    ]
   },
   "Gate": {
-    "lastFetchTime": 1773762644036,
+    "lastFetchTime": 1774188195912,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924943
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321560
+      }
+    ]
   },
   "Htx": {
-    "lastFetchTime": 1773762644053,
+    "lastFetchTime": 1774188195931,
     "lastItemCount": 0,
     "todayCount": 0,
-    "todayDate": "Tue Mar 17 2026",
-    "consecutiveEmptyCycles": 4,
-    "totalFetches": 4,
+    "todayDate": "Sun Mar 22 2026",
+    "consecutiveEmptyCycles": 11,
+    "totalFetches": 2,
     "totalErrors": 0,
     "status": "empty",
-    "history": []
+    "history": [
+      {
+        "date": "Tue Mar 17 2026",
+        "totalCount": 0,
+        "fetchCount": 4,
+        "errorCount": 0,
+        "timestamp": 1773763924957
+      },
+      {
+        "date": "Wed Mar 18 2026",
+        "totalCount": 0,
+        "fetchCount": 5,
+        "errorCount": 0,
+        "timestamp": 1774186321574
+      }
+    ]
   }
 }

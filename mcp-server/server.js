@@ -9,6 +9,12 @@
 const { Server } = require('@modelcontextprotocol/sdk/server/index.js');
 const { StdioServerTransport } = require('@modelcontextprotocol/sdk/server/stdio.js');
 const {
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
+  ListResourcesRequestSchema,
+  ReadResourceRequestSchema,
+} = require('@modelcontextprotocol/sdk/types.js');
+const {
   mcpServer,
   TOOLS,
   RESOURCES,
@@ -31,7 +37,7 @@ const server = new Server(
 
 // ── 注册工具处理器 ───────────────────────────────────────────────────────────
 
-server.setRequestHandler('tools/list', async () => {
+server.setRequestHandler(ListToolsRequestSchema, async () => {
   return {
     tools: TOOLS.map(tool => ({
       name: tool.name,
@@ -41,7 +47,7 @@ server.setRequestHandler('tools/list', async () => {
   };
 });
 
-server.setRequestHandler('tools/call', async (request) => {
+server.setRequestHandler(CallToolRequestSchema, async (request) => {
   const { name, arguments: args } = request.params;
 
   console.error(`[MCP] Calling tool: ${name}`, args);
@@ -73,7 +79,7 @@ server.setRequestHandler('tools/call', async (request) => {
 
 // ── 注册资源处理器 ───────────────────────────────────────────────────────────
 
-server.setRequestHandler('resources/list', async () => {
+server.setRequestHandler(ListResourcesRequestSchema, async () => {
   return {
     resources: RESOURCES.map(resource => ({
       uri: resource.uri,
@@ -84,7 +90,7 @@ server.setRequestHandler('resources/list', async () => {
   };
 });
 
-server.setRequestHandler('resources/read', async (request) => {
+server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
   const { uri } = request.params;
 
   console.error(`[MCP] Reading resource: ${uri}`);

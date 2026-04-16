@@ -49,9 +49,9 @@ const TWITTER_CONFIG = {
   },
 
   // 请求配置
-  REQUEST_TIMEOUT: 15000,
+  REQUEST_TIMEOUT: 8000,
   MAX_RETRIES: 2,
-  RETRY_DELAY: 2000,
+  RETRY_DELAY: 1000,
 
   // 缓存配置
   CACHE_MAX_AGE: 30 * 60 * 1000, // 30分钟
@@ -499,7 +499,18 @@ class TwitterScraperManager {
     const results = {};
     const errors = [];
 
+    // 全局超时：60秒内必须完成，防止阻塞 cron 调度
+    const GLOBAL_TIMEOUT = 60000;
+    const deadline = Date.now() + GLOBAL_TIMEOUT;
+
     for (const kol of kolList) {
+      if (Date.now() >= deadline) {
+        console.warn(`[Twitter] Global timeout reached, skipping remaining KOLs`);
+        errors.push(kol.name);
+        results[kol.name] = { username: kol.username, tweets: [], success: false, error: 'timeout' };
+        continue;
+      }
+
       try {
         const tweets = await this.scrape(kol.username, options);
         results[kol.name] = {
@@ -523,7 +534,7 @@ class TwitterScraperManager {
       }
 
       // 间隔请求，避免触发限流
-      await delay(2000);
+      await delay(1000);
     }
 
     console.log(`[Twitter] Scraped ${Object.values(results).filter(r => r.success).length}/${kolList.length} KOLs`);
