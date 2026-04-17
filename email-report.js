@@ -181,11 +181,11 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
 
 /**
  * 构建人工周报 HTML 邮件正文
- * @param {string} summary   - 本周结论/正文文字（支持空行分段、**粗体**标记）
- * @param {boolean} hasImage - 是否有内嵌图片
- * @param {string} dateRange - 周期字符串，如 "0327 ~ 0409"，用于落款日期
+ * @param {string}   summary    - 本周结论/正文文字（支持空行分段、**粗体**标记）
+ * @param {string[]} imagePaths - 图片路径数组（按顺序内嵌），可为空数组
+ * @param {string}   dateRange  - 周期字符串，如 "0327 ~ 0409"，用于落款日期
  */
-function buildManualEmailHtml(summary, hasImage, dateRange) {
+function buildManualEmailHtml(summary, imagePaths, dateRange) {
   // 将纯文本结论转为 HTML：
   //   - 空行 → 段落间距
   //   - **文字** → 加粗
@@ -199,11 +199,13 @@ function buildManualEmailHtml(summary, hasImage, dateRange) {
     return `<div style="margin:4px 0;line-height:1.9;color:#333;">${formatted}</div>`;
   }).join('\n');
 
-  const imageSection = hasImage
-    ? `<tr><td style="padding:0 32px 28px;">
-        <img src="cid:weekly_report_image" alt="本周行业动态"
+  const imageSection = imagePaths.length > 0
+    ? imagePaths.map((_, i) =>
+        `<tr><td style="padding:0 32px ${i === imagePaths.length - 1 ? '28' : '12'}px;">
+        <img src="cid:weekly_report_image_${i}" alt="本周行业动态 ${i + 1}"
           style="width:100%;max-width:616px;border-radius:4px;border:1px solid #eee;display:block;">
       </td></tr>`
+      ).join('\n')
     : '';
 
   const today = new Date().toLocaleDateString('zh-CN', {
@@ -255,8 +257,8 @@ function buildManualEmailHtml(summary, hasImage, dateRange) {
           <hr style="border:none;border-top:1px solid #eee;margin:0;">
         </td></tr>
 
-        <!-- Image -->
-        <tr><td style="padding:20px 32px 8px;color:#888;font-size:12px;">本周行业动态一览</td></tr>
+        <!-- Images -->
+        ${imagePaths.length > 0 ? `<tr><td style="padding:20px 32px 8px;color:#888;font-size:12px;">本周行业动态一览</td></tr>` : ''}
         ${imageSection}
 
         <!-- Weekly Report Link -->
@@ -297,14 +299,15 @@ function buildManualEmailHtml(summary, hasImage, dateRange) {
 }
 
 /**
- * 发送人工周报邮件（自定义标题 + 结论 + 图片内嵌，无 PDF 附件）
- * @param {string} subject    - 邮件标题
- * @param {string} summary    - 本周结论文字
- * @param {string} dateRange  - 周期字符串，如 "0327 ~ 0409"
- * @param {string|null} imagePath - 周报图片路径（weekly/image.png），可为 null
+ * 发送人工周报邮件（自定义标题 + 结论 + 多图内嵌，无 PDF 附件）
+ * @param {string}          subject    - 邮件标题
+ * @param {string}          summary    - 本周结论文字
+ * @param {string}          dateRange  - 周期字符串，如 "0327 ~ 0409"
+ * @param {string|string[]} imagePaths - 图片路径（单张兼容旧调用，或数组）
  */
-async function sendManualWeeklyEmail(subject, summary, dateRange, imagePath) {
-  const fs = require('fs');
+async function sendManualWeeklyEmail(subject, summary, dateRange, imagePaths) {
+  const fs   = require('fs');
+  const path = require('path');
 
   const smtpHost   = process.env.SMTP_HOST;
   const smtpUser   = process.env.SMTP_USER;
@@ -321,14 +324,20 @@ async function sendManualWeeklyEmail(subject, summary, dateRange, imagePath) {
     return false;
   }
 
-  const hasImage = !!(imagePath && fs.existsSync(imagePath));
-  if (!hasImage) console.warn('[Email] Image not found, sending without inline image.');
+  // 兼容旧的单路径调用
+  const paths = Array.isArray(imagePaths)
+    ? imagePaths.filter(p => p && fs.existsSync(p))
+    : (imagePaths && fs.existsSync(imagePaths) ? [imagePaths] : []);
 
-  const html = buildManualEmailHtml(summary, hasImage, dateRange);
+  if (paths.length === 0) console.warn('[Email] No images found, sending without inline images.');
 
-  const attachments = hasImage
-    ? [{ filename: 'weekly-report.png', path: imagePath, cid: 'weekly_report_image' }]
-    : [];
+  const html = buildManualEmailHtml(summary, paths, dateRange);
+
+  const attachments = paths.map((p, i) => ({
+    filename: `weekly-report-${i + 1}${path.extname(p)}`,
+    path:     p,
+    cid:      `weekly_report_image_${i}`,
+  }));
 
   const transporter = nodemailer.createTransport({
     host:   smtpHost,
@@ -346,7 +355,7 @@ async function sendManualWeeklyEmail(subject, summary, dateRange, imagePath) {
       html,
       attachments,
     });
-    console.log(`[Email] Manual weekly email sent → ${recipients} (messageId: ${info.messageId})`);
+    console.log(`[Email] Manual weekly email sent → ${recipients} (${paths.length} image(s), messageId: ${info.messageId})`);
     return true;
   } catch (err) {
     console.error('[Email] Failed to send manual weekly email:', err.message);
