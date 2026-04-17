@@ -213,5 +213,14 @@ def main():
 
     print(f"[wiki-updater] 完成，更新 {updated} 条 wiki 条目")
 
+    # 同步到 Obsidian vault
+    if updated > 0:
+        import subprocess
+        result = subprocess.run(
+            ["/root/.hermes/sync-wiki-to-obsidian.sh"],
+            capture_output=True, text=True
+        )
+        print(f"[wiki-updater] Obsidian 同步: {'✅' if result.returncode == 0 else '❌'}")
+
 if __name__ == "__main__":
     main()
