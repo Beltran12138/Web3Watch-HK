@@ -8,6 +8,8 @@
 - 2025 Q1 OTC交易量同比+400%，Q2单日突破$1亿，累计现货1.3万亿港元
 
 ## 近期重要动作
+- [2026-04-16] HashKey Chain与HabitTrade合作，实现美股代币链上交易
+- [2026-04-11] 战略投资越南交易所CAEX（alpha=65，来源：HashKeyGroup）
 - HashKey OTC Global（整合多地牌照）
 - HashKey Chain（L2）链上RWA约17亿HKD
 - STBL：短期资产支持代币化票据+ETF份额

@@ -1,239 +1,219 @@
-# Web3Watch HK | 香港 Web3 行业动态（交易所视角）
+# Web3Watch HK | 香港 Web3 行研情报系统
 
-> 自动聚合香港合规所与头部离岸所动态，AI 提炼竞品洞察，每日定时推送至企业微信
+> 实时数据 × 知识编译 × 会学习的行研 Agent — 企业微信直接问，战略建议即时出
 
-![Version](https://img.shields.io/badge/version-2.2.0-blue.svg)
+![Version](https://img.shields.io/badge/version-3.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+---
+
+## 🏗️ 系统架构
+
+```
+实时数据（25个数据源）
+    ↓ GitHub Actions 每15分钟抓取
+Supabase 新闻库（DeepSeek alpha_score 评分）
+    ↓ wiki-updater.py 每小时触发
+行研知识库（Obsidian Wiki + Notion 档案）
+    ↓ fetch-market-context.sh 每15分钟预缓存
+Hermes Agent（SOUL.md + llm-wiki + holographic memory）
+    ↓ WeCom 企业微信
+产品团队直接可用（三段式：事件速览 → 战略背景 → BitV建议）
+```
 
 ---
 
 ## 📖 项目简介
 
-Web3Watch HK 聚焦两个核心场景：
+**Web3Watch HK** 是 BitV 产品团队的香港 Web3 行研情报系统，核心能力：
 
-1. **香港合规赛道监控** — SFC 政策、VATP 牌照进展、OSL/HashKey/Exio 等香港持牌所动态
-2. **头部离岸所产品动作** — Binance/OKX/Bybit 等 8 家头部所的合规、产品、战略动向
+1. **实时数据监控** — SFC 政策、VATP 牌照、HashKey/OSL 竞品动态
+2. **知识自动编译** — 新闻触发 wiki 更新（Karpathy LLM Wiki 模式）
+3. **智能 Q&A Bot** — 企业微信行研 Bot，wiki-first 查询，三段式输出
 
-系统通过 GitHub Actions 全自动运行（无需服务器），抓取 **25 个数据源**，使用 **DeepSeek AI** 进行分类与摘要，每日 18:00 推送日报至**企业微信群**。
+---
 
-### 核心能力
+## ✨ 核心能力
 
 | 能力 | 描述 |
 |------|------|
-| 🔍 **多源抓取** | 25 个数据源：8 家交易所公告 + 5 家香港合规所 + 媒体/KOL/预测市场 |
-| 🤖 **AI 分类** | DeepSeek V3 主力 + OpenRouter 备用 + 规则引擎兜底，三级降级策略 |
-| 📊 **宏观市场背景** | 每日自动拉取 BTC/ETH 价格、总市值、BTC 主导率、恐惧贪婪指数 |
-| 📰 **AI 日报** | 每日 18:00 推送，含宏观背景 + 历史趋势对比 + 重点动态分析 |
-| 🏢 **竞品动态矩阵** | 周报按竞品来源分组，直接看每家机构本周做了什么 |
-| 🧠 **历史趋势记忆** | AI 总结可参照近期行业共识趋势，做纵向对比而非每次从零开始 |
-| 🗄️ **双存储** | SQLite 本地 + Supabase 云端，热/温/冷三级数据生命周期管理 |
+| 🔍 **多源抓取** | 25 个数据源：8家交易所公告 + 5家香港合规所 + 媒体/KOL/预测市场 |
+| 🤖 **AI 评分** | DeepSeek V3 alpha_score 评分，≥65分自动进入行研流水线 |
+| 📚 **Wiki 自动更新** | 新闻入库 → AI摘要 → 追加到对应wiki文件（每小时运行） |
+| 💬 **行研 Q&A Bot** | Hermes Agent + 企业微信，wiki-first + Supabase + Notion三层知识 |
+| 🧠 **持久化记忆** | holographic memory，跨会话学习用户提问习惯 |
+| 📊 **日报推送** | 每日 18:00 推送，含宏观背景 + 竞品动态 + 战略建议 |
+| 🗂️ **Notion 集成** | 5个核心产品档案页面（MVP优先级、OTC PRD、竞品分析等）实时注入 |
+| 🗄️ **双存储** | SQLite 本地 + Supabase 云端 |
 
 ---
 
-## 📐 架构
+## 🧩 核心组件
+
+### 1. 数据采集层（GitHub Actions）
+- **触发频率**: 每15分钟
+- **数据源**: `sources.yaml`，25个来源
+- **AI 处理**: DeepSeek V3 分类 + alpha_score 评分
+- **存储**: Supabase `news` 表
+
+### 2. 知识编译层（Wiki）
+
+**目录**: `wiki/`
+
+| 文件 | 内容 |
+|------|------|
+| `SCHEMA.md` | wiki约定、自动更新规则 |
+| `index.md` | 全局索引 |
+| `竞品-HashKey.md` | HashKey Exchange/Group 竞品分析 |
+| `竞品-OSL.md` | OSL 竞品分析 |
+| `监管-香港SFC.md` | SFC/VATP 监管图谱 |
+| `业务方向-RWA.md` | RWA 代币化机会 |
+| `核心切入机会.md` | BitV 产品优先级矩阵（Tier1/2/3） |
+| `市场趋势.md` | 市场趋势速览 |
+
+**自动更新脚本**: `scripts/wiki-updater.py`
+- 每小时运行，读取 Supabase 新增高 alpha 新闻
+- DeepSeek 生成摘要，追加到对应 wiki section
+- 状态追踪：`scripts/.wiki-update-state.json`
+
+### 3. 行研 Agent 层（Hermes）
+
+**平台**: Hermes Agent v0.10.0 (NousResearch)，运行在 WSL2 Ubuntu
+
+**配置文件**（WSL2: `~/.hermes/`）:
+- `SOUL.md` — 系统核心指令，wiki-first 查询路径
+- `config.yaml` — DeepSeek 模型 + WeCom 平台 + holographic memory
+- `.env` — API keys（Supabase / Notion / DeepSeek / WeCom）
+- `skills/hk-market-intel/SKILL.md` — 自定义行研技能
+- `market-intel-cache.md` — 预缓存（每15分钟刷新）
+- `fetch-market-context.sh` — 缓存刷新脚本（Supabase + Notion）
+
+**启用的技能**:
+- `hk-market-intel` — 自定义：Supabase查询 + Wiki读取 + 三段式输出
+- `obsidian` — 原生 vault 读写
+- `llm-wiki` — Karpathy 模式知识编译维护
+- `company-research-web-scraping` — 深度竞品调研
+- `duckduckgo-search` — 免费网络搜索（官方）
+
+**记忆系统**: holographic memory（本地 SQLite，跨会话学习）
+
+### 4. Notion 产品档案集成
+
+集成 5 个核心产品调研页面（每15分钟刷新进缓存）：
+- 一站式平台MVP优先级 & 香港证券市场切入点
+- 核心调研结论
+- 香港券商业务全景
+- 托管业务产品方案与竞对商业模式
+- OTC商业模式 & 竞品分析
+
+---
+
+## 🤖 行研 Bot 回答格式
 
 ```
-GitHub Actions (全自动调度，无需服务器)
-│
-├── 每 15 分钟  →  scrapers/   抓取 25 个数据源
-│                  filter.js   清洗 + 去重
-│                  AI 分类     business_category / alpha_score / bitv_action
-│                  db.js       写入 SQLite + Supabase
-│
-├── 每日 18:00  →  macro-market.js  拉取宏观数据（CoinGecko + Fear&Greed）
-│                  insightDAO        读取历史趋势记忆
-│                  report.js         生成日报
-│                  wecom.js          推送企业微信
-│
-└── 每周五 18:00 →  report.js        生成周报（AI总结 + 竞品矩阵 + 分类附录）
-                    wecom.js          推送企业微信
+📡 事件速览
+• [来源] 标题（alpha分）
+  └ 摘要
+
+📚 战略背景
+（来自 Wiki 的关键判断）
+
+💡 BitV 建议
+• 建议1（可执行）
+• 建议2
 ```
 
----
-
-## 📊 数据源列表（25 个）
-
-### 香港合规所（5 家）
-OSL、HashKey Group、HashKey Exchange、Exio、TechubNews
-
-### 头部离岸所（8 家）
-Binance、OKX、Bybit、Gate、MEXC、Bitget、HTX、KuCoin
-
-### 监管机构（1 个）
-SFC（香港证监会官网）
-
-### Web3 媒体（3 家）
-BlockBeats、TechFlow、WuBlock、PR Newswire
-
-### KOL Twitter（5 位）
-吴说、Phyrex、Justin Sun、XieJiayin、Twitter AB
-
-### 预测市场（2 个）
-Polymarket Breaking、Polymarket China
+**触发词**: HashKey、OSL、竞品、监管、SFC、RWA、稳定币、市场趋势、产品建议
 
 ---
 
-## 📰 报告示例
+## 🚀 快速启动
 
-### 日报结构
-```
-📋 Web3Watch HK 行业日报 | 2026-03-25
+### 前置条件
+- WSL2 Ubuntu 24.04
+- Node.js 18+（GitHub Actions 数据采集）
+- Python 3.11+（Hermes Agent）
 
-📊 今日数据概览
-> 抓取 124 条 | 重要 18 条 | AI摘要 96 条 | 来源 14 个
-
-🌐 宏观市场背景
-> BTC $84,230 ▲2.1%  |  ETH $3,180 ▼0.8%
-> 总市值 $2.9T ▲1.8%  |  BTC 主导率 57.3%
-> 市场情绪 中性 😐 (52)
-
----
-[AI 今日简报，含历史趋势对比]
-
----
-🔍 重点动态分析
-  合规 (3)  /  产品 (5)  /  投融资 (2)  ...
-```
-
-### 周报结构
-```
-📰 Web3Watch HK 行业周报 | 03/17 ~ 03/21
-
-[AI 本周总结论 + 竞品格局 + BitV 战略建议]
-
----
-🏢 竞品动态矩阵 | 本周各主要玩家行动汇总
-
-🏛️ HashKey Exchange · 3条重要动态
-  🔥 获批向零售开放加密服务  `合规` `95`
-     > SFC 批准其面向零售投资者提供服务，市场影响显著。
-     > 💡 立即研究其零售开户流程，评估对我司获客策略冲击。
-
-🌐 Binance · 2条重要动态
-  ⭐ 推出新合规框架  `合规` `78`
-  ...
-
----
-📌 本周分类策略详情（按业务线）
-```
-
----
-
-## 🚀 部署（GitHub Actions，无需服务器）
-
-### 1. Fork 仓库
+### 启动 Hermes Gateway
 
 ```bash
-# Fork 本仓库到你的 GitHub 账号
+# WSL2 中运行
+source ~/.hermes/.env
+nohup hermes gateway run > ~/.hermes/logs/gateway.log 2>&1 &
 ```
 
-### 2. 配置 GitHub Secrets
+**开机自启**: `C:\Users\lenovo\start-hermes.bat` 已放入 Windows 启动文件夹
 
-在仓库 Settings → Secrets and variables → Actions 中添加：
-
-| Secret | 必需 | 说明 |
-|--------|------|------|
-| `DEEPSEEK_API_KEY` | ✅ | DeepSeek AI API Key（主要 AI 提供商） |
-| `WECOM_WEBHOOK_URL` | ✅ | 企业微信机器人 Webhook URL |
-| `SUPABASE_URL` | 推荐 | Supabase 项目 URL（数据云端备份） |
-| `SUPABASE_KEY` | 推荐 | Supabase Publishable Key |
-| `OPENROUTER_API_KEY` | 可选 | AI 备用提供商（DeepSeek 故障时使用） |
-
-### 3. 启用 GitHub Actions
-
-仓库 Actions 页面 → 手动触发一次 `CI / Scrape` 验证配置。
-
-之后自动按以下 cron 运行：
-- **每 15 分钟**：抓取数据
-- **每日 18:00 (北京)**：推送日报
-- **每周五 18:00 (北京)**：推送周报
-
-### 4. 本地开发（可选）
+### 手动刷新缓存
 
 ```bash
-npm install
-cp .env.example .env
-# 编辑 .env 填入 API Key
+~/.hermes/fetch-market-context.sh
+```
 
-# 测试日报生成（不推送）
-npm run daily-report:dry
+### 手动更新 Wiki
 
-# 测试周报生成（不推送）
-npm run weekly-report:dry
-
-# 手动触发抓取
-npm run scrape
+```bash
+cd /mnt/c/Users/lenovo/alpha-radar
+python3 scripts/wiki-updater.py
 ```
 
 ---
 
-## ⚙️ 关键配置（`config.js`）
+## ⏱️ 定时任务（WSL2 crontab）
 
-```js
-// 推送过滤规则
-WECOM_BLOCK_SOURCES = ['TechFlow', 'BlockBeats', 'Poly-*', 'KOL']  // 不推送实时通知
-HK_SOURCES = ['OSL', 'HashKey*', 'Exio', 'TechubNews']             // 全量推送
-EXCHANGE_EXCLUDE_KEYWORDS = ['listing', '上线', '新币', ...]        // 排除普通上币公告
-
-// AI 评分标准
-alpha_score 90-100: SFC 政策突变、重要牌照获批/撤销、主流所重大合规处罚
-alpha_score 70-89:  香港市场重要业务进展、RWA/稳定币新规、头部所战略调整
-alpha_score 40-69:  普通业务上线、常规行业新闻
-alpha_score < 40:   常规市场波动（不进入报告）
-
-// 报告推送时间
-DAILY_REPORT:  每日 18:00 北京时间（cron: 0 10 * * *）
-WEEKLY_REPORT: 每周五 18:00 北京时间（cron: 0 10 * * 5）
-```
+| 任务 | 频率 | 说明 |
+|------|------|------|
+| `fetch-market-context.sh` | 每15分钟 | 刷新 Supabase+Notion 缓存，无 token 消耗 |
+| `wiki-updater.py` | 每小时 | 新闻→Wiki 自动更新，调用 DeepSeek |
 
 ---
 
-## 📁 主要文件说明
+## 🗂️ 目录结构
 
 ```
-Web3Watch-HK/
-├── config.js              # 全局配置（数据源规则、AI 参数、推送规则）
-├── scrapers/
-│   ├── index.js           # 爬虫调度器
-│   └── sources/
-│       ├── apis.js        # HTTP/API 类爬虫（OKX/Binance/HashKey 等）
-│       ├── puppeteer.js   # 浏览器渲染类爬虫
-│       └── twitter-enhanced.js  # Twitter KOL 多源冗余抓取
-├── ai-enhanced.js         # AI 分类/摘要（三级降级策略）
-├── filter.js              # 噪声过滤 + 去重
-├── db.js                  # SQLite + Supabase 双存储
-├── macro-market.js        # 宏观市场数据（CoinGecko + Fear&Greed）
-├── report.js              # 日报/周报生成（含竞品矩阵、历史记忆）
-├── wecom.js               # 企业微信推送
-├── dao.js                 # 数据访问层（含 Insights 记忆系统）
+alpha-radar/
+├── wiki/                    # 行研知识库（llm-wiki 格式）
+│   ├── SCHEMA.md
+│   ├── index.md
+│   ├── log.md
+│   ├── 竞品-HashKey.md
+│   ├── 竞品-OSL.md
+│   ├── 监管-香港SFC.md
+│   ├── 业务方向-RWA.md
+│   ├── 核心切入机会.md
+│   └── 市场趋势.md
+├── scripts/
+│   └── wiki-updater.py      # 新闻触发 wiki 自动更新
+├── skills/
+│   └── hk-market-intel.md   # Hermes 自定义技能（Windows 副本）
+├── scrapers/                # 25个数据源抓取器
+├── sources.yaml             # 数据源配置
 └── .github/workflows/
-    ├── ci.yml             # 每 15 分钟抓取
-    ├── daily_report.yml   # 每日日报
-    └── weekly_report.yml  # 每周周报
+    ├── sync_wiki.yml        # 每周同步 hk-web3-wiki
+    └── ...
 ```
+
+---
+
+## 🔗 相关仓库
+
+- **[hk-web3-wiki](https://github.com/Beltran12138/hk-web3-wiki)** — 公开行研知识库（Docsify 静态站）
+- **[Web3Watch-HK](https://github.com/Beltran12138/Web3Watch-HK)** — 主系统仓库
 
 ---
 
 ## 📝 更新日志
 
-### v2.2.0 (2026-03-25)
-- 📊 **宏观市场背景**：日报新增 BTC/ETH 价格、总市值、BTC 主导率、恐惧贪婪指数面板
-- 🏢 **竞品动态矩阵**：周报新增按竞品来源分组的动态矩阵视图
-- 🧠 **历史趋势记忆**：日报 AI 总结注入近期行业趋势，支持纵向对比
-- 🔍 **WeCom errcode 检查**：推送失败不再静默，日志中直接显示企微 API 错误码
+### v3.0.0（2026-04-17）
+- ✅ Hermes Agent + WeCom 行研 Q&A Bot 上线
+- ✅ wiki-updater.py：新闻触发 wiki 自动更新（DeepSeek 生成摘要）
+- ✅ Notion 产品档案集成（5个核心页面）
+- ✅ SOUL.md wiki-first 查询路径
+- ✅ holographic memory 跨会话记忆
+- ✅ llm-wiki / obsidian / duckduckgo-search 技能启用
+- ✅ SCHEMA.md + index.md + log.md wiki 结构初始化
 
-### v2.1.0 (2026-03-23)
-- 🔧 **better-sqlite3 编译修复**：彻底解决 GitHub Actions Node.js 版本导致的 NMV 不匹配问题
-- 🚫 **移除"高能预警"推送**：停止单条实时推送，仅保留日报/周报汇总推送
-
-### v1.4.0 (2026-03-13)
-- 🤖 AI 三级降级策略
-- 📦 数据生命周期管理（热/温/冷三级存储）
-- 📢 多渠道推送（企业微信/钉钉/Slack/Telegram/Email）
-- 🐦 Twitter 多源冗余抓取
-
----
-
-## 📄 License
-
-MIT
+### v2.2.0（2026-03）
+- 日报推送系统
+- Supabase 双存储
+- DeepSeek alpha_score 评分

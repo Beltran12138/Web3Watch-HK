@@ -34,27 +34,27 @@ triggers:
 
 ```bash
 # 竞品动态（HashKey / OSL）
-curl -s "$SUPABASE_URL/rest/v1/news_items?select=title,detail,source,alpha_score,business_category,created_at&source=in.(HashKeyExchange,HashKeyGroup,OSL,TechubNews)&alpha_score=gte.65&order=created_at.desc&limit=10" \
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,business_category,created_at&source=in.(HashKeyExchange,HashKeyGroup,OSL,TechubNews)&alpha_score=gte.65&order=created_at.desc&limit=10" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 
 # 监管 / 合规事件
-curl -s "$SUPABASE_URL/rest/v1/news_items?select=title,detail,source,alpha_score,created_at&business_category=like.*合规*&order=created_at.desc&limit=10" \
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&business_category=like.*合规*&order=created_at.desc&limit=10" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 
 # RWA 项目
-curl -s "$SUPABASE_URL/rest/v1/news_items?select=title,detail,source,alpha_score,created_at&business_category=like.*RWA*&order=alpha_score.desc&limit=10" \
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&business_category=like.*RWA*&order=alpha_score.desc&limit=10" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 
 # 高 alpha 战略信号
-curl -s "$SUPABASE_URL/rest/v1/news_items?select=title,detail,source,alpha_score,business_category,bitv_action,created_at&alpha_score=gte.85&order=alpha_score.desc&limit=10" \
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,business_category,bitv_action,created_at&alpha_score=gte.85&order=alpha_score.desc&limit=10" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 
 # 关键词搜索（将 KEYWORD 替换）
-curl -s "$SUPABASE_URL/rest/v1/news_items?select=title,detail,source,alpha_score,created_at&title=ilike.*KEYWORD*&order=created_at.desc&limit=10" \
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&title=ilike.*KEYWORD*&order=created_at.desc&limit=10" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 ```
