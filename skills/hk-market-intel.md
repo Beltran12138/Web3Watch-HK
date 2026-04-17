@@ -1,117 +1,99 @@
 ---
 name: hk-market-intel
-description: 香港 Web3 市场情报查询。当用户询问竞品动态、监管进展、RWA项目、市场趋势、产品策略建议时触发。
-version: "2.0"
-triggers:
-  - 竞品
-  - HashKey
-  - OSL
-  - 监管
-  - SFC
-  - RWA
-  - 稳定币
-  - 日报
-  - 行研
-  - BitV
-  - 市场
-  - 趋势
-  - 建议
-  - Tier
+description: 香港 Web3 市场情报查询。三阶段推理：Wiki背景知识 → 缺口分析 → 定向补充搜索 → 三段式输出。当用户询问竞品动态（HashKey/OSL）、监管进展（SFC/VATP）、RWA、稳定币、市场趋势、产品策略时触发。
+version: 3.0.0
+author: BitV Product Team
+license: MIT
+metadata:
+  hermes:
+    tags: [HashKey, OSL, SFC, RWA, 监管, 竞品, 稳定币, 市场, BitV, 行研, 香港, Web3]
 ---
 
-# HK Market Intel — 行研情报技能
+# HK Market Intel — 三阶段情报推理
 
-## 你的角色
+## 阶段 1：Wiki 知识库（每次必读）
 
-你是 BitV 产品团队的**香港 Web3 行研情报助手**。
-回答必须包含三层：**事件速览 → 战略背景 → BitV 建议**。
+### 文件路径映射
+
+| 问题类型 | 读取文件 |
+|---------|---------|
+| HashKey 相关 | `/mnt/c/Users/lenovo/alpha-radar/wiki/竞品-HashKey.md` |
+| OSL 相关 | `/mnt/c/Users/lenovo/alpha-radar/wiki/竞品-OSL.md` |
+| 监管/SFC/稳定币 | `/mnt/c/Users/lenovo/alpha-radar/wiki/监管-香港SFC.md` |
+| RWA/代币化 | `/mnt/c/Users/lenovo/alpha-radar/wiki/业务方向-RWA.md` |
+| 产品策略/Tier | `/mnt/c/Users/lenovo/alpha-radar/wiki/核心切入机会.md` |
+| 全局概览 | `/mnt/c/Users/lenovo/alpha-radar/wiki/市场趋势.md` |
+
+读完后**内部评估**：
+- Wiki 覆盖率 ≥ 70%？
+- 信息时效 ≤ 30天？
+
+→ 两者都是：直接进阶段 3  
+→ 任一否定：进阶段 2
 
 ---
 
-## 数据源 1：实时新闻库（Supabase）
+## 阶段 2：补充数据（按需）
 
-用 bash curl 查询，SUPABASE_URL 和 SUPABASE_ANON_KEY 已在环境变量中。
+### 2A 实时新闻（缓存，无 token 消耗）
 
 ```bash
-# 竞品动态（HashKey / OSL）
-curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,business_category,created_at&source=in.(HashKeyExchange,HashKeyGroup,OSL,TechubNews)&alpha_score=gte.65&order=created_at.desc&limit=10" \
-  -H "apikey: $SUPABASE_ANON_KEY" \
-  -H "Authorization: Bearer $SUPABASE_ANON_KEY"
+cat /root/.hermes/market-intel-cache.md
+```
 
-# 监管 / 合规事件
-curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&business_category=like.*合规*&order=created_at.desc&limit=10" \
-  -H "apikey: $SUPABASE_ANON_KEY" \
-  -H "Authorization: Bearer $SUPABASE_ANON_KEY"
+### 2B 定向网络搜索（仅当缓存仍不足时）
 
-# RWA 项目
-curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&business_category=like.*RWA*&order=alpha_score.desc&limit=10" \
+**搜索词从缺口分析导出**，示例：
+- "HashKey ETF 2026 latest" （wiki 有基本信息但缺近期 ETF 进展）
+- "香港 SFC 稳定币牌照 2026" （wiki 监管章节超过 30 天未更新）
+- "OSL institutional 2026 announcement"
+
+```bash
+# 使用 duckduckgo-search 技能
+ddgs text -k "SEARCH_QUERY" -r wt-wt -m 5
+```
+
+**限制**：最多 2 次搜索，搜索词必须精确对应缺口。
+
+### 2C 深度竞品调研（仅需要时）
+
+使用 company-research-web-scraping 技能抓取官网。
+
+---
+
+## 阶段 3：综合输出
+
+整合 Wiki 结构化知识 + 最新数据，**必须使用三段式格式**：
+
+```
+📡 **事件速览**
+• [来源] 标题（alpha分 或 日期）
+  └ 摘要（1-2句）
+
+📚 **战略背景**
+（Wiki 来源的结构化判断，注明文件名，50-100字）
+
+💡 **BitV 建议**
+• 建议1（来自核心切入机会.md 的可执行行动）
+• 建议2（可选）
+```
+
+字数 ≤ 400 字，注明信息来源（wiki / 缓存 / 搜索）。
+
+---
+
+## Supabase 直查（可选，当缓存不满足时）
+
+```bash
+source /root/.hermes/.env
+
+# 按关键词查（替换 KEYWORD）
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&title=ilike.*KEYWORD*&order=created_at.desc&limit=5" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 
 # 高 alpha 战略信号
-curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,business_category,bitv_action,created_at&alpha_score=gte.85&order=alpha_score.desc&limit=10" \
-  -H "apikey: $SUPABASE_ANON_KEY" \
-  -H "Authorization: Bearer $SUPABASE_ANON_KEY"
-
-# 关键词搜索（将 KEYWORD 替换）
-curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,created_at&title=ilike.*KEYWORD*&order=created_at.desc&limit=10" \
+curl -s "$SUPABASE_URL/rest/v1/news?select=title,detail,source,alpha_score,bitv_action,created_at&alpha_score=gte.85&order=alpha_score.desc&limit=5" \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Authorization: Bearer $SUPABASE_ANON_KEY"
 ```
-
----
-
-## 数据源 2：行研知识库（Wiki 文件）
-
-Wiki 文件在 `/mnt/c/Users/lenovo/alpha-radar/wiki/`，用 cat 读取：
-
-```bash
-# 产品优先级矩阵（必读，每次都要参考）
-cat "/mnt/c/Users/lenovo/alpha-radar/wiki/核心切入机会.md"
-
-# 竞品分析
-cat "/mnt/c/Users/lenovo/alpha-radar/wiki/竞品-HashKey.md"
-cat "/mnt/c/Users/lenovo/alpha-radar/wiki/竞品-OSL.md"
-
-# 监管图谱
-cat "/mnt/c/Users/lenovo/alpha-radar/wiki/监管-香港SFC.md"
-
-# RWA 机会
-cat "/mnt/c/Users/lenovo/alpha-radar/wiki/业务方向-RWA.md"
-
-# 市场趋势
-cat "/mnt/c/Users/lenovo/alpha-radar/wiki/市场趋势.md"
-```
-
----
-
-## 意图 → 数据源映射
-
-| 用户问题 | 查 Supabase | 读 Wiki |
-|---------|-------------|---------|
-| HashKey / OSL 动态 | source 过滤竞品 | 竞品-HashKey / OSL |
-| 监管 / SFC / 牌照 | business_category 合规 | 监管-香港SFC |
-| RWA / 代币化 | business_category RWA | 业务方向-RWA |
-| 稳定币 | title ilike 稳定币 | 监管-香港SFC |
-| AI 趋势 | title ilike AI Agent | 市场趋势 |
-| BitV 该做什么 | alpha_score >= 85 | **核心切入机会**（必读） |
-| 今日要闻 | 最近24h，alpha >= 70 | 核心切入机会 |
-
----
-
-## 回答格式（固定三段式）
-
-```
-📡 **事件速览**
-• [来源] 标题（alpha分）
-  └ 摘要
-
-📚 **战略背景**
-（来自Wiki的1-2段关键判断）
-
-💡 **BitV 建议**
-• 建议1（可执行，基于核心切入机会矩阵）
-• 建议2（可选）
-```
-
-字数控制在 400 字以内，产品团队看一眼就能用。
