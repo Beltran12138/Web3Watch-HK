@@ -14,10 +14,16 @@
 
 ## 竞争格局
 - OSL：Tokenworks代币化发行，OpenEden/Plume合作，EXCB25上线
-- HashKey：HashKey Chain(L2)链上RWA约17亿HKD，STBL票据
+- HashKey：HashKey Chain(L2)链上RWA约17亿HKD，STBL票据，**4月16日与HabitTrade合作实现美股代币链上交易**
 - EX.IO：RWA布局最激进（FUIDL、EXCB25、Plume合作）
 - HKVAX：侧重发行端，二级交易能力薄弱
 
 ## 二级市场流动性是最大断层
 整条价值链：底层资产→代币化发行→分销→**二级交易（断层）**→赎回
 我司定位：连接发行方和投资者的"中间层分销+二级交易"平台
+
+## 最新 RWA 动态
+- [2026-04-15] MEXC推Ondo股票交易对，RWA现货竞争加剧。（alpha=65，来源：MEXC）
+- [2026-04-09] 币安推定期购买，RWA便利性提升，竞争加剧。（alpha=65，来源：Binance）
+- [2026-03-31] FinChain采用Chainlink标准，提升互操作性，扩大亚洲市场覆盖。（alpha=65，来源：PRNewswire）
+- [2026-03-20] MEXC拓展RWA现货交易，二级市场竞争加剧。（alpha=75，来源：MEXC）
