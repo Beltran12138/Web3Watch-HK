@@ -77,5 +77,6 @@ module.exports = {
     'build/',
     '*.db',
     '.vercel/',
+    'dashboard/',
   ],
 };
