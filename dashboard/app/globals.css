@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-gray-50 text-gray-900 antialiased; }
+  a { @apply transition-colors; }
+}
+
+@layer components {
+  .card { @apply bg-white rounded-xl border border-gray-100 shadow-sm hover:border-brand/40 hover:shadow-md transition-all; }
+  .section-title { @apply text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3; }
+  .score-badge { @apply inline-block px-2 py-0.5 rounded-full text-xs font-bold border; }
+  .cat-badge { @apply inline-block px-2 py-0.5 rounded-full text-xs bg-sky-50 text-sky-700 border border-sky-200; }
+  .nav-link { @apply px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:text-brand hover:bg-sky-50 transition-colors; }
+  .nav-link-active { @apply px-3 py-2 rounded-lg text-sm font-medium bg-brand text-white; }
+}
