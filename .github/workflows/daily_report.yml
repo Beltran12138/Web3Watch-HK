@@ -7,6 +7,9 @@ on:
     - cron: '0 10 * * *'
   workflow_dispatch: # 手动触发
 
+permissions:
+  contents: write
+
 # 防止多个日报实例并发运行
 concurrency:
   group: daily-report
@@ -83,3 +86,19 @@ jobs:
           WECOM_WEBHOOK_URL: ${{ secrets.WECOM_WEBHOOK_URL }}
           USE_SUPABASE: 'true'
           DEBUG: 'true'
+
+      - name: Generate GitHub Pages
+        if: success()
+        run: node generate-pages.js --days=30
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
+      - name: Commit & push Pages
+        if: success()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git diff --staged --quiet || git commit -m "chore: update GitHub Pages [$(date -u +%Y-%m-%d)]"
+          git push || true
