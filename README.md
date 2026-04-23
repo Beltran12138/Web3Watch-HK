@@ -8,7 +8,7 @@
 [![GitHub Actions](https://img.shields.io/badge/CI%2FCD-GitHub_Actions-2088FF?logo=githubactions)](/.github/workflows)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-**[📊 Live Dashboard →](https://web3watchhk.vercel.app)** · **[📄 Daily Archive →](https://beltran12138.github.io/Web3Watch-HK)** · **[⭐ Star History](#star-history)**
+**[📊 Live Dashboard →](https://alpha-radar-eight.vercel.app)** · **[📄 Daily Archive →](https://beltran12138.github.io/Web3Watch-HK)** · **[⭐ Star History](#star-history)**
 
 [![Deploy Dashboard with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Beltran12138/Web3Watch-HK&root-directory=dashboard&env=NEXT_PUBLIC_SUPABASE_URL,NEXT_PUBLIC_SUPABASE_ANON_KEY&envDescription=Your%20Supabase%20project%20URL%20and%20anon%20key)
 
@@ -28,7 +28,7 @@
 
 ## Live Demo
 
-> **Dashboard**: [web3watchhk.vercel.app](https://web3watchhk.vercel.app)
+> **Dashboard**: [alpha-radar-eight.vercel.app](https://alpha-radar-eight.vercel.app)
 > — Browse today's intelligence, 30-day archive, source health, and analytics charts.
 
 > **Daily Archive**: [beltran12138.github.io/Web3Watch-HK](https://beltran12138.github.io/Web3Watch-HK)
