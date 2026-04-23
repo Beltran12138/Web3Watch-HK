@@ -8,7 +8,7 @@
 
 > 全自动香港 Web3 行业情报聚合与分析系统。7×24h 监控 25+ 数据源，DeepSeek AI 实时分类评分，每日 18:00 自动推送企业微信群与领导层邮件。
 
-**[📊 Live Demo →](https://beltran12138.github.io/Web3Watch-HK)**
+**[📊 Live Dashboard →](https://web3watchhk.vercel.app)** · **[📄 Daily Archive →](https://beltran12138.github.io/Web3Watch-HK)**
 
 ---
 
