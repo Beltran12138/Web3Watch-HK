@@ -220,4 +220,4 @@ Guardian 双保险 + 幂等防重 + 自动重试 + 新鲜度校验，确保 7×2
 
 ---
 
-*Built with ❤️ for Hong Kong Web3 industry intelligence · 产品部行研组*
+*Built with ❤️ for Hong Kong Web3 industry intelligence*
