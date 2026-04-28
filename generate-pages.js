@@ -34,7 +34,7 @@ async function fetchRecentNews(days) {
     .from('news')
     .select('id,title,detail,source,timestamp,business_category,alpha_score,is_important,impact,bitv_action,url')
     .gte('timestamp', since)
-    .or('alpha_score.gte.60,is_important.eq.true')
+    .or('alpha_score.gte.60,is_important.eq.1')
     .order('timestamp', { ascending: false })
     .limit(500);
 
