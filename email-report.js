@@ -188,25 +188,20 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
  * @param {string}   dateRange  - 周期字符串，如 "0327 ~ 0409"，用于落款日期
  */
 function buildManualEmailHtml(summary, imagePaths, dateRange) {
-  // 将纯文本结论转为 HTML：
-  //   - 空行 → 段落间距
-  //   - **文字** → 加粗
-  //   - 普通行 → 正文段落
   const paragraphs = summary.split('\n');
   const summaryHtml = paragraphs.map(line => {
     const trimmed = line.trim();
-    if (!trimmed) return '<div style="height:10px;"></div>';
-    // **粗体** 语法支持
-    const formatted = trimmed.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-    return `<div style="margin:4px 0;line-height:1.9;color:#333;">${formatted}</div>`;
+    if (!trimmed) return '<div style="height:12px;"></div>';
+    const formatted = trimmed.replace(/\*\*(.+?)\*\*/g, '<strong style="color:#0d1b2a;">$1</strong>');
+    return `<div style="margin:5px 0;line-height:1.95;color:#374151;font-size:14px;">${formatted}</div>`;
   }).join('\n');
 
   const imageSection = imagePaths.length > 0
     ? imagePaths.map((_, i) =>
-        `<tr><td style="padding:0 32px ${i === imagePaths.length - 1 ? '28' : '12'}px;">
-        <img src="cid:weekly_report_image_${i}" alt="本周行业动态 ${i + 1}"
-          style="width:100%;max-width:616px;border-radius:4px;border:1px solid #eee;display:block;">
-      </td></tr>`
+        `<tr><td style="padding:0 36px ${i === imagePaths.length - 1 ? '32' : '16'}px;font-size:0;line-height:0;">
+          <img src="cid:weekly_report_image_${i}" alt="行业动态图表 ${i + 1}"
+            style="width:100%;max-width:588px;display:block;border-radius:3px;border:1px solid #e5e7eb;">
+        </td></tr>`
       ).join('\n')
     : '';
 
@@ -220,76 +215,137 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 </head>
-<body style="margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f5f5f5;padding:24px 0;">
+<body style="margin:0;padding:0;background:#eef0f3;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue','PingFang SC','Microsoft YaHei',sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#eef0f3;padding:32px 0;">
     <tr><td align="center">
-      <table width="680" cellpadding="0" cellspacing="0" style="background:#ffffff;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+      <table width="660" cellpadding="0" cellspacing="0" style="background:#ffffff;">
 
-        <!-- Header -->
+        <!-- ── Header ── -->
         <tr>
-          <td style="background:#00A7E1;padding:24px 32px;">
-            <div style="color:#ffffff;font-size:20px;font-weight:700;letter-spacing:0.5px;">
-              Web3Watch HK 行业周报
+          <td style="background:#0d1b2a;padding:36px 40px 28px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;">
+                  INTERNAL REFERENCE &nbsp;·&nbsp; HIGHBLOCK
+                </td>
+                <td align="right" style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.08em;">
+                  ${dateRange}
+                </td>
+              </tr>
+            </table>
+            <div style="color:#ffffff;font-size:22px;font-weight:700;margin-top:14px;line-height:1.35;letter-spacing:0.01em;">
+              行业研究周报
             </div>
-            <div style="color:rgba(255,255,255,0.85);font-size:13px;margin-top:6px;">
-              ${dateRange}
-            </div>
+            <div style="background:#00A7E1;height:3px;width:40px;margin-top:18px;border-radius:2px;"></div>
           </td>
         </tr>
 
-        <!-- Greeting -->
+        <!-- ── Meta bar ── -->
         <tr>
-          <td style="padding:28px 32px 4px;color:#333;font-size:14px;line-height:1.9;">
-            <div style="margin-bottom:16px;">尊敬的各位领导，您好：</div>
-            <div style="margin-bottom:12px;">以下是本周（${dateRange}）香港 Web3 行业动态摘要，供参考。</div>
+          <td style="background:#f8f7f4;border-bottom:2px solid #0d1b2a;padding:10px 40px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="color:#6b7280;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">
+                  产品部行研组 &nbsp;|&nbsp; 本期周期：${dateRange}
+                </td>
+                <td align="right" style="color:#6b7280;font-size:11px;">
+                  ${today}
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
-        <!-- Summary -->
+        <!-- ── Greeting ── -->
         <tr>
-          <td style="padding:0 32px 24px;color:#333;font-size:14px;line-height:1.9;border-left:3px solid #00A7E1;margin-left:32px;">
-            <div style="background:#f8fcff;border-left:3px solid #00A7E1;padding:14px 18px;border-radius:0 4px 4px 0;">
+          <td style="padding:32px 40px 0;color:#374151;font-size:14px;line-height:1.9;">
+            <div style="margin-bottom:8px;">尊敬的各位，</div>
+            <div style="color:#6b7280;font-size:13px;">以下为本周香港 Web3 行业核心动态，供参阅。</div>
+          </td>
+        </tr>
+
+        <!-- ── Divider ── -->
+        <tr><td style="padding:20px 40px 0;">
+          <div style="border-top:1px solid #e5e7eb;"></div>
+        </td></tr>
+
+        <!-- ── Summary ── -->
+        <tr>
+          <td style="padding:24px 40px;">
+            <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af;font-weight:600;margin-bottom:16px;">
+              本周研判
+            </div>
+            <div style="border-left:3px solid #00A7E1;padding:16px 20px;background:#f9fafb;border-radius:0 4px 4px 0;">
               ${summaryHtml}
             </div>
           </td>
         </tr>
 
-        <!-- Divider -->
-        <tr><td style="padding:0 32px;">
-          <hr style="border:none;border-top:1px solid #eee;margin:0;">
-        </td></tr>
-
-        <!-- Images -->
-        ${imagePaths.length > 0 ? `<tr><td style="padding:20px 32px 8px;color:#888;font-size:12px;">本周行业动态一览</td></tr>` : ''}
+        <!-- ── Images ── -->
+        ${imagePaths.length > 0 ? `
+        <tr><td style="padding:0 40px 16px;">
+          <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af;font-weight:600;margin-bottom:16px;">
+            行业动态图表
+          </div>
+        </td></tr>` : ''}
         ${imageSection}
 
-        <!-- Weekly Report Link -->
+        <!-- ── Doc link ── -->
         <tr>
-          <td style="padding:0 32px 20px;">
-            <div style="background:#f0f9ff;border-radius:6px;padding:12px 16px;font-size:13px;">
-              📄 完整周报文档：
-              <a href="https://doc.weixin.qq.com/doc/w3_ARMAsQbTANACNGOlT0neMRK64hCk5?scode=ANEAUgd7AFo0Aba4VCARMAsQbTANA"
-                style="color:#00A7E1;text-decoration:none;font-weight:500;">点击查看</a>
-            </div>
+          <td style="padding:${imagePaths.length > 0 ? '0' : '0'} 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1b2a;border-radius:4px;">
+              <tr>
+                <td style="padding:14px 20px;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:0.05em;">
+                  完整周报文档
+                </td>
+                <td align="right" style="padding:14px 20px;">
+                  <a href="https://doc.weixin.qq.com/doc/w3_ARMAsQbTANACNGOlT0neMRK64hCk5?scode=ANEAUgd7AFo0Aba4VCARMAsQbTANA"
+                    style="color:#00A7E1;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.05em;">
+                    点击查看 →
+                  </a>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
-        <!-- Signature -->
+        <!-- ── Divider ── -->
+        <tr><td style="padding:0 40px;">
+          <div style="border-top:1px solid #e5e7eb;"></div>
+        </td></tr>
+
+        <!-- ── Signature ── -->
         <tr>
-          <td style="padding:0 32px 28px;color:#555;font-size:13px;line-height:2;">
-            <div>如有疑问，欢迎随时沟通交流。</div>
-            <div style="margin-top:16px;color:#333;">
-              <div>此致</div>
-              <div style="margin-top:8px;font-weight:600;color:#00A7E1;">产品部行研组</div>
-              <div style="color:#888;font-size:12px;margin-top:2px;">${today}</div>
-            </div>
+          <td style="padding:24px 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="color:#6b7280;font-size:13px;line-height:1.8;">
+                  如有疑问，欢迎随时沟通。
+                </td>
+                <td align="right">
+                  <div style="border-left:3px solid #00A7E1;padding:8px 0 8px 16px;text-align:left;display:inline-block;">
+                    <div style="font-size:13px;font-weight:700;color:#0d1b2a;letter-spacing:0.02em;">产品部行研组</div>
+                    <div style="font-size:11px;color:#9ca3af;margin-top:3px;">HighBlock Research</div>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
-        <!-- Footer -->
+        <!-- ── Footer ── -->
         <tr>
-          <td style="background:#fafafa;border-top:1px solid #eee;padding:14px 32px;">
-            <div style="color:#bbb;font-size:11px;">本邮件由 Web3Watch HK 系统自动发送</div>
+          <td style="background:#0d1b2a;padding:14px 40px;">
+            <table width="100%" cellpadding="0" cellspacing="0">
+              <tr>
+                <td style="color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:0.08em;">
+                  HIGHBLOCK · 内部机密，请勿外传
+                </td>
+                <td align="right" style="color:rgba(255,255,255,0.2);font-size:10px;">
+                  Powered by Web3Watch HK
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
