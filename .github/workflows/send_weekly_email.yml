@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       subject:
-        description: '邮件标题（如：Web3Watch HK 行业周报 | 0407 ~ 0411）'
+        description: '邮件标题（如：HighBlock 内部参考 | 行业研究周报（0428 ~ 0504））'
         required: true
       date_range:
         description: '周期（如：0407 ~ 0411，用于邮件正文和落款）'
