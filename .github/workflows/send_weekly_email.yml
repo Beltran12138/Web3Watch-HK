@@ -46,6 +46,7 @@ jobs:
           SMTP_USER:        ${{ secrets.SMTP_USER }}
           SMTP_PASS:        ${{ secrets.SMTP_PASS }}
           WEEKLY_EMAIL_TO:  ${{ secrets.WEEKLY_EMAIL_TO }}
+          WEEKLY_EMAIL_CC:  ${{ secrets.WEEKLY_EMAIL_CC }}
           EMAIL_SUBJECT:    ${{ inputs.subject }}
           EMAIL_DATE_RANGE: ${{ inputs.date_range }}
           EMAIL_SUMMARY:    ${{ inputs.summary }}

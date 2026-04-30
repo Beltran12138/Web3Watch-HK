@@ -139,6 +139,7 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
   const smtpPass = process.env.SMTP_PASS;
   const smtpPort = parseInt(process.env.SMTP_PORT || '465', 10);
   const recipients = (process.env.WEEKLY_EMAIL_TO || process.env.EMAIL_TO || '').trim();
+  const cc         = (process.env.WEEKLY_EMAIL_CC || '').trim() || undefined;
 
   if (!smtpHost || !smtpUser || !smtpPass) {
     console.log('[Email] SMTP not configured, skipping weekly email.');
@@ -164,12 +165,13 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
     const info = await transporter.sendMail({
       from:    `"Web3Watch HK" <${smtpUser}>`,
       to:      recipients,
+      cc,
       subject,
-      text:    reportContent,   // 纯文本备用
+      text:    reportContent,
       html,
     });
 
-    console.log(`[Email] Weekly report sent → ${recipients} (messageId: ${info.messageId})`);
+    console.log(`[Email] Weekly report sent → ${recipients}${cc ? ` CC: ${cc}` : ''} (messageId: ${info.messageId})`);
     return true;
   } catch (err) {
     console.error('[Email] Failed to send weekly report:', err.message);
@@ -314,6 +316,7 @@ async function sendManualWeeklyEmail(subject, summary, dateRange, imagePaths) {
   const smtpPass   = process.env.SMTP_PASS;
   const smtpPort   = parseInt(process.env.SMTP_PORT || '465', 10);
   const recipients = (process.env.WEEKLY_EMAIL_TO || process.env.EMAIL_TO || '').trim();
+  const cc         = (process.env.WEEKLY_EMAIL_CC || '').trim() || undefined;
 
   if (!smtpHost || !smtpUser || !smtpPass) {
     console.log('[Email] SMTP not configured, skipping.');
@@ -350,12 +353,13 @@ async function sendManualWeeklyEmail(subject, summary, dateRange, imagePaths) {
     const info = await transporter.sendMail({
       from:        `"Web3Watch HK" <${smtpUser}>`,
       to:          recipients,
+      cc,
       subject,
       text:        summary,
       html,
       attachments,
     });
-    console.log(`[Email] Manual weekly email sent → ${recipients} (${paths.length} image(s), messageId: ${info.messageId})`);
+    console.log(`[Email] Manual weekly email sent → ${recipients}${cc ? ` CC: ${cc}` : ''} (${paths.length} image(s), messageId: ${info.messageId})`);
     return true;
   } catch (err) {
     console.error('[Email] Failed to send manual weekly email:', err.message);
