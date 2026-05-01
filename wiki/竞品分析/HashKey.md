@@ -38,3 +38,13 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 - 自营做市资本重，服务响应较慢
 - 代币覆盖较窄，新币上线审核严格
 - 不公示价差，透明度不足
+
+<!-- AUTO_NEWS_START -->
+## 📡 最新动态（自动更新）
+
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-05-01
+
+- **[HashKey 理财频道上线恒生黄金ETF（代币化非上市类别） (HSGLD)](manual-1776661024006)** (2026-04-20 | Alpha 65)
+- **[OKX Ventures and HashKey Invest in Vietnam Exchange CAEX, Become Strategic Partners Alongside Founding Shareholders VPBankS and LynkiD](https://group.hashkey.com/en/newsroom/okx-ventures-and-hashkey-invest-in-vietnam-exchange-caex-become-strategic-partners)** (2026-04-10 | Alpha 65)
+
+<!-- AUTO_NEWS_END -->
