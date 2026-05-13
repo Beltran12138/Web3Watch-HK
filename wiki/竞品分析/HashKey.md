@@ -42,7 +42,7 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-05-12
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-05-13
 
 - **[HashKey 理财频道上线恒生黄金ETF（代币化非上市类别） (HSGLD)](manual-1776661024006)** (2026-04-20 | Alpha 65)
 
