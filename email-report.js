@@ -186,8 +186,9 @@ async function sendWeeklyReportEmail(reportContent, startDate, endDate) {
  * @param {string}   summary    - 本周结论/正文文字（支持空行分段、**粗体**标记）
  * @param {string[]} imagePaths - 图片路径数组（按顺序内嵌），可为空数组
  * @param {string}   dateRange  - 周期字符串，如 "0327 ~ 0409"，用于落款日期
+ * @param {string}   [logoSrc]  - Logo 的 src（CID 引用如 "cid:logo"，或 base64 data URI，可选）
  */
-function buildManualEmailHtml(summary, imagePaths, dateRange) {
+function buildManualEmailHtml(summary, imagePaths, dateRange, logoSrc) {
   const paragraphs = summary.split('\n');
   const summaryHtml = paragraphs.map(line => {
     const trimmed = line.trim();
@@ -209,6 +210,10 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
     timeZone: 'Asia/Shanghai', year: 'numeric', month: 'long', day: 'numeric',
   });
 
+  const logoHtml = logoSrc
+    ? `<img src="${logoSrc}" alt="HighBlock" width="36" height="36" style="display:inline-block;vertical-align:middle;border-radius:4px;margin-right:12px;">`
+    : '';
+
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -222,33 +227,33 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
 
         <!-- ── Header ── -->
         <tr>
-          <td style="background:#0d1b2a;padding:36px 40px 28px;">
+          <td style="background:#1e3269;padding:36px 40px 28px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="color:rgba(255,255,255,0.45);font-size:10px;letter-spacing:0.15em;text-transform:uppercase;font-weight:600;">
-                  INTERNAL REFERENCE &nbsp;·&nbsp; HIGHBLOCK
+                <td style="vertical-align:middle;">
+                  ${logoHtml}<span style="color:#c9a55a;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;vertical-align:middle;">HIGHBLOCK</span>
                 </td>
                 <td align="right" style="color:rgba(255,255,255,0.4);font-size:10px;letter-spacing:0.08em;">
-                  ${dateRange}
+                  INTERNAL REFERENCE &nbsp;·&nbsp; ${dateRange}
                 </td>
               </tr>
             </table>
-            <div style="color:#ffffff;font-size:22px;font-weight:700;margin-top:14px;line-height:1.35;letter-spacing:0.01em;">
+            <div style="color:#ffffff;font-size:23px;font-weight:700;margin-top:16px;line-height:1.35;letter-spacing:0.01em;">
               行业研究周报
             </div>
-            <div style="background:#00A7E1;height:3px;width:40px;margin-top:18px;border-radius:2px;"></div>
+            <div style="background:#c9a55a;height:3px;width:48px;margin-top:18px;border-radius:2px;"></div>
           </td>
         </tr>
 
         <!-- ── Meta bar ── -->
         <tr>
-          <td style="background:#f8f7f4;border-bottom:2px solid #0d1b2a;padding:10px 40px;">
+          <td style="background:#f8f7f4;border-bottom:2px solid #1e3269;padding:10px 40px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="color:#6b7280;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;">
-                  产品部行研组 &nbsp;|&nbsp; 本期周期：${dateRange}
+                <td style="color:#6b7280;font-size:11px;letter-spacing:0.06em;">
+                  产品部行研组 &nbsp;·&nbsp; ${dateRange}
                 </td>
-                <td align="right" style="color:#6b7280;font-size:11px;">
+                <td align="right" style="color:#9ca3af;font-size:11px;">
                   ${today}
                 </td>
               </tr>
@@ -259,7 +264,7 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
         <!-- ── Greeting ── -->
         <tr>
           <td style="padding:32px 40px 0;color:#374151;font-size:14px;line-height:1.9;">
-            <div style="margin-bottom:8px;">尊敬的各位，</div>
+            <div style="margin-bottom:8px;">尊敬的各位领导，</div>
             <div style="color:#6b7280;font-size:13px;">以下为本周香港 Web3 行业核心动态，供参阅。</div>
           </td>
         </tr>
@@ -275,7 +280,7 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
             <div style="font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af;font-weight:600;margin-bottom:16px;">
               本周研判
             </div>
-            <div style="border-left:3px solid #00A7E1;padding:16px 20px;background:#f9fafb;border-radius:0 4px 4px 0;">
+            <div style="border-left:3px solid #c9a55a;padding:16px 20px;background:#f9fafb;border-radius:0 4px 4px 0;">
               ${summaryHtml}
             </div>
           </td>
@@ -292,15 +297,15 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
 
         <!-- ── Doc link ── -->
         <tr>
-          <td style="padding:${imagePaths.length > 0 ? '0' : '0'} 40px 32px;">
-            <table width="100%" cellpadding="0" cellspacing="0" style="background:#0d1b2a;border-radius:4px;">
+          <td style="padding:0 40px 32px;">
+            <table width="100%" cellpadding="0" cellspacing="0" style="background:#1e3269;border-radius:4px;">
               <tr>
-                <td style="padding:14px 20px;color:rgba(255,255,255,0.7);font-size:12px;letter-spacing:0.05em;">
+                <td style="padding:14px 20px;color:rgba(255,255,255,0.65);font-size:12px;letter-spacing:0.05em;">
                   完整周报文档
                 </td>
                 <td align="right" style="padding:14px 20px;">
                   <a href="https://doc.weixin.qq.com/doc/w3_ARMAsQbTANACNGOlT0neMRK64hCk5?scode=ANEAUgd7AFo0Aba4VCARMAsQbTANA"
-                    style="color:#00A7E1;text-decoration:none;font-size:12px;font-weight:600;letter-spacing:0.05em;">
+                    style="color:#c9a55a;text-decoration:none;font-size:12px;font-weight:700;letter-spacing:0.05em;">
                     点击查看 →
                   </a>
                 </td>
@@ -323,8 +328,8 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
                   如有疑问，欢迎随时沟通。
                 </td>
                 <td align="right">
-                  <div style="border-left:3px solid #00A7E1;padding:8px 0 8px 16px;text-align:left;display:inline-block;">
-                    <div style="font-size:13px;font-weight:700;color:#0d1b2a;letter-spacing:0.02em;">产品部行研组</div>
+                  <div style="border-left:3px solid #c9a55a;padding:8px 0 8px 16px;text-align:left;display:inline-block;">
+                    <div style="font-size:13px;font-weight:700;color:#1e3269;letter-spacing:0.02em;">产品部行研组</div>
                     <div style="font-size:11px;color:#9ca3af;margin-top:3px;">HighBlock Research</div>
                   </div>
                 </td>
@@ -335,11 +340,11 @@ function buildManualEmailHtml(summary, imagePaths, dateRange) {
 
         <!-- ── Footer ── -->
         <tr>
-          <td style="background:#0d1b2a;padding:14px 40px;">
+          <td style="background:#1e3269;padding:14px 40px;">
             <table width="100%" cellpadding="0" cellspacing="0">
               <tr>
-                <td style="color:rgba(255,255,255,0.25);font-size:10px;letter-spacing:0.08em;">
-                  HIGHBLOCK · 内部机密，请勿外传
+                <td style="color:rgba(255,255,255,0.3);font-size:10px;letter-spacing:0.08em;">
+                  HIGHBLOCK &nbsp;·&nbsp; 产品部行研组
                 </td>
                 <td align="right" style="color:rgba(255,255,255,0.2);font-size:10px;">
                   Powered by Web3Watch HK
@@ -390,13 +395,31 @@ async function sendManualWeeklyEmail(subject, summary, dateRange, imagePaths) {
 
   if (paths.length === 0) console.warn('[Email] No images found, sending without inline images.');
 
-  const html = buildManualEmailHtml(summary, paths, dateRange);
+  // Logo（assets/logo.jpg），存在则以 CID 内嵌进 header
+  const logoPath = path.join(__dirname, 'assets', 'logo.jpg');
+  const hasLogo  = fs.existsSync(logoPath);
+  if (!hasLogo) console.warn('[Email] assets/logo.jpg not found, header will render without logo.');
+
+  const html = buildManualEmailHtml(
+    summary,
+    paths,
+    dateRange,
+    hasLogo ? 'cid:highblock_logo' : null,
+  );
 
   const attachments = paths.map((p, i) => ({
     filename: `weekly-report-${i + 1}${path.extname(p)}`,
     path:     p,
     cid:      `weekly_report_image_${i}`,
   }));
+
+  if (hasLogo) {
+    attachments.push({
+      filename: 'logo.jpg',
+      path:     logoPath,
+      cid:      'highblock_logo',
+    });
+  }
 
   const transporter = nodemailer.createTransport({
     host:   smtpHost,
@@ -423,4 +446,4 @@ async function sendManualWeeklyEmail(subject, summary, dateRange, imagePaths) {
   }
 }
 
-module.exports = { sendWeeklyReportEmail, sendManualWeeklyEmail };
+module.exports = { sendWeeklyReportEmail, sendManualWeeklyEmail, buildManualEmailHtml };
