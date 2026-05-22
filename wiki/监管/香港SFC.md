@@ -43,3 +43,14 @@ sources: [SFC官网, 官方通告, 政府公报]
 - SFC 正考虑允许 VATP 为零售客户提供代币化证券**二级市场交易**
 - 香港黄金 ETF 已挂牌，未来拟通过 VATP 分销
 - 独立托管立法目标：2026 夏提交立法会
+
+<!-- AUTO_NEWS_START -->
+## 📡 最新动态（自动更新）
+
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-05-22
+
+- **[香港证监会增强措施以应对伪造文件及洗钱风险并提高开户标准](https://www.techub.news/articleDetail/ff4ac273-34b6-4ca4-99b9-f1194af60cc2)** (2026-05-22 | Alpha 85)
+- **[证监会严肃查处老虎等机构非法跨境展业案件](https://www.techub.news/articleDetail/470f0f8b-72ff-43b5-996a-26e78dc9d771)** (2026-05-22 | Alpha 85)
+- **[中国证监会等八部门联合印发《综合整治非法跨境证券期货基金经营活动实施方案》](https://www.techub.news/articleDetail/ab2fee1e-3412-434b-802b-ede703adb219)** (2026-05-22 | Alpha 75)
+
+<!-- AUTO_NEWS_END -->

@@ -39,3 +39,12 @@ sources: [OSL官网, SFC公告, BC Group财报]
 - Omnibus Pro 集成复杂，**1,000+ 家中小券商仍观望**
 - 代币覆盖较窄（合规审核严格）
 - iRFQ SaaS 白标业务与自身 B 端客户存在竞争关系
+
+<!-- AUTO_NEWS_START -->
+## 📡 最新动态（自动更新）
+
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-05-22
+
+- **[OSL上線黃金穩定幣USDKG 促進亞洲數字資產生態系統建設](https://www.osl.com/hk/press-release/osl-lists-gold-backed-stablecoin-usdkg-hong-kong)** (2026-05-22 | Alpha 70)
+
+<!-- AUTO_NEWS_END -->
