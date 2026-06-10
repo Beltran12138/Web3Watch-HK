@@ -43,9 +43,8 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-03
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-10
 
-- **[南方東英首推貨幣市場基金代幣化 與OSL簽署合作備忘錄 達成VATP獨家產品上綫合作](https://www.osl.com/hk/press-release/csop-hsbc-osl-launch-tokenised-money-market-fund)** (2026-06-02 | Alpha 75)
-- **[OSL 成为南方东英首个货币市场基金代币化产品独家分销商](https://www.techub.news/articleDetail/44dc9998-4ad1-4b0f-83bb-d7fbee5df0ff)** (2026-06-03 | Alpha 75)
+- **[OSL成為方德證券獨家合作夥伴 助其開展數字資產業務](https://www.osl.com/hk/press-release/osl-exclusive-partner-forthright-securities-digital-assets)** (2026-06-09 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
