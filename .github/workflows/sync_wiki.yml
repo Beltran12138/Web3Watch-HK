@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Checkout Web3Watch-HK
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Pull latest wiki from hk-web3-wiki
         run: |

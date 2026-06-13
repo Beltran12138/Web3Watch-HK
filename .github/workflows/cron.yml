@@ -15,10 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '*/5 * * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
@@ -35,10 +35,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '*/30 * * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
@@ -55,10 +55,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '0 * * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
@@ -74,10 +74,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '0 10 * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
@@ -93,10 +93,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '0 10 * * 5'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
@@ -112,10 +112,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '0 */6 * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
@@ -131,10 +131,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.schedule == '30 16 * * *'
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '22'
           cache: 'npm'
       - name: Install dependencies
         run: npm ci && npm rebuild better-sqlite3
