@@ -43,9 +43,9 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-15
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-16
 
 - **[OSL成為方德證券獨家合作夥伴 助其開展數字資產業務](https://www.osl.com/hk/press-release/osl-exclusive-partner-forthright-securities-digital-assets)** (2026-06-09 | Alpha 75)
-- **[香港理工大學工商管理學院數字資產與創新中心與OSL集團聯合發布白皮書：跨境貿易支付為企業級合規穩定幣重要應用場景](https://www.osl.com/hk/press-release/polyu-osl-release-joint-whitepaper)** (2026-06-15 | Alpha 70)
+- **[合規企業級穩定幣USDGO流通規模突破5億美元，強化流動性構築多元生態](https://www.osl.com/hk/press-release/usdgo-stablecoin-circulation-surpasses-500-million-osl-group)** (2026-06-16 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
