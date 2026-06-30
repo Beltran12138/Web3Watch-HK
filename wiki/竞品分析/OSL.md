@@ -43,7 +43,7 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-29
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-30
 
 - **[OSL成為方德證券獨家合作夥伴 助其開展數字資產業務](https://www.osl.com/hk/press-release/osl-exclusive-partner-forthright-securities-digital-assets)** (2026-06-09 | Alpha 75)
 
