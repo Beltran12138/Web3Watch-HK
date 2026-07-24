@@ -47,8 +47,8 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-06-11
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-07-24
 
-- **[EX.IO 与Franklin Templeton强强合作 共启合规链上金融新时代](https://www.ex.io/zh/support/announcements/ex-io-%E4%B8%8Efranklin-templeton%E5%BC%BA%E5%BC%BA%E5%90%88%E4%BD%9C-%E5%85%B1%E5%90%AF%E5%90%88%E8%A7%84%E9%93%BE%E4%B8%8A%E9%87%91%E8%9E%8D%E6%96%B0%E6%97%B6%E4%BB%A3)** (2026-06-11 | Alpha 75)
+- **[香港證監會譴責勝利證券並罰款 170 萬港元，吊銷負責人員牌照 3 個月](https://www.techub.news/articleDetail/5a565784-d412-4e8f-86c1-e6feadd818a6)** (2026-07-24 | Alpha 85)
 
 <!-- AUTO_NEWS_END -->
