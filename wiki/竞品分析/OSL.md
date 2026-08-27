@@ -43,8 +43,8 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-07-20
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-08-28
 
-- **[合規企業級穩定幣USDGO流通規模突破10億美元，躋身全球合規穩定幣市值前六位](https://www.osl.com/hk/press-release/circulating-supply-of-enterprise-stablecoin-USDGO-surpasses-1-billion-usd)** (2026-07-19 | Alpha 75)
+- **[Global X ETFs聯同Citi（花旗）及OSL推出全港首隻代幣化備兌認購期權ETF](https://www.osl.com/hk/press-release/global-x-etfs-citi-osl-launch-hong-kongs-first-tokenized-covered-call-etf)** (2026-08-26 | Alpha 85)
 
 <!-- AUTO_NEWS_END -->
