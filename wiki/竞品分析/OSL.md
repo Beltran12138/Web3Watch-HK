@@ -43,8 +43,8 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-08-28
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-04
 
-- **[Global X ETFs聯同Citi（花旗）及OSL推出全港首隻代幣化備兌認購期權ETF](https://www.osl.com/hk/press-release/global-x-etfs-citi-osl-launch-hong-kongs-first-tokenized-covered-call-etf)** (2026-08-26 | Alpha 85)
+- **[OSL Exchange成為香港最大數字資產交易平台，現貨和穩定幣交易量市場第一](https://www.osl.com/hk/press-release/osl-exchange-hong-kong-largest-digital-asset-trading-platform)** (2026-09-03 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
