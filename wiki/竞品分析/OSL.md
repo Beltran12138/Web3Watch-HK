@@ -43,8 +43,8 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-04
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-15
 
-- **[OSL Exchange成為香港最大數字資產交易平台，現貨和穩定幣交易量市場第一](https://www.osl.com/hk/press-release/osl-exchange-hong-kong-largest-digital-asset-trading-platform)** (2026-09-03 | Alpha 75)
+- **[Payment Asia、OSL集團與碇點⾦融實現香港受規管港元穩定幣HKDAP企業⽀付應⽤](https://www.osl.com/hk/press-release/payment-asia-osl-anchorpoint-regulated-hkd-stablecoin-hkdap)** (2026-09-13 | Alpha 78)
 
 <!-- AUTO_NEWS_END -->
