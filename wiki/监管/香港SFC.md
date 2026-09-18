@@ -47,8 +47,8 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-07-24
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-18
 
-- **[香港證監會譴責勝利證券並罰款 170 萬港元，吊銷負責人員牌照 3 個月](https://www.techub.news/articleDetail/5a565784-d412-4e8f-86c1-e6feadd818a6)** (2026-07-24 | Alpha 85)
+- **[卓銳金融集團取得澳洲金融服務牌照，持牌版圖覆蓋亞太三個主要金融市場](https://www.techub.news/articleDetail/a9f707d3-f639-44f7-8474-5b96401fe1f9)** (2026-09-18 | Alpha 65)
 
 <!-- AUTO_NEWS_END -->

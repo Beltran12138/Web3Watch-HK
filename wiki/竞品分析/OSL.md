@@ -43,8 +43,8 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-15
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-18
 
-- **[Payment Asia、OSL集團與碇點⾦融實現香港受規管港元穩定幣HKDAP企業⽀付應⽤](https://www.osl.com/hk/press-release/payment-asia-osl-anchorpoint-regulated-hkd-stablecoin-hkdap)** (2026-09-13 | Alpha 78)
+- **[華夏基金（香港）聯同渣打銀行及OSL集團率先完成香港首宗港元穩定幣HKDAP投資數字資產用例](https://www.osl.com/hk/press-release/chinaamc-sc-osl-hkd-stablecoin-fund-use-case)** (2026-09-17 | Alpha 82)
 
 <!-- AUTO_NEWS_END -->
