@@ -28,6 +28,10 @@ const {
 } = require('../db');
 const { processWithAI }    = require('../ai');
 const { sendToWeCom }      = require('../wecom');
+const { classify }         = require('../lib/tiering');
+
+// 影子模式下，新规则会推送的层级
+const SHADOW_PUSH_TIERS = new Set(['A', 'B', 'FLASH']);
 const { filterNewsItems, getSourceConfig } = require('../filter');
 const { closeBrowser }     = require('./browser');
 const { delayWithJitter }  = require('./middleware');
@@ -297,6 +301,7 @@ async function runAllScrapers(tier = 'all') {
   let   aiCallCount   = 0;
   const sentThisRun   = new Set();
   const pushLock      = new Set();
+  const shadowStats   = { BOTH: 0, OLD_ONLY: 0, NEW_ONLY: 0, CANDIDATE: 0 };
 
   for (const item of allNews) {
     const nTitle   = normalizeKey(item.title, '').split('|')[0];
@@ -359,6 +364,16 @@ async function runAllScrapers(tier = 'all') {
 
     // 企微封锁（覆盖 AI 可能改写的 is_important）
     if (WECOM_BLOCK_SOURCES.has(item.source)) item.is_important = 0;
+
+    // 影子模式：新分层规则（lib/tiering.js）只记日志，不影响推送
+    const shadow   = classify(item);
+    const oldWould = item.is_important === 1;
+    const newWould = SHADOW_PUSH_TIERS.has(shadow.tier);
+    if (oldWould || shadow.tier) {
+      const tag = oldWould && newWould ? 'BOTH' : oldWould ? 'OLD_ONLY' : newWould ? 'NEW_ONLY' : 'CANDIDATE';
+      shadowStats[tag]++;
+      console.log(`[Shadow] ${tag} tier=${shadow.tier || '-'} src=${item.source} | ${(item.title || '').replace(/\s+/g, ' ').slice(0, 120)}`);
+    }
 
     // 推送逻辑
     if (item.is_important === 1 && !isAlreadySent) {
@@ -430,6 +445,7 @@ async function runAllScrapers(tier = 'all') {
   }
 
   await saveNews(processedNews);
+  console.log(`[Shadow] summary ${JSON.stringify(shadowStats)}`);
 
   // 4. 实时情报密度监控 (Proactive Alerting)
   try {
