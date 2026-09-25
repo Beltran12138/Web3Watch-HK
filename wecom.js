@@ -86,6 +86,12 @@ async function sendToWeCom(item, options = {}) {
     const errcode = res.data?.errcode;
     if (errcode !== 0) {
       console.error(`[WeCom] Card rejected by WeCom API: errcode=${errcode}, errmsg=${res.data?.errmsg}, title=${item.title}`);
+      // 卡片被拒（42028/42029 等）时降级为 markdown，避免重要条目静默丢失
+      const md = `${scoreEmoji} **${item.title}**\n> ${item.detail || '（暂无摘要）'}\n来源：${item.source || '未知'}` +
+        (item.url ? `\n[阅读原文](${item.url})` : '');
+      const fb = await axios.post(WECOM_WEBHOOK_URL, { msgtype: 'markdown', markdown: { content: md } });
+      if (fb.data?.errcode === 0) console.log(`[WeCom] Sent (Markdown fallback): ${item.title}`);
+      else console.error(`[WeCom] Markdown fallback rejected: errcode=${fb.data?.errcode}, errmsg=${fb.data?.errmsg}, title=${item.title}`);
     } else {
       console.log(`[WeCom] Sent (Card): ${item.title}`);
     }
