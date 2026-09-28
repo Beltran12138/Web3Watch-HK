@@ -408,35 +408,57 @@ async function scrapeTechFlow() {
   }
 }
 
-// ── KuCoin (SSR HTML) ─────────────────────────────────────────────────────────
+// ── KuCoin (官方公告 API) ─────────────────────────────────────────────────────
 async function scrapeKuCoin() {
   console.log('[Scraper] KuCoin...');
-  const url = 'https://www.kucoin.com/zh-hant/announcement/latest-announcements';
+  const url = 'https://api.kucoin.com/api/v3/announcements?lang=zh_HK&pageSize=30';
   try {
     const { data } = await axios.get(url, { headers: { 'User-Agent': UA }, timeout: 15000 });
-    const $        = cheerio.load(data);
-    const items    = [];
-    $('a[href*="/announcement/"]').each((i, el) => {
-      let text  = $(el).text().trim();
-      const href = $(el).attr('href');
-      if (!text || text.length < 10 || !href.includes('hk-')) return;
-      const fullUrl = href.startsWith('http') ? href : `https://www.kucoin.com${href}`;
-      if (items.find(it => it.url === fullUrl)) return;
-
-      const dateMatch = text.match(/\d{4}\/\d{2}\/\d{2}/);
-      // 严格模式：无日期直接跳过，不使用 Date.now() fallback
-      if (!dateMatch) return;
-      const timestamp   = new Date(dateMatch[0]).getTime();
-      if (dateMatch) text = text.replace(dateMatch[0], '').trim();
-
-      items.push(makeItem({ title: text, source: 'KuCoin', url: fullUrl, category: 'Announcement', timestamp }));
-    });
+    const items = (data?.data?.items || []).map(a => makeItem({
+      title:     a.annTitle || '',
+      content:   a.annDesc || '',
+      source:    'KuCoin',
+      url:       a.annUrl,
+      category:  'Announcement',
+      timestamp: Number(a.cTime) || 0,
+    }));
     console.log(`[Scraper] KuCoin: ${items.length}`);
     return items;
   } catch (err) {
     console.error('[KuCoin]', err.message);
     return [];
   }
+}
+
+// ── Bitget (官方公告 API) ─────────────────────────────────────────────────────
+// 接口每次固定返回 10 条，按类型分别拉取后合并
+async function scrapeBitget() {
+  console.log('[Scraper] Bitget...');
+  const base  = 'https://api.bitget.com/api/v2/public/annoucements?language=zh_CN';
+  const types = ['', 'latest_news', 'product_updates'];
+  const seen  = new Set();
+  const items = [];
+  for (const t of types) {
+    try {
+      const { data } = await axios.get(t ? `${base}&annType=${t}` : base, { headers: { 'User-Agent': UA }, timeout: 15000 });
+      for (const a of data?.data || []) {
+        if (seen.has(a.annId)) continue;
+        seen.add(a.annId);
+        items.push(makeItem({
+          title:     a.annTitle || '',
+          content:   a.annDesc || '',
+          source:    'Bitget',
+          url:       a.annUrl,
+          category:  'Announcement',
+          timestamp: Number(a.cTime) || 0,
+        }));
+      }
+    } catch (err) {
+      console.error(`[Bitget annType=${t || 'all'}]`, err.message);
+    }
+  }
+  console.log(`[Scraper] Bitget: ${items.length}`);
+  return items;
 }
 
 // ── EX.IO / Exio (SSR HTML) ───────────────────────────────────────────────────
@@ -523,51 +545,36 @@ async function scrapeHtx() {
   return allItems;
 }
 
-// ── 香港证监会 SFC (Circulars) ────────────────────────────────────────────────
+// ── 香港证监会 SFC (官方 RSS：新闻稿 + 通函) ──────────────────────────────────
 async function scrapeSFC() {
-  console.log('[Scraper] SFC Circulars...');
-  const url = 'https://www.sfc.hk/tc/Rules-and-standards/Circulars';
-  try {
-    const { data } = await axios.get(url, {
-      headers: { 'User-Agent': UA, 'Accept-Language': 'zh-CN,zh;q=0.9' },
-      timeout: 20000,
-    });
-    const $ = cheerio.load(data);
-    const items = [];
-
-    // SFC 的通函列表通常在特定的表格或列表结构中
-    $('.table-row, .list-item, tr').each((_, el) => {
-      const a = $(el).find('a').first();
-      const title = a.text().trim();
-      const href = a.attr('href');
-
-      if (!title || !href || title.length < 5) return;
-      if (!href.includes('/Circulars/')) return;
-
-      const fullUrl = href.startsWith('http') ? href : `https://www.sfc.hk${href}`;
-
-      // 提取日期：SFC 列表通常有一列是日期
-      const dateText = $(el).find('.date, .time, td').first().text().trim();
-      const timestamp = extractTimestamp(dateText) || 0;
-
-      if (items.find(i => i.url === fullUrl)) return;
-
-      items.push(makeItem({
-        title: `[SFC通函] ${title}`,
-        source: 'SFC',
-        url: fullUrl,
-        category: 'Regulation',
-        timestamp,
-      }));
-    });
-
-    console.log(`[Scraper] SFC: ${items.length}`);
-    // 清理编码问题
-    return items.map(cleanItemText);
-  } catch (err) {
-    console.error('[SFC]', err.message);
-    return [];
+  console.log('[Scraper] SFC...');
+  const feeds = [
+    { url: 'https://www.sfc.hk/en/RSS-Feeds/Press-releases', prefix: '[SFC]' },
+    { url: 'https://www.sfc.hk/en/RSS-Feeds/Circulars',      prefix: '[SFC通函]' },
+  ];
+  const items = [];
+  for (const feed of feeds) {
+    try {
+      const { data } = await axios.get(feed.url, { headers: { 'User-Agent': UA }, timeout: 20000 });
+      const $ = cheerio.load(data, { xmlMode: true });
+      $('item').each((_, el) => {
+        const title = $(el).find('title').text().replace(/\s+/g, ' ').trim();
+        const link  = $(el).find('link').text().trim();
+        if (!title || !link) return;
+        items.push(makeItem({
+          title:     `${feed.prefix} ${title}`,
+          source:    'SFC',
+          url:       link,
+          category:  'Regulation',
+          timestamp: Date.parse($(el).find('pubDate').text()) || 0,
+        }));
+      });
+    } catch (err) {
+      console.error(`[SFC ${feed.prefix}]`, err.message);
+    }
   }
+  console.log(`[Scraper] SFC: ${items.length}`);
+  return items;
 }
 
 // ── 导出爬虫函数（自动添加编码清理包装）──────────────────────────────────────
@@ -596,4 +603,5 @@ module.exports = {
   scrapeExio: wrapClean(scrapeExio),
   scrapeHtx: wrapClean(scrapeHtx),
   scrapeSFC: wrapClean(scrapeSFC),
+  scrapeBitget: wrapClean(scrapeBitget),
 };

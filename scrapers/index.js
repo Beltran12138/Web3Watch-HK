@@ -93,12 +93,12 @@ const {
   scrapeOKX, scrapeBinance, scrapeHashKeyExchange,
   scrapeTechubNews, scrapeMatrixport, scrapeHashKeyGroup,
   scrapePRNewswire, scrapeTechFlow, scrapeKuCoin, scrapeExio, scrapeHtx,
-  scrapeSFC,
+  scrapeSFC, scrapeBitget,
 } = require('./sources/apis');
 
 const {
   scrapeBlockBeats, scrapeOSL, scrapeWuBlock,
-  scrapeBybit, scrapeBitget, scrapeMexc, scrapeGate,
+  scrapeBybit, scrapeMexc, scrapeGate,
   scrapePolymarketBreaking, scrapePolymarketChina,
   scrapeTwitterKOLs,
 } = require('./sources/puppeteer');
