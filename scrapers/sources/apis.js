@@ -479,7 +479,8 @@ async function scrapeExio() {
 
 // ── HTX (internal API, with optional Tor proxy in CI) ─────────────────────────
 async function scrapeHtx() {
-  const inCI = process.env.GITHUB_ACTIONS === 'true';
+  // 2026-09 实测 GitHub runner 直连可达；CI 上的 Tor 服务常未就绪（ECONNREFUSED 9050），改为按需开启
+  const inCI = process.env.HTX_USE_TOR === 'true';
   console.log(`[Scraper] HTX${inCI ? ' (Tor)' : ''}...`);
   const BASE       = 'https://www.htx.com/-/x/support/public/getList/v2';
   const ONE_LEVEL  = '360000031902';

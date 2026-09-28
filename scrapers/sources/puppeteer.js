@@ -339,6 +339,17 @@ async function scrapeMexc() {
 }
 
 // ── Gate ──────────────────────────────────────────────────────────────────────
+// 公告链接文字形如「置顶 标题 2026-09-22 2,303」或「标题 7 分钟前 20」（末尾是阅读数）
+function parseGateAnchor(text) {
+  const t = (text || '').replace(/\s+/g, ' ').replace(/^置顶\s*/, '').trim();
+  const m = t.match(/(\d{4}-\d{2}-\d{2})|(\d+\s*(?:分钟|小时|天|日|周|个月)\s*前)/);
+  if (!m) return null;
+  const title = t.slice(0, m.index).trim();
+  const timestamp = m[1] ? Date.parse(`${m[1]}T00:00:00+08:00`) : parseRelativeTime(m[2]);
+  if (title.length < 6 || !timestamp) return null;
+  return { title, timestamp };
+}
+
 async function scrapeGate() {
   console.log('[Scraper] Gate...');
   const url  = 'https://www.gate.com/zh/announcements';
@@ -346,41 +357,18 @@ async function scrapeGate() {
   try {
     await page.setViewport({ width: 1280, height: 900 });
     await page.goto(url, { waitUntil: 'networkidle2', timeout: 60000 });
-    await sleep(10000);
+    await sleep(8000);
 
-    const items = await page.evaluate(() => {
-      const results = [];
-      const candidates = document.querySelectorAll('.article-item, .entry-item, .item');
-      const elements   = candidates.length > 0 ? candidates : document.querySelectorAll('a[href*="/announcements/"],a[href*="/article/"]');
+    const anchors = await page.evaluate(() => [...document.querySelectorAll('a[href*="/announcements/article/"]')]
+      .map(a => ({ href: a.href, text: a.innerText || a.textContent || '' })));
 
-      elements.forEach(el => {
-        const a    = el.tagName === 'A' ? el : el.querySelector('a');
-        if (!a) return;
-        const href = a.href;
-        const text = (a.innerText || a.textContent || '').trim();
-        if (text.length < 10 || text === '近期公告' || text === '更多') return;
-        if (!href.includes('/announcements/') && !href.includes('/article/') && !href.includes('/notice/')) return;
-        if (href.endsWith('/announcements') || href.endsWith('/zh/announcements')) return;
-        if (results.find(r => r.url === href)) return;
-
-        let timestamp = 0;
-        const container = (el.tagName === 'A' ? el.closest('.item,.article-item,li,tr') : el) || el.parentElement;
-        if (container) {
-          const timeEl = container.querySelector('.time,.date,.create-time,[class*="time"]');
-          if (timeEl) {
-            const d = new Date(timeEl.innerText.trim());
-            if (!isNaN(d.getTime())) timestamp = d.getTime();
-          } else {
-            const dm = (container.innerText || '').match(/(\d{4}-\d{2}-\d{2}(\s\d{2}:\d{2})?)/);
-            if (dm) { const d = new Date(dm[0]); if (!isNaN(d.getTime())) timestamp = d.getTime(); }
-          }
-        }
-        if (!timestamp) return; // Strict: no timestamp = skip
-
-        results.push({ title: text.split('\n')[0].trim().substring(0, 200), content: '', source: 'Gate', url: href, category: 'Announcement', timestamp, is_important: 0 });
-      });
-      return results;
-    });
+    const items = [];
+    for (const { href, text } of anchors) {
+      if (items.find(i => i.url === href)) continue;
+      const parsed = parseGateAnchor(text);
+      if (!parsed) continue;
+      items.push(makeItem({ title: parsed.title, source: 'Gate', url: href, category: 'Announcement', timestamp: parsed.timestamp }));
+    }
     console.log(`[Scraper] Gate: ${items.length}`);
     return items;
   } catch (err) {
@@ -483,4 +471,5 @@ module.exports = {
   scrapePolymarketBreaking: wrapClean(scrapePolymarketBreaking),
   scrapePolymarketChina: wrapClean(scrapePolymarketChina),
   scrapeTwitterKOLs: wrapClean(scrapeTwitterKOLs),
+  parseGateAnchor,
 };
