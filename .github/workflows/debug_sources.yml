@@ -1,0 +1,34 @@
+name: Debug Sources
+
+# 手动触发的数据源诊断：只读，不写库、不推送、不使用 secrets
+on:
+  workflow_dispatch:
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --prefer-offline
+
+      - name: Install and start Tor
+        run: |
+          sudo apt-get install -y tor > /dev/null
+          sudo service tor start || true
+          for i in $(seq 1 30); do nc -z 127.0.0.1 9050 && echo "Tor listening after ${i}s" && break; sleep 1; done
+          nc -z 127.0.0.1 9050 || echo "Tor NOT listening"
+
+      - name: Run diagnostics
+        run: node scripts/debug-sources.js
+        env:
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome-stable

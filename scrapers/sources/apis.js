@@ -270,38 +270,24 @@ async function scrapeMatrixport() {
   }
 }
 
-// ── HashKey Group (SSR HTML) ──────────────────────────────────────────────────
+// ── HashKey Group (官方新闻 RSS，WordPress) ─────────────────────────────────────
 async function scrapeHashKeyGroup() {
   console.log('[Scraper] HashKeyGroup...');
-  const url = 'https://group.hashkey.com/en/news/categories/announcement-1';
+  const url = 'https://group.hashkey.com/en/category/blog/news/feed/';
   try {
-    const { data } = await axios.get(url, { headers: { 'User-Agent': UA }, timeout: 15000 });
-    const $        = cheerio.load(data);
-    const items    = [];
-    const seenUrls = new Set();
-    const seenTitles = new Set();
-
-    $('a[href*="/newsroom/"]').each((_, el) => {
-      const title = $(el).text().trim();
-      const href  = $(el).attr('href');
-      if (!title || title.length < 10) return;
-
-      const fullUrl = href.startsWith('http') ? href : `https://group.hashkey.com${href}`;
-      const normalizedUrl = fullUrl.split('?')[0].replace(/\/$/, '');
-      const normalizedTitle = title.toLowerCase().replace(/\s+/g, ' ').trim();
-
-      if (seenUrls.has(normalizedUrl) || seenTitles.has(normalizedTitle)) return;
-      seenUrls.add(normalizedUrl);
-      seenTitles.add(normalizedTitle);
-
-      const container = $(el).closest('div, li, tr, section, article');
-      const timestamp = extractTimestamp(container.text());
-
-      // 严格模式：无时间戳直接跳过，避免旧稿混入
-      if (!timestamp) return;
-
+    const { data } = await axios.get(url, { headers: { 'User-Agent': UA }, timeout: 20000 });
+    const $ = cheerio.load(data, { xmlMode: true });
+    const items = [];
+    $('item').each((_, el) => {
+      const title = $(el).find('title').text().replace(/\s+/g, ' ').trim();
+      const link  = $(el).find('link').text().trim();
+      if (!title || !link) return;
       items.push(makeItem({
-        title, source: 'HashKeyGroup', url: fullUrl, category: 'Announcement', timestamp,
+        title,
+        source:    'HashKeyGroup',
+        url:       link,
+        category:  'Announcement',
+        timestamp: Date.parse($(el).find('pubDate').text()) || 0,
       }));
     });
     console.log(`[Scraper] HashKeyGroup: ${items.length}`);
