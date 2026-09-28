@@ -239,9 +239,12 @@ function filterNewsItems(items) {
     const source = (item.source || '').trim();
     const config = getSourceConfig(source);
 
-    // 3. URL 去重（去掉查询参数和锚点）
+    // 3. URL 去重（去掉锚点和追踪参数；SFC ?refNo=、WuBlock ?id= 等靠参数区分文章，须保留）
     if (url) {
-      const normalizedUrl = url.replace(/[?#].*$/, '');
+      const normalizedUrl = url
+        .replace(/#.*$/, '')
+        .replace(/([?&])(utm_[^=&]*|spm|from|share_from|ref)=[^&]*/gi, '$1')
+        .replace(/[?&]+$/, '');
       if (seenUrls.has(normalizedUrl)) {
         console.log(`  [DUP URL] ${source}: ${title.substring(0, 40)}`);
         return false;
