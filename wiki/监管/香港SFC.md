@@ -47,9 +47,9 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-29
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-30
 
 - **[[SFC] SFC unveils Strategic Action Plan to support Hong Kong’s First Five-Year Plan and Policy Address in promoting capital market development](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR148)** (2026-09-23 | Alpha 85)
-- **[[SFC] SFC shares updates with securities industry on scam prevention and cybersecurity](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR157)** (2026-09-28 | Alpha 65)
+- **[[SFC] SFC reprimands and fines Zheng Da International Financial Holding Limited $7 million and suspends its responsible officer for regulatory breaches](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR158)** (2026-09-29 | Alpha 85)
 
 <!-- AUTO_NEWS_END -->
