@@ -47,9 +47,9 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-07
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-08
 
 - **[[SFC] SFC unveils Strategic Action Plan to support Hong Kong’s First Five-Year Plan and Policy Address in promoting capital market development](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR148)** (2026-09-23 | Alpha 85)
-- **[[SFC] Hong Kong’s securities brokers post strong earnings growth in first half of 2026](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR160)** (2026-10-06 | Alpha 65)
+- **[[SFC] SFC to proceed with enhancements to Hong Kong’s retail fund regime code](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR161)** (2026-10-07 | Alpha 85)
 
 <!-- AUTO_NEWS_END -->
