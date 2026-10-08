@@ -13,24 +13,17 @@ Alpha Radar is a Web3/Crypto industry intelligence aggregation system that:
 ## Tech Stack
 
 - **Runtime**: Node.js 20.x
-- **Framework**: Express.js 5.x
+- **Runtime model**: GitHub Actions jobs + Vercel serverless functions (`api/`). The old Express server (`server.js`, `routes/`) was removed on 2026-10-08 — it was never deployed.
 - **Database**: SQLite (better-sqlite3) + Supabase (optional)
 - **Scraping**: Puppeteer, Axios, Cheerio
 - **AI**: DeepSeek V3 + fallback providers (OpenRouter, OpenAI, Anthropic, Google)
 - **Scheduling**: node-cron
-- **Security**: Helmet, express-rate-limit, CORS
 
 ## Development Commands
 
 ```bash
 # Install dependencies
 npm install
-
-# Start development server (with hot reload)
-npm run dev
-
-# Start production server
-npm start
 
 # Run tests
 npm test
@@ -115,11 +108,7 @@ alpha-radar/
 │   ├── logger.js          # Structured logging (pino)
 │   ├── circuit-breaker.js # Circuit breaker pattern
 │   └── scraper-registry.js # Scraper plugin registry
-├── routes/                 # Express route modules
-│   ├── news.js            # News APIs
-│   ├── admin.js           # Admin APIs (API key protected)
-│   ├── monitoring.js      # Health/status APIs
-│   └── sync.js            # Cloud sync APIs
+├── api/                    # Vercel serverless functions (read-only, Supabase)
 ├── scrapers/              # Data scraping modules
 │   ├── index.js           # Main scheduler
 │   ├── browser.js         # Shared browser pool
@@ -128,24 +117,29 @@ alpha-radar/
 ├── tests/                 # Test files
 │   └── unit/              # Unit tests
 ├── config.js              # Global configuration
-├── server.js              # Express server entry
 └── package.json
 ```
 
 ## Security Requirements
 
-1. **API Key Authentication**: Write operations require `X-API-Key` header
+1. **No write endpoints**: `api/*.js` on Vercel are read-only GETs. Writes to Supabase happen only from GitHub Actions.
 2. **No URL API Keys**: Never pass API keys in URL parameters
-3. **CORS**: Configure `CORS_ORIGIN` in production
-4. **CSP**: Content Security Policy is enabled (see security.js)
-5. **Rate Limiting**: Applied to all endpoints (1000 req/15min read, 10 req/min write)
+3. **Never commit secrets**: everything goes through GitHub / Vercel secrets
 
 ## Testing
 
 - Tests use Jest
 - Test files: `*.test.js` or in `tests/` directory
 - Mock external APIs in tests
-- Run tests before committing: `npm test`
+- Run tests before committing: `npm run test:unit` (CI runs it on every push / PR: `.github/workflows/test.yml`)
+
+## Weekly report — do not touch
+
+The weekly report and weekly email (`weekly_report.yml`, `send_weekly_email.yml`, `cron.yml`, `run_weekly_report.js`,
+`run_send_weekly_email.js`, `email-report.js`, `preview-email.js`, `email-preview.html`, `weekly/`, `assets/logo.jpg`)
+and the modules they load (`report.js`, `dao.js`, `db.js`, `config.js`, `ai*.js`, `filter.js`, `macro-market.js`,
+`wecom.js`, `wiki-context.js`, `sqlite-functions.js`, `lib/logger.js`, `lib/redis-cache.js`) must not change behavior.
+Keep `dotenv` and `nodemailer` in package.json / package-lock.json.
 
 ## Environment Variables
 
@@ -155,10 +149,6 @@ Key environment variables (see `.env.example` for full list):
 # Required
 DEEPSEEK_API_KEY=sk-xxx
 WECOM_WEBHOOK_URL=https://qyapi.weixin.qq.com/...
-
-# Security
-API_SECRET=your-secret-key
-CORS_ORIGIN=https://your-domain.com
 
 # Optional - AI fallback providers
 OPENROUTER_API_KEY=sk-or-v1-xxx
@@ -190,15 +180,11 @@ npm run cleanup
 3. Add environment variables
 4. Deploy
 
-### Docker
-```bash
-docker-compose up -d
-```
-
 ### Local
 ```bash
 npm install
-npm start
+npm run scrape:high        # one scrape round
+npm run daily-report:dry   # build a report without pushing
 ```
 
 ## Common Tasks
@@ -206,18 +192,14 @@ npm start
 ### Adding a New Data Source
 
 1. Create scraper function in `scrapers/sources/` (apis.js or puppeteer.js)
-2. Register in `scrapers/index.js` or use `scraper-registry.js`
-3. Add source name to `VALID_SOURCES` in `routes/news.js`
-4. Add config to `config.js` if needed
-5. Add tests
+2. Register in `SCRAPERS_MAP` in `scrapers/index.js`
+3. Add config to `config.js` if needed (note: config.js is loaded by the weekly report — additive changes only)
+4. Add tests
 
 ### Adding a New API Endpoint
 
-1. Add route to appropriate file in `routes/`
-2. Use `apiKeyGuard` middleware for write operations
-3. Use structured logging
-4. Add error handling with `next(err)`
-5. Update Swagger docs if applicable
+1. Add a read-only function in `api/` (Vercel serverless; reads Supabase via REST)
+2. Use structured logging and return `{ success, ... }`
 
 ### Modifying AI Prompts
 

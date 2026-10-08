@@ -9,8 +9,6 @@
   "scripts": {
     "build:frontend": "node scripts/build-frontend.js",
     "build": "npm run build:frontend",
-    "start": "node server.js",
-    "dev": "node --watch server.js",
     "dev:frontend": "cd frontend && npm run dev",
     "scrape": "node scrapers/index.js",
     "scrape:high": "node scrapers/index.js --tier=high",

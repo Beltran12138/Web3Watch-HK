@@ -126,7 +126,7 @@ graph TD
 
 | Layer | Technology |
 |-------|-----------|
-| Runtime | Node.js 22 + Express 5 |
+| Runtime | Node.js 22（GitHub Actions + Vercel serverless，无常驻服务）|
 | Database | Supabase (PostgreSQL) + better-sqlite3 |
 | AI | DeepSeek API (classification, scoring, summarization) |
 | Scraper | Puppeteer + Cheerio + Axios |
@@ -174,9 +174,6 @@ cp .env.example .env
 
 # Dry run — generate report without sending
 npm run daily-report:dry
-
-# Start API server
-npm start
 ```
 
 ### Environment Variables
