@@ -73,12 +73,35 @@ try {
 
 const USE_SUPABASE = (process.env.USE_SUPABASE || '').trim() === 'true';
 const IS_VERCEL = !!(process.env.VERCEL || process.env.VERCEL_ENV);
+const IN_GITHUB_ACTIONS = (process.env.GITHUB_ACTIONS || '').trim() === 'true';
+
+// 本地 SQLite 只在本地开发时打开。GitHub Actions 的 runner 每次都是全新的，alpha_radar.db 每轮都是空库，
+// 在那里读它只会得到「什么都没有」；Vercel 不支持 better-sqlite3 原生模块。这两处读写全走 Supabase。
+// DISABLE_SQLITE=true 可在本地强制同样的行为。
+const SQLITE_ENABLED = !IS_VERCEL && !IN_GITHUB_ACTIONS && (process.env.DISABLE_SQLITE || '').trim() !== 'true';
 
 let supabase = null;
 if ((USE_SUPABASE || IS_VERCEL) && process.env.SUPABASE_URL && process.env.SUPABASE_KEY) {
   supabase = createClient(process.env.SUPABASE_URL.trim(), process.env.SUPABASE_KEY.trim());
 } else if (USE_SUPABASE) {
   console.log('[DB] Supabase enabled but missing credentials');
+}
+
+/** 读写走 Supabase（USE_SUPABASE=true 且有凭据）。否则走本地 SQLite（若已打开）。 */
+const SUPABASE_ACTIVE = !!(USE_SUPABASE && supabase);
+
+if (!SQLITE_ENABLED && !SUPABASE_ACTIVE && !IS_VERCEL) {
+  console.error('[DB] No storage backend: SQLite is disabled here and Supabase is not configured ' +
+    '(USE_SUPABASE / SUPABASE_URL / SUPABASE_KEY). Dedup / push-cooldown lookups will throw.');
+}
+
+/**
+ * 去重 / 冷却判断离不开存储：两个后端都没有时直接报错，而不是当成「从没见过、从没推过」把所有条目再推一遍。
+ */
+function requireBackend(op) {
+  if (!SUPABASE_ACTIVE && !db) {
+    throw new Error(`[DB] ${op}: no storage backend (SQLite disabled, Supabase not configured)`);
+  }
 }
 
 let db = null;
@@ -104,8 +127,8 @@ function normalizeKey(title, source) {
   return source ? `${normalized}|${source.trim().toLowerCase()}` : normalized;
 }
 
-// SQLite 仅在非 Vercel 环境下初始化（Vercel 不支持 better-sqlite3 原生模块）
-if (!IS_VERCEL) {
+// SQLite 仅在本地开发时初始化（见上方 SQLITE_ENABLED）
+if (SQLITE_ENABLED) {
 const Database = require('better-sqlite3');
 db = new Database(path.join(__dirname, 'alpha_radar.db'));
 
@@ -247,7 +270,7 @@ STMT = {
   countByCat:    db.prepare("SELECT business_category, COUNT(*) as n FROM news WHERE timestamp > ? AND business_category != '' GROUP BY business_category ORDER BY n DESC"),
   countBySrc:    db.prepare('SELECT source, COUNT(*) as n FROM news GROUP BY source ORDER BY n DESC LIMIT 30'),
 };
-} // end if (!IS_VERCEL)
+} // end if (SQLITE_ENABLED)
 
 // ── saveNews ──────────────────────────────────────────────────────────────────
 async function saveNews(items) {
@@ -579,8 +602,9 @@ async function getAlreadyProcessed(items) {
   if (!items?.length) return { processed, sentToWeCom, existingTimestamps };
 
   const urls = items.map(i => i.url).filter(Boolean);
+  requireBackend('getAlreadyProcessed');
 
-  if (USE_SUPABASE && supabase) {
+  if (SUPABASE_ACTIVE) {
     // Supabase: 分批批量查询
     for (let i = 0; i < items.length; i += DB.SUPABASE_CHUNK_SIZE) {
       const chunk      = items.slice(i, i + DB.SUPABASE_CHUNK_SIZE);
@@ -652,7 +676,7 @@ async function getAlreadyProcessed(items) {
 async function updateSentStatus(item) {
   const nTitle = normalizeKey(item.title, '').split('|')[0];
 
-  if (!USE_SUPABASE) {
+  if (!USE_SUPABASE && db) {
     try {
       db.transaction(() => {
         if (item.url) STMT.updateByUrl.run(item.url);
@@ -664,25 +688,13 @@ async function updateSentStatus(item) {
     }
   }
 
-  if (USE_SUPABASE && supabase) {
+  // 只把 sent_to_wecom 置 1（和上面 SQLite 同一语义）。2026-10-08 前这里整行 upsert，
+  // 没过 AI 的条目会把库里已有的分类 / 摘要 / 评分写成空串，没有 URL 的条目全挤进 url='' 那一行。
+  // 调用方（scrapers/index.js）推送前已经 saveNews 过整条记录，这里不需要再插入。
+  if (SUPABASE_ACTIVE && item.url) {
     try {
-      await supabase.from('news').upsert({
-        title:               item.title,
-        source:              item.source,
-        url:                 item.url   || '',
-        content:             (item.content || '').substring(0, 500),
-        category:            item.category            || '',
-        business_category:   item.business_category   || '',
-        competitor_category: item.competitor_category || '',
-        impact:              item.impact              || '',
-        bitv_action:         item.bitv_action         || '',
-        alpha_score:         item.alpha_score         || 0,
-        normalized_title:    nTitle,
-        detail:              item.detail              || '',
-        timestamp:           item.timestamp           || Date.now(),
-        is_important:        item.is_important         || 1,
-        sent_to_wecom:       1,
-      }, { onConflict: 'url' });
+      const { error } = await supabase.from('news').update({ sent_to_wecom: 1 }).eq('url', item.url);
+      if (error) throw error;
     } catch (e) {
       console.warn('[updateSentStatus Supabase]', e.message?.substring(0, 60));
     }
@@ -715,7 +727,7 @@ function contentFingerprint(content) {
 
 // ── 消息源追踪 ────────────────────────────────────────────────────────────────
 let sourceTrackingStmts = null;
-if (!USE_SUPABASE) {
+if (db) {
   sourceTrackingStmts = {
     get: db.prepare('SELECT * FROM source_tracking WHERE source = ?'),
     upsert: db.prepare(`
@@ -734,7 +746,8 @@ if (!USE_SUPABASE) {
  * 获取某消息源的最后推送时间戳
  */
 async function getSourceLastPush(source) {
-  if (USE_SUPABASE && supabase) {
+  requireBackend('getSourceLastPush');
+  if (SUPABASE_ACTIVE) {
     try {
       const { data, error } = await supabase
         .from('source_tracking')
@@ -756,7 +769,7 @@ async function getSourceLastPush(source) {
  * 更新某消息源的最后推送时间戳
  */
 async function updateSourcePush(source, timestamp, title) {
-  if (USE_SUPABASE && supabase) {
+  if (SUPABASE_ACTIVE) {
     try {
       const { error } = await supabase
         .from('source_tracking')
@@ -773,6 +786,7 @@ async function updateSourcePush(source, timestamp, title) {
     return;
   }
 
+  if (!sourceTrackingStmts) return;
   try {
     sourceTrackingStmts.upsert.run(source, timestamp, title);
   } catch (e) {
@@ -784,7 +798,7 @@ async function updateSourcePush(source, timestamp, title) {
  * 获取所有消息源的追踪信息
  */
 async function getAllSourceTracking() {
-  if (USE_SUPABASE && supabase) {
+  if (SUPABASE_ACTIVE) {
     try {
       const { data, error } = await supabase
         .from('source_tracking')
@@ -797,7 +811,7 @@ async function getAllSourceTracking() {
       return [];
     }
   }
-  return sourceTrackingStmts.getAll.all();
+  return sourceTrackingStmts ? sourceTrackingStmts.getAll.all() : [];
 }
 
 /**
@@ -817,14 +831,14 @@ async function canPushMessage(source, title, timestamp, cooldownHours = 24) {
   if (Date.now() - lastPush < cooldownMs) {
     // 还在冷却期内，检查是否是相似标题
     let lastPushedTitle = '';
-    if (USE_SUPABASE && supabase) {
+    if (SUPABASE_ACTIVE) {
       try {
         const { data } = await supabase.from('source_tracking').select('last_pushed_title').eq('source', source).maybeSingle();
         lastPushedTitle = data?.last_pushed_title || '';
       } catch (_) {
         // Ignore supabase errors, use fallback
       }
-    } else {
+    } else if (sourceTrackingStmts) {
       const row = sourceTrackingStmts.get.get(source);
       lastPushedTitle = row?.last_pushed_title || '';
     }
@@ -844,7 +858,8 @@ async function canPushMessage(source, title, timestamp, cooldownHours = 24) {
  * 统一检查消息是否已发送
  */
 async function checkIfSent(url, nTitle) {
-  if (USE_SUPABASE && supabase) {
+  requireBackend('checkIfSent');
+  if (SUPABASE_ACTIVE) {
     try {
       // Use separate .eq() filters combined via Supabase .or() with safe column filters
       // Avoid string interpolation to prevent PostgREST filter injection
@@ -881,10 +896,40 @@ async function checkIfSent(url, nTitle) {
   }
 }
 
+/**
+ * 按时间窗口取新闻（cron.yml 的 Notion 同步 / GitHub Releases 导出用）。
+ * 有 Supabase 读 Supabase，否则读本地 SQLite。since 含、until 不含。
+ * @param {{ since?: number, until?: number, minScore?: number, orderBy?: string, limit?: number }} opts
+ */
+async function getNewsInRange({ since = 0, until = null, minScore = null, orderBy = 'timestamp', limit = 1000 } = {}) {
+  const byScore = orderBy === 'alpha_score';
+  if (SUPABASE_ACTIVE) {
+    let q = supabase.from('news').select('*').gte('timestamp', since);
+    if (until != null) q = q.lt('timestamp', until);
+    if (minScore != null) q = q.gte('alpha_score', minScore);
+    if (byScore) q = q.order('alpha_score', { ascending: false });
+    q = q.order('timestamp', { ascending: false }).limit(limit);
+    const { data, error } = await q;
+    if (error) throw new Error(`[Supabase getNewsInRange] ${error.message}`);
+    return data || [];
+  }
+  if (!db) return [];
+  let sql = 'SELECT * FROM news WHERE timestamp >= ? ';
+  const params = [since];
+  if (until != null) { sql += 'AND timestamp < ? '; params.push(until); }
+  if (minScore != null) { sql += 'AND alpha_score >= ? '; params.push(minScore); }
+  sql += byScore ? 'ORDER BY alpha_score DESC, timestamp DESC ' : 'ORDER BY timestamp DESC ';
+  sql += 'LIMIT ?';
+  params.push(limit);
+  return db.prepare(sql).all(...params);
+}
+
 module.exports = {
   db,
   supabase,
   STMT,
+  SQLITE_ENABLED,
+  SUPABASE_ACTIVE,
   saveNews,
   getNews,
   getStats,
@@ -897,15 +942,18 @@ module.exports = {
   getAllSourceTracking,
   canPushMessage,
   checkIfSent,
+  getNewsInRange,
   // UTF-8 清理工具
   cleanChineseText,
   cleanObjectStrings,
 };
 
 // ── 注册 SQLite 自定义函数（模拟 Supabase RPC）──────────────────────────────
-try {
-  const { registerFunctions } = require('./sqlite-functions');
-  registerFunctions(db);
-} catch (e) {
-  // SQLite functions module not available
+if (db) {
+  try {
+    const { registerFunctions } = require('./sqlite-functions');
+    registerFunctions(db);
+  } catch (e) {
+    // SQLite functions module not available
+  }
 }

@@ -21,7 +21,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Run high-frequency scrape
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -41,7 +41,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Run low-frequency scrape
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -61,7 +61,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Run health check
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -80,7 +80,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Run daily report
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -99,7 +99,7 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Run weekly report
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -118,14 +118,18 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Sync to Notion
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
           NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          USE_SUPABASE: 'true'
+        # 以前直接 db.prepare 查 SQLite —— runner 上的 SQLite 每轮都是空库，永远同步 0 条；改读 Supabase
         run: |
-          node -e "const {notionIntegration} = require('./integrations/notion'); const {db} = require('./db'); const stmt = db.prepare('SELECT * FROM news WHERE timestamp > ? AND alpha_score >= 85 ORDER BY timestamp DESC LIMIT 20'); const items = stmt.all(Date.now() - 6*60*60*1000); notionIntegration.syncBatch(items, {minScore: 85}).then(r => console.log(r))"
+          node -e "const {notionIntegration} = require('./integrations/notion'); const {getNewsInRange} = require('./db'); getNewsInRange({since: Date.now() - 6*60*60*1000, minScore: 85, limit: 20}).then(items => notionIntegration.syncBatch(items, {minScore: 85})).then(r => console.log(r)).catch(e => { console.error(e); process.exit(1); })"
 
   github-export:
     runs-on: ubuntu-latest
@@ -137,10 +141,14 @@ jobs:
           node-version: '22'
           cache: 'npm'
       - name: Install dependencies
-        run: npm ci && npm rebuild better-sqlite3
+        run: npm ci
       - name: Export to GitHub Releases
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPO: ${{ github.repository }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+          USE_SUPABASE: 'true'
+        # 以前直接 db.prepare 查 SQLite（每轮空库）；改读 Supabase
         run: |
-          node -e "const {githubIntegration} = require('./integrations/github'); const {db} = require('./db'); const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1); const dateStr = yesterday.toISOString().split('T')[0]; const start = new Date(dateStr).getTime(); const end = start + 86400000; const items = db.prepare('SELECT * FROM news WHERE timestamp >= ? AND timestamp < ? ORDER BY alpha_score DESC').all(start, end); githubIntegration.exportDailyToRelease(items, dateStr).then(r => console.log(r))"
+          node -e "const {githubIntegration} = require('./integrations/github'); const {getNewsInRange} = require('./db'); const yesterday = new Date(); yesterday.setDate(yesterday.getDate() - 1); const dateStr = yesterday.toISOString().split('T')[0]; const start = new Date(dateStr).getTime(); const end = start + 86400000; getNewsInRange({since: start, until: end, orderBy: 'alpha_score'}).then(items => githubIntegration.exportDailyToRelease(items, dateStr)).then(r => console.log(r)).catch(e => { console.error(e); process.exit(1); })"

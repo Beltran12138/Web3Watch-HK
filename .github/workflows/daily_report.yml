@@ -55,12 +55,9 @@ jobs:
         with:
           node-version: '22'
 
+      # 不再编译 better-sqlite3：db.js 在 GitHub Actions 上不打开 SQLite，读写全走 Supabase
       - name: Install dependencies (skip scripts)
         run: npm ci --ignore-scripts
-
-      - name: Build better-sqlite3 from source
-        run: npx node-gyp rebuild --release
-        working-directory: node_modules/better-sqlite3
 
       - name: Run Daily Report
         id: report

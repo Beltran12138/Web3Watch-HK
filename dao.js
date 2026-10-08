@@ -96,22 +96,25 @@ class InsightDAO {
 
     console.log(`[InsightDAO] Saving trend: ${row.trend_key}`);
 
-    // SQLite
-    try {
-      const { STMT } = require('./db');
-      if (STMT && STMT.insertInsight) {
-        STMT.insertInsight.run(row);
-      } else {
-        console.warn('[InsightDAO] SQLite STMT.insertInsight not ready');
+    // SQLite（只在本地开发时存在；GitHub Actions / Vercel 上 db 为 null）
+    if (db) {
+      try {
+        const { STMT } = require('./db');
+        if (STMT && STMT.insertInsight) {
+          STMT.insertInsight.run(row);
+        } else {
+          console.warn('[InsightDAO] SQLite STMT.insertInsight not ready');
+        }
+      } catch (e) {
+        console.warn('[InsightDAO SQLite Error]', e.message);
       }
-    } catch (e) {
-      console.warn('[InsightDAO SQLite Error]', e.message);
     }
 
-    // Supabase
+    // Supabase（注意：整行 upsert，evidence_count / first_seen 直接覆盖；SQLite 那边是 evidence_count + 1）
     if (supabase) {
       try {
-        await supabase.from('insights').upsert(row, { onConflict: 'trend_key' });
+        const { error } = await supabase.from('insights').upsert(row, { onConflict: 'trend_key' });
+        if (error) console.warn('[InsightDAO Supabase]', error.message);
       } catch (e) {
         console.warn('[InsightDAO Supabase]', e.message);
       }
