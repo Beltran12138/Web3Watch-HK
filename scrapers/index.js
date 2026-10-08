@@ -270,7 +270,11 @@ async function runAllScrapers(tier = 'all') {
   await closeBrowser();
 
   // 2. 过滤 + 内存去重
-  const allNews = filterNewsItems(rawResults);
+  // 香港相关的源排前面：每轮 AI 调用有上限（SCRAPER.MAX_AI_PER_RUN），别让 BlockBeats 这类大源先把配额用完
+  const allNews = filterNewsItems(rawResults)
+    .map((item, idx) => ({ item, idx }))
+    .sort((a, b) => (HK_SOURCES.has(b.item.source) - HK_SOURCES.has(a.item.source)) || a.idx - b.idx)
+    .map(x => x.item);
   console.log(`[Scrape] After filter: ${rawResults.length} → ${allNews.length}`);
 
   // 2.5 Data quality check (non-blocking, informational)

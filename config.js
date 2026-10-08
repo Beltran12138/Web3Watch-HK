@@ -142,6 +142,7 @@ const MIN_TITLE_LENGTH = 8;
 const AI_SOURCES = new Set([
   'SFC', 'TechubNews', 'Exio', 'OSL', 'WuBlock', 'PRNewswire', 'HTX', 'MEXC', 'Gate',
   'Binance', 'OKX', 'Bybit', 'Bitget', 'KuCoin', 'HashKeyGroup', 'HashKeyExchange',
+  'BlockBeats', 'TechFlow', // 2026-10-08 加入：两家是最大的源（约 55% 条目），之前从不分类
 ]);
 
 /** 业务分类选项（与 AI prompt 保持一致） */
