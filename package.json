@@ -4,7 +4,7 @@
   "description": "Web3/Crypto 行业情报聚合系统 — 多源抓取 + AI 分类 + 多渠道推送",
   "main": "server.js",
   "engines": {
-    "node": "20.x"
+    "node": "22.x"
   },
   "scripts": {
     "build:frontend": "node scripts/build-frontend.js",
