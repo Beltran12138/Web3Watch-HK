@@ -416,38 +416,6 @@ async function scrapePolymarketGeneric(url, sourceName, options = {}) {
 const scrapePolymarketBreaking = () => scrapePolymarketGeneric('https://polymarket.com/breaking/world',      'Poly-Breaking', { gotoTimeout: 60000, sleepMs: 10000 });
 const scrapePolymarketChina    = () => scrapePolymarketGeneric('https://polymarket.com/predictions/china', 'Poly-China',    { gotoTimeout: 30000, sleepMs: 6000 });
 
-// ── Twitter KOLs (多级降级：Nitter → RSSHub → TwitterAPI.io → Scrapfly) ────────
-const { KOL_LIST } = require('../../config');
-const { scrapeKOLs } = require('./twitter-enhanced');
-
-async function scrapeTwitterKOLs() {
-  console.log('[Scraper] Twitter KOLs...');
-  const results = await scrapeKOLs(KOL_LIST);
-  const allTweets = [];
-
-  for (const [kolName, data] of Object.entries(results)) {
-    if (!data.success || !data.tweets.length) continue;
-    for (const tweet of data.tweets.slice(0, 15)) {
-      const title = (tweet.content || `Tweet from ${kolName}`)
-        .replace(/^RT by @\w+:\s*/i, '')
-        .replace(/^R to @\w+:\s*/i, '')
-        .substring(0, 200);
-      allTweets.push(makeItem({
-        title,
-        content:   (tweet.content || '').substring(0, 500),
-        source:    kolName,
-        url:       tweet.url || `https://x.com/${data.username}`,
-        category:  'KOL',
-        timestamp: tweet.timestamp || Date.now(),
-      }));
-    }
-  }
-
-  console.log(`[Scraper] KOLs total: ${allTweets.length}`);
-  // 清理编码问题
-  return allTweets.map(cleanItemText);
-}
-
 // ── 导出爬虫函数（自动添加编码清理包装）──────────────────────────────────────
 function wrapClean(fn) {
   return async function(...args) {
@@ -470,6 +438,5 @@ module.exports = {
   scrapeGate: wrapClean(scrapeGate),
   scrapePolymarketBreaking: wrapClean(scrapePolymarketBreaking),
   scrapePolymarketChina: wrapClean(scrapePolymarketChina),
-  scrapeTwitterKOLs: wrapClean(scrapeTwitterKOLs),
   parseGateAnchor,
 };

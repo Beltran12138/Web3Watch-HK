@@ -100,12 +100,12 @@ const {
   scrapeBlockBeats, scrapeOSL, scrapeWuBlock,
   scrapeBybit, scrapeMexc, scrapeGate,
   scrapePolymarketBreaking, scrapePolymarketChina,
-  scrapeTwitterKOLs,
 } = require('./sources/puppeteer');
 
 const SCRAPERS_MAP = {
   SFC: scrapeSFC, TechFlow: scrapeTechFlow, PRNewswire: scrapePRNewswire, BlockBeats: scrapeBlockBeats,
-  TwitterKOLs: scrapeTwitterKOLs, OSL: scrapeOSL, TechubNews: scrapeTechubNews, OKX: scrapeOKX,
+  // TwitterKOLs 已移除（2026-10-08）：所用 Nitter / RSSHub 实例全部失效，连续 10 天 0 条且不报错
+  OSL: scrapeOSL, TechubNews: scrapeTechubNews, OKX: scrapeOKX,
   Exio: scrapeExio, Matrixport: scrapeMatrixport, WuBlock: scrapeWuBlock, HashKeyGroup: scrapeHashKeyGroup,
   KuCoin: scrapeKuCoin, HashKeyExchange: scrapeHashKeyExchange, Binance: scrapeBinance, Bybit: scrapeBybit,
   Bitget: scrapeBitget, Mexc: scrapeMexc, PolymarketBreaking: scrapePolymarketBreaking,
@@ -236,6 +236,7 @@ async function runAllScrapers(tier = 'all') {
 
   // 1. 分批并发执行目标爬虫
   const rawResults = [];
+  const rawCounts  = new Map(); // 每个爬虫本轮抓到的原始条数（过滤前），null = 报错
   for (let i = 0; i < targetScrapers.length; i += SCRAPER.BATCH_SIZE) {
     const batch   = targetScrapers.slice(i, i + SCRAPER.BATCH_SIZE);
     const batchNo = Math.floor(i / SCRAPER.BATCH_SIZE) + 1;
@@ -248,11 +249,13 @@ async function runAllScrapers(tier = 'all') {
       if (r.status === 'fulfilled') {
         const items = r.value || [];
         rawResults.push(...items);
+        rawCounts.set(sourceName, items.length);
         // Record scraper success in monitoring
         if (alertManager) alertManager.recordScraperResult(sourceName, true, items.length);
         if (alertManager) alertManager.updateSourceHealth(sourceName, items.length);
       } else {
         console.error(`[Scrape] ${sourceName} error:`, r.reason?.message);
+        rawCounts.set(sourceName, null);
         // Record scraper failure in monitoring
         if (alertManager) alertManager.recordScraperResult(sourceName, false, 0, r.reason?.message);
       }
@@ -483,23 +486,16 @@ async function runAllScrapers(tier = 'all') {
   const elapsed = ((Date.now() - startMs) / 1000).toFixed(1);
   console.log(`=== [Scrape] Done. Saved ${processedNews.length} items in ${elapsed}s ===`);
 
-  // 6. 源健康监控记录（按源聚合本次抓取结果）
-  if (sourceHealthMonitor) {
-    const sourceStats = new Map();
-    for (const item of processedNews) {
-      const source = item.source || 'Unknown';
-      if (!sourceStats.has(source)) {
-        sourceStats.set(source, 0);
-      }
-      sourceStats.set(source, sourceStats.get(source) + 1);
-    }
-    // 记录所有目标爬虫的健康状态（包括无结果的）
-    for (const scraperFn of targetScrapers) {
-      const sourceName = scraperSourceMap.get(scraperFn);
-      if (sourceName) {
-        const itemCount = sourceStats.get(sourceName) || 0;
-        sourceHealthMonitor.recordFetch(sourceName, itemCount, false);
-      }
+  // 6. 源健康：按爬虫统计过滤前的原始条数。
+  // 以前按过滤后条目的 item.source 聚合，爬虫名和 source 字段对不上的（如 PolymarketBreaking → Polymarket）永远记成 0。
+  // 0 条或报错时在 GitHub Actions 页面打一条 warning，job 本身仍算成功（单源失败不该拖垮整轮抓取）。
+  for (const scraperFn of targetScrapers) {
+    const sourceName = scraperSourceMap.get(scraperFn);
+    if (!sourceName) continue;
+    const n = rawCounts.has(sourceName) ? rawCounts.get(sourceName) : null;
+    if (sourceHealthMonitor) sourceHealthMonitor.recordFetch(sourceName, n || 0, n === null);
+    if (process.env.GITHUB_ACTIONS && !n) {
+      console.log(`::warning title=Source ${n === null ? 'error' : 'empty'}::${sourceName} ${n === null ? '本轮报错' : '本轮抓到 0 条'}`);
     }
   }
 

@@ -1,0 +1,29 @@
+name: Unit Tests
+
+# 单元测试（tests/unit）。只跑测试，不碰 Supabase / 推送；better-sqlite3 需要按 runner 的 Node 版本重新编译。
+on:
+  push:
+    branches: [master]
+    paths-ignore:
+      - 'public/**'
+      - 'wiki/**'
+      - 'docs/**'
+      - 'weekly/**'
+      - 'intel/**'
+      - '**.md'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: 'npm'
+      - run: npm ci --ignore-scripts
+      - run: npm rebuild better-sqlite3
+      - run: npm run test:unit

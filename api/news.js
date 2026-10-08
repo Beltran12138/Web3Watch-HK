@@ -15,7 +15,7 @@ module.exports = async (req, res) => {
     const limit = Math.min(500, Math.max(1, parseInt(req.query.limit, 10) || 500));
     const search = (req.query.q || '').trim().slice(0, 100);
 
-    let apiUrl = `${url}/rest/v1/news?select=*&order=timestamp.desc&limit=${limit}`;
+    let apiUrl = `${url}/rest/v1/news?select=*&order=timestamp.desc.nullslast&limit=${limit}`;
 
     if (important) {
       apiUrl += '&is_important=eq.1';
