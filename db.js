@@ -693,8 +693,10 @@ async function updateSentStatus(item) {
   // 调用方（scrapers/index.js）推送前已经 saveNews 过整条记录，这里不需要再插入。
   if (SUPABASE_ACTIVE && item.url) {
     try {
-      const { error } = await supabase.from('news').update({ sent_to_wecom: 1 }).eq('url', item.url);
+      const { data, error } = await supabase.from('news').update({ sent_to_wecom: 1 }).eq('url', item.url).select('id');
       if (error) throw error;
+      // 推送前那次 saveNews 若失败，库里没有这行：补写整条（saveNews 不会覆盖已有的 AI 字段），免得下一轮重复推送
+      if (!data || data.length === 0) await saveNews([{ ...item, sent_to_wecom: 1 }]);
     } catch (e) {
       console.warn('[updateSentStatus Supabase]', e.message?.substring(0, 60));
     }
