@@ -1,0 +1,46 @@
+name: Intel · News Radar
+
+# 新闻雷达：Google / Bing 新闻 RSS + SFC 新闻稿 → intel-data 分支的 news/radar_news.json
+# 代码在 intel/，说明见 intel/README.md。与周报 / 日报流程互不相干。
+on:
+  schedule:
+    - cron: '20 */2 * * *' # 每 2 小时
+  workflow_dispatch:
+
+concurrency:
+  group: intel-data # 与 intel_sfc 共用：同一时间只有一个任务往 intel-data 写
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/checkout@v6
+        with:
+          ref: intel-data
+          path: data
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: intel/requirements.txt
+      - run: pip install -r intel/requirements.txt
+      - name: Run news radar
+        env:
+          INTEL_DATA: data
+        run: python intel/news_radar.py
+      - name: Commit to intel-data
+        working-directory: data
+        run: |
+          git config user.name "intel-bot"
+          git config user.email "intel-bot@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet && { echo "no change"; exit 0; }
+          git commit -q -m "news: $(date -u +%Y-%m-%dT%H:%MZ)"
+          for i in 1 2 3; do git push -q origin intel-data && exit 0; git pull -q --rebase origin intel-data; done
+          exit 1
