@@ -95,22 +95,21 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
   }
 
   // ── Monitoring Panel Component ──────────────────────────────────────────────
+  // 数据来自 /api/quality（近 7 天入库条目）+ 数据源健康看板。旧版读 Express 进程内状态，Vercel 上没有这些接口。
   function MonitoringPanel() {
-    const [data, setData] = useState(null);
-    const [quality, setQuality] = useState(null);
-    const [cacheStats, setCacheStats] = useState(null);
+    const [q, setQ] = useState(null);
 
     useEffect(() => {
-      Promise.all([
-        fetch('/api/monitoring').then(r => r.json()).catch(() => null),
-        fetch('/api/quality').then(r => r.json()).catch(() => null),
-        fetch('/api/cache-status').then(r => r.json()).catch(() => null),
-      ]).then(([mon, qual, cache]) => {
-        if (mon?.success) setData(mon.data);
-        if (qual?.success) setQuality(qual.data);
-        if (cache?.success) setCacheStats(cache.data);
-      });
+      fetch('/api/quality').then(r => r.json()).then(d => { if (d.success) setQ(d.data); }).catch(() => {});
     }, []);
+
+    const pct = (a, b) => (b ? Math.round((a / b) * 100) + '%' : '-');
+    const cards = q ? [
+      ['近 7 天入库', q.total.toLocaleString()],
+      ['近 24 小时', q.last_24h.toLocaleString()],
+      ['AI 分类覆盖', pct(q.classified, q.total)],
+      ['标为重要', q.important.toLocaleString()],
+    ] : [];
 
     return (
       <div className="p-6 md:p-10 space-y-6">
@@ -121,152 +120,42 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
           </h2>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* AI Provider Status */}
-          <div className="depth-card p-6 rounded-2xl">
-            <h3 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
-              <i className="fa-solid fa-brain mr-1"></i> AI 状态
-            </h3>
-            {data?.ai ? (
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-sm">当前提供商</span>
-                  <span className="text-sm font-bold">{data.ai.current}</span>
-                </div>
-                {data.ai.degradedAt && (
-                  <div className="text-xs text-amber-500 font-medium">
-                    <i className="fa-solid fa-triangle-exclamation mr-1"></i>
-                    已降级 {Math.floor((Date.now() - data.ai.degradedAt) / 3600000)}h
-                  </div>
-                )}
-                <div className="text-xs text-slate-400">
-                  降级历史: {data.ai.history?.length || 0} 次
-                </div>
+        {q ? (
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {cards.map(([label, v]) => (
+              <div key={label} className="depth-card p-5 rounded-2xl">
+                <div className="text-xs font-black uppercase tracking-wider text-slate-400 mb-2">{label}</div>
+                <div className="text-2xl font-black text-slate-900">{v}</div>
               </div>
-            ) : (
-              <p className="text-sm text-slate-400">数据加载中...</p>
-            )}
+            ))}
           </div>
-
-          {/* Data Quality */}
-          <div className="depth-card p-6 rounded-2xl">
-            <h3 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
-              <i className="fa-solid fa-shield-check mr-1"></i> 数据质量
-            </h3>
-            {quality ? (
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-sm">已验证</span>
-                  <span className="text-sm font-bold">{quality.total}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">通过率</span>
-                  <span className="text-sm font-bold text-emerald-500">
-                    {quality.total > 0 ? ((quality.passed / quality.total) * 100).toFixed(0) : 0}%
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">失败</span>
-                  <span className="text-sm font-bold text-red-500">{quality.failed}</span>
-                </div>
-              </div>
-            ) : (
-              <p className="text-sm text-slate-400">暂无数据</p>
-            )}
-          </div>
-
-          {/* Cache Stats */}
-          <div className="depth-card p-6 rounded-2xl">
-            <h3 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
-              <i className="fa-solid fa-database mr-1"></i> 查询缓存
-            </h3>
-            {cacheStats ? (
-              <div className="space-y-3">
-                <div className="flex justify-between">
-                  <span className="text-sm">命中率</span>
-                  <span className="text-sm font-bold text-blue-500">{cacheStats.hitRate}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">缓存条目</span>
-                  <span className="text-sm font-bold">{cacheStats.size} / {cacheStats.maxEntries}</span>
-                </div>
-              </div>
-            ) : (
-              <p className="text-sm text-slate-400">暂无数据</p>
-            )}
-          </div>
-        </div>
-
-        {/* Scraper Status Table */}
-        {data?.scrapers && Object.keys(data.scrapers).length > 0 && (
-          <div className="depth-card p-6 rounded-2xl">
-            <h3 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">
-              <i className="fa-solid fa-spider mr-1"></i> 爬虫状态
-            </h3>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm">
-                <thead>
-                  <tr className="text-xs text-slate-400 uppercase tracking-wider border-b border-slate-100">
-                    <th className="text-left py-2 pr-4">数据源</th>
-                    <th className="text-right py-2 px-3">成功率</th>
-                    <th className="text-right py-2 px-3">总条目</th>
-                    <th className="text-right py-2 px-3">连续失败</th>
-                    <th className="text-right py-2 pl-3">最后错误</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {Object.entries(data.scrapers).map(([source, s]) => (
-                    <tr key={source} className="border-b border-slate-50">
-                      <td className="py-2 pr-4 font-medium">{source}</td>
-                      <td className="text-right py-2 px-3">
-                        <span className={`font-bold ${parseFloat(s.successRate) >= 80 ? 'text-emerald-500' : 'text-red-500'}`}>
-                          {s.successRate}
-                        </span>
-                      </td>
-                      <td className="text-right py-2 px-3">{s.totalItems}</td>
-                      <td className="text-right py-2 px-3">
-                        {s.consecutive > 0 && <span className="text-red-500 font-bold">{s.consecutive}</span>}
-                        {s.consecutive === 0 && <span className="text-slate-300">0</span>}
-                      </td>
-                      <td className="text-right py-2 pl-3 text-xs text-slate-400 max-w-[200px] truncate">
-                        {s.lastError || '-'}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
+        ) : (
+          <div className="p-8 text-center text-slate-400">加载中...</div>
         )}
 
-        {/* Recent Errors */}
-        {data?.recentErrors?.length > 0 && (
+        {q && (
           <div className="depth-card p-6 rounded-2xl">
-            <h3 className="text-xs font-black uppercase tracking-wider text-red-400 mb-4">
-              <i className="fa-solid fa-circle-exclamation mr-1"></i> 近期错误
-            </h3>
-            <div className="space-y-2 max-h-64 overflow-y-auto scrollbar-hide">
-              {data.recentErrors.map((err, i) => (
-                <div key={i} className="text-xs p-3 bg-red-50 dark:bg-red-950 rounded-xl border border-red-100 dark:border-red-900">
-                  <span className="font-bold text-red-600 mr-2">[{err.category}]</span>
-                  <span className="text-red-500">{err.message}</span>
-                  <span className="text-slate-400 ml-2">{new Date(err.ts).toLocaleTimeString('zh-CN')}</span>
+            <h3 className="text-xs font-black uppercase tracking-wider text-slate-400 mb-4">按来源（近 7 天 · AI 分类覆盖）</h3>
+            <div className="space-y-2">
+              {q.by_source.map(s => (
+                <div key={s.source} className="flex justify-between text-sm">
+                  <span>{s.source}</span>
+                  <span className="font-mono text-slate-500">{s.total} 条 · {pct(s.classified, s.total)}</span>
                 </div>
               ))}
             </div>
           </div>
         )}
+
+        <SourceHealthPanel />
       </div>
     );
   }
 
   // ── 配置 ────────────────────────────────────────────────────────────────────
-  // 所有数据通过 /api/* 服务端代理获取，无需前端直连 Supabase
-  // 云端同步（书签/已读）通过 /api/sync 接口实现
+  // 所有数据通过 /api/* 服务端代理获取，无需前端直连 Supabase。书签 / 已读只存在浏览器本地（localStorage）
   const isLocal = ['localhost', '127.0.0.1'].includes(window.location.hostname);
 
-  // 云端同步通过 API 代理，不再需要前端 Supabase 客户端
-  let sbClient = null;
 
   const SOURCE_GROUPS = {
     EXCHANGE: ['Binance','OKX','Bybit','Gate','MEXC','Bitget','HTX','KuCoin'],
@@ -666,9 +555,6 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
     const [timeRange, setTimeRange]     = useState('month'); // today|week|month|all
     const [readIds, setReadIds]         = useState(new Set(JSON.parse(localStorage.getItem('readIds')||'[]')));
     const [bookmarks, setBookmarks]     = useState(new Set(JSON.parse(localStorage.getItem('bookmarks')||'[]')));
-    const [syncCode, setSyncCode]       = useState(localStorage.getItem('syncCode') || '');
-    const [syncInput, setSyncInput]     = useState('');
-    const [isSyncing, setIsSyncing]     = useState(false);
     const [countdown, setCountdown]     = useState(300);
     const [viewMode, setViewMode]       = useState('feed'); // feed|chart|competitor|trend|monitor
     const [menuOpen, setMenuOpen]       = useState(false);
@@ -799,66 +685,11 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
       return () => window.removeEventListener('keydown', handler);
     }, [focusIdx, filteredNews, activeFilter, fetchNews]);
 
-    // ── 云端同步（极简 6 位码） ──────────────────────────────────────────────────
-    const generateSyncCode = async () => {
-      const code = Math.random().toString(36).substring(2, 8).toUpperCase();
-      setSyncCode(code);
-      localStorage.setItem('syncCode', code);
-      setIsSyncing(true);
-      try {
-        await fetch('/api/sync/save', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sync_code: code, read_ids: [...readIds], bookmarks: [...bookmarks] }),
-        });
-      } catch(e) { console.error('Sync code generation failed', e); }
-      finally { setIsSyncing(false); }
-    };
-
-    const loadFromSync = async () => {
-      const code = syncInput.trim().toUpperCase();
-      if (!code || code.length !== 6) return;
-      setIsSyncing(true);
-      try {
-        const res = await fetch(`/api/sync/load?code=${code}`);
-        const result = await res.json();
-        if (result.success && result.data) {
-          const data = result.data;
-          const loadedReads = new Set(data.read_ids || []);
-          const loadedBookmarks = new Set(data.bookmarks || []);
-          setReadIds(loadedReads);
-          setBookmarks(loadedBookmarks);
-          localStorage.setItem('readIds', JSON.stringify([...loadedReads]));
-          localStorage.setItem('bookmarks', JSON.stringify([...loadedBookmarks]));
-          setSyncCode(code);
-          localStorage.setItem('syncCode', code);
-          alert('同步成功！已恢复云端书签与已读历史。');
-        } else {
-          alert('找不到该同步码，请检查是否输入正确。');
-        }
-      } catch (e) {
-        console.error('Load sync code failed', e);
-        alert('同步失败，请稍后重试。');
-      } finally { setIsSyncing(false); }
-    };
-
-    const syncToCloud = useCallback(async (rIds, bMarks) => {
-      if (!syncCode) return;
-      try {
-        await fetch('/api/sync/save', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ sync_code: syncCode, read_ids: [...rIds], bookmarks: [...bMarks] }),
-        });
-      } catch(e) { console.error('Auto sync failed', e); }
-    }, [syncCode]);
-
     const markAsRead = (id) => {
       if (readIds.has(id)) return;
       const next = new Set(readIds); next.add(id);
       setReadIds(next);
       localStorage.setItem('readIds', JSON.stringify([...next]));
-      syncToCloud(next, bookmarks);
     };
 
     const toggleBookmark = (e, id) => {
@@ -868,7 +699,6 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
       else next.add(id);
       setBookmarks(next);
       localStorage.setItem('bookmarks', JSON.stringify([...next]));
-      syncToCloud(readIds, next);
     };
 
     // 搜索与其他工具
@@ -966,33 +796,6 @@ const { useState, useEffect, useCallback, useRef, useMemo } = React;
 
           {/* 底部状态 */}
           <div className="pt-4 border-t border-slate-100 space-y-3">
-            {/* 云同步挂件 */}
-            <div className="bg-slate-50 p-3 rounded-xl border border-slate-100 relative group">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">云端同步</span>
-                {isSyncing && <i className="fa-solid fa-circle-notch fa-spin text-slate-300 text-xs"></i>}
-              </div>
-              
-              {syncCode ? (
-                <div className="flex justify-between items-center gap-2">
-                  <div className="bg-white px-2 py-1 flex-1 rounded text-center border border-slate-200">
-                    <span className="font-mono text-sm font-bold tracking-[0.2em] text-slate-700">{syncCode}</span>
-                  </div>
-                  <button onClick={() => {setSyncCode(''); setSyncInput(''); localStorage.removeItem('syncCode');}} className="text-[10px] text-slate-400 hover:text-red-500 underline" title="解除绑定">解绑</button>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  <div className="flex gap-1">
-                    <input type="text" value={syncInput} onChange={e=>setSyncInput(e.target.value.toUpperCase())} maxLength={6} placeholder="输入 6 位码" className="w-full text-xs font-mono uppercase bg-white border border-slate-200 rounded px-2 py-1 focus:outline-blue-400" />
-                    <button onClick={loadFromSync} className="bg-slate-200 hover:bg-slate-300 text-slate-600 px-2 py-1 rounded text-xs font-medium transition-colors">加载</button>
-                  </div>
-                  <button onClick={generateSyncCode} className="w-full text-[11px] text-blue-500 hover:text-blue-600 font-medium py-1 border border-blue-100 bg-blue-50 hover:bg-blue-100 rounded transition-colors text-center">
-                    <i className="fa-solid fa-plus mr-1 text-[10px]"></i>新建同步设备
-                  </button>
-                </div>
-              )}
-            </div>
-
             {health && (
               <div className="flex items-center justify-between px-2 text-xs text-slate-400">
                 <span>数据库</span>

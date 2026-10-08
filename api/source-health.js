@@ -28,7 +28,7 @@ module.exports = async (req, res) => {
         source: row.source,
         latest_timestamp: row.latest_timestamp,
         total_count: row.total_count,
-        status: (now - row.latest_timestamp) > 7200000 ? 'stale' : 'healthy',
+        status: (now - row.latest_timestamp) > 12 * 3600000 ? 'stale' : 'healthy',
         hours_since_update: Math.floor((now - row.latest_timestamp) / 3600000),
       }));
 

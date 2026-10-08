@@ -135,11 +135,10 @@ alpha-radar/
 
 ## Weekly report — do not touch
 
-The weekly report and weekly email (`weekly_report.yml`, `send_weekly_email.yml`, `cron.yml`, `run_weekly_report.js`,
-`run_send_weekly_email.js`, `email-report.js`, `preview-email.js`, `email-preview.html`, `weekly/`, `assets/logo.jpg`)
-and the modules they load (`report.js`, `dao.js`, `db.js`, `config.js`, `ai*.js`, `filter.js`, `macro-market.js`,
-`wecom.js`, `wiki-context.js`, `sqlite-functions.js`, `lib/logger.js`, `lib/redis-cache.js`) must not change behavior.
-Keep `dotenv` and `nodemailer` in package.json / package-lock.json.
+The weekly email that the owner triggers by hand every week must keep working unchanged:
+`.github/workflows/send_weekly_email.yml`, `run_send_weekly_email.js`, `email-report.js`, `weekly/` (including the
+committed images), `assets/logo.jpg`. Keep `dotenv` and `nodemailer` in package.json / package-lock.json, and the
+SMTP_* / WEEKLY_EMAIL_* secrets. `run_send_weekly_email.js` loads only `email-report.js`.
 
 ## Environment Variables
 
