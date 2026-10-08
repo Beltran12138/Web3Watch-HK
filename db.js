@@ -310,30 +310,40 @@ async function saveNews(items) {
       .filter(i => i.url && !seen.has(i.url) && seen.add(i.url))
       .map(i => {
         const nTitle = normalizeKey(i.title, '').split('|')[0];
-        return {
+        const row = {
           title:               i.title,
           normalized_title:    nTitle,
           content:             (i.content || '').substring(0, 500),
-          detail:              i.detail              || '',
           source:              i.source,
           url:                 i.url,
           category:            i.category            || 'Signals',
-          business_category:   i.business_category   || '',
-          competitor_category: i.competitor_category || '',
-          impact:              i.impact              || '',
-          bitv_action:         i.bitv_action         || '',
-          alpha_score:         i.alpha_score         || 0,
           timestamp:           Math.round(i.timestamp || 0),
-          is_important:        i.is_important         || 0,
-          sent_to_wecom:       i.sent_to_wecom        || 0,
         };
+        // 与上面 SQLite 的 UPDATE 同一语义：AI 字段为空就不写（保留库里已有的分类），
+        // is_important / sent_to_wecom 只升不降。2026-10-08 前这里整行覆盖，重复抓到的条目
+        // 没再过 AI，会把之前的分类 / 摘要 / 评分清空。
+        for (const f of ['detail', 'business_category', 'competitor_category', 'impact', 'bitv_action', 'alpha_score']) {
+          if (i[f]) row[f] = i[f];
+        }
+        if (i.is_important) row.is_important = 1;
+        if (i.sent_to_wecom) row.sent_to_wecom = 1;
+        return row;
       });
 
-    // 分批 upsert（Supabase 单次上限 ~500 行）
-    for (let i = 0; i < cleanRows.length; i += DB.SUPABASE_CHUNK_SIZE) {
-      const chunk = cleanRows.slice(i, i + DB.SUPABASE_CHUNK_SIZE);
-      const { error } = await supabase.from('news').upsert(chunk, { onConflict: 'url' });
-      if (error) console.error('[Supabase upsert]', error.message);
+    // 字段集合相同的行一起 upsert（同一批里缺列会被写成 NULL，分组后缺的列在插入时取列默认值、更新时不动）；
+    // 每组分批（Supabase 单次上限 ~500 行）
+    const groups = new Map();
+    for (const r of cleanRows) {
+      const sig = Object.keys(r).sort().join(',');
+      if (!groups.has(sig)) groups.set(sig, []);
+      groups.get(sig).push(r);
+    }
+    for (const rows of groups.values()) {
+      for (let i = 0; i < rows.length; i += DB.SUPABASE_CHUNK_SIZE) {
+        const chunk = rows.slice(i, i + DB.SUPABASE_CHUNK_SIZE);
+        const { error } = await supabase.from('news').upsert(chunk, { onConflict: 'url' });
+        if (error) console.error('[Supabase upsert]', error.message);
+      }
     }
   }
 }
