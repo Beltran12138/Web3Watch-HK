@@ -46,20 +46,72 @@ const RSS_BASE_URLS = [
   'https://rsshub.app/twitter/user',
 ];
 
+// ── 消息源总表（唯一权威源）──────────────────────────────────────────────────
+/**
+ * 每个消息源一行。下面导出的 WECOM_BLOCK_SOURCES / HK_SOURCES / AI_SOURCES / MAINSTREAM_EXCHANGES /
+ * REPORT_NOISE_SOURCES / SOURCE_CONFIGS / HIGH_FREQ_SOURCES / LOW_FREQ_SOURCES 全部由此表派生，别再单独维护。
+ *
+ * - key:    scrapers/index.js 爬虫注册表里的键（null = 没有爬虫，只剩库里的历史数据）
+ * - source: 写进 news.source 的值。注意和 key 不一定相同：
+ *           PolymarketBreaking → 'Poly-Breaking'、PolymarketChina → 'Poly-China'、Mexc → 'MEXC'、Htx → 'HTX'
+ * - tier:   'high' = scrape_high.yml（--tier=high），'low' = scrape.yml（--tier=low），null = 两档都不跑
+ *           （本表的行顺序就是各档内爬虫的执行顺序）
+ * - ai:     抓到后过 AI 分类；hk: 香港合规板块（全量推送、AI 队列排前面）；wecomBlock: 永不推企微（仍存库）；
+ *           reportNoise: 日报/周报精选时剔除；mainstreamExchange: 主流交易所（只推重大动作）；disabled: 不抓
+ * - maxAgeHours / enableStrictTimestamp / dedupMode / pushCooldownHours: 见下方 SOURCE_CONFIGS 说明
+ *
+ * 新增消息源：在这里加一行，再在 scrapers/index.js 的 SCRAPER_FNS 里登记爬虫函数（缺了启动时会报错）。
+ * 人工录入（run_manual_push.js，source = '人工录入'）不在表内，走 DEFAULT_SOURCE_CONFIG。
+ */
+const SOURCES = [
+  // ── 高频（T0）
+  { key: 'SFC',                source: 'SFC',             tier: 'high', ai: true,  hk: true,  maxAgeHours: 168, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
+  { key: 'Binance',            source: 'Binance',         tier: 'high', ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'OKX',                source: 'OKX',             tier: 'high', ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'PolymarketBreaking', source: 'Poly-Breaking',   tier: 'high', wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  { key: 'PolymarketChina',    source: 'Poly-China',      tier: 'high', wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+
+  // ── 低频（T1）
+  { key: 'TechFlow',           source: 'TechFlow',        tier: 'low',  ai: true,  wecomBlock: true, reportNoise: true, maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'PRNewswire',         source: 'PRNewswire',      tier: 'low',  ai: true,  maxAgeHours: 24, enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 24 }, // 经常有旧闻混入
+  { key: 'BlockBeats',         source: 'BlockBeats',      tier: 'low',  ai: true,  wecomBlock: true, reportNoise: true, maxAgeHours: 12, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 6 },
+  { key: 'OSL',                source: 'OSL',             tier: 'low',  ai: true,  hk: true,  maxAgeHours: 72,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'TechubNews',         source: 'TechubNews',      tier: 'low',  ai: true,  hk: true,  maxAgeHours: 24,  enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 48 },
+  { key: 'Exio',               source: 'Exio',            tier: 'low',  ai: true,  hk: true,  maxAgeHours: 72,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'WuBlock',            source: 'WuBlock',         tier: 'low',  ai: true,  hk: true,  maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
+  { key: 'HashKeyGroup',       source: 'HashKeyGroup',    tier: 'low',  ai: true,  hk: true,  maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'KuCoin',             source: 'KuCoin',          tier: 'low',  ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'HashKeyExchange',    source: 'HashKeyExchange', tier: 'low',  ai: true,  hk: true,  maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'Bybit',              source: 'Bybit',           tier: 'low',  ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'Bitget',             source: 'Bitget',          tier: 'low',  ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'Mexc',               source: 'MEXC',            tier: 'low',  ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'Gate',               source: 'Gate',            tier: 'low',  ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+  { key: 'Htx',                source: 'HTX',             tier: 'low',  ai: true,  mainstreamExchange: true, maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
+
+  // ── 不在任何分层
+  // Matrixport 已禁用 - 帮助中心页面无时间信息，无法判断文章新旧，导致重复推送
+  { key: 'Matrixport',         source: 'Matrixport',      tier: null,   disabled: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 24 },
+  // KOL（原 TwitterKOLs 爬虫，2026-10-08 移除：Nitter / RSSHub 实例全部失效）。库里还有历史数据，配置保留。
+  { key: null,                 source: 'TwitterAB',       tier: null,   wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  { key: null,                 source: 'WuShuo',          tier: null,   wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  { key: null,                 source: 'Phyrex',          tier: null,   wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  { key: null,                 source: 'JustinSun',       tier: null,   wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+  { key: null,                 source: 'XieJiayin',       tier: null,   wecomBlock: true, reportNoise: true, maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
+];
+
+const sourceNamesWhere = flag => SOURCES.filter(s => s[flag]).map(s => s.source);
+const scraperKeysInTier = tier => SOURCES.filter(s => s.key && s.tier === tier).map(s => s.key);
+
+/** 爬虫键 → news.source 值（只含有爬虫的行） */
+const SOURCE_NAME_BY_SCRAPER_KEY = Object.fromEntries(SOURCES.filter(s => s.key).map(s => [s.key, s.source]));
+
 // ── 重要性判定规则 ─────────────────────────────────────────────────────────────
 
 /** 永远不推送企业微信（但仍存库、展示前端）*/
-const WECOM_BLOCK_SOURCES = new Set([
-  'TwitterAB', 'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin',
-  'Poly-Breaking', 'Poly-China',
-  'TechFlow', 'BlockBeats',
-]);
+const WECOM_BLOCK_SOURCES = new Set(sourceNamesWhere('wecomBlock'));
 
 /** 香港合规板块 — 全量推送 */
-const HK_SOURCES = new Set([
-  'SFC', 'OSL', 'Exio', 'TechubNews',
-  'HashKeyGroup', 'HashKeyExchange', 'WuBlock',
-]);
+const HK_SOURCES = new Set(sourceNamesWhere('hk'));
 
 /** PRNewswire 白名单：香港相关公司 */
 const PR_HK_COMPANIES = [
@@ -73,9 +125,7 @@ const PR_TOP_EXCHANGES = [
 ];
 
 /** 主流交易所名单 */
-const MAINSTREAM_EXCHANGES = new Set([
-  'Gate', 'OKX', 'HTX', 'Bybit', 'MEXC', 'Bitget', 'Binance', 'KuCoin',
-]);
+const MAINSTREAM_EXCHANGES = new Set(sourceNamesWhere('mainstreamExchange'));
 
 /** 主流交易所需排除的普通上币类关键词（小写） */
 const EXCHANGE_EXCLUDE_KEYWORDS = [
@@ -96,11 +146,7 @@ const HK_KEYWORDS = ['香港', 'HK', 'HONG KONG', '牌照', '监管', 'VASP', 'S
 // ── 噪声过滤 ──────────────────────────────────────────────────────────────────
 
 /** 周报/日报时额外过滤的噪声来源（不进入精选报告） */
-const REPORT_NOISE_SOURCES = new Set([
-  'BlockBeats', 'TechFlow',
-  'Poly-Breaking', 'Poly-China',
-  'TwitterAB', 'WuShuo', 'Phyrex', 'JustinSun', 'XieJiayin',
-]);
+const REPORT_NOISE_SOURCES = new Set(sourceNamesWhere('reportNoise'));
 
 /** 周报噪声关键词（标题包含则跳过） */
 const REPORT_NOISE_TITLE_KEYWORDS = [
@@ -139,11 +185,7 @@ const MIN_TITLE_LENGTH = 8;
 // ── AI 处理 ───────────────────────────────────────────────────────────────────
 
 /** 需要经过 AI 分类的来源 */
-const AI_SOURCES = new Set([
-  'SFC', 'TechubNews', 'Exio', 'OSL', 'WuBlock', 'PRNewswire', 'HTX', 'MEXC', 'Gate',
-  'Binance', 'OKX', 'Bybit', 'Bitget', 'KuCoin', 'HashKeyGroup', 'HashKeyExchange',
-  'BlockBeats', 'TechFlow', // 2026-10-08 加入：两家是最大的源（约 55% 条目），之前从不分类
-]);
+const AI_SOURCES = new Set(sourceNamesWhere('ai'));
 
 /** 业务分类选项（与 AI prompt 保持一致） */
 const BUSINESS_CATEGORIES = [
@@ -214,7 +256,7 @@ const DATA_RETENTION = {
 
 // ── 消息源级别配置 ────────────────────────────────────────────────────────────
 /**
- * 每个消息源的独立配置：
+ * 每个消息源的独立配置（由上方 SOURCES 表派生，键 = news.source）：
  * - maxAgeHours: 允许抓取的最大消息年龄（小时），超过此时间的消息直接丢弃
  * - enableStrictTimestamp: 是否启用严格时间戳模式（无有效时间戳则丢弃）
  * - dedupMode: 去重模式 ('strict' | 'normal' | 'loose')
@@ -223,49 +265,16 @@ const DATA_RETENTION = {
  *   - loose: 仅 URL 去重
  * - pushCooldownHours: 推送冷却时间（小时），同一来源的相似消息在此时间内不重复推送
  */
-const SOURCE_CONFIGS = {
-  // 监管源 - 极高权重，长有效期
-  'SFC':            { maxAgeHours: 168, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
-
-  // 香港合规板块 - 较宽松的时间窗口（消息价值较高）
-  'OSL':            { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'Exio':           { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'TechubNews':     { maxAgeHours: 24,  enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 48 },
-  // Matrixport 已禁用 - 帮助中心页面无时间信息，无法判断文章新旧，导致重复推送
-  // 'Matrixport':     { maxAgeHours: 24,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'Matrixport':     { maxAgeHours: 24,  enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 24, disabled: true },
-  'HashKeyGroup':   { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'HashKeyExchange':{ maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'WuBlock':        { maxAgeHours: 48,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 48 },
-
-  // PRNewswire - 严格时间戳（经常有旧闻混入）
-  'PRNewswire':     { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 24 },
-
-  // 主流交易所 - 中等严格度
-  'Binance':        { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'OKX':            { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'Bybit':          { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'HTX':            { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'Gate':           { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'MEXC':           { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'Bitget':         { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-  'KuCoin':         { maxAgeHours: 48, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-
-  // 社交媒体/KOL-严格去重
-  'TwitterAB':      { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-  'WuShuo':         { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-  'Phyrex':         { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-  'JustinSun':      { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-  'XieJiayin':      { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-
-  // 媒体/快讯 - 严格时间窗口
-  'BlockBeats':     { maxAgeHours: 12, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 6 },
-  'TechFlow':       { maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
-
-  // Prediction Markets - 严格去重
-  'Poly-Breaking':  { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-  'Poly-China':     { maxAgeHours: 24, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 12 },
-};
+const SOURCE_CONFIGS = Object.fromEntries(SOURCES.map(s => {
+  const cfg = {
+    maxAgeHours:           s.maxAgeHours,
+    enableStrictTimestamp: s.enableStrictTimestamp,
+    dedupMode:             s.dedupMode,
+    pushCooldownHours:     s.pushCooldownHours,
+  };
+  if (s.disabled) cfg.disabled = true;
+  return [s.source, cfg];
+}));
 
 // 默认配置（未明确配置的消息源使用此默认值）
 const DEFAULT_SOURCE_CONFIG = {
@@ -277,19 +286,10 @@ const DEFAULT_SOURCE_CONFIG = {
 
 // ── 拉取频率分层 ────────────────────────────────────────────────────────────
 // 高频拉取源（T0：极度敏感，建议 3-5 分钟级别）
-const HIGH_FREQ_SOURCES = [
-  'SFC', 'Binance', 'OKX',
-  'TwitterKOLs',             // 包含所有的 KOL (TwitterAB, WuShuo 等)
-  'PolymarketBreaking', 'PolymarketChina',
-];
+const HIGH_FREQ_SOURCES = scraperKeysInTier('high');
 
 // 低频拉取源（T1：常规快讯与公关，建议 15-30 分钟级别）
-const LOW_FREQ_SOURCES = [
-  'TechFlow', 'PRNewswire', 'BlockBeats',
-  'OSL', 'TechubNews', 'Exio',
-  'WuBlock', 'HashKeyGroup', 'KuCoin', 'HashKeyExchange',
-  'Bybit', 'Bitget', 'Mexc', 'Gate', 'Htx',
-];
+const LOW_FREQ_SOURCES = scraperKeysInTier('low');
 
 // ── 服务器 ────────────────────────────────────────────────────────────────────
 const SERVER = {
@@ -329,6 +329,8 @@ const MONITORING = {
 };
 
 module.exports = {
+  SOURCES,
+  SOURCE_NAME_BY_SCRAPER_KEY,
   SCRAPER,
   KOL_LIST,
   RSS_BASE_URLS,

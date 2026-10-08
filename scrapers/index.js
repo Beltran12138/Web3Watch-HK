@@ -74,7 +74,7 @@ const {
   HIGH_FREQ_SOURCES,
   LOW_FREQ_SOURCES,
   MAINSTREAM_EXCHANGES,
-  SOURCE_CONFIGS,
+  SOURCES,
   CRITICAL_SCORE_THRESHOLD,
 } = require('../config');
 
@@ -102,7 +102,8 @@ const {
   scrapePolymarketBreaking, scrapePolymarketChina,
 } = require('./sources/puppeteer');
 
-const SCRAPERS_MAP = {
+// 爬虫键 → 爬虫函数。哪些源存在、分哪一层、是否禁用，都以 config.js 的 SOURCES 表为准；这里只登记函数。
+const SCRAPER_FNS = {
   SFC: scrapeSFC, TechFlow: scrapeTechFlow, PRNewswire: scrapePRNewswire, BlockBeats: scrapeBlockBeats,
   // TwitterKOLs 已移除（2026-10-08）：所用 Nitter / RSSHub 实例全部失效，连续 10 天 0 条且不报错
   OSL: scrapeOSL, TechubNews: scrapeTechubNews, OKX: scrapeOKX,
@@ -112,10 +113,24 @@ const SCRAPERS_MAP = {
   PolymarketChina: scrapePolymarketChina, Gate: scrapeGate, Htx: scrapeHtx,
 };
 
-// 检查源是否被禁用
-function isSourceDisabled(sourceName) {
-  const config = SOURCE_CONFIGS[sourceName];
-  return config && config.disabled === true;
+function buildScrapersMap(sources, fns) {
+  const map = {};
+  for (const s of sources) {
+    if (!s.key) continue;
+    if (typeof fns[s.key] !== 'function') throw new Error(`[Scrape] config.js SOURCES 里的 "${s.key}" 没有登记爬虫函数`);
+    map[s.key] = fns[s.key];
+  }
+  const orphan = Object.keys(fns).filter(k => !map[k]);
+  if (orphan.length) throw new Error(`[Scrape] 爬虫 ${orphan.join(', ')} 不在 config.js SOURCES 里`);
+  return map;
+}
+
+const SCRAPERS_MAP = buildScrapersMap(SOURCES, SCRAPER_FNS);
+
+// 检查源是否被禁用（按爬虫键）
+function isSourceDisabled(scraperKey) {
+  const row = SOURCES.find(s => s.key === scraperKey);
+  return !!(row && row.disabled);
 }
 
 // 获取启用的爬虫列表
@@ -506,7 +521,7 @@ async function runAllScrapers(tier = 'all') {
   return processedNews;
 }
 
-module.exports = { runAllScrapers, checkImportance, ruleBasedPreFilter };
+module.exports = { runAllScrapers, checkImportance, ruleBasedPreFilter, SCRAPERS_MAP, getEnabledScrapers };
 
 // Allow direct execution (e.g., from npm run scrape)
 if (require.main === module) {
