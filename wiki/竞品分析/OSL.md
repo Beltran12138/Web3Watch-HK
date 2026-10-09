@@ -43,8 +43,8 @@ sources: [OSL官网, SFC公告, BC Group财报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-09-18
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-10
 
-- **[華夏基金（香港）聯同渣打銀行及OSL集團率先完成香港首宗港元穩定幣HKDAP投資數字資產用例](https://www.osl.com/hk/press-release/chinaamc-sc-osl-hkd-stablecoin-fund-use-case)** (2026-09-17 | Alpha 82)
+- **[OSL Group Powers 2WA's Tokenization of the First USDGO Stablecoin Market-Neutral Strategy Fund](https://www.prnewswire.com/apac/news-releases/osl-group-powers-2was-tokenization-of-the-first-usdgo-stablecoin-market-neutral-strategy-fund-302902264.html)** (2026-10-09 | Alpha 72)
 
 <!-- AUTO_NEWS_END -->
