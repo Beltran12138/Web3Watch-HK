@@ -1,24 +1,24 @@
 {
- "built": "2026-10-10T01:01+08:00",
+ "built": "2026-10-10T06:42+08:00",
  "since": "2026-10-03",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 20,
-   "in_window": 15
+   "fetched": 21,
+   "in_window": 16
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 19,
-   "in_window": 7
+   "fetched": 20,
+   "in_window": 6
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 28,
-   "in_window": 18
+   "fetched": 37,
+   "in_window": 22
   },
   {
    "topic": "监管",
@@ -29,13 +29,13 @@
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
-   "fetched": 20,
-   "in_window": 17
+   "fetched": 19,
+   "in_window": 16
   },
   {
    "topic": "中资券商",
    "q": "中资券商 虚拟资产 香港",
-   "fetched": 1,
+   "fetched": 9,
    "in_window": 1
   },
   {
@@ -47,20 +47,20 @@
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 32,
-   "in_window": 16
+   "fetched": 29,
+   "in_window": 15
   },
   {
    "topic": "竞品",
    "q": "HashKey",
-   "fetched": 25,
-   "in_window": 25
+   "fetched": 33,
+   "in_window": 31
   },
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 6,
-   "in_window": 4
+   "fetched": 16,
+   "in_window": 6
   },
   {
    "topic": "竞品",
@@ -72,30 +72,30 @@
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
    "fetched": 12,
-   "in_window": 3
+   "in_window": 2
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 27,
-   "in_window": 11
+   "fetched": 31,
+   "in_window": 13
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 23,
-   "in_window": 20
+   "fetched": 38,
+   "in_window": 33
   },
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
-   "fetched": 0,
-   "in_window": 0
+   "fetched": 12,
+   "in_window": 1
   },
   {
    "topic": "机构需求",
    "q": "Hong Kong family office crypto allocation",
-   "fetched": 3,
+   "fetched": 13,
    "in_window": 0
   },
   {
@@ -105,8 +105,101 @@
    "in_window": 5
   }
  ],
- "articles": 152,
+ "articles": 177,
  "stories": [
+  {
+   "id": "thebullcaseforoslgroupsehk863couldchange",
+   "title": "The Bull Case For OSL Group (SEHK:863) Could Change Following Its New Role Powering USDGO Fund",
+   "date": "2026-10-09",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T00:19+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "The Bull Case For OSL Group (SEHK:863) Could Change Following Its New Role Powering USDGO Fund",
+     "src": "Yahoo Finance",
+     "url": "https://finance.yahoo.com/markets/crypto/articles/bull-case-osl-group-sehk-161906550.html",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T17:19+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "The Bull Case For OSL Group (SEHK:863) Could Change Following Its New Role Powering USDGO Fund",
+     "src": "Yahoo Finance",
+     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPc0p4WUdSNUtCY2tsZ09peW1UbGluRGZrSUwtem5YeWNEWFp5cXhFSlpzdTNFQjRqOTEwTU9jN1ptSG9QUWxLVVpmYzhpMXJMNE5LVC1lSS1WWmlnUDlCUGlremRRZk8xeTdqWkFuTTE4cDdWRnlfMzBlNml4OExCcm5KU0V3NjEzYks0cmZLVTZnLVU?oc=5",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T00:19+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "OSL",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPJ213",
+       "en": "OSL Digital Securities Limited",
+       "zh": "OSL數字證券有限公司",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BTF661",
+       "en": "OSL Asset Management Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "asiastrategyandplumesignmoutoexploreatok",
+   "title": "AsiaStrategy and Plume sign MOU to explore a tokenized products JV in Asia",
+   "date": "2026-10-09",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T02:17+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "AsiaStrategy and Plume sign MOU to explore a tokenized products JV in Asia",
+     "src": "Crypto Briefing",
+     "url": "https://cryptobriefing.com/plume-asiastrategy-mou-tokenized-products-asia/",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T09:30+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "AsiaStrategy and Plume sign MOU to explore a tokenized products JV in Asia",
+     "src": "Crypto Briefing",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBLNXF4NUxGdmZsQmE1RlMzcFRTcjdTMWxaTE1CNVNhZUdpc2lfTVF5c1pmekxQSmJTRjlCSF9NOTFoanB0cWFvQmZqRVJkMnZHV1lTR0kzd05ETVRHMmpBa0pUTm9VSHMwYTRnV0pVMEVpN3A4WHBkRUFPcXZFY0k?oc=5",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T02:17+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
   {
    "id": "franklintempletonnuvacollaborationanimoc",
    "title": "Franklin Templeton NUVA Collaboration: Animoca Brands Opens Vault Marketplace to Institutional RWAs",
@@ -140,7 +233,7 @@
    "topics": [
     "竞品"
    ],
-   "n": 5,
+   "n": 6,
    "articles": [
     {
      "title": "HashKey Cloud to integrate Babylon Trustless Bitcoin Vaults",
@@ -157,6 +250,14 @@
      "date": "2026-10-07",
      "ts": "2026-10-07T22:09+08:00",
      "via": "Google"
+    },
+    {
+     "title": "Babylon, HashKey Cloud to Enable Native Bitcoin Borrowing via Aave",
+     "src": "The Crypto Times",
+     "url": "https://www.cryptotimes.io/2026/10/07/babylon-hashkey-cloud-to-enable-native-bitcoin-borrowing-via-aave/",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T17:46+08:00",
+     "via": "Bing"
     },
     {
      "title": "Babylon, HashKey Cloud Plan Native Bitcoin Borrowing Through Aave",
@@ -180,6 +281,97 @@
      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE5QZUxWRUk1Q3ctSkgwN00xQ3IydXNfTXdqZzUybm9fdG1WclVLU1VDR0lJM2ZaZ2JkV3FUd0V4SFFNWVVGT3RwNjFscDQ1eUZtd3phYjczZm9Ydw?oc=5",
      "date": "2026-10-09",
      "ts": "2026-10-09T17:56+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Babylon Adds Bitcoin Vaults to HashKey Cloud",
+     "src": "cryptonews",
+     "url": "https://cryptonews.net/news/bitcoin/33566042/",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T10:44+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "hashkeybitgoaddethandsolstakingforinstit",
+   "title": "HashKey, BitGo add ETH and SOL staking for institutions",
+   "date": "2026-10-08",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T02:27+08:00",
+   "topics": [
+    "RWA",
+    "竞品"
+   ],
+   "n": 4,
+   "articles": [
+    {
+     "title": "HashKey, BitGo add ETH and SOL staking for institutions",
+     "src": "Crypto News",
+     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOdUNEVzlvSTZXM195Rk4zNFVSNXY3UDhPUXhTemIyeER5VWFVcFJqVmNwbVI4Wm9pQUZ4V1FXdURZbVJBOHREU3NzdFh0anF5SVRNQ1dqSnpRT2xtaTNyZlpCWTJiWi16eXVBc1F5cGVXWDJjYXo5TVRPak9FZDZCVQ?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T12:56+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "BitGo and HashKey Cloud Deepen Alliance With Institutional ETH, SOL Staking",
+     "src": "finance.biggo",
+     "url": "https://finance.biggo.com/news/c480a3c3-79f2-4da3-93ed-02902118d247",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T19:27+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "HashKey, BitGo add ETH and SOL staking for institutions",
+     "src": "cryptonews",
+     "url": "https://cryptonews.net/news/market/33558298/",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T06:28+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "BitGo and HashKey Cloud Deepen Alliance With Institutional ETH, SOL Staking",
+     "src": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5fdW5ibHdDR3RxUkRkRDQzNmVZVjFjQUFNbkpHUk9UOGczWTBUOFdRVmI0OUFibktPR25lMkUxaHdTWUg0QnRiam9TQkFQZ3phRkM5TldIRUtVS3NuVDkybElqR0w3bXhKdGQzc2pfVVhwUno5N1E?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T02:27+08:00",
      "via": "Google"
     }
    ],
@@ -255,32 +447,63 @@
    "role": "监管"
   },
   {
-   "id": "hashkeybitgoaddethandsolstakingforinstit",
-   "title": "HashKey, BitGo add ETH and SOL staking for institutions",
+   "id": "stanchartplanssingaporecustodyforcryptos",
+   "title": "StanChart Plans Singapore Custody for Crypto, Stablecoins and Tokenized Assets, Pending the Regulator",
    "date": "2026-10-08",
    "last": "2026-10-09",
-   "ts": "2026-10-09T02:27+08:00",
+   "ts": "2026-10-09T01:50+08:00",
    "topics": [
-    "RWA",
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "StanChart Plans Singapore Custody for Crypto, Stablecoins and Tokenized Assets, Pending the Regulator",
+     "src": "Coingape",
+     "url": "https://coingape.com/stanchart-plans-singapore-custody-for-crypto-stablecoins-and-tokenized-assets-pending-the-regulator/",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T09:01+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "Standard Chartered to hold stablecoins and tokenized assets for Singapore institutions",
+     "src": "Cryptopolitan on MSN",
+     "url": "https://www.msn.com/en-us/money/general/standard-chartered-to-hold-stablecoins-and-tokenized-assets-for-singapore-institutions/ar-AA2dR1UQ",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T01:50+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "hashkeyexchangeunveilscardformembersfeat",
+   "title": "HashKey Exchange unveils card for members featuring auto-converted HKD Cash Vouchers",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T17:13+08:00",
+   "topics": [
     "竞品"
    ],
    "n": 2,
    "articles": [
     {
-     "title": "HashKey, BitGo add ETH and SOL staking for institutions",
-     "src": "Crypto News",
-     "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxOdUNEVzlvSTZXM195Rk4zNFVSNXY3UDhPUXhTemIyeER5VWFVcFJqVmNwbVI4Wm9pQUZ4V1FXdURZbVJBOHREU3NzdFh0anF5SVRNQ1dqSnpRT2xtaTNyZlpCWTJiWi16eXVBc1F5cGVXWDJjYXo5TVRPak9FZDZCVQ?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T12:56+08:00",
+     "title": "HashKey Exchange unveils card for members featuring auto-converted HKD Cash Vouchers",
+     "src": "Traders Union",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOa185ekVXTGRtQ2t2MzBuS3oxek5RcS0zeklQbktIYXJvem1ndUM5UXd5dlVvT2tDdDZiUzVsenhHZEJEeW5sel9NcTgtVUJCZ3lKQTZqdDJLa1I4a2R3cDd3NllLd0pnM2luMjZyS3ZnMDVsOWxjMGd3SDVuYmdaREVDdEFqZGlQamdLcjRNYVV0X25BNmNocDJUbw?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T17:13+08:00",
      "via": "Google"
     },
     {
-     "title": "BitGo and HashKey Cloud Deepen Alliance With Institutional ETH, SOL Staking",
-     "src": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5fdW5ibHdDR3RxUkRkRDQzNmVZVjFjQUFNbkpHUk9UOGczWTBUOFdRVmI0OUFibktPR25lMkUxaHdTWUg0QnRiam9TQkFQZ3phRkM5TldIRUtVS3NuVDkybElqR0w3bXhKdGQzc2pfVVhwUno5N1E?oc=5",
+     "title": "HashKey Exchange unveils card for members featuring auto-converted HKD Cash Vouchers",
+     "src": "tradersunion",
+     "url": "https://tradersunion.com/news/brokers-news/show/3736991-hashkey-exchange-debuts-crypto-rewards/",
      "date": "2026-10-09",
-     "ts": "2026-10-09T02:27+08:00",
-     "via": "Google"
+     "ts": "2026-10-09T10:13+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -322,9 +545,9 @@
    "role": "竞品动态"
   },
   {
-   "id": "oslgrouptokenizesusdgofundforhongkongpro",
-   "title": "OSL Group Tokenizes USDGO Fund for Hong Kong Professional Investors",
-   "date": "2026-10-08",
+   "id": "oslbringsausdgomarketneutralfundonchainf",
+   "title": "OSL Brings A USDGO Market-Neutral Fund On-Chain For Hong Kong Investors",
+   "date": "2026-10-09",
    "last": "2026-10-09",
    "ts": "2026-10-09T08:00+08:00",
    "topics": [
@@ -333,20 +556,20 @@
    "n": 2,
    "articles": [
     {
-     "title": "OSL Group Tokenizes USDGO Fund for Hong Kong Professional Investors",
-     "src": "TOKENPOST",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE41UEVaaXVCYlhhS1BsTUJYWTRBNzdyU3BrTm1BdlJtTnJSd3NIYnRid2FHc2JocnhlcFdLR1RqbGx2cnpWWmpXbzByNU4wckotMWVBZDRoM1o?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T15:11+08:00",
-     "via": "Google"
-    },
-    {
      "title": "OSL Brings A USDGO Market-Neutral Fund On-Chain For Hong Kong Investors",
      "src": "TradingView",
      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOcFJhUkctOEpCLTlLTFoxb3JTeEE3T1pLNklZcjlwai03RTEwVy01Ri01R0pWMlFiWEJvcmQxX1lKbTRZTHBZbFkxbXFFTVl6ZUl0WGNhZU1yZmMtY1M5Zk5XbjBsRU9FMUlyVkM0WmNvb2EyOFQzZF9oV1VWTkRfdWUzMmNQUHJ0TkFUZE1oRVlFV2xoNVNTN0NkcXVqTVVTRDBXanczWkxGRHF3dlJtYmIza0xEQnhsM3RzZEtzdVlBYl9GaUNGMA?oc=5",
      "date": "2026-10-09",
      "ts": "2026-10-09T08:00+08:00",
      "via": "Google"
+    },
+    {
+     "title": "OSL Brings A USDGO Market-Neutral Fund On-Chain For Hong Kong Investors",
+     "src": "NewsBTC",
+     "url": "https://www.newsbtc.com/business/osl-brings-a-usdgo-market-neutral-fund-on-chain-for-hong-kong/",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T01:00+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -387,7 +610,7 @@
    "title": "合规深耕与AI赋能：香港优质加密货币媒体格局盘点",
    "date": "2026-10-09",
    "last": "2026-10-09",
-   "ts": "2026-10-09T04:54+08:00",
+   "ts": "2026-10-09T18:55+08:00",
    "topics": [
     "监管"
    ],
@@ -398,7 +621,7 @@
      "src": "腾讯网",
      "url": "https://news.qq.com/rain/a/20261009A0A8EY00",
      "date": "2026-10-09",
-     "ts": "2026-10-09T04:54+08:00",
+     "ts": "2026-10-09T18:55+08:00",
      "via": "Bing"
     }
    ],
@@ -431,28 +654,76 @@
    "role": "监管"
   },
   {
-   "id": "三大国际评级机构密集上调中资券商评级",
-   "title": "三大国际评级机构密集上调中资券商评级",
+   "id": "关于延长港股交易时间香港证监会发声",
+   "title": "关于延长港股交易时间，香港证监会发声！",
    "date": "2026-10-09",
    "last": "2026-10-09",
-   "ts": "2026-10-09T15:21+08:00",
+   "ts": "2026-10-09T14:44+08:00",
    "topics": [
-    "中资券商"
+    "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "三大国际评级机构密集上调中资券商评级",
-     "src": "新浪网",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPdzY1TW10LW1qWFRmTTZaTHRMYzFkamtYbDBVaDFNUlVlRUZ2WVUxb1d5ZXMwNWlMV29PX2YyakRmQllJTDRKekpSRFFBeGZ5QlpFUXctOEk3N01EQWY1aDJSOVBxVks2SW1mdFVsTEkydDhiWHBXR1NFSEgtbU9GR1lhYw?oc=5",
+     "title": "关于延长港股交易时间，香港证监会发声！",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1085517102_122014422",
      "date": "2026-10-09",
-     "ts": "2026-10-09T15:21+08:00",
+     "ts": "2026-10-09T14:44+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "谁将瓜分稳定币时代跨境汇款的利润",
+   "title": "谁将瓜分稳定币时代跨境汇款的利润？",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T16:53+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "谁将瓜分稳定币时代跨境汇款的利润？",
+     "src": "富途牛牛",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMmFzUkZwd1d5ZVRPU0ozQjhFcWFudFM3di14NWtfbHdrTlc4WVFzdVJHLS1pWG1TMmlwdkdCOUlWQlkxRnpBYnhXaUxDYU5kaGdQd0RPTjFoYkdObjV4RXV0MXNqZnhfQlRGdEpQeENIZENkbUxrM2xKZE5sOWdxRUcwMjVYTWt5bDJ3dnpNeksyLVd0RVp0WEc0UjduUQ?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T16:53+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "中资券商动态"
+   "role": "监管"
+  },
+  {
+   "id": "rwa周刊okx联合ice拟推代币化美股交易平台欧洲央行拟于2029年推出数字欧",
+   "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T23:49+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9EcFg0elBBcF9SOUEzZ1djb3ZodHdKVmNRQlBfeTVjdVF4LTBIckJYV2RpZHpac0I2eU80WWtoM3N3dTdJZnlia2tQbDZYZjlTVk1tdnl3WGl4eDdIZmpSNzFoSEpaaUxGc21lelFuNDVBRDl0VEFhRFBESllOYVU?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T23:49+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "互联网券商负责人每日逾百内地客来港开户20261009经济",
@@ -479,23 +750,23 @@
    "role": "中资券商动态"
   },
   {
-   "id": "hashkeyexchangeunveilscardformembersfeat",
-   "title": "HashKey Exchange unveils card for members featuring auto-converted HKD Cash Vouchers",
+   "id": "hashkeyhldgs03887hkrepurchased133million",
+   "title": "HASHKEY HLDGS (03887.HK) repurchased 1.33 million shares on October 9 at a cost of HK$2.974 million.",
    "date": "2026-10-09",
    "last": "2026-10-09",
-   "ts": "2026-10-09T17:13+08:00",
+   "ts": "2026-10-09T12:00+08:00",
    "topics": [
     "竞品"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "HashKey Exchange unveils card for members featuring auto-converted HKD Cash Vouchers",
-     "src": "Traders Union",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOa185ekVXTGRtQ2t2MzBuS3oxek5RcS0zeklQbktIYXJvem1ndUM5UXd5dlVvT2tDdDZiUzVsenhHZEJEeW5sel9NcTgtVUJCZ3lKQTZqdDJLa1I4a2R3cDd3NllLd0pnM2luMjZyS3ZnMDVsOWxjMGd3SDVuYmdaREVDdEFqZGlQamdLcjRNYVV0X25BNmNocDJUbw?oc=5",
+     "title": "HASHKEY HLDGS (03887.HK) repurchased 1.33 million shares on October 9 at a cost of HK$2.974 million.",
+     "src": "Futubull News",
+     "url": "https://news.futunn.com/en/post/1000795884/hashkey-hldgs-03887-hk-repurchased-1-33-million-shares-on",
      "date": "2026-10-09",
-     "ts": "2026-10-09T17:13+08:00",
-     "via": "Google"
+     "ts": "2026-10-09T12:00+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -537,6 +808,31 @@
    "role": "竞品动态"
   },
   {
+   "id": "艾德金融拓展新加坡数字金融版图agenticmoney2026rwaweb3证券",
+   "title": "艾德金融拓展新加坡数字金融版图，AgenticMoney2026|RWA|Web3|证券|枢纽|代币",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T00:33+08:00",
+   "topics": [
+    "RWA",
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "艾德金融拓展新加坡数字金融版图，AgenticMoney2026|RWA|Web3|证券|枢纽|代币",
+     "src": "新浪财经",
+     "url": "https://news.google.com/rss/articles/CBMi_wFBVV95cUxNTmhEZWV0YVNRbmVtOXhNOHhPendVcVN6Zk5xcnhqQnFsdnZXX0ctN2pma1RFNFByQTNxVlJTVngxVXJCTC1XOHlMbWtveE5xd0pIc09SUnJRbEJ6WVY4R0QtdldOcGVZRzUxRXI5ajhrMGlOaUVya09na0VpRi0tcmVRX0V2MGtodHh4bk4xbTQ4Q19kdEc4WkhQeXVVWnE1a1duUlg0X3lnY2REa0hLMUp6NUVSckdEeWJnMjA5M3hIUUJKYWpLeVVpZ2o0a2R4X2NrckpZalhnZnpPV0tNY0R3QUMtYVFJSHJpS0RoVmZXcnNfVWRfQUxuMVQ2elE?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T00:33+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "君合助力头部金融科技公司成功落地rwa代币化项目并接入r25rwa基础设施",
    "title": "君合助力头部金融科技公司成功落地RWA代币化项目并接入R25 RWA基础设施",
    "date": "2026-10-09",
@@ -553,6 +849,30 @@
      "url": "https://news.google.com/rss/articles/CBMiR0FVX3lxTE5wXzlRZ3ZTNUtFU215N2RZQ1BraVl6aC1oLXRwVjFzX0hlVXVoc2x5N3hXUEt1a0N5R2JHUVFXa3NpbzdmWHZJ?oc=5",
      "date": "2026-10-09",
      "ts": "2026-10-09T22:13+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "资产代币化安拟集团旗下nuva推出home代币向非美投资者开放美国房屋净值信贷敞",
+   "title": "資產代幣化｜安擬集團旗下NUVA推出HOME代幣 向非美投資者開放美國房屋淨值信貸敞口- 數字經濟",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T21:09+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "資產代幣化｜安擬集團旗下NUVA推出HOME代幣 向非美投資者開放美國房屋淨值信貸敞口- 數字經濟",
+     "src": "香港文匯報",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1FS1p6OFJGaTlDTUtfRkgzdlRvemFMSHZycUJhbzRqNkg4elZabF8zUkF3eDFWTjIzZG5LaTRqSmZZVUEzN2RkSkFSYVZwRnhHdjRXNFp1ZEpkMzVrMjBXNmxaTzJfdFpSTHl2aHcyNFotbUg4cl84?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T21:09+08:00",
      "via": "Google"
     }
    ],
@@ -578,6 +898,14 @@
      "date": "2026-10-09",
      "ts": "2026-10-09T12:30+08:00",
      "via": "Google"
+    },
+    {
+     "title": "OSL Group (SEHK:863) Stock Looks Stretched Following Tokenized Fund News",
+     "src": "Yahoo Finance",
+     "url": "https://finance.yahoo.com/markets/stocks/articles/osl-group-sehk-863-stock-043012546.html",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T05:30+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -647,7 +975,7 @@
     "RWA",
     "竞品"
    ],
-   "n": 9,
+   "n": 10,
    "articles": [
     {
      "title": "BitGo and HashKey Sign Multi-Pillar Strategic Partnership Spanning Staking, Trading, Custody and RWA Tokenization",
@@ -658,11 +986,27 @@
      "via": "Google"
     },
     {
-     "title": "BitGo and HashKey Extend Staking Deal Into Custody, Trading and Tokenization",
-     "src": "FinanceFeeds",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOVC14a1ItTjFiai1weW9Mby1KandqenlZaVZxV0J1ZC0ySzhjVTI1QkZoYzdSWjhXZkJlU0ZaRHBLVUVaUzVSN24zUjBBZ080Z1F6R1FtdE0xdjF6ZGs0UlhyR0JBMjQ5WmhUNXZHMFV2d1c1QlZiRVEtM1FEXzRaRDJ2czJGOFJoSW1vaVA5d2QxWTczeWoyeFVtQUh6M3kwckw0?oc=5",
+     "title": "BitGo, HashKey Cloud sign strategic partnership agreement",
+     "src": "Investing.com",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOeEpwMGlZNzd0a2NaYkxKbElMOTQ0alhUNDJNbnNjbS1oWU5VZTIxbmtvWjBxWjg5VVBYWWpjQ2pVNUNpQWdhMzJWOUYzM01QMlhtNzg0cEs2NDdZVHRadDlUTjB5MlR0dmRURnU3Q0RBMFd5MVhWdl92SW5JdHU4NVVZTnFybVB6MFMxUUg2T3hTbmpiZHJzMmU1WTRPaGRrQ0NOZzM4U21QQUxBTmFUb3ZwQQ?oc=5",
      "date": "2026-10-06",
-     "ts": "2026-10-06T23:32+08:00",
+     "ts": "2026-10-06T16:25+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "BitGo and HashKey sign institutional digital asset partnership in Asia",
+     "src": "StreetInsider",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQYVJjLW42OURBczBXRzlNQmpQLTdoeC1PT0plTkdrUzFKTDRFemtjTmR2d3JUd2JXaGFvdjBkMWhvTGJfMkFrcFNXYVBmNnhQN1FCaElIcEx4eHZWT3pXQkNPd0JWMDBtX3lGeDFJR1ZpS3hCOHFiNHFPdU94dlVwc29xVVZqbkhJYTF3blZhVjl3ZlR5dVdyZlBVU2xMVU9DQi1QVlN1YkdzQlVhc3pCODJxcWQtTzNhWU1CRVB3WUd6dEZ2SEswdg?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T17:55+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Bitgo and Hashkey Sign Multi-Pillar Strategic",
+     "src": "Moomoo",
+     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNckdGejhGRFBnQTJwLUI5c0p1aGNONHA0THA0MWJnWXlsWmkzVEJXSVdlQTBaRHg1cTlQWUVUV1NwbzU2Mm4tRDZyTXNrQmtLdGVUek1oZnBQX09MMDBMcjJxaGFES3F2Z19OdDJLSWpHd1dIMFkwSmp4cVQ1Z0sydTIwNldUcTJjSy1zRFJyekpadGhlRjZZZGZSaVQ0V2hYWjZuemc4X1VnZGNwQlBPQzhnR1ZrQ2djRXJr?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T16:00+08:00",
      "via": "Google"
     },
     {
@@ -682,12 +1026,12 @@
      "via": "Google"
     },
     {
-     "title": "BitGo, HashKey Cloud sign strategic partnership agreement By Investing.com",
-     "src": "Investing.com Nigeria",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQSXRXOUhMVnEwRGtSSnRsaE4tSEhxeW1YS1NEQlFRZE9zY1FpenQ2TlhjUGEtQzJJNlJ0ZUhrbVBycWRUNUF3OTdVTXc4Mm9Ubk9rd1JELTJRTVB5Z2lVajExVEFfbldqcU1pTDdINlk0a2RjdHhPTFFaNlVYc1R3a0FITkFrOWJaN2RfQ29PLU1ieEhVTFRiLXllQmZkamEzdkVLallNeURsSVZCU1VVb29Ub19oczNz?oc=5",
+     "title": "BitGo And HashKey Expand Asia Partnership Across Staking, Custody And Tokenization",
+     "src": "Bitcoinist",
+     "url": "https://bitcoinist.com/bitgo-and-hashkey-expand-asia-partnership-across-staking-custody-and/",
      "date": "2026-10-07",
-     "ts": "2026-10-07T03:00+08:00",
-     "via": "Google"
+     "ts": "2026-10-07T18:59+08:00",
+     "via": "Bing"
     },
     {
      "title": "HashKey Cloud and BitGo expand partnership to i...",
@@ -695,22 +1039,6 @@
      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNRGxYY1UtanFNeXBZYnIzMUdISFAwTG54SnBlWl93dGhybk41NW1wTXc1VTV6NGgyRVlhT1hBM2NORWpZZ1pDVlh5aUtCWnVaVTZtSzluSUhib2tONW0xTlNMTTBRWk16UjVyZzFuRkdLOW9oT0J0aGJYaWNoU3JabHNjdXZNekE0T0FYSQ?oc=5",
      "date": "2026-10-08",
      "ts": "2026-10-08T13:08+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "BitGo and HashKey Cloud expand partnership to staking, custody and RWA tokenization",
-     "src": "Crypto Briefing",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE5kb0pIYjZoSHlLc2VXT2F1bW5DVWhIRkJickRQU2JISW5vU3ozOXh1SWhrUC1DZDhjdkhBbW1ScUJHS3QyRUZLQkxqSE5XQXkwb25VdmNMbWhnWVppZFU4V2FVVTlwQ2pPTnJYMlRKbzE3UklzSHc?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T11:27+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "BitGo Expands HashKey Partnership Across Institutional Trading, Custody and Tokenized Assets",
-     "src": "Crypto Economy",
-     "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxPZ3drM3FxYmVZUWN6ZzN3bWNQc0xLU1dmdlRSZVFubmppVkVITjJSUkJZTk54NzdKS2RyWUdab0VJZFBjS0l4TVExYk03Tmd0QXUyS0dPelQzRXhfYmdmOEp0elVHQ29EQUMzb1REcU9OaFJsSUJhU2pBSjh5cDlFai1jVGdwVUJMdmFJZUdOeTZ0Yl9qVkVWTXRkVTg3Z1RzNERDY3pvX002YTJtNGkwbFNkdno2c2d1YjZz?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T00:29+08:00",
      "via": "Google"
     }
    ],
@@ -841,7 +1169,7 @@
    "topics": [
     "RWA"
    ],
-   "n": 2,
+   "n": 3,
    "articles": [
     {
      "title": "OSL Group Powers 2WA's Tokenization of the First USDGO Stablecoin Market-Neutral Strategy Fund",
@@ -858,6 +1186,14 @@
      "date": "2026-10-08",
      "ts": "2026-10-08T16:05+08:00",
      "via": "Google"
+    },
+    {
+     "title": "OSL Group Powers 2WA's Tokenization of the First USDGO Stablecoin Market-Neutral Strategy Fund",
+     "src": "AOL",
+     "url": "https://www.aol.com/articles/osl-group-powers-2was-tokenization-080500000.html",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T09:05+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -892,6 +1228,46 @@
     }
    ],
    "role": "竞品动态"
+  },
+  {
+   "id": "osl助usdgoplussp代币化上链兼提供安全托管及分销",
+   "title": "OSL助USDGO Plus SP代币化上链 兼提供安全托管及分销",
+   "date": "2026-10-08",
+   "last": "2026-10-08",
+   "ts": "2026-10-08T15:47+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "OSL助USDGO Plus SP代币化上链 兼提供安全托管及分销",
+     "src": "星島頭條",
+     "url": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxOclI3OGJSX2RZUjNHTHBGNGV5SHhxS19iZzRKbmdwLWFJVlFoYkJNS0hWUm9QLWp1WFN4LWdPY0szT0JEM0JkMk5yX28yZkwyZUhMcklZMHpEeTlNS0pUYXRKb1lMRVJkQ184X1JmWllBQVVJNU82ZHBKNl9qZk5obmtQUlo4bWxnSEZ5Q0Izc3BvaGVCTXNSbzZYRGR2Sy16UWMteS0zYzVBRnJ0bjg0a1lFcmFpdWljQXZkRGdFU3dwRjE1by1fMVBVeXpSNi1sWXpTakRNZHA2NlZWbUl2Y2R6a2N6ZWNCMHJrdDN1UWlOeWR6RnktZzJ1MjJIZXlfMk5CN2Frb2c0VmR0eW1QQTcwWFh6OElISmFnZWNTUDJfVWdodkpxSUctVlkyRzE4Nkp3YUdGb3FNMk0?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T15:47+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "OSL助USDGO Plus SP代幣化上鏈 兼提供安全託管及分銷",
+     "src": "星島頭條",
+     "url": "https://news.google.com/rss/articles/CBMisAJBVV95cUxNTkoxOG4tQ2ZPbU9IWFBEV3J0YmJtSVo4aGg5c0xsVnQ4a2VHWFpVclZtVHVLNjdUbVhrTE45MUJuWkhFS3Q5ZzdncjB3d1YyelpXNU9NYTZReDBRbGY0aXNSaFF6amtISXhveUI4WHoxU29pTlZjNVVsOTQ1ekY1VXltLWYtRTF2ZG9qankzVGhKTlVMb2tjWldMdmdmU2RtQnhFcjh4dHo3V1g1cFdhV3NVa3ZsUlN3OFVUY0NvYjFMVXNrdTBsbWpvWThqZlh3U25VYU9mVndtdjVjTGsyYTZEWDktQldYR3Zkb0gtNmZMaUM2Vm5aQ1FHSkVVeUhSWnllaUtEcE1XYWFiSE83SGlyV1dfbEg3SUJYb1g5dV9jR3JlM0pHZXljUHZoS2lf?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T15:47+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "OSL助USDGO Plus SP代币化上链 兼提供安全托管及分销",
+     "src": "星岛头条",
+     "url": "https://www.stheadline.com/zh-hans/loadnext/0/3623844",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T01:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "艾德金融会晤fomopay及1exchange探索新加坡web3及虚拟资产新机遇",
@@ -960,30 +1336,6 @@
      "date": "2026-10-08",
      "ts": "2026-10-08T02:33+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "关于延长港股交易时间香港证监会发声",
-   "title": "关于延长港股交易时间，香港证监会发声！",
-   "date": "2026-10-08",
-   "last": "2026-10-08",
-   "ts": "2026-10-08T23:04+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "关于延长港股交易时间，香港证监会发声！",
-     "src": "同花顺财经股票频道",
-     "url": "https://stock.10jqka.com.cn/20261009/c680516234.shtml",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T23:04+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1249,38 +1601,6 @@
    "role": "资讯"
   },
   {
-   "id": "osl助usdgoplussp代币化上链兼提供安全托管及分销",
-   "title": "OSL助USDGO Plus SP代币化上链 兼提供安全托管及分销",
-   "date": "2026-10-08",
-   "last": "2026-10-08",
-   "ts": "2026-10-08T15:47+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "OSL助USDGO Plus SP代币化上链 兼提供安全托管及分销",
-     "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMiuwJBVV95cUxOclI3OGJSX2RZUjNHTHBGNGV5SHhxS19iZzRKbmdwLWFJVlFoYkJNS0hWUm9QLWp1WFN4LWdPY0szT0JEM0JkMk5yX28yZkwyZUhMcklZMHpEeTlNS0pUYXRKb1lMRVJkQ184X1JmWllBQVVJNU82ZHBKNl9qZk5obmtQUlo4bWxnSEZ5Q0Izc3BvaGVCTXNSbzZYRGR2Sy16UWMteS0zYzVBRnJ0bjg0a1lFcmFpdWljQXZkRGdFU3dwRjE1by1fMVBVeXpSNi1sWXpTakRNZHA2NlZWbUl2Y2R6a2N6ZWNCMHJrdDN1UWlOeWR6RnktZzJ1MjJIZXlfMk5CN2Frb2c0VmR0eW1QQTcwWFh6OElISmFnZWNTUDJfVWdodkpxSUctVlkyRzE4Nkp3YUdGb3FNMk0?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T15:47+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "OSL助USDGO Plus SP代幣化上鏈 兼提供安全託管及分銷",
-     "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMisAJBVV95cUxNTkoxOG4tQ2ZPbU9IWFBEV3J0YmJtSVo4aGg5c0xsVnQ4a2VHWFpVclZtVHVLNjdUbVhrTE45MUJuWkhFS3Q5ZzdncjB3d1YyelpXNU9NYTZReDBRbGY0aXNSaFF6amtISXhveUI4WHoxU29pTlZjNVVsOTQ1ekY1VXltLWYtRTF2ZG9qankzVGhKTlVMb2tjWldMdmdmU2RtQnhFcjh4dHo3V1g1cFdhV3NVa3ZsUlN3OFVUY0NvYjFMVXNrdTBsbWpvWThqZlh3U25VYU9mVndtdjVjTGsyYTZEWDktQldYR3Zkb0gtNmZMaUM2Vm5aQ1FHSkVVeUhSWnllaUtEcE1XYWFiSE83SGlyV1dfbEg3SUJYb1g5dV9jR3JlM0pHZXljUHZoS2lf?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T15:47+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "虚拟资产须扎根实业港股上链宜稳中求进会长视角",
    "title": "虛擬資產須扎根實業 港股上鏈宜穩中求進｜會長視角",
    "date": "2026-10-08",
@@ -1441,46 +1761,6 @@
    "role": "监管"
   },
   {
-   "id": "港股rwa窗口正在收窄马行空",
-   "title": "港股RWA窗口正在收窄｜马行空",
-   "date": "2026-10-07",
-   "last": "2026-10-07",
-   "ts": "2026-10-07T08:18+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "港股RWA窗口正在收窄｜马行空",
-     "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQc01odVhzRFJ2Q3AyTXU1aUgwRkpXa0JyMUhNZVd6NzludUpGRkE2Zlo3MWxnbXZ1aVd4OWZxM0JRcFJScmt2RGlQTnVlQURDb2JYSFZ1ZWdlMUdVZndtNUNVNkE2b3FTVEtkcXFhM2tjZFpjRnVIWnRjVFp5eTNfTW5pNWJjYUc1UlB3TWE4d1lPNU9SVmh3Q3VTZ0p1dEJaa0tSOWRodnlraklTemNPaHhadllPZ2xiRl9CUE85WjFaTUxBLWV4V2FvT1pBeWhvb204V1QyWVBiOTJYLUJOZjQwanN0ZkdYZmpWaQ?oc=5",
-     "date": "2026-10-07",
-     "ts": "2026-10-07T06:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "港股RWA窗口正在收窄｜馬行空",
-     "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQWnVLQkFCSlR2Q0hiV0xIQUFXVC1tWFVrS2szMTExbGhxZERva095WHRnX2pQcXhuek1udFFINHpKSDBzaXpHYy1URzJRcFQtVEhFbGhNaWQ4bTlZQkhGcXlHdnpSYllZLVNLR01mS2ZJZzRnY3NUakctcC1IRzA0OHM3U1NPeGxKRGtoUG1rcEFtQzhTMFlZRGY2UGlSR3VGR0xHTkRwS09vQVJiTVhLdGRyYzJjaFphdDRpajNOR29jcnl5RlVjSVBCc1haY2xnVWhHRFdkeFNaVFRaS3c5ZVBB?oc=5",
-     "date": "2026-10-07",
-     "ts": "2026-10-07T06:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "港股RWA窗口正在收窄｜馬行空",
-     "src": "Sing Tao Daily 星島日報加拿大",
-     "url": "https://news.google.com/rss/articles/CBMinAJBVV95cUxQY2EzeDNvbU9vbFhIWnVjTFByVFJWWmZtSXdQczEzdmtFN19fTVppei1EdWhjTXVKem0wb2hoYjhEa1NMcE9LZUZBWlk2YXNkZ0Y4aEhXTXd6MGZwTzNWZHpFTFZtV2RfckExYXlFcnpCcDRvRmVmWXVpOUhDUFFoc1JfSnNRN2N5c05IMUpnNU5XV2pzM3JVX3FTbXhod3g0Smx1dmdOdWd6cnI5al9oUTVFenowcFl5RlRlVEt6RWNPTmJsMjdtcFdnRnNkOXF5TWdERkV4cjBfOXRJM3Q1eFYtRl8tWXgteUNwR0c4VFdQSlVvbG9GSWtVM1UyaFlxaU9kcm94SHlXb3l1V2JoeGx2NjBId1VEbDd0NNIBigFBVV95cUxOaE43N2hGbGZYT3EtWjNGRjFtWm1VUDRhemJJbjZzVThvVmdaaWlVWDN3SklYNDQxSWo0cmVIZ2VrcTlCbWxPOVU5Rm1zRXdHZ05JbkJMMHpPLVVSS0NhLVFvNC1idGNtTUI3LS1xVno4TzdBNGVPUlhvQmtuQWJYUkwxQUZkMlBwNnc?oc=5",
-     "date": "2026-10-07",
-     "ts": "2026-10-07T08:18+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "hongkongwilllicensecryptobrokerscustodia",
    "title": "Hong Kong Will License Crypto Brokers, Custodians and Advisers. Is It Overtaking the US as the Regulated Market?",
    "date": "2026-10-07",
@@ -1622,6 +1902,62 @@
    "role": "竞品动态"
   },
   {
+   "id": "swissdigitalassetfirmtaurusbecomesinstit",
+   "title": "Swiss digital asset firm Taurus becomes institutional validator on XDC Network",
+   "date": "2026-10-07",
+   "last": "2026-10-07",
+   "ts": "2026-10-07T09:56+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Swiss digital asset firm Taurus becomes institutional validator on XDC Network",
+     "src": "Cryptopolitan",
+     "url": "https://www.cryptopolitan.com/swiss-digital-asset-firm-taurus-becomes-institutional-validator-on-xdc-network/",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T09:56+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "港股rwa窗口正在收窄马行空",
+   "title": "港股RWA窗口正在收窄｜马行空",
+   "date": "2026-10-07",
+   "last": "2026-10-07",
+   "ts": "2026-10-07T06:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "港股RWA窗口正在收窄｜马行空",
+     "src": "星島頭條",
+     "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxQc01odVhzRFJ2Q3AyTXU1aUgwRkpXa0JyMUhNZVd6NzludUpGRkE2Zlo3MWxnbXZ1aVd4OWZxM0JRcFJScmt2RGlQTnVlQURDb2JYSFZ1ZWdlMUdVZndtNUNVNkE2b3FTVEtkcXFhM2tjZFpjRnVIWnRjVFp5eTNfTW5pNWJjYUc1UlB3TWE4d1lPNU9SVmh3Q3VTZ0p1dEJaa0tSOWRodnlraklTemNPaHhadllPZ2xiRl9CUE85WjFaTUxBLWV4V2FvT1pBeWhvb204V1QyWVBiOTJYLUJOZjQwanN0ZkdYZmpWaQ?oc=5",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T06:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "港股RWA窗口正在收窄｜馬行空",
+     "src": "星島頭條",
+     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxQWnVLQkFCSlR2Q0hiV0xIQUFXVC1tWFVrS2szMTExbGhxZERva095WHRnX2pQcXhuek1udFFINHpKSDBzaXpHYy1URzJRcFQtVEhFbGhNaWQ4bTlZQkhGcXlHdnpSYllZLVNLR01mS2ZJZzRnY3NUakctcC1IRzA0OHM3U1NPeGxKRGtoUG1rcEFtQzhTMFlZRGY2UGlSR3VGR0xHTkRwS09vQVJiTVhLdGRyYzJjaFphdDRpajNOR29jcnl5RlVjSVBCc1haY2xnVWhHRFdkeFNaVFRaS3c5ZVBB?oc=5",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T06:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "everythingyouownwillliveonchainthankstor",
    "title": "Everything You Own Will Live On-Chain Thanks to RWA Tokenization",
    "date": "2026-10-07",
@@ -1686,6 +2022,30 @@
      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOS1A2Zk5iRkRBbHlaV05FRUtHblJWQVNhOEhDZ3BMcHEtUWs4azAzOFFlTDJBNzNDV08zN1hQVlgtM3dKY3kyek9kWk9qYndxa1J2ZWVfXzhCZDVUV2dNWXVFRUM4dGVPRzRqMWYtVmtCTjZjRzJDSVlkSnhteHAwNWppTldKRU01ZUMwVlJZVHJVbXg2VC1WM202N2ljWlE2b3BibQ?oc=5",
      "date": "2026-10-07",
      "ts": "2026-10-07T16:19+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "spikoraises90mastokenizedcashfundshit27b",
+   "title": "Spiko Raises $90M as Tokenized Cash Funds Hit $2.7B in Assets",
+   "date": "2026-10-07",
+   "last": "2026-10-07",
+   "ts": "2026-10-07T00:11+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Spiko Raises $90M as Tokenized Cash Funds Hit $2.7B in Assets",
+     "src": "CoinCodex",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQNW42RlV1Q25Yb2gzYTV6cmttY09jVGtOalpPeEdUVWQxUmRVclpsRGpCUk16LXBlbnAyWEtfZ0tlNGRaS29JY0pvQjJrT1BQdnNVc1I1a0FCSkI1bDlaMEZEcEtjNUJWdEFnVkNuQ3FEWmdiZ2hZNldKZDRDWmZkMHd0NnM0cy03cXZCc3RNSVRMeHlkN290TW1LYw?oc=5",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T00:11+08:00",
      "via": "Google"
     }
    ],
@@ -1815,46 +2175,6 @@
    "role": "监管"
   },
   {
-   "id": "hongkonggrantsfirststablecoinlicensestoh",
-   "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
-   "date": "2026-10-04",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T17:06+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOenNsYVRHZDV4SE1kelNjdno2MUNYU0VEZE1pUkowbm1zNUNWSDJDcTVfS3k5QWxuekJXSS0xSXdsY1NTWC1wRHVxdHhkV0c0RzgzRmtTNVZOVXNxWHota3QzTy1wNWdYX3hOczBvOWpLSzBGbUhlUjlkcXl2bzd5bVVsUWtINTRkUW0wNDF4ZEs2eWUxTjF1NGEzMkExWUJ1dWc2bmQtZw?oc=5",
-     "date": "2026-10-04",
-     "ts": "2026-10-04T05:12+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Releases HSBC RedCoin For Hong Kong Dollar Stablecoin",
-     "src": "Techiexpert.com",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZXBteUFhc0E3NDhNUThEb1V4UldPWVlUcmRvVUVmN1d6eHpsejBVa0ZvdUMwWmJPNlN0Q2dvTURDRDFiYzJLZmRvMUFTZ2UzaDdtOHdQWDRTWThhVmtmcjJmZXZhS2RlSDYySGM4ZEJkeUt1TmxqOEJIM1JmV0pKTmFUeTd5bk1JdUEw?oc=5",
-     "date": "2026-10-05",
-     "ts": "2026-10-05T01:55+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Prepares Hong Kong Stablecoin Launch With RedCoin Brand",
-     "src": "paymentsindustryintelligence",
-     "url": "https://paymentsindustryintelligence.com/hsbc-prepares-hong-kong-stablecoin-launch-details/",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T17:06+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hongkongtosubmitvirtualassetlicensingbil",
    "title": "Hong Kong to Submit Virtual Asset Licensing Bill This Year",
    "date": "2026-10-05",
@@ -1875,19 +2195,19 @@
     },
     {
      "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
-     "src": "en.bloomingbit",
-     "url": "https://en.bloomingbit.io/feed/news/121697",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T08:54+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
      "src": "bloomingbit",
      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ydVR6RjcteFdXWjQwREhHRUd0eFNIVmc4VDhPVlZTbllZVlVaMnJtYTFHWXh4bXFJYlRyVnBNdjFkTHg1aHQzMTZMWk5rdXdKOUc4QQ?oc=5",
      "date": "2026-10-06",
      "ts": "2026-10-06T22:53+08:00",
      "via": "Google"
+    },
+    {
+     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
+     "src": "en.bloomingbit",
+     "url": "https://en.bloomingbit.io/feed/news/121697",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T08:54+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1901,6 +2221,7 @@
    "last": "2026-10-06",
    "ts": "2026-10-06T20:25+08:00",
    "topics": [
+    "RWA",
     "监管"
    ],
    "n": 3,
@@ -2056,6 +2377,30 @@
    "role": "监管"
   },
   {
+   "id": "香港将于今年提交虚拟资产交易及托管牌照法案",
+   "title": "香港將於今年提交虛擬資產交易及託管牌照法案",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T06:36+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港將於今年提交虛擬資產交易及託管牌照法案",
+     "src": "区块周刊BlockWeeks",
+     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5iM0ozZFY5aWJxN2NVWUtHam9jSkhfQ0o3cnpSekE5TERzLUlwNWV2dDZDMnBUcHZQclMxYzctZTFkYzg0SWljZ1Z3?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T06:36+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "香港拟于2026年底前提交虚拟资产监管修订条例草案涵盖交易托管等四类业务",
    "title": "香港拟于 2026 年底前提交虚拟资产监管修订条例草案，涵盖交易、托管等四类业务",
    "date": "2026-10-06",
@@ -2072,30 +2417,6 @@
      "url": "https://www.techflowpost.com/newsletter/138972",
      "date": "2026-10-06",
      "ts": "2026-10-06T11:37+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港证监会上半年香港证券业录得稳健增长净盈利增至517亿港元",
-   "title": "香港证监会：上半年香港证券业录得稳健增长 净盈利增至517亿港元",
-   "date": "2026-10-06",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T18:22+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港证监会：上半年香港证券业录得稳健增长 净盈利增至517亿港元",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1084515247_323087",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T18:22+08:00",
      "via": "Bing"
     }
    ],
@@ -2200,22 +2521,46 @@
    "role": "监管"
   },
   {
-   "id": "bitgoandhashkeysigninstitutionaldigitala",
-   "title": "BitGo and HashKey sign institutional digital asset partnership in Asia",
+   "id": "谷歌云在香港招聘web3架构师需稳定币支付相关经验",
+   "title": "谷歌云在香港招聘Web3架构师，需稳定币支付相关经验",
    "date": "2026-10-06",
    "last": "2026-10-06",
-   "ts": "2026-10-06T17:55+08:00",
+   "ts": "2026-10-06T18:12+08:00",
    "topics": [
-    "竞品"
+    "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "BitGo and HashKey sign institutional digital asset partnership in Asia",
-     "src": "StreetInsider",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQYVJjLW42OURBczBXRzlNQmpQLTdoeC1PT0plTkdrUzFKTDRFemtjTmR2d3JUd2JXaGFvdjBkMWhvTGJfMkFrcFNXYVBmNnhQN1FCaElIcEx4eHZWT3pXQkNPd0JWMDBtX3lGeDFJR1ZpS3hCOHFiNHFPdU94dlVwc29xVVZqbkhJYTF3blZhVjl3ZlR5dVdyZlBVU2xMVU9DQi1QVlN1YkdzQlVhc3pCODJxcWQtTzNhWU1CRVB3WUd6dEZ2SEswdg?oc=5",
+     "title": "谷歌云在香港招聘Web3架构师，需稳定币支付相关经验",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1fRlFDQklVdl9nSnoyRmsyNWdQMTVqdlM1T0lRMVlXS3VXdE5aY1pfSERMUjJBdDBDYlRyMWx2YzNXVkd3SVhOb1dOWkZ5VGJDSjVqQ25Db3ZMbVQ2NC1rNlB5di12QQ?oc=5",
      "date": "2026-10-06",
-     "ts": "2026-10-06T17:55+08:00",
+     "ts": "2026-10-06T18:12+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "bitgo与hashkey签署多维度战略合作协议涵盖质押交易托管及rwa代币化业",
+   "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T16:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+     "src": "Business Wire",
+     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9Lal9ZM0RRSlF6ZFo0UzBzNHNBYzg3eHQzZXJFUlBkV3FkckJIUnV4T0tYZlFKWHlNTHdxQWRDSHVvbFhOSTRIam9wQlV6Wk5HWUc4TTdLOHY0eF8xaW51WkRzTUpoMkFZemt3?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T16:00+08:00",
      "via": "Google"
     }
    ],
@@ -2256,30 +2601,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "谷歌云在香港招聘web3架构师需稳定币支付相关经验",
-   "title": "谷歌云在香港招聘Web3架构师，需稳定币支付相关经验",
-   "date": "2026-10-06",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T18:12+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "谷歌云在香港招聘Web3架构师，需稳定币支付相关经验",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1fRlFDQklVdl9nSnoyRmsyNWdQMTVqdlM1T0lRMVlXS3VXdE5aY1pfSERMUjJBdDBDYlRyMWx2YzNXVkd3SVhOb1dOWkZ5VGJDSjVqQ25Db3ZMbVQ2NC1rNlB5di12QQ?oc=5",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T18:12+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   },
   {
    "id": "港交所研代币化rwa平台持续优化上市机制",
@@ -2425,6 +2746,78 @@
    "role": "资讯"
   },
   {
+   "id": "chainlinksasiapacificheadseessouthkoreas",
+   "title": "Chainlink‘s Asia-Pacific head sees South Korea’s tokenization market accelerating from 2027",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T15:36+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Chainlink‘s Asia-Pacific head sees South Korea’s tokenization market accelerating from 2027",
+     "src": "헤럴드경제",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5lUGxwUXZ3aFd1TVlGYlcxaWtOY1diRk1zTkhObmdUMDFuek8zZGRYd3p0Z3NjbHA1V3ZGYTdVTU1ORm16Q0ltYTBUWmJnWlZDLTRtODlkdw?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T15:36+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "tokenizedstockssurge395inayearbutdefiado",
+   "title": "Tokenized Stocks Surge 395% in a Year, But DeFi Adoption Remains Surprisingly Low",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T15:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Tokenized Stocks Surge 395% in a Year, But DeFi Adoption Remains Surprisingly Low",
+     "src": "CryptoPotato",
+     "url": "https://cryptopotato.com/tokenized-stocks-surge-395-in-a-year-but-defi-adoption-remains-surprisingly-low/",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T15:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "pa日报币安推出ai产品栈binanceintelligence美cftc提出首",
+   "title": "PA日报 | 币安推出AI产品栈Binance Intelligence；美CFTC提出首轮加密市场规则",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T10:26+08:00",
+   "topics": [
+    "机构需求"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "PA日报 | 币安推出AI产品栈Binance Intelligence；美CFTC提出首轮加密市场规则",
+     "src": "PANews",
+     "url": "https://www.panewslab.com/ja/articles/01a11072-6947-75d3-aa05-9f9554d17136",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T10:26+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "hongkongssecuritiesbrokerspoststrongearn",
    "title": "Hong Kong’s securities brokers post strong earnings growth in first half of 2026",
    "date": "2026-10-06",
@@ -2449,6 +2842,38 @@
    "role": "监管"
   },
   {
+   "id": "hongkonggrantsfirststablecoinlicensestoh",
+   "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
+   "date": "2026-10-04",
+   "last": "2026-10-05",
+   "ts": "2026-10-05T01:55+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
+     "src": "CoinMarketCap",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOenNsYVRHZDV4SE1kelNjdno2MUNYU0VEZE1pUkowbm1zNUNWSDJDcTVfS3k5QWxuekJXSS0xSXdsY1NTWC1wRHVxdHhkV0c0RzgzRmtTNVZOVXNxWHota3QzTy1wNWdYX3hOczBvOWpLSzBGbUhlUjlkcXl2bzd5bVVsUWtINTRkUW0wNDF4ZEs2eWUxTjF1NGEzMkExWUJ1dWc2bmQtZw?oc=5",
+     "date": "2026-10-04",
+     "ts": "2026-10-04T05:12+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC Releases HSBC RedCoin For Hong Kong Dollar Stablecoin",
+     "src": "Techiexpert.com",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZXBteUFhc0E3NDhNUThEb1V4UldPWVlUcmRvVUVmN1d6eHpsejBVa0ZvdUMwWmJPNlN0Q2dvTURDRDFiYzJLZmRvMUFTZ2UzaDdtOHdQWDRTWThhVmtmcjJmZXZhS2RlSDYySGM4ZEJkeUt1TmxqOEJIM1JmV0pKTmFUeTd5bk1JdUEw?oc=5",
+     "date": "2026-10-05",
+     "ts": "2026-10-05T01:55+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "巴凯银行取得香港银行牌照成为首家落户亚太区的中亚银行",
    "title": "巴凯银行取得香港银行牌照 成为首家落户亚太区的中亚银行",
    "date": "2026-10-05",
@@ -2461,7 +2886,7 @@
    "articles": [
     {
      "title": "巴凯银行取得香港银行牌照 成为首家落户亚太区的中亚银行",
-     "src": "RTHK",
+     "src": "香港電台",
      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxObW1TRlh6NmtYdEptX3Bpc3l2R016MmRwQ0IwTVp2dV8xUXBWOEtZQy12ODZDLXpYTmJHWG9QWWg1MW9jMnlRUHNnaDY0am1TcWpuX0xIQWMyZTJfNUZfR0RnY240dkRzOFZHRUc1SWZyOWVObnNrd1JPSlBfbUlWWGVLWjQyeFFjcXZR?oc=5",
      "date": "2026-10-05",
      "ts": "2026-10-05T18:05+08:00",
@@ -2740,6 +3165,30 @@
    "role": "资讯"
   },
   {
+   "id": "tokenizationrwasandthefutureoffinance",
+   "title": "Tokenization, RWAs and The Future of Finance",
+   "date": "2026-10-05",
+   "last": "2026-10-05",
+   "ts": "2026-10-05T00:17+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Tokenization, RWAs and The Future of Finance",
+     "src": "Asia Asset Management",
+     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPTGcyMV9udUdSMThMZzFsWlpfczFDaWFwblRaU1BUbnRMamIzSVRKQjc3UnVRUXQ5X3MwSHFUa2ZPRlRJclFzNGN0VHg0MFFRTVBoeEJrOEgwNzNVb1psRlQzZ3JPYXU3QWhXYlMyeng1bzdJSkVoTFZ3OWo2Nnk1cGU3UzBXNS1LcUNXeEJKTzRVdw?oc=5",
+     "date": "2026-10-05",
+     "ts": "2026-10-05T00:17+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "36份申请只批2张香港稳定币把门关得很死",
    "title": "36份申请只批2张；香港稳定币把门关得很死",
    "date": "2026-10-04",
@@ -2762,30 +3211,6 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
-  },
-  {
-   "id": "fishingcommunitiescsoscallforhalttorepor",
-   "title": "Fishing communities, CSOs call for halt to reported offshore gold licenses",
-   "date": "2026-10-04",
-   "last": "2026-10-04",
-   "ts": "2026-10-04T13:35+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Fishing communities, CSOs call for halt to reported offshore gold licenses",
-     "src": "Ghana Business News",
-     "url": "https://www.ghanabusinessnews.com/2026/10/04/fishing-communities-csos-call-for-halt-to-reported-offshore-gold-licenses/",
-     "date": "2026-10-04",
-     "ts": "2026-10-04T13:35+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   },
   {
    "id": "建议在港探索点心债代币化",
@@ -2918,88 +3343,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "okxventureshashkeybackcaexforvietnamcryp",
-   "title": "OKX Ventures, HashKey Back CAEX for Vietnam Crypto Pilot",
-   "date": "2026-10-03",
-   "last": "2026-10-03",
-   "ts": "2026-10-03T01:14+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "OKX Ventures, HashKey Back CAEX for Vietnam Crypto Pilot",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNdWZ4YVlHZ0plSzdaQTNlbFBmQlR1OHJ1Zm5vQTNoVFcxMTVDbG91Mm14YkE0cFJneVB5TWRLcE5sZ2ZaRXVZN0pzejJHM1lSUGZsU3N2c1JxTmpmMjhzNUNOdS1MWnh5U3l5aTZtdkctT05rOTBpb2Q5Mk8yeXRSWUpHTHFrNW5sMU1uUVJaQVo2WWU0aUhFd0VHMF8zQQ?oc=5",
-     "date": "2026-10-03",
-     "ts": "2026-10-03T01:14+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
-   "id": "bitfinexwarnstokenizedassetsareonlyasliq",
-   "title": "Bitfinex Warns Tokenized Assets Are Only as Liquid as Their Exit",
-   "date": "2026-10-03",
-   "last": "2026-10-03",
-   "ts": "2026-10-03T05:04+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Bitfinex Warns Tokenized Assets Are Only as Liquid as Their Exit",
-     "src": "Crypto Economy",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1LSjNBTjVyZ2NveVMwOTRnanVoenlNWW44aE9saEV0ZHpZRUV3U0lPSzdZbmRRZHN6S3NjLTczdTNUeGVham1wSWE2RlJqd3ByZmMtUlBiYnRpUlUxTkdWUTQ3dHZidDlzQmxVaF9Lbw?oc=5",
-     "date": "2026-10-03",
-     "ts": "2026-10-03T05:04+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   }
  ]
 }
