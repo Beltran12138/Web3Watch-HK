@@ -1,42 +1,42 @@
 {
- "built": "2026-10-10T13:59+08:00",
+ "built": "2026-10-10T20:39+08:00",
  "since": "2026-10-03",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 21,
-   "in_window": 14
+   "fetched": 19,
+   "in_window": 13
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 19,
-   "in_window": 8
-  },
-  {
-   "topic": "监管",
-   "q": "香港 稳定币 牌照",
-   "fetched": 38,
-   "in_window": 23
-  },
-  {
-   "topic": "监管",
-   "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 17,
+   "fetched": 21,
    "in_window": 9
   },
   {
    "topic": "监管",
+   "q": "香港 稳定币 牌照",
+   "fetched": 37,
+   "in_window": 22
+  },
+  {
+   "topic": "监管",
+   "q": "Hong Kong SFC virtual asset licence",
+   "fetched": 16,
+   "in_window": 8
+  },
+  {
+   "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
-   "fetched": 20,
-   "in_window": 17
+   "fetched": 19,
+   "in_window": 16
   },
   {
    "topic": "中资券商",
    "q": "中资券商 虚拟资产 香港",
-   "fetched": 9,
-   "in_window": 1
+   "fetched": 8,
+   "in_window": 0
   },
   {
    "topic": "中资券商",
@@ -53,8 +53,8 @@
   {
    "topic": "竞品",
    "q": "HashKey",
-   "fetched": 31,
-   "in_window": 31
+   "fetched": 32,
+   "in_window": 32
   },
   {
    "topic": "竞品",
@@ -71,14 +71,14 @@
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 12,
+   "fetched": 11,
    "in_window": 2
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 35,
-   "in_window": 17
+   "fetched": 34,
+   "in_window": 16
   },
   {
    "topic": "RWA",
@@ -90,7 +90,7 @@
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
    "fetched": 12,
-   "in_window": 0
+   "in_window": 1
   },
   {
    "topic": "机构需求",
@@ -105,35 +105,194 @@
    "in_window": 5
   }
  ],
- "articles": 179,
+ "articles": 176,
  "stories": [
   {
-   "id": "rwa周刊okx联合ice拟推代币化美股交易平台欧洲央行拟于2029年推出数字欧",
-   "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
-   "date": "2026-10-09",
+   "id": "多家在港中资券商收紧内地存量账户内地ip仅可卖出出金",
+   "title": "多家在港中资券商收紧内地存量账户，内地IP仅可卖出、出金",
+   "date": "2026-10-08",
    "last": "2026-10-10",
-   "ts": "2026-10-10T05:12+08:00",
+   "ts": "2026-10-10T10:42+08:00",
    "topics": [
-    "RWA",
+    "中资券商"
+   ],
+   "n": 9,
+   "articles": [
+    {
+     "title": "多家在港中资券商收紧内地存量账户，内地IP仅可卖出、出金",
+     "src": "Jiemian.com",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5IWWxSelM4anNXVmpEVjVTMWJXdXBQVUdtODRKLTZPaVFGenVYSTBSamNuLU1wTDVsb2syMnBqaTRldEhPNC1mT3Ayazlkakt1ZmxZUWJ3?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T22:27+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "传多家在港中资券商收紧内地用户交易限制境内IP只可卖出及出金_股市直播_市场",
+     "src": "中金在线",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5XNUdhRXUtQzdwMThYejlySmpyLXVUemJBWVJLVEVQUDNoeThhV012d1RPRk9jNWJCUjd5bjIzMkVhVUEwaGNSci02d243bmpKRVpGd0Z1aVVETDU2VkdmdEpDTFRXN29qeVZPRw?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T14:17+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "多家在港中资券商调整，内地IP仅可卖出、出金_7x24快讯_新浪财经",
+     "src": "手机新浪网",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBIaFdGb296T3BqZHZhX05oelpWRGlRODd6VEwyX1kxQVVwemhVWVJxTkR1VmJpalR2R0lIOHN4QkJVUDNGc2FRVUhIcjdxcGs?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T09:53+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "传多家在港中资券商收紧内地用户交易 限制境内IP只可卖出及出金",
+     "src": "搜狐网",
+     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTmJDTlJQcU9pbFV3QWQxM1dTd3hvT294WjREVXRPTEg1dnB6U0R0U245THpkU3lmT3AtZUpDR0VRUTJIUWwxNTRLOWZ4QU1ySDZ6dTB3UjdTYmtpNElLeVVJTHhwMDlYYkVmdnlianRWUzYybjMtRHNLSHpKZmpSeTVzMHJkb0JMWmpUdg?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T14:11+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "據報多家在港中資券商收緊內地用戶交易 限制境內IP只可賣出及出金",
+     "src": "Yahoo 財經",
+     "url": "https://news.google.com/rss/articles/CBMivgNBVV95cUxQVWR1bXRtNzh0SlJQMUhSQkhBLUJkWUlGMzdSNDQxNElFNzJRcmRtNTBSODVrbTRTVGV6YXh0MmtYVURsNDhVemR1LW5RdFh2QVBYRXoxTDBvbmZNQkQ1NzR3RU5YNzF0UDhIV1RaWXp5U182d1hlOE5PT0FETFNXSzV1bURKQnJlbjEtb3daVklzTXRNUUlYQlNmMFcwN1BKTllFQ2dEalVWRS1wZWdCdmNkNWctUGE1QzBhVFVZLUp3cDl5QXlTRE1jbEVlNzFBM3gwTXJMQzhzbHRXT1ozb1dOQ2RfLXVFWHJ3M1J6R3JNaFBVX2w2OVg1TEdfaWNQQ1hZUXZLeWxibG9QclRHZWowM2VyYjlBQVY1WENFSXRKS2N0d0Y4REVHZGxGZjc4VUUzMHhJaVZVUWxrZF8tbWUzZDE0SkhCTVZEeGNFVWJoMTlvUlFwSVItRjdVYlQtZW9kZmgxLVdGaVlfVHJBQndUZ0RUUkNHVFlKRFJSX3VZOHVjZWgxSTQ1WnQtRUJaOHZFOHppdC1sQjZ6NDJNTWRTYzhTVHE5LWtYM0pXWXotUmJwS2ZRYTlSZVVOQQ?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T12:20+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "傳多家在港中資券商收緊內地用戶交易 限制境內IP只可賣出及出金 作者 智通財經",
+     "src": "Investing.com 香港 - 股市報價& 財經新聞",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBfR0ZwOHFLaDVlMGtGaHQySmFUTld6ZVdyNzlUMkU0RnR0SDEzU0FPYXVWeTEwUnc1X2JTaWhZLXZvSnhOemlNeG9OSjVva09ObVNBV0R2eG5kbm1lTTFFOGhCOGhzdlRfZE5QQjZwQ3U?oc=5",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T15:38+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "传多家在港中资券商收紧内地用户交易 限制境内IP只可卖出及出金",
+     "src": "腾讯网",
+     "url": "https://view.inews.qq.com/a/20261008A06EFM00",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T15:08+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "多家在港中资券商收紧内地存量账户 监管要求调整服务",
+     "src": "中华网新闻频道",
+     "url": "https://news.china.com/socialgd/10000169/20261008/49781101_all.html",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T10:57+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
+  },
+  {
+   "id": "关于延长港股交易时间香港证监会发声",
+   "title": "关于延长港股交易时间，香港证监会发声！",
+   "date": "2026-10-08",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T10:26+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "关于延长港股交易时间，香港证监会发声！",
+     "src": "同花顺财经股票频道",
+     "url": "https://stock.10jqka.com.cn/20261009/c680516234.shtml",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T23:04+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "事关延长交易时段！香港证监会，最新发声！",
+     "src": "证券时报",
+     "url": "https://www.stcn.com/article/detail/4210913.html",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T10:26+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongwillcrackdownonunlicensedpayment",
+   "title": "Hong Kong will crack down on unlicensed payment platforms and take appropriate law enforcement actions as necessary.",
+   "date": "2026-10-08",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T20:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "Hong Kong will crack down on unlicensed payment platforms and take appropriate law enforcement actions as necessary.",
+     "src": "techflowpost",
+     "url": "https://www.techflowpost.com/en-US/newsletter/139165",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T05:23+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "Hong Kong warns unlicensed payment platforms of enforcement",
+     "src": "Crypto News",
+     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1TVXh2N1drTzY0TGhWUWFwTjJaSGtsTjBCSFg0cDAwOUxscmd6cHpyU0RUYnVZLTdJdUg4WmI2SFNuTkdpTWNVVFI2OGMtcVdpVHN4LWJIbWx1eTAza0VVc3h4LVRkVXpfalpJQnY5RDUxTFlXb1JmRXBhZw?oc=5",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T20:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "香港证监会发布证券业财务回顾报告虚拟资产交易佣金收入环比下降135",
+   "title": "香港证监会发布证券业财务回顾报告：虚拟资产交易佣金收入环比下降13.5%",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T18:54+08:00",
+   "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9EcFg0elBBcF9SOUEzZ1djb3ZodHdKVmNRQlBfeTVjdVF4LTBIckJYV2RpZHpac0I2eU80WWtoM3N3dTdJZnlia2tQbDZYZjlTVk1tdnl3WGl4eDdIZmpSNzFoSEpaaUxGc21lelFuNDVBRDl0VEFhRFBESllOYVU?oc=5",
-     "date": "2026-10-09",
-     "ts": "2026-10-09T23:49+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNVUJzY2hpTHhfeW9TR2RHMG5jMmxJOTRiY2pKbzhvcWtacV8tbW5oYnZnYzNESURCdTJSZVFxbVk4N19GeU53cE5yZU9EbmpSdDdQWm50Y2FIZkxsWmotM2RESU1ZM0RGNzdDQXg1QjZoSXJWYmI3OW9rUXNsS0ZOUjFkRXE0Zw?oc=5",
+     "title": "香港证监会发布证券业财务回顾报告：虚拟资产交易佣金收入环比下降13.5%",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFB3bDZuVDRnaXc4NmZTNS1ET0ZRSC1xTU9POTJvZDlKTDRld1lOYmF4cmVLTk5TZDBaQldScHFCdUNRbGFwb0Nqck5Tdk1DNGFNZGthWElTMnRucmhvTzZYS29BdXA2UQ?oc=5",
      "date": "2026-10-10",
-     "ts": "2026-10-10T05:12+08:00",
+     "ts": "2026-10-10T18:54+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "巴西警方重磅收网从钓鱼团伙自托管钱包查获170万美元加密资产",
+   "title": "巴西警方重磅收网：从钓鱼团伙自托管钱包查获170万美元加密资产",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T01:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "巴西警方重磅收网：从钓鱼团伙自托管钱包查获170万美元加密资产",
+     "src": "blockweeks",
+     "url": "https://blockweeks.com/news/329791",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T01:00+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -163,6 +322,149 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
+  },
+  {
+   "id": "汇丰redcoin公布名称香港持牌稳定币走向支付场景",
+   "title": "汇丰RedCoin公布名称，香港持牌稳定币走向支付场景",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T00:36+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "汇丰RedCoin公布名称，香港持牌稳定币走向支付场景",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1085902773_122705432",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T00:36+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongscryptohubrevenueisshrinkingtheb",
+   "title": "Hong Kong's crypto-hub revenue is shrinking. The broker boom is all margin.",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T12:56+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong's crypto-hub revenue is shrinking. The broker boom is all margin.",
+     "src": "ainvest",
+     "url": "https://www.ainvest.com/news/hong-kong-crypto-hub-revenue-shrinking-broker-boom-margin-2610/",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T12:56+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "交银国际境外首发双币种次级永续债中资券商境外发债规模与品类双升",
+   "title": "交银国际境外首发双币种次级永续债，中资券商境外发债规模与品类双升",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T11:47+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "交银国际境外首发双币种次级永续债，中资券商境外发债规模与品类双升",
+     "src": "新浪财经",
+     "url": "https://finance.sina.com.cn/jjxw/2026-10-10/doc-iniututi7444335.shtml",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T11:47+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "交通银行",
+     "kind": "银行",
+     "firms": [
+      {
+       "ce": "AAK782",
+       "en": "Bank of Communications Co., Ltd.",
+       "zh": "交通銀行股份有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "APH797",
+       "en": "BOCOM International Asset Management Limited",
+       "zh": "交銀國際資產管理有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "API271",
+       "en": "BOCOM International (Asia) Limited",
+       "zh": "交銀國際(亞洲)有限公司",
+       "ras": [
+        "T1",
+        "T6"
+       ],
+       "va": []
+      },
+      {
+       "ce": "APJ121",
+       "en": "BOCOM International Securities Limited",
+       "zh": "交銀國際證券有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T4",
+        "T5"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AYP138",
+       "en": "BOCOM MPF & Financial Services Company Limited",
+       "zh": "交銀積金理財服務有限公司",
+       "ras": [
+        "T1",
+        "T4"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BJN782",
+       "en": "Bank of Communications (Hong Kong) Limited",
+       "zh": "交通銀行(香港)有限公司",
+       "ras": [
+        "T1",
+        "T4"
+       ],
+       "va": []
+      }
+     ]
+    }
+   ],
+   "role": "线索"
   },
   {
    "id": "franklintempletonnuvacollaborationanimoc",
@@ -264,86 +566,6 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
-  },
-  {
-   "id": "多家在港中资券商收紧内地存量账户内地ip仅可卖出出金",
-   "title": "多家在港中资券商收紧内地存量账户，内地IP仅可卖出、出金",
-   "date": "2026-10-08",
-   "last": "2026-10-09",
-   "ts": "2026-10-09T20:42+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 9,
-   "articles": [
-    {
-     "title": "多家在港中资券商收紧内地存量账户，内地IP仅可卖出、出金",
-     "src": "Jiemian.com",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5IWWxSelM4anNXVmpEVjVTMWJXdXBQVUdtODRKLTZPaVFGenVYSTBSamNuLU1wTDVsb2syMnBqaTRldEhPNC1mT3Ayazlkakt1ZmxZUWJ3?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T22:27+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "传多家在港中资券商收紧内地用户交易限制境内IP只可卖出及出金_股市直播_市场",
-     "src": "中金在线",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE5XNUdhRXUtQzdwMThYejlySmpyLXVUemJBWVJLVEVQUDNoeThhV012d1RPRk9jNWJCUjd5bjIzMkVhVUEwaGNSci02d243bmpKRVpGd0Z1aVVETDU2VkdmdEpDTFRXN29qeVZPRw?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T14:17+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "多家在港中资券商调整，内地IP仅可卖出、出金_7x24快讯_新浪财经",
-     "src": "手机新浪网",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBIaFdGb296T3BqZHZhX05oelpWRGlRODd6VEwyX1kxQVVwemhVWVJxTkR1VmJpalR2R0lIOHN4QkJVUDNGc2FRVUhIcjdxcGs?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T09:53+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "传多家在港中资券商收紧内地用户交易 限制境内IP只可卖出及出金",
-     "src": "搜狐网",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNTmJDTlJQcU9pbFV3QWQxM1dTd3hvT294WjREVXRPTEg1dnB6U0R0U245THpkU3lmT3AtZUpDR0VRUTJIUWwxNTRLOWZ4QU1ySDZ6dTB3UjdTYmtpNElLeVVJTHhwMDlYYkVmdnlianRWUzYybjMtRHNLSHpKZmpSeTVzMHJkb0JMWmpUdg?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T14:11+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "據報多家在港中資券商收緊內地用戶交易 限制境內IP只可賣出及出金",
-     "src": "Yahoo 財經",
-     "url": "https://news.google.com/rss/articles/CBMivgNBVV95cUxQVWR1bXRtNzh0SlJQMUhSQkhBLUJkWUlGMzdSNDQxNElFNzJRcmRtNTBSODVrbTRTVGV6YXh0MmtYVURsNDhVemR1LW5RdFh2QVBYRXoxTDBvbmZNQkQ1NzR3RU5YNzF0UDhIV1RaWXp5U182d1hlOE5PT0FETFNXSzV1bURKQnJlbjEtb3daVklzTXRNUUlYQlNmMFcwN1BKTllFQ2dEalVWRS1wZWdCdmNkNWctUGE1QzBhVFVZLUp3cDl5QXlTRE1jbEVlNzFBM3gwTXJMQzhzbHRXT1ozb1dOQ2RfLXVFWHJ3M1J6R3JNaFBVX2w2OVg1TEdfaWNQQ1hZUXZLeWxibG9QclRHZWowM2VyYjlBQVY1WENFSXRKS2N0d0Y4REVHZGxGZjc4VUUzMHhJaVZVUWxrZF8tbWUzZDE0SkhCTVZEeGNFVWJoMTlvUlFwSVItRjdVYlQtZW9kZmgxLVdGaVlfVHJBQndUZ0RUUkNHVFlKRFJSX3VZOHVjZWgxSTQ1WnQtRUJaOHZFOHppdC1sQjZ6NDJNTWRTYzhTVHE5LWtYM0pXWXotUmJwS2ZRYTlSZVVOQQ?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T12:20+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "傳多家在港中資券商收緊內地用戶交易 限制境內IP只可賣出及出金 作者 智通財經",
-     "src": "Investing.com 香港 - 股市報價& 財經新聞",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBfR0ZwOHFLaDVlMGtGaHQySmFUTld6ZVdyNzlUMkU0RnR0SDEzU0FPYXVWeTEwUnc1X2JTaWhZLXZvSnhOemlNeG9OSjVva09ObVNBV0R2eG5kbm1lTTFFOGhCOGhzdlRfZE5QQjZwQ3U?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T15:38+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "传多家在港中资券商收紧内地用户交易 限制境内IP只可卖出及出金",
-     "src": "腾讯网",
-     "url": "https://view.inews.qq.com/a/20261008A06EFM00",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T15:08+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "多家在港中资券商收紧内地存量账户 监管要求调整服务",
-     "src": "中华网新闻频道",
-     "url": "https://news.china.com/socialgd/10000169/20261008/49781101_all.html",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T10:57+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
   },
   {
    "id": "hashkeycloudtointegratebabylontrustlessb",
@@ -525,38 +747,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "关于延长港股交易时间香港证监会发声",
-   "title": "关于延长港股交易时间，香港证监会发声！",
-   "date": "2026-10-08",
-   "last": "2026-10-09",
-   "ts": "2026-10-09T20:26+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "关于延长港股交易时间，香港证监会发声！",
-     "src": "同花顺财经股票频道",
-     "url": "https://stock.10jqka.com.cn/20261009/c680516234.shtml",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T23:04+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "事关延长交易时段！香港证监会，最新发声！",
-     "src": "证券时报",
-     "url": "https://www.stcn.com/article/detail/4210913.html",
-     "date": "2026-10-09",
-     "ts": "2026-10-09T20:26+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
   },
   {
    "id": "osl集团助力2wa完成首只usdgo稳定币市场中性策略基金的代币化",
@@ -775,22 +965,46 @@
    "role": "监管"
   },
   {
-   "id": "谁将瓜分稳定币时代跨境汇款的利润",
-   "title": "谁将瓜分稳定币时代跨境汇款的利润？",
+   "id": "100美元变94稳定币汇款利润流向揭秘提供者智通财经",
+   "title": "100 美元变 94：稳定币汇款利润流向揭秘 提供者 智通财经",
    "date": "2026-10-09",
    "last": "2026-10-09",
-   "ts": "2026-10-09T16:53+08:00",
+   "ts": "2026-10-09T16:18+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "谁将瓜分稳定币时代跨境汇款的利润？",
-     "src": "富途牛牛",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxNMmFzUkZwd1d5ZVRPU0ozQjhFcWFudFM3di14NWtfbHdrTlc4WVFzdVJHLS1pWG1TMmlwdkdCOUlWQlkxRnpBYnhXaUxDYU5kaGdQd0RPTjFoYkdObjV4RXV0MXNqZnhfQlRGdEpQeENIZENkbUxrM2xKZE5sOWdxRUcwMjVYTWt5bDJ3dnpNeksyLVd0RVp0WEc0UjduUQ?oc=5",
+     "title": "100 美元变 94：稳定币汇款利润流向揭秘 提供者 智通财经",
+     "src": "英为财情 Investing.com",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1BMUQwNDAwcVFkQ3BJalRYMElKcXY3Nm0xSkVibnd4Sk45UnhIcFZ0ZS0yOUh4OWFiRi1ZYUxWMHlJZUVxTEFnem1GYmUwTUI3Zk9qT0JCT1c0b1BhOHUtWWJrQlFEOUdyY3QwRDBvMkQ?oc=5",
      "date": "2026-10-09",
-     "ts": "2026-10-09T16:53+08:00",
+     "ts": "2026-10-09T16:18+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "rwa周刊okx联合ice拟推代币化美股交易平台欧洲央行拟于2029年推出数字欧",
+   "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T23:49+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9EcFg0elBBcF9SOUEzZ1djb3ZodHdKVmNRQlBfeTVjdVF4LTBIckJYV2RpZHpac0I2eU80WWtoM3N3dTdJZnlia2tQbDZYZjlTVk1tdnl3WGl4eDdIZmpSNzFoSEpaaUxGc21lelFuNDVBRDl0VEFhRFBESllOYVU?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T23:49+08:00",
      "via": "Google"
     }
    ],
@@ -1316,6 +1530,30 @@
    "role": "资讯"
   },
   {
+   "id": "艾德金融会晤fomopay及1exchange探索新加坡web3及虚拟资产新机遇",
+   "title": "艾德金融会晤FOMO Pay及1Exchange，探索新加坡Web3及虚拟资产新机遇",
+   "date": "2026-10-08",
+   "last": "2026-10-08",
+   "ts": "2026-10-08T18:07+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "艾德金融会晤FOMO Pay及1Exchange，探索新加坡Web3及虚拟资产新机遇",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1085164538_121721205",
+     "date": "2026-10-08",
+     "ts": "2026-10-08T18:07+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "香港证监会持牌虚拟资产交易平台dfxlabs汇报4个欺诈网站",
    "title": "香港证监会：持牌虚拟资产交易平台DFX Labs汇报4个欺诈网站",
    "date": "2026-10-08",
@@ -1453,30 +1691,6 @@
      "date": "2026-10-08",
      "ts": "2026-10-08T12:29+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "hongkongwillcrackdownonunlicensedpayment",
-   "title": "Hong Kong will crack down on unlicensed payment platforms and take appropriate law enforcement actions as necessary.",
-   "date": "2026-10-08",
-   "last": "2026-10-08",
-   "ts": "2026-10-08T05:23+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong will crack down on unlicensed payment platforms and take appropriate law enforcement actions as necessary.",
-     "src": "techflowpost",
-     "url": "https://www.techflowpost.com/en-US/newsletter/139165",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T05:23+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1674,7 +1888,7 @@
    "title": "HashKey RWA CEO Anna Liu 出席韩国STO Summit 2026：从监管框架到真实市场，流动性需要主动构建",
    "date": "2026-10-08",
    "last": "2026-10-08",
-   "ts": "2026-10-08T00:21+08:00",
+   "ts": "2026-10-08T09:38+08:00",
    "topics": [
     "RWA"
    ],
@@ -1683,9 +1897,9 @@
     {
      "title": "HashKey RWA CEO Anna Liu 出席韩国STO Summit 2026：从监管框架到真实市场，流动性需要主动构建",
      "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1VT0RjV1AzcDF3d2lRMndsOHF1UXpQWGl3NGl6WU1kTXNWMk5PdnhaQW1rSVdhR2t3ekRiNGR5ZnZtWW1jdWtDMFhLRjktVXJMS2JpbG0xM0xIeXVEX3FMdEZpZnZVczlReUE0TXFQOUNTbnJKQWZsTGFCQmwyc3c?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFBCYmpNMjRHWHRGbzA4M0VJeHFib3NlSUR6SEtQaWwwZkN3RlE1aEdLUlNsRjN5Wndqbi1hWDE0YVU5US1QZVBMSmJLQV84SWxMMThoYXZtWUhJNk92ZEVPRmNlVjhRVjFGSWxsZEh3NGxBQzE1MXdGYW9nT0lpMVE?oc=5",
      "date": "2026-10-08",
-     "ts": "2026-10-08T00:21+08:00",
+     "ts": "2026-10-08T09:38+08:00",
      "via": "Google"
     }
    ],
@@ -1910,6 +2124,72 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
+  },
+  {
+   "id": "bitgo与hashkey签署多维度战略合作协议涵盖质押交易托管及rwa代币化业",
+   "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+   "date": "2026-10-06",
+   "last": "2026-10-07",
+   "ts": "2026-10-07T11:23+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+     "src": "Business Wire",
+     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9Lal9ZM0RRSlF6ZFo0UzBzNHNBYzg3eHQzZXJFUlBkV3FkckJIUnV4T0tYZlFKWHlNTHdxQWRDSHVvbFhOSTRIam9wQlV6Wk5HWUc4TTdLOHY0eF8xaW51WkRzTUpoMkFZemt3?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T16:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+     "src": "Odaily星球日报",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE03WWlDR25jSVlwNlJ0WDd3UFhaOFJrRGhrQ0hYUDFCeEZmd181dTdlYnpDUWtqOFhCa3NiTTRzcV9SbkxIUzBtWlZPaGx5TFNnbHdadg?oc=5",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T11:23+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
   },
   {
    "id": "hongkongwilllicensecryptobrokerscustodia",
@@ -2326,46 +2606,6 @@
    "role": "监管"
   },
   {
-   "id": "hongkonggrantsfirststablecoinlicensestoh",
-   "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
-   "date": "2026-10-04",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T17:06+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOenNsYVRHZDV4SE1kelNjdno2MUNYU0VEZE1pUkowbm1zNUNWSDJDcTVfS3k5QWxuekJXSS0xSXdsY1NTWC1wRHVxdHhkV0c0RzgzRmtTNVZOVXNxWHota3QzTy1wNWdYX3hOczBvOWpLSzBGbUhlUjlkcXl2bzd5bVVsUWtINTRkUW0wNDF4ZEs2eWUxTjF1NGEzMkExWUJ1dWc2bmQtZw?oc=5",
-     "date": "2026-10-04",
-     "ts": "2026-10-04T05:12+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Releases HSBC RedCoin For Hong Kong Dollar Stablecoin",
-     "src": "Techiexpert.com",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZXBteUFhc0E3NDhNUThEb1V4UldPWVlUcmRvVUVmN1d6eHpsejBVa0ZvdUMwWmJPNlN0Q2dvTURDRDFiYzJLZmRvMUFTZ2UzaDdtOHdQWDRTWThhVmtmcjJmZXZhS2RlSDYySGM4ZEJkeUt1TmxqOEJIM1JmV0pKTmFUeTd5bk1JdUEw?oc=5",
-     "date": "2026-10-05",
-     "ts": "2026-10-05T01:55+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Prepares Hong Kong Stablecoin Launch With RedCoin Brand",
-     "src": "paymentsindustryintelligence",
-     "url": "https://paymentsindustryintelligence.com/hsbc-prepares-hong-kong-stablecoin-launch-details/",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T17:06+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hongkongstickstoend2026deadlinefornewcry",
    "title": "Hong Kong Sticks to End-2026 Deadline for New Crypto Licensing Rules",
    "date": "2026-10-06",
@@ -2407,46 +2647,6 @@
    "role": "监管"
   },
   {
-   "id": "hongkongreaffirmsplantosubmitvirtualasse",
-   "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
-   "date": "2026-10-06",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T22:53+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
-     "src": "en.bloomingbit",
-     "url": "https://en.bloomingbit.io/feed/news/121697",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T08:54+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hong Kong: Draft Bill for Virtual Asset Licensing Due This Year",
-     "src": "Blockchain News",
-     "url": "https://blockchain.news/flashnews/hong-kong-draft-bill-virtual-asset-licensing-due-year",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T04:47+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
-     "src": "bloomingbit",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ydVR6RjcteFdXWjQwREhHRUd0eFNIVmc4VDhPVlZTbllZVlVaMnJtYTFHWXh4bXFJYlRyVnBNdjFkTHg1aHQzMTZMWk5rdXdKOUc4QQ?oc=5",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T22:53+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hongkongbetsontheyuanasitsstablecoinpush",
    "title": "Hong Kong bets on the yuan as its stablecoin push stalls under Beijing’s shadow",
    "date": "2026-10-05",
@@ -2472,6 +2672,38 @@
      "date": "2026-10-06",
      "ts": "2026-10-06T03:03+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongreaffirmsplantosubmitvirtualasse",
+   "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T22:53+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
+     "src": "bloomingbit",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ydVR6RjcteFdXWjQwREhHRUd0eFNIVmc4VDhPVlZTbllZVlVaMnJtYTFHWXh4bXFJYlRyVnBNdjFkTHg1aHQzMTZMWk5rdXdKOUc4QQ?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T22:53+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
+     "src": "en.bloomingbit",
+     "url": "https://en.bloomingbit.io/feed/news/121697",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T08:54+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2608,30 +2840,6 @@
    "role": "监管"
   },
   {
-   "id": "香港证监会上半年香港证券业录得稳健增长净盈利增至517亿港元",
-   "title": "香港证监会：上半年香港证券业录得稳健增长 净盈利增至517亿港元",
-   "date": "2026-10-06",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T18:22+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港证监会：上半年香港证券业录得稳健增长 净盈利增至517亿港元",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1084515247_323087",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T18:22+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "香港政府重申2026年底前提交加密资产牌照法案修正案",
    "title": "香港政府重申2026年底前提交加密资产牌照法案修正案",
    "date": "2026-10-06",
@@ -2750,64 +2958,6 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
-  },
-  {
-   "id": "bitgo与hashkey签署多维度战略合作协议涵盖质押交易托管及rwa代币化业",
-   "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
-   "date": "2026-10-06",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T16:00+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
-     "src": "Business Wire",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9Lal9ZM0RRSlF6ZFo0UzBzNHNBYzg3eHQzZXJFUlBkV3FkckJIUnV4T0tYZlFKWHlNTHdxQWRDSHVvbFhOSTRIam9wQlV6Wk5HWUc4TTdLOHY0eF8xaW51WkRzTUpoMkFZemt3?oc=5",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T16:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
   },
   {
    "id": "港交所研代币化rwa平台持续优化上市机制",
@@ -2977,6 +3127,30 @@
    "role": "资讯"
   },
   {
+   "id": "pa日报币安推出ai产品栈binanceintelligence美cftc提出首",
+   "title": "PA日报 | 币安推出AI产品栈Binance Intelligence；美CFTC提出首轮加密市场规则",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T10:26+08:00",
+   "topics": [
+    "机构需求"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "PA日报 | 币安推出AI产品栈Binance Intelligence；美CFTC提出首轮加密市场规则",
+     "src": "PANews",
+     "url": "https://www.panewslab.com/ja/articles/01a11072-6947-75d3-aa05-9f9554d17136",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T10:26+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "hongkongssecuritiesbrokerspoststrongearn",
    "title": "Hong Kong’s securities brokers post strong earnings growth in first half of 2026",
    "date": "2026-10-06",
@@ -3001,6 +3175,38 @@
    "role": "监管"
   },
   {
+   "id": "hongkonggrantsfirststablecoinlicensestoh",
+   "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
+   "date": "2026-10-04",
+   "last": "2026-10-05",
+   "ts": "2026-10-05T01:55+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "Hong Kong Grants First Stablecoin Licenses to HSBC, Anchorpoint",
+     "src": "CoinMarketCap",
+     "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOenNsYVRHZDV4SE1kelNjdno2MUNYU0VEZE1pUkowbm1zNUNWSDJDcTVfS3k5QWxuekJXSS0xSXdsY1NTWC1wRHVxdHhkV0c0RzgzRmtTNVZOVXNxWHota3QzTy1wNWdYX3hOczBvOWpLSzBGbUhlUjlkcXl2bzd5bVVsUWtINTRkUW0wNDF4ZEs2eWUxTjF1NGEzMkExWUJ1dWc2bmQtZw?oc=5",
+     "date": "2026-10-04",
+     "ts": "2026-10-04T05:12+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC Releases HSBC RedCoin For Hong Kong Dollar Stablecoin",
+     "src": "Techiexpert.com",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPZXBteUFhc0E3NDhNUThEb1V4UldPWVlUcmRvVUVmN1d6eHpsejBVa0ZvdUMwWmJPNlN0Q2dvTURDRDFiYzJLZmRvMUFTZ2UzaDdtOHdQWDRTWThhVmtmcjJmZXZhS2RlSDYySGM4ZEJkeUt1TmxqOEJIM1JmV0pKTmFUeTd5bk1JdUEw?oc=5",
+     "date": "2026-10-05",
+     "ts": "2026-10-05T01:55+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "巴凯银行取得香港银行牌照成为首家落户亚太区的中亚银行",
    "title": "巴凯银行取得香港银行牌照 成为首家落户亚太区的中亚银行",
    "date": "2026-10-05",
@@ -3013,8 +3219,8 @@
    "articles": [
     {
      "title": "巴凯银行取得香港银行牌照 成为首家落户亚太区的中亚银行",
-     "src": "香港電台",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxObW1TRlh6NmtYdEptX3Bpc3l2R016MmRwQ0IwTVp2dV8xUXBWOEtZQy12ODZDLXpYTmJHWG9QWWg1MW9jMnlRUHNnaDY0am1TcWpuX0xIQWMyZTJfNUZfR0RnY240dkRzOFZHRUc1SWZyOWVObnNrd1JPSlBfbUlWWGVLWjQyeFFjcXZR?oc=5",
+     "src": "香港電台網站",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPT3dVbUxlOU5KcVg0NWNpSG1DWVBPVENJckk4Sm1SOEdfVFJjb0JvbWdMNW9jajI5SVhxVW1wWWZBMHJlN0ktTXhMeUstOTRhRWljcnIwQ01aSU93cW5sTWdFRjRYcDI0QWlVM01DOHFQWlhUMmozaEFjak1xT3Fscko2dHMzbHdiX1ljSXh6Yw?oc=5",
      "date": "2026-10-05",
      "ts": "2026-10-05T18:05+08:00",
      "via": "Google"
@@ -3136,30 +3342,6 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
-  },
-  {
-   "id": "券商拼美股投资国泰证新服务上线打造一站式全球投资平台",
-   "title": "〈券商拚美股投資〉國泰證新服務上線 打造一站式全球投資平台",
-   "date": "2026-10-05",
-   "last": "2026-10-05",
-   "ts": "2026-10-05T11:09+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "〈券商拚美股投資〉國泰證新服務上線 打造一站式全球投資平台",
-     "src": "Yahoo 財經",
-     "url": "https://news.google.com/rss/articles/CBMijgNBVV95cUxNbGt3MlJTUk9GRDA5X0dmeERCeG16N1lXZTBFZTdFcEgtVkM5S1hONlF1WjgwU0lOb0steURqSmh3SEc5WnZFOUtSMFVvT2hkOWFTLUdzbkk1U0xrQ1NicXpDUTBpNUtJRnRlMUwzQ19EX2Z0bFphRW5vUmtjMkI1bEtwR2dFTnJjaGxEUXkzN2VrQWpLUmVrbURRRmJZc3R5S19ScnNOQWs3NzhJR3lMZ3ZoYUpKNFBmM05mN1hWd1dNNGp0R1pJSjFDc3ZKN3QwT1QxWF9uUG56Tmkzdk9PcjJXMmFPN1BBTW1SZE5yY1o2eDhITXBsUDM2UzRfSFJNOWVvQlZYclo3VlRxSktGZndueGJKaW9kYkFCLTNiZ1lMMktWaWphV3NkaGhvZ19RMy0yRnk1aWcwWEFRR2lteFotcGtEZWdzbXZBcVRlSDBjUzJWWC1JS3pRUzBpZ2JXWkFYeHFoUVE5d0NGS2U5d3hXTEFubzJqZGJwWUJWRTZ6dC1OelByMEM1ODUxZw?oc=5",
-     "date": "2026-10-05",
-     "ts": "2026-10-05T11:09+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
   },
   {
    "id": "hashkeyholdingsltdcompanypeople3887",
@@ -3309,55 +3491,6 @@
      "date": "2026-10-04",
      "ts": "2026-10-04T14:46+08:00",
      "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "建议在港探索点心债代币化",
-   "title": "建议在港探索点心债代币化",
-   "date": "2026-10-03",
-   "last": "2026-10-03",
-   "ts": "2026-10-03T16:09+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "建议在港探索点心债代币化",
-     "src": "新浪财经",
-     "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxQdlU4SE9BcGhqWFh6dHRDRFQzX0VFSEFJYVpPWVlWV2tHaVlNY1lzdlZ0YnlqLXdUb2NwS3VNelZsTUEtRHNxc0lPZ1dudDNGTFR6TkdmdVFEVVA2dnpkcVdxbF9RVmx2cW5XR213dlJUdUpVcU1OdGhONnV4U29aajEzeUw?oc=5",
-     "date": "2026-10-03",
-     "ts": "2026-10-03T16:09+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "tigerresearch香港的rwa是如何跑通的",
-   "title": "Tiger Research：香港的 RWA 是如何跑通的？",
-   "date": "2026-10-03",
-   "last": "2026-10-03",
-   "ts": "2026-10-03T16:40+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Tiger Research：香港的 RWA 是如何跑通的？",
-     "src": "吴说",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNa2ZyRWkxT2V4NDIzODR6d2JmSnBOS2JHYWRfdGpiajlJcW8tbGhBRmQtdG9WWEpvRDhxdkxlMHVsVm1LLTdoVjhOdnZnQV9uZDlKZ1pJWTczV3ZMNkRHdWFMTFNYdjNBMWk0R0l3Ql9RLWs2Z0thNGdsblB0YVlfQXlkUkUzc3lP?oc=5",
-     "date": "2026-10-03",
-     "ts": "2026-10-03T16:40+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
