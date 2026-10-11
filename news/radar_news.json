@@ -1,30 +1,30 @@
 {
- "built": "2026-10-11T13:54+08:00",
+ "built": "2026-10-11T20:58+08:00",
  "since": "2026-10-04",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 20,
-   "in_window": 13
+   "fetched": 18,
+   "in_window": 12
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 19,
+   "fetched": 18,
    "in_window": 9
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 34,
-   "in_window": 22
+   "fetched": 33,
+   "in_window": 21
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 15,
-   "in_window": 8
+   "fetched": 16,
+   "in_window": 12
   },
   {
    "topic": "监管",
@@ -35,8 +35,8 @@
   {
    "topic": "中资券商",
    "q": "中资券商 虚拟资产 香港",
-   "fetched": 10,
-   "in_window": 0
+   "fetched": 12,
+   "in_window": 1
   },
   {
    "topic": "中资券商",
@@ -47,8 +47,8 @@
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 29,
-   "in_window": 17
+   "fetched": 30,
+   "in_window": 18
   },
   {
    "topic": "竞品",
@@ -59,7 +59,7 @@
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 17,
+   "fetched": 15,
    "in_window": 5
   },
   {
@@ -71,19 +71,19 @@
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 12,
-   "in_window": 1
+   "fetched": 0,
+   "in_window": 0
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 38,
-   "in_window": 19
+   "fetched": 37,
+   "in_window": 18
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 38,
+   "fetched": 39,
    "in_window": 33
   },
   {
@@ -105,27 +105,19 @@
    "in_window": 5
   }
  ],
- "articles": 179,
+ "articles": 181,
  "stories": [
   {
-   "id": "hongkongwillcrackdownonunlicensedpayment",
-   "title": "Hong Kong will crack down on unlicensed payment platforms and take appropriate law enforcement actions as necessary.",
-   "date": "2026-10-08",
+   "id": "hongkongtocrackdownonunlicensedpaymentpl",
+   "title": "Hong Kong to crack down on unlicensed payment platforms, taking appropriate enforcement action as needed",
+   "date": "2026-10-10",
    "last": "2026-10-11",
    "ts": "2026-10-11T01:05+08:00",
    "topics": [
     "监管"
    ],
-   "n": 5,
+   "n": 3,
    "articles": [
-    {
-     "title": "Hong Kong will crack down on unlicensed payment platforms and take appropriate law enforcement actions as necessary.",
-     "src": "techflowpost",
-     "url": "https://www.techflowpost.com/en-US/newsletter/139165",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T05:23+08:00",
-     "via": "Bing"
-    },
     {
      "title": "Hong Kong to crack down on unlicensed payment platforms, taking appropriate enforcement action as needed",
      "src": "panews.io",
@@ -141,14 +133,6 @@
      "date": "2026-10-10",
      "ts": "2026-10-10T20:00+08:00",
      "via": "Google"
-    },
-    {
-     "title": "Hong Kong warns unlicensed payment platforms of enforcement",
-     "src": "cryptonews",
-     "url": "https://cryptonews.net/news/market/33571953/",
-     "date": "2026-10-10",
-     "ts": "2026-10-10T15:10+08:00",
-     "via": "Bing"
     },
     {
      "title": "Hong Kong Warns Unlicensed Payment Platforms of Enforcement Action",
@@ -189,28 +173,76 @@
    "role": "监管"
   },
   {
-   "id": "a股市场风格将如何演绎券商热议新型电池产业物理ai等领域投资机会",
-   "title": "A股市场风格将如何演绎？券商热议新型电池产业、物理AI等领域投资机会",
+   "id": "3个问题看懂rwa普通人想抓机会最怕漏掉这一关markai发布于币安广场",
+   "title": "3个问题看懂RWA：普通人想抓机会，最怕漏掉这一关| MarkAI发布于币安广场",
    "date": "2026-10-11",
    "last": "2026-10-11",
-   "ts": "2026-10-11T01:00+08:00",
+   "ts": "2026-10-11T10:20+08:00",
    "topics": [
-    "中资券商"
+    "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "A股市场风格将如何演绎？券商热议新型电池产业、物理AI等领域投资机会",
-     "src": "新浪财经",
-     "url": "https://finance.sina.com.cn/roll/2026-10-11/doc-iniuvhum1836193.shtml",
+     "title": "3个问题看懂RWA：普通人想抓机会，最怕漏掉这一关| MarkAI发布于币安广场",
+     "src": "Binance",
+     "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTFBTYW9DeXpSY1FxUmRvU3NES2ZKNUZiZENvaGM2dFBRdnNNeHppSU5NNkVCWVV0akFPdjJ2cTE3X3Z2V0VBcUQtU1lFazFWZ3B6NzQtUDV4Q3QtOEtFR1luYmhGb0YtYXFK?oc=5",
      "date": "2026-10-11",
-     "ts": "2026-10-11T01:00+08:00",
+     "ts": "2026-10-11T10:20+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "brazilsbrl22tcsdbrmovesfundrecordstoxrpl",
+   "title": "Brazil’s BRL 22T CSD BR Moves Fund Records to XRP Ledger in Live Tokenization Push",
+   "date": "2026-10-11",
+   "last": "2026-10-11",
+   "ts": "2026-10-11T14:11+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Brazil’s BRL 22T CSD BR Moves Fund Records to XRP Ledger in Live Tokenization Push",
+     "src": "CryptoNinjas",
+     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOWlRkMk9KWjhnU0pCQnAzdVVxdUppMEt5dEVmWnRoSmlKMlVkaWthVk5aQmJVa3R3azV6VkpySnpCakg4N2VGLWZsS2N0ZUV3QmNEdTRBMVloQXFIbnBXQWhnUWRhOEZWYVZVem9GNFVUWVppN1E3VUpKSkFrclMwSEROTmxRck96QXJfcEZZMzFvYTFEUk1xbHNySS1rN2NqdXJrS1d3MTJhQWlEM2p2UklFYUtaNGPSAbwBQVVfeXFMUG8tREJsRGtyQW4zUFFMN0I5Q1ZITjdqTFplOHBGTlZZTFJnRlZaMU5IRGt3YUJoY0gxemE4dVRTX0gzM255SjRZc2ZKU0RnekJzckozQjEzNC1FRFhCRHpUelAtRFowdDZJaHREZjFpSkp2QkxpRXdpNWFmRkFZQVRiR0NrVDlVWFFaVExDSkkxdVFSWTFBenlxTGd1UzBmZWJlWlUyczUxUjN0ME96NnhEaDBLbTV5emdWSks?oc=5",
+     "date": "2026-10-11",
+     "ts": "2026-10-11T14:11+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "kyobosecuritiesexpandsintoventurecapital",
+   "title": "Kyobo Securities Expands Into Venture Capital, Tokenized Securities",
+   "date": "2026-10-11",
+   "last": "2026-10-11",
+   "ts": "2026-10-11T04:24+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Kyobo Securities Expands Into Venture Capital, Tokenized Securities",
+     "src": "en.sedaily",
+     "url": "https://en.sedaily.com/finance/2026/10/11/kyobo-securities-expands-into-venture-capital-tokenized",
+     "date": "2026-10-11",
+     "ts": "2026-10-11T04:24+08:00",
      "via": "Bing"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "中资券商动态"
+   "role": "资讯"
   },
   {
    "id": "多家在港中资券商收紧内地存量账户内地ip仅可卖出出金",
@@ -268,7 +300,7 @@
      "src": "Investing.com 香港 - 股市報價& 財經新聞",
      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBfR0ZwOHFLaDVlMGtGaHQySmFUTld6ZVdyNzlUMkU0RnR0SDEzU0FPYXVWeTEwUnc1X2JTaWhZLXZvSnhOemlNeG9OSjVva09ObVNBV0R2eG5kbm1lTTFFOGhCOGhzdlRfZE5QQjZwQ3U?oc=5",
      "date": "2026-10-08",
-     "ts": "2026-10-08T15:38+08:00",
+     "ts": "2026-10-08T14:24+08:00",
      "via": "Google"
     },
     {
@@ -462,7 +494,7 @@
    "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
    "date": "2026-10-10",
    "last": "2026-10-10",
-   "ts": "2026-10-10T05:12+08:00",
+   "ts": "2026-10-10T14:59+08:00",
    "topics": [
     "RWA",
     "监管"
@@ -475,6 +507,14 @@
      "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNVUJzY2hpTHhfeW9TR2RHMG5jMmxJOTRiY2pKbzhvcWtacV8tbW5oYnZnYzNESURCdTJSZVFxbVk4N19GeU53cE5yZU9EbmpSdDdQWm50Y2FIZkxsWmotM2RESU1ZM0RGNzdDQXg1QjZoSXJWYmI3OW9rUXNsS0ZOUjFkRXE0Zw?oc=5",
      "date": "2026-10-10",
      "ts": "2026-10-10T05:12+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "RWA周刊：OKX联合ICE拟推代币化美股交易平台；欧洲央行拟于2029年推出数字欧元",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1xZTk2ZHg0VWVQV3Iyby1qeGZmaDdsVGtWdi1obG9pYmtfLWJlM0pEejA5dWJzaXlPWXRsWml4MmtwdG5pMEdxSGprSF82bG00bnRWY2c4Qng1bHl6anB3bk9yRTF5SHJmT2tNVjh3cDJnMnlEQWxHZExLbWdNLU0?oc=5",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T14:59+08:00",
      "via": "Google"
     }
    ],
@@ -499,6 +539,30 @@
      "url": "https://www.sohu.com/a/1085902773_122705432",
      "date": "2026-10-10",
      "ts": "2026-10-10T14:36+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongbrokerscryptotradingcommissionsf",
+   "title": "Hong Kong brokers’ crypto trading commissions fall 13.5% in first half of 2026",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T15:34+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong brokers’ crypto trading commissions fall 13.5% in first half of 2026",
+     "src": "Crypto Briefing",
+     "url": "https://cryptobriefing.com/hong-kong-brokers-crypto-commissions-fall/",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T15:34+08:00",
      "via": "Bing"
     }
    ],
@@ -632,6 +696,59 @@
    "role": "竞品动态"
   },
   {
+   "id": "oslgrouplimited0863hkstockpricenewsquote",
+   "title": "OSL Group Limited (0863.HK) Stock Price, News, Quote & History",
+   "date": "2026-10-10",
+   "last": "2026-10-10",
+   "ts": "2026-10-10T01:16+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "OSL Group Limited (0863.HK) Stock Price, News, Quote & History",
+     "src": "Yahoo! Finance Canada",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9yQ0xObUp3a3RoZVBaQWFhc0RNMC11d0o1UzNiX1FFVmQxUXNxSHVzbkxjNk40LU14bFFDVDZhcG1ITnNQbGQ0MU10dVFPNHlDUzF3WXdR?oc=5",
+     "date": "2026-10-10",
+     "ts": "2026-10-10T01:16+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "OSL",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPJ213",
+       "en": "OSL Digital Securities Limited",
+       "zh": "OSL數字證券有限公司",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BTF661",
+       "en": "OSL Asset Management Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
    "id": "asiastrategyandplumesignmoutoexploreatok",
    "title": "AsiaStrategy and Plume sign MOU to explore a tokenized products JV in Asia",
    "date": "2026-10-10",
@@ -664,7 +781,7 @@
    "topics": [
     "竞品"
    ],
-   "n": 5,
+   "n": 4,
    "articles": [
     {
      "title": "HashKey Cloud to integrate Babylon Trustless Bitcoin Vaults",
@@ -680,14 +797,6 @@
      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNZEtsZFUwbHpoZlBEdV9NUHRnd1ZpWUY3WDI5YUFNM0V3bVhIVXZkQTZUdHNtMUJPZHZRZUdOd2QxZGd3NVpCMndfWmF2Ukd5ZEVtdVNTUFBsX053ZUxTYzZRWFhodjVNOUJvdmRzQ3l4NXJ2akVYQURjeUNNLWZiWFZtVjJTN3hMWFc1cC1DODlCTmltWkZKVkVGY1g5Wk5IYUc1OENn?oc=5",
      "date": "2026-10-07",
      "ts": "2026-10-07T22:05+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Babylon, HashKey Cloud Plan Native Bitcoin Borrowing Through Aave",
-     "src": "tokenpost.com",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1LZkM2Zlk2QkEwMUprSUpzMVVGbGFNTEJNeFhjbTREYkdiYmwyTWZjVi1OZWg2LWhWSk9UclNiTzBDZ1hXczc0QXZEZHRVaTJMamc0?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T05:47+08:00",
      "via": "Google"
     },
     {
@@ -1028,6 +1137,30 @@
    "role": "监管"
   },
   {
+   "id": "whystockbrokeragefirmsareattendingcrypto",
+   "title": "Why Stock Brokerage Firms Are Attending Crypto Events: Hong Kong's \"Virtual Asset\" Rules and the Brokerages Taking the Leap",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T04:10+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Why Stock Brokerage Firms Are Attending Crypto Events: Hong Kong's \"Virtual Asset\" Rules and the Brokerages Taking the Leap",
+     "src": "note",
+     "url": "https://note.com/hermitboy/n/n28d2ca1488f4?hl=en",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T04:10+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "经纪业务重夺证券行业收入头把交椅券商债券服务投行承销",
    "title": "经纪业务重夺证券行业收入“头把交椅”|券商|债券|服务|投行|承销",
    "date": "2026-10-09",
@@ -1244,6 +1377,30 @@
    "role": "竞品动态"
   },
   {
+   "id": "governmentofgibraltarannounceslandmarkle",
+   "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
+   "date": "2026-10-09",
+   "last": "2026-10-09",
+   "ts": "2026-10-09T19:07+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
+     "src": "Your Gibraltar TV",
+     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSEw4UWVBamZEWmJwenRiWC1hUkRINXhUcmlrdkJVMkFYUlhESDBoSlFNY2hjemxxUnlraGJpemxwNWFCbkZod2I3NjBndDlWZkp5QWJlUWpUcHpkeWNNUzljZENZZ29JS0w1bkxoTVl5bm91aW5pM0hhNzE4N0EySTR3ZlhTVTdEc214ZHJlSUtwSUNLT3NPeFpLemtfYXFROVprUWJJM3JjbVpMOVBnVlgtS05YNFZzLXBGNkhWSFM?oc=5",
+     "date": "2026-10-09",
+     "ts": "2026-10-09T19:07+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "xrpledgeraddsnewcontrolsforbanksstableco",
    "title": "XRP Ledger adds new controls for banks, stablecoins and tokenized funds",
    "date": "2026-10-09",
@@ -1325,7 +1482,7 @@
     "RWA",
     "竞品"
    ],
-   "n": 10,
+   "n": 11,
    "articles": [
     {
      "title": "BitGo and HashKey Sign Multi-Pillar Strategic Partnership Spanning Staking, Trading, Custody and RWA Tokenization",
@@ -1384,12 +1541,12 @@
      "via": "Bing"
     },
     {
-     "title": "HashKey Cloud and BitGo expand partnership to i...",
-     "src": "Pluang",
-     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNRGxYY1UtanFNeXBZYnIzMUdISFAwTG54SnBlWl93dGhybk41NW1wTXc1VTV6NGgyRVlhT1hBM2NORWpZZ1pDVlh5aUtCWnVaVTZtSzluSUhib2tONW0xTlNMTTBRWk16UjVyZzFuRkdLOW9oT0J0aGJYaWNoU3JabHNjdXZNekE0T0FYSQ?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T13:08+08:00",
-     "via": "Google"
+     "title": "BitGo strikes strategic partnership with HashKey Cloud during TOKEN2049",
+     "src": "Grafa",
+     "url": "https://grafa.com/en/channel/token2049-singapore/videos/bitgo-strikes-strategic-partnership-with-hashkey-cloud",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T08:53+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1827,7 +1984,7 @@
    "title": "渣打银行新加坡分行拟向机构投资者提供加密资产、稳定币及代币化RWA托管服务",
    "date": "2026-10-08",
    "last": "2026-10-08",
-   "ts": "2026-10-08T10:50+08:00",
+   "ts": "2026-10-08T03:50+08:00",
    "topics": [
     "RWA"
    ],
@@ -1836,9 +1993,9 @@
     {
      "title": "渣打银行新加坡分行拟向机构投资者提供加密资产、稳定币及代币化RWA托管服务",
      "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE92cXNyZllPM1NWbkFocWxkTTgwbno5NWJybW1aaDJ6UE5qOTdWRUdiaGxsTDFteC1oWi1ERm0xV2NFVnluQkpkWGVuNnpYZFZMbXJOMWkydVktYjEzMUl4UlV6bUJJUQ?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE54MDhyM2trVkJ4N2g0UjRudEJJMmhaXzQxWWJEYTROZ21GZGczMHZGWWUySGNFTkxJdmUwT3R3RHlxbU5MbnF6UVBaRE00Q2lxOVUtRDB3MUlraTA0LUxZLU9TSjNEQQ?oc=5",
      "date": "2026-10-08",
-     "ts": "2026-10-08T10:50+08:00",
+     "ts": "2026-10-08T03:50+08:00",
      "via": "Google"
     }
    ],
@@ -1887,30 +2044,6 @@
      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxOeURKQm1LSzFQbU5LWmdldDFQUGJRUlliU0JJRjNrZk5MeUF1U201VTNtdjFOTGhqbmtLdGhheWxsRTFKUnRxRjM5TFJiamtLdklGWTVndVQtX2ZFZkxPV0ZLOFBYS3FqVzI5WlNtT2lpM1MxUUc2UVJyd1N0b2ZpUkYxQUUybEFIMUFaV1FGSFk0ZXZYRldWQXZISWUwaWVH?oc=5",
      "date": "2026-10-08",
      "ts": "2026-10-08T10:56+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "governmentofgibraltarannounceslandmarkle",
-   "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
-   "date": "2026-10-08",
-   "last": "2026-10-08",
-   "ts": "2026-10-08T17:40+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
-     "src": "Your Gibraltar TV",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSEw4UWVBamZEWmJwenRiWC1hUkRINXhUcmlrdkJVMkFYUlhESDBoSlFNY2hjemxxUnlraGJpemxwNWFCbkZod2I3NjBndDlWZkp5QWJlUWpUcHpkeWNNUzljZENZZ29JS0w1bkxoTVl5bm91aW5pM0hhNzE4N0EySTR3ZlhTVTdEc214ZHJlSUtwSUNLT3NPeFpLemtfYXFROVprUWJJM3JjbVpMOVBnVlgtS05YNFZzLXBGNkhWSFM?oc=5",
-     "date": "2026-10-08",
-     "ts": "2026-10-08T17:40+08:00",
      "via": "Google"
     }
    ],
@@ -2007,70 +2140,28 @@
    "role": "监管"
   },
   {
-   "id": "bitgo与hashkey签署多维度战略合作协议涵盖质押交易托管及rwa代币化业",
-   "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
-   "date": "2026-10-06",
+   "id": "wheretogetalicenseforcryptoassetstheindu",
+   "title": "Where to get a 'license' for crypto assets? The industry that handles acquisition and the countries that attract them",
+   "date": "2026-10-07",
    "last": "2026-10-07",
-   "ts": "2026-10-07T11:23+08:00",
+   "ts": "2026-10-07T17:25+08:00",
    "topics": [
-    "RWA"
+    "监管"
    ],
-   "n": 2,
+   "n": 1,
    "articles": [
     {
-     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
-     "src": "Business Wire",
-     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9Lal9ZM0RRSlF6ZFo0UzBzNHNBYzg3eHQzZXJFUlBkV3FkckJIUnV4T0tYZlFKWHlNTHdxQWRDSHVvbFhOSTRIam9wQlV6Wk5HWUc4TTdLOHY0eF8xaW51WkRzTUpoMkFZemt3?oc=5",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T16:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
-     "src": "Odaily星球日报",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE03WWlDR25jSVlwNlJ0WDd3UFhaOFJrRGhrQ0hYUDFCeEZmd181dTdlYnpDUWtqOFhCa3NiTTRzcV9SbkxIUzBtWlZPaGx5TFNnbHdadg?oc=5",
+     "title": "Where to get a 'license' for crypto assets? The industry that handles acquisition and the countries that attract them",
+     "src": "note",
+     "url": "https://note.com/hermitboy/n/nc95a7a5e63bc?hl=en",
      "date": "2026-10-07",
-     "ts": "2026-10-07T11:23+08:00",
-     "via": "Google"
+     "ts": "2026-10-07T17:25+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "hongkongwilllicensecryptobrokerscustodia",
@@ -2079,7 +2170,6 @@
    "last": "2026-10-07",
    "ts": "2026-10-07T10:41+08:00",
    "topics": [
-    "RWA",
     "监管"
    ],
    "n": 1,
@@ -2270,30 +2360,6 @@
    "role": "资讯"
   },
   {
-   "id": "tokenisedequityvolumeseentomorethandoubl",
-   "title": "Tokenised equity volume seen to more than double to top US$10 billion by June 2027",
-   "date": "2026-10-07",
-   "last": "2026-10-07",
-   "ts": "2026-10-07T00:17+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Tokenised equity volume seen to more than double to top US$10 billion by June 2027",
-     "src": "Asia Asset Management",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOakR5YnpyeVhvTEN0YmxsOHpQeXdDd3FIcXp4bUpoT3lLdHdoUndVdjU0OENGWHZXaUY5MTFVN013NTZrZWlMX3NKTE5fZmJDVUFWaEgzdHlobUZ0MlBDZmtyXzlqaTFjU081QW8xTEtlMHVPbzBtMm9RVlN6Y1NxakhpSnJKNWsy?oc=5",
-     "date": "2026-10-07",
-     "ts": "2026-10-07T00:17+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "everythingyouownwillliveonchainthankstor",
    "title": "Everything You Own Will Live On-Chain Thanks to RWA Tokenization",
    "date": "2026-10-07",
@@ -2310,6 +2376,30 @@
      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTWdnUlJRUEFmeVh1Zmk5REMxNHRjb0tYUFVQdE1WZHh3RlJMME4tTHEwblNpSjNGX2d5QTBJb3VYV0dXYlNyTE43WTV1OW1tdTZLQ1g1dnhmcW9GTWhBQk5nQlY3cTdnLWl4amdxSWFuYVUtX2JlVkZHb1gwQl9NY084cmNBV2wwZWQxYTFMYw?oc=5",
      "date": "2026-10-07",
      "ts": "2026-10-07T19:12+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "tokenisedequityvolumeseentomorethandoubl",
+   "title": "Tokenised equity volume seen to more than double to top US$10 billion by June 2027",
+   "date": "2026-10-07",
+   "last": "2026-10-07",
+   "ts": "2026-10-07T00:17+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Tokenised equity volume seen to more than double to top US$10 billion by June 2027",
+     "src": "Asia Asset Management",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOakR5YnpyeVhvTEN0YmxsOHpQeXdDd3FIcXp4bUpoT3lLdHdoUndVdjU0OENGWHZXaUY5MTFVN013NTZrZWlMX3NKTE5fZmJDVUFWaEgzdHlobUZ0MlBDZmtyXzlqaTFjU081QW8xTEtlMHVPbzBtMm9RVlN6Y1NxakhpSnJKNWsy?oc=5",
+     "date": "2026-10-07",
+     "ts": "2026-10-07T00:17+08:00",
      "via": "Google"
     }
    ],
@@ -2455,47 +2545,6 @@
    "role": "监管"
   },
   {
-   "id": "howarerealworldassetstokenizedinhongkong",
-   "title": "How are real-world assets tokenized in Hong Kong?",
-   "date": "2026-10-04",
-   "last": "2026-10-06",
-   "ts": "2026-10-06T13:02+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "How are real-world assets tokenized in Hong Kong?",
-     "src": "Futubull News",
-     "url": "https://news.futunn.com/en/post/1000556426/how-are-real-world-assets-tokenized-in-hong-kong",
-     "date": "2026-10-04",
-     "ts": "2026-10-04T21:54+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "How are real-world assets tokenized in Hong Kong?",
-     "src": "富途牛牛",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOQWpyV2lCODRlZXE4WkdyYmRtTkZ5Tkp6SjhfVTB2NkFGai00S2xvbnRHb3VDQkd3WEVmdmdsZlFVWUFYV3BPQU5feXlCUmJlR2tScUZ5ckpZWkpmclFCcG12RFo1WGpYaTJ4c3hrSk5Cblc1NDRxMjhVb1diTy1BcG84TVlNT2JlSHpfSGl0d001ZzZGN1E?oc=5",
-     "date": "2026-10-04",
-     "ts": "2026-10-04T20:54+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "How Are Real World Assets Tokenized in Hong Kong?",
-     "src": "CoinGecko",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNUm1DbEstY251bExRTWF4MmhTOWZhTkFCSDgxQU94V2s2c1oycjJpMkNxNVoyQUYzdTM0UWVxYzJScWNVUzJrQ3BLb0xHWkVrVGRRTjZmQ01pVENMT0I4SzFCWlN2bTRGTVNxcWdaYUQ4YjE5Z3IzeVZiOVJwYmdmeDhKQ0FmamM?oc=5",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T13:02+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hongkongstickstoend2026deadlinefornewcry",
    "title": "Hong Kong Sticks to End-2026 Deadline for New Crypto Licensing Rules",
    "date": "2026-10-06",
@@ -2530,6 +2579,39 @@
      "date": "2026-10-06",
      "ts": "2026-10-06T11:16+08:00",
      "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "howarerealworldassetstokenizedinhongkong",
+   "title": "How are real-world assets tokenized in Hong Kong?",
+   "date": "2026-10-04",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T13:02+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "How are real-world assets tokenized in Hong Kong?",
+     "src": "Futubull News",
+     "url": "https://news.futunn.com/en/post/1000556426/how-are-real-world-assets-tokenized-in-hong-kong",
+     "date": "2026-10-04",
+     "ts": "2026-10-04T21:54+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "How Are Real World Assets Tokenized in Hong Kong?",
+     "src": "CoinGecko",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNUm1DbEstY251bExRTWF4MmhTOWZhTkFCSDgxQU94V2s2c1oycjJpMkNxNVoyQUYzdTM0UWVxYzJScWNVUzJrQ3BLb0xHWkVrVGRRTjZmQ01pVENMT0I4SzFCWlN2bTRGTVNxcWdaYUQ4YjE5Z3IzeVZiOVJwYmdmeDhKQ0FmamM?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T13:02+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -2613,19 +2695,19 @@
    "articles": [
     {
      "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
-     "src": "bloomingbit",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ydVR6RjcteFdXWjQwREhHRUd0eFNIVmc4VDhPVlZTbllZVlVaMnJtYTFHWXh4bXFJYlRyVnBNdjFkTHg1aHQzMTZMWk5rdXdKOUc4QQ?oc=5",
-     "date": "2026-10-06",
-     "ts": "2026-10-06T22:53+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
      "src": "en.bloomingbit",
      "url": "https://en.bloomingbit.io/feed/news/121697",
      "date": "2026-10-06",
      "ts": "2026-10-06T08:54+08:00",
      "via": "Bing"
+    },
+    {
+     "title": "Hong Kong Reaffirms Plan to Submit Virtual-Asset Licensing Bill This Year",
+     "src": "bloomingbit",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9ydVR6RjcteFdXWjQwREhHRUd0eFNIVmc4VDhPVlZTbllZVlVaMnJtYTFHWXh4bXFJYlRyVnBNdjFkTHg1aHQzMTZMWk5rdXdKOUc4QQ?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T22:53+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -2786,6 +2868,30 @@
    "role": "监管"
   },
   {
+   "id": "hongkongplansnewlicensesacross4cryptoser",
+   "title": "Hong Kong plans new licenses across 4 crypto services",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T07:52+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong plans new licenses across 4 crypto services",
+     "src": "Cryptonews.net",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE1oUTV0cTU2dUFreHBqNnd0NWZhNDd6ZGFpZmVGMG1Ndjgza0ZWNGtCT1pubVJmOTZuMDk1QWxKSlpkY2V0bUhuRDh1ZlpTT1ZKRV9sQVNn?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T07:52+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "stablecoinpaymentshitthemainstreamapacst",
    "title": "Stablecoin payments hit the mainstream: APAC’s turning point",
    "date": "2026-10-06",
@@ -2834,6 +2940,30 @@
    "role": "监管"
   },
   {
+   "id": "香港证监会上半年香港证券业录得稳健增长净盈利增至517亿港元",
+   "title": "香港证监会：上半年香港证券业录得稳健增长 净盈利增至517亿港元",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T10:24+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港证监会：上半年香港证券业录得稳健增长 净盈利增至517亿港元",
+     "src": "新浪财经",
+     "url": "https://finance.sina.com.cn/stock/hkstock/hkstocknews/2026-10-06/doc-iniuhpzh6985803.shtml",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T10:24+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
+  },
+  {
    "id": "谷歌云在香港招聘web3架构师需稳定币支付相关经验",
    "title": "谷歌云在香港招聘Web3架构师，需稳定币支付相关经验",
    "date": "2026-10-06",
@@ -2856,6 +2986,64 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
+  },
+  {
+   "id": "bitgo与hashkey签署多维度战略合作协议涵盖质押交易托管及rwa代币化业",
+   "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+   "date": "2026-10-06",
+   "last": "2026-10-06",
+   "ts": "2026-10-06T16:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "BitGo 与 HashKey 签署多维度战略合作协议，涵盖质押、交易、托管及 RWA 代币化业务",
+     "src": "Business Wire",
+     "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE9Lal9ZM0RRSlF6ZFo0UzBzNHNBYzg3eHQzZXJFUlBkV3FkckJIUnV4T0tYZlFKWHlNTHdxQWRDSHVvbFhOSTRIam9wQlV6Wk5HWUc4TTdLOHY0eF8xaW51WkRzTUpoMkFZemt3?oc=5",
+     "date": "2026-10-06",
+     "ts": "2026-10-06T16:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
   },
   {
    "id": "港交所研代币化rwa平台持续优化上市机制",
@@ -3154,30 +3342,6 @@
    "role": "监管"
   },
   {
-   "id": "hongkongplansnewlicensesacross4cryptoser",
-   "title": "Hong Kong plans new licenses across 4 crypto services",
-   "date": "2026-10-05",
-   "last": "2026-10-05",
-   "ts": "2026-10-05T16:09+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong plans new licenses across 4 crypto services",
-     "src": "Crypto News",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE13X0s1S1Rkek01MTFIRjN4UHdSTGZtWDd4cDhWLXNuTS1iYU82SFV2YmJXQjViTGpVb0JtbEFtWDNBb2Q3SWlqNlNOZ0xIQjZYdy1fUkE2c3U5UHBrSTBUT0U4RVh1S01pRkpsRjdwaHhOakdIWUhCanlXZXVlTHc?oc=5",
-     "date": "2026-10-05",
-     "ts": "2026-10-05T16:09+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "chinasayscryptoisntanonymoushkskoreatigh",
    "title": "China says crypto isn’t anonymous; HK, S. Korea tighten rules",
    "date": "2026-10-05",
@@ -3200,6 +3364,30 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
+  },
+  {
+   "id": "券商拼美股投资国泰证新服务上线打造一站式全球投资平台",
+   "title": "〈券商拚美股投資〉國泰證新服務上線 打造一站式全球投資平台",
+   "date": "2026-10-05",
+   "last": "2026-10-05",
+   "ts": "2026-10-05T11:09+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "〈券商拚美股投資〉國泰證新服務上線 打造一站式全球投資平台",
+     "src": "Yahoo 財經",
+     "url": "https://news.google.com/rss/articles/CBMijgNBVV95cUxNbGt3MlJTUk9GRDA5X0dmeERCeG16N1lXZTBFZTdFcEgtVkM5S1hONlF1WjgwU0lOb0steURqSmh3SEc5WnZFOUtSMFVvT2hkOWFTLUdzbkk1U0xrQ1NicXpDUTBpNUtJRnRlMUwzQ19EX2Z0bFphRW5vUmtjMkI1bEtwR2dFTnJjaGxEUXkzN2VrQWpLUmVrbURRRmJZc3R5S19ScnNOQWs3NzhJR3lMZ3ZoYUpKNFBmM05mN1hWd1dNNGp0R1pJSjFDc3ZKN3QwT1QxWF9uUG56Tmkzdk9PcjJXMmFPN1BBTW1SZE5yY1o2eDhITXBsUDM2UzRfSFJNOWVvQlZYclo3VlRxSktGZndueGJKaW9kYkFCLTNiZ1lMMktWaWphV3NkaGhvZ19RMy0yRnk1aWcwWEFRR2lteFotcGtEZWdzbXZBcVRlSDBjUzJWWC1JS3pRUzBpZ2JXWkFYeHFoUVE5d0NGS2U5d3hXTEFubzJqZGJwWUJWRTZ6dC1OelByMEM1ODUxZw?oc=5",
+     "date": "2026-10-05",
+     "ts": "2026-10-05T11:09+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
   },
   {
    "id": "hashkeyholdingsltdcompanypeople3887",
@@ -3346,30 +3534,6 @@
    "role": "竞品动态"
   },
   {
-   "id": "10bestcryptoexchangesof2026",
-   "title": "10 Best Crypto Exchanges Of 2026",
-   "date": "2026-10-05",
-   "last": "2026-10-05",
-   "ts": "2026-10-05T15:32+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "10 Best Crypto Exchanges Of 2026",
-     "src": "Forbes",
-     "url": "https://www.forbes.com/advisor/investing/cryptocurrency/best-crypto-exchanges/",
-     "date": "2026-10-05",
-     "ts": "2026-10-05T15:32+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "港交所新战略科技股占交投飙至43陈翊庭维护市场包容性抢滩rwa代币化市场",
    "title": "【港交所新戰略】科技股佔交投飆至43%！陳翊庭：維護市場包容性 搶灘RWA代幣化市場",
    "date": "2026-10-05",
@@ -3440,31 +3604,6 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
-  },
-  {
-   "id": "在香港现实世界资产是如何被代币化的",
-   "title": "在香港 现实世界资产是如何被代币化的？",
-   "date": "2026-10-04",
-   "last": "2026-10-04",
-   "ts": "2026-10-04T20:54+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "在香港 现实世界资产是如何被代币化的？",
-     "src": "富途牛牛",
-     "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQa29RZU8zc3M4TEpIWDlxX1RPbFc3QlRwVVI2QWtKZTlaMXE0RHNjS2RQWTVhNEJCeHFmSF9MejVvWFpsWXZwVUxQZlVLdS1GeE52TzBWZDhRaENqOWQtdXZEUXRWeHVmSUI1UTNJalgtMU51OGJTZ0xqS1ZfYzZBTEFrYmU0OWMwVFUxR3hybnJjQQ?oc=5",
-     "date": "2026-10-04",
-     "ts": "2026-10-04T20:54+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
   },
   {
    "id": "36份申请只批2张香港稳定币把门关得很死",
