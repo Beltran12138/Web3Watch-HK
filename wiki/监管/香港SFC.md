@@ -54,6 +54,7 @@ sources: [SFC官网, 官方通告, 政府公报]
 - **[[SFC通函] Circular to Licensed Corporations, SFC-licensed Virtual Asset Service Providers and Associated Entities - Anti-Money Laundering / Counter-Financing of Terrorism Anti-Money Laundering and Count](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/aml/doc?refNo=26EC64)** (2026-10-13 | Alpha 85)
 - **[[SFC] SFC unveils Strategic Action Plan to support Hong Kong’s First Five-Year Plan and Policy Address in promoting capital market development](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR148)** (2026-09-23 | Alpha 85)
 - **[[SFC] SFC proceeds to strengthen targeted tools to tackle IPO-related and other corporate misconduct](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR165)** (2026-10-12 | Alpha 85)
+- **[Kraken拟收购受欧盟监管的Saldo银行，为潜在美国IPO铺路](https://www.theblockbeats.info/flash/371773)** (2026-10-14 | Alpha 78)
 - **[[SFC] New speech by Julia Leung: Keynote address at ASIFMA’s Future of Liquidity in Asia Pacific Capital Markets Conference](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR164)** (2026-10-09 | Alpha 75)
 - **[[SFC] SFC approves six securities registrars for upcoming uncertificated securities market regime](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR166)** (2026-10-12 | Alpha 75)
 
