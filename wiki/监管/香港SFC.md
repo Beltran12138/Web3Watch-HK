@@ -47,7 +47,7 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-14
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-15
 
 - **[[SFC] SFC takes action against suspected IPO-rigging syndicates and suspends dealings in Baicha shares](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR168)** (2026-10-13 | Alpha 88)
 - **[[SFC通函] Circular to licensed corporations carrying out sponsor work and engaging in bookbuilding and placing activities](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC62)** (2026-10-13 | Alpha 85)
@@ -55,7 +55,9 @@ sources: [SFC官网, 官方通告, 政府公报]
 - **[[SFC] SFC unveils Strategic Action Plan to support Hong Kong’s First Five-Year Plan and Policy Address in promoting capital market development](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR148)** (2026-09-23 | Alpha 85)
 - **[[SFC] SFC proceeds to strengthen targeted tools to tackle IPO-related and other corporate misconduct](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR165)** (2026-10-12 | Alpha 85)
 - **[Kraken拟收购受欧盟监管的Saldo银行，为潜在美国IPO铺路](https://www.theblockbeats.info/flash/371773)** (2026-10-14 | Alpha 78)
+- **[俄罗斯最大银行 Sberbank 拿到比特币交易牌照：12 月起向 1.1 亿零售客户开放 BTC、ETH 和 USDT](https://www.techflowpost.com/article/34604)** (2026-10-15 | Alpha 75)
 - **[[SFC] New speech by Julia Leung: Keynote address at ASIFMA’s Future of Liquidity in Asia Pacific Capital Markets Conference](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR164)** (2026-10-09 | Alpha 75)
 - **[[SFC] SFC approves six securities registrars for upcoming uncertificated securities market regime](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR166)** (2026-10-12 | Alpha 75)
+- **[韩监管机构将召开紧急会议讨论股市](https://www.theblockbeats.info/flash/371958)** (2026-10-15 | Alpha 65)
 
 <!-- AUTO_NEWS_END -->
