@@ -1,36 +1,36 @@
 {
- "built": "2026-10-17T05:17+08:00",
+ "built": "2026-10-17T08:32+08:00",
  "since": "2026-10-10",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 23,
+   "fetched": 24,
    "in_window": 13
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 19,
+   "fetched": 18,
    "in_window": 14
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 21,
-   "in_window": 9
+   "fetched": 20,
+   "in_window": 10
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
    "fetched": 14,
-   "in_window": 11
+   "in_window": 10
   },
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
-   "fetched": 19,
-   "in_window": 10
+   "fetched": 18,
+   "in_window": 9
   },
   {
    "topic": "中资券商",
@@ -41,8 +41,8 @@
   {
    "topic": "中资券商",
    "q": "券商 香港 虚拟资产交易 升级",
-   "fetched": 12,
-   "in_window": 1
+   "fetched": 13,
+   "in_window": 0
   },
   {
    "topic": "中资券商",
@@ -77,14 +77,14 @@
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 38,
+   "fetched": 36,
    "in_window": 14
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 43,
-   "in_window": 32
+   "fetched": 44,
+   "in_window": 33
   },
   {
    "topic": "机构需求",
@@ -105,7 +105,7 @@
    "in_window": 7
   }
  ],
- "articles": 142,
+ "articles": 141,
  "stories": [
   {
    "id": "federatedhermesfhiteamsupontokenizedsecu",
@@ -138,10 +138,9 @@
    "last": "2026-10-16",
    "ts": "2026-10-16T17:51+08:00",
    "topics": [
-    "中资券商",
     "监管"
    ],
-   "n": 5,
+   "n": 4,
    "articles": [
     {
      "title": "渣打银行获迪拜虚拟资产牌照，成为阿联酋首家提供加密货币交易的国际银行提供者Investing.com",
@@ -174,14 +173,6 @@
      "date": "2026-10-16",
      "ts": "2026-10-16T17:51+08:00",
      "via": "Google"
-    },
-    {
-     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-     "src": "新浪财经",
-     "url": "https://finance.sina.com.cn/wm/2026-10-16/doc-inivksmu1546096.shtml",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T12:02+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -359,72 +350,6 @@
    "role": "监管"
   },
   {
-   "id": "hashkeyexchangeunveilsgoldenautumnspotch",
-   "title": "HashKey Exchange unveils Golden Autumn Spot Challenge for verified spot traders",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T15:12+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "HashKey Exchange unveils Golden Autumn Spot Challenge for verified spot traders",
-     "src": "Traders Union",
-     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOZmFjcEdHZWZGUFRPclFXQnhsXzBUNHdCYmlCTDhna1hzcFMwTUR6OFY4amRlaHJLY2JJS3o1ald1V0xKQUpjTHlVRjlTTjgtbHNYN3RaUWlEcGNfX0FSUldoZ0hPNWRNRTdPN0VoMDdULW5iZ0dqcFFWcHJ0LW5fWFpKZXk0R3JCWEI1NEJwOXNob055eTg5VHhMcVBydw?oc=5",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T15:12+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HashKey Exchange unveils Golden Autumn Spot Challenge for verified spot traders",
-     "src": "tradersunion",
-     "url": "https://tradersunion.com/news/brokers-news/show/3838805-hashkey-exchange-spot-challenge-launches/",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T08:12+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
    "id": "newspeechbykelvinwongkeynoteremarksatios",
    "title": "New speech by Kelvin Wong: Keynote Remarks at IOSCO World Investor Week 2026 - Strike the Gong for Financial Literacy Event",
    "date": "2026-10-13",
@@ -497,6 +422,55 @@
      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPa0RKd1g5dTV4TWZCajg4OWxWenhXWTJFd1hZRFhsOVg0b09rODhtNm1xeXNSV2FaUng1VFVsX2VSN2tTUXlYX0oxc0Nkb1h2MXcxZE9HVVo2NjJvYVN0RXkwckVORGF4LU05M2xBU05Ed05FeXFPMHJ4bnZfTGhBZGlJTk4xdTZxZnJMSGtHWkFLWjVkdEg0WHl4Tm96TFk?oc=5",
      "date": "2026-10-16",
      "ts": "2026-10-16T09:42+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "清越科技因欺诈发行信息披露违法被证监会重罚172亿元",
+   "title": "清越科技因欺诈发行、信息披露违法被证监会重罚1.72亿元",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T19:23+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "清越科技因欺诈发行、信息披露违法被证监会重罚1.72亿元",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1088749265_121961794",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T19:23+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "加密资产与证券一站式交易bit的超级独角兽蓝图",
+   "title": "加密资产与证券一站式交易，BIT的超级独角兽蓝图",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T12:16+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "加密资产与证券一站式交易，BIT的超级独角兽蓝图",
+     "src": "BlockBeats",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE0tT0t2QnpWTGZRelVIUEk1b0tGU0ctR0Fsc3IySEVxRm1sTXdvQldMek9fVVBneGdHMjgyLUM3M3ptZGZaTVdZZ3o5dzJYUDBjVzZV?oc=5",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T12:16+08:00",
      "via": "Google"
     }
    ],
@@ -587,6 +561,64 @@
      "date": "2026-10-16",
      "ts": "2026-10-16T01:01+08:00",
      "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "hashkeyexchangeunveilsgoldenautumnspotch",
+   "title": "HashKey Exchange unveils Golden Autumn Spot Challenge for verified spot traders",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T15:12+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "HashKey Exchange unveils Golden Autumn Spot Challenge for verified spot traders",
+     "src": "Traders Union",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxOZmFjcEdHZWZGUFRPclFXQnhsXzBUNHdCYmlCTDhna1hzcFMwTUR6OFY4amRlaHJLY2JJS3o1ald1V0xKQUpjTHlVRjlTTjgtbHNYN3RaUWlEcGNfX0FSUldoZ0hPNWRNRTdPN0VoMDdULW5iZ0dqcFFWcHJ0LW5fWFpKZXk0R3JCWEI1NEJwOXNob055eTg5VHhMcVBydw?oc=5",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T15:12+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -983,55 +1015,6 @@
    "role": "资讯"
   },
   {
-   "id": "链接资产中心aegisclear计划收购币护aegiscustodytaiwan",
-   "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
-   "date": "2026-10-14",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T12:10+08:00",
-   "topics": [
-    "RWA",
-    "机构需求"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
-     "src": "鉅亨網",
-     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBINVRqWmp1Rk9XNS1YdzVjdExkQkdNWktUV1NzeDBrdEtIcVpjVUd0ZElvYjJSYjNOdXNLaURvdlo4MnY2dHU3Z1NlRQ?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T16:29+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
-     "src": "鉅亨網",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5aOURhNzBWbV9Fem9kTE94UXQtUHRmaFRzWlY3ZjQ3M00zS3hvd21uUHhqR2pDLVpZVWE0SV9lQVVLVTBjSjhzaWQxdVZxYngxSEVF?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T14:26+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
-     "src": "Yahoo 財經",
-     "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxPaF9hOFhOcDBldkVXRThTQXV3UDI5cG1pcGJPZEd3T29NLUdqN0ZPdExucWhTeXNPYVE5dTBtcF9OMUJ2eXloU0xZdGR3c2FuQ1E4N1p3ZXZ3VWtSNXB2ejFzemxLOFNzTHBCMndFNElnV0o0eWROTGZTSXJuWkx1VVlWeWU0Zi02SGZFdkJ0MEVmQmEtUWU0WWJ0QTlfNk5ReS1mbmNtS2dwMGh1V1Fpd2ZIS20ydHg4ekY4M0RGcU5Hd09jY1FiX3J4NE0ybFRfTkJ0WXlFamVtQzUyY2dwRzZYb2RGX2lMajVlWDcyY05DSTVIVWhBUTlqVUdxd2NKV0hFQzBTUms4ek5od0RweQ?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T12:10+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
-     "src": "鉅亨網",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ueEVINXZwQnc1cHJ3TjFCUkR4c2Fhc2pfblBoS1hkRENjMkpncWlqNzV4T0szdklzME1zQUtpbGtRSHVQWVZiYTQwR2lXMzQ?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T11:21+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "bitget推机构托管交易网络无需将加密资产转入交易所",
    "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
    "date": "2026-10-15",
@@ -1064,6 +1047,46 @@
    "role": "资讯"
   },
   {
+   "id": "链接资产中心aegisclear计划收购币护aegiscustodytaiwan",
+   "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
+   "date": "2026-10-14",
+   "last": "2026-10-15",
+   "ts": "2026-10-15T11:21+08:00",
+   "topics": [
+    "机构需求"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
+     "src": "鉅亨網",
+     "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTFBINVRqWmp1Rk9XNS1YdzVjdExkQkdNWktUV1NzeDBrdEtIcVpjVUd0ZElvYjJSYjNOdXNLaURvdlo4MnY2dHU3Z1NlRQ?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T16:29+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
+     "src": "鉅亨網",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5aOURhNzBWbV9Fem9kTE94UXQtUHRmaFRzWlY3ZjQ3M00zS3hvd21uUHhqR2pDLVpZVWE0SV9lQVVLVTBjSjhzaWQxdVZxYngxSEVF?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T14:26+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
+     "src": "鉅亨網",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ueEVINXZwQnc1cHJ3TjFCUkR4c2Fhc2pfblBoS1hkRENjMkpncWlqNzV4T0szdklzME1zQUtpbGtRSHVQWVZiYTQwR2lXMzQ?oc=5",
+     "date": "2026-10-15",
+     "ts": "2026-10-15T11:21+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "亚太占全球稳定币支付量六成香港港元稳定币已进入机构测试",
    "title": "亚太占全球稳定币支付量六成，香港港元稳定币已进入机构测试",
    "date": "2026-10-15",
@@ -1088,8 +1111,8 @@
    "role": "监管"
   },
   {
-   "id": "投资警示wealthone及wealthbroker列无牌名单投资者指无法提款",
-   "title": "【投資警示】Wealth ONE及Wealth Broker列無牌名單 投資者指無法提款",
+   "id": "投资警示证监会wealthonewealthbrokernovaroglobal",
+   "title": "【投資警示】證監會：Wealth ONE、Wealth Broker、Novaro Global屬無牌公司 投資者指無法提款",
    "date": "2026-10-15",
    "last": "2026-10-15",
    "ts": "2026-10-15T17:03+08:00",
@@ -1099,17 +1122,17 @@
    "n": 1,
    "articles": [
     {
-     "title": "【投資警示】Wealth ONE及Wealth Broker列無牌名單 投資者指無法提款",
+     "title": "【投資警示】證監會：Wealth ONE、Wealth Broker、Novaro Global屬無牌公司 投資者指無法提款",
      "src": "香港經濟日報HKET",
-     "url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxQYWZSUFBtV0VUeGU1U212QndNaDdzVVFZT0VmWGs3bko3NGw5VzI5a2xyc3BjeFZ6UzJoV09aMDJKSHZ5WlIteTBBSHBtRDZ5OU9GdkdZZWZHb0R3V1pldnpkVndFZzRSYi1iU3BVNG9xT05adVZBUXNMWFpKU3FKYWVUbHUtUE9WS0VfakVfWl9xTDJ6VGNWbjN3d2RuYjVlaVNqX2p6bHczakhJdmtsbDAwXzA3YURZOUxlQ0JTX3doOGhlbVBUbGM4aDhmU1FvdW10VkFSTkZhdDJqbFpyRHFlVVBuNnRLYWZDUDBrancxa3RoSEtLbU03RE9vZ3hVU1hOeW5oeW91eGZXNEhPQ1F4bGw1WWVFbzVkWUt1S1E1T01OdUN4RmZvWVRlV21NTVdaZTVzR0VDaF9mQms5OGxiLTFieEhfYjkzbkZoZ2Eyb2RpWUpIbW1wQkFfdXMwMEtqSVRoazVoWjZFV0Nfb3ZkX21oemRiTFFwaWdB?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPRmR4czJKdjNUWWRUZlFzb1I4Zm5IQWZTNHR0TTNRSWVwUGd2aVNRTnNGS01DYXBBZGZldG1yOGc3UjVXQldudk93U0tpUkFpUTc4X3ZFcTk3RHlQdVJpYVBfYURUSE9mNm5mdkp3ODlpelRtcDNDM2M4YmhEUTJNZDg4U3RQTmNsTHBWVmxDTnVVVVI1Q0R1TTlkdk9JMDNrZEp1RlFKXzFRd2tJ?oc=5",
      "date": "2026-10-15",
      "ts": "2026-10-15T17:03+08:00",
      "via": "Google"
     },
     {
-     "title": "【投資警示】證監會：Wealth ONE、Wealth Broker、Novaro Global屬無牌公司 投資者指無法提款",
+     "title": "【投資警示】Wealth ONE及Wealth Broker列無牌名單 投資者指無法提款",
      "src": "香港經濟日報HKET",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPRmR4czJKdjNUWWRUZlFzb1I4Zm5IQWZTNHR0TTNRSWVwUGd2aVNRTnNGS01DYXBBZGZldG1yOGc3UjVXQldudk93U0tpUkFpUTc4X3ZFcTk3RHlQdVJpYVBfYURUSE9mNm5mdkp3ODlpelRtcDNDM2M4YmhEUTJNZDg4U3RQTmNsTHBWVmxDTnVVVVI1Q0R1TTlkdk9JMDNrZEp1RlFKXzFRd2tJ?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMi_gJBVV95cUxQYWZSUFBtV0VUeGU1U212QndNaDdzVVFZT0VmWGs3bko3NGw5VzI5a2xyc3BjeFZ6UzJoV09aMDJKSHZ5WlIteTBBSHBtRDZ5OU9GdkdZZWZHb0R3V1pldnpkVndFZzRSYi1iU3BVNG9xT05adVZBUXNMWFpKU3FKYWVUbHUtUE9WS0VfakVfWl9xTDJ6VGNWbjN3d2RuYjVlaVNqX2p6bHczakhJdmtsbDAwXzA3YURZOUxlQ0JTX3doOGhlbVBUbGM4aDhmU1FvdW10VkFSTkZhdDJqbFpyRHFlVVBuNnRLYWZDUDBrancxa3RoSEtLbU03RE9vZ3hVU1hOeW5oeW91eGZXNEhPQ1F4bGw1WWVFbzVkWUt1S1E1T01OdUN4RmZvWVRlV21NTVdaZTVzR0VDaF9mQms5OGxiLTFieEhfYjkzbkZoZ2Eyb2RpWUpIbW1wQkFfdXMwMEtqSVRoazVoWjZFV0Nfb3ZkX21oemRiTFFwaWdB?oc=5",
      "date": "2026-10-15",
      "ts": "2026-10-15T17:03+08:00",
      "via": "Google"
@@ -1124,7 +1147,7 @@
    "title": "10.15犀牛财经早报：香港证监会重拳出击3个IPO操纵案",
    "date": "2026-10-15",
    "last": "2026-10-15",
-   "ts": "2026-10-15T10:55+08:00",
+   "ts": "2026-10-15T10:34+08:00",
    "topics": [
     "监管"
    ],
@@ -1132,10 +1155,10 @@
    "articles": [
     {
      "title": "10.15犀牛财经早报：香港证监会重拳出击3个IPO操纵案",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1087944982_153054",
+     "src": "腾讯网",
+     "url": "https://news.qq.com/rain/a/20261015A03YE900",
      "date": "2026-10-15",
-     "ts": "2026-10-15T10:55+08:00",
+     "ts": "2026-10-15T10:34+08:00",
      "via": "Bing"
     }
    ],
@@ -1398,7 +1421,7 @@
    "title": "Institutional-Grade Compliance Infrastructure Positions Itself at Tokenization's Next Frontier",
    "date": "2026-10-15",
    "last": "2026-10-15",
-   "ts": "2026-10-15T20:40+08:00",
+   "ts": "2026-10-15T20:42+08:00",
    "topics": [
     "RWA"
    ],
@@ -1407,9 +1430,9 @@
     {
      "title": "Institutional-Grade Compliance Infrastructure Positions Itself at Tokenization's Next Frontier",
      "src": "The Globe and Mail",
-     "url": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPdTl1VC1qNHNtRk43STRxUC1URnBtcjQwalBmSXZZeTdrZFE4RElhd25uVGRZaXpnMHpPVGdUOTNsajBoMzFMVmxacU5nLU5IdzR5eDdoM1V6NWNCeXZhY2VNeEVIZ1pldXZ3NnpoVGdMRVpQN2J6Y3BYeTNEZkFYa0ZFTW41R0FrckxwU2V6ZDctQmUxRWNwTHAzRFh6cWdWTkVvQ3FfWlZLSjQ2VHdQbnY3UkJhSmpobE5XR2l1Um1PbTJwMXppYnYwY2R0eFMtMDVoSnpHVVc2bmJ0clZoQzZtRlZDWUs4bXlXZnhHeF9xanRRZmtDdEFIN2JTMWRWd0UyWjh2Y1pWVlY1S0E?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNdm9pOWZfYjNyY0JfRHA1MFZhMi1MTTYweERhTVZHZ21jSGthaV9GV0dBSDFRUDFmU0RWU1BIUFlEWXhsdXdWa0hIcFA5X2QzMEZJR003VUp3cmlzVnFrMHl0R2xvX3RMOGdBZlh4Z3VOdFZqYVBHeTJFZGFDQU9aX3BiWHliYWgxeXpHcWVxZmw3X1hVY3l3QUxJWkNFQjlYV1plZTBUXzhzUDJ6emdEcjhmN1dDb0V0ODFXdDQxdWNab2pJemR6YmJXOUZrZFNfNktuX3ZfTXRLYVRQLWZRYjkwb1hmNVE4a2N3SHFiLW0tU2ViZ3JOYVlxUmpZVGVJQjlSYW1lLVBSUWJTaHVF?oc=5",
      "date": "2026-10-15",
-     "ts": "2026-10-15T20:40+08:00",
+     "ts": "2026-10-15T20:42+08:00",
      "via": "Google"
     }
    ],
@@ -1458,6 +1481,30 @@
      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9wNE91Z0JWMmkycUgzWkhLeUN0RDAzc0x3TkFSbktWZHpEY21Zb3BRbTl2c1dfc19zczQ2OXNyYUotcjVqbENXQ3JRN3Q5RGItTWczV3ZyNHpwNzA3ZmJoZkhRcnhzWmcycG5aUjQ5Y2VFUzhOVUN3?oc=5",
      "date": "2026-10-14",
      "ts": "2026-10-14T22:47+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "qivalis获得荷兰电子货币机构emi牌照推出由银行支持的欧元稳定币",
+   "title": "Qivalis 获得荷兰电子货币机构（EMI）牌照，推出由银行支持的欧元稳定币",
+   "date": "2026-10-14",
+   "last": "2026-10-14",
+   "ts": "2026-10-14T19:12+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Qivalis 获得荷兰电子货币机构（EMI）牌照，推出由银行支持的欧元稳定币",
+     "src": "CoinDesk",
+     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPWVFoSVU4TGNwOHhIemZJZWlfRDZLZ0lnemw4UWtvWXBLREt1SFB6LXFORWxCMXhuR0RTbzRxSno5V3dYSFRRRkU3M1NiWEJIa0UxWERrRlYwMmdaSXpIYlNSMXNRTlFsNWhjU3pJc01hQ0R3S1E0dHVoWGttQVM1R2JGMy1yTkcwSlV1aXlnNFFHMW1SZGFjR2Q2X2RZZDBEWkhBTU1sTW9hNE5ROXpSLWxuUzBBaUVmb00zMTZHeHdwd0dPTVE?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T19:12+08:00",
      "via": "Google"
     }
    ],
@@ -1522,30 +1569,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "从美股到港股bit券商路线延伸至全球资产",
-   "title": "从美股到港股： BIT 券商路线延伸至全球资产",
-   "date": "2026-10-14",
-   "last": "2026-10-14",
-   "ts": "2026-10-14T17:03+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "从美股到港股： BIT 券商路线延伸至全球资产",
-     "src": "Odaily星球日报",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE1vSVNxbFozWC1LZ3hGLVRtY2RYUThhZ1d1SGl5RVZ5VXpWWTRaVjZHSWhoREIwRGE5bkdMWkQ4WVFIaGc0b2JGWVJDaWFHNmhhVHJ4aQ?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T17:03+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
   },
   {
    "id": "newfireinstitutehardwarewalletsecuritymy",
@@ -1703,22 +1726,22 @@
    "role": "资讯"
   },
   {
-   "id": "token2049小作文合集builder少了机构多了crypto开始脱虚向实",
-   "title": "TOKEN2049小作文合集：Builder少了，机构多了，Crypto开始脱虚向实",
+   "id": "bnycitadelsecuritiestesttokenizedustreas",
+   "title": "BNY, Citadel Securities test tokenized U.S. Treasuries to speed up Wall Street financing",
    "date": "2026-10-14",
    "last": "2026-10-14",
-   "ts": "2026-10-14T11:23+08:00",
+   "ts": "2026-10-14T05:52+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "TOKEN2049小作文合集：Builder少了，机构多了，Crypto开始脱虚向实",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE43MnhzUUgwaE1GRFk0MElWbWlpLV8wTUdxWXNnNzNTdkFtUS1SZ1JoczVNU0NOa3dlNERQSlE2aF9SR1FvSnpzd1FsQ3FFOXNJU1lDYXVNZTBZbjdGaEJzWHoxYWtWZDExVjFwcE1iekZucFE4TkZURW4tZVEtZms?oc=5",
+     "title": "BNY, Citadel Securities test tokenized U.S. Treasuries to speed up Wall Street financing",
+     "src": "CoinDesk",
+     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdDFmeF81dld4dmdseXJJTFY4dUo4X2FnZTU4OU4zQS0yWkRuWHpCWWRiZnotcDRYWFpyNDcxQ3hQNWRXY3JNeEtmdGV0NjY3TTA4UDhITlhsWTRXcnBjNzI0ZTF4RndsWjhZUlFGUjhPMks1Sm5NR1B5ZGlNSy1ubExsaFIwUzQ4VkI1a1B5R2ZpbGlVdW0wM0tmaXZVOFZRZS1hdmRyU2prRkc1LXF2dlhsbUN2UkJkWFB5ckp5Rmp6NVVfOWFsLXQwMA?oc=5",
      "date": "2026-10-14",
-     "ts": "2026-10-14T11:23+08:00",
+     "ts": "2026-10-14T05:52+08:00",
      "via": "Google"
     }
    ],
@@ -1743,30 +1766,6 @@
      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxQdnlnNHFLYWFCd0FiWFZ6MzNpb0lrR2dsSUZuQ1ZvamVLZkVEalV2YWhWV3RDdFFZS2dKWm83MTI4SG9ZOFRXTmVrdkVpb2pmNnYtakE1R1M4UF9wMDlGcDBYRXFqNUJ5YkZZSllsbURmaV9mR0tyQ1c5b05XQ1NXQUh2ems1eFR2bDZWQ2MwNVNSWHJXWWNLNmZJRllvbkFlUFNTbUVsVHNmSzltclZmcUtCVmdhdFhUWHQwYlByaThKa2Fwb2MweXhRV3N0eEZuRVRvSS1R?oc=5",
      "date": "2026-10-14",
      "ts": "2026-10-14T01:11+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "bnycitadelsecuritiestesttokenizedustreas",
-   "title": "BNY, Citadel Securities test tokenized U.S. Treasuries to speed up Wall Street financing",
-   "date": "2026-10-14",
-   "last": "2026-10-14",
-   "ts": "2026-10-14T05:52+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "BNY, Citadel Securities test tokenized U.S. Treasuries to speed up Wall Street financing",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdDFmeF81dld4dmdseXJJTFY4dUo4X2FnZTU4OU4zQS0yWkRuWHpCWWRiZnotcDRYWFpyNDcxQ3hQNWRXY3JNeEtmdGV0NjY3TTA4UDhITlhsWTRXcnBjNzI0ZTF4RndsWjhZUlFGUjhPMks1Sm5NR1B5ZGlNSy1ubExsaFIwUzQ4VkI1a1B5R2ZpbGlVdW0wM0tmaXZVOFZRZS1hdmRyU2prRkc1LXF2dlhsbUN2UkJkWFB5ckp5Rmp6NVVfOWFsLXQwMA?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T05:52+08:00",
      "via": "Google"
     }
    ],
@@ -1999,30 +1998,6 @@
    "role": "监管"
   },
   {
-   "id": "hongkongdollarnearsweakendoftradingbandh",
-   "title": "Hong Kong dollar nears weak end of trading band, HKMA intervention looms",
-   "date": "2026-10-13",
-   "last": "2026-10-13",
-   "ts": "2026-10-13T14:26+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong dollar nears weak end of trading band, HKMA intervention looms",
-     "src": "The Standard (HK)",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQM2Y4SE5sQ014enc3bWFNLUxIS05YZ0d3OXFSbXlZMXlHVC0xelg1elM4SnNmTzhRNGV2UXBYRFhMNnJqMVp2SjEzVmh5aWZhZWpoUUtLSlhkNWswN1ROTjdpZHJGM1cyVE5TQ2hLUkp1V3hnTWFQMkNRVjluRU90WHFWR2stbGFkcC1mVVB6QzhBdktUMlRKbVllUjZEazVPdngydklhanN6aDdPYTRXSnI3S082Y2xiUVVjNVlLdkZvYmM?oc=5",
-     "date": "2026-10-13",
-     "ts": "2026-10-13T14:26+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "okxventureshashkeybackcaexforvietnamcryp",
    "title": "OKX Ventures, HashKey Back CAEX for Vietnam Crypto Pilot",
    "date": "2026-10-13",
@@ -2155,6 +2130,64 @@
      "url": "https://panews.io/articles/01a134f6-c28c-7161-94f8-64acd6083781",
      "date": "2026-10-13",
      "ts": "2026-10-13T12:12+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "hashkeyhldgs03887hkrepurchased690000shar",
+   "title": "HASHKEY HLDGS (03887.HK) repurchased 690,000 shares at a cost of HKD 1.4743 million on October 13.",
+   "date": "2026-10-13",
+   "last": "2026-10-13",
+   "ts": "2026-10-13T12:03+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "HASHKEY HLDGS (03887.HK) repurchased 690,000 shares at a cost of HKD 1.4743 million on October 13.",
+     "src": "Futubull News",
+     "url": "https://news.futunn.com/en/post/1000992075/hashkey-hldgs-03887-hk-repurchased-690000-shares-at-a-cost",
+     "date": "2026-10-13",
+     "ts": "2026-10-13T12:03+08:00",
      "via": "Bing"
     }
    ],
@@ -2421,6 +2454,47 @@
    "role": "监管"
   },
   {
+   "id": "okx和美国sec对rwa的答卷邓进一",
+   "title": "OKX和美国SEC对RWA的答卷｜邓进一",
+   "date": "2026-10-12",
+   "last": "2026-10-12",
+   "ts": "2026-10-12T17:13+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "OKX和美国SEC对RWA的答卷｜邓进一",
+     "src": "星島頭條",
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQRmFDODFqRjlGYmFwNUxFbXBjeVJiN2VYdjJoM0p3dGZJTzl5Q3NGXzgyU1lBM0EybXowU3N5dkRSVTMtUkFUWjRMSnUtZ3ltOWRaMGNfNy1ORzBPWGkxbWtEcmRoTnB4NURlWG5GN3pfZXNyZ0s2UUlxVS1jZk9DS181QXo0ZEYxMkVEVXJNeUFwT1hOQW9rNk0tWVdtM216TzhwUWc2Q3VtZEV0cEhzeXlLSHg2MG0yUkJUQUVWbUFKc1FlUGh5aEdBRHYzd2k5M1VHbEJzSDFaUmxqaWNrcWtZc2g3RE1v?oc=5",
+     "date": "2026-10-12",
+     "ts": "2026-10-12T15:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "OKX和美國SEC對RWA的答卷｜鄧進一",
+     "src": "星島頭條",
+     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNS3NSOWJfZTkyR2xzQk1hbWkwTk1UQ2dvQ1RLMEZyeGItYW1PUG4ySW9RQUpmbXlrNWdGMjlQXzlHQ19NajItelh5UFdkTzJvYVBMYng3WXNWVk5JV2VhZDB4bFBfM1U3MU9vclpfcUdqLXdpWmpvVDdoQTFYNE0tS1NWYzZybjhQNVZWbEpmYW9xUnZ1VVVoTUd1TjYzdXowbWZma0JQbTZTRkNqSlYzWHZ0ZXV4T1VjOHNIdVEzYU5QM3dNcmpteFBTa05qY3lONmVld3N6eWJoZTlJWVE?oc=5",
+     "date": "2026-10-12",
+     "ts": "2026-10-12T15:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "OKX和美國SEC對RWA的答卷｜鄧進一",
+     "src": "Sing Tao Daily 星島日報加拿大",
+     "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPU3lyUjE5SlhqbTlBNTNfVEYyQ0tXNTNmTHVOcWJzcUVCUmhBaUVZTFNscVZyWEpkUm80emhOSEtXVmZpYTBkRFY2OElIRnQ0OTBvSkJMTDNIaXAtWURmaFFMb1RoUFc4N08zRFpySHVEWUpJeklWM0t3RnVGUUNxcXRoTEdxczFjbWEtb21aUzh4Wm5YWGhwS090bDdrc2pZSmYtbVVnQ2dDUndjXzhWZHFmTkVvb2EzNE1WZWc5UUczeU1vWUF6bF9MS2JCREgzSll2c0lfa2ZHc3pJQTBIVlFLQWs3d1FJLXg3M9IBigFBVV95cUxQeE81d1RXdXRJQ1p0eGZzTnhuczk5UHNpUmJNa2R5QVJhUmRDWW0zRGE4WG9aX0xmOXcxVEVlLUk1TjA3bnQyOFFkSTdjN3QyNVhQWWZvLVlneW9YSVhsWFpYZFZGUUwzNUxpekdFWFhXWExJeHdhNTlpLWFrR3VHbzlzRjFiWmgwb0E?oc=5",
+     "date": "2026-10-12",
+     "ts": "2026-10-12T17:13+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "standardcharteredexpandstowardcryptoandt",
    "title": "Standard Chartered Expands Toward Crypto and Tokenized Asset Custody in Singapore: BTCPressWire on Institutional Adoption",
    "date": "2026-10-12",
@@ -2451,39 +2525,6 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
-  },
-  {
-   "id": "okx和美国sec对rwa的答卷邓进一",
-   "title": "OKX和美国SEC对RWA的答卷｜邓进一",
-   "date": "2026-10-12",
-   "last": "2026-10-12",
-   "ts": "2026-10-12T15:00+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "OKX和美国SEC对RWA的答卷｜邓进一",
-     "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQRmFDODFqRjlGYmFwNUxFbXBjeVJiN2VYdjJoM0p3dGZJTzl5Q3NGXzgyU1lBM0EybXowU3N5dkRSVTMtUkFUWjRMSnUtZ3ltOWRaMGNfNy1ORzBPWGkxbWtEcmRoTnB4NURlWG5GN3pfZXNyZ0s2UUlxVS1jZk9DS181QXo0ZEYxMkVEVXJNeUFwT1hOQW9rNk0tWVdtM216TzhwUWc2Q3VtZEV0cEhzeXlLSHg2MG0yUkJUQUVWbUFKc1FlUGh5aEdBRHYzd2k5M1VHbEJzSDFaUmxqaWNrcWtZc2g3RE1v?oc=5",
-     "date": "2026-10-12",
-     "ts": "2026-10-12T15:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "OKX和美國SEC對RWA的答卷｜鄧進一",
-     "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNS3NSOWJfZTkyR2xzQk1hbWkwTk1UQ2dvQ1RLMEZyeGItYW1PUG4ySW9RQUpmbXlrNWdGMjlQXzlHQ19NajItelh5UFdkTzJvYVBMYng3WXNWVk5JV2VhZDB4bFBfM1U3MU9vclpfcUdqLXdpWmpvVDdoQTFYNE0tS1NWYzZybjhQNVZWbEpmYW9xUnZ1VVVoTUd1TjYzdXowbWZma0JQbTZTRkNqSlYzWHZ0ZXV4T1VjOHNIdVEzYU5QM3dNcmpteFBTa05qY3lONmVld3N6eWJoZTlJWVE?oc=5",
-     "date": "2026-10-12",
-     "ts": "2026-10-12T15:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
   },
   {
    "id": "taiwanvirtualassetbodyvaspajoinsfinancia",
@@ -2526,6 +2567,30 @@
      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBFbHctS1VIQW9uTlh3VlExcDdUNzd0SWdPSXNnYWhXOTRNNnNNdUo3WEl5TFVSVnBRWVlxbmhldTRHbEgzdVByRl9nelJLYUc1eUluWVlWUUVaUQ?oc=5",
      "date": "2026-10-12",
      "ts": "2026-10-12T10:24+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "cryptoswotcryptoreboundssharplyinthethir",
+   "title": "Crypto SWOT: Crypto rebounds sharply in the third quarter",
+   "date": "2026-10-12",
+   "last": "2026-10-12",
+   "ts": "2026-10-12T22:20+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Crypto SWOT: Crypto rebounds sharply in the third quarter",
+     "src": "Kitco",
+     "url": "https://news.google.com/rss/articles/CBMilAFBVV95cUxOY0R1MFJ5N0NxeFJJX0hQaFdDaXhwTms0bUh1QlpKVTlfeUEzRVRDUU1DamsxSDZCNTRzUUo4X21uOTBQVFAxLUZ2Qk9ubU9BQTVkY2Q2WmdNcEhkNGY1RjFUNXJCVm9vMFkzQnpENERZa3lDYnpkblhnanV3aFh2R2xtWHNDNTV3YXRwMnZmMEpjblY2?oc=5",
+     "date": "2026-10-12",
+     "ts": "2026-10-12T22:20+08:00",
      "via": "Google"
     }
    ],
@@ -2908,30 +2973,6 @@
    "role": "监管"
   },
   {
-   "id": "cftc抛出108页加密监管草案承认自持私钥链上交易所合规路径浮出水面",
-   "title": "CFTC 抛出 108 页加密监管草案：承认自持私钥，链上交易所合规路径浮出水面",
-   "date": "2026-10-10",
-   "last": "2026-10-10",
-   "ts": "2026-10-10T01:00+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "CFTC 抛出 108 页加密监管草案：承认自持私钥，链上交易所合规路径浮出水面",
-     "src": "blockweeks",
-     "url": "https://blockweeks.com/article/329594",
-     "date": "2026-10-10",
-     "ts": "2026-10-10T01:00+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "汇丰redcoin公布名称香港持牌稳定币走向支付场景",
    "title": "汇丰RedCoin公布名称，香港持牌稳定币走向支付场景",
    "date": "2026-10-10",
@@ -2973,30 +3014,6 @@
      "date": "2026-10-10",
      "ts": "2026-10-10T19:56+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "hongkongbrokerscryptotradingcommissionsf",
-   "title": "Hong Kong brokers’ crypto trading commissions fall 13.5% in first half of 2026",
-   "date": "2026-10-10",
-   "last": "2026-10-10",
-   "ts": "2026-10-10T15:34+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong brokers’ crypto trading commissions fall 13.5% in first half of 2026",
-     "src": "Crypto Briefing",
-     "url": "https://cryptobriefing.com/hong-kong-brokers-crypto-commissions-fall/",
-     "date": "2026-10-10",
-     "ts": "2026-10-10T15:34+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
