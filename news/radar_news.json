@@ -1,53 +1,53 @@
 {
- "built": "2026-10-18T02:53+08:00",
+ "built": "2026-10-18T06:24+08:00",
  "since": "2026-10-11",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 26,
-   "in_window": 14
+   "fetched": 29,
+   "in_window": 16
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 19,
-   "in_window": 14
+   "fetched": 20,
+   "in_window": 13
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
    "fetched": 20,
-   "in_window": 9
+   "in_window": 10
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 13,
+   "fetched": 14,
    "in_window": 8
   },
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
    "fetched": 17,
-   "in_window": 8
+   "in_window": 9
   },
   {
    "topic": "中资券商",
    "q": "中资券商 虚拟资产 香港",
-   "fetched": 10,
+   "fetched": 9,
    "in_window": 0
   },
   {
    "topic": "中资券商",
    "q": "券商 香港 虚拟资产交易 升级",
    "fetched": 13,
-   "in_window": 0
+   "in_window": 1
   },
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 17,
+   "fetched": 16,
    "in_window": 3
   },
   {
@@ -59,7 +59,7 @@
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 13,
+   "fetched": 12,
    "in_window": 3
   },
   {
@@ -71,26 +71,26 @@
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 11,
+   "fetched": 12,
    "in_window": 1
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 36,
+   "fetched": 35,
    "in_window": 14
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 43,
+   "fetched": 42,
    "in_window": 31
   },
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
-   "fetched": 19,
-   "in_window": 4
+   "fetched": 20,
+   "in_window": 5
   },
   {
    "topic": "机构需求",
@@ -105,7 +105,7 @@
    "in_window": 7
   }
  ],
- "articles": 133,
+ "articles": 138,
  "stories": [
   {
    "id": "从美股到港股bit券商路线延伸至全球资产",
@@ -204,6 +204,30 @@
    "role": "资讯"
   },
   {
+   "id": "股票代币化繁荣背后谁在赚钱谁在替人做嫁衣",
+   "title": "股票代币化繁荣背后：谁在赚钱，谁在替人做嫁衣？",
+   "date": "2026-10-17",
+   "last": "2026-10-17",
+   "ts": "2026-10-17T23:11+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "股票代币化繁荣背后：谁在赚钱，谁在替人做嫁衣？",
+     "src": "吴说",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWmdLeTVPLW1tMnE4U3FXQVpwTHdRSW9ucDBNMmNUak5qY3pWYnVVS3hYY3F5T1hZVFFwQlhaMl9GYi1ZYXRZaUlxajJYZE9SMnNOV1Znd3A1SzVWWUxUS3NUcWpEX0M5VlEwRXZQb2ZYcUM5Ukk2WnVOenhxelFNVXB3UHdCcE5MT3duNGR6dzhQRUFqXzhFa0NOcHpFS05DUUZR?oc=5",
+     "date": "2026-10-17",
+     "ts": "2026-10-17T23:11+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "federatedhermesfhiteamsupontokenizedsecu",
    "title": "Federated Hermes (FHI) Teams Up On Tokenized Securities As Investors Ask If The Stock Is A Buy",
    "date": "2026-10-17",
@@ -250,6 +274,87 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
+  },
+  {
+   "id": "governmentofgibraltarannounceslandmarkle",
+   "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
+   "date": "2026-10-17",
+   "last": "2026-10-17",
+   "ts": "2026-10-17T16:01+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
+     "src": "Your Gibraltar TV",
+     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSEw4UWVBamZEWmJwenRiWC1hUkRINXhUcmlrdkJVMkFYUlhESDBoSlFNY2hjemxxUnlraGJpemxwNWFCbkZod2I3NjBndDlWZkp5QWJlUWpUcHpkeWNNUzljZENZZ29JS0w1bkxoTVl5bm91aW5pM0hhNzE4N0EySTR3ZlhTVTdEc214ZHJlSUtwSUNLT3NPeFpLemtfYXFROVprUWJJM3JjbVpMOVBnVlgtS05YNFZzLXBGNkhWSFM?oc=5",
+     "date": "2026-10-17",
+     "ts": "2026-10-17T16:01+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "渣打银行获迪拜虚拟资产牌照成为阿联酋首家提供加密货币交易的国际银行提供者inve",
+   "title": "渣打银行获迪拜虚拟资产牌照，成为阿联酋首家提供加密货币交易的国际银行提供者Investing.com",
+   "date": "2026-10-14",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T17:51+08:00",
+   "topics": [
+    "中资券商",
+    "监管"
+   ],
+   "n": 5,
+   "articles": [
+    {
+     "title": "渣打银行获迪拜虚拟资产牌照，成为阿联酋首家提供加密货币交易的国际银行提供者Investing.com",
+     "src": "英为财情 Investing.com",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5JRXRGYUFzSHR5dXF3MXRTZnp2SlhHUG1HdGUweDhjSlBXWWpGM2FzaEM1SURDUGxCS3Y3TEx2RGY1d3RZZ2Z6LTFLV0FVTjBTWmxzbzVfelFWdVY2VEUyczQ4SU5hSkduVENsYV9nenVmenA5bnc4?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T14:18+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "渣打銀行獲得阿聯酋加密貨幣交易牌照，成首家國際銀行 作者 Investing.com",
+     "src": "Investing.com 香港 - 股市報價& 財經新聞",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5rVnpCRkowSkpHZHRZTmlJaFdRTHpGdi10UTRvRVJkTlAxVnlrYmhFLV9JUGUxVmNXc1FHYmI2UGdZQnh2M040QkttWjhvWWlMRU9FSmZDWDdoYXdhNlRZUDZoMURLZ2xpR1lxYm9ROXlTMDRReDRj?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T14:20+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
+     "src": "同花顺财经",
+     "url": "https://news.10jqka.com.cn/field/20261015/680749349.shtml",
+     "date": "2026-10-15",
+     "ts": "2026-10-15T23:20+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "渣打成为阿联酋首家提供加密货币现货交易的国际银行",
+     "src": "新浪网",
+     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOd2VnaW1FR1NwejlWTUFXNS1MTF9fWTNiTENIVzRnMDdaMGd4SE9LUjBva0VvZzVTV1JWVkNzeHVJbDVSTkowaHA5Y1luMGVvODBwVF9BRzFueUpMU0hMTFVOUE5KdjdkQ0tNOUFBSG9HQ21USjRLUG53dDdMQTQ4VHNFVQ?oc=5",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T17:51+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
+     "src": "新浪财经",
+     "url": "https://finance.sina.com.cn/wm/2026-10-16/doc-inivksmu1546096.shtml",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T12:02+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "星路助力发行首只支持港元稳定币hkdap申赎及派息的票据代币化产品",
@@ -323,38 +428,6 @@
    "sfc": false,
    "hits": [],
    "role": "中资券商动态"
-  },
-  {
-   "id": "渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-   "title": "渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T17:51+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-     "src": "新浪网",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOd2VnaW1FR1NwejlWTUFXNS1MTF9fWTNiTENIVzRnMDdaMGd4SE9LUjBva0VvZzVTV1JWVkNzeHVJbDVSTkowaHA5Y1luMGVvODBwVF9BRzFueUpMU0hMTFVOUE5KdjdkQ0tNOUFBSG9HQ21USjRLUG53dDdMQTQ4VHNFVQ?oc=5",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T17:51+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1088470046_122014422",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T12:07+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
   },
   {
    "id": "星路携手碇点融与qfpayhk探索受规管港元稳定币hkdap于香港支付的应用",
@@ -614,6 +687,30 @@
    "role": "监管"
   },
   {
+   "id": "cambodiacryptoregulationentersadecisiveq",
+   "title": "Cambodia Crypto Regulation Enters a Decisive Quarter Ahead of Black Swan Summit Cambodia",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T02:33+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Cambodia Crypto Regulation Enters a Decisive Quarter Ahead of Black Swan Summit Cambodia",
+     "src": "Disruption Banking",
+     "url": "https://www.disruptionbanking.com/2026/10/16/cambodia-crypto-regulation-enters-a-decisive-quarter-ahead-of-black-swan-summit-cambodia/",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T02:33+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "hashkeyexchangelaunchestokenizedwealthma",
    "title": "HashKey Exchange Launches Tokenized Wealth Management Platform",
    "date": "2026-10-16",
@@ -757,54 +854,6 @@
      "date": "2026-10-16",
      "ts": "2026-10-16T00:40+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "加密资产与证券一站式交易bit的超级独角兽蓝图",
-   "title": "加密资产与证券一站式交易，BIT的超级独角兽蓝图",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T12:16+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "加密资产与证券一站式交易，BIT的超级独角兽蓝图",
-     "src": "BlockBeats",
-     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE0tT0t2QnpWTGZRelVIUEk1b0tGU0ctR0Fsc3IySEVxRm1sTXdvQldMek9fVVBneGdHMjgyLUM3M3ptZGZaTVdZZ3o5dzJYUDBjVzZV?oc=5",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T12:16+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "rwa周刊蚂蚁数科联合汇丰测试agent代币化支付robinhood探索代币化主",
-   "title": "RWA周刊：蚂蚁数科联合汇丰测试Agent代币化支付；Robinhood探索代币化主动管理型ETF",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T11:10+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "RWA周刊：蚂蚁数科联合汇丰测试Agent代币化支付；Robinhood探索代币化主动管理型ETF",
-     "src": "PANews",
-     "url": "https://www.panewslab.com/ko/articles/01a1442f-2e8b-70e7-ab6b-64ff42fdcf3b",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T11:10+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1239,6 +1288,30 @@
    "role": "监管"
   },
   {
+   "id": "1015犀牛财经早报香港证监会重拳出击3个ipo操纵案",
+   "title": "10.15犀牛财经早报：香港证监会重拳出击3个IPO操纵案",
+   "date": "2026-10-15",
+   "last": "2026-10-15",
+   "ts": "2026-10-15T10:55+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "10.15犀牛财经早报：香港证监会重拳出击3个IPO操纵案",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1087944982_153054",
+     "date": "2026-10-15",
+     "ts": "2026-10-15T10:55+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "chainalysis加密采用报告3万亿北美加密经济藏着哪些新趋势",
    "title": "Chainalysis 加密采用报告：3 万亿北美加密经济，藏着哪些新趋势？",
    "date": "2026-10-15",
@@ -1470,7 +1543,7 @@
    "title": "Institutional-Grade Compliance Infrastructure Positions Itself at Tokenization's Next Frontier",
    "date": "2026-10-15",
    "last": "2026-10-15",
-   "ts": "2026-10-15T20:42+08:00",
+   "ts": "2026-10-15T20:30+08:00",
    "topics": [
     "RWA"
    ],
@@ -1478,34 +1551,10 @@
    "articles": [
     {
      "title": "Institutional-Grade Compliance Infrastructure Positions Itself at Tokenization's Next Frontier",
-     "src": "The Globe and Mail",
-     "url": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNdm9pOWZfYjNyY0JfRHA1MFZhMi1MTTYweERhTVZHZ21jSGthaV9GV0dBSDFRUDFmU0RWU1BIUFlEWXhsdXdWa0hIcFA5X2QzMEZJR003VUp3cmlzVnFrMHl0R2xvX3RMOGdBZlh4Z3VOdFZqYVBHeTJFZGFDQU9aX3BiWHliYWgxeXpHcWVxZmw3X1hVY3l3QUxJWkNFQjlYV1plZTBUXzhzUDJ6emdEcjhmN1dDb0V0ODFXdDQxdWNab2pJemR6YmJXOUZrZFNfNktuX3ZfTXRLYVRQLWZRYjkwb1hmNVE4a2N3SHFiLW0tU2ViZ3JOYVlxUmpZVGVJQjlSYW1lLVBSUWJTaHVF?oc=5",
+     "src": "Carroll County Mirror-Democrat",
+     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQcDY0LVpReFh4TlNKQmNxNTAtUzA5LTlLdzctX3VoNFpsM0hwSmFpOGxMMWZUTXB2S1VNSWd0MEhMS3N1ZWl4NWZNc29JYVl5SDlPaEJYRERPMVBuTHlTRWRibll1dU1vdlZDYWtqTWlCTEpkYmhMcEQxaU8yaUNpZkZBWnpqX0Q5Vk1vbHV2VkEzZjlvSFFBSXBCVXZaTXFJamtjRDlsM1VITWRKSXhieF8wQm10bHM?oc=5",
      "date": "2026-10-15",
-     "ts": "2026-10-15T20:42+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "governmentofgibraltarannounceslandmarkle",
-   "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T20:34+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
-     "src": "Your Gibraltar TV",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSEw4UWVBamZEWmJwenRiWC1hUkRINXhUcmlrdkJVMkFYUlhESDBoSlFNY2hjemxxUnlraGJpemxwNWFCbkZod2I3NjBndDlWZkp5QWJlUWpUcHpkeWNNUzljZENZZ29JS0w1bkxoTVl5bm91aW5pM0hhNzE4N0EySTR3ZlhTVTdEc214ZHJlSUtwSUNLT3NPeFpLemtfYXFROVprUWJJM3JjbVpMOVBnVlgtS05YNFZzLXBGNkhWSFM?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T20:34+08:00",
+     "ts": "2026-10-15T20:30+08:00",
      "via": "Google"
     }
    ],
@@ -1538,6 +1587,31 @@
    "role": "资讯"
   },
   {
+   "id": "新火研究院硬件钱包安全神话破灭机构资金将加速转向持牌合规托管",
+   "title": "新火研究院：硬件钱包安全神话破灭，机构资金将加速转向持牌合规托管",
+   "date": "2026-10-14",
+   "last": "2026-10-14",
+   "ts": "2026-10-14T18:09+08:00",
+   "topics": [
+    "机构需求",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "新火研究院：硬件钱包安全神话破灭，机构资金将加速转向持牌合规托管",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFB4SERoaTE2WkhONGxqeGdpRUlLemdNNTBWV25uYWRvS0lSZjZPX1dUTDR5a1JUWTNJTkhoN1NMUGJmOE9pdU9xTHdwcGs1bVJnSUJSeUdwZ09jVTVyNVJwZG9RcUU2U1g4QlEwOS0yMGNhYVVZWjg2UW4tNXdhMDA?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T18:09+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "渣打银行在阿联酋推出加密货币买卖服务数字经济",
    "title": "渣打銀行在阿聯酋推出加密貨幣買賣服務- 數字經濟",
    "date": "2026-10-14",
@@ -1554,30 +1628,6 @@
      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9wNE91Z0JWMmkycUgzWkhLeUN0RDAzc0x3TkFSbktWZHpEY21Zb3BRbTl2c1dfc19zczQ2OXNyYUotcjVqbENXQ3JRN3Q5RGItTWczV3ZyNHpwNzA3ZmJoZkhRcnhzWmcycG5aUjQ5Y2VFUzhOVUN3?oc=5",
      "date": "2026-10-14",
      "ts": "2026-10-14T22:44+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "渣打银行获得阿联酋加密货币交易牌照成首家国际银行作者investingcom",
-   "title": "渣打銀行獲得阿聯酋加密貨幣交易牌照，成首家國際銀行 作者 Investing.com",
-   "date": "2026-10-14",
-   "last": "2026-10-14",
-   "ts": "2026-10-14T14:20+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "渣打銀行獲得阿聯酋加密貨幣交易牌照，成首家國際銀行 作者 Investing.com",
-     "src": "Investing.com 香港 - 股市報價& 財經新聞",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5rVnpCRkowSkpHZHRZTmlJaFdRTHpGdi10UTRvRVJkTlAxVnlrYmhFLV9JUGUxVmNXc1FHYmI2UGdZQnh2M040QkttWjhvWWlMRU9FSmZDWDdoYXdhNlRZUDZoMURLZ2xpR1lxYm9ROXlTMDRReDRj?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T14:20+08:00",
      "via": "Google"
     }
    ],
@@ -1847,6 +1897,30 @@
    "role": "资讯"
   },
   {
+   "id": "bybit加快拓展传统金融业务拟下月推代币化股票mstocks",
+   "title": "Bybit加快拓展傳統金融業務 擬下月推代幣化股票mStocks",
+   "date": "2026-10-14",
+   "last": "2026-10-14",
+   "ts": "2026-10-14T20:34+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Bybit加快拓展傳統金融業務 擬下月推代幣化股票mStocks",
+     "src": "香港文匯報",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5oUl9IRXhCUXNHMDExTW02TmxyZFlDU183cFNGQ0tMVVdmWGtaZDJBa0JHQVVZUHJZM1Z0aEpzMjlqTTNHdUVEZXpaaE5IU2pVMEt6cjBSYm0xQUl4MFl3VFB4VXcyREU2U0pELVhBMjV1Tm5NQmtB?oc=5",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T20:34+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "solanapriceforecastsolreclaims50dayemaam",
    "title": "Solana Price Forecast: SOL reclaims 50-day EMA amid tokenization expansion",
    "date": "2026-10-14",
@@ -2109,30 +2183,6 @@
      "date": "2026-10-13",
      "ts": "2026-10-13T10:27+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港证监会持牌虚拟资产交易平台dfxlabs汇报4个欺诈网站",
-   "title": "香港证监会：持牌虚拟资产交易平台DFX Labs汇报4个欺诈网站",
-   "date": "2026-10-13",
-   "last": "2026-10-13",
-   "ts": "2026-10-13T02:52+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港证监会：持牌虚拟资产交易平台DFX Labs汇报4个欺诈网站",
-     "src": "PANews",
-     "url": "https://www.panewslab.com/zh/articles/01a0edf9-6964-7508-913f-e99747fd45d1",
-     "date": "2026-10-13",
-     "ts": "2026-10-13T02:52+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2932,54 +2982,6 @@
     }
    ],
    "role": "线索"
-  },
-  {
-   "id": "证监会研究储备更多增量政策工具",
-   "title": "证监会：研究储备更多增量政策工具",
-   "date": "2026-10-11",
-   "last": "2026-10-11",
-   "ts": "2026-10-11T23:44+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "证监会：研究储备更多增量政策工具",
-     "src": "同花顺财经",
-     "url": "https://news.10jqka.com.cn/20261011/c11702252706.shtml",
-     "date": "2026-10-11",
-     "ts": "2026-10-11T23:44+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "证监会召开座谈会问计市场",
-   "title": "证监会召开座谈会问计市场",
-   "date": "2026-10-11",
-   "last": "2026-10-11",
-   "ts": "2026-10-11T08:55+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "证监会召开座谈会问计市场",
-     "src": "同花顺财经股票频道",
-     "url": "https://stock.10jqka.com.cn/20261011/c680561821.shtml",
-     "date": "2026-10-11",
-     "ts": "2026-10-11T08:55+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
   },
   {
    "id": "tokenizedusequitiesofferoffhoursaccessbu",
