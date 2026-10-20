@@ -55,9 +55,9 @@ sources: [SFC官网, 官方通告, 政府公报]
 - **[[SFC] SFC unveils Strategic Action Plan to support Hong Kong’s First Five-Year Plan and Policy Address in promoting capital market development](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR148)** (2026-09-23 | Alpha 85)
 - **[[SFC] SFC proceeds to strengthen targeted tools to tackle IPO-related and other corporate misconduct](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR165)** (2026-10-12 | Alpha 85)
 - **[Kraken拟收购受欧盟监管的Saldo银行，为潜在美国IPO铺路](https://www.theblockbeats.info/flash/371773)** (2026-10-14 | Alpha 78)
+- **[CFTC 不等国会了：零售加密杠杆交易要回岸，州级牌照或被统一取代](https://www.techflowpost.com/article/34727)** (2026-10-20 | Alpha 78)
 - **[俄罗斯最大银行 Sberbank 拿到比特币交易牌照：12 月起向 1.1 亿零售客户开放 BTC、ETH 和 USDT](https://www.techflowpost.com/article/34604)** (2026-10-15 | Alpha 75)
 - **[[SFC] SFC welcomes HKEX’s proposal to implement T+1 settlement in Hong Kong’s stock market](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR171)** (2026-10-16 | Alpha 75)
 - **[[SFC] New speech by Julia Leung: Keynote address at ASIFMA’s Future of Liquidity in Asia Pacific Capital Markets Conference](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR164)** (2026-10-09 | Alpha 75)
-- **[[SFC] SFC approves six securities registrars for upcoming uncertificated securities market regime](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR166)** (2026-10-12 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
