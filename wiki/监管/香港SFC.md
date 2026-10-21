@@ -47,7 +47,7 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-20
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-21
 
 - **[[SFC] SFC takes action against suspected IPO-rigging syndicates and suspends dealings in Baicha shares](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR168)** (2026-10-13 | Alpha 88)
 - **[[SFC通函] Circular to licensed corporations carrying out sponsor work and engaging in bookbuilding and placing activities](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC62)** (2026-10-13 | Alpha 85)
