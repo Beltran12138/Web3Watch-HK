@@ -1,5 +1,5 @@
 {
- "built": "2026-10-21T05:41+08:00",
+ "built": "2026-10-21T08:39+08:00",
  "since": "2026-10-14",
  "log": [
   {
@@ -11,7 +11,7 @@
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 18,
+   "fetched": 17,
    "in_window": 5
   },
   {
@@ -23,14 +23,14 @@
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 15,
-   "in_window": 8
+   "fetched": 14,
+   "in_window": 7
   },
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
-   "fetched": 20,
-   "in_window": 17
+   "fetched": 19,
+   "in_window": 16
   },
   {
    "topic": "中资券商",
@@ -47,14 +47,14 @@
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 21,
+   "fetched": 22,
    "in_window": 9
   },
   {
    "topic": "竞品",
    "q": "HashKey",
    "fetched": 21,
-   "in_window": 13
+   "in_window": 11
   },
   {
    "topic": "竞品",
@@ -72,7 +72,7 @@
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
    "fetched": 12,
-   "in_window": 1
+   "in_window": 2
   },
   {
    "topic": "RWA",
@@ -83,8 +83,8 @@
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 53,
-   "in_window": 42
+   "fetched": 50,
+   "in_window": 40
   },
   {
    "topic": "机构需求",
@@ -105,7 +105,7 @@
    "in_window": 3
   }
  ],
- "articles": 144,
+ "articles": 139,
  "stories": [
   {
    "id": "blackrockseeksbroaderuseoftokenizedasset",
@@ -176,7 +176,7 @@
    "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
    "date": "2026-10-20",
    "last": "2026-10-20",
-   "ts": "2026-10-20T15:45+08:00",
+   "ts": "2026-10-20T16:17+08:00",
    "topics": [
     "RWA",
     "监管"
@@ -192,6 +192,14 @@
      "via": "Bing"
     },
     {
+     "title": "JPMorgan Deploys JPM Coin on Ethereum, Signaling a New Era in Stablecoin Competition",
+     "src": "kucoin",
+     "url": "https://www.kucoin.com/news/flash/jpmorgan-deploys-jpm-coin-on-ethereum-signals-new-era-in-stablecoin-competition",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T12:30+08:00",
+     "via": "Bing"
+    },
+    {
      "title": "JPMorgan Moves Deposits to Ethereum: Has the True Competitor for Stablecoins Arrived?",
      "src": "深潮TechFlow",
      "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE40cEZLQk1ibmVUR216ZEpyNlhGT3k5N3ItazZSWHRfdVpkTWtCX0RDT3BUSmNuM2Fna2JReFZHQngxZzFESUwwaklKQmVJVDFsSkdRZnoxVm9PNlpo?oc=5",
@@ -200,11 +208,11 @@
      "via": "Google"
     },
     {
-     "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-     "src": "KuCoin",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMXZ3NWR4QUZtWENlakZoeUdUbkYwQzlPemxRZ3RTbkZSY05uVE1yUjhXaGUtR3lpVlI2a3BBVm5KelVKeWZBZTJlTWtkVzB3VzFQak5QbjVPVFg0MUFEdDhMLVJFcEE2VFJCbW52MTh4UVNIOFFBRzU3aFg3c09Gb1hvUWY2ZDYweTJOc3luZnlidzM1eDBsQnFoUnNsYnVxVXc4eW4zY2ZuMDJ4NU5nQ1lJdHVSSTlK?oc=5",
+     "title": "JPMorgan has moved deposits onto Ethereum—could this be the real contender for stablecoins?",
+     "src": "富途牛牛",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOdnd6RGRiSXpSc0lBUzh3aHFialFydXpQWElVQVdaYWlYMlJoNHRqT3I5eWgtNXdvNmNzaTZUV0FQRENRcWwyc1ZKWHEydkJiZWEzcHlLVWdobFVBdWpJUlZkbU5aVGNiTDE1QmpJUHZCcTFMa2IyVkNyS21BT2ZodE96aktvLWhKc2duajlrdlRwTUV4N09PQjY2b1pjWGdBOW1hTA?oc=5",
      "date": "2026-10-20",
-     "ts": "2026-10-20T15:45+08:00",
+     "ts": "2026-10-20T16:17+08:00",
      "via": "Google"
     }
    ],
@@ -310,39 +318,6 @@
      "date": "2026-10-20",
      "ts": "2026-10-20T05:00+08:00",
      "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "bankinglegionassemblesthestablecoinmarke",
-   "title": "Banking Legion Assembles: The Stablecoin Market Structure Faces Structural Shock",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T12:22+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "Banking Legion Assembles: The Stablecoin Market Structure Faces Structural Shock",
-     "src": "chaincatcher",
-     "url": "https://www.chaincatcher.com/en/article/2297490",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T12:22+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Banking Legion Assembles: The Stablecoin...",
-     "src": "ChainCatcher",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hNVB2dGRSb2pVeUZnaVBoNXVmVl9OMFJPYjlmWnZ3TllTTDdrR1VxSUd3Z0JZNDhGdndmX2JDWnNCS0p6emNuaFVfQWVZTUF2bUhGNkFIRFdBb2c?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T12:06+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
@@ -629,30 +604,6 @@
    "role": "资讯"
   },
   {
-   "id": "governmentofgibraltarannounceslandmarkle",
-   "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T15:21+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
-     "src": "Your Gibraltar TV",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSEw4UWVBamZEWmJwenRiWC1hUkRINXhUcmlrdkJVMkFYUlhESDBoSlFNY2hjemxxUnlraGJpemxwNWFCbkZod2I3NjBndDlWZkp5QWJlUWpUcHpkeWNNUzljZENZZ29JS0w1bkxoTVl5bm91aW5pM0hhNzE4N0EySTR3ZlhTVTdEc214ZHJlSUtwSUNLT3NPeFpLemtfYXFROVprUWJJM3JjbVpMOVBnVlgtS05YNFZzLXBGNkhWSFM?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T15:21+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "behindsbisbidtobuildadigitalassetempirei",
    "title": "Behind SBI’s bid to build a digital asset empire in SEA",
    "date": "2026-10-20",
@@ -669,6 +620,30 @@
      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0pwLV8wcE1acDRUcDVfUGdVTWxWX05tVmh2M1VISENpTXQyS19wZkNoNjlydmVocXFhUDBiSW1DYzZuWDNkVEtWaEF6S2ZGVmsxTVh5dEh3MlJkV0xnWVp4NnJhcVBEYkZqMnExRW9HOFJBU1ctdFZoMzBmUEVMQkhkLWtRblh4Ylo0MjdYWmZFWFFpTzQzcUphVUdhbWhLVUVGZmFVU2I?oc=5",
      "date": "2026-10-20",
      "ts": "2026-10-20T09:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "bankinglegionassemblesthestablecoin",
+   "title": "Banking Legion Assembles: The Stablecoin...",
+   "date": "2026-10-20",
+   "last": "2026-10-20",
+   "ts": "2026-10-20T12:06+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Banking Legion Assembles: The Stablecoin...",
+     "src": "ChainCatcher",
+     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hNVB2dGRSb2pVeUZnaVBoNXVmVl9OMFJPYjlmWnZ3TllTTDdrR1VxSUd3Z0JZNDhGdndmX2JDWnNCS0p6emNuaFVfQWVZTUF2bUhGNkFIRFdBb2c?oc=5",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T12:06+08:00",
      "via": "Google"
     }
    ],
@@ -1040,7 +1015,7 @@
    "title": "韩国代币化资产和稳定币市场展望：2030 年规模或达 2530 亿美元",
    "date": "2026-10-19",
    "last": "2026-10-19",
-   "ts": "2026-10-19T17:01+08:00",
+   "ts": "2026-10-19T19:19+08:00",
    "topics": [
     "RWA"
    ],
@@ -1052,6 +1027,14 @@
      "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQUXlTMVJ0SkpGakk5VlRtRGV3cVhsdlJ2R0lHM0F2dkdydmRwWFhDMlF6NC10WFJvODhRVi0xMkxRN0lKd2FVZmptTmF5TEtZRXlrSUVnZnVlUDg5Zl9nLTItYldfc0M3UlFCaFhPNDZIRnZzcThXdU5rOHpBX3F4ZW11WldtTUZGUkVlQXlnbTNrU0tFT3YtZVRRLXlmSUgzeGJpSVNn?oc=5",
      "date": "2026-10-19",
      "ts": "2026-10-19T17:01+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "韓國代幣化資產和穩定幣市場展望：2030 年規模或達 2530 億美元",
+     "src": "富途牛牛",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPVmp6RkZJTHppampTQlVPQnRrNkVKdmUwQ1M5NnBWZTI2M3ZBUVh6dTN5TnUwdnMyS0YwZXpnOXVsMXozRkFvdlQ0aWhfY1VLR2h1elRteTIxWmRPbzRxblpUWXMxbExseV9VQmVRTkJXX0YxQ3ZadVNRTW1uMlBrc3UwQThaRmE5TEJGWmgxZFJuSkMwZUwzNW4tV0tQRW5QanRSaFNTY0tsdw?oc=5",
+     "date": "2026-10-19",
+     "ts": "2026-10-19T19:19+08:00",
      "via": "Google"
     }
    ],
@@ -1076,54 +1059,6 @@
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQU0loRk4xY0JPWEpMeXY4NERwV0pGekdXWGhZbnlZRm1CM2tXTHZDSFB1REFIV2N3RWNYNERIRTR3MXhwSlhhWW45bG5CMWZpUEM4SzZDWXI5bFhTZEhidnRIaHp0VW5RdC1aUW5uUVRBbWVXdE1ITTZmWTRoOEhXcVRTNTQ2OS1BWnhqVnJzU3RvTjhiVHEzSHdZcnhCSzcyODg1YklndXB1X1Y2ZkVVUjdYYzV1VUh0b1E?oc=5",
      "date": "2026-10-19",
      "ts": "2026-10-19T21:36+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "fromdigitalassetstoreshapingfinancialinf",
-   "title": "From digital assets to reshaping financial infrastructure! BlackRock (BLK.US) accelerates the integration of tokenized funds into the core of Wall Street.",
-   "date": "2026-10-19",
-   "last": "2026-10-19",
-   "ts": "2026-10-19T10:21+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "From digital assets to reshaping financial infrastructure! BlackRock (BLK.US) accelerates the integration of tokenized funds into the core of Wall Street.",
-     "src": "Moomoo",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdHJVZjRSMmRtdWJKWEEtcC1YN0d6NTV2NDA0SmVSODg0ZUs1Z3BDTTZ5cEdfZFdPNGx2WTQwTHVRY2xDWUNBZHNvZWNwQXpUU3JDMTRLdU5uRllubGxZMEdfZ29RSlFSd3lfTklfbk53b09tVm9wM2pZeXRDMUt2eUpOdHQzY0I2NklNNllHUlhEamhqQWdYNnFid2s0TmxJUUNUcXhEZThaODFZbkgwV3ppZF9UTFpfVDNvS2pxb2o3Z19SRUtFTw?oc=5",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T10:21+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "cryptoswotthecoindesk20indexsurged527inq",
-   "title": "Crypto SWOT: The CoinDesk 20 Index surged 52.7% in Q3 2026, while Bitcoin rose 42.7%",
-   "date": "2026-10-19",
-   "last": "2026-10-19",
-   "ts": "2026-10-19T22:01+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Crypto SWOT: The CoinDesk 20 Index surged 52.7% in Q3 2026, while Bitcoin rose 42.7%",
-     "src": "Kitco",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ0Zmcm9mZjM2Z2JpTVZfdjhyQ25oRlMzRERjVHJZSjhRSVFfdmRmSDl5R1hwYlJjT2UyN2VDSlhEejZIZmRhUUZGMmJFUFFaWDVPa0lidjBWX3Q5V3hacUtCelpKc0x5aXhlTFoycThIYzRHSXlTSkpNZDhvQzl4TUVJQzJaYi1CTmhodTVJR0RPbUJzczFtNFVUUTRQbzItZWtwREJCT3Jpcm53MUJIYmxn?oc=5",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T22:01+08:00",
      "via": "Google"
     }
    ],
@@ -1185,22 +1120,22 @@
    "role": "竞品动态"
   },
   {
-   "id": "tổngquanetfcryptogiaongaymỹ",
-   "title": "Tổng quan ETF Crypto Giao ngay Mỹ",
+   "id": "fromdigitalassetstoreshapingfinancialinf",
+   "title": "From digital assets to reshaping financial infrastructure! BlackRock (BLK.US) accelerates the integration of tokenized funds into the core of Wall Street.",
    "date": "2026-10-19",
    "last": "2026-10-19",
-   "ts": "2026-10-19T13:58+08:00",
+   "ts": "2026-10-19T10:21+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Tổng quan ETF Crypto Giao ngay Mỹ",
-     "src": "SoSoValue",
-     "url": "https://news.google.com/rss/articles/CBMiX0FVX3lxTFBfQTgzNUdSZ2JyY3oyamxvZTkzc1RQNHNzN0NlQ0Z0QjdrbkU4Rl9tNWVKbHRLU3J4dHBZWF9UcjdVTXY5cFlvdlVIYTQ2MVhSbHVKZ3o1VlEzaVY3NHU4?oc=5",
+     "title": "From digital assets to reshaping financial infrastructure! BlackRock (BLK.US) accelerates the integration of tokenized funds into the core of Wall Street.",
+     "src": "Moomoo",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPdHJVZjRSMmRtdWJKWEEtcC1YN0d6NTV2NDA0SmVSODg0ZUs1Z3BDTTZ5cEdfZFdPNGx2WTQwTHVRY2xDWUNBZHNvZWNwQXpUU3JDMTRLdU5uRllubGxZMEdfZ29RSlFSd3lfTklfbk53b09tVm9wM2pZeXRDMUt2eUpOdHQzY0I2NklNNllHUlhEamhqQWdYNnFid2s0TmxJUUNUcXhEZThaODFZbkgwV3ppZF9UTFpfVDNvS2pxb2o3Z19SRUtFTw?oc=5",
      "date": "2026-10-19",
-     "ts": "2026-10-19T13:58+08:00",
+     "ts": "2026-10-19T10:21+08:00",
      "via": "Google"
     }
    ],
@@ -1209,64 +1144,52 @@
    "role": "资讯"
   },
   {
-   "id": "victoryfintechwinshongkongcryptolicense",
-   "title": "Victory Fintech Wins Hong Kong Crypto License",
-   "date": "2026-10-18",
-   "last": "2026-10-18",
-   "ts": "2026-10-18T02:36+08:00",
+   "id": "cryptoswotthecoindesk20indexsurged527inq",
+   "title": "Crypto SWOT: The CoinDesk 20 Index surged 52.7% in Q3 2026, while Bitcoin rose 42.7%",
+   "date": "2026-10-19",
+   "last": "2026-10-19",
+   "ts": "2026-10-19T22:01+08:00",
    "topics": [
-    "监管",
-    "竞品"
+    "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Victory Fintech Wins Hong Kong Crypto License",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQdm9vNEk4OGQ1bzVENlhLanNpeW5pNEtnUUxYSDB6U2xmY3kzLU9Ga2xnWkNNX1hxRTRJdFNjSEpLdzlaV3BDejlFV0pycXJGNWFSdE9lcjJQVllPNHBPSXZ1SDZlRUNGUzJqVlludkNpRG52YU92ZlVKSGZvaTdZV2VFc2lPZUd5amxNS25vUXY?oc=5",
-     "date": "2026-10-18",
-     "ts": "2026-10-18T02:36+08:00",
+     "title": "Crypto SWOT: The CoinDesk 20 Index surged 52.7% in Q3 2026, while Bitcoin rose 42.7%",
+     "src": "Kitco",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ0Zmcm9mZjM2Z2JpTVZfdjhyQ25oRlMzRERjVHJZSjhRSVFfdmRmSDl5R1hwYlJjT2UyN2VDSlhEejZIZmRhUUZGMmJFUFFaWDVPa0lidjBWX3Q5V3hacUtCelpKc0x5aXhlTFoycThIYzRHSXlTSkpNZDhvQzl4TUVJQzJaYi1CTmhodTVJR0RPbUJzczFtNFVUUTRQbzItZWtwREJCT3Jpcm53MUJIYmxn?oc=5",
+     "date": "2026-10-19",
+     "ts": "2026-10-19T22:01+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
-   "hits": [
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "governmentofgibraltarannounceslandmarkle",
+   "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
+   "date": "2026-10-19",
+   "last": "2026-10-19",
+   "ts": "2026-10-19T06:28+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
     {
-     "brand": "Victory",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BTF116",
-       "en": "Victory Fintech Company Limited",
-       "zh": "勝利數碼科技有限公司",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "ABN091",
-       "en": "Victory Securities Company Limited",
-       "zh": "勝利證券有限公司",
-       "ras": [
-        "T1",
-        "T2",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
+     "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
+     "src": "Your Gibraltar TV",
+     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQSEw4UWVBamZEWmJwenRiWC1hUkRINXhUcmlrdkJVMkFYUlhESDBoSlFNY2hjemxxUnlraGJpemxwNWFCbkZod2I3NjBndDlWZkp5QWJlUWpUcHpkeWNNUzljZENZZ29JS0w1bkxoTVl5bm91aW5pM0hhNzE4N0EySTR3ZlhTVTdEc214ZHJlSUtwSUNLT3NPeFpLemtfYXFROVprUWJJM3JjbVpMOVBnVlgtS05YNFZzLXBGNkhWSFM?oc=5",
+     "date": "2026-10-19",
+     "ts": "2026-10-19T06:28+08:00",
+     "via": "Google"
     }
    ],
-   "role": "竞品动态"
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "oslindonesia举办solanalaunchpool准备1亿印尼盾的奖励",
@@ -1346,6 +1269,30 @@
    "role": "资讯"
   },
   {
+   "id": "binancelistsfourtokenizedstockpairsagain",
+   "title": "Binance Lists Four Tokenized Stock Pairs Against USDT On October 14",
+   "date": "2026-10-18",
+   "last": "2026-10-18",
+   "ts": "2026-10-18T04:06+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Binance Lists Four Tokenized Stock Pairs Against USDT On October 14",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQSkZ3X0J5Q21iTGd5Q2JySjZhaWx6RlloYURUbkFSZlhDc2dRRElYaHFzWnR5NDN0Z253RGhEVUZsNUNzVWFiQU9DcDNwU0FjcHRhYXJLS04tbTlmZkZNcGotNTJ4cDAxR1c2SG1aTTQ5LWlUTlJHdnFYZVdzTnFrb3ktNzNyWDhmWVhjNmM2aGlyZ2FzZ180WnBsRkF2VlBGSDhXU0lBaW1XcmM?oc=5",
+     "date": "2026-10-18",
+     "ts": "2026-10-18T04:06+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "香港监管下虚拟资产交易的合规挑战与应对策略",
    "title": "香港监管下，虚拟资产交易的合规挑战与应对策略",
    "date": "2026-10-17",
@@ -1392,30 +1339,6 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
-  },
-  {
-   "id": "rainsecuresfulldubaicryptolicencefromvar",
-   "title": "Rain Secures Full Dubai Crypto Licence From VARA",
-   "date": "2026-10-17",
-   "last": "2026-10-17",
-   "ts": "2026-10-17T11:05+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Rain Secures Full Dubai Crypto Licence From VARA",
-     "src": "CairoScene",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxPd2ViNTV2SmxwWE1LU2xxeVpuWjNfd283aDJyMkpXT1JCRVg2cXFaNmRWeHhtd3VzajdMeHIzbE1WS2RweE90MUN5OUtNTEpReG1qWUw2NkJOejc4RGJyaEZxa0ZURlFXNF9kTFZZYVlnN01kRnVlWjBjaVJOV2hSdlVjbVJ5REk?oc=5",
-     "date": "2026-10-17",
-     "ts": "2026-10-17T11:05+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   },
   {
    "id": "citrini预见了代币化的繁荣更棘手的问题是谁将从中获利",
@@ -1506,30 +1429,6 @@
      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTFBwUXNVdV9rTE5KMEpKeWFsLWd2b09UZG9lREg4cWw4MWxYRE53MmxIWV95ZnJlaGl3QXI3cWh6cjdZTFNIeUF0d1NFMkFDU2M?oc=5",
      "date": "2026-10-17",
      "ts": "2026-10-17T15:30+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "federatedhermesfhiteamsupontokenizedsecu",
-   "title": "Federated Hermes (FHI) Teams Up On Tokenized Securities As Investors Ask If The Stock Is A Buy",
-   "date": "2026-10-17",
-   "last": "2026-10-17",
-   "ts": "2026-10-17T01:43+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Federated Hermes (FHI) Teams Up On Tokenized Securities As Investors Ask If The Stock Is A Buy",
-     "src": "Simply Wall Street",
-     "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxNSGQyazlWUXJuaWR6ZVg5Y1Z2TTl3SXA4akVqSDRiRnJxb0VNSy1pZmZ0bzJVWjlieW9uU1lEVHNiN3N3UWtoWFVuMThWZ25nUjRtUTVMN1ZMVHYwUGpUZnhjQ2o4WVNxWEU2QmdQWjdYcVg5b0FWZ3IxVUowWWQ2ZGVDSVI1RnFCZGxsVnVXWFhBck1jandnOUxtMWRPcDhpUXVxNG1ObFE4S0dTTXVSc2JxVGRVc1VpWU4yVzlIVFVXalhjclRsTHVMeEw4VmVlaFJKdUh6Q0xmaUVVaWpz0gHkAUFVX3lxTE1uT2d3Tl9rbS1XNFI1ZWtIQVlENlluZ09iOUd1N2NVUkRicE5xV1pNMzNKMnB3Nkhoa0ZiMWFqQlU3dUtoaUdqWEIwSTg2b19PeEZuUjVCLUlXbE9OS2hhcFRGckI2bi1vX0RMYVpPcmdlTmxzUV9YZVV5ZlhkN0Y3ZjR5ejgzT1VWUy1KN2JoWi1PeTNINVBUY2Y3UWFLc3BTVk9lNWlVSXVzV1ZpZ1FsSGxtdm5vdHdGLW9DVXJDeFZOMHByQnFtM1hqOEU4cTdfNHRLaXZiX211RkFsbm1qTW12Ng?oc=5",
-     "date": "2026-10-17",
-     "ts": "2026-10-17T01:43+08:00",
      "via": "Google"
     }
    ],
@@ -2474,6 +2373,38 @@
    "role": "竞品动态"
   },
   {
+   "id": "10bestcryptoexchangesof2026",
+   "title": "10 Best Crypto Exchanges Of 2026",
+   "date": "2026-10-14",
+   "last": "2026-10-15",
+   "ts": "2026-10-15T01:00+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "10 Best Crypto Exchanges Of 2026",
+     "src": "Forbes",
+     "url": "https://www.forbes.com/advisor/investing/cryptocurrency/best-crypto-exchanges/",
+     "date": "2026-10-14",
+     "ts": "2026-10-14T02:54+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "Best Crypto Exchanges and Trading Platforms",
+     "src": "CryptoSlate",
+     "url": "https://cryptoslate.com/crypto-exchanges/",
+     "date": "2026-10-15",
+     "ts": "2026-10-15T01:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "bitget推机构托管交易网络无需将加密资产转入交易所",
    "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
    "date": "2026-10-15",
@@ -3022,30 +2953,6 @@
    "role": "监管"
   },
   {
-   "id": "10bestcryptoexchangesof2026",
-   "title": "10 Best Crypto Exchanges Of 2026",
-   "date": "2026-10-14",
-   "last": "2026-10-14",
-   "ts": "2026-10-14T02:54+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "10 Best Crypto Exchanges Of 2026",
-     "src": "Forbes",
-     "url": "https://www.forbes.com/advisor/investing/cryptocurrency/best-crypto-exchanges/",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T02:54+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "bybit加快拓展传统金融业务拟下月推代币化股票mstocks",
    "title": "Bybit加快拓展傳統金融業務 擬下月推代幣化股票mStocks",
    "date": "2026-10-14",
@@ -3062,54 +2969,6 @@
      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5oUl9IRXhCUXNHMDExTW02TmxyZFlDU183cFNGQ0tMVVdmWGtaZDJBa0JHQVVZUHJZM1Z0aEpzMjlqTTNHdUVEZXpaaE5IU2pVMEt6cjBSYm0xQUl4MFl3VFB4VXcyREU2U0pELVhBMjV1Tm5NQmtB?oc=5",
      "date": "2026-10-14",
      "ts": "2026-10-14T20:34+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "华尔街真的把美债上链拿来借钱bnycitadel完成首笔代币化美债repo融资",
-   "title": "華爾街真的把美債「上鏈拿來借錢」！BNY 、 Citadel 完成首筆代幣化美債 Repo 融資",
-   "date": "2026-10-14",
-   "last": "2026-10-14",
-   "ts": "2026-10-14T11:21+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "華爾街真的把美債「上鏈拿來借錢」！BNY 、 Citadel 完成首筆代幣化美債 Repo 融資",
-     "src": "區塊客",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOS3EtZFk3dm5vSktkR1FIN0d6dzN5emNERW92SzU2eC1WOVNWUFNWeUpNQTNMb05aTEY3cTBnOFNZelhyZ1EyeG5CeGRaSU8xV0oxdXFZaVo5Q21YN2hWbm85RWVZUENpRkY3SFVXTk81d3BpT2VUQy1Fa09KLUxqczIzWVR3RDUtQXhKYjBUTU13ZTV0dnJueERWUFdaV2RpUlBiaHl4TFp4WnpCWnpQOXNKcnU5aWM?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T11:21+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "bnycitadelsecuritiestesttokenizedustreas",
-   "title": "BNY, Citadel Securities test tokenized U.S. Treasuries to speed up Wall Street financing",
-   "date": "2026-10-14",
-   "last": "2026-10-14",
-   "ts": "2026-10-14T05:52+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "BNY, Citadel Securities test tokenized U.S. Treasuries to speed up Wall Street financing",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOdDFmeF81dld4dmdseXJJTFY4dUo4X2FnZTU4OU4zQS0yWkRuWHpCWWRiZnotcDRYWFpyNDcxQ3hQNWRXY3JNeEtmdGV0NjY3TTA4UDhITlhsWTRXcnBjNzI0ZTF4RndsWjhZUlFGUjhPMks1Sm5NR1B5ZGlNSy1ubExsaFIwUzQ4VkI1a1B5R2ZpbGlVdW0wM0tmaXZVOFZRZS1hdmRyU2prRkc1LXF2dlhsbUN2UkJkWFB5ckp5Rmp6NVVfOWFsLXQwMA?oc=5",
-     "date": "2026-10-14",
-     "ts": "2026-10-14T05:52+08:00",
      "via": "Google"
     }
    ],
