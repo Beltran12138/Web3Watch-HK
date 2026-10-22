@@ -1,24 +1,24 @@
 {
- "built": "2026-10-22T07:24+08:00",
+ "built": "2026-10-22T12:57+08:00",
  "since": "2026-10-15",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 21,
+   "fetched": 23,
    "in_window": 10
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 17,
+   "fetched": 18,
    "in_window": 5
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 22,
-   "in_window": 9
+   "fetched": 20,
+   "in_window": 10
   },
   {
    "topic": "监管",
@@ -35,7 +35,7 @@
   {
    "topic": "中资券商",
    "q": "中资券商 虚拟资产 香港",
-   "fetched": 12,
+   "fetched": 11,
    "in_window": 1
   },
   {
@@ -47,20 +47,20 @@
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 20,
-   "in_window": 8
+   "fetched": 21,
+   "in_window": 10
   },
   {
    "topic": "竞品",
    "q": "HashKey",
-   "fetched": 20,
+   "fetched": 21,
    "in_window": 13
   },
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 13,
-   "in_window": 3
+   "fetched": 12,
+   "in_window": 2
   },
   {
    "topic": "竞品",
@@ -71,26 +71,26 @@
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 11,
+   "fetched": 12,
    "in_window": 0
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 31,
-   "in_window": 15
+   "fetched": 38,
+   "in_window": 17
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 45,
-   "in_window": 38
+   "fetched": 44,
+   "in_window": 36
   },
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
    "fetched": 17,
-   "in_window": 3
+   "in_window": 2
   },
   {
    "topic": "机构需求",
@@ -105,8 +105,56 @@
    "in_window": 3
   }
  ],
- "articles": 130,
+ "articles": 131,
  "stories": [
+  {
+   "id": "渣打银行正式签约全资收购加密托管商zodiacustody五地持牌业务并入证券服",
+   "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T01:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
+     "src": "blockweeks",
+     "url": "https://blockweeks.com/business/330705",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T01:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "花旗集团仍在等待中国内地券商牌照立志成为在华外资投银领头羊",
+   "title": "花旗集團仍在等待中國內地券商牌照 立志成為在華外資投銀領頭羊",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T11:00+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "花旗集團仍在等待中國內地券商牌照 立志成為在華外資投銀領頭羊",
+     "src": "Yahoo 財經",
+     "url": "https://news.google.com/rss/articles/CBMiuwNBVV95cUxNQmZJYnRHSlc2SzdNaTB6SjF5NkVidVBBb1JfcTRBMnRvMG51S2FuUlpKUDhVOGNYQ1F1MUg5MmQ4S1RfbE1vWWMzeThCb1kybFBtRm5xdndtSTVUMk1iMU9RcTNsV09ESE9fam9jbUZqQVVuRzBQS3ZoejhERmVfdElEZGpEejFfdHZ4bkhVcGxVdVpNWEtERHplbXo1T0pmcVVFSEoxbktRRTdLV015NFdzLXZ5Qzk1QTZqVndDRHg3czlTRVlaQkhJa0JPbmFPbVlQWjdCVkkzQXQxNTFYTFJlT2JVdWQ2aWYzQmgtaDRNWG0wRjlXRU9EZGRPb3ZwRlZPeWt2VjliT0lvV0p6WHZWZ3BkUWgxMG5WZmpQamFXWm5VZ0U1MldqVFoyek0tUEZ2a3huM2NaOFZ4UTIwWXV1UlByM1JzWDYzOTVUYTk2VzBxZXBmM254ZmFRRFpDNjJqem9kLUVpaF9LMXVUT2dYUTVEaDk0WG9ady0xZE1raXRMMHpGcHpzVlhLcGFhNlVMb0FoWWZ3MWgydWFVWkFvTTZrakExWVVCZlZ3Zmp4UHVtSGhwNnMtdw?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T11:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
+  },
   {
    "id": "hashkeyexchangeintroducesearnchannelplat",
    "title": "HashKey Exchange introduces Earn Channel platform for multi-category investment access",
@@ -206,54 +254,6 @@
    "role": "监管"
   },
   {
-   "id": "渣打银行正式签约全资收购加密托管商zodiacustody五地持牌业务并入证券服",
-   "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
-   "date": "2026-10-21",
-   "last": "2026-10-21",
-   "ts": "2026-10-21T11:00+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
-     "src": "blockweeks",
-     "url": "https://blockweeks.com/business/330705",
-     "date": "2026-10-21",
-     "ts": "2026-10-21T11:00+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "rethinkingcontrolsforinstitutionalstable",
-   "title": "Rethinking controls for institutional stablecoin adoption",
-   "date": "2026-10-21",
-   "last": "2026-10-21",
-   "ts": "2026-10-21T02:56+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Rethinking controls for institutional stablecoin adoption",
-     "src": "Standard Chartered",
-     "url": "https://www.sc.com/en/news/corporate-investment-banking/rethinking-controls-for-institutional-stablecoin-adoption/",
-     "date": "2026-10-21",
-     "ts": "2026-10-21T02:56+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "国泰君安国际股价暴涨首家中资券商获批香港虚拟资产交易引发连锁效应",
    "title": "国泰君安国际股价暴涨：首家中资券商获批香港虚拟资产交易引发连锁效应",
    "date": "2026-10-21",
@@ -339,6 +339,54 @@
    "role": "线索"
   },
   {
+   "id": "券商出海浪潮涌起国际业务成新增长极仍面临多重挑战",
+   "title": "券商出海浪潮涌起，国际业务成新增长极，仍面临多重挑战",
+   "date": "2026-10-21",
+   "last": "2026-10-21",
+   "ts": "2026-10-21T19:57+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "券商出海浪潮涌起，国际业务成新增长极，仍面临多重挑战",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1090988516_100053070",
+     "date": "2026-10-21",
+     "ts": "2026-10-21T19:57+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
+  },
+  {
+   "id": "加密多空为何现实资产需要链上固定利率贷款",
+   "title": "加密多空：为何现实资产需要链上固定利率贷款",
+   "date": "2026-10-21",
+   "last": "2026-10-21",
+   "ts": "2026-10-21T23:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "加密多空：为何现实资产需要链上固定利率贷款",
+     "src": "CoinDesk",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQZjNkYmY4aG51SWw4bmowak1jSEdCR0JxQ3VyUWh3UVpGV3hOdWlaNmhsWS1fdE5LSzdQODVrcV9pQXpTN1RlVEdkWnd3bl9PelQ0Yk9uTEYxOU1LRkNVS3VpaTdacTY4SDBGbGlYQV9TMEo1RGp3ZWhCV0hpM05FNU1OUUhRMVU2SkUwRU93YlR2cVl0X1gzY3YxYXk4TFoxc3lBbmlIUmdUN1FObExwUlNXX3ZBeEt4TlhCQ3hzWUItU1lfTDZPag?oc=5",
+     "date": "2026-10-21",
+     "ts": "2026-10-21T23:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "web3labsfintechweek系列活动锚定未来rwa重塑全球资产流动性新",
    "title": "Web3Labs Fintech Week系列活动：锚定未来，RWA重塑全球资产流动性新范式",
    "date": "2026-10-21",
@@ -395,7 +443,7 @@
    "topics": [
     "RWA"
    ],
-   "n": 9,
+   "n": 8,
    "articles": [
     {
      "title": "BlackRock Sees Tokenized Funds Moving Into Wall Street Plumbing",
@@ -403,6 +451,14 @@
      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPcUw4cmlZM2RnQXlkMkQ0VWZGbzFBVFloZGo5dDUxd1I2WEs1a24welZlbTFBSDI2WW81TFlUX2dXR015bk43aG8ybm1GdmpGOUtvTi15c0hUVGNkT0dxVWFPMktFcDZMbUE0YTlaeXluVU5zQ2VmNGdrdmNITnJ5a1lmNTQ0UWlTNXdHdFR6Zm5qVjFXWGJzWGVOMXBTSlIyZ08wc2VzaVJJN1NTNFBpOTJiQ3k?oc=5",
      "date": "2026-10-19",
      "ts": "2026-10-19T08:15+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "BlackRock sees tokenized money-market funds keeping institutions invested for longer",
+     "src": "Crypto Briefing",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNanVKNEp2R3FVR1pqRThPYVJvSDI3eERyWDJjdC1NYlJ5a1g3bVV6VENLVm0xTzBTT2tpUjBYa092Z25QY1pxMzdlUW1EcER4OGlTQnNxY0ZFV1lXekx4X2gyYklGV1EydXc2Mk5icFFDRVF3QzZwNjNfUm5qOFhQSFVfbmpkY0ppVlE?oc=5",
+     "date": "2026-10-19",
+     "ts": "2026-10-19T08:38+08:00",
      "via": "Google"
     },
     {
@@ -443,14 +499,6 @@
      "url": "https://cryptobriefing.com/blackrock-advances-tokenization-blockchain-integration/",
      "date": "2026-10-19",
      "ts": "2026-10-19T01:39+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "BlackRock pushes tokenized money funds toward traditional finance",
-     "src": "briefs",
-     "url": "https://www.briefs.co/news/blackrock-pushes-tokenized-money-funds-toward-traditional-fi/",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T00:08+08:00",
      "via": "Bing"
     },
     {
@@ -804,30 +852,6 @@
    "role": "监管"
   },
   {
-   "id": "彭博大和及瑞穗获发内地全资证券牌照",
-   "title": "彭博：大和及瑞穗獲發內地全資證券牌照",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T11:33+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "彭博：大和及瑞穗獲發內地全資證券牌照",
-     "src": "Yahoo 財經",
-     "url": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxOZm5zX1BCT01KRFZzN25Cd0FMQl9YdVZFV1B5RWVSTm1oZzB2SVozaGpBVnBGamtsVjlnRzFwWnl1SllEUmNibHo1eW9oczg4Y09HZUhKdk81MHVRV0FQN3lqRFJmVEFUUE1UTExiaWM0T053N25FbWwzMTJWRm4zeGthTnZvYVFOdTYzZ0NFQnFCTVIxSVN5YkdWOVpubHFsYmJCUXZ5Ny01MkFWSWppVjJNOHJKdGloc2psQnRyREFoQmxhZXJsLXRXb0FJclR4cHBVTEF4djJYdzdhLW95UVNEdlVJTFVaX19NZHkwWlpDY19xcXBSckRIR2QwX2hDSlhBYTdXSXEwaXFITENtRWRiZkprMUlwd2E0RzhYSHNmVF9LRUZsdHV4VQ?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T11:33+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
-  },
-  {
    "id": "民企券商来港抢客战升级不惜工本由户外广告打到电视黄金时间",
    "title": "民企券商來港搶客戰升級 不惜工本由戶外廣告打到電視黃金時間",
    "date": "2026-10-20",
@@ -852,28 +876,28 @@
    "role": "中资券商动态"
   },
   {
-   "id": "injective与韩国bdacs合作将韩元稳定币krw1引入rwa市场结算",
-   "title": "Injective与韩国BDACS合作，将韩元稳定币KRW1引入RWA市场结算",
+   "id": "彭博大和及瑞穗获发内地全资证券牌照",
+   "title": "彭博：大和及瑞穗獲發內地全資證券牌照",
    "date": "2026-10-20",
    "last": "2026-10-20",
-   "ts": "2026-10-20T10:13+08:00",
+   "ts": "2026-10-20T11:33+08:00",
    "topics": [
-    "RWA"
+    "中资券商"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Injective与韩国BDACS合作，将韩元稳定币KRW1引入RWA市场结算",
-     "src": "BlockBeats",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTFBGc0tTOGVaang2NTJMUzczd21sQVI2Z1hWNFBDT1NZalIxY1dCSGVIYThIZE1GeWdNSGVZM3NqOE5fcEZmRXVKY0VObl9qdDVSbzZPeDFn?oc=5",
+     "title": "彭博：大和及瑞穗獲發內地全資證券牌照",
+     "src": "Yahoo 財經",
+     "url": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxOZm5zX1BCT01KRFZzN25Cd0FMQl9YdVZFV1B5RWVSTm1oZzB2SVozaGpBVnBGamtsVjlnRzFwWnl1SllEUmNibHo1eW9oczg4Y09HZUhKdk81MHVRV0FQN3lqRFJmVEFUUE1UTExiaWM0T053N25FbWwzMTJWRm4zeGthTnZvYVFOdTYzZ0NFQnFCTVIxSVN5YkdWOVpubHFsYmJCUXZ5Ny01MkFWSWppVjJNOHJKdGloc2psQnRyREFoQmxhZXJsLXRXb0FJclR4cHBVTEF4djJYdzdhLW95UVNEdlVJTFVaX19NZHkwWlpDY19xcXBSckRIR2QwX2hDSlhBYTdXSXEwaXFITENtRWRiZkprMUlwd2E0RzhYSHNmVF9LRUZsdHV4VQ?oc=5",
      "date": "2026-10-20",
-     "ts": "2026-10-20T10:13+08:00",
+     "ts": "2026-10-20T11:33+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "资讯"
+   "role": "中资券商动态"
   },
   {
    "id": "57tbankinggiantubslaunchesfirsttokenized",
@@ -916,30 +940,6 @@
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPZHEwSjZPOEZpVXN2UDR1cGNnOVVRS2pUQ0pReDBxV090eEljSmhVVThCeE5mUjU1TUhNVzhrZDA5MTNFSXB4N1JMRmw5VjFxejlESmhOb0NNOE5tSjg4VEtlUmlVUDFDam14RWtRUHE4Tm1RSWtnS0FjSF9hUm92Tno5c1dPYlRkczk1WUx5M0h6dGt5WGxzdmZ2NmdEdG81ZE81OVVKMGgwV01oTThQYkpLWF9yVFJxMGc?oc=5",
      "date": "2026-10-20",
      "ts": "2026-10-20T12:11+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "behindsbisbidtobuildadigitalassetempirei",
-   "title": "Behind SBI’s bid to build a digital asset empire in SEA",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T09:00+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Behind SBI’s bid to build a digital asset empire in SEA",
-     "src": "Tech in Asia",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0pwLV8wcE1acDRUcDVfUGdVTWxWX05tVmh2M1VISENpTXQyS19wZkNoNjlydmVocXFhUDBiSW1DYzZuWDNkVEtWaEF6S2ZGVmsxTVh5dEh3MlJkV0xnWVp4NnJhcVBEYkZqMnExRW9HOFJBU1ctdFZoMzBmUEVMQkhkLWtRblh4Ylo0MjdYWmZFWFFpTzQzcUphVUdhbWhLVUVGZmFVU2I?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T09:00+08:00",
      "via": "Google"
     }
    ],
@@ -1398,7 +1398,7 @@
     {
      "title": "吴说每日精选加密新闻- Layer 1 网络 Qubic 遭攻击致1,404 个钱包被盗约2.94 万亿枚QU，87.1% 被盗资金被冻结",
      "src": "吴说",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQU0loRk4xY0JPWEpMeXY4NERwV0pGekdXWGhZbnlZRm1CM2tXTHZDSFB1REFIV2N3RWNYNERIRTR3MXhwSlhhWW45bG5CMWZpUEM4SzZDWXI5bFhTZEhidnRIaHp0VW5RdC1aUW5uUVRBbWVXdE1ITTZmWTRoOEhXcVRTNTQ2OS1BWnhqVnJzU3RvTjhiVHEzSHdZcnhCSzcyODg1YklndXB1X1Y2ZkVVUjdYYzV1VUh0b1E?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQSjR4Tmt4cEVmWnJvdEdHRHRvcTI3TWNLNzJlRXB2dHJ3c0JFVm5SWXZJVW1rX1pnYTRGTGFNRlR4N2FuTWN5dFlFdDVyazFsV3RJazBvQ3hsY3NlRVB5THZNaUw2dU9qNG9kNmpXbFZ2UTIwV1hXdG03b0JCSkgyQTUyNkpvell4YldybjFTSWU0ZC1SaEphN0JrTDM0REYxUVlVaER2eERmVUJhZk1pc3JPVVE?oc=5",
      "date": "2026-10-19",
      "ts": "2026-10-19T21:36+08:00",
      "via": "Google"
@@ -1407,59 +1407,6 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
-  },
-  {
-   "id": "howinvestorsmayrespondtooslgroupstockseh",
-   "title": "How Investors May Respond To OSL Group Stock (SEHK:863) Tokenized Fund Launch",
-   "date": "2026-10-19",
-   "last": "2026-10-19",
-   "ts": "2026-10-19T04:15+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "How Investors May Respond To OSL Group Stock (SEHK:863) Tokenized Fund Launch",
-     "src": "Simply Wall Street",
-     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQVWl1dGdGcHh6M3VVcjdxYlp4ZU1XXzRDVGR5NEtDVkVqQzFyZ3FRbFhremJiRk8zZzN1NzIyYXY4VklRMzdnRnY2eEJrRW5NZndNU25JcVhaNHVtTUlpRlpFYjRxR0UxN0dtc0dDQ2h1bFpzblRCb3ZVNjVpRUpYbEFEbU5MS3ZkMVBnd0M4cXBjMkRYZ3RrUm9ueWpyM1ZGbEszQTc0YVpZR3BaOFM0dHlBd3dCaEFNWVg2MEUtNnFrWURGS2wwTE40eUMwczlvTVNFNHlKaXlzYTRacnfSAeMBQVVfeXFMUFFoT1c4LURsa29wY25IM1ZnV1V1VURMRFRFNWoxVUQ2dTBuZk9DV2toelBvM2NBVGVyWk1sSlh1MG1fSEdfU3BrOEpURGdMSGNNMnp6bHpQOU1BOUEwSFJrLWhzaURzWU5KbGtjTFpOWElJd3J2RkRId3NIR1oxNDI2VGxxbGx4TXVNNmljRFJuMWhEVWRNU21RLXN4UHExU1hzVHFneXpRdmwwVTAyeE51Yjc4SGNYdjNWMW50YmhMOC1fSVU1ZndUM1h0YkFnSnRPcGE0MU9Ta3N4RndQenlPcFE?oc=5",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T04:15+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "OSL",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPJ213",
-       "en": "OSL Digital Securities Limited",
-       "zh": "OSL數字證券有限公司",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BTF661",
-       "en": "OSL Asset Management Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": []
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
   },
   {
    "id": "fromdigitalassetstoreshapingfinancialinf",
@@ -1532,6 +1479,59 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
+  },
+  {
+   "id": "howinvestorsmayrespondtooslgroupstockseh",
+   "title": "How Investors May Respond To OSL Group Stock (SEHK:863) Tokenized Fund Launch",
+   "date": "2026-10-19",
+   "last": "2026-10-19",
+   "ts": "2026-10-19T04:15+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "How Investors May Respond To OSL Group Stock (SEHK:863) Tokenized Fund Launch",
+     "src": "Simply Wall Street",
+     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQVWl1dGdGcHh6M3VVcjdxYlp4ZU1XXzRDVGR5NEtDVkVqQzFyZ3FRbFhremJiRk8zZzN1NzIyYXY4VklRMzdnRnY2eEJrRW5NZndNU25JcVhaNHVtTUlpRlpFYjRxR0UxN0dtc0dDQ2h1bFpzblRCb3ZVNjVpRUpYbEFEbU5MS3ZkMVBnd0M4cXBjMkRYZ3RrUm9ueWpyM1ZGbEszQTc0YVpZR3BaOFM0dHlBd3dCaEFNWVg2MEUtNnFrWURGS2wwTE40eUMwczlvTVNFNHlKaXlzYTRacnfSAeMBQVVfeXFMUFFoT1c4LURsa29wY25IM1ZnV1V1VURMRFRFNWoxVUQ2dTBuZk9DV2toelBvM2NBVGVyWk1sSlh1MG1fSEdfU3BrOEpURGdMSGNNMnp6bHpQOU1BOUEwSFJrLWhzaURzWU5KbGtjTFpOWElJd3J2RkRId3NIR1oxNDI2VGxxbGx4TXVNNmljRFJuMWhEVWRNU21RLXN4UHExU1hzVHFneXpRdmwwVTAyeE51Yjc4SGNYdjNWMW50YmhMOC1fSVU1ZndUM1h0YkFnSnRPcGE0MU9Ta3N4RndQenlPcFE?oc=5",
+     "date": "2026-10-19",
+     "ts": "2026-10-19T04:15+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "OSL",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPJ213",
+       "en": "OSL Digital Securities Limited",
+       "zh": "OSL數字證券有限公司",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BTF661",
+       "en": "OSL Asset Management Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
   },
   {
    "id": "观点没有defi的代币化股票还有意义吗",
@@ -2047,6 +2047,30 @@
    "role": "监管"
   },
   {
+   "id": "cambodiacryptoregulationentersadecisiveq",
+   "title": "Cambodia Crypto Regulation Enters a Decisive Quarter Ahead of Black Swan Summit Cambodia",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T02:33+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Cambodia Crypto Regulation Enters a Decisive Quarter Ahead of Black Swan Summit Cambodia",
+     "src": "Disruption Banking",
+     "url": "https://www.disruptionbanking.com/2026/10/16/cambodia-crypto-regulation-enters-a-decisive-quarter-ahead-of-black-swan-summit-cambodia/",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T02:33+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "hashkeyexchangelaunchestokenizedwealthma",
    "title": "HashKey Exchange Launches Tokenized Wealth Management Platform",
    "date": "2026-10-16",
@@ -2189,6 +2213,54 @@
      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOZEFhRVZsRGxOcWpaMjJPRDRIUEFZb19BZG5ZZ0ZlNlVCdWgzcVlTVmVnR3pLMWlVS2p1blhIcXZKWmpGZEE4eFZTaGZibGNzRVJpdkY1cjNEWlJLZ0U1UXI3ZTBqNEV2YzdXeWx1dFBwX2FuQVZ5Z3dyWWh0TUZYNmxFVl9kVHZlbE1LR2tPaU1hY0ZYUDdQal9md1ZUX1hraVg5SHNFcEpzcTBuZkFRbHdNZk1CUHhPNGUwdVNOZlItbzg?oc=5",
      "date": "2026-10-16",
      "ts": "2026-10-16T00:40+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "写在robinhoodchain上线百日之际meme是加密的奥德赛时期",
+   "title": "写在 Robinhood Chain 上线百日之际：Meme 是加密的奥德赛时期",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T21:57+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "写在 Robinhood Chain 上线百日之际：Meme 是加密的奥德赛时期",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE04eTNPMktmcHprZ1N2NzdRS0J2Yk40RWlFd0x5UG4xTFlHdUt5MVhNQWtaeU5sbE1TYXdHUTY2aWctUmlvME5CdDBva1RwaWZ6NTJrYUdXOXR3OVloakxuUjlNaEF1c0FrdXhhVjR4NDRxb2EwSnhocmpZTjhZVlU?oc=5",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T21:57+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "token2049小作文合集builder少了机构多了crypto开始脱虚向实",
+   "title": "TOKEN2049小作文合集：Builder少了，机构多了，Crypto开始脱虚向实",
+   "date": "2026-10-16",
+   "last": "2026-10-16",
+   "ts": "2026-10-16T02:24+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "TOKEN2049小作文合集：Builder少了，机构多了，Crypto开始脱虚向实",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5JY3IwRk16MTZaLVB2QVNmelBiQmJubDBSTS00N0RWSUprQm9pRUxhR0Y4blhtYmc0UXNmU2R5RkZwbFpaUVAtVDUzOF9CYmtScUVFNHM0RGh3YUlGZmR0UlVITTlCTXlJTXZsTnRRX0VuSkN0c1BWbVpoTkhKOWM?oc=5",
+     "date": "2026-10-16",
+     "ts": "2026-10-16T02:24+08:00",
      "via": "Google"
     }
    ],
@@ -2559,36 +2631,36 @@
    "role": "竞品动态"
   },
   {
-   "id": "bitget推机构托管交易网络无需将加密资产转入交易所",
-   "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
+   "id": "可在银行直接购买比特币以太坊渣打成为阿联酋首家提供加密货币现货交易的国际银行",
+   "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
    "date": "2026-10-15",
    "last": "2026-10-15",
-   "ts": "2026-10-15T13:55+08:00",
+   "ts": "2026-10-15T23:24+08:00",
    "topics": [
-    "竞品"
+    "监管"
    ],
    "n": 2,
    "articles": [
     {
-     "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
-     "src": "Yellow.com",
-     "url": "https://news.google.com/rss/articles/CBMi0AJBVV95cUxPU0xMcUNRMUU4SU5ZV05oOUc0NVQ4WnNPdzAyM3NicHBOcXJXQ2hWcmlUZjE1ZTItekJaYlg2TXJmQ1ltcERhSTdkQVRwbnF6OVNKSHY3SG1uWnl2Y0JrNnowRkxyV2pDWjJ4dDJoaUpPeVhuU0NYSk05TzN4aVUxVGlQaC1ScmFaMUVCeXJXN29oVmdZbUZHLVJLS0hLTDRfWm51TFRfdXp0cFV4di1FQ1U4c1JyV2Z6Z08tZHBOS0Q1dlVkUjZnQ3RSWHo4dEFsdFdOaVlJZXg3WElhb054Q3M4a25IUjl1Sll5Rk5rdUdaR2VVX2VaMjNvR1RienRGcnlCUnJHemVDbkpzblhYSjFQRVRzemFRY19hMEZMWm8wV2dpSWhKRkxPeDFlOWgzWjVvUTVmd1F2dnhvbG55bldoWWN4SUR2a05xZkhkVFI?oc=5",
+     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
+     "src": "腾讯网",
+     "url": "https://news.qq.com/rain/a/20261015A0DZB400",
      "date": "2026-10-15",
-     "ts": "2026-10-15T12:55+08:00",
-     "via": "Google"
+     "ts": "2026-10-15T23:24+08:00",
+     "via": "Bing"
     },
     {
-     "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
-     "src": "yellow",
-     "url": "https://yellow.com/zh/news/bitget%E6%8E%A8%E6%9C%BA%E6%9E%84%E6%89%98%E7%AE%A1%E4%BA%A4%E6%98%93%E7%BD%91%E7%BB%9C%EF%BC%9A%E6%97%A0%E9%9C%80%E5%B0%86%E5%8A%A0%E5%AF%86%E8%B5%84%E4%BA%A7%E8%BD%AC%E5%85%A5%E4%BA%A4%E6%98%93%E6%89%80",
+     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
+     "src": "同花顺财经",
+     "url": "https://news.10jqka.com.cn/field/20261015/680749349.shtml",
      "date": "2026-10-15",
-     "ts": "2026-10-15T13:55+08:00",
+     "ts": "2026-10-15T23:20+08:00",
      "via": "Bing"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "资讯"
+   "role": "监管"
   },
   {
    "id": "亚太占全球稳定币支付量六成香港港元稳定币已进入机构测试",
@@ -2632,30 +2704,6 @@
      "date": "2026-10-15",
      "ts": "2026-10-15T17:03+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "可在银行直接购买比特币以太坊渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-   "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T23:24+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "可在银行直接购买比特币、以太坊，渣打成为阿联酋首家提供加密货币现货交易的国际银行",
-     "src": "腾讯网",
-     "url": "https://news.qq.com/rain/a/20261015A0DZB400",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T23:24+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2735,23 +2783,46 @@
    "role": "监管"
   },
   {
-   "id": "链接资产中心aegisclear计划收购币护aegiscustodytaiwan",
-   "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
+   "id": "bitget推机构托管交易网络无需将加密资产转入交易所",
+   "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
    "date": "2026-10-15",
    "last": "2026-10-15",
-   "ts": "2026-10-15T11:21+08:00",
+   "ts": "2026-10-15T13:55+08:00",
    "topics": [
-    "RWA",
-    "机构需求"
+    "竞品"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "鏈結資產中心(AegisClear) 計畫收購幣護 Aegis Custody Taiwan",
-     "src": "鉅亨網",
-     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9ueEVINXZwQnc1cHJ3TjFCUkR4c2Fhc2pfblBoS1hkRENjMkpncWlqNzV4T0szdklzME1zQUtpbGtRSHVQWVZiYTQwR2lXMzQ?oc=5",
+     "title": "Bitget推机构托管交易网络：无需将加密资产转入交易所",
+     "src": "yellow",
+     "url": "https://yellow.com/zh/news/bitget%E6%8E%A8%E6%9C%BA%E6%9E%84%E6%89%98%E7%AE%A1%E4%BA%A4%E6%98%93%E7%BD%91%E7%BB%9C%EF%BC%9A%E6%97%A0%E9%9C%80%E5%B0%86%E5%8A%A0%E5%AF%86%E8%B5%84%E4%BA%A7%E8%BD%AC%E5%85%A5%E4%BA%A4%E6%98%93%E6%89%80",
      "date": "2026-10-15",
-     "ts": "2026-10-15T11:21+08:00",
+     "ts": "2026-10-15T13:55+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "发行人反击战九家美股发行人为何反对上架自家股票代币",
+   "title": "发行人反击战：九家美股发行人为何反对上架自家股票代币？",
+   "date": "2026-10-15",
+   "last": "2026-10-15",
+   "ts": "2026-10-15T15:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "发行人反击战：九家美股发行人为何反对上架自家股票代币？",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE03OFh2RDJHWEtCMTdWLVNrdWNoa04tckVOaEhpZ3k1Z1J6X1pWb2ZLN0xLVXBXWlVKcXFNWElSYktTU3RtVF9kWDBFUlVxVTRZR0x3Mzg3VGpTTC1CWUw2eFp1NzJFeG9fblVFUHFDWnpKSFdyLThWOHRjMHRyMmM?oc=5",
+     "date": "2026-10-15",
+     "ts": "2026-10-15T15:00+08:00",
      "via": "Google"
     }
    ],
@@ -2800,30 +2871,6 @@
      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNaXdXVENoemN5dXBUaW9qVW9TT3VCNDJWTEZJVXFqWnNTNUpTSmFEcmEyVVJ3d1hSWUo4ejhidllYcTdaR2pfRmVReEd2TUU3SW43bGVYOXBHdzdZM0dEbVhRRnpfVndYUUkyaXJiWWRTbWJZTnowYWdjUDkwdzB3c1hfQWhEQjNoa2x6MERR?oc=5",
      "date": "2026-10-15",
      "ts": "2026-10-15T14:35+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "hkinvestmentfirml2capitalplans500massett",
-   "title": "HK investment firm L2 Capital plans $500m asset tokenization",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T09:45+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "HK investment firm L2 Capital plans $500m asset tokenization",
-     "src": "Tech in Asia",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOamVWeUFJUzA0bURjR0VnRjRHUllqdFctUUNJT3ItcHlteXlVYWVPOFBCaVFzOHNQdEtRYXZSemJiU3d6R01aUWkxenEyWVdaTGFuODhLMzI3VUk2NzNyMFZ2VTl5a2tqdkdlRUJJaFRyb3dxVllTLVZPRVF1RmY1Z2xSVHIyYVM1MEl3MW1qQ1dOZTlMUHc?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T09:45+08:00",
      "via": "Google"
     }
    ],
