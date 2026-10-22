@@ -1,5 +1,5 @@
 {
- "built": "2026-10-22T12:57+08:00",
+ "built": "2026-10-22T20:00+08:00",
  "since": "2026-10-15",
  "log": [
   {
@@ -11,26 +11,26 @@
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 18,
-   "in_window": 5
+   "fetched": 17,
+   "in_window": 4
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 20,
-   "in_window": 10
+   "fetched": 19,
+   "in_window": 9
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 14,
-   "in_window": 6
+   "fetched": 15,
+   "in_window": 8
   },
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
    "fetched": 16,
-   "in_window": 15
+   "in_window": 14
   },
   {
    "topic": "中资券商",
@@ -47,14 +47,14 @@
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 21,
-   "in_window": 10
+   "fetched": 22,
+   "in_window": 11
   },
   {
    "topic": "竞品",
    "q": "HashKey",
    "fetched": 21,
-   "in_window": 13
+   "in_window": 16
   },
   {
    "topic": "竞品",
@@ -65,48 +65,186 @@
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
-   "fetched": 14,
+   "fetched": 15,
    "in_window": 0
   },
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
    "fetched": 12,
-   "in_window": 0
+   "in_window": 1
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
    "fetched": 38,
-   "in_window": 17
+   "in_window": 21
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 44,
-   "in_window": 36
+   "fetched": 46,
+   "in_window": 38
   },
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
    "fetched": 17,
-   "in_window": 2
+   "in_window": 3
   },
   {
    "topic": "机构需求",
    "q": "Hong Kong family office crypto allocation",
-   "fetched": 12,
+   "fetched": 13,
    "in_window": 0
   },
   {
    "topic": "SFC 新闻稿",
    "q": "https://www.sfc.hk/en/RSS-Feeds/Press-releases",
-   "fetched": 3,
-   "in_window": 3
+   "fetched": 4,
+   "in_window": 4
   }
  ],
- "articles": 131,
+ "articles": 143,
  "stories": [
+  {
+   "id": "toptokenizedmoneymarketfundmmfscoinsbyma",
+   "title": "Top Tokenized Money Market Fund (MMFs) Coins by Market Cap",
+   "date": "2026-10-21",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T17:09+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "Top Tokenized Money Market Fund (MMFs) Coins by Market Cap",
+     "src": "CoinGecko",
+     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9jQzkyVFh5YnE0U0dBOVdRQm9OQkFoZVd5ZWxJbVdqRjZuLXBCaDNqZmd0VkFLdEJsdnlIYmdqcE5XMTNySUc2bjRwOWMtMk5oUVJiNzBXaWd0b3pVNjduYzZxdV9Fd21MdHN4YkxTQklDTVBrUTd4YTRaQVk?oc=5",
+     "date": "2026-10-21",
+     "ts": "2026-10-21T17:24+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Generali Launches Tokenized Money Market Fund Share Class",
+     "src": "Serrari Group",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNT0Q4V2UwS0dpcTVEdm9US2NyWmV1M3JqNVV1SnFoWVdPWDlpVXFOaHNLa2RGTzRKdFQ5WUVkNFlsT3R4WlFnSjE5OUFrQkoxTVN1Z0tXREZuYVo1WWIweWMtT1lJRnkteS1NRmI4ZG14dG9SUUJiNThpZGs3WlRjMXd6TktYTGl3N1pN?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T17:09+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "hashkeyrwa推出hashkeyhtoken系列首款产品提供一站式发行解决",
+   "title": "HashKey RWA 推出HashKey “hToken”系列首款产品，提供一站式发行解决方案",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T16:46+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "HashKey RWA 推出HashKey “hToken”系列首款产品，提供一站式发行解决方案",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9QV211d0ZpQmtleUFMVndvU0VhQWVIdVBHZ1hYUndEQklFNDhtMTBHemtFV29lcV9GM3p6YUwtWEFxSmRlZ0VvODFYaXdUcE1qcV9sTmprMTFsdHFpSXpxSkFwdlpYY0RHNUNTcEFCRGFtQjJ6RXhFazZoZGpyNjg?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T16:46+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HashKey RWA推出「hToken」系列首款产品，提供一站式发行解决方案",
+     "src": "BlockBeats",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9NNXpaUTU1VEIzLW1IVkNocC1IdTZkeGdRUFNHUDNtLW5XTTAyUEoxNWQ5Y0F4NGJUbTdSLXZka2VCWnlzOVRFUWE1VWNyM2RuNEl0ejVR?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T01:41+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HashKey RWA 推出HashKey 「hToken」系列首款產品，提供一站式發行解決方案",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOVk5YVVBpWlZBb0JjUy1uWERkVVVYVU9iX3dFZ1dnREo5Q2xzRGwxY3hzcDVkR2dEU3pUZWtHWm9uTy1OZGs3VVhUc0wtNThXaHgzcDFsY1djak9JQzZwZEpHbzZtd1Y1dEU0UWlieGtRNms3NTRLV0cxbEdnMDNpNVJFZWxnUQ?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T16:31+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "cmccglobalpartnerswithtetherandbitfinexs",
+   "title": "CMCC Global Partners with Tether and Bitfinex Securities to Launch the First Tokenised Fund-of-Funds Under El Salvador's Digital Asset Framework",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T18:33+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "CMCC Global Partners with Tether and Bitfinex Securities to Launch the First Tokenised Fund-of-Funds Under El Salvador's Digital Asset Framework",
+     "src": "Morningstar",
+     "url": "https://news.google.com/rss/articles/CBMirAJBVV95cUxPbXJIMGVPYmxZNVBvVlRXUDhfM05KTnRsdTR5YWJjcjZ6UWNSU0Y1RFZmbTAyWExFVVl2eGU0Vnk5UGZaczNDZlowdVFPX2lXbmdLM2JpWXZpTHAtdFlVcGREOVhiSzBJT0p4STBJekxXYTVFOFFGdVd1bWo1RlRUc1NUMjBBYUhNTjMwUWdoUjEyeXp5Q1VobkJSWWtuNURFOW15S2hoamYyeXMtaE5md1Zad3pYY3hhV2RyN2wwLTFNWGZTdzFTS3NnUEI3OUZvaXA5ejFKOGQ0TVJPUGdiYl9oVTI1aEZLN0xZZUtKOFZIa3lTNmg5VDVadTNKd29ISWNtRGhoc2RmdU42dERnNE1XZDFGem5CX1FqbGw4NXFsOWs3MEhJV0w5ZlM?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T18:33+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "CMCC Global Partners with Tether and Bitfinex Securities to Launch the First Tokenised Fund-of-Funds Under El Salvador's Digital Asset Framework",
+     "src": "PR Newswire",
+     "url": "https://www.prnewswire.com/news-releases/cmcc-global-partners-with-tether-and-bitfinex-securities-to-launch-the-first-tokenised-fund-of-funds-under-el-salvadors-digital-asset-framework-302916813.html",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T12:33+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
   {
    "id": "渣打银行正式签约全资收购加密托管商zodiacustody五地持牌业务并入证券服",
    "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
@@ -132,11 +270,44 @@
    "role": "监管"
   },
   {
+   "id": "hongkongsregulatoryandlicensingstablecoi",
+   "title": "Hong Kong’s regulatory and licensing stablecoins framework",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T15:52+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong’s regulatory and licensing stablecoins framework",
+     "src": "Law.asia",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFAzMHpuZTlMTnUyOEV0VzFibWwyd2VhZTVqUHMxZTltMVdWdnllOFozMUFNczlMRF9qc051OHYyUFpqQ1FfTFMtc2JGdzBxVGEyVlB6S21IRm92S29ScXdtVmpYMk8wZw?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T15:52+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong’s regulatory and licensing stablecoins framework",
+     "src": "Law.asia",
+     "url": "https://law.asia/hong-kong-stablecoin-licensing-regime/",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T08:51+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "花旗集团仍在等待中国内地券商牌照立志成为在华外资投银领头羊",
    "title": "花旗集團仍在等待中國內地券商牌照 立志成為在華外資投銀領頭羊",
    "date": "2026-10-22",
    "last": "2026-10-22",
-   "ts": "2026-10-22T11:00+08:00",
+   "ts": "2026-10-22T11:06+08:00",
    "topics": [
     "中资券商"
    ],
@@ -147,13 +318,249 @@
      "src": "Yahoo 財經",
      "url": "https://news.google.com/rss/articles/CBMiuwNBVV95cUxNQmZJYnRHSlc2SzdNaTB6SjF5NkVidVBBb1JfcTRBMnRvMG51S2FuUlpKUDhVOGNYQ1F1MUg5MmQ4S1RfbE1vWWMzeThCb1kybFBtRm5xdndtSTVUMk1iMU9RcTNsV09ESE9fam9jbUZqQVVuRzBQS3ZoejhERmVfdElEZGpEejFfdHZ4bkhVcGxVdVpNWEtERHplbXo1T0pmcVVFSEoxbktRRTdLV015NFdzLXZ5Qzk1QTZqVndDRHg3czlTRVlaQkhJa0JPbmFPbVlQWjdCVkkzQXQxNTFYTFJlT2JVdWQ2aWYzQmgtaDRNWG0wRjlXRU9EZGRPb3ZwRlZPeWt2VjliT0lvV0p6WHZWZ3BkUWgxMG5WZmpQamFXWm5VZ0U1MldqVFoyek0tUEZ2a3huM2NaOFZ4UTIwWXV1UlByM1JzWDYzOTVUYTk2VzBxZXBmM254ZmFRRFpDNjJqem9kLUVpaF9LMXVUT2dYUTVEaDk0WG9ady0xZE1raXRMMHpGcHpzVlhLcGFhNlVMb0FoWWZ3MWgydWFVWkFvTTZrakExWVVCZlZ3Zmp4UHVtSGhwNnMtdw?oc=5",
      "date": "2026-10-22",
-     "ts": "2026-10-22T11:00+08:00",
+     "ts": "2026-10-22T11:06+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
    "role": "中资券商动态"
+  },
+  {
+   "id": "券商出海浪潮涌起国际业务成新增长极仍面临多重挑战",
+   "title": "券商出海浪潮涌起，国际业务成新增长极，仍面临多重挑战",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T09:57+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "券商出海浪潮涌起，国际业务成新增长极，仍面临多重挑战",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1090988516_100053070",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T09:57+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
+  },
+  {
+   "id": "hashkeyexchangeintroduceshashkeytokenise",
+   "title": "HashKey Exchange introduces HashKey Tokenised HFOL Class A (HHFOLA) for professional investors",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T16:51+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "HashKey Exchange introduces HashKey Tokenised HFOL Class A (HHFOLA) for professional investors",
+     "src": "Traders Union",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxPTW5POGxvQi1hRVQ5XzNpN0t1U3U5NGhZVEM4TTZza1ZfemtVcGctNkF2VFh6d3hhVjVwSUpwWjR6Qi15TE8tYVMwX2VxZGJ0ek9XZXVDbnNuenhfODVETW0wbTdlenhYN2d6ZnhWdDg0ZWllYWhEaEx6RHBVNU1vV2VwdDJKc0ZyaFI2R1RRREtIenB6THFrU2NLTQ?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T16:51+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "hashkeyrwalaunchesitsfirsthtokenproductw",
+   "title": "HashKey RWA Launches Its First hToken Product with a Tokenized Securities Offering",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T02:53+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "HashKey RWA Launches Its First hToken Product with a Tokenized Securities Offering",
+     "src": "kucoin",
+     "url": "https://www.kucoin.com/news/flash/hashkey-rwa-launches-first-htoken-product-with-tokenized-securities-offering",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T02:53+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "canton基金会看重台湾与资策会签合作备忘录先培育rwa人才",
+   "title": "Canton 基金會看重台灣！與資策會簽合作備忘錄，先培育 RWA 人才",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T18:57+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Canton 基金會看重台灣！與資策會簽合作備忘錄，先培育 RWA 人才",
+     "src": "動區動趨",
+     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOR3pNTG5mU3lfZlZBU2h1RUNKVTNrMTNnRWg4cy1hUllqc1BnM0syOGx1aGFVSU9nM3Q4ZHlDeko2TWZ2eWQyckg1dFNYTFljY2RoeGdOT1YzRU5RcWwyNmNuZmIxTU55ajQ3dnluZUdjUnJINUZVWENMNXZvY1lZSTBDbG4tX3pka1AtSy1aODBiR1FKQWdLMFZ5eU1BYXJYaWFIQkNoOHVuemQxMGc?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T18:57+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "krn协议从rwa到算能比特币生态的下一场结构性迁移",
+   "title": "KRN協議——從 RWA 到算能：比特幣生態的下一場結構性遷移",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T13:30+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "KRN協議——從 RWA 到算能：比特幣生態的下一場結構性遷移",
+     "src": "鉅亨網",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE05N0JLQ0pvaGh6ZUVET2NzTVloQ2dhWjJLTjdnRV9UOFBoVXliVUJJWXZrRzU3RTA3VW1oalRldkNQYXJXLW5WVjBKVW12aVk?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T13:30+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "tokenisedblockchainfundslaunchonbitfinex",
+   "title": "Tokenised Blockchain Funds Launch on Bitfinex Securities",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T18:56+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Tokenised Blockchain Funds Launch on Bitfinex Securities",
+     "src": "The Cryptonomist",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE12YXJGa3lCNElRdzI4RTBUb3NXVzdVYmZRX0FsRjlKNThqQnRVRXdnN2VCa3ZvZzBvUEx0QzVfSmJaVjR1dkhMd01jNmtfczdIMlZQZjVMeXVoZ29zZXFPMkNzV2ljX3dDWW1mcWtBQ0E4VGgyeE9oamUxRmNncjQ?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T18:56+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "sfccommencesmmtproceedingsagainstgemlist",
+   "title": "SFC commences MMT proceedings against GEM-listed Taste•Gourmet’s top executives and associates over alleged manipulation scheme for Main Board transfer",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T16:20+08:00",
+   "topics": [
+    "SFC 其他"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "SFC commences MMT proceedings against GEM-listed Taste•Gourmet’s top executives and associates over alleged manipulation scheme for Main Board transfer",
+     "src": "SFC",
+     "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR173",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T16:20+08:00",
+     "via": "SFC"
+    }
+   ],
+   "sfc": true,
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "hashkeyexchangeintroducesearnchannelplat",
@@ -228,6 +635,7 @@
    "last": "2026-10-21",
    "ts": "2026-10-21T09:33+08:00",
    "topics": [
+    "RWA",
     "监管"
    ],
    "n": 1,
@@ -247,6 +655,30 @@
      "date": "2026-10-21",
      "ts": "2026-10-21T09:33+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "rethinkingcontrolsforinstitutionalstable",
+   "title": "Rethinking controls for institutional stablecoin adoption",
+   "date": "2026-10-21",
+   "last": "2026-10-21",
+   "ts": "2026-10-21T02:56+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Rethinking controls for institutional stablecoin adoption",
+     "src": "Standard Chartered",
+     "url": "https://www.sc.com/en/news/corporate-investment-banking/rethinking-controls-for-institutional-stablecoin-adoption/",
+     "date": "2026-10-21",
+     "ts": "2026-10-21T02:56+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -339,28 +771,62 @@
    "role": "线索"
   },
   {
-   "id": "券商出海浪潮涌起国际业务成新增长极仍面临多重挑战",
-   "title": "券商出海浪潮涌起，国际业务成新增长极，仍面临多重挑战",
+   "id": "hashkeyexchangestatisticsmarketstradingv",
+   "title": "HashKey Exchange Statistics: Markets, Trading Volume & Trust Score",
    "date": "2026-10-21",
    "last": "2026-10-21",
-   "ts": "2026-10-21T19:57+08:00",
+   "ts": "2026-10-21T03:06+08:00",
    "topics": [
-    "中资券商"
+    "竞品"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "券商出海浪潮涌起，国际业务成新增长极，仍面临多重挑战",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1090988516_100053070",
+     "title": "HashKey Exchange Statistics: Markets, Trading Volume & Trust Score",
+     "src": "CoinGecko",
+     "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFBUY0Mtd1lScE5abGgyc2VmXy1iQ2xPNUhrZUI5M3V2MkFPU25NYzhkU2ZSYUREQkdTeDNDeGFlcEN6cTJlbFBaSHBOVzlBQVFhbGZ5VmVVTUZlUQ?oc=5",
      "date": "2026-10-21",
-     "ts": "2026-10-21T19:57+08:00",
-     "via": "Bing"
+     "ts": "2026-10-21T03:06+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
   },
   {
    "id": "加密多空为何现实资产需要链上固定利率贷款",
@@ -411,32 +877,8 @@
    "role": "资讯"
   },
   {
-   "id": "toptokenizedmoneymarketfundmmfscoinsbyma",
-   "title": "Top Tokenized Money Market Fund (MMFs) Coins by Market Cap",
-   "date": "2026-10-21",
-   "last": "2026-10-21",
-   "ts": "2026-10-21T17:24+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Top Tokenized Money Market Fund (MMFs) Coins by Market Cap",
-     "src": "CoinGecko",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTE9jQzkyVFh5YnE0U0dBOVdRQm9OQkFoZVd5ZWxJbVdqRjZuLXBCaDNqZmd0VkFLdEJsdnlIYmdqcE5XMTNySUc2bjRwOWMtMk5oUVJiNzBXaWd0b3pVNjduYzZxdV9Fd21MdHN4YkxTQklDTVBrUTd4YTRaQVk?oc=5",
-     "date": "2026-10-21",
-     "ts": "2026-10-21T17:24+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "blackrockseestokenizedfundsmovingintowal",
-   "title": "BlackRock Sees Tokenized Funds Moving Into Wall Street Plumbing",
+   "title": "BlackRock sees tokenized funds moving into Wall Street plumbing",
    "date": "2026-10-19",
    "last": "2026-10-20",
    "ts": "2026-10-20T07:58+08:00",
@@ -446,19 +888,11 @@
    "n": 8,
    "articles": [
     {
-     "title": "BlackRock Sees Tokenized Funds Moving Into Wall Street Plumbing",
-     "src": "Bloomberg.com",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPcUw4cmlZM2RnQXlkMkQ0VWZGbzFBVFloZGo5dDUxd1I2WEs1a24welZlbTFBSDI2WW81TFlUX2dXR015bk43aG8ybm1GdmpGOUtvTi15c0hUVGNkT0dxVWFPMktFcDZMbUE0YTlaeXluVU5zQ2VmNGdrdmNITnJ5a1lmNTQ0UWlTNXdHdFR6Zm5qVjFXWGJzWGVOMXBTSlIyZ08wc2VzaVJJN1NTNFBpOTJiQ3k?oc=5",
+     "title": "BlackRock sees tokenized funds moving into Wall Street plumbing",
+     "src": "Moneycontrol.com",
+     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOcVJsRDB5aWQtZUQ0WlVCNWhZTmd5Z3BfVUdSQnc3WXJ2a2RjbzZILU5Ba1BFMUNRMDlsaVhxMGRHWnFrdDl0NTB1NFppZUFEd1pjWHp2RVRDYTJESTNpUTdKbHdRZndUYkthMTZSSXdBWGgtOTdkYkFOV0RHVXRwZmFqbF9henFXRTFFZTB3M2FiMU0zcUEybGxlLTBVb2U3V3VQeFNSbUNuMVJEMmQxMmwxMjA1RXpNN0JRZlBBX0VDQ0tK0gHKAUFVX3lxTFAtQ3lfcGpnSmdKdHZTVFNmWkJBcjBiRlBLbjcyQXBNbVJJNjhCM3c2ckRlSmJQb1FVNGJ5eDFrWV9XbXVxZjl6VXo2N0JzSXNsNFdGTjBsM0VCTERidnJFc3Jkd2NONGhlbmRZYS1QYTR6aTFHM0NxVTQxSmE0ZEZoSUg1QU0yQ1VJdFA5SjE5WXlOc2xFUUtWcGhlUzF6Y1BLLTdDTUl4bk1HdFNNRnJWUUVDNFZuNU9mbmhPeVlyRVo4eTVFWVdpY2c?oc=5",
      "date": "2026-10-19",
-     "ts": "2026-10-19T08:15+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "BlackRock sees tokenized money-market funds keeping institutions invested for longer",
-     "src": "Crypto Briefing",
-     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNanVKNEp2R3FVR1pqRThPYVJvSDI3eERyWDJjdC1NYlJ5a1g3bVV6VENLVm0xTzBTT2tpUjBYa092Z25QY1pxMzdlUW1EcER4OGlTQnNxY0ZFV1lXekx4X2gyYklGV1EydXc2Mk5icFFDRVF3QzZwNjNfUm5qOFhQSFVfbmpkY0ppVlE?oc=5",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T08:38+08:00",
+     "ts": "2026-10-19T10:55+08:00",
      "via": "Google"
     },
     {
@@ -508,6 +942,14 @@
      "date": "2026-10-20",
      "ts": "2026-10-20T07:58+08:00",
      "via": "Google"
+    },
+    {
+     "title": "BlackRock Pushes Tokenized Money Funds Beyond Crypto Into Collateral Role",
+     "src": "finance.biggo",
+     "url": "https://finance.biggo.com/news/4b3ab842-c6ad-4a7a-a03a-ccb002df44b8",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T00:55+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -619,8 +1061,8 @@
    "role": "监管"
   },
   {
-   "id": "jpmorgandeploysdeposittokenonethereumsig",
-   "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
+   "id": "jpmorgandeploysjpmcoinonethereumsignalin",
+   "title": "JPMorgan Deploys JPM Coin on Ethereum, Signaling a New Era in Stablecoin Competition",
    "date": "2026-10-20",
    "last": "2026-10-20",
    "ts": "2026-10-20T15:45+08:00",
@@ -630,14 +1072,6 @@
    ],
    "n": 2,
    "articles": [
-    {
-     "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-     "src": "kucoin",
-     "url": "https://www.kucoin.com/news/flash/jpmorgan-deploys-deposit-token-on-ethereum-signals-major-shift-in-stablecoin-market",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T12:45+08:00",
-     "via": "Bing"
-    },
     {
      "title": "JPMorgan Deploys JPM Coin on Ethereum, Signaling a New Era in Stablecoin Competition",
      "src": "kucoin",
@@ -852,30 +1286,6 @@
    "role": "监管"
   },
   {
-   "id": "民企券商来港抢客战升级不惜工本由户外广告打到电视黄金时间",
-   "title": "民企券商來港搶客戰升級 不惜工本由戶外廣告打到電視黃金時間",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T14:14+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "民企券商來港搶客戰升級 不惜工本由戶外廣告打到電視黃金時間",
-     "src": "巴士的報",
-     "url": "https://news.google.com/rss/articles/CBMi7wJBVV95cUxNUjZiRnloSjJ2SFNrWmJic0k2NGNNZU1FT1ZIVS1SaU42T1JZNEVYNXptTm9rZy1ydDNhOEhucG5hV1ozQVJKWjdFd0FJVmFnS0Z1UnJ1UktUR3hXSTE5aF81Rm92aEJ4VFQwMTZBX3VFZnFuOXpQaUVCMEtiNjZIc0RXOEc3TXhaSnh6Tl9qS0lqNDJTSmdxV21HR3NhUFBVakNBZFd4cFBCNjFld3haZk1VY0hYN0VGMm1QZDJoT0E2U0JwV2hGdXhxdEN2LXJFTzYtNVBzaGd0NklLTEdjUEl5RzNmM2ZfZlQ0dDhoQVctZnk2anhfWVhWZW9wbEU5WGFiaGR4U0paRnRfXzhvNnZURGhRcEw4VGFRcVQtM2dlMnJwX0VvaWE4TkhmcFR5ZXZIS2otZXpNWHZsRkpPUnR6VllvbXpaQzl2S2xYOVhObHlORXkyQVhhaFAtbzU4ZHVoMXd6dEZXeTJQdFg0?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T14:14+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
-  },
-  {
    "id": "彭博大和及瑞穗获发内地全资证券牌照",
    "title": "彭博：大和及瑞穗獲發內地全資證券牌照",
    "date": "2026-10-20",
@@ -892,6 +1302,30 @@
      "url": "https://news.google.com/rss/articles/CBMiqwJBVV95cUxOZm5zX1BCT01KRFZzN25Cd0FMQl9YdVZFV1B5RWVSTm1oZzB2SVozaGpBVnBGamtsVjlnRzFwWnl1SllEUmNibHo1eW9oczg4Y09HZUhKdk81MHVRV0FQN3lqRFJmVEFUUE1UTExiaWM0T053N25FbWwzMTJWRm4zeGthTnZvYVFOdTYzZ0NFQnFCTVIxSVN5YkdWOVpubHFsYmJCUXZ5Ny01MkFWSWppVjJNOHJKdGloc2psQnRyREFoQmxhZXJsLXRXb0FJclR4cHBVTEF4djJYdzdhLW95UVNEdlVJTFVaX19NZHkwWlpDY19xcXBSckRIR2QwX2hDSlhBYTdXSXEwaXFITENtRWRiZkprMUlwd2E0RzhYSHNmVF9LRUZsdHV4VQ?oc=5",
      "date": "2026-10-20",
      "ts": "2026-10-20T11:33+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "中资券商动态"
+  },
+  {
+   "id": "民企券商来港抢客战升级不惜工本由户外广告打到电视黄金时间",
+   "title": "民企券商來港搶客戰升級 不惜工本由戶外廣告打到電視黃金時間",
+   "date": "2026-10-20",
+   "last": "2026-10-20",
+   "ts": "2026-10-20T14:14+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "民企券商來港搶客戰升級 不惜工本由戶外廣告打到電視黃金時間",
+     "src": "巴士的報",
+     "url": "https://news.google.com/rss/articles/CBMi7wJBVV95cUxNUjZiRnloSjJ2SFNrWmJic0k2NGNNZU1FT1ZIVS1SaU42T1JZNEVYNXptTm9rZy1ydDNhOEhucG5hV1ozQVJKWjdFd0FJVmFnS0Z1UnJ1UktUR3hXSTE5aF81Rm92aEJ4VFQwMTZBX3VFZnFuOXpQaUVCMEtiNjZIc0RXOEc3TXhaSnh6Tl9qS0lqNDJTSmdxV21HR3NhUFBVakNBZFd4cFBCNjFld3haZk1VY0hYN0VGMm1QZDJoT0E2U0JwV2hGdXhxdEN2LXJFTzYtNVBzaGd0NklLTEdjUEl5RzNmM2ZfZlQ0dDhoQVctZnk2anhfWVhWZW9wbEU5WGFiaGR4U0paRnRfXzhvNnZURGhRcEw4VGFRcVQtM2dlMnJwX0VvaWE4TkhmcFR5ZXZIS2otZXpNWHZsRkpPUnR6VllvbXpaQzl2S2xYOVhObHlORXkyQVhhaFAtbzU4ZHVoMXd6dEZXeTJQdFg0?oc=5",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T14:14+08:00",
      "via": "Google"
     }
    ],
@@ -940,6 +1374,54 @@
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPZHEwSjZPOEZpVXN2UDR1cGNnOVVRS2pUQ0pReDBxV090eEljSmhVVThCeE5mUjU1TUhNVzhrZDA5MTNFSXB4N1JMRmw5VjFxejlESmhOb0NNOE5tSjg4VEtlUmlVUDFDam14RWtRUHE4Tm1RSWtnS0FjSF9hUm92Tno5c1dPYlRkczk1WUx5M0h6dGt5WGxzdmZ2NmdEdG81ZE81OVVKMGgwV01oTThQYkpLWF9yVFJxMGc?oc=5",
      "date": "2026-10-20",
      "ts": "2026-10-20T12:11+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "behindsbisbidtobuildadigitalassetempirei",
+   "title": "Behind SBI’s bid to build a digital asset empire in SEA",
+   "date": "2026-10-20",
+   "last": "2026-10-20",
+   "ts": "2026-10-20T09:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Behind SBI’s bid to build a digital asset empire in SEA",
+     "src": "Tech in Asia",
+     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPa0pwLV8wcE1acDRUcDVfUGdVTWxWX05tVmh2M1VISENpTXQyS19wZkNoNjlydmVocXFhUDBiSW1DYzZuWDNkVEtWaEF6S2ZGVmsxTVh5dEh3MlJkV0xnWVp4NnJhcVBEYkZqMnExRW9HOFJBU1ctdFZoMzBmUEVMQkhkLWtRblh4Ylo0MjdYWmZFWFFpTzQzcUphVUdhbWhLVUVGZmFVU2I?oc=5",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T09:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "dontbuyxtocryptoxtruthoilspassiveincomep",
+   "title": "Don’t Buy XTO Crypto: XTruth Oil's Passive Income Promises Raise Major Red Flags",
+   "date": "2026-10-20",
+   "last": "2026-10-20",
+   "ts": "2026-10-20T23:43+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Don’t Buy XTO Crypto: XTruth Oil's Passive Income Promises Raise Major Red Flags",
+     "src": "CoinCodex",
+     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE95SVdzX3VvSS1qbW9FdnBuYXVISW54a3ZPWWlHZE85WGpGNFZDa2trV2hSZGttM0YySFlEMDFMMVpGNFVrLXNXNE9IUzFTQkN0TGxhLWhoWDEtenRVd3JwV2R3?oc=5",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T23:43+08:00",
      "via": "Google"
     }
    ],
@@ -1630,30 +2112,6 @@
    "role": "资讯"
   },
   {
-   "id": "gwdc2026korea首尔圆满落幕港韩共筑政策技术双引擎开发者聚焦ai智能体",
-   "title": "GWDC 2026 KOREA 首尔圆满落幕：港韩共筑政策技术双引擎，开发者聚焦AI 智能体、稳定币与RWA 创新",
-   "date": "2026-10-17",
-   "last": "2026-10-17",
-   "ts": "2026-10-17T23:49+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "GWDC 2026 KOREA 首尔圆满落幕：港韩共筑政策技术双引擎，开发者聚焦AI 智能体、稳定币与RWA 创新",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5XZnNoSGRTVmpjWnlLWExjb19FTTBoQWoxZXdNZEVZeWswenJpNjk4bHg2dkJMbmJ5OXg4QU9XdzBZSzZpM0ZoTS04T0tOUG9NNWNSR2FpREloVUZrTEl5ZFdRRWhiSnEwQnhETG1RWGY4NUhGdFVTOWUtbmdyRVk?oc=5",
-     "date": "2026-10-17",
-     "ts": "2026-10-17T23:49+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "股票代币化繁荣背后谁在赚钱谁在替人做嫁衣",
    "title": "股票代币化繁荣背后：谁在赚钱，谁在替人做嫁衣？",
    "date": "2026-10-17",
@@ -1670,6 +2128,30 @@
      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWmdLeTVPLW1tMnE4U3FXQVpwTHdRSW9ucDBNMmNUak5qY3pWYnVVS3hYY3F5T1hZVFFwQlhaMl9GYi1ZYXRZaUlxajJYZE9SMnNOV1Znd3A1SzVWWUxUS3NUcWpEX0M5VlEwRXZQb2ZYcUM5Ukk2WnVOenhxelFNVXB3UHdCcE5MT3duNGR6dzhQRUFqXzhFa0NOcHpFS05DUUZR?oc=5",
      "date": "2026-10-17",
      "ts": "2026-10-17T23:11+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "gwdc2026korea首尔圆满落幕港韩共筑政策技术双引擎开发者聚焦ai智能体",
+   "title": "GWDC 2026 KOREA 首尔圆满落幕：港韩共筑政策技术双引擎，开发者聚焦AI 智能体、稳定币与RWA 创新",
+   "date": "2026-10-17",
+   "last": "2026-10-17",
+   "ts": "2026-10-17T23:49+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "GWDC 2026 KOREA 首尔圆满落幕：港韩共筑政策技术双引擎，开发者聚焦AI 智能体、稳定币与RWA 创新",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5XZnNoSGRTVmpjWnlLWExjb19FTTBoQWoxZXdNZEVZeWswenJpNjk4bHg2dkJMbmJ5OXg4QU9XdzBZSzZpM0ZoTS04T0tOUG9NNWNSR2FpREloVUZrTEl5ZFdRRWhiSnEwQnhETG1RWGY4NUhGdFVTOWUtbmdyRVk?oc=5",
+     "date": "2026-10-17",
+     "ts": "2026-10-17T23:49+08:00",
      "via": "Google"
     }
    ],
@@ -2047,28 +2529,28 @@
    "role": "监管"
   },
   {
-   "id": "cambodiacryptoregulationentersadecisiveq",
-   "title": "Cambodia Crypto Regulation Enters a Decisive Quarter Ahead of Black Swan Summit Cambodia",
+   "id": "中证监打击非法跨境炒股整治跨境券商",
+   "title": "中證監打擊非法跨境炒股 整治跨境券商",
    "date": "2026-10-16",
    "last": "2026-10-16",
-   "ts": "2026-10-16T02:33+08:00",
+   "ts": "2026-10-16T17:59+08:00",
    "topics": [
-    "监管"
+    "中资券商"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Cambodia Crypto Regulation Enters a Decisive Quarter Ahead of Black Swan Summit Cambodia",
-     "src": "Disruption Banking",
-     "url": "https://www.disruptionbanking.com/2026/10/16/cambodia-crypto-regulation-enters-a-decisive-quarter-ahead-of-black-swan-summit-cambodia/",
+     "title": "中證監打擊非法跨境炒股 整治跨境券商",
+     "src": "etnet 經濟通",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE92OF9FR25WNUZUMjVTY2wyTnRtb3ExY04tZ21ha3dnM2JId19yOEp6NlhRNE9xaUp5aUhHdkNNOE9XZ3c1VlkxRWR5eGhONUoxR3VRSElR?oc=5",
      "date": "2026-10-16",
-     "ts": "2026-10-16T02:33+08:00",
-     "via": "Bing"
+     "ts": "2026-10-16T17:59+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "监管"
+   "role": "中资券商动态"
   },
   {
    "id": "hashkeyexchangelaunchestokenizedwealthma",
@@ -2077,7 +2559,6 @@
    "last": "2026-10-16",
    "ts": "2026-10-16T13:52+08:00",
    "topics": [
-    "RWA",
     "竞品"
    ],
    "n": 1,
@@ -2095,7 +2576,7 @@
      "src": "CoinTrust",
      "url": "https://www.cointrust.com/market-news/hashkey-exchange-launches-tokenized-wealth-management-platform",
      "date": "2026-10-16",
-     "ts": "2026-10-16T01:01+08:00",
+     "ts": "2026-10-16T06:50+08:00",
      "via": "Bing"
     }
    ],
@@ -2389,30 +2870,6 @@
    "role": "资讯"
   },
   {
-   "id": "trugolfsacquisitionofpolymathpositionsco",
-   "title": "TruGolf's Acquisition of Polymath Positions Company in Growing Regulated Asset Tokenization Market",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T06:09+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "TruGolf's Acquisition of Polymath Positions Company in Growing Regulated Asset Tokenization Market",
-     "src": "citybuzz -",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNWmZFeVBDamxHNkpVZlhKYnludFBvQkRIbjU1WFRud1l6RWVDMzcwYU0tRmlueWdXTzhJZ1oydkpOS1dDaFJMMk1KTFI5UVA5ZjZOMmxBaVgzeUpiVjd0b0wtVm1hOERCYjctRF9IdXI0ang4TC05NHdfaWpXWU5CbGtsY0N5WkxHUVFUaEhmbV9fTE95V1R6cENiTXNoUG51OF8yMEEzOTVyWnl5UVRETTI1bFNjVU1nelE4M3hiQi1mZGl2djlDdWo4eWF6Zw?oc=5",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T06:09+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "blackrockscryptoportfoliokeyinvestmentsi",
    "title": "BlackRock's Crypto Portfolio: Key Investments In 2026",
    "date": "2026-10-16",
@@ -2437,23 +2894,23 @@
    "role": "资讯"
   },
   {
-   "id": "swiftsblockchainledgerrevolutionthefutur",
-   "title": "Swift's Blockchain Ledger Revolution: The Future of 'Tokenized Deposits' with 17 Mega-Banks Now Live",
+   "id": "avenirgroup孵化的umx正式上线支持港美股与加密资产交易吴说区块链",
+   "title": "Avenir Group 孵化的UMX 正式上线，支持港美股与加密资产交易- 吴说区块链",
    "date": "2026-10-16",
    "last": "2026-10-16",
-   "ts": "2026-10-16T15:29+08:00",
+   "ts": "2026-10-16T18:59+08:00",
    "topics": [
-    "RWA"
+    "机构需求"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Swift's Blockchain Ledger Revolution: The Future of 'Tokenized Deposits' with 17 Mega-Banks Now Live",
-     "src": "note",
-     "url": "https://note.com/gentle_gibbon604/n/n83beb1dfbe99?hl=en",
+     "title": "Avenir Group 孵化的UMX 正式上线，支持港美股与加密资产交易- 吴说区块链",
+     "src": "吴说",
+     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNY3VNVVU4Z1RXTzJiM2R6d3NSZ1Rmd3U1M0YzWmFmRnNiUlVPSWtuMXA5c0xiQk5SQ1RWbkZ3eDBCVDE3amx5S0t3d3VkS0ZZNlBYZGdlU3RmNTFYQlpyc1c4V3p6ZTFiWjNhRFFKQ045Wm0zczktMnd6cE92VlNPaWxTbzBrZHBYbFlzVUR2UkgzZkNKVV9uUUJocUc2UWc?oc=5",
      "date": "2026-10-16",
-     "ts": "2026-10-16T15:29+08:00",
-     "via": "Bing"
+     "ts": "2026-10-16T18:59+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -2687,30 +3144,6 @@
    "role": "监管"
   },
   {
-   "id": "投资警示证监会wealthonewealthbrokernovaroglobal",
-   "title": "【投資警示】證監會：Wealth ONE、Wealth Broker、Novaro Global屬無牌公司 投資者指無法提款",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T17:03+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "【投資警示】證監會：Wealth ONE、Wealth Broker、Novaro Global屬無牌公司 投資者指無法提款",
-     "src": "香港經濟日報HKET",
-     "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPRmR4czJKdjNUWWRUZlFzb1I4Zm5IQWZTNHR0TTNRSWVwUGd2aVNRTnNGS01DYXBBZGZldG1yOGc3UjVXQldudk93U0tpUkFpUTc4X3ZFcTk3RHlQdVJpYVBfYURUSE9mNm5mdkp3ODlpelRtcDNDM2M4YmhEUTJNZDg4U3RQTmNsTHBWVmxDTnVVVVI1Q0R1TTlkdk9JMDNrZEp1RlFKXzFRd2tJ?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T17:03+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "1015犀牛财经早报香港证监会重拳出击3个ipo操纵案",
    "title": "10.15犀牛财经早报：香港证监会重拳出击3个IPO操纵案",
    "date": "2026-10-15",
@@ -2728,54 +3161,6 @@
      "date": "2026-10-15",
      "ts": "2026-10-15T10:55+08:00",
      "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "澳大利亚金融监管机构在牌照截止日期前寻求对加密货币交易所实施更严格的规则",
-   "title": "澳大利亚金融监管机构在牌照截止日期前，寻求对加密货币交易所实施更严格的规则",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T17:53+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "澳大利亚金融监管机构在牌照截止日期前，寻求对加密货币交易所实施更严格的规则",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxOOG93NnNUcmpzVmJjaEgyZEhONVV5Y1hkVm5aSTY4N0tja1dIRi1OcTh2OFh4d3loMmV5bGEzODBSR0lEZGlmQ2w0blVyMlJVNE1xc21zYllQc012TFJLX0ZQWWRJRl9wbGRob0hBdW9PbmhCcnpFYnRweVJuSjYyUG5Gc2llaWY1dmdwTG9KYlpoaGpZcUFKbEdVd2Y0cHNsbUQ3d3BwMWhJLXRTcmZKMjdlQVdlcTN4dkJMLW9BelhWYjl4a1RRaUhhRmZNT29kS2ZtSXRHcUd4Ym5ydEE?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T17:53+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "hkmaannouncesartframeworktopromoterespon",
-   "title": "HKMA announces “ART” Framework to promote responsible A.I. adoption",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T14:32+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "HKMA announces “ART” Framework to promote responsible A.I. adoption",
-     "src": "Hong Kong Monetary Authority",
-     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxPRWhiS283bXJCTXZpSFBHbGdjVEM1ckRVdGxnVVhWcElReHBqX3RNS0RWMnRoaTl1a0FZdndvNjRSdjJmdFhRZWphb2J5WlJaUGdReHpuNlRuVlJqdHg3RUVwLTE0QVBYaDBoQWpoRVhacHdtUlhTQ1lhZ0N0OHBpcmg3Yw?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T14:32+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
@@ -2807,23 +3192,23 @@
    "role": "资讯"
   },
   {
-   "id": "发行人反击战九家美股发行人为何反对上架自家股票代币",
-   "title": "发行人反击战：九家美股发行人为何反对上架自家股票代币？",
+   "id": "bestcryptoexchangesandtradingplatforms",
+   "title": "Best Crypto Exchanges and Trading Platforms",
    "date": "2026-10-15",
    "last": "2026-10-15",
-   "ts": "2026-10-15T15:00+08:00",
+   "ts": "2026-10-15T01:00+08:00",
    "topics": [
-    "RWA"
+    "竞品"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "发行人反击战：九家美股发行人为何反对上架自家股票代币？",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE03OFh2RDJHWEtCMTdWLVNrdWNoa04tckVOaEhpZ3k1Z1J6X1pWb2ZLN0xLVXBXWlVKcXFNWElSYktTU3RtVF9kWDBFUlVxVTRZR0x3Mzg3VGpTTC1CWUw2eFp1NzJFeG9fblVFUHFDWnpKSFdyLThWOHRjMHRyMmM?oc=5",
+     "title": "Best Crypto Exchanges and Trading Platforms",
+     "src": "CryptoSlate",
+     "url": "https://cryptoslate.com/crypto-exchanges/",
      "date": "2026-10-15",
-     "ts": "2026-10-15T15:00+08:00",
-     "via": "Google"
+     "ts": "2026-10-15T01:00+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2848,54 +3233,6 @@
      "date": "2026-10-15",
      "ts": "2026-10-15T20:30+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "tokenizedsecuritiesvsownershipwhatinvest",
-   "title": "Tokenized Securities vs Ownership: What Investors Really Own",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T14:35+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Tokenized Securities vs Ownership: What Investors Really Own",
-     "src": "CryptoPotato",
-     "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNaXdXVENoemN5dXBUaW9qVW9TT3VCNDJWTEZJVXFqWnNTNUpTSmFEcmEyVVJ3d1hSWUo4ejhidllYcTdaR2pfRmVReEd2TUU3SW43bGVYOXBHdzdZM0dEbVhRRnpfVndYUUkyaXJiWWRTbWJZTnowYWdjUDkwdzB3c1hfQWhEQjNoa2x6MERR?oc=5",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T14:35+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "bitfufuandfinlooplaunchhashratetokenhash",
-   "title": "BitFuFu and Finloop Launch Hashrate Token (HASH) Tokenized Note for BTC-Denominated Mining Exposure",
-   "date": "2026-10-15",
-   "last": "2026-10-15",
-   "ts": "2026-10-15T11:11+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "BitFuFu and Finloop Launch Hashrate Token (HASH) Tokenized Note for BTC-Denominated Mining Exposure",
-     "src": "quiverquant",
-     "url": "https://www.quiverquant.com/news/BitFuFu+and+Finloop+Launch+Hashrate+Token+%28HASH%29+Tokenized+Note+for+BTC-Denominated+Mining+Exposure",
-     "date": "2026-10-15",
-     "ts": "2026-10-15T11:11+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
