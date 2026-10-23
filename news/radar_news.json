@@ -1,30 +1,30 @@
 {
- "built": "2026-10-23T05:41+08:00",
+ "built": "2026-10-23T08:42+08:00",
  "since": "2026-10-16",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 25,
-   "in_window": 8
-  },
-  {
-   "topic": "监管",
-   "q": "证监会 虚拟资产 交易平台",
-   "fetched": 18,
-   "in_window": 4
-  },
-  {
-   "topic": "监管",
-   "q": "香港 稳定币 牌照",
-   "fetched": 21,
+   "fetched": 26,
    "in_window": 7
   },
   {
    "topic": "监管",
+   "q": "证监会 虚拟资产 交易平台",
+   "fetched": 20,
+   "in_window": 6
+  },
+  {
+   "topic": "监管",
+   "q": "香港 稳定币 牌照",
+   "fetched": 25,
+   "in_window": 12
+  },
+  {
+   "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 17,
-   "in_window": 8
+   "fetched": 16,
+   "in_window": 9
   },
   {
    "topic": "监管",
@@ -41,13 +41,13 @@
   {
    "topic": "中资券商",
    "q": "券商 香港 虚拟资产交易 升级",
-   "fetched": 12,
+   "fetched": 13,
    "in_window": 1
   },
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 17,
+   "fetched": 16,
    "in_window": 7
   },
   {
@@ -65,8 +65,8 @@
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
-   "fetched": 15,
-   "in_window": 0
+   "fetched": 18,
+   "in_window": 4
   },
   {
    "topic": "竞品",
@@ -77,14 +77,14 @@
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 36,
-   "in_window": 20
+   "fetched": 38,
+   "in_window": 24
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 46,
-   "in_window": 38
+   "fetched": 45,
+   "in_window": 36
   },
   {
    "topic": "机构需求",
@@ -105,7 +105,7 @@
    "in_window": 4
   }
  ],
- "articles": 129,
+ "articles": 142,
  "stories": [
   {
    "id": "hashkeyrwa推出hashkeyhtoken系列首款产品提供一站式发行解决",
@@ -223,6 +223,138 @@
    "role": "监管"
   },
   {
+   "id": "rwa解码千亿资金已上链资产代币化新钱流四关定成败",
+   "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T08:00+08:00",
+   "topics": [
+    "RWA",
+    "监管",
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMiiwNBVV95cUxNZVNCZXJDcEczZEJQLWZvYmEyeEdsd3R4eFN1aTJERWJrcjNuYThablhZVlZ3TWxZZXFyUUItTmVyTFBZaFFSenEwNDJ3aENjRU14Q1l4RnJVR3Rmd19Zcy1ZNUFlaFhZVERzVTNjUFVja3lVN0xGSm5UODZFMkdNSTFJUkZPR0p5cENjNHlyOHpjd2F3TFhkM1Vub20yZ1pNeGxhVkNuaUJKaV9wbERta05qT3A5djhBZFVPbjdNdTdRT2EyUDN0WEI0V3l3OWxNcnJheHFIVXJ2bmFqZGp5YlhTTmxsVmVScWgtRXk5dlRiZzdNSFFza2NQZmd0d2VDeE40MGFtc2tPMXZIVEMwODlPaWV2Zzh4cFNMMllvdW9zczI1ODBUaGlwNkdTeTZhcVFYdzZPMFliUWJkeTRBU0RoU1JmejQ1ejZUUzRkWk50MUE4OVlLVHZDZHVJRDB6empnNmwtckRWdmxOUXFBR1BWSWE3TGpvLVdZbnd5eUt5VXhZaGF1V0JrUQ?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "RWA解碼｜千億資金已上鏈！ 資產代幣化「新錢流」 四關定成敗",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMihwNBVV95cUxNS3oxU0tVOHp1UGMtNFlwdklGbWdZdEszYnNPdElPRXdKTWppQ1NKSlo1bXR0SEEzaVhSRUlCNmg4V3A3QWFjTmRITkVPb3d4RjF0SFBuUXVvNXY5TkNETnB4UVlaNWcyOF9ZZlFqUjJScVBUY0dqMFBhNFpESFBNMWJCTEtTR0xiZHpGN3ZzdWltQThpakNBQkh0amlGWXVTbC1MQ2NqZTQ2Q1JYaFRKdmRXWEFoNUpFTUxYU1BPeFloTjdYNjlUZ3ZNenhJMW5iUVBwQjlxTURxejZEZThyeVpYQWZncktVTE5TTTI5OS0wU2FheWZWOVVhdVZ4OHhRbF95RlplN2tuYVdUcTRxRHpiSFFraW9pVlhNZWw2N3dIeC03cWgyMElmNHVVVTZ6d0puaUo2QlpOZUxWdVpvRUNyLVdtQVN3ZUlSb3NJWE1BV3RWS2haY01OUWlBTi13dW9wOVczYnZpMXJZY29wcU5NY0RMLUdvckF4cjdFby1CT185RTRB?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "rwa拆局监管不松技术看似悭皮为何机构仍争做代币化",
+   "title": "RWA拆局｜监管不松、技术看似悭皮 为何机构仍争做代币化？",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T08:05+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "RWA拆局｜监管不松、技术看似悭皮 为何机构仍争做代币化？",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMiigNBVV95cUxNNWdBdkVBemR4b2M0NnlDSmhGRFBfRnFJTmtNbTktcGhHUUh2X2M1ZklLeC1pYm9aZ3BCM0t0NTNBQzFPd0JwdnhfQ1R6N0ZjamFsN3Jheno1WkZaVjZMSkdCMlpidG01RHJZc2xoZnhQSkVjVDA0akNtNTREY1ZjbjBEdjAyS3NtWWRrLXFJbXJIdU9HaGlHbEVRLTRra2VkUEJVR3I2eXJsdHN5SWp1QXdpaVM2dmdGbjFiVWloakJEa3J2MnhicHlwTVhpaU5YOVlJVTNfNVlWRWFsNWh3ZjRTUi0xc0NQTmVyX0RuMndGcXYzNnJwZDB2WG9UTnY0UkVFZUVyQXdNVmw1MlBTMXU2LUdfZ2pCVTdFSGJHeUNJeGYtQnJCX3dFQVJXSk5fNjNpZzV5ejVhUXhudHhWVlptNHc1bkI3Ny1GcFJIa1BJeWpNWmduWjRpaVZqbWtmdG5UUG5kQlN3bE5ZLVZSTVFfZzNRV2kyOGxHV2hmMkxtUmtfMHdSQjNR?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:05+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "RWA拆局｜監管不鬆、技術看似慳皮 為何機構仍爭做代幣化？",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMihgNBVV95cUxQZlpvbGRNVC1nWUN3TjRaRWh5N3BrbFJHR0tPVWxjNUFweEN0SmNJckRIWXBIU2F0eWdvMENUUDh3cG1iV0FNNGpRTEVOQ1ltNE9uSWNrLVcxLTlUY3JIWGlzTlRyZ0kwdHQta3pFQm9KcW5oTS1RWndsbThmckp3bFFFaDZNc3R2YjZRNlBuYnFEVXhWUGRfLVVjYkdLaEJZWW9rajJjMnFiUFVlUGZVRGQtRlFVVTBEUDFtTWdtR1F5U3ZlaE4tTkQyclZKYWRmT1NSenJJRTNCY0Q0Mml5dXcyNzZ6TXl1NHFiY0dCQ0lyR18tM2lMTTBla3FMUnJtdFV4UTJxaE5JQUNEbTIyWFZQVXJ1bTJoRWhVSkt0TFkwZzA5aDJQM25kNUlpampjdmNVa2RLN0hDQnVyb0NaU2FZdDRDNTM5NnhqREVhM09yOU9jYTNvZmFlTlNGeWFGRHJYdXRqSkhqNmZuREZiOV9ta2pYSmhiZ0dNQ2o3YWI5UXZXMFE?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:05+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "汇丰推稳定币redcoin首阶段支持以payme支付即时新闻产经oncc东网",
+   "title": "滙丰推稳定币RedCoin 首阶段支持以PayMe支付｜即时新闻｜产经｜on.cc东网",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T07:27+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "滙丰推稳定币RedCoin 首阶段支持以PayMe支付｜即时新闻｜产经｜on.cc东网",
+     "src": "on.cc東網",
+     "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPSEQtT2F2TEJVenYzNldsYnUtekRKVmRzelVxa1JQX1ZWVHBvdXpoOW1qZzUxblBFWEc1Rk9meXkyenpKVl9GVlExWl9kSWV1dE9aWnUyd1hUMi0xUlRJVEp6OF9samtNbTBsNXV5Z0lxNmd6bTFhWV9ZM2pBcEozb3g0aWNxNUFHVHhOUGZfR25TaW8?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T07:27+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "滙豐推穩定幣RedCoin 首階段支持以PayMe支付",
+     "src": "on.cc東網",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOajBTbzAzTDFTWWtnLXhnbDZhbTZfd2ZLTXloZGpLSzZMaWlBVjFLd1EyMVNyVWdfZGVVYUdaQ2Q1WkZNRnJ0Q0d4OU9udXZLanYtVktGUjZ4NGp2TldZLVdZRGxkM3pKU3MxSVBpeG0zWFAycVczbmRkanMwYVNaVUZWbXp1Q20wWlQxQ1dpSQ?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T07:06+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "rwa解码二级市场冰火两重天学者吁港求变发挥固有制度优势",
+   "title": "RWA解码｜二级市场冰火两重天 学者吁港求变发挥固有制度优势",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T08:10+08:00",
+   "topics": [
+    "RWA",
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "RWA解码｜二级市场冰火两重天 学者吁港求变发挥固有制度优势",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMirANBVV95cUxQeExlVmdMUHFOd3JvOTNoNXh6dzVVMTV5cWc3M0U3YXZMekc1bllXbXRFbzhPZlRmSWhtSEMwY0QtNFYzRGRaSno0djVlM2ZjVjJlSjJnaEsySTByMG4teElkSDRISHpxcUxobERLZEhKWXdrdWVxOTBmdEdUWW5lZGNGQVVRaEwzZ21ydXhDaWhnSGVkbGpVc0MyUDFDaXE5UkkzclE2ZXhFUE4zR1lpd3hvc0VRd3JtaHYtMUYtczdYMEhTakRDb0NKNUlhT1I0eVdnUnVTMXQ2VkE0b2wyV0FyLUx4cC1qUzhacjVxczBjYXJOcEc2NnpXLVFac2ZmN09zMjZ0ekJZVlhOcWtybVd6cWJDb2gwV1pva2lnaHprSDdXMkN0a0tkc3N5UzdNZVhDMGt1dXFHWXdjZEwwVzRnZ1ZsQ2JWcWx3ZUZWZVJFS3ZTaGF5Vk9vX1RkMVF5ZHN6Zk54WlNmSXhnT3lyRWZGQ2NxOGJZZUxYbjZhMVNLRDh5V2hfU0Q0aUN1YnVFRHNHaHZPeFpFV21mOWdGd2kzZ2JSQi02c3VGZA?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:10+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "RWA解碼｜二級市場冰火兩重天 學者籲港求變發揮固有制度優勢",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMiqANBVV95cUxQd2RUOU5ZY1VpTDNwamN3X3MzdERsanlmUUVWbmpoY3VUMHNXVncxNzZ4TUxpYTJRX1ZXRnhIS0VQUmNqUmZXUFMyMzhmYnBWZmw4ZG80YWt0R2h2S2pVOGxIXzBUbF9tcHdoZ2Exa1l2N3lLbFJIVmd3VlN1ZFpBSzRDQzZLNFdqeWxVNGFvRXlKUnA2OGRxNGFVSFpvZTFKV1JuUldLQ2tLdy1ZZ3ROVXFfRHB1cEFnSHllSmMzMGFWWWJFbkVvVm03MDBwLVMzWmg1NTQwWlBKVnlDMkhEME0wWVlhNDhYdGpmMGZPdDFxejNnaktodjBPTWY3TlIzU2xmSjVLTjg4UllwYzA0QjQ2cFRLVndtYmwxOHdscFhOazJGUWJLdGRKdlRaLWZMSF9zSVdBeVd4b0RpTWl6cVZ5bWUwNzN2RDktOHFHTk1VVWRqYVhiMzlacHpoRVJZSC1nME5TS0J0bGxMTmhvVVNza2oyeEJRU3BUQWdSRlR4RmJfSEh3bVQxa1hBSHYtMGp0ODIyNTNqUGlaU2h4Uk5HcmRWRmZq?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:10+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "altcoinsarecryptosstockmarketbitcoinisit",
    "title": "Altcoins Are Crypto’s Stock Market & Bitcoin Is Its Gold",
    "date": "2026-10-23",
@@ -239,6 +371,30 @@
      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOUmlpa21RcURlV09HTnNDdU1seFE1czY1TjNpRU4xT3FvM1JST1daQWxJaVBmWlo5Q0xDNjJTOVdkZHpKaWVwdnpkY3RxUWlOcUFaSWpxbW05aFo5dmNPbF9VSlFQbkUwa1lGMTdveEJmU3NRalhmVGdhVzFpZFpRUWh4V0FsTnRDN2lnUk9PTm5aY0t1X0NkeXgxdVNsUm5OR1QxaTA5eXlNWC1yMENwZQ?oc=5",
      "date": "2026-10-23",
      "ts": "2026-10-23T04:32+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "everythingyouownwillliveonchainthankstor",
+   "title": "Everything You Own Will Live On-Chain Thanks to RWA Tokenization",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T06:19+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Everything You Own Will Live On-Chain Thanks to RWA Tokenization",
+     "src": "CoinMarketCap",
+     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTWdnUlJRUEFmeVh1Zmk5REMxNHRjb0tYUFVQdE1WZHh3RlJMME4tTHEwblNpSjNGX2d5QTBJb3VYV0dXYlNyTE43WTV1OW1tdTZLQ1g1dnhmcW9GTWhBQk5nQlY3cTdnLWl4amdxSWFuYVUtX2JlVkZHb1gwQl9NY084cmNBV2wwZWQxYTFMYw?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T06:19+08:00",
      "via": "Google"
     }
    ],
@@ -343,30 +499,6 @@
    "role": "监管"
   },
   {
-   "id": "渣打银行正式签约全资收购加密托管商zodiacustody五地持牌业务并入证券服",
-   "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
-   "date": "2026-10-22",
-   "last": "2026-10-22",
-   "ts": "2026-10-22T01:00+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "渣打银行正式签约全资收购加密托管商Zodia Custody，五地持牌业务并入证券服务部",
-     "src": "blockweeks",
-     "url": "https://blockweeks.com/business/330705",
-     "date": "2026-10-22",
-     "ts": "2026-10-22T01:00+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hongkongsregulatoryandlicensingstablecoi",
    "title": "Hong Kong’s regulatory and licensing stablecoins framework",
    "date": "2026-10-22",
@@ -392,6 +524,71 @@
      "url": "https://law.asia/hong-kong-stablecoin-licensing-regime/",
      "date": "2026-10-22",
      "ts": "2026-10-22T08:51+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "whichbrokersoffercryptocfdsinhongkong",
+   "title": "Which brokers offer crypto CFDs in Hong Kong?",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T23:06+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Which brokers offer crypto CFDs in Hong Kong?",
+     "src": "Economies.com",
+     "url": "https://www.economies.com/investing/crypto/which-brokers-offer-crypto-cfds-in-hong-kong%20-111",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T23:06+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hsbclaunchesredcoinstablecoinfor33mpayme",
+   "title": "HSBC Launches RedCoin Stablecoin for 3.3M PayMe Users in Hong Kong",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T04:03+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "HSBC Launches RedCoin Stablecoin for 3.3M PayMe Users in Hong Kong",
+     "src": "kucoin",
+     "url": "https://www.kucoin.com/news/flash/hsbc-launches-redcoin-stablecoin-for-3-3m-payme-users-in-hong-kong",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T04:03+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "HSBC Launches RedCoin Stablecoin for 3.3 Million PayMe Users",
+     "src": "kucoin",
+     "url": "https://www.kucoin.com/news/flash/hsbc-launches-redcoin-stablecoin-for-3-3-million-payme-users",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T04:03+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "HSBC Launches Stablecoin RedCoin for PayMe Users in Hong Kong",
+     "src": "kucoin",
+     "url": "https://www.kucoin.com/news/flash/hsbc-launches-stablecoin-redcoin-for-payme-users-in-hong-kong",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T04:03+08:00",
      "via": "Bing"
     }
    ],
@@ -660,30 +857,6 @@
    "role": "资讯"
   },
   {
-   "id": "canton基金会看重台湾与资策会签合作备忘录先培育rwa人才",
-   "title": "Canton 基金會看重台灣！與資策會簽合作備忘錄，先培育 RWA 人才",
-   "date": "2026-10-22",
-   "last": "2026-10-22",
-   "ts": "2026-10-22T18:57+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Canton 基金會看重台灣！與資策會簽合作備忘錄，先培育 RWA 人才",
-     "src": "動區動趨",
-     "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOR3pNTG5mU3lfZlZBU2h1RUNKVTNrMTNnRWg4cy1hUllqc1BnM0syOGx1aGFVSU9nM3Q4ZHlDeko2TWZ2eWQyckg1dFNYTFljY2RoeGdOT1YzRU5RcWwyNmNuZmIxTU55ajQ3dnluZUdjUnJINUZVWENMNXZvY1lZSTBDbG4tX3pka1AtSy1aODBiR1FKQWdLMFZ5eU1BYXJYaWFIQkNoOHVuemQxMGc?oc=5",
-     "date": "2026-10-22",
-     "ts": "2026-10-22T18:57+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "cmccglobalpartnerswithtetherandbitfinexs",
    "title": "CMCC Global Partners with Tether and Bitfinex Securities to Launch the First Tokenised Fund-of-Funds Under El Salvador's Digital Asset Framework",
    "date": "2026-10-22",
@@ -709,6 +882,30 @@
      "date": "2026-10-22",
      "ts": "2026-10-22T12:33+08:00",
      "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "sofipays44onatokenizeddeposit",
+   "title": "SoFi Pays 4.4% on a Tokenized Deposit",
+   "date": "2026-10-22",
+   "last": "2026-10-22",
+   "ts": "2026-10-22T12:26+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "SoFi Pays 4.4% on a Tokenized Deposit",
+     "src": "The Defiant",
+     "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxQSDVhUmVLUTNza2hpNXhxQWhIa05pWjdpS3VpbzUyLUhfbHBtOEE5NEdfc0ZraVhDMWx0VVlGMktZVEJwTmZkSnlDY085TkVoTW9VeXZCQ1I4QUM1Xy1KU0ZaV0IwUEZkNi1hbEhid3IwdHlJcE9iLWlMdlVYb2FTU0hwSQ?oc=5",
+     "date": "2026-10-22",
+     "ts": "2026-10-22T12:26+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -1030,6 +1227,30 @@
    "role": "资讯"
   },
   {
+   "id": "web3labsfintechweek系列活动锚定未来rwa重塑全球资产流动性新",
+   "title": "Web3Labs Fintech Week系列活动：锚定未来，RWA重塑全球资产流动性新范式",
+   "date": "2026-10-21",
+   "last": "2026-10-21",
+   "ts": "2026-10-21T06:01+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Web3Labs Fintech Week系列活动：锚定未来，RWA重塑全球资产流动性新范式",
+     "src": "panewslab",
+     "url": "https://www.panewslab.com/zh/articles/8ae454d2-fc8b-47ab-9258-19a9d7c25fdc",
+     "date": "2026-10-21",
+     "ts": "2026-10-21T06:01+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "blackrockseestokenizedfundsmovingintowal",
    "title": "BlackRock Sees Tokenized Funds Moving Into Wall Street Plumbing",
    "date": "2026-10-19",
@@ -1038,7 +1259,7 @@
    "topics": [
     "RWA"
    ],
-   "n": 6,
+   "n": 5,
    "articles": [
     {
      "title": "BlackRock Sees Tokenized Funds Moving Into Wall Street Plumbing",
@@ -1055,14 +1276,6 @@
      "date": "2026-10-19",
      "ts": "2026-10-19T14:53+08:00",
      "via": "Google"
-    },
-    {
-     "title": "BlackRock: Tokenized Funds Accelerate Integration into Wall Street’s Financial Infrastructure",
-     "src": "kucoin",
-     "url": "https://www.kucoin.com/news/flash/blackrock-tokenized-funds-accelerate-integration-into-wall-street-s-financial-infrastructure",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T17:25+08:00",
-     "via": "Bing"
     },
     {
      "title": "BlackRock: Tokenized Funds Are Accelerating Their Integration into Wall Street's Underlying Financial Plumbing",
@@ -1142,55 +1355,6 @@
    "role": "资讯"
   },
   {
-   "id": "jpmorgandeploysdeposittokenonethereumsig",
-   "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T15:45+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-     "src": "kucoin",
-     "url": "https://www.kucoin.com/news/flash/jpmorgan-deploys-deposit-token-on-ethereum-signals-major-shift-in-stablecoin-market",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T12:45+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "JPMorgan Deploys JPM Coin on Ethereum, Signaling a New Era in Stablecoin Competition",
-     "src": "kucoin",
-     "url": "https://www.kucoin.com/news/flash/jpmorgan-deploys-jpm-coin-on-ethereum-signals-new-era-in-stablecoin-competition",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T12:30+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "JPMorgan Moves Deposits to Ethereum: Has the True Competitor for Stablecoins Arrived?",
-     "src": "techflowpost",
-     "url": "https://www.techflowpost.com/en-US/article/34716",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T01:00+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-     "src": "KuCoin",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMXZ3NWR4QUZtWENlakZoeUdUbkYwQzlPemxRZ3RTbkZSY05uVE1yUjhXaGUtR3lpVlI2a3BBVm5KelVKeWZBZTJlTWtkVzB3VzFQak5QbjVPVFg0MUFEdDhMLVJFcEE2VFJCbW52MTh4UVNIOFFBRzU3aFg3c09Gb1hvUWY2ZDYweTJOc3luZnlidzM1eDBsQnFoUnNsYnVxVXc4eW4zY2ZuMDJ4NU5nQ1lJdHVSSTlK?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T15:45+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "摩根大通把存款搬上以太坊稳定币真正的竞争者来了",
    "title": "摩根大通把存款搬上以太坊，稳定币真正的竞争者来了？",
    "date": "2026-10-20",
@@ -1255,11 +1419,11 @@
    "role": "监管"
   },
   {
-   "id": "bankinglegionassemblesthestablecoinmarke",
-   "title": "Banking Legion Assembles: The Stablecoin Market Structure Faces Structural Shock",
+   "id": "jpmorganmovesdepositstoethereumhasthetru",
+   "title": "JPMorgan Moves Deposits to Ethereum: Has the True Competitor for Stablecoins Arrived?",
    "date": "2026-10-20",
    "last": "2026-10-20",
-   "ts": "2026-10-20T12:22+08:00",
+   "ts": "2026-10-20T15:45+08:00",
    "topics": [
     "RWA",
     "监管"
@@ -1267,19 +1431,19 @@
    "n": 2,
    "articles": [
     {
-     "title": "Banking Legion Assembles: The Stablecoin Market Structure Faces Structural Shock",
-     "src": "chaincatcher",
-     "url": "https://www.chaincatcher.com/en/article/2297490",
+     "title": "JPMorgan Moves Deposits to Ethereum: Has the True Competitor for Stablecoins Arrived?",
+     "src": "techflowpost",
+     "url": "https://www.techflowpost.com/en-US/article/34716",
      "date": "2026-10-20",
-     "ts": "2026-10-20T12:22+08:00",
+     "ts": "2026-10-20T01:00+08:00",
      "via": "Bing"
     },
     {
-     "title": "Banking Legion Assembles: The Stablecoin...",
-     "src": "ChainCatcher",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hNVB2dGRSb2pVeUZnaVBoNXVmVl9OMFJPYjlmWnZ3TllTTDdrR1VxSUd3Z0JZNDhGdndmX2JDWnNCS0p6emNuaFVfQWVZTUF2bUhGNkFIRFdBb2c?oc=5",
+     "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
+     "src": "KuCoin",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMXZ3NWR4QUZtWENlakZoeUdUbkYwQzlPemxRZ3RTbkZSY05uVE1yUjhXaGUtR3lpVlI2a3BBVm5KelVKeWZBZTJlTWtkVzB3VzFQak5QbjVPVFg0MUFEdDhMLVJFcEE2VFJCbW52MTh4UVNIOFFBRzU3aFg3c09Gb1hvUWY2ZDYweTJOc3luZnlidzM1eDBsQnFoUnNsYnVxVXc4eW4zY2ZuMDJ4NU5nQ1lJdHVSSTlK?oc=5",
      "date": "2026-10-20",
-     "ts": "2026-10-20T12:06+08:00",
+     "ts": "2026-10-20T15:45+08:00",
      "via": "Google"
     }
    ],
@@ -1423,6 +1587,30 @@
    "role": "监管"
   },
   {
+   "id": "jpmorgantransfèresesdépôtssurethereumlev",
+   "title": "JPMorgan transfère ses dépôts sur Ethereum : le véritable concurrent des stablecoins est-il enfin là ?",
+   "date": "2026-10-20",
+   "last": "2026-10-20",
+   "ts": "2026-10-20T01:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "JPMorgan transfère ses dépôts sur Ethereum : le véritable concurrent des stablecoins est-il enfin là ?",
+     "src": "techflowpost",
+     "url": "https://www.techflowpost.com/fr-FR/article/34716",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T01:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "民企券商来港抢客战升级不惜工本由户外广告打到电视黄金时间",
    "title": "民企券商來港搶客戰升級 不惜工本由戶外廣告打到電視黃金時間",
    "date": "2026-10-20",
@@ -1487,6 +1675,30 @@
      "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPZHEwSjZPOEZpVXN2UDR1cGNnOVVRS2pUQ0pReDBxV090eEljSmhVVThCeE5mUjU1TUhNVzhrZDA5MTNFSXB4N1JMRmw5VjFxejlESmhOb0NNOE5tSjg4VEtlUmlVUDFDam14RWtRUHE4Tm1RSWtnS0FjSF9hUm92Tno5c1dPYlRkczk1WUx5M0h6dGt5WGxzdmZ2NmdEdG81ZE81OVVKMGgwV01oTThQYkpLWF9yVFJxMGc?oc=5",
      "date": "2026-10-20",
      "ts": "2026-10-20T12:11+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "bankinglegionassemblesthestablecoin",
+   "title": "Banking Legion Assembles: The Stablecoin...",
+   "date": "2026-10-20",
+   "last": "2026-10-20",
+   "ts": "2026-10-20T12:06+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Banking Legion Assembles: The Stablecoin...",
+     "src": "ChainCatcher",
+     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hNVB2dGRSb2pVeUZnaVBoNXVmVl9OMFJPYjlmWnZ3TllTTDdrR1VxSUd3Z0JZNDhGdndmX2JDWnNCS0p6emNuaFVfQWVZTUF2bUhGNkFIRFdBb2c?oc=5",
+     "date": "2026-10-20",
+     "ts": "2026-10-20T12:06+08:00",
      "via": "Google"
     }
    ],
@@ -1973,30 +2185,6 @@
    "role": "资讯"
   },
   {
-   "id": "cryptoswotthecoindesk20indexsurged527inq",
-   "title": "Crypto SWOT: The CoinDesk 20 Index surged 52.7% in Q3 2026, while Bitcoin rose 42.7%",
-   "date": "2026-10-19",
-   "last": "2026-10-19",
-   "ts": "2026-10-19T22:01+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Crypto SWOT: The CoinDesk 20 Index surged 52.7% in Q3 2026, while Bitcoin rose 42.7%",
-     "src": "Kitco",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOQ0Zmcm9mZjM2Z2JpTVZfdjhyQ25oRlMzRERjVHJZSjhRSVFfdmRmSDl5R1hwYlJjT2UyN2VDSlhEejZIZmRhUUZGMmJFUFFaWDVPa0lidjBWX3Q5V3hacUtCelpKc0x5aXhlTFoycThIYzRHSXlTSkpNZDhvQzl4TUVJQzJaYi1CTmhodTVJR0RPbUJzczFtNFVUUTRQbzItZWtwREJCT3Jpcm53MUJIYmxn?oc=5",
-     "date": "2026-10-19",
-     "ts": "2026-10-19T22:01+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "citiandfidelityannouncetokenizedmoneymar",
    "title": "Citi and Fidelity Announce Tokenized Money Market Fund Launch at Singapore FinTech Festival",
    "date": "2026-10-19",
@@ -2098,28 +2286,28 @@
    "role": "资讯"
   },
   {
-   "id": "goldmanwellsfargomorganstanleyseetokeniz",
-   "title": "Goldman, Wells Fargo, Morgan Stanley see tokenization as a growth play, not a threat",
-   "date": "2026-10-18",
-   "last": "2026-10-18",
-   "ts": "2026-10-18T01:00+08:00",
+   "id": "香港bbbgroup沉香投资疑为骗局售场外股票数字资产警方拘捕四人",
+   "title": "香港「BBB Group」沉香投资疑为骗局，售场外股票、数字资产，警方拘捕四人",
+   "date": "2026-10-17",
+   "last": "2026-10-17",
+   "ts": "2026-10-17T03:29+08:00",
    "topics": [
-    "RWA"
+    "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Goldman, Wells Fargo, Morgan Stanley see tokenization as a growth play, not a threat",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPTjNneWhkajVNVHI3U21TM2dLV1dvb2ZSa1ZHeVVkc0xzLUFvNmhybERoc0ZRVzFvZW1LMjlpZHdOWlludTc3Y0tZN1A0NkItenZDTTdyX0wySUdIcnh2MnZVN2g1UzlqLXc2ak9hRm0xRm5RZFRIVDM4Smpjc3VNTV81Nk4zTHdRWGJSVTZab0JhRFZnVDhzV2drZ1Azbk1LQXhyakRQbndYbHk4VVJ1ZXdhOXpxMEtwa0NLWXNSMHZ0X2RQ?oc=5",
-     "date": "2026-10-18",
-     "ts": "2026-10-18T01:00+08:00",
+     "title": "香港「BBB Group」沉香投资疑为骗局，售场外股票、数字资产，警方拘捕四人",
+     "src": "BlockBeats",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9qQ1VNZV9xenRsaXpJVFJKUTNZTUxNdXRkT2dnV2ZtSGh2cjQzYW82WDdqanNsQW5ncFZTSTh0ZVlVXzJqdkZ4cEk5Mk9fU21LT1h4QVdR?oc=5",
+     "date": "2026-10-17",
+     "ts": "2026-10-17T03:29+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "资讯"
+   "role": "监管"
   },
   {
    "id": "香港监管下虚拟资产交易的合规挑战与应对策略",
@@ -2162,54 +2350,6 @@
      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPdjVlajFBZnltNTc2a1R3VlRhX3RqdE1nTVBYaG5jZHJRSTQwZVRfc1NnZ0dMRk9HREdoV3Vfcl9RUUpVeTd4eTRWZGkwYUw4dXhFd2lTOFh4MGZGUC1zZ3p4RDdVY01tbDV1bXd5QVNXOVVfZ005Ty1TcVNhVmlsVGd5YXhyY0htSUhNM0ljWFlmTFJOU0NQWktYb0x2M09CcDBEOURnUnUxZGhHbzVqWW1LSnREdw?oc=5",
      "date": "2026-10-17",
      "ts": "2026-10-17T23:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "股票代币化繁荣背后谁在赚钱谁在替人做嫁衣",
-   "title": "股票代币化繁荣背后：谁在赚钱，谁在替人做嫁衣？",
-   "date": "2026-10-17",
-   "last": "2026-10-17",
-   "ts": "2026-10-17T23:11+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "股票代币化繁荣背后：谁在赚钱，谁在替人做嫁衣？",
-     "src": "吴说",
-     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNWmdLeTVPLW1tMnE4U3FXQVpwTHdRSW9ucDBNMmNUak5qY3pWYnVVS3hYY3F5T1hZVFFwQlhaMl9GYi1ZYXRZaUlxajJYZE9SMnNOV1Znd3A1SzVWWUxUS3NUcWpEX0M5VlEwRXZQb2ZYcUM5Ukk2WnVOenhxelFNVXB3UHdCcE5MT3duNGR6dzhQRUFqXzhFa0NOcHpFS05DUUZR?oc=5",
-     "date": "2026-10-17",
-     "ts": "2026-10-17T23:11+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "gwdc2026korea首尔圆满落幕港韩共筑政策技术双引擎开发者聚焦ai智能体",
-   "title": "GWDC 2026 KOREA 首尔圆满落幕：港韩共筑政策技术双引擎，开发者聚焦AI 智能体、稳定币与RWA 创新",
-   "date": "2026-10-17",
-   "last": "2026-10-17",
-   "ts": "2026-10-17T23:49+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "GWDC 2026 KOREA 首尔圆满落幕：港韩共筑政策技术双引擎，开发者聚焦AI 智能体、稳定币与RWA 创新",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5XZnNoSGRTVmpjWnlLWExjb19FTTBoQWoxZXdNZEVZeWswenJpNjk4bHg2dkJMbmJ5OXg4QU9XdzBZSzZpM0ZoTS04T0tOUG9NNWNSR2FpREloVUZrTEl5ZFdRRWhiSnEwQnhETG1RWGY4NUhGdFVTOWUtbmdyRVk?oc=5",
-     "date": "2026-10-17",
-     "ts": "2026-10-17T23:49+08:00",
      "via": "Google"
     }
    ],
@@ -2710,30 +2850,6 @@
    "role": "资讯"
   },
   {
-   "id": "mantralaunches108mfundtosupportrealworld",
-   "title": "Mantra Launches $108M Fund To Support Real-World Asset Tokenization",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T14:54+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Mantra Launches $108M Fund To Support Real-World Asset Tokenization",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOUVBYaUNpNzNnQzJzcnRTNm9GQWhjOE4zMTBpZ2Jlb3o5ZG9mdnFxMlduV25xalJCbVliS3hSTkpObnhjeFl5bTdRN3ZjdVdpV0dzYlcwVm1qc3V2dDVfUXcydm9SM2dhVEJPRGlXMmhoTmdJd3BZYmRGV2VGYmxhTkdCU0FnajQwb01ST2gwZUxXQ2JhZFR4YzMxYlVSdE9BOXFRY1lzZzVhUUVPWUVFOEFGWUk?oc=5",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T14:54+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "nexokatashesolutionscollaboratefordigita",
    "title": "Nexo, Katashe Solutions Collaborate for Digital Asset Wealth Expansion",
    "date": "2026-10-16",
@@ -2750,30 +2866,6 @@
      "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFA4NUctWmJKbmYtUVZjT09WTkpsaEwzRkdDRWVlM3BSVGVjUFRlcDhVYlp2bjdmYTU1ZFlJYWZORUEzYnc2dzRsRTZWUDA4aG9GUEFUZVAzN1RXX1J2Rl9feG8xNA?oc=5",
      "date": "2026-10-16",
      "ts": "2026-10-16T10:11+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "trugolfsacquisitionofpolymathpositionsco",
-   "title": "TruGolf's Acquisition of Polymath Positions Company in Growing Regulated Asset Tokenization Market",
-   "date": "2026-10-16",
-   "last": "2026-10-16",
-   "ts": "2026-10-16T06:09+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "TruGolf's Acquisition of Polymath Positions Company in Growing Regulated Asset Tokenization Market",
-     "src": "citybuzz -",
-     "url": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNWmZFeVBDamxHNkpVZlhKYnludFBvQkRIbjU1WFRud1l6RWVDMzcwYU0tRmlueWdXTzhJZ1oydkpOS1dDaFJMMk1KTFI5UVA5ZjZOMmxBaVgzeUpiVjd0b0wtVm1hOERCYjctRF9IdXI0ang4TC05NHdfaWpXWU5CbGtsY0N5WkxHUVFUaEhmbV9fTE95V1R6cENiTXNoUG51OF8yMEEzOTVyWnl5UVRETTI1bFNjVU1nelE4M3hiQi1mZGl2djlDdWo4eWF6Zw?oc=5",
-     "date": "2026-10-16",
-     "ts": "2026-10-16T06:09+08:00",
      "via": "Google"
     }
    ],
@@ -2806,8 +2898,8 @@
    "role": "资讯"
   },
   {
-   "id": "avenirgroup孵化的umx正式上线支持港美股与加密资产交易吴说区块链",
-   "title": "Avenir Group 孵化的UMX 正式上线，支持港美股与加密资产交易- 吴说区块链",
+   "id": "avenirgroup孵化的umx正式上线支持港美股与加密资产交易",
+   "title": "Avenir Group 孵化的 UMX 正式上线，支持港美股与加密资产交易",
    "date": "2026-10-16",
    "last": "2026-10-16",
    "ts": "2026-10-16T18:59+08:00",
@@ -2817,7 +2909,7 @@
    "n": 1,
    "articles": [
     {
-     "title": "Avenir Group 孵化的UMX 正式上线，支持港美股与加密资产交易- 吴说区块链",
+     "title": "Avenir Group 孵化的 UMX 正式上线，支持港美股与加密资产交易",
      "src": "吴说",
      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNY3VNVVU4Z1RXTzJiM2R6d3NSZ1Rmd3U1M0YzWmFmRnNiUlVPSWtuMXA5c0xiQk5SQ1RWbkZ3eDBCVDE3amx5S0t3d3VkS0ZZNlBYZGdlU3RmNTFYQlpyc1c4V3p6ZTFiWjNhRFFKQ045Wm0zczktMnd6cE92VlNPaWxTbzBrZHBYbFlzVUR2UkgzZkNKVV9uUUJocUc2UWc?oc=5",
      "date": "2026-10-16",
