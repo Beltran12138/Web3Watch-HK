@@ -42,7 +42,7 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-24
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-25
 
 - **[HashKey RWA推出「hToken」系列首款产品，提供一站式发行解决方案](https://www.theblockbeats.info/flash/373181)** (2026-10-22 | Alpha 82)
 - **[HashKey Earn Channel Lists HashKey Tokenised HFOL Class A (HHFOLA)](https://support.hashkey.com/hc/en-gb/articles/63503464736409-HashKey-Earn-Channel-Lists-HashKey-Tokenised-HFOL-Class-A-HHFOLA)** (2026-10-22 | Alpha 62)
