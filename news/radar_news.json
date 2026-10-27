@@ -1,36 +1,36 @@
 {
- "built": "2026-10-27T05:30+08:00",
+ "built": "2026-10-27T09:30+08:00",
  "since": "2026-10-20",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 24,
-   "in_window": 15
+   "fetched": 26,
+   "in_window": 16
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 52,
-   "in_window": 43
+   "fetched": 42,
+   "in_window": 40
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 35,
-   "in_window": 32
+   "fetched": 22,
+   "in_window": 21
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 18,
-   "in_window": 11
+   "fetched": 19,
+   "in_window": 12
   },
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
-   "fetched": 26,
-   "in_window": 21
+   "fetched": 21,
+   "in_window": 17
   },
   {
    "topic": "中资券商",
@@ -48,7 +48,7 @@
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
    "fetched": 16,
-   "in_window": 6
+   "in_window": 5
   },
   {
    "topic": "竞品",
@@ -59,32 +59,32 @@
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 13,
+   "fetched": 14,
    "in_window": 5
   },
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
    "fetched": 17,
-   "in_window": 5
+   "in_window": 6
   },
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 11,
-   "in_window": 0
+   "fetched": 12,
+   "in_window": 1
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 32,
-   "in_window": 18
+   "fetched": 30,
+   "in_window": 16
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 64,
-   "in_window": 56
+   "fetched": 42,
+   "in_window": 37
   },
   {
    "topic": "机构需求",
@@ -95,7 +95,7 @@
   {
    "topic": "机构需求",
    "q": "Hong Kong family office crypto allocation",
-   "fetched": 13,
+   "fetched": 14,
    "in_window": 2
   },
   {
@@ -105,19 +105,20 @@
    "in_window": 2
   }
  ],
- "articles": 232,
+ "articles": 196,
  "stories": [
   {
    "id": "香港证监会首次批准向公众发售的代币化基金进行二级市场交易36氪",
    "title": "香港证监会首次批准向公众发售的代币化基金进行二级市场交易-36氪",
    "date": "2026-10-25",
    "last": "2026-10-27",
-   "ts": "2026-10-27T04:14+08:00",
+   "ts": "2026-10-27T07:00+08:00",
    "topics": [
     "RWA",
+    "中资券商",
     "监管"
    ],
-   "n": 26,
+   "n": 27,
    "articles": [
     {
      "title": "香港证监会首次批准向公众发售的代币化基金进行二级市场交易-36氪",
@@ -152,14 +153,6 @@
      "via": "Bing"
     },
     {
-     "title": "香港证监会首次批准向公众发售的代币化基金进行二级市场交易",
-     "src": "东方财富网财经频道",
-     "url": "https://finance.eastmoney.com/a/202610263907814711.html",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T13:06+08:00",
-     "via": "Bing"
-    },
-    {
      "title": "证监会批准首批向公众发售代币化基金10月26日起于VATP二级市场交易",
      "src": "观点网",
      "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE13eEh4cG5QN1c2empNNkZxbEpBR2dmZ0IzRTM1QWJ4M0JOelgwaldzVWFIeFV5bk4wM09vUXB2UHZHSjY1V1BuTzR1OWdTeXdxekY2LUhpRGVHUDJleFFZZUNB?oc=5",
@@ -182,11 +175,62 @@
      "date": "2026-10-26",
      "ts": "2026-10-26T12:46+08:00",
      "via": "Google"
+    },
+    {
+     "title": "全球首创！香港证监会批准数字公募基金24/7二级市场交易",
+     "src": "新浪财经",
+     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9xM1NjaGt1dEs2aDZ0Ujh6MmJEQU9ZaEphTTU3VmthX2x4NzdmbUNvVUx2aWM1X1BobXVwcEg0VlhXb0owU1FRanlpTF9yMk1EbjFXbm9zTFJYc1R1MWVKLVZQWi1RdFg1blBjYlktb3Iyb0RFSlVlTA?oc=5",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T15:17+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
-   "hits": [],
-   "role": "监管"
+   "hits": [
+    {
+     "brand": "Futu",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "AZT137",
+       "en": "Futu Securities International (Hong Kong) Limited",
+       "zh": "富途證券國際(香港)有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T7",
+        "T9"
+       ],
+       "va": [
+        "VA交易"
+       ]
+      }
+     ]
+    },
+    {
+     "brand": "华夏基金",
+     "kind": "公募",
+     "firms": [
+      {
+       "ce": "ARS988",
+       "en": "China Asset Management (Hong Kong) Limited",
+       "zh": "華夏基金(香港)有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "线索"
   },
   {
    "id": "inaglobalfirsthongkongopenssecondarytrad",
@@ -198,7 +242,7 @@
     "RWA",
     "监管"
    ],
-   "n": 13,
+   "n": 18,
    "articles": [
     {
      "title": "SFC approves first-ever secondary trading of tokenised public funds",
@@ -211,7 +255,7 @@
     {
      "title": "In a global first, Hong Kong opens secondary trading for tokenised public funds",
      "src": "South China Morning Post",
-     "url": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxNdEE3UktTMmhVZlQwZDhfOWdEMUtIQS1pOENmTmJjOWFyZU9XMDBtT2l1YlhialhfNmhsd1FzWWlKZVRTeUJCRldFbDM3YTJOWnJUeUd3aU52NU1UNjhuRHN1VWhJMlhwVXhDMkRJR2FVeFZYRmhSV0w5VVdfM0dobFAxTkZfRnFiWGVNYkdNZS14YlVwbFVXNHlCQmp0ckJMOHFrRWw0aGFETFZsMnRoYlVickpDUDEySlBZUlhmUXRPcG5mSXFNRGVFLUI5VmFNb003a3VDOVBTRFU?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQSG5ycGctbWt2UXdoOEdIQXNoVE9SZjY0d0UyVGZVLW5tQjhOSi1BZndXaWlQNG9CWjhWQW4wZ2pwMmRPSzBDYXcxSHhabDZWcjB2MTQyWVFqTGFVQjZCT200eVhVRXJTOXFJT0FJbmM1QzV5WVF1TE12cXdQR2lVcFZnVlhoMlpUV1E4Z21hUHZtcWtpNU0wRi1VRVN1bjZzbEkxZktrVC0tQ1pFMFZFcE5iRkNrUnJBNGZnNTQtZFZsSTAwWDZTLXFuUdIBywFBVV95cUxNQ0ZyZVV2MEFtTDZzN0puYUdsSkNKSTBoczgzRHJQVEp5MmpLLXpzM1dFb0gwenBNU1hhOHRvYldJNnNNTktvYWhWNEJqLU42azRyckhVSzFiR3ZGUzVEdkNydlphc2QxVjZmZUl6NzhWcFNUU2VnQWRfd2h0Y0tWZ3BwWXdOWGhZS3RDOFFhaUJjLVZYLVY0T2MteEJBZVBxeWIyZHc4UVdpbjR5ZzF3a3JMV1B1VWRxYk5yTGZkbEZpSkpFXzdfdFRoWQ?oc=5",
      "date": "2026-10-26",
      "ts": "2026-10-26T18:01+08:00",
      "via": "Google"
@@ -222,6 +266,22 @@
      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE53WXo1RXVETlJHU2NaSTlmakdRX3p0SlJQVmJpVUc5T29IYUZxMk92X0hDUldPNnhWTG5qTHRNQWpBTmNyVV9iV2h5NVBnLURWWW1xQ2FB?oc=5",
      "date": "2026-10-26",
      "ts": "2026-10-26T04:47+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong Starts World’s First 24-Hour Trading in Tokenized Money Market Funds",
+     "src": "bloomingbit",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE94T0NmaXZ3WVE4d0pjWHZBMnQ3MzZNNEdGdGdSMVNucHRSQUlybzE0MEdWR1JyVkRHTXhCWGNiV2ZxY0E5eGR4OG9VaUYxb3FYZXA5Vw?oc=5",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T13:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong Sets Global Precedent as Tokenized Funds Approved for 24-Hour Trading on Licensed Platforms",
+     "src": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0waEpYQWpnRkVlVWY1alBHNDRRNUVoOG9qcF9GbkpUTTNCVG9jb1J6Z0VmS1pvek50eVhyaW04M2tLc3k4RHdxcGhrS1lWbHU4TXBvamNjOGx2SnEwWTZUNTNIQ2lFLUhvZDFnclU2eDhOVFV1V0E?oc=5",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T13:25+08:00",
      "via": "Google"
     },
     {
@@ -241,27 +301,11 @@
      "via": "Google"
     },
     {
-     "title": "SFC approves world's first secondary trading of tokenized public funds",
-     "src": "The Standard (HK)",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxONHZhNjI2bHZZQmlRRTl3SFVGLWcwZjNhNXc4Y0FNRnNWTkxRNThVM25pOTZVcE1rb0xpNHllNHVhY2Rjc2lpcnRoSTB0S3N6anVyVzluUWpsbjNlVWlBVXB6TWU5WnNhVW03blZSemdGVWdGZ2VDenFxU0dUQTh6Y1pEWF9uSWxCbENuSUt2T0E5THFTNDRtRVFIUThBTmlaM2tiNTBwTVdyNW1ua0JibFdMeDFINlR2RG9fN1U3Mk8?oc=5",
+     "title": "Hong Kong Has Approved 24/7 Trading of Tokenized Investment Funds",
+     "src": "Incrypted",
+     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUDBJOXBYRXE5a1NjdVVyOXlQYkF2eEticDY2QWJSVFRzNGZsZ05DZy1hSE1oZEZGcXp5NWxJXzFZNFlkdDBsUGlodEw2STQtNkZkUkU5Smc5NzFTOUV0c3hSbkduTXRDLXhuaWl1TlpFWWJZYVdrRlFGZmdsZ24tVW8tWmlGNkR3M1N0T2V0MGtsS2JPdFE?oc=5",
      "date": "2026-10-26",
-     "ts": "2026-10-26T15:25+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hong Kong clears secondary trading of tokenized money-market funds",
-     "src": "Cryptopolitan",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5udEpLeWplMXBGX2tCT01pUmN4OVlwd2JiYmZ4b2YySWJQMV94RVdqb2wwa1hueU9GOTUwMWVuZHRvT3lCd1d6SmQtOGtKQ0hGX1Naa01qWHpRWDFqeVlKZFd4U2RKeEl5WTdCaVI2NE1hUkFDS1I0RHdpemhraDA?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T15:58+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hong Kong SFC Approves Secondary Trading For ChinaAMC Tokenized Money Funds",
-     "src": "Crypto Economy",
-     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxOc1FmTEZWQ2JvTEdDbUlqM21EZ3F1LVNmdHZjcGVEUXJfU3BSM3U3bWdZa0Y4bG8wOHpRZlFvdzBJVVhuYThWZHF3SS0yV3JCM1hKbTJUeG9GS1FRZ1VTMUcyZGtLTHVSQTFEb085UjVEYUZQa09Kb19rbVBpVkNOWS0wcHJJaFF0X0FMVHg5YW52elZOWnJsVnJXS1ZKMFVMTzZOQXBR?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T21:59+08:00",
+     "ts": "2026-10-26T17:18+08:00",
      "via": "Google"
     }
    ],
@@ -290,22 +334,103 @@
    "role": "线索"
   },
   {
-   "id": "首批售予公众代币化基金昨起交易香港经济日报",
-   "title": "首批售予公眾代幣化基金 昨起交易|香港經濟日報",
+   "id": "汇丰首个港元稳定币汇丰redcoinrchkd正式推出",
+   "title": "汇丰首个港元稳定币“汇丰RedCoin”（RCHKD）正式推出",
+   "date": "2026-10-23",
+   "last": "2026-10-27",
+   "ts": "2026-10-27T02:30+08:00",
+   "topics": [
+    "监管",
+    "竞品"
+   ],
+   "n": 5,
+   "articles": [
+    {
+     "title": "汇丰首个港元稳定币“汇丰RedCoin”（RCHKD）正式推出",
+     "src": "移动支付网",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5jbmdIRUlRQzdpN3psX29Pc0xUT0E2UnRfWmxOV3IxdUY4RnVxcVJuMUp0d0dLclRrTkV4YW1LdDZVQ1RvNEVscmJrdi1ibVAxeUJYQ0NtbzM3LTB5UHFRNW9oaw?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T12:50+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "汇丰推出首枚港元稳定币",
+     "src": "www.hkcna.hk",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1Ob1hpMFJ5dGsxcmJxTy12dldJc3JlaVpkOFY5UUlWdWxweEd0anVSRmRQVkdQekhxYjk4b0VKbWFuRlBhLWI5OThsOVQtcDBkd0l1T2ZXZ1lvdmlFUnJoVVJvakJfT09pZkJERFF3WQ?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T15:01+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "汇丰推出港元稳定币RedCoin，上线PayMe平台",
+     "src": "DoNews",
+     "url": "https://www.donews.com/news/detail/8/6754005.html",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T17:50+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "HSBC 港元穩定幣 RedCoin 上線 PayMe：從發幣轉向分發與結算",
+     "src": "Anue鉅亨",
+     "url": "https://news.cnyes.com/news/id/6637835",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T14:01+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "HSBC 港元稳定币 RedCoin 上线 PayMe：从发币转向分发与结算",
+     "src": "foresightnews",
+     "url": "https://foresightnews.pro/article/detail/101193",
+     "date": "2026-10-27",
+     "ts": "2026-10-27T02:30+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "铭察秋毫代币化基金全天候交易香港数字金融迈进关键一步财经",
+   "title": "【銘察秋毫】代幣化基金全天候交易香港數字金融邁進關鍵一步- 財經",
    "date": "2026-10-27",
    "last": "2026-10-27",
-   "ts": "2026-10-27T00:29+08:00",
+   "ts": "2026-10-27T04:21+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "首批售予公眾代幣化基金 昨起交易|香港經濟日報",
-     "src": "香港經濟日報HKET",
-     "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxNUW1kZURmdV90cThrekdjSGZjOHVWNlRHWkkxTk5FcW01b2VLUEg4NlhqWVplUTNFRzl1Rnl0c3BhaGZGc2xrRlBYS1FzNWpwaHJ2SFU5WTVuTzJMbW55TEhDcDJzWDdleUpobEFvTnVZWjIyT3J3MGZPZFlDRHppbjhfekN2TWdFUEs2Sm96eDF6REltT0FSV0RxS1JBeF80QzZJbkI2cllWSU5jcmFtQkVHeEE2ZzYtUG91azNJZk9hZGpnSG9uWTZLS0Y5d1V0NlRnOEFuMVI5Y3JSVC1xSkVCN3dsMGZxWDlha1M2MlJERVVlRkYxMlFUZmVKNEFaQ3ZIakpUNTlpUQ?oc=5",
+     "title": "【銘察秋毫】代幣化基金全天候交易香港數字金融邁進關鍵一步- 財經",
+     "src": "香港文匯報",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE42WDNkVUZBeXRscUZJSVl3T0EzaUtRc3ZPOXlISGFqX2RuUGpZMXJ1dFVwSTU0cWFxV1R0NU44RWZfdV8zdVlQZzdsX1VHVzE4bi1NYkpLWFVFQnNnWlpDOVh6YlZndFZ5Ykx0QzZvSFFGSkREaGdz?oc=5",
      "date": "2026-10-27",
-     "ts": "2026-10-27T00:29+08:00",
+     "ts": "2026-10-27T04:21+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "两代币化基金准虚拟平台买卖证监会数字资产重要发展经济",
+   "title": "兩代幣化基金准虛擬平台買賣證監會：數字資產重要發展- 經濟",
+   "date": "2026-10-27",
+   "last": "2026-10-27",
+   "ts": "2026-10-27T04:24+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "兩代幣化基金准虛擬平台買賣證監會：數字資產重要發展- 經濟",
+     "src": "大公文匯網",
+     "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFA3bmVDRWQybEtxVDMtTjdLbWpKVFcweVhqZ29IdzRlejU1aWlMVTZqd0JoVVNRcWlKakJBRGJPTWozbWVhTUl6djJLdnBkZnVNYXdmMDgycjZlWUwtckptMFQ0ZDRQT21mN0pFWGstREVFMk52?oc=5",
+     "date": "2026-10-27",
+     "ts": "2026-10-27T04:24+08:00",
      "via": "Google"
     }
    ],
@@ -338,22 +463,22 @@
    "role": "监管"
   },
   {
-   "id": "铭察秋毫代币化基金全天候交易香港数字金融迈进关键一步财经",
-   "title": "【銘察秋毫】代幣化基金全天候交易香港數字金融邁進關鍵一步- 財經",
+   "id": "首批售予公众代币化基金昨起交易香港经济日报",
+   "title": "首批售予公眾代幣化基金 昨起交易|香港經濟日報",
    "date": "2026-10-27",
    "last": "2026-10-27",
-   "ts": "2026-10-27T04:21+08:00",
+   "ts": "2026-10-27T00:29+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "【銘察秋毫】代幣化基金全天候交易香港數字金融邁進關鍵一步- 財經",
-     "src": "香港文匯報",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE42WDNkVUZBeXRscUZJSVl3T0EzaUtRc3ZPOXlISGFqX2RuUGpZMXJ1dFVwSTU0cWFxV1R0NU44RWZfdV8zdVlQZzdsX1VHVzE4bi1NYkpLWFVFQnNnWlpDOVh6YlZndFZ5Ykx0QzZvSFFGSkREaGdz?oc=5",
+     "title": "首批售予公眾代幣化基金 昨起交易|香港經濟日報",
+     "src": "香港經濟日報HKET",
+     "url": "https://news.google.com/rss/articles/CBMiigJBVV95cUxNUW1kZURmdV90cThrekdjSGZjOHVWNlRHWkkxTk5FcW01b2VLUEg4NlhqWVplUTNFRzl1Rnl0c3BhaGZGc2xrRlBYS1FzNWpwaHJ2SFU5WTVuTzJMbW55TEhDcDJzWDdleUpobEFvTnVZWjIyT3J3MGZPZFlDRHppbjhfekN2TWdFUEs2Sm96eDF6REltT0FSV0RxS1JBeF80QzZJbkI2cllWSU5jcmFtQkVHeEE2ZzYtUG91azNJZk9hZGpnSG9uWTZLS0Y5d1V0NlRnOEFuMVI5Y3JSVC1xSkVCN3dsMGZxWDlha1M2MlJERVVlRkYxMlFUZmVKNEFaQ3ZIakpUNTlpUQ?oc=5",
      "date": "2026-10-27",
-     "ts": "2026-10-27T04:21+08:00",
+     "ts": "2026-10-27T00:29+08:00",
      "via": "Google"
     }
    ],
@@ -386,30 +511,6 @@
    "role": "监管"
   },
   {
-   "id": "代币化rwa市场规模达463亿美元美债占比降至不足三分之一",
-   "title": "代币化RWA市场规模达463亿美元 美债占比降至不足三分之一",
-   "date": "2026-10-27",
-   "last": "2026-10-27",
-   "ts": "2026-10-27T01:45+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "代币化RWA市场规模达463亿美元 美债占比降至不足三分之一",
-     "src": "富途牛牛",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPbGI5WnRvNFVCVnRnMXo5RTJkU3dXaDh1MEhpbTdYSU11aUdVZ210MnVVZlBuLUh2QW16SFYwSVZhc3k0Q2dmcmJZWkgxV3l0eEtSdkNUQzFSTjNOZ3l3aEk2Vk1CVUJWcXN4aEx5MkZLeUNZRHVVUXJ3UTIyVHRkWUZCTmowd1ZONzFLQ0Iwek4xS2ZTdU8yX3Z5NVM?oc=5",
-     "date": "2026-10-27",
-     "ts": "2026-10-27T01:45+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "stablecoinshsbclaunchesredcoinahongkongd",
    "title": "STABLECOINS | HSBC Launches RedCoin, a Hong Kong Dollar-Backed Stablecoin",
    "date": "2026-10-23",
@@ -420,7 +521,7 @@
     "监管",
     "竞品"
    ],
-   "n": 27,
+   "n": 17,
    "articles": [
     {
      "title": "STABLECOINS | HSBC Launches RedCoin, a Hong Kong Dollar-Backed Stablecoin",
@@ -439,35 +540,11 @@
      "via": "Google"
     },
     {
-     "title": "HSBC Debuts HKD Stablecoin RedCoin on PayMe, Reaching 3.3 Million Users",
-     "src": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9Idk5pT0R6NzhvQ1ZFNVI3SFdJYmVleTVGSHZ6WDBOUVN4VGF1aVpJNElVRy1tS3NsUHI4TzFkMnUwc2pZUzF1R20zQmRMazZxRU4teXVHOGluZ1oxUF9xRkw3ZEVHMjhISk1lQnowNmI1Mldpc3c?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T16:35+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Launches RedCoin Stablecoin for Payments in Hong Kong",
-     "src": "Asia Business Outlook",
-     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxNWEEyUnhDZEIzZUR5MVFJc1U3T2xsd0RDSEhWQm1LdzdVSUU4eTVJekdkNTRKeFJFcmJpRkU5ZlljMVZ0THF2Si1nWlBYWkJyWlI1ekpiaGhRS3VGZXdvWHkwVDNVbDl3MnRpVGVFTzlVbzRUN19CRVg3R0ZLSHBQallwVmZXaExTU0RZeU5KNl9ReEw2dzcyQlJQQUJZZXQ2c0lHX3JsNzVyMzE3TFc4YnRiRktfUQ?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T14:14+08:00",
-     "via": "Google"
-    },
-    {
      "title": "HSBC Launches RedCoin HKD Stablecoin for 3.3M PayMe Users",
      "src": "Altcoin Buzz",
      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNOW1scVh0V0x5WUUtMkIwVTlaZy1Ud0NoRi1FSFMtZkNuZUlWVS03a0QyT1BzNHJoVVZNaFRVQlJXOGJpc0VwNDFod21QXzFEQUJnejg3d1JDVjUxVzE2VzZKY2t4dWJFUVE5Z0ZTc1pMcG5jZzVCMEVMOG95WkdDS0tuWmd6UTJGQXhlUA?oc=5",
      "date": "2026-10-23",
      "ts": "2026-10-23T15:56+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Stablecoin Payments After HSBC's RedCoin Launch",
-     "src": "OneSafe.io",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE0zN0xDQkJKeTNBS2FYN29KX1dFcTlYLWJBSkVGenZ2RmcyTFNKTG5obUYta3pKdFN6T0NOM1JwVnU0bmYyaFNlaXZjNldicUdvQmVmZ0VRbXo0T3V4T1Rrcm0wUkFmQU1qeWR3UQ?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T15:00+08:00",
      "via": "Google"
     },
     {
@@ -485,136 +562,30 @@
      "date": "2026-10-23",
      "ts": "2026-10-23T21:53+08:00",
      "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "汇丰首个港元稳定币汇丰redcoinrchkd正式推出",
-   "title": "汇丰首个港元稳定币“汇丰RedCoin”（RCHKD）正式推出",
-   "date": "2026-10-23",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T17:50+08:00",
-   "topics": [
-    "监管",
-    "竞品"
-   ],
-   "n": 6,
-   "articles": [
+    },
     {
-     "title": "汇丰首个港元稳定币“汇丰RedCoin”（RCHKD）正式推出",
-     "src": "移动支付网",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE5jbmdIRUlRQzdpN3psX29Pc0xUT0E2UnRfWmxOV3IxdUY4RnVxcVJuMUp0d0dLclRrTkV4YW1LdDZVQ1RvNEVscmJrdi1ibVAxeUJYQ0NtbzM3LTB5UHFRNW9oaw?oc=5",
+     "title": "HSBC launches Hong Kong dollar stablecoin for retail payments",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPdVZqaGRLZU1SVnFaQUt4MW5RaXQ3MkpyMkYwUTlDVWlnZ2ptZkg0U2ZEY1hPbjRpUU1JNzFLTWRRYVp0QmRRQWxtbkNMNkhyNHhaNkRkSzBhLS1JZEMzdk0wN0swMjdnR20yUmluTHg5aW9vcE85SlhGNTlfQ0VuUXpKaEV1YWdXNE5iX0dNYUZkcHAxUVI2LV95Sjg5YUw3ZDZRNWZFUkpUajNzSGlONXJzOFpNb3RiR1Z1SjQzZzFNWU0?oc=5",
      "date": "2026-10-23",
-     "ts": "2026-10-23T12:50+08:00",
+     "ts": "2026-10-23T16:47+08:00",
      "via": "Google"
     },
     {
-     "title": "汇丰银行将于2026年推出港元稳定币RedCoin",
-     "src": "Moomoo",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPMm13NDFCUnhadHNPWEhmVG1ibUQ3WElFdEx0LS00NXNpN1ZoOEdoc3R4T1FIcVBpZHQ1a1pPT1BmWWhKSFRkZ0NfaHdVaVJZYjdtWUtRbmQ4WldZY05uY3NrdEhKaC1WazJjeWJ2U1RwcWlndVE3OXdjdlhUczR3OEhTYk9vTnpobXZYWnYtYW14N1ZZaF9uVmt1M3hsSDlReFM5d28tVzdmVmM?oc=5",
+     "title": "HSBC Launches HKD Stablecoin RedCoin for Retail Payments",
+     "src": "kucoin",
+     "url": "https://www.kucoin.com/news/flash/hsbc-launches-hkd-stablecoin-redcoin-for-retail-payments",
      "date": "2026-10-23",
-     "ts": "2026-10-23T10:16+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "汇丰推出首枚港元稳定币",
-     "src": "www.hkcna.hk",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1Ob1hpMFJ5dGsxcmJxTy12dldJc3JlaVpkOFY5UUlWdWxweEd0anVSRmRQVkdQekhxYjk4b0VKbWFuRlBhLWI5OThsOVQtcDBkd0l1T2ZXZ1lvdmlFUnJoVVJvakJfT09pZkJERFF3WQ?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T15:01+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "汇丰首个港元稳定币“汇丰RedCoin”（RCHKD）正式推出",
-     "src": "mpaypass",
-     "url": "https://www.mpaypass.com.cn/news/202610/23125911.html",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T13:50+08:00",
+     "ts": "2026-10-23T04:03+08:00",
      "via": "Bing"
     },
     {
-     "title": "汇丰推出港元稳定币RedCoin，上线PayMe平台",
-     "src": "DoNews",
-     "url": "https://www.donews.com/news/detail/8/6754005.html",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T17:50+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "HSBC 港元穩定幣 RedCoin 上線 PayMe：從發幣轉向分發與結算",
-     "src": "Anue鉅亨",
-     "url": "https://news.cnyes.com/news/id/6637835",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T14:01+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "hongkongsetsglobalprecedentastokenizedfu",
-   "title": "Hong Kong Sets Global Precedent as Tokenized Funds Approved for 24-Hour Trading on Licensed Platforms",
-   "date": "2026-10-26",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T17:18+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 6,
-   "articles": [
-    {
-     "title": "Hong Kong Sets Global Precedent as Tokenized Funds Approved for 24-Hour Trading on Licensed Platforms",
+     "title": "HSBC Debuts HKD Stablecoin RedCoin on PayMe, Reaching 3.3 Million Users",
      "src": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE0waEpYQWpnRkVlVWY1alBHNDRRNUVoOG9qcF9GbkpUTTNCVG9jb1J6Z0VmS1pvek50eVhyaW04M2tLc3k4RHdxcGhrS1lWbHU4TXBvamNjOGx2SnEwWTZUNTNIQ2lFLUhvZDFnclU2eDhOVFV1V0E?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T13:25+08:00",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9Idk5pT0R6NzhvQ1ZFNVI3SFdJYmVleTVGSHZ6WDBOUVN4VGF1aVpJNElVRy1tS3NsUHI4TzFkMnUwc2pZUzF1R20zQmRMazZxRU4teXVHOGluZ1oxUF9xRkw3ZEVHMjhISk1lQnowNmI1Mldpc3c?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T16:35+08:00",
      "via": "Google"
-    },
-    {
-     "title": "Hong Kong Starts World’s First 24-Hour Trading in Tokenized Money Market Funds",
-     "src": "bloomingbit",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE94T0NmaXZ3WVE4d0pjWHZBMnQ3MzZNNEdGdGdSMVNucHRSQUlybzE0MEdWR1JyVkRHTXhCWGNiV2ZxY0E5eGR4OG9VaUYxb3FYZXA5Vw?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T13:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hong Kong Has Approved 24/7 Trading of Tokenized Investment Funds",
-     "src": "Incrypted",
-     "url": "https://news.google.com/rss/articles/CBMilgFBVV95cUxNUDBJOXBYRXE5a1NjdVVyOXlQYkF2eEticDY2QWJSVFRzNGZsZ05DZy1hSE1oZEZGcXp5NWxJXzFZNFlkdDBsUGlodEw2STQtNkZkUkU5Smc5NzFTOUV0c3hSbkduTXRDLXhuaWl1TlpFWWJZYVdrRlFGZmdsZ24tVW8tWmlGNkR3M1N0T2V0MGtsS2JPdFE?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T17:18+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Just how \"24/7\" is Hong Kong's new tokenized money market fund?",
-     "src": "ainvest",
-     "url": "https://www.ainvest.com/news/24-7-hong-kong-tokenized-money-market-fund-2610/",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T12:28+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hong Kong Has Approved 24/7 Trading of Tokenized Investment Funds",
-     "src": "INCRYPTED",
-     "url": "https://incrypted.com/en/hong-kong-has-approved-24-7-trading-of-tokenized-investment-funds/",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T10:18+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hong Kong Starts World’s First 24-Hour Trading in Tokenized Money Market Funds",
-     "src": "en.bloomingbit",
-     "url": "https://en.bloomingbit.io/feed/news/122917",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T02:00+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -626,12 +597,11 @@
    "title": "第二款港元稳定币今日上线：汇丰RedCoin聚焦零售支付及交易，碇点HKDAP锚定跨境支付与RWA结算",
    "date": "2026-10-23",
    "last": "2026-10-26",
-   "ts": "2026-10-26T18:14+08:00",
+   "ts": "2026-10-26T23:05+08:00",
    "topics": [
-    "RWA",
     "监管"
    ],
-   "n": 4,
+   "n": 5,
    "articles": [
     {
      "title": "第二款港元稳定币今日上线：汇丰RedCoin聚焦零售支付及交易，碇点HKDAP锚定跨境支付与RWA结算",
@@ -642,11 +612,11 @@
      "via": "Google"
     },
     {
-     "title": "汇丰推出第二款港元稳定币 RedCoin，聚焦零售支付及交易",
+     "title": "汇丰推出第二款港元稳定币RedCoin，聚焦零售支付及交易",
      "src": "新浪财经",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9aNU5UbTlWQlpLVW16SHNIazZDYmJxS0dsRi1PSFBuZVVKNkFlbGxZSUVRUW5PUDFGUjF0RmUtVUFwallPV1Rzdi1OcENHek5sbWhybkJQWUdYTjY0SmdRZ3BKOWZLNFZaSkxOOVYzNFI2d1pieVNvalV3cTViajQ?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOMTF5NlVJQ3gzZ0lmVEE4a0l2ZlJQVFpKSGllc2FPamRTVHlTaWhtMjk5cFo0MmZ1enpZdmpNbWVHOEJZUjNoNjBxV0xlc0JNR29PaHlTWGk5a0pEbkdTX0Rmc0RiOGxmWl9sUkd4bTZSS3N6Uk9BWm4yU3E0VUNZaU5EeUhmZ1dyZ2JjX0EwSkk4aVEydVdITWdlZ2VpNjJqVVlNR1hPNTVNZDEyRjBGNFFR?oc=5",
      "date": "2026-10-26",
-     "ts": "2026-10-26T16:32+08:00",
+     "ts": "2026-10-26T23:05+08:00",
      "via": "Google"
     },
     {
@@ -666,51 +636,19 @@
      "via": "Bing"
     },
     {
+     "title": "汇丰RedCoin：香港新港元稳定币开启零售支付新时代",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1092956978_122004016",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T17:32+08:00",
+     "via": "Bing"
+    },
+    {
      "title": "汇丰上线RedCoin稳定币聚焦零售支付",
      "src": "qudong.com",
      "url": "https://www.qudong.com/article/527463.html",
      "date": "2026-10-26",
      "ts": "2026-10-26T10:02+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "重磅汇丰港元稳定币redcoin登陆payme330万用户10万商户香港首个零售",
-   "title": "重磅！汇丰港元稳定币RedCoin登陆PayMe：330万用户、10万商户，香港首个零售级合规稳定币落地",
-   "date": "2026-10-23",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T16:27+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "重磅！汇丰港元稳定币RedCoin登陆PayMe：330万用户、10万商户，香港首个零售级合规稳定币落地",
-     "src": "区块周刊BlockWeeks",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE5fdkdjWngtbHcxR0xhal9iR0Y0YVVEeG9GNFBxVndPWWl4eW5Fa09qeUlKMVdvaF9DdENWQThlblUtX0RVbDc2VDhB?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T14:04+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "汇丰在香港推出受监管稳定币 RedCoin，面向 PayMe 330万用户和10万商户支付",
-     "src": "币界网",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHQkVtVHNWeGNoeGNvbndYeEFwTXNuM2U0Q1NXUVY4UUFJRV9yT2cwZkJBWWVVckxxZDc1WDE2TWsyOEZTdzNqTXpTam9kZ0YzWlE0SA?oc=5",
-     "date": "2026-10-24",
-     "ts": "2026-10-24T00:07+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "汇丰 RedCoin 港元稳定币登陆 PayMe：香港首家持牌银行稳定币",
-     "src": "艾瑞网",
-     "url": "https://news.iresearch.cn/content/202610/570640.shtml",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T16:27+08:00",
      "via": "Bing"
     }
    ],
@@ -813,58 +751,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "华夏基金推出代币化货币基金是第一步将扩展至更多资产类别",
-   "title": "华夏基金：推出代币化货币基金是第一步 将扩展至更多资产类别",
-   "date": "2026-10-26",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T18:32+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "华夏基金：推出代币化货币基金是第一步 将扩展至更多资产类别",
-     "src": "香港电台网站",
-     "url": "https://gbcode.rthk.hk/TuniS/news.rthk.hk/rthk/ch/component/k2/1875385-20261026.htm",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T18:32+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "華夏基金：推出代幣化貨幣基金是第一步 將擴展至更多資產類別",
-     "src": "香港電台新聞網",
-     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBLOHpRUGROUGs3eC1aU0tPSjRJWkR3S0VBYlVBWUJvTzNsX2tiZU02ZWM4bTdpY01QSzJfMjFhNUlTQ0hUMWNCNnUtZlpHX2FtcWkzOXNpZFh3YW5JNEE1eUYycG1uRlNyTGxNcmo1aw?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T17:32+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "华夏基金",
-     "kind": "公募",
-     "firms": [
-      {
-       "ce": "ARS988",
-       "en": "China Asset Management (Hong Kong) Limited",
-       "zh": "華夏基金(香港)有限公司",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "线索"
   },
   {
    "id": "首批代币化基金已获准在vatp进行二级交易证监会巩固香港先驱地位",
@@ -1127,74 +1013,6 @@
    "role": "线索"
   },
   {
-   "id": "全球首创富途与华夏基金香港携手推出公募数字基金全天候二级交易服务",
-   "title": "全球首创：富途与华夏基金（香港）携手推出公募数字基金全天候二级交易服务",
-   "date": "2026-10-26",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T17:54+08:00",
-   "topics": [
-    "中资券商",
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "全球首创：富途与华夏基金（香港）携手推出公募数字基金全天候二级交易服务",
-     "src": "Moomoo",
-     "url": "https://news.google.com/rss/articles/CBMisANBVV95cUxQbml6aklSYTN6NFJGM2hJUHZiSUFnQ2FSMnh5SHYtUEdmQmJKT3B2aFA4NE5GZ01QTzR1MjJaY2pRM2htSW5ReU9FZFBxWElvUkxaTTgyUEFJb0hvMl9IX014Q3pIRlp1SFN0d3NRd0pxYllxa21PUWNMNTVURERZTk1INklZQ2NyeGZWRzRtbzY4ZlBGRXh3RU55aVBiVUVPcTBCcHVWUktULWUzNGk5SDQxbFoweUg0QlFjNFdyR3A1dmhWV2JJVC1qSFBydTV0dGU1MGJlektNZ0plSWlhdnM1TnJnOHpPRUt1QlpMallXeC1RbTVwaFZseHYyVDRmUTBJdTN6Wk9zLUtieHlNTWRFR3JadlRxMEFnaXZTZDdzUTFKT0VSTm91dDRyNmdSMlBldVpVTk5zVzJ1STgxbTlwUnN3VC1nYXhLSDE0VjB2czdYRm5Sa0p2MkZiMnBIQjUtYTFrUlplVXRpZFRGTi1mSE4tcUxNbGp1QmJFWEpNdm5PSUpCM0g1QWtjcXhXN0hXeDZtLTN5VEJXd0VWZjlVY05kd1BVQnZKcGExNFc?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T17:54+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "Futu",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "AZT137",
-       "en": "Futu Securities International (Hong Kong) Limited",
-       "zh": "富途證券國際(香港)有限公司",
-       "ras": [
-        "T1",
-        "T2",
-        "T3",
-        "T4",
-        "T5",
-        "T7",
-        "T9"
-       ],
-       "va": [
-        "VA交易"
-       ]
-      }
-     ]
-    },
-    {
-     "brand": "华夏基金",
-     "kind": "公募",
-     "firms": [
-      {
-       "ce": "ARS988",
-       "en": "China Asset Management (Hong Kong) Limited",
-       "zh": "華夏基金(香港)有限公司",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "线索"
-  },
-  {
    "id": "证监会两代币化基金可在vatp上作二级市场交易适时考虑扩大产品范围1205202",
    "title": "證監會：兩代幣化基金可在VATP上作二級市場交易適時考慮擴大產品範圍(12:05) - 20261026 - 即時財經新聞",
    "date": "2026-10-26",
@@ -1211,6 +1029,30 @@
      "url": "https://news.google.com/rss/articles/CBMi1gNBVV95cUxOTHNLUzQzcUsyMmdvaVl5R3F1dDczU0U2S1dUU3lTUVYyVTIyOEVsZlN3Xy14ekFZR3c3VkQwcVFSMEZ5N2dubFB2VnQyd2N3YTFUUUEwaTh4amcxT08waVB5TklkOExLSXFsVHJFdzdEUFZtVFl6VkU1bHVJemd5OU5YcnFtaTVfVmYzM2ZaWW0tMlVyUG0zUDJ4aTEydE5YbHU3T19xQS1aTGtTTGVEMVdGS24tbndxc1RMaVFqMXRWaFQyYUl4bUwzVGZuWmI3WUpLU2lDd3M3RVFXdkFrRHRXSlROZzZUc1pkLXVELXhOSGVNOVFJZUwwR09aLUxNVDNaeThaX09uSHZxQUJ1c1Z0aUV6OWxNM2hjNGxfMThZd3U1bzRjZlZaT2dfVjR2ajFFZ1ZFTGRDU1dlbVdmRkNod3c1dVRidkxkYkp5aXJ5c2RPSkZPdjQ1RXdNMnpuN1ZaRGh6d0swWmZiNWpjRmNKeVJYcFBjMGFSTmtjUWtjWWFtNTR3TENXdnM2Mkh6WmdMcm45TVdXTU9JOWVPY2MxUG9lMGdJUTVIZXFMbVNncEJNLVM5NUhSb2tYZENldmdoWEtpcFZNd2xUcmtYSHhVRGhWUQ?oc=5",
      "date": "2026-10-26",
      "ts": "2026-10-26T12:24+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "华夏基金推出代币化货币基金是第一步将扩展至更多资产类别",
+   "title": "華夏基金：推出代幣化貨幣基金是第一步 將擴展至更多資產類別",
+   "date": "2026-10-26",
+   "last": "2026-10-26",
+   "ts": "2026-10-26T17:32+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "華夏基金：推出代幣化貨幣基金是第一步 將擴展至更多資產類別",
+     "src": "香港電台新聞網",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTFBLOHpRUGROUGs3eC1aU0tPSjRJWkR3S0VBYlVBWUJvTzNsX2tiZU02ZWM4bTdpY01QSzJfMjFhNUlTQ0hUMWNCNnUtZlpHX2FtcWkzOXNpZFh3YW5JNEE1eUYycG1uRlNyTGxNcmo1aw?oc=5",
+     "date": "2026-10-26",
+     "ts": "2026-10-26T17:32+08:00",
      "via": "Google"
     }
    ],
@@ -1243,23 +1085,23 @@
    "role": "监管"
   },
   {
-   "id": "专访渣打银行旗下scventures银行系风投如何布局数字资产如何看待ai与tr",
-   "title": "专访渣打银行旗下 SC Ventures：银行系风投如何布局数字资产？如何看待 AI 与 TradFi×Crypto 融合潮？",
+   "id": "汇丰redcoin港元稳定币登陆payme香港首家持牌银行稳定币",
+   "title": "汇丰 RedCoin 港元稳定币登陆 PayMe：香港首家持牌银行稳定币",
    "date": "2026-10-26",
    "last": "2026-10-26",
-   "ts": "2026-10-26T02:13+08:00",
+   "ts": "2026-10-26T16:27+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "专访渣打银行旗下 SC Ventures：银行系风投如何布局数字资产？如何看待 AI 与 TradFi×Crypto 融合潮？",
-     "src": "ChainCatcher",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE9pMnJIMVNwMHB6LUJtekxfajhHS1hNODR3Z3ZSb1h2TkNBX3lldkwtWkVXR1lCMjFJUzc1UUpuV19HNFNtR2F3RW1GTVFwaU9iS05jN1Ntcw?oc=5",
+     "title": "汇丰 RedCoin 港元稳定币登陆 PayMe：香港首家持牌银行稳定币",
+     "src": "艾瑞网",
+     "url": "https://news.iresearch.cn/content/202610/570640.shtml",
      "date": "2026-10-26",
-     "ts": "2026-10-26T02:13+08:00",
-     "via": "Google"
+     "ts": "2026-10-26T16:27+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1363,30 +1205,6 @@
    "role": "监管"
   },
   {
-   "id": "如何看待花旗在中国开证券公司外资券商加速布局中国市场",
-   "title": "如何看待花旗在中国开证券公司 外资券商加速布局中国市场",
-   "date": "2026-10-26",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T19:41+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "如何看待花旗在中国开证券公司 外资券商加速布局中国市场",
-     "src": "中华网新闻频道",
-     "url": "https://news.china.com/socialgd/10000169/20261026/49819488_all.html",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T19:41+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
-  },
-  {
    "id": "tcbdailyeditionwhathappenedincryptoonoct",
    "title": "TCB Daily Edition: What Happened in Crypto on October 26, 2026",
    "date": "2026-10-26",
@@ -1481,64 +1299,6 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
-  },
-  {
-   "id": "不只是资产上链深度解析hashkeyrwa如何连接下一代数字金融市场",
-   "title": "不只是资产上链：深度解析HashKey RWA如何连接下一代数字金融市场",
-   "date": "2026-10-26",
-   "last": "2026-10-26",
-   "ts": "2026-10-26T16:11+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "不只是资产上链：深度解析HashKey RWA如何连接下一代数字金融市场",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9LeTBjQ1g1aHU0bzVSVmJyZkk0R2F6ck5EVDN1NDFsTEMwWG5nSldoRFpjcEprakRuQ3pkNDFCRGlwZi10VVI0ZGRKT0RSM1NheWRjLVBTR2ZFZFc5cndhb2JteTZHM3dWWTNQdEwzal9FZHB2VWtoRUhnTHBpWUU?oc=5",
-     "date": "2026-10-26",
-     "ts": "2026-10-26T16:11+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
   },
   {
    "id": "洪锦铉议员主持艺术资产与rwa数字化产业政策交流会推动香港巩固国际文化艺术资产与",
@@ -1834,46 +1594,22 @@
    "role": "竞品动态"
   },
   {
-   "id": "汇丰港元稳定币上线专为日常支付及交易财经客户端",
-   "title": "汇丰港元稳定币上线，专为日常支付及交易| 《财经》客户端",
+   "id": "汇丰在香港推出受监管稳定币redcoin面向payme330万用户和10万商户支",
+   "title": "汇丰在香港推出受监管稳定币 RedCoin，面向 PayMe 330万用户和10万商户支付",
    "date": "2026-10-24",
    "last": "2026-10-24",
-   "ts": "2026-10-24T14:50+08:00",
+   "ts": "2026-10-24T00:07+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "汇丰港元稳定币上线，专为日常支付及交易| 《财经》客户端",
-     "src": "www.mycaijing.com",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBBLUtLN0dCUk91SE1DTnV2b1U3TW1VdE1yaTJvUXhfZW9oXzJBcmJ3cVk2RWljR09COFR3ZUVvWF9zV1hZQTBUTUY0eklWcm9rTlVhRWRjZ3EtTndjRnMyTGMtSWlKNXlVZ1Y0Ng?oc=5",
+     "title": "汇丰在香港推出受监管稳定币 RedCoin，面向 PayMe 330万用户和10万商户支付",
+     "src": "币界网",
+     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBHQkVtVHNWeGNoeGNvbndYeEFwTXNuM2U0Q1NXUVY4UUFJRV9yT2cwZkJBWWVVckxxZDc1WDE2TWsyOEZTdzNqTXpTam9kZ0YzWlE0SA?oc=5",
      "date": "2026-10-24",
-     "ts": "2026-10-24T14:50+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "汇丰推出首款稳定币为330万用户提供港元支付服务",
-   "title": "汇丰推出首款稳定币，为330万用户提供港元支付服务",
-   "date": "2026-10-24",
-   "last": "2026-10-24",
-   "ts": "2026-10-24T06:30+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "汇丰推出首款稳定币，为330万用户提供港元支付服务",
-     "src": "Bitcoin News",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxPTnRXaEdBaDYwWGozTlYzLVBQSFpHaGJxUDg2OGlnWEVSNjB6NjNwMGJvNEk0N3lFUEoyVDRJVGVqYV9qYkcyOEg2TEJWRkd1aEEtTWxFMjI0LWU4ZnlRd0V0bTl1SkdNUnB3NGJqVGFMLUVIdDNZdVpMbzhwTDBQUjdpZWp1aE83d2tjZXM5SDVpUzg5YWo3VGNleWVXTWt4ZG1POEpQN1NVTm1abDZwSFpIcXNrMzZUWkgyTg?oc=5",
-     "date": "2026-10-24",
-     "ts": "2026-10-24T06:30+08:00",
+     "ts": "2026-10-24T00:07+08:00",
      "via": "Google"
     }
    ],
@@ -1922,6 +1658,30 @@
      "url": "https://www.msn.com/en-xl/money/general/crypto-platform-on-alert-lists-opens-hong-kong-office-prompting-calls-for-scrutiny/ar-AA2fXju6",
      "date": "2026-10-24",
      "ts": "2026-10-24T05:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongsbiggestbankputsastablecoinin3mi",
+   "title": "Hong Kong’s Biggest Bank Puts a Stablecoin in 3 Million Wallets",
+   "date": "2026-10-24",
+   "last": "2026-10-24",
+   "ts": "2026-10-24T14:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong’s Biggest Bank Puts a Stablecoin in 3 Million Wallets",
+     "src": "Decrypt",
+     "url": "https://decrypt.co/381760/hong-kong-bank-hsbc-stablecoin-3-million-wallets",
+     "date": "2026-10-24",
+     "ts": "2026-10-24T14:00+08:00",
      "via": "Bing"
     }
    ],
@@ -1988,30 +1748,6 @@
    "role": "竞品动态"
   },
   {
-   "id": "uscryptodelayshanddigitalassetadvantaget",
-   "title": "U.S. crypto delays hand digital asset advantage to Asia and Middle East, says Apex Group CEO",
-   "date": "2026-10-24",
-   "last": "2026-10-24",
-   "ts": "2026-10-24T20:00+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "U.S. crypto delays hand digital asset advantage to Asia and Middle East, says Apex Group CEO",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMizAFBVV95cUxQUjVjLUVRanROLUx1dE53SXZCSGkyWHZoRjFfckkzQ1R4UE1nWEtEMjBsQ1B4bGxJbDRTanFwdVh6UHk2RjhnY0VIenIwY2duRjJMYnEzUy1IelV2ZlJZVGJFNzlJSDNxbF9FTlhXbzFFbmstTG5vYTBlZ0txbDBRS044dGQ0OFpONC1NT1JwdzVWelBXV2ZEUVhSUk4tTFh5VWVFX0I2b2pMZl9uVTNhWm1WYjFrUGkzcWllYzQzT0dxalV2c3NITEJGWFU?oc=5",
-     "date": "2026-10-24",
-     "ts": "2026-10-24T20:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "governmentofgibraltarannounceslandmarkle",
    "title": "Government of Gibraltar Announces Landmark Legislation Enabling Tokenised Fund Shares",
    "date": "2026-10-24",
@@ -2034,6 +1770,46 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
+  },
+  {
+   "id": "香港证监会将btcc列为可疑虚拟资产交易平台",
+   "title": "香港证监会：将 BTCC 列为可疑虚拟资产交易平台",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T10:56+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 3,
+   "articles": [
+    {
+     "title": "香港证监会：将 BTCC 列为可疑虚拟资产交易平台",
+     "src": "chaincatcher",
+     "url": "https://www.chaincatcher.com/article/2298375",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T10:56+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "香港证监会将 BTCC 列入可疑虚拟资产交易平台类别",
+     "src": "foresightnews",
+     "url": "https://foresightnews.pro/news/detail/115821",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T10:53+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "香港证监会将“BTCC”列为可疑虚拟资产交易平台",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9RWHg2RGk3VzB3RnJSd05pMjZNR3V6czMyMGhfb3d0RHpEZGZxYkNyNFdvdFQ0NlRvdVY3OW0yaDBGcGh6ZTZxbDRtaU5NRFdPallGVXFnVXVkTVpQbVhwQTRrS01MUQ?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T09:41+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "许正宇香港代币化正迈向落地实施阶段",
@@ -2061,38 +1837,6 @@
      "date": "2026-10-23",
      "ts": "2026-10-23T15:05+08:00",
      "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港证监会将btcc列为可疑虚拟资产交易平台",
-   "title": "香港证监会：将 BTCC 列为可疑虚拟资产交易平台",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T10:56+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "香港证监会：将 BTCC 列为可疑虚拟资产交易平台",
-     "src": "chaincatcher",
-     "url": "https://www.chaincatcher.com/article/2298375",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T10:56+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "香港证监会将“BTCC”列为可疑虚拟资产交易平台",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE9RWHg2RGk3VzB3RnJSd05pMjZNR3V6czMyMGhfb3d0RHpEZGZxYkNyNFdvdFQ0NlRvdVY3OW0yaDBGcGh6ZTZxbDRtaU5NRFdPallGVXFnVXVkTVpQbVhwQTRrS01MUQ?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T09:41+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
@@ -2132,46 +1876,12 @@
    "role": "监管"
   },
   {
-   "id": "hsbcbeginsrollingoutredcoinstablecointop",
-   "title": "HSBC Begins Rolling Out RedCoin Stablecoin to PayMe App Users in Hong Kong",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T22:44+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "HSBC Begins Rolling Out RedCoin Stablecoin to PayMe App Users in Hong Kong",
-     "src": "Northeast Times",
-     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxObUJVb0F5RVB5MFJzaUZNa1RhUFlBMEZFaTNfazA3VU05SlNMenpQR1A3MlQzY0c1aTZHa2xMcmUteHRQTHNER1VsNzVQUjFKSW9Icl9SSzd0ek9YUE1VNlBxLTJyeVkxbzF5Mk1yV0tweWtlTUN1Q1hlWENWWDdNYi1qQVBNNEpYR1M2UWRFdkp1SVR4TGdRNHI0RmpQNndqRDhmM2tjbFV5U1pWaWd4Ykg3bw?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T22:44+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC rolls out its first stablecoin to over 3 million everyday app users",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNZm1RN2NIdWMyd19qQUFLWFp2TVQwV0gyTjdzUVdHVWt5N0pnU2o0Smw3TTd6djBuWXl4ZzlOUTVYWkZqaEt5UEg5Ql9Xb3FqWlFhbVZOdXpUSDFra0ItMmc2dFlUZmJUaW5wMnVvc0ZqTGZLS0kzNm92QmxSWFhKcktSQlRESksyelBWZzFYdmdNTHVqTEotSDVUanZUVkVEZlJGbklUOER1QVljclM4d2J4eWZaSlJ2?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T18:22+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hashkeyceoasiaisbettingonassettokenizati",
    "title": "HashKey CEO: Asia is betting on asset tokenization",
    "date": "2026-10-23",
    "last": "2026-10-23",
    "ts": "2026-10-23T17:59+08:00",
    "topics": [
-    "RWA",
     "竞品"
    ],
    "n": 2,
@@ -2265,48 +1975,6 @@
    "role": "监管"
   },
   {
-   "id": "rwa解码千亿资金已上链资产代币化新钱流四关定成败",
-   "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T08:00+08:00",
-   "topics": [
-    "RWA",
-    "监管",
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
-     "src": "香港01",
-     "url": "https://news.google.com/rss/articles/CBMiiwNBVV95cUxNZVNCZXJDcEczZEJQLWZvYmEyeEdsd3R4eFN1aTJERWJrcjNuYThablhZVlZ3TWxZZXFyUUItTmVyTFBZaFFSenEwNDJ3aENjRU14Q1l4RnJVR3Rmd19Zcy1ZNUFlaFhZVERzVTNjUFVja3lVN0xGSm5UODZFMkdNSTFJUkZPR0p5cENjNHlyOHpjd2F3TFhkM1Vub20yZ1pNeGxhVkNuaUJKaV9wbERta05qT3A5djhBZFVPbjdNdTdRT2EyUDN0WEI0V3l3OWxNcnJheHFIVXJ2bmFqZGp5YlhTTmxsVmVScWgtRXk5dlRiZzdNSFFza2NQZmd0d2VDeE40MGFtc2tPMXZIVEMwODlPaWV2Zzh4cFNMMllvdW9zczI1ODBUaGlwNkdTeTZhcVFYdzZPMFliUWJkeTRBU0RoU1JmejQ1ejZUUzRkWk50MUE4OVlLVHZDZHVJRDB6empnNmwtckRWdmxOUXFBR1BWSWE3TGpvLVdZbnd5eUt5VXhZaGF1V0JrUQ?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T08:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
-     "src": "香港01",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE12eVU5cGNnQVo3aUZRRF9tWWtfY1VpdVQzd3ZrUjRjV3ZEMDBlTGZkMW42b0xFUmItZndrbndJVXpWWFVIdzV5c0h3WWpqWXVkUWc?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T08:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "RWA解碼｜千億資金已上鏈！ 資產代幣化「新錢流」 四關定成敗",
-     "src": "香港01",
-     "url": "https://news.google.com/rss/articles/CBMihwNBVV95cUxNS3oxU0tVOHp1UGMtNFlwdklGbWdZdEszYnNPdElPRXdKTWppQ1NKSlo1bXR0SEEzaVhSRUlCNmg4V3A3QWFjTmRITkVPb3d4RjF0SFBuUXVvNXY5TkNETnB4UVlaNWcyOF9ZZlFqUjJScVBUY0dqMFBhNFpESFBNMWJCTEtTR0xiZHpGN3ZzdWltQThpakNBQkh0amlGWXVTbC1MQ2NqZTQ2Q1JYaFRKdmRXWEFoNUpFTUxYU1BPeFloTjdYNjlUZ3ZNenhJMW5iUVBwQjlxTURxejZEZThyeVpYQWZncktVTE5TTTI5OS0wU2FheWZWOVVhdVZ4OHhRbF95RlplN2tuYVdUcTRxRHpiSFFraW9pVlhNZWw2N3dIeC03cWgyMElmNHVVVTZ6d0puaUo2QlpOZUxWdVpvRUNyLVdtQVN3ZUlSb3NJWE1BV3RWS2haY01OUWlBTi13dW9wOVczYnZpMXJZY29wcU5NY0RMLUdvckF4cjdFby1CT185RTRB?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T08:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "香港第二个合规港元稳定币正式推出逾330万用户可使用",
    "title": "香港第二个合规港元稳定币正式推出 逾330万用户可使用",
    "date": "2026-10-23",
@@ -2331,72 +1999,16 @@
    "role": "监管"
   },
   {
-   "id": "汇丰payme上线首枚稳定币redcoin年内可认购代币化产品",
-   "title": "汇丰PayMe上线首枚稳定币RedCoin 年内可认购代币化产品",
+   "id": "汇丰推稳定币redcoin首阶段支持以payme支付",
+   "title": "滙豐推穩定幣RedCoin 首階段支持以PayMe支付",
    "date": "2026-10-23",
    "last": "2026-10-23",
-   "ts": "2026-10-23T16:37+08:00",
+   "ts": "2026-10-23T07:06+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
-    {
-     "title": "汇丰PayMe上线首枚稳定币RedCoin 年内可认购代币化产品",
-     "src": "观点网",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTFBmb1kzWHl0RzA4Q1RHbWxMTk9iT1kzTFE4akRWWS13VERHbTlsbXBYcTNvaWlRUWhzcWVpZ3VXY2ZhaEZMWlR2VFlwRzNDZw?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T16:37+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "汇丰银行向逾300万日常应用用户推出首个稳定币",
-   "title": "汇丰银行向逾300万日常应用用户推出首个稳定币",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T18:22+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "汇丰银行向逾300万日常应用用户推出首个稳定币",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOVmJGUnMxSFpNYnVTR0JHRTJmd1FRX01jOFQ1NENCY3hVMUtmMERkSjQ4NHFzUWNIQ3ZNUnlDdVB5LVNmRF9NWkJhUGk5SFJHSjRfcksybjdza1dfLVJ0YmVZSzFOcm5LR2FkNzdhelNqel9sTkY0dnNrTGZIZUdWZVZlYU5EcElmMVp0T2hsanFoUEJrcVVSNmlhUHF1czh0ZTQ3TGJOLUY0dl9jbWVNVjV0RlUweUVBbm1mNw?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T18:22+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "汇丰推稳定币redcoin首阶段支持以payme支付即时新闻产经oncc东网",
-   "title": "滙丰推稳定币RedCoin 首阶段支持以PayMe支付｜即时新闻｜产经｜on.cc东网",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T07:36+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "滙丰推稳定币RedCoin 首阶段支持以PayMe支付｜即时新闻｜产经｜on.cc东网",
-     "src": "on.cc東網",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPNnUyWVQxSzlzUFRGdldpTEJSc2U1Y1loU2FhLTdiN2RzWDVHNU54LUg2ZHp2RGN4REc1a25tTW4wOTFtV0dRQ2VaZFdZaGpQVDl3YlRfbkZ6RG9fQjRDUmY1blJPVEc0TENWOXZUeGhFbWc5TlVuYUNjajhDd253bUR1S1JjU0RWa1JOQnFUNlVDMW5vNDVlZk5rMlk?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T07:36+08:00",
-     "via": "Google"
-    },
     {
      "title": "滙豐推穩定幣RedCoin 首階段支持以PayMe支付",
      "src": "on.cc東網",
@@ -2411,22 +2023,22 @@
    "role": "监管"
   },
   {
-   "id": "美sec公布2027财年审查重点将关注代币化网络安全及先进技术风险",
-   "title": "美SEC公布2027财年审查重点，将关注代币化、网络安全及先进技术风险",
+   "id": "hsbcbeginsrollingoutredcoinstablecointop",
+   "title": "HSBC Begins Rolling Out RedCoin Stablecoin to PayMe App Users in Hong Kong",
    "date": "2026-10-23",
    "last": "2026-10-23",
-   "ts": "2026-10-23T07:06+08:00",
+   "ts": "2026-10-23T22:44+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "美SEC公布2027财年审查重点，将关注代币化、网络安全及先进技术风险",
-     "src": "BlockBeats",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5MNERhd19MSVVzN3R6ek9XYWxVV3UtUVpuTjlzUlFLM0lTZVBaYlBUM0c4RFpEejZTSEhaQVVTTkZTTmhael9TWEdKd2x6eVUwajYyczlB?oc=5",
+     "title": "HSBC Begins Rolling Out RedCoin Stablecoin to PayMe App Users in Hong Kong",
+     "src": "Northeast Times",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxObUJVb0F5RVB5MFJzaUZNa1RhUFlBMEZFaTNfazA3VU05SlNMenpQR1A3MlQzY0c1aTZHa2xMcmUteHRQTHNER1VsNzVQUjFKSW9Icl9SSzd0ek9YUE1VNlBxLTJyeVkxbzF5Mk1yV0tweWtlTUN1Q1hlWENWWDdNYi1qQVBNNEpYR1M2UWRFdkp1SVR4TGdRNHI0RmpQNndqRDhmM2tjbFV5U1pWaWd4Ykg3bw?oc=5",
      "date": "2026-10-23",
-     "ts": "2026-10-23T07:06+08:00",
+     "ts": "2026-10-23T22:44+08:00",
      "via": "Google"
     }
    ],
@@ -2509,13 +2121,38 @@
      "date": "2026-10-23",
      "ts": "2026-10-23T08:10+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "rwa解码千亿资金已上链资产代币化新钱流四关定成败",
+   "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
+   "date": "2026-10-23",
+   "last": "2026-10-23",
+   "ts": "2026-10-23T08:00+08:00",
+   "topics": [
+    "RWA",
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "RWA解码｜千亿资金已上链！ 资产代币化“新钱流” 四关定成败",
+     "src": "香港01",
+     "url": "https://news.google.com/rss/articles/CBMiiwNBVV95cUxNZVNCZXJDcEczZEJQLWZvYmEyeEdsd3R4eFN1aTJERWJrcjNuYThablhZVlZ3TWxZZXFyUUItTmVyTFBZaFFSenEwNDJ3aENjRU14Q1l4RnJVR3Rmd19Zcy1ZNUFlaFhZVERzVTNjUFVja3lVN0xGSm5UODZFMkdNSTFJUkZPR0p5cENjNHlyOHpjd2F3TFhkM1Vub20yZ1pNeGxhVkNuaUJKaV9wbERta05qT3A5djhBZFVPbjdNdTdRT2EyUDN0WEI0V3l3OWxNcnJheHFIVXJ2bmFqZGp5YlhTTmxsVmVScWgtRXk5dlRiZzdNSFFza2NQZmd0d2VDeE40MGFtc2tPMXZIVEMwODlPaWV2Zzh4cFNMMllvdW9zczI1ODBUaGlwNkdTeTZhcVFYdzZPMFliUWJkeTRBU0RoU1JmejQ1ejZUUzRkWk50MUE4OVlLVHZDZHVJRDB6empnNmwtckRWdmxOUXFBR1BWSWE3TGpvLVdZbnd5eUt5VXhZaGF1V0JrUQ?oc=5",
+     "date": "2026-10-23",
+     "ts": "2026-10-23T08:00+08:00",
+     "via": "Google"
     },
     {
-     "title": "RWA解碼｜二級市場冰火兩重天 學者籲港求變發揮固有制度優勢",
+     "title": "RWA解碼｜千億資金已上鏈！ 資產代幣化「新錢流」 四關定成敗",
      "src": "香港01",
-     "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE1mR0kyN0tJUlFCaTRZNEloTzJYSEx5QWlYNlZ3LVAta2tvdy1DXzF0NXhCVkdfeHFSWVBDM1NqeHd5RDdXc3NKN0V3MWJJQQ?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMihwNBVV95cUxNS3oxU0tVOHp1UGMtNFlwdklGbWdZdEszYnNPdElPRXdKTWppQ1NKSlo1bXR0SEEzaVhSRUlCNmg4V3A3QWFjTmRITkVPb3d4RjF0SFBuUXVvNXY5TkNETnB4UVlaNWcyOF9ZZlFqUjJScVBUY0dqMFBhNFpESFBNMWJCTEtTR0xiZHpGN3ZzdWltQThpakNBQkh0amlGWXVTbC1MQ2NqZTQ2Q1JYaFRKdmRXWEFoNUpFTUxYU1BPeFloTjdYNjlUZ3ZNenhJMW5iUVBwQjlxTURxejZEZThyeVpYQWZncktVTE5TTTI5OS0wU2FheWZWOVVhdVZ4OHhRbF95RlplN2tuYVdUcTRxRHpiSFFraW9pVlhNZWw2N3dIeC03cWgyMElmNHVVVTZ6d0puaUo2QlpOZUxWdVpvRUNyLVdtQVN3ZUlSb3NJWE1BV3RWS2haY01OUWlBTi13dW9wOVczYnZpMXJZY29wcU5NY0RMLUdvckF4cjdFby1CT185RTRB?oc=5",
      "date": "2026-10-23",
-     "ts": "2026-10-23T08:10+08:00",
+     "ts": "2026-10-23T08:00+08:00",
      "via": "Google"
     }
    ],
@@ -2620,54 +2257,6 @@
    "role": "资讯"
   },
   {
-   "id": "chainlinkexpandslgtecharmtieupintoformal",
-   "title": "Chainlink Expands LG Tech Arm Tie-Up Into Formal Partnership on Korean Stablecoins",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T17:45+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Chainlink Expands LG Tech Arm Tie-Up Into Formal Partnership on Korean Stablecoins",
-     "src": "Yahoo Finance",
-     "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPX1dNRGtrdVVaWDVZeUdFS0ZBdVhLdDlTOTMxRU9TcDh1TlRUdVl5d201NmpiQzdNUVA0akRjVUFHR2htM3RNX3FIOXpIczA2cF9yNWU0M1Ytc1dQQVc4cVZsLXpPS05nQlBwdENGV1BZd3NkNzlzQ0RtdFViVXc1QzY5WXZ4aE84X21uS1gwV2NwVDhGdUFVbHdn?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T17:45+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "altcoinsarecryptosstockmarketbitcoinisit",
-   "title": "Altcoins Are Crypto’s Stock Market & Bitcoin Is Its Gold",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T04:03+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Altcoins Are Crypto’s Stock Market & Bitcoin Is Its Gold",
-     "src": "ETF Trends",
-     "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxPaXB5anlGOTN2bGh0R2RUUEN2ZFFjTGE3bkR3UnpzNEZ3MmEteXl0aklrajR5VFFSSUdwTHA1LUY4LWlJZkVlRTljR2hNM1ZsUHBIeGtQOHZ2QTlUNWozdVo1UVdDREx1TWRqZXBOSHFqSzV1ZkhhamtjUDR1cUFuenZYdUFTX3lFSDM1ZlBtSGtJRmRyS0F3QjlqV0I?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T04:03+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "hkscmccglobaltapstethershadrontotokenize",
    "title": "HK’s CMCC Global taps Tether’s Hadron to tokenize funds",
    "date": "2026-10-23",
@@ -2684,30 +2273,6 @@
      "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxPSUJSVXR1VHZaeGJVRW5oVHFpZ3BvNnlBTlNEQnVDNFY0OXFzWjExbXNhTnQxSUNHRUxKRTRhV0U5SFhkQmlDcG1Wb2p1LW1lSWNDX3hYZ1JheXV3MUgyR1lOYzNNUkJtN1ZWdTNSZmV5YmN4WERlYmI1al9WenlYdGdORUdVUUh4MFE?oc=5",
      "date": "2026-10-23",
      "ts": "2026-10-23T07:56+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "everythingyouownwillliveonchainthankstor",
-   "title": "Everything You Own Will Live On-Chain Thanks to RWA Tokenization",
-   "date": "2026-10-23",
-   "last": "2026-10-23",
-   "ts": "2026-10-23T06:19+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Everything You Own Will Live On-Chain Thanks to RWA Tokenization",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTWdnUlJRUEFmeVh1Zmk5REMxNHRjb0tYUFVQdE1WZHh3RlJMME4tTHEwblNpSjNGX2d5QTBJb3VYV0dXYlNyTE43WTV1OW1tdTZLQ1g1dnhmcW9GTWhBQk5nQlY3cTdnLWl4amdxSWFuYVUtX2JlVkZHb1gwQl9NY084cmNBV2wwZWQxYTFMYw?oc=5",
-     "date": "2026-10-23",
-     "ts": "2026-10-23T06:19+08:00",
      "via": "Google"
     }
    ],
@@ -2744,7 +2309,7 @@
    "title": "Raffles Family Office is building a wealth manager for Asia’s stablecoin billionaires",
    "date": "2026-10-23",
    "last": "2026-10-23",
-   "ts": "2026-10-23T15:00+08:00",
+   "ts": "2026-10-23T10:44+08:00",
    "topics": [
     "机构需求"
    ],
@@ -2752,10 +2317,10 @@
    "articles": [
     {
      "title": "Raffles Family Office is building a wealth manager for Asia’s stablecoin billionaires",
-     "src": "Yahoo Finance",
-     "url": "https://finance.yahoo.com/markets/crypto/articles/raffles-family-office-building-wealth-094421524.html",
+     "src": "Fortune on MSN",
+     "url": "https://www.msn.com/en-us/money/other/raffles-family-office-is-building-a-wealth-manager-for-asia-s-stablecoin-billionaires/ar-AA2fUxfy",
      "date": "2026-10-23",
-     "ts": "2026-10-23T15:00+08:00",
+     "ts": "2026-10-23T10:44+08:00",
      "via": "Bing"
     }
    ],
@@ -3074,22 +2639,22 @@
    "role": "资讯"
   },
   {
-   "id": "cmccglobalpartnerswithtetherandbitfinexs",
-   "title": "CMCC Global Partners with Tether and Bitfinex Securities to Launch the First Tokenised Fund-of-Funds Under El Salvador's Digital Asset Framework",
+   "id": "arkinvest报告股票代币化成交额暴增9倍达500亿美元推动链上交易复苏数字",
+   "title": "ARK Invest報告：股票代幣化成交額暴增9倍達500億美元 推動鏈上交易復甦- 數字經濟",
    "date": "2026-10-22",
    "last": "2026-10-22",
-   "ts": "2026-10-22T18:58+08:00",
+   "ts": "2026-10-22T21:44+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "CMCC Global Partners with Tether and Bitfinex Securities to Launch the First Tokenised Fund-of-Funds Under El Salvador's Digital Asset Framework",
-     "src": "Taiwan News",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFAzeUlhRGQ4OHNkNGdybFhjRThuVU1fNUZfMk1UZzBwaFdxSUlDWEZPa1RxZk1nMThsYXBwMm5CdDJmVElEZVgwS1lkU05zeWhRUXdPcg?oc=5",
+     "title": "ARK Invest報告：股票代幣化成交額暴增9倍達500億美元 推動鏈上交易復甦- 數字經濟",
+     "src": "香港文匯報",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE5VZkZ2RVBBNDNqTTI2RnJFR3J2VkdKQm51NG1xTThzdTQxbnBMNVMyRXFPVXF0NWkzLXh6QUJOM0xCQ0pDYjZidFZ3bERMeFhkOVNtZERYS0h3OTltLWxGUlJuMlBIYWhrMDhDSE9nRHBiSDZEUC00?oc=5",
      "date": "2026-10-22",
-     "ts": "2026-10-22T18:58+08:00",
+     "ts": "2026-10-22T21:44+08:00",
      "via": "Google"
     }
    ],
@@ -3270,6 +2835,30 @@
    "role": "竞品动态"
   },
   {
+   "id": "bestcryptoexchangesandtradingplatforms",
+   "title": "Best Crypto Exchanges and Trading Platforms",
+   "date": "2026-10-21",
+   "last": "2026-10-21",
+   "ts": "2026-10-21T22:26+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Best Crypto Exchanges and Trading Platforms",
+     "src": "CryptoSlate",
+     "url": "https://cryptoslate.com/crypto-exchanges/",
+     "date": "2026-10-21",
+     "ts": "2026-10-21T22:26+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "彭博大和及瑞穗获发内地全资证券牌照",
    "title": "彭博：大和及瑞穗獲發內地全資證券牌照",
    "date": "2026-10-20",
@@ -3374,102 +2963,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "blackrockpushestokenizedmoneyfundsbeyond",
-   "title": "BlackRock Pushes Tokenized Money Funds Beyond Crypto Into Collateral Role",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T07:58+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "BlackRock Pushes Tokenized Money Funds Beyond Crypto Into Collateral Role",
-     "src": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE80dEY4dTdKSEU4alFaSHN0WnMxaFM3NzhzNzhxUWVWTkNTekRoNWhKejdtbmVUTFVpa29IZlpscW40QlZraVNBU0VFelkzRHZVbm1ra1lqX3dLR0VXRWlicDFDZzdrMmFaaWNFbU9qaWxoUVAtQ1E?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T07:58+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "blackrockexpandsbuidltosolanaastokenized",
-   "title": "BlackRock Expands BUIDL to Solana as Tokenized Fund Surpasses $1.7 Billion",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T17:43+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "BlackRock Expands BUIDL to Solana as Tokenized Fund Surpasses $1.7 Billion",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQMmtRb1daWlZaTHdvb1pKcVFyZUFWeGo4TmptZF9wNVpEUVM3NWlHaGQxeUx5TVlqTDU1eVdueXB4eGp1ZTlfTGFFZ1JWZVZIbHNMT0dwb3otN2xBNW45TVAtUGVMYzBFcnpNbnhubVNPZ3hNbmJvcUFDUDd6X0NLdVpJbnNld2c5U2FGczBVOHJFM092YTU2b3RIY3Q0LVl6WFAtRGNSX3V4TmxMNFA0OGtvbng3UnBaU0NpTA?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T17:43+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "jpmorgandeploysdeposittokenonethereumsig",
-   "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T15:45+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "JPMorgan Deploys Deposit Token on Ethereum, Signaling a Major Shift in the Stablecoin Market",
-     "src": "KuCoin",
-     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQMXZ3NWR4QUZtWENlakZoeUdUbkYwQzlPemxRZ3RTbkZSY05uVE1yUjhXaGUtR3lpVlI2a3BBVm5KelVKeWZBZTJlTWtkVzB3VzFQak5QbjVPVFg0MUFEdDhMLVJFcEE2VFJCbW52MTh4UVNIOFFBRzU3aFg3c09Gb1hvUWY2ZDYweTJOc3luZnlidzM1eDBsQnFoUnNsYnVxVXc4eW4zY2ZuMDJ4NU5nQ1lJdHVSSTlK?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T15:45+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "bankinglegionassemblesthestablecoin",
-   "title": "Banking Legion Assembles: The Stablecoin...",
-   "date": "2026-10-20",
-   "last": "2026-10-20",
-   "ts": "2026-10-20T12:06+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Banking Legion Assembles: The Stablecoin...",
-     "src": "ChainCatcher",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9hNVB2dGRSb2pVeUZnaVBoNXVmVl9OMFJPYjlmWnZ3TllTTDdrR1VxSUd3Z0JZNDhGdndmX2JDWnNCS0p6emNuaFVfQWVZTUF2bUhGNkFIRFdBb2c?oc=5",
-     "date": "2026-10-20",
-     "ts": "2026-10-20T12:06+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   }
  ]
 }
