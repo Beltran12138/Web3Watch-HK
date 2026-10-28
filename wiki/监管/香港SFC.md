@@ -47,17 +47,17 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-27
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-29
 
+- **[美国监管机构再次调查Polymarket是否违反2022年达成的和解协议](https://www.theblockbeats.info/flash/374026)** (2026-10-28 | Alpha 100)
+- **[[SFC] SFC welcomes launch of Platform and Nominee Services on Integrated Fund Platform](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR175)** (2026-10-28 | Alpha 95)
+- **[[SFC通函] Circular to applicants seeking SFC authorisation of unit trusts and mutual funds - Launch of a new Fund Authorisation Simple Track (FASTrack)](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC68)** (2026-10-28 | Alpha 95)
 - **[[SFC] SFC takes action against suspected IPO-rigging syndicates and suspends dealings in Baicha shares](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR168)** (2026-10-13 | Alpha 88)
 - **[[SFC通函] Circular to licensed corporations carrying out sponsor work and engaging in bookbuilding and placing activities](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC62)** (2026-10-13 | Alpha 85)
 - **[[SFC通函] Circular to Licensed Corporations, SFC-licensed Virtual Asset Service Providers and Associated Entities - Anti-Money Laundering / Counter-Financing of Terrorism Anti-Money Laundering and Count](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/aml/doc?refNo=26EC64)** (2026-10-13 | Alpha 85)
 - **[[SFC] SFC approves first-ever secondary trading of tokenised public funds](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR174)** (2026-10-26 | Alpha 85)
+- **[[SFC] SFC issues guidance to support enhancements to Hong Kong’s retail fund regime](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR176)** (2026-10-28 | Alpha 85)
+- **[[SFC通函] Supplemental circular to management companies of SFC-authorised funds on liquidity risk management](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC67)** (2026-10-28 | Alpha 85)
 - **[[SFC] SFC proceeds to strengthen targeted tools to tackle IPO-related and other corporate misconduct](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR165)** (2026-10-12 | Alpha 85)
-- **[Kraken拟收购受欧盟监管的Saldo银行，为潜在美国IPO铺路](https://www.theblockbeats.info/flash/371773)** (2026-10-14 | Alpha 78)
-- **[CFTC 不等国会了：零售加密杠杆交易要回岸，州级牌照或被统一取代](https://www.techflowpost.com/article/34727)** (2026-10-20 | Alpha 78)
-- **[俄罗斯最大银行 Sberbank 拿到比特币交易牌照：12 月起向 1.1 亿零售客户开放 BTC、ETH 和 USDT](https://www.techflowpost.com/article/34604)** (2026-10-15 | Alpha 75)
-- **[[SFC] SFC welcomes HKEX’s proposal to implement T+1 settlement in Hong Kong’s stock market](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR171)** (2026-10-16 | Alpha 75)
-- **[[SFC] New speech by Julia Leung: Keynote address at ASIFMA’s Future of Liquidity in Asia Pacific Capital Markets Conference](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR164)** (2026-10-09 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
