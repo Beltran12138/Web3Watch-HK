@@ -74,7 +74,7 @@ const SOURCES = [
   // ── 低频（T1）
   { key: 'TechFlow',           source: 'TechFlow',        tier: 'low',  ai: true,  wecomBlock: true, reportNoise: true, maxAgeHours: 72, enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   { key: 'PRNewswire',         source: 'PRNewswire',      tier: 'low',  ai: true,  maxAgeHours: 24, enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 24 }, // 经常有旧闻混入
-  { key: 'BlockBeats',         source: 'BlockBeats',      tier: 'low',  ai: true,  wecomBlock: true, reportNoise: true, maxAgeHours: 12, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 6 },
+  { key: 'BlockBeats',         source: 'BlockBeats',      tier: 'high', ai: true,  wecomBlock: true, reportNoise: true, maxAgeHours: 12, enableStrictTimestamp: true, dedupMode: 'strict', pushCooldownHours: 6 },
   { key: 'OSL',                source: 'OSL',             tier: 'low',  ai: true,  hk: true,  maxAgeHours: 72,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },
   { key: 'TechubNews',         source: 'TechubNews',      tier: 'low',  ai: true,  hk: true,  maxAgeHours: 24,  enableStrictTimestamp: true,  dedupMode: 'strict', pushCooldownHours: 48 },
   { key: 'Exio',               source: 'Exio',            tier: 'low',  ai: true,  hk: true,  maxAgeHours: 72,  enableStrictTimestamp: false, dedupMode: 'strict', pushCooldownHours: 24 },

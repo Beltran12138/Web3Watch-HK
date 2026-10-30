@@ -56,12 +56,13 @@ describe('derived source sets (pinned to pre-refactor values)', () => {
     expect(config.HIGH_FREQ_SOURCES).toEqual([
       'SFC', 'Binance', 'OKX',
       'PolymarketBreaking', 'PolymarketChina',
+      'BlockBeats', // 2026-10-30 从 low 挪到 high：突发快讯最早出现在这里
     ]);
   });
 
   test('LOW_FREQ_SOURCES (order = execution order)', () => {
     expect(config.LOW_FREQ_SOURCES).toEqual([
-      'TechFlow', 'PRNewswire', 'BlockBeats',
+      'TechFlow', 'PRNewswire',
       'OSL', 'TechubNews', 'Exio',
       'WuBlock', 'HashKeyGroup', 'KuCoin', 'HashKeyExchange',
       'Bybit', 'Bitget', 'Mexc', 'Gate', 'Htx',

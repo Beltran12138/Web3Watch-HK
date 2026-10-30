@@ -1,0 +1,10 @@
+{
+  // 每 10 分钟触发 GitHub Actions 抓取（说明见 worker.js 顶部注释）；GH_TOKEN 用 wrangler secret 存，不写在这里
+  "name": "web3watch-scheduler",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-06",
+  "workers_dev": false,
+  "preview_urls": false,
+  "triggers": { "crons": ["*/10 * * * *"] },
+  "observability": { "enabled": true }
+}

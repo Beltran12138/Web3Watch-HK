@@ -8,7 +8,7 @@ on:
 # Prevent overlapping runs
 concurrency:
   group: scrape-high
-  cancel-in-progress: true
+  cancel-in-progress: false # 排队而不是取消：取消会打断正在推送的一轮（条目先标已推送再发），丢消息
 
 jobs:
   scrape:
