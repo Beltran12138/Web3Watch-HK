@@ -47,7 +47,7 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-30
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-10-31
 
 - **[美国监管机构再次调查Polymarket是否违反2022年达成的和解协议](https://www.theblockbeats.info/flash/374026)** (2026-10-28 | Alpha 100)
 - **[[SFC] SFC welcomes launch of Platform and Nominee Services on Integrated Fund Platform](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR175)** (2026-10-28 | Alpha 95)
