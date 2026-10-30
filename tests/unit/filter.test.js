@@ -126,6 +126,22 @@ describe('jaccardSimilarity', () => {
     expect(jaccardSimilarity('', 'hello')).toBe(0);
     expect(jaccardSimilarity('', '')).toBe(0);
   });
+
+  // 10-30 回测：旧的字符集 Jaccard 把这些不相关的英文标题判成 0.6-0.74
+  test.each([
+    ['Binance Futures Will Launch USDⓈ-Margined PREDICTUSDT Perpetual Contract',
+      'Artprice Mengucapkan Tahniah kepada Pemenang Brognon Rollin bagi Hadiah'],
+    ['[SFC] SFC welcomes re-appointment of Non-Executive Directors',
+      'Finloop Collaborates with Anchorpoint and QFPay HK on Hong Kong Payment Applications'],
+    ['Delisting of PROMPTUSDT Perpetual Contract', 'Bybit Secures VARA Licence for Exchange Services in Dubai'],
+  ])('unrelated English titles score low: %s', (a, b) => {
+    expect(jaccardSimilarity(a, b)).toBeLessThan(0.3);
+  });
+
+  test('same event in Chinese from two sources still scores high', () => {
+    expect(jaccardSimilarity('火币HTX已上线MDT、JCT和IBKR品种USDT本位永续合约', '火币HTX已上线MDT、JCT、IBKR永续合约'))
+      .toBeGreaterThan(0.6);
+  });
 });
 
 describe('semanticDedup', () => {
@@ -147,6 +163,22 @@ describe('semanticDedup', () => {
     const result = semanticDedup(items, 0.6);
     // Same source items are not checked for cross-source dedup
     expect(result.length).toBe(2);
+  });
+
+  test('same-template notices naming different exchanges are kept', () => {
+    const items = [
+      validItem({ title: '火币HTX关于NOKUSDT股票合约现金派息结算的公告', source: 'HTX', url: 'https://a.com' }),
+      validItem({ title: '【重要】Bitget 关于 NOKSTOCKUSDT 股票合约现金派息结算的公告', source: 'Bitget', url: 'https://b.com' }),
+    ];
+    expect(semanticDedup(items, 0.6).length).toBe(2);
+  });
+
+  test('media copy of an exchange notice is still removed', () => {
+    const items = [
+      validItem({ title: '火币HTX已上线MDT、JCT和IBKR品种USDT本位永续合约', source: 'HTX', url: 'https://a.com' }),
+      validItem({ title: '火币HTX已上线MDT、JCT、IBKR永续合约', source: 'BlockBeats', url: 'https://b.com' }),
+    ];
+    expect(semanticDedup(items, 0.6).length).toBe(1);
   });
 });
 

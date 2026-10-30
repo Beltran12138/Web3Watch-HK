@@ -20,6 +20,7 @@ const {
   DEFAULT_SOURCE_CONFIG,
 } = require('./config');
 const { contentFingerprint } = require('./db');
+const { titleEntity } = require('./lib/entities');
 
 // ── 额外的噪声正则（补充 config 中的关键词列表）────────────────────────────
 const JUNK_TITLE_REGEXES = [
@@ -111,13 +112,26 @@ function isSimilarTitle(t1, t2) {
 }
 
 /**
- * 跨源语义去重：基于标题字符级 Jaccard 相似度
+ * 标题切词：拉丁字母/数字按词（≥2 字符），中文按单字
+ * 不能整串按字符切：英文标题的字符集几乎都是那二十几个字母，任意两条都会 ≈0.6（10-30 回测：旧算法判重 100 对，约 98 对误判）
+ */
+function titleTokens(title) {
+  const out = new Set();
+  const s = (title || '').toLowerCase();
+  for (const w of s.match(/[a-z0-9]+(?:[.'][a-z0-9]+)*/g) || []) if (w.length >= 2) out.add(w);
+  for (const run of s.match(/[㐀-鿿]+/g) || []) for (const ch of run) out.add(ch);
+  return out;
+}
+
+/**
+ * 跨源语义去重：基于标题词/字级 Jaccard 相似度
  * 同一事件被多家媒体报道时，保留 alpha_score 最高的版本
  */
 function jaccardSimilarity(title1, title2) {
   if (!title1 || !title2) return 0;
-  const set1 = new Set(title1.split(''));
-  const set2 = new Set(title2.split(''));
+  const set1 = titleTokens(title1);
+  const set2 = titleTokens(title2);
+  if (!set1.size || !set2.size) return 0;
   const intersection = [...set1].filter(c => set2.has(c)).length;
   return intersection / (set1.size + set2.size - intersection);
 }
@@ -125,6 +139,7 @@ function jaccardSimilarity(title1, title2) {
 /**
  * 对已过滤的条目列表进行跨源语义去重
  * 相似度 > 0.6 视为同一事件，保留 alpha_score 最高的版本
+ * 两条标题点名的交易所/机构不同（如 HTX 与 Bitget 的同模板派息公告）不算重复
  */
 function semanticDedup(items, threshold = 0.6) {
   const kept = [];
@@ -138,6 +153,10 @@ function semanticDedup(items, threshold = 0.6) {
       if (removed.has(j)) continue;
       // Only check cross-source duplicates
       if (items[bestIdx].source === items[j].source) continue;
+
+      const entA = titleEntity(items[bestIdx].title);
+      const entB = titleEntity(items[j].title);
+      if (entA && entB && entA !== entB) continue;
 
       const cleanA = dedupKeyWithTitle(items[bestIdx].title);
       const cleanB = dedupKeyWithTitle(items[j].title);
