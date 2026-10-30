@@ -3,7 +3,7 @@
  * tests/unit/importance.test.js — Importance scoring unit tests
  */
 
-const { checkImportance, ruleBasedPreFilter } = require('../../scrapers/index');
+const { checkImportance, isHkPushNoise, ruleBasedPreFilter } = require('../../scrapers/index');
 const { validItem } = require('../mocks/sample-news');
 const { pushManager } = require('../../push-channel');
 
@@ -99,5 +99,26 @@ describe('ruleBasedPreFilter', () => {
   test('does NOT skip regulatory news', () => {
     const item = validItem({ title: 'SFC 发布新的虚拟资产交易平台监管要求', source: 'SFC' });
     expect(ruleBasedPreFilter(item)).toBe(false);
+  });
+});
+
+describe('isHkPushNoise (HK sources are pushed in full, minus digests and marketing)', () => {
+  test.each([
+    ['TechubNews', '10月30日早茶嘆熱點 | 香港9月出口升64.9%創歷史新高'],
+    ['TechubNews', '10月16日早茶叹热点 | “粤艇南下”今日首航'],
+    ['HashKeyExchange', 'Notice on HashKey Exchange Bank Channel Maintenance'],
+    ['OSL', 'OSL Golden Autumn Trading Challenge: Share 50,000 USDT Prize Pool'],
+  ])('%s: %s → noise', (source, title) => {
+    expect(isHkPushNoise(validItem({ source, title }))).toBe(true);
+  });
+
+  test.each([
+    ['SFC', '[SFC] SFC approves first-ever secondary trading of tokenised public funds'],
+    ['HashKeyGroup', 'HashKey RWA Launches First Product Under the HashKey “hToken” Series'],
+    ['Exio', 'EX.IO将终止TBILL服务'],
+    // 非 HK 源的营销稿不归这条规则管
+    ['Bybit', 'New Prize Pool Unlocked: Bybit Extends USD1 Hold & Earn Program'],
+  ])('%s: %s → not noise', (source, title) => {
+    expect(isHkPushNoise(validItem({ source, title }))).toBe(false);
   });
 });

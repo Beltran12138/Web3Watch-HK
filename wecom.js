@@ -13,6 +13,7 @@ const DASHBOARD_URL = process.env.DASHBOARD_URL || 'http://localhost:3001';
  * @param {Object} item - 新闻条目
  * @param {Object} options - 推送选项
  * @param {boolean} options.urgent - 是否为紧急消息（alpha_score >= CRITICAL_SCORE_THRESHOLD）
+ * @param {boolean} options.flash - 安全突发（lib/tiering.js 的 FLASH 档）：标题标「⚠️ 突发待核」并注明未经人工核实
  */
 async function sendToWeCom(item, options = {}) {
   if (!WECOM_WEBHOOK_URL) {
@@ -21,7 +22,11 @@ async function sendToWeCom(item, options = {}) {
   }
 
   // 视觉增强：根据评分和影响类型选择 Emoji
-  const scoreEmoji = item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡');
+  const scoreEmoji = options.flash ? '⚠️' : (item.alpha_score >= 90 ? '🔥' : (item.alpha_score >= 70 ? '⭐️' : '📡'));
+  const title      = options.flash ? `⚠️ 突发待核｜${item.title}` : item.title;
+  const detail     = options.flash
+    ? `未经人工核实，请以官方渠道为准。${item.detail ? `\n${item.detail}` : ''}`
+    : (item.detail || '（暂无摘要）');
   let impactColor = 3; // 默认灰色
   const impactText = item.impact || '待评估';
   if (item.impact === '利好') impactColor = 1; // 红色（股票红涨）或蓝色，看语境，这里企微模板里 1 是红色/重要，2 是绿色/打分，3 灰色
@@ -38,10 +43,10 @@ async function sendToWeCom(item, options = {}) {
           desc_color: 1,
         },
         main_title: {
-          title: item.title,
-          desc: `${scoreEmoji} ${item.business_category || '快讯'}`,
+          title,
+          desc: options.flash ? `来源：${item.source || '未知'}` : `${scoreEmoji} ${item.business_category || '快讯'}`,
         },
-        sub_title_text: item.detail || '（暂无摘要）',
+        sub_title_text: detail,
         horizontal_content_list: [
           {
             keyname: '情报维度',
@@ -87,7 +92,7 @@ async function sendToWeCom(item, options = {}) {
     if (errcode !== 0) {
       console.error(`[WeCom] Card rejected by WeCom API: errcode=${errcode}, errmsg=${res.data?.errmsg}, title=${item.title}`);
       // 卡片被拒（42028/42029 等）时降级为 markdown，避免重要条目静默丢失
-      const md = `${scoreEmoji} **${item.title}**\n> ${item.detail || '（暂无摘要）'}\n来源：${item.source || '未知'}` +
+      const md = `${options.flash ? '' : `${scoreEmoji} `}**${title}**\n> ${detail}\n来源：${item.source || '未知'}` +
         (item.url ? `\n[阅读原文](${item.url})` : '');
       const fb = await axios.post(WECOM_WEBHOOK_URL, { msgtype: 'markdown', markdown: { content: md } });
       if (fb.data?.errcode === 0) console.log(`[WeCom] Sent (Markdown fallback): ${item.title}`);
@@ -95,6 +100,33 @@ async function sendToWeCom(item, options = {}) {
     } else {
       console.log(`[WeCom] Sent (Card): ${item.title}`);
     }
+  } catch (err) {
+    console.error('[WeCom Error]:', err.response?.data || err.message);
+  }
+}
+
+/**
+ * FLASH 事件更新：首条推送后 6 小时窗口内的后续条目，合并成一条 markdown
+ * @param {string} entity - 事件实体（lib/flash.js 的折叠键）
+ * @param {number} start - 首条推送时间（ms）
+ * @param {Array<{title:string, source:string, url:string}>} items
+ */
+async function sendFlashDigestToWeCom(entity, start, items) {
+  if (!WECOM_WEBHOOK_URL) {
+    console.warn('[WeCom] No Webhook URL found, skipping push.');
+    return;
+  }
+  const when  = new Date(start).toLocaleString('zh-CN', { timeZone: 'Asia/Shanghai', hour12: false });
+  const lines = items.map((it, i) =>
+    `${i + 1}. ${it.url ? `[${it.title}](${it.url})` : it.title}（${it.source || '未知'}）`);
+  const content = `⚠️ **突发事件更新｜${entity}**（${items.length} 条后续）\n` +
+    `> 首条推送于 ${when}（北京时间）；以下为其后 6 小时内的后续报道，未经人工核实\n\n${lines.join('\n')}`;
+  try {
+    const res = await axios.post(WECOM_WEBHOOK_URL, {
+      msgtype: 'markdown', markdown: { content: content.slice(0, WECOM_MARKDOWN_LIMIT) },
+    });
+    if (res.data?.errcode === 0) console.log(`[WeCom] Sent (Flash digest): ${entity} ×${items.length}`);
+    else console.error(`[WeCom] Flash digest rejected: errcode=${res.data?.errcode}, errmsg=${res.data?.errmsg}`);
   } catch (err) {
     console.error('[WeCom Error]:', err.response?.data || err.message);
   }
@@ -200,4 +232,4 @@ function splitReportContent(text, maxLen) {
   return segments;
 }
 
-module.exports = { sendToWeCom, sendReportToWeCom };
+module.exports = { sendToWeCom, sendFlashDigestToWeCom, sendReportToWeCom };

@@ -25,10 +25,12 @@ const {
   canPushMessage,
   updateSourcePush,
   checkIfSent,
+  getAllSourceTracking,
 } = require('../db');
 const { processWithAI }    = require('../ai');
-const { sendToWeCom }      = require('../wecom');
-const { classify }         = require('../lib/tiering');
+const { sendToWeCom, sendFlashDigestToWeCom } = require('../wecom');
+const { classify, CORE_NOISE } = require('../lib/tiering');
+const { loadFlashEvents, decideFlash, dueDigests, serializeEvent } = require('../lib/flash');
 
 // 影子模式下，新规则会推送的层级
 const SHADOW_PUSH_TIERS = new Set(['A', 'B', 'FLASH']);
@@ -147,6 +149,14 @@ function getEnabledScrapers(scrapersMap) {
 }
 
 const ALL_SCRAPERS = Object.values(SCRAPERS_MAP);
+
+// HK 源本来全量推送；其中的营销/运维稿和 TechubNews 每日「早茶嘆熱點」合集不推（仍存库）
+const HK_DIGEST = /早茶(嘆|叹)(熱點|热点)/;
+function isHkPushNoise(item) {
+  const title = item.title || '';
+  const isHk  = HK_SOURCES.has(item.source || '') || item.category === 'HK' || HK_KEYWORDS.some(k => title.includes(k));
+  return isHk && (CORE_NOISE.test(title) || HK_DIGEST.test(title));
+}
 
 // ── 重要性判定（原 checkImportance，现从 config 读配置）─────────────────────────
 function checkImportance(item) {
@@ -325,6 +335,14 @@ async function runAllScrapers(tier = 'all') {
   const pushLock      = new Set();
   const shadowStats   = { BOTH: 0, OLD_ONLY: 0, NEW_ONLY: 0, CANDIDATE: 0 };
 
+  // FLASH 事件折叠状态（source_tracking 里 'FLASH:<实体>' 行）
+  let flashEvents = new Map();
+  try {
+    flashEvents = loadFlashEvents(await getAllSourceTracking());
+  } catch (e) {
+    console.warn('[Flash] Failed to load events:', e.message);
+  }
+
   for (const item of allNews) {
     const nTitle   = normalizeKey(item.title, '').split('|')[0];
     const cacheKey = `${nTitle}|${(item.source || '').toLowerCase()}`;
@@ -384,8 +402,8 @@ async function runAllScrapers(tier = 'all') {
       }
     }
 
-    // 企微封锁（覆盖 AI 可能改写的 is_important）
-    if (WECOM_BLOCK_SOURCES.has(item.source)) item.is_important = 0;
+    // 企微封锁 / HK 噪音（覆盖 AI 可能改写的 is_important）
+    if (WECOM_BLOCK_SOURCES.has(item.source) || isHkPushNoise(item)) item.is_important = 0;
 
     // 影子模式：新分层规则（lib/tiering.js）只记日志，不影响推送
     const shadow   = classify(item);
@@ -395,6 +413,26 @@ async function runAllScrapers(tier = 'all') {
       const tag = oldWould && newWould ? 'BOTH' : oldWould ? 'OLD_ONLY' : newWould ? 'NEW_ONLY' : 'CANDIDATE';
       shadowStats[tag]++;
       console.log(`[Shadow] ${tag} tier=${shadow.tier || '-'} src=${item.source} | ${(item.title || '').replace(/\s+/g, ' ').slice(0, 120)}`);
+    }
+
+    // FLASH（安全突发）：不看来源屏蔽和冷却，按事件折叠后推送
+    if (shadow.tier === 'FLASH') {
+      item.is_important  = 1;
+      item.sent_to_wecom = 1;
+      try {
+        await saveNews([item]);
+        const { action, entity, flush } = decideFlash(flashEvents, item);
+        if (flush) {
+          await sendFlashDigestToWeCom(flush.entity, flush.start, flush.pending);
+        }
+        console.log(`[Flash] ${action.toUpperCase()} ${entity}: ${(item.title || '').slice(0, 60)}`);
+        if (action === 'push') await sendToWeCom(item, { flash: true });
+        if (action !== 'skip') await updateSourcePush(...serializeEvent(entity, flashEvents.get(entity)));
+      } catch (err) {
+        console.error('[Flash error]', item.source, err.message);
+      }
+      processedNews.push(item);
+      continue;
     }
 
     // 推送逻辑
@@ -466,6 +504,18 @@ async function runAllScrapers(tier = 'all') {
     processedNews.push(item);
   }
 
+  // 6 小时窗口已结束的 FLASH 事件：把窗口内挂起的后续条目合并成一条「事件更新」
+  for (const ev of dueDigests(flashEvents)) {
+    try {
+      await sendFlashDigestToWeCom(ev.entity, ev.start, ev.pending);
+      const state = flashEvents.get(ev.entity);
+      state.digested = true;
+      await updateSourcePush(...serializeEvent(ev.entity, state));
+    } catch (err) {
+      console.error('[Flash digest error]', ev.entity, err.message);
+    }
+  }
+
   await saveNews(processedNews);
   console.log(`[Shadow] summary ${JSON.stringify(shadowStats)}`);
 
@@ -521,7 +571,9 @@ async function runAllScrapers(tier = 'all') {
   return processedNews;
 }
 
-module.exports = { runAllScrapers, checkImportance, ruleBasedPreFilter, SCRAPERS_MAP, getEnabledScrapers };
+module.exports = {
+  runAllScrapers, checkImportance, isHkPushNoise, ruleBasedPreFilter, SCRAPERS_MAP, getEnabledScrapers,
+};
 
 // Allow direct execution (e.g., from npm run scrape)
 if (require.main === module) {
