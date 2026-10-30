@@ -1,7 +1,7 @@
 /**
  * cloudflare/scheduler — 替代 GitHub Actions 的 schedule 触发
  *
- * GitHub 对 schedule 触发严重降频：scrape_high 配 */15、scrape 配 */30，2026-10-16~30 实测都只有约 6 次/天
+ * GitHub 对 schedule 触发严重降频：scrape_high 配每 15 分钟、scrape 配每 30 分钟，2026-10-16~30 实测都只有约 6 次/天
  * （中位间隔 4.1h），10-29 Binance 被盗因此晚了几个小时才被看到。
  * 这里用 Cron Trigger 每 10 分钟调一次 workflow_dispatch：scrape_high 每 10 分钟，scrape 每 30 分钟。
  * GH_TOKEN = fine-grained PAT，只授 Web3Watch-HK 一个仓库的 Actions: Read and write（wrangler secret put GH_TOKEN）。
