@@ -47,17 +47,17 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-07
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-08
 
 - **[美国监管机构再次调查Polymarket是否违反2022年达成的和解协议](https://www.theblockbeats.info/flash/374026)** (2026-10-28 | Alpha 100)
 - **[[SFC] SFC welcomes launch of Platform and Nominee Services on Integrated Fund Platform](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR175)** (2026-10-28 | Alpha 95)
 - **[[SFC通函] Circular to applicants seeking SFC authorisation of unit trusts and mutual funds - Launch of a new Fund Authorisation Simple Track (FASTrack)](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC68)** (2026-10-28 | Alpha 95)
 - **[[SFC] SFC takes action against suspected IPO-rigging syndicates and suspends dealings in Baicha shares](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR168)** (2026-10-13 | Alpha 88)
+- **[MEXC CEO回应美国监管问题：正寻求建设性互动并已启动相关审查](https://www.theblockbeats.info/flash/376127)** (2026-11-07 | Alpha 88)
 - **[[SFC] SFC concludes consultation on further restricting use of misleading names by unregulated entities to protect investors](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR187)** (2026-11-06 | Alpha 88)
+- **[香港证监会拟限制未持牌机构使用误导性名称，监管范围延伸至虚拟资产交易平台](https://www.theblockbeats.info/flash/376075)** (2026-11-07 | Alpha 88)
 - **[[SFC通函] Circular to licensed corporations carrying out sponsor work and engaging in bookbuilding and placing activities](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/intermediaries/supervision/doc?refNo=26EC62)** (2026-10-13 | Alpha 85)
 - **[[SFC通函] Circular to Licensed Corporations, SFC-licensed Virtual Asset Service Providers and Associated Entities - Anti-Money Laundering / Counter-Financing of Terrorism Anti-Money Laundering and Count](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/aml/doc?refNo=26EC64)** (2026-10-13 | Alpha 85)
 - **[[SFC] SFC approves first-ever secondary trading of tokenised public funds](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR174)** (2026-10-26 | Alpha 85)
-- **[[SFC] SFC issues guidance to support enhancements to Hong Kong’s retail fund regime](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR176)** (2026-10-28 | Alpha 85)
-- **[[SFC通函] Supplemental circular to management companies of SFC-authorised funds on liquidity risk management](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC67)** (2026-10-28 | Alpha 85)
 
 <!-- AUTO_NEWS_END -->
