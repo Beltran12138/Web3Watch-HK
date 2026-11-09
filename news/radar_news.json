@@ -1,17 +1,17 @@
 {
- "built": "2026-11-09T06:12+08:00",
+ "built": "2026-11-09T09:45+08:00",
  "since": "2026-11-02",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 27,
-   "in_window": 22
+   "fetched": 26,
+   "in_window": 21
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 30,
+   "fetched": 31,
    "in_window": 27
   },
   {
@@ -24,7 +24,7 @@
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
    "fetched": 22,
-   "in_window": 19
+   "in_window": 20
   },
   {
    "topic": "监管",
@@ -41,20 +41,20 @@
   {
    "topic": "中资券商",
    "q": "券商 香港 虚拟资产交易 升级",
-   "fetched": 15,
+   "fetched": 14,
    "in_window": 2
   },
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 17,
-   "in_window": 4
+   "fetched": 18,
+   "in_window": 6
   },
   {
    "topic": "竞品",
    "q": "HashKey",
-   "fetched": 29,
-   "in_window": 29
+   "fetched": 30,
+   "in_window": 30
   },
   {
    "topic": "竞品",
@@ -65,7 +65,7 @@
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
-   "fetched": 27,
+   "fetched": 26,
    "in_window": 6
   },
   {
@@ -77,7 +77,7 @@
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 32,
+   "fetched": 31,
    "in_window": 18
   },
   {
@@ -89,13 +89,13 @@
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
-   "fetched": 20,
-   "in_window": 4
+   "fetched": 19,
+   "in_window": 5
   },
   {
    "topic": "机构需求",
    "q": "Hong Kong family office crypto allocation",
-   "fetched": 14,
+   "fetched": 13,
    "in_window": 5
   },
   {
@@ -105,7 +105,7 @@
    "in_window": 7
   }
  ],
- "articles": 218,
+ "articles": 222,
  "stories": [
   {
    "id": "京东币链官网疑似下线此前未获香港首批稳定币牌照",
@@ -220,6 +220,30 @@
    "role": "资讯"
   },
   {
+   "id": "解读国务院金融工作报告rwa是非法金融活动吗",
+   "title": "解读国务院金融工作报告，RWA 是非法金融活动吗？",
+   "date": "2026-11-08",
+   "last": "2026-11-08",
+   "ts": "2026-11-08T17:28+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "解读国务院金融工作报告，RWA 是非法金融活动吗？",
+     "src": "ForesightNews",
+     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1mUjdBdGFXQWxjaWhZaGtTXzdqS1RONGtTV1ZWZThWejF4MHZiZDIxU3h1bWxXeFhUUlZhOERwMGlzSHowR3BlYi1nVDhTbUxhYnRfS1dZMHR2Nnc?oc=5",
+     "date": "2026-11-08",
+     "ts": "2026-11-08T17:28+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "名称陷阱监管加码香港证监会收紧误导性称衔降低投资者误判风险",
    "title": "“名称陷阱”，监管加码！香港证监会收紧误导性称衔，降低投资者误判风险",
    "date": "2026-11-06",
@@ -233,7 +257,7 @@
     {
      "title": "“名称陷阱”，监管加码！香港证监会收紧误导性称衔，降低投资者误判风险",
      "src": "搜狐网",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTFBLUE5Bak5UYUVfa2NKUVZ4eTlVMmVXbjFQVXBQYURYc1hUS2JCSUJqWDFCTmw2T1c0NGJQdTVuZktEVmhxYVhoZUdiTTNlQXB0MUE?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNcDFaZENUYUZJV3pIRUtDbkRpV3lHc3p6TTlvUFdyYlMwRkRYdGZRODFLNXlGYWdSelMtdW81MkpNWEl1ZUM0XzlZSndvWUR2RW5td01BdUhiNGVxZFN2Y2JDOUtYUG1RaTNiWGhBd25tTU4yc09GamZYLXV2V2k3ajJHNXNRS3Vl?oc=5",
      "date": "2026-11-06",
      "ts": "2026-11-06T19:07+08:00",
      "via": "Google"
@@ -412,6 +436,30 @@
    "role": "监管"
   },
   {
+   "id": "hongkongsfcproposesrulesonuseofvirtualas",
+   "title": "Hong Kong SFC Proposes Rules on Use of Virtual Asset-Related Terms, Including “Crypto” and “Exchange”",
+   "date": "2026-11-07",
+   "last": "2026-11-07",
+   "ts": "2026-11-07T04:04+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong SFC Proposes Rules on Use of Virtual Asset-Related Terms, Including “Crypto” and “Exchange”",
+     "src": "panews.io",
+     "url": "https://panews.io/articles/01a1b42e-8268-71f1-9742-53e48909d993",
+     "date": "2026-11-07",
+     "ts": "2026-11-07T04:04+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "hashkeycapitalentersstructuredproductsma",
    "title": "HashKey Capital enters structured products market",
    "date": "2026-11-07",
@@ -559,19 +607,10 @@
    "last": "2026-11-06",
    "ts": "2026-11-06T18:15+08:00",
    "topics": [
-    "监管",
     "竞品"
    ],
    "n": 3,
    "articles": [
-    {
-     "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
-     "src": "經濟日報",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE1qSnRCRF94MEF6U3dLY3FuNXRWS2k2VjhJNm11bDJkUkVYeEVvOE5sVmtFNXB0R2o1eUwyaU4xZHExcjA3Y0xXOTBkU0pzUW84OG9TMDEtTm5xVzZY0gFiQVVfeXFMUFRMQTdaYV9kNndOUnZoN2dSTlZpelRHVHJQX2pfSUJ2WFA4enFUbHl3bWZXS0lHeWNmVWpRQ09HNVJmbkM4MTVlUnlJWEk3YWtqS2JWM08zQTc4dVlKdlo5REE?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T11:00+08:00",
-     "via": "Google"
-    },
     {
      "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
      "src": "經濟日報",
@@ -664,38 +703,6 @@
      "url": "https://finance.ifeng.com/c/8xq09T092TU",
      "date": "2026-11-06",
      "ts": "2026-11-06T19:46+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结滚",
-   "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结_滚动新闻",
-   "date": "2026-11-06",
-   "last": "2026-11-06",
-   "ts": "2026-11-06T18:51+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结_滚动新闻",
-     "src": "证券之星",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBzQlY2UzVIVUhuc3Y4M0JOOHpGM0ZNbU5Ua3FiVzhJejJ2VUJoWjNZMGxOVHh2ZE9CcER2Qk1fWmpERS05ejBPNTk3RWJJSmV1Z0N3cmdhYXU0UE9JZko3SDFmVUQ?oc=5",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T18:40+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结",
-     "src": "腾讯网",
-     "url": "https://news.qq.com/rain/a/20261106A0CQF400",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T18:51+08:00",
      "via": "Bing"
     }
    ],
@@ -840,6 +847,30 @@
    "role": "监管"
   },
   {
+   "id": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结滚",
+   "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结_滚动新闻",
+   "date": "2026-11-06",
+   "last": "2026-11-06",
+   "ts": "2026-11-06T18:40+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结_滚动新闻",
+     "src": "证券之星",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBzQlY2UzVIVUhuc3Y4M0JOOHpGM0ZNbU5Ua3FiVzhJejJ2VUJoWjNZMGxOVHh2ZE9CcER2Qk1fWmpERS05ejBPNTk3RWJJSmV1Z0N3cmdhYXU0UE9JZko3SDFmVUQ?oc=5",
+     "date": "2026-11-06",
+     "ts": "2026-11-06T18:40+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "香港首批稳定币发行商获发牌照",
    "title": "香港首批稳定币发行商获发牌照",
    "date": "2026-11-06",
@@ -943,6 +974,259 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
+  },
+  {
+   "id": "中信证券国泰海通中金公司等国内头部券商业务布局与优势解析行业新闻财经",
+   "title": "中信证券、国泰海通、中金公司等国内头部券商业务布局与优势解析_行业新闻_财经",
+   "date": "2026-11-06",
+   "last": "2026-11-06",
+   "ts": "2026-11-06T15:57+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "中信证券、国泰海通、中金公司等国内头部券商业务布局与优势解析_行业新闻_财经",
+     "src": "证券之星",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE9NZHJmWWQtOURiSlQ2MmRDTVMzRGV6SjMtY2lWb0RQdFZpVGIwNGx1ZHdxR0FncWkzQW5xWGlsdUtIMm1DTGV6V1FwemlGSTJUdFFDREFyWm9NaXlaRUFCRQ?oc=5",
+     "date": "2026-11-06",
+     "ts": "2026-11-06T15:57+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "中信证券",
+     "kind": "券商",
+     "firms": [
+      {
+       "ce": "AAE879",
+       "en": "CITIC Securities Brokerage (HK) Limited",
+       "zh": "中信証券經紀(香港)有限公司",
+       "ras": [
+        "T1",
+        "T4"
+       ],
+       "va": [
+        "VA交易",
+        "VA咨询"
+       ]
+      },
+      {
+       "ce": "BIG262",
+       "en": "CITIC Securities International Global Markets Limited",
+       "zh": "中信證券國際全球市場有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T4"
+       ],
+       "va": [
+        "VA交易"
+       ]
+      },
+      {
+       "ce": "AAB893",
+       "en": "CLSA Limited",
+       "zh": "中信里昂證券有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T7"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AEI057",
+       "en": "CITIC CLSA Capital Partners HK Limited",
+       "zh": "中信證券國際資本(香港)有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "ARE947",
+       "en": "CITIC Securities Asset Management (HK) Limited",
+       "zh": "中信證券資產管理(香港)有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AAK249",
+       "en": "CITIC Securities (Hong Kong) Limited",
+       "zh": "中信證券(香港)有限公司",
+       "ras": [
+        "T4",
+        "T6"
+       ],
+       "va": []
+      }
+     ]
+    },
+    {
+     "brand": "海通证券",
+     "kind": "券商",
+     "firms": [
+      {
+       "ce": "AAF806",
+       "en": "Haitong International Securities Company Limited",
+       "zh": "海通國際證券有限公司",
+       "ras": [
+        "T1",
+        "T4"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AAI429",
+       "en": "Haitong International Investment Managers Limited",
+       "zh": "海通國際投資經理有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AAX474",
+       "en": "Haitong International Futures Limited",
+       "zh": "海通國際期貨有限公司",
+       "ras": [
+        "T2",
+        "T5"
+       ],
+       "va": []
+      },
+      {
+       "ce": "ADQ859",
+       "en": "Haitong International Capital Limited",
+       "zh": "海通國際資本有限公司",
+       "ras": [
+        "T6"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AET910",
+       "en": "Haitong International Asset Management Limited",
+       "zh": "海通國際資產管理有限公司",
+       "ras": [
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AFF927",
+       "en": "Haitong International Research Limited",
+       "zh": "海通國際研究有限公司",
+       "ras": [
+        "T4"
+       ],
+       "va": []
+      }
+     ]
+    },
+    {
+     "brand": "中金公司",
+     "kind": "券商",
+     "firms": [
+      {
+       "ce": "AEN894",
+       "en": "China International Capital Corporation Hong Kong Securities Limited",
+       "zh": "中國國際金融香港證券有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T4",
+        "T5",
+        "T6"
+       ],
+       "va": [
+        "VA交易",
+        "VA咨询"
+       ]
+      },
+      {
+       "ce": "ANA195",
+       "en": "China International Capital Corporation Hong Kong Asset Management Limited",
+       "zh": "中國國際金融香港資產管理有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AWS426",
+       "en": "CICC US Securities (Hong Kong) Limited",
+       "zh": "中金美國證券(香港)有限公司",
+       "ras": [
+        "T1"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AWQ263",
+       "en": "China International Capital Corporation Hong Kong Futures Limited",
+       "zh": "中國國際金融香港期貨有限公司",
+       "ras": [
+        "T2",
+        "T5"
+       ],
+       "va": []
+      }
+     ]
+    },
+    {
+     "brand": "中信集团",
+     "kind": "综合",
+     "firms": [
+      {
+       "ce": "BRD739",
+       "en": "CITIC CFI Securities Company Limited",
+       "zh": "中信信期國際證券有限公司",
+       "ras": [
+        "T1",
+        "T4"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BFL318",
+       "en": "CITIC Futures International Company Limited",
+       "zh": "中信期貨國際有限公司",
+       "ras": [
+        "T2",
+        "T5"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BUG102",
+       "en": "CITIC CFI Asset Management Company Limited",
+       "zh": "中信信期國際資產管理有限公司",
+       "ras": [
+        "T9"
+       ],
+       "va": []
+      }
+     ]
+    }
+   ],
+   "role": "线索"
   },
   {
    "id": "hashkeyonchainandrdtechnologiesteamuponr",
@@ -1474,6 +1758,14 @@
      "date": "2026-11-05",
      "ts": "2026-11-05T19:44+08:00",
      "via": "Bing"
+    },
+    {
+     "title": "香港财库局：国际虚拟资产交易平台只要合规均可向证监会提出申请牌照",
+     "src": "腾讯网",
+     "url": "https://news.qq.com/rain/a/20261105A0DEI700",
+     "date": "2026-11-05",
+     "ts": "2026-11-05T19:44+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1969,6 +2261,14 @@
      "via": "Bing"
     },
     {
+     "title": "Hong Kong plans stablecoin trials for tokenized government debt",
+     "src": "Crypto News",
+     "url": "https://crypto.news/hong-kong-24-7-tokenized-settlement-stablecoin-trials/",
+     "date": "2026-11-02",
+     "ts": "2026-11-02T10:52+08:00",
+     "via": "Bing"
+    },
+    {
      "title": "Hong Kong expands tokenized settlement trials and stablecoin use",
      "src": "tradersunion",
      "url": "https://tradersunion.com/news/cryptocurrency-news/show/4058419-hong-kong-tokenized-settlement-stablecoin/",
@@ -1991,19 +2291,101 @@
      "date": "2026-11-02",
      "ts": "2026-11-02T18:52+08:00",
      "via": "Google"
-    },
-    {
-     "title": "Hong Kong Expands Tokenized Settlement to 24/7 and Announces Stablecoin Trials",
-     "src": "KuCoin",
-     "url": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNV25IMlFZY29rQnlJd3RIQUdNanl3bVBfY3g5b2pKSklMREZ5eWc4R1NkcmR5clRkcUIwR1JBTDM5NmE5VWdnWTNSMHdVSUp6cWtVdU4tTjB0S1Iwckc1ZGZ0bWxJdjNqMGlHZWNHMVZySElrZ09UMGpQZThVaUs3X1lPT1FJUVFWV21tamYxY3Z0VGZBMGFodkpaZVRCMEJNaGpEOHRmcjh1TVZkZ3VUN193?oc=5",
-     "date": "2026-11-02",
-     "ts": "2026-11-02T19:04+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
    "role": "监管"
+  },
+  {
+   "id": "hashkeycapitaljoinsambrinacceleratingaia",
+   "title": "HashKey Capital Joins AMBR in Accelerating AI Agent Integration Across Financial Services",
+   "date": "2026-11-04",
+   "last": "2026-11-04",
+   "ts": "2026-11-04T13:55+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 5,
+   "articles": [
+    {
+     "title": "HashKey Capital Joins AMBR in Accelerating AI Agent Integration Across Financial Services",
+     "src": "mtairynews.com",
+     "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxPbWpjLXZmc1ZrTzNyeXdNMDV1bGlxOXA1cEVYZHdwUXBGZGJ6M0p2emU1OVlDVWZOaXY0VTJycEhIaDkzSUxfc3hxVmpBcjBQZ2NVT1hFOFJtamlleTRQUzFqV3ZZWHdwZXNaLTdzRHpPM3RiWFpabFNKY3VLcldINkJqYnQ3SnlQbzNuSTZ1Y3E5TEo4cGg4VEFqaFdDUlk1amtPNUVQcVlXVVN4VHBEMlRCaXFhVENieDdRMkVVWnY3NjdueGNWTGZXTTNzV1Vkd1JVVzNGTEZGaHJ3ZDlHUW93ek5uUld6cUhHeS1oWkhSZHNhQ1RjcGpvLVQ5ZEJjQW9XVTNEYTRmUG1GdGEzQ3RMTGJKMnpnWDZaT21hTVpOdm8?oc=5",
+     "date": "2026-11-04",
+     "ts": "2026-11-04T13:55+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hashkey Capital and Amber International Holding Limited Announce Strategic Partnership to Accelerate Ai Agent Integration Across Financial Services",
+     "src": "www.marketscreener.com",
+     "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxNSDJfdWRtdk1TQWYzRk5vQnFVR1NXQ0dxNVE0YXdBRFAtTHpHSkpIN0RlY2NiZjF0c3puTkdaUGRmZE9rWDBTQ1c0eEdnOFFzYnlkLXVCcDFybHBXRkFXUlh2YkR5ZW9Ga2tlbnlPMFQ3UEg0RFluUWwzNTQ1OElJWGd5dDdVczZOUlhkcTIyVjNOYVQ1OWRVbzFXdnRUdUxWUW96azBKLXk3UmxKeTg4WjJOTGNkcmRQazg4Y0QtMTlWX0tPUzNfY1RjZ2M4M0RmYmgyY2JPT1BpQ0NLSlIzVDNkblluVXZ5?oc=5",
+     "date": "2026-11-04",
+     "ts": "2026-11-04T13:55+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Amber International Holding Limited (AMBR) Partners With HashKey Capital on AI Agents",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTGU4UXVnbUt5ZTBBbmRaLXpxUUZpQmdMM2M3QXgzakVXdjhidDlra2FNaVVhb3FoX3VkYUQ4UlNhQmtuLVhIN2NPSlFwaVZ5VU5MaXdpLWxFQmR3YkM5dFRjN21qYWRJSm40WkdqMGR6RU9LT1hvSmFwZmlDWTBXNEVodWtpQjlGT1ZmRHotTTdFN25YQ3FKWTN6dlpNVEVNb1JOSk5SRnBPOVBsY0F3a3hkS0t3VzFNTENjNDBoS1VKNXY5MnA4Q1ltTVhHeXZjZWgzRHdlcTBfZmZqZkE?oc=5",
+     "date": "2026-11-04",
+     "ts": "2026-11-04T13:55+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HashKey Capital Joins AMBR in Accelerating AI Agent Integration Across Financial Services",
+     "src": "PR Newswire",
+     "url": "https://www.prnewswire.com/news-releases/hashkey-capital-joins-ambr-in-accelerating-ai-agent-integration-across-financial-services-302928873.html",
+     "date": "2026-11-04",
+     "ts": "2026-11-04T05:55+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "Hashkey Capital and Amber International Holding Limited Announce Strategic Partnership to Accelerate Ai Agent Integration Across Financial Services",
+     "src": "MarketScreener",
+     "url": "https://www.marketscreener.com/news/hashkey-capital-and-amber-international-holding-limited-announce-strategic-partnership-to-accelerate-ce785fdcd080f127",
+     "date": "2026-11-04",
+     "ts": "2026-11-04T05:55+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
   },
   {
    "id": "陈浩濂香港持续扩展数字资产生态圈代币化债券发行已常态化作者智通财经",
@@ -2094,78 +2476,28 @@
    "role": "监管"
   },
   {
-   "id": "hashkeycapitaljoinsambrinacceleratingaia",
-   "title": "HashKey Capital Joins AMBR in Accelerating AI Agent Integration Across Financial Services",
+   "id": "香港证监会拟推代币化黄金etf试点代币化基金将与数位货币打通",
+   "title": "香港證監會擬推代幣化黃金ETF試點 代幣化基金將與數位貨幣打通",
    "date": "2026-11-04",
    "last": "2026-11-04",
-   "ts": "2026-11-04T13:55+08:00",
+   "ts": "2026-11-04T11:55+08:00",
    "topics": [
-    "竞品"
+    "监管"
    ],
-   "n": 3,
+   "n": 1,
    "articles": [
     {
-     "title": "HashKey Capital Joins AMBR in Accelerating AI Agent Integration Across Financial Services",
-     "src": "mtairynews.com",
-     "url": "https://news.google.com/rss/articles/CBMiowJBVV95cUxPbWpjLXZmc1ZrTzNyeXdNMDV1bGlxOXA1cEVYZHdwUXBGZGJ6M0p2emU1OVlDVWZOaXY0VTJycEhIaDkzSUxfc3hxVmpBcjBQZ2NVT1hFOFJtamlleTRQUzFqV3ZZWHdwZXNaLTdzRHpPM3RiWFpabFNKY3VLcldINkJqYnQ3SnlQbzNuSTZ1Y3E5TEo4cGg4VEFqaFdDUlk1amtPNUVQcVlXVVN4VHBEMlRCaXFhVENieDdRMkVVWnY3NjdueGNWTGZXTTNzV1Vkd1JVVzNGTEZGaHJ3ZDlHUW93ek5uUld6cUhHeS1oWkhSZHNhQ1RjcGpvLVQ5ZEJjQW9XVTNEYTRmUG1GdGEzQ3RMTGJKMnpnWDZaT21hTVpOdm8?oc=5",
+     "title": "香港證監會擬推代幣化黃金ETF試點 代幣化基金將與數位貨幣打通",
+     "src": "蕃新聞",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE1TSkxNWm5JZFNqbmRsS2RZWlh4MHdWeFkzQ0pDTmdiM2pKcTlhUnBMcUJUYlBmRnRJbXR3blU0UHBhbGVUVy1sdGxaNUZYR1BlNFE?oc=5",
      "date": "2026-11-04",
-     "ts": "2026-11-04T13:55+08:00",
+     "ts": "2026-11-04T11:55+08:00",
      "via": "Google"
-    },
-    {
-     "title": "HashKey Capital Joins AMBR in Accelerating AI Agent Integration Across Financial Services",
-     "src": "PR Newswire",
-     "url": "https://www.prnewswire.com/news-releases/hashkey-capital-joins-ambr-in-accelerating-ai-agent-integration-across-financial-services-302928873.html",
-     "date": "2026-11-04",
-     "ts": "2026-11-04T05:55+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hashkey Capital and Amber International Holding Limited Announce Strategic Partnership to Accelerate Ai Agent Integration Across Financial Services",
-     "src": "MarketScreener",
-     "url": "https://www.marketscreener.com/news/hashkey-capital-and-amber-international-holding-limited-announce-strategic-partnership-to-accelerate-ce785fdcd080f127",
-     "date": "2026-11-04",
-     "ts": "2026-11-04T05:55+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "拉卡拉300773sz具备跨境支付资质获得了香港mso牌照美国msb牌照",
@@ -2264,30 +2596,6 @@
    "role": "监管"
   },
   {
-   "id": "chinascryptobanpushed104billioninstablec",
-   "title": "China’s Crypto Ban Pushed $104 Billion in Stablecoin Payments Outside Regulated Firms",
-   "date": "2026-11-04",
-   "last": "2026-11-04",
-   "ts": "2026-11-04T01:24+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "China’s Crypto Ban Pushed $104 Billion in Stablecoin Payments Outside Regulated Firms",
-     "src": "International Business Times",
-     "url": "https://www.ibtimes.com/china-crypto-ban-stablecoin-personal-wallet-transfers-3809357",
-     "date": "2026-11-04",
-     "ts": "2026-11-04T01:24+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "anchorpointlauncheshkdapstablecoinbetawi",
    "title": "Anchorpoint Launches HKDAP Stablecoin Beta With HashKey and OSL as Partners",
    "date": "2026-11-04",
@@ -2367,64 +2675,6 @@
         "T9"
        ],
        "va": []
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
-   "id": "amberinternationalholdinglimitedambrpart",
-   "title": "Amber International Holding Limited (AMBR) Partners With HashKey Capital on AI Agents",
-   "date": "2026-11-04",
-   "last": "2026-11-04",
-   "ts": "2026-11-04T13:55+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Amber International Holding Limited (AMBR) Partners With HashKey Capital on AI Agents",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxQTGU4UXVnbUt5ZTBBbmRaLXpxUUZpQmdMM2M3QXgzakVXdjhidDlra2FNaVVhb3FoX3VkYUQ4UlNhQmtuLVhIN2NPSlFwaVZ5VU5MaXdpLWxFQmR3YkM5dFRjN21qYWRJSm40WkdqMGR6RU9LT1hvSmFwZmlDWTBXNEVodWtpQjlGT1ZmRHotTTdFN25YQ3FKWTN6dlpNVEVNb1JOSk5SRnBPOVBsY0F3a3hkS0t3VzFNTENjNDBoS1VKNXY5MnA4Q1ltTVhHeXZjZWgzRHdlcTBfZmZqZkE?oc=5",
-     "date": "2026-11-04",
-     "ts": "2026-11-04T13:55+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
       }
      ]
     }
@@ -2880,22 +3130,22 @@
    "role": "监管"
   },
   {
-   "id": "香港金管局重磅升级ensembletx代币化存款接入央行货币724小时结算落地",
-   "title": "香港金管局重磅升级EnsembleTX：代币化存款接入央行货币，7×24小时结算落地",
+   "id": "汇丰港元稳定币redcoin首周用户达5万流通量为8775万港元",
+   "title": "汇丰港元稳定币RedCoin首周用户达5万，流通量为8775万港元",
    "date": "2026-11-03",
    "last": "2026-11-03",
-   "ts": "2026-11-03T00:17+08:00",
+   "ts": "2026-11-03T11:28+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "香港金管局重磅升级EnsembleTX：代币化存款接入央行货币，7×24小时结算落地",
-     "src": "区块周刊BlockWeeks",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE9WdUtfdUVnZUw0SUxYX2poa1pWb1phTmJpVUtnbEpGMWNMd1c3SVJoWXplcXl1Q0RUUlIteDJDcWIxMzNKN2VvcjRB?oc=5",
+     "title": "汇丰港元稳定币RedCoin首周用户达5万，流通量为8775万港元",
+     "src": "移动支付网",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTFBad1BvR3p1aGk1WFR6SVBBSWh0Rzc0V1VpazB5ejl2aGlzdHJZbVNqeFN2c1psWXJkV0NvM1M2WllXQVBiWHZJZHdhWklESFZ0VWdfWjh6aGZwVVRRdmhaZURYOA?oc=5",
      "date": "2026-11-03",
-     "ts": "2026-11-03T00:17+08:00",
+     "ts": "2026-11-03T11:28+08:00",
      "via": "Google"
     }
    ],
@@ -3028,6 +3278,83 @@
    "sfc": false,
    "hits": [],
    "role": "中资券商动态"
+  },
+  {
+   "id": "中金公司全景解析头部券商的业务版图与核心竞争优势",
+   "title": "中金公司全景解析：头部券商的业务版图与核心竞争优势",
+   "date": "2026-11-03",
+   "last": "2026-11-03",
+   "ts": "2026-11-03T19:29+08:00",
+   "topics": [
+    "中资券商"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "中金公司全景解析：头部券商的业务版图与核心竞争优势",
+     "src": "凤凰网",
+     "url": "https://finance.ifeng.com/c/8xl08w9gxmJ",
+     "date": "2026-11-03",
+     "ts": "2026-11-03T19:29+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "中金公司",
+     "kind": "券商",
+     "firms": [
+      {
+       "ce": "AEN894",
+       "en": "China International Capital Corporation Hong Kong Securities Limited",
+       "zh": "中國國際金融香港證券有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T4",
+        "T5",
+        "T6"
+       ],
+       "va": [
+        "VA交易",
+        "VA咨询"
+       ]
+      },
+      {
+       "ce": "ANA195",
+       "en": "China International Capital Corporation Hong Kong Asset Management Limited",
+       "zh": "中國國際金融香港資產管理有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AWS426",
+       "en": "CICC US Securities (Hong Kong) Limited",
+       "zh": "中金美國證券(香港)有限公司",
+       "ras": [
+        "T1"
+       ],
+       "va": []
+      },
+      {
+       "ce": "AWQ263",
+       "en": "China International Capital Corporation Hong Kong Futures Limited",
+       "zh": "中國國際金融香港期貨有限公司",
+       "ras": [
+        "T2",
+        "T5"
+       ],
+       "va": []
+      }
+     ]
+    }
+   ],
+   "role": "线索"
   },
   {
    "id": "hashkeyadoptstokeniseddepositforcrossmar",
@@ -3285,6 +3612,30 @@
    "role": "资讯"
   },
   {
+   "id": "腾讯云获选加入金管局代理式金融专家小组164220261103即时财经新闻",
+   "title": "騰訊雲獲選加入金管局「代理式金融專家小組」 (16:42) - 20261103 - 即時財經新聞",
+   "date": "2026-11-03",
+   "last": "2026-11-03",
+   "ts": "2026-11-03T16:46+08:00",
+   "topics": [
+    "机构需求"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "騰訊雲獲選加入金管局「代理式金融專家小組」 (16:42) - 20261103 - 即時財經新聞",
+     "src": "明報財經網",
+     "url": "https://news.google.com/rss/articles/CBMi7gJBVV95cUxPU0VPam55eG9oYmEzQzh3RWJWMkZrU0RPOTY4aEJIcGc4N1JrallublVQWUl2cGJrVTBVQUpNTWZTNWw2Z2pWem5vYXNReGxVeWwwX0d6OVhhcWE5N2VadENmbFJZWmVGX1Jjalp3QjVtc0VpU21pb3hLMm5oV18yV3hsMklhaEpGMEJvY0dtQ051X1hYcUdaRlpld2ZpLUZIX2trTUFmbFh0MzdNMmU0a2d2bk1ybFdDRDAycWJIbkd1V1hlVURFRGdWeVQ2bnRqQW1mYzd4U281ZXM2NGxDTVBaRXNRTkZuS3Zhekp4ZVZOT3RocVlDclRaVm9ENWptVEhDWnFCTzVZYkxRT3VUU3k3alVtYTNZZUZpa1QyQktoQUotQVhnQnZqZ2l1ZjVfVko0YUdkTThCT0xyWS1rUjZYb2FVdEIxUXE0RVFxM2lIOE9nNXhQMHBOaE5iOU0xSFprNl85bGxRN2dBcFE?oc=5",
+     "date": "2026-11-03",
+     "ts": "2026-11-03T16:46+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "hashkeyandrdtechnologiesexpandrdusd",
    "title": "HashKey and RD Technologies Expand RDUSD",
    "date": "2026-11-02",
@@ -3480,22 +3831,22 @@
    "role": "监管"
   },
   {
-   "id": "greaterregulatoryreachunderstandingthene",
-   "title": "Greater Regulatory Reach: Understanding the New AFRC–SFC Memorandum of Understanding",
+   "id": "hongkongsfcplanscybersecurityframeworkai",
+   "title": "Hong Kong SFC Plans Cybersecurity Framework; AI Adoption Survey Finds 95% of Firms to Accelerate Deployment",
    "date": "2026-11-02",
    "last": "2026-11-02",
-   "ts": "2026-11-02T07:46+08:00",
+   "ts": "2026-11-02T16:35+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Greater Regulatory Reach: Understanding the New AFRC–SFC Memorandum of Understanding",
-     "src": "Kennedys Law LLP",
-     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPanJrNnJXdm84aTZiM2J0a2FmdTZmaVRwSGE4X0k5am94d29BbW1GeWpQRG8wei1nbm1Md3ltb1RwdGMxaTRRb0M0cWVvbnAwLTA1cFF4QTNTMFRjRG4zbWFIZTNRamQ4b0ZpZzF0azREc25MaXBYaUlVV1pCVk56YnFScFBET3VuV21Dd1pLNjA0TVJwNGd2NTVqNXlETGRhZ0Y3Q1o0QzBoMjNsU0I2eTMwRTdxTGhENjZrd05zaWo?oc=5",
+     "title": "Hong Kong SFC Plans Cybersecurity Framework; AI Adoption Survey Finds 95% of Firms to Accelerate Deployment",
+     "src": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTFBfMDNBRXRLYVltUzVaX2huUGtxc2o0dkNRTm9MRnkzblBEMnNlNW4xMFA3R3U3eUNlcnZTdjMxc1pZSk5zR2JMU0JCVW01c21WTkkwZElrZ3dST2VtNDdsQnA0NmNJYkdVd2NrQ0JNZzZWSVhPQXc?oc=5",
      "date": "2026-11-02",
-     "ts": "2026-11-02T07:46+08:00",
+     "ts": "2026-11-02T16:35+08:00",
      "via": "Google"
     }
    ],
@@ -3753,30 +4104,6 @@
     }
    ],
    "role": "竞品动态"
-  },
-  {
-   "id": "金融科技周2026渣打温拓思互通性为代币化关键香港经验可供全球借鉴",
-   "title": "【金融科技周2026】渣打溫拓思：互通性為代幣化關鍵 香港經驗可供全球借鑑",
-   "date": "2026-11-02",
-   "last": "2026-11-02",
-   "ts": "2026-11-02T21:01+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "【金融科技周2026】渣打溫拓思：互通性為代幣化關鍵 香港經驗可供全球借鑑",
-     "src": "香港經濟日報HKET",
-     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOQW9sdkJadUVkTWFuREQ4bWNfSTBXLWQwVmxVWFJTSTlxTXNaV2d4bi1PVXRqNUc2eTFQLU1sWmtjVVdRTENUbWJMR3NrUnhLUHZVTVBxaGhJdXpIRDhidl9BRW9LelJkUHRZQ1FWcWFlallpc29PdlZORFZLTUIwWHpFWG5TMVhCQmVydTctVEdTYlRMTzlJTzZYb21DSGpSYW8tNlVVektja282TEdWRVJWN2w4SnM2OVE?oc=5",
-     "date": "2026-11-02",
-     "ts": "2026-11-02T21:01+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   },
   {
    "id": "ngkalaiofthehongkongsecuritiesandfutures",
