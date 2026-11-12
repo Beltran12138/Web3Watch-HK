@@ -1,30 +1,30 @@
 {
- "built": "2026-11-12T17:54+08:00",
- "since": "2026-11-05",
+ "built": "2026-11-13T02:22+08:00",
+ "since": "2026-11-06",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 28,
-   "in_window": 13
+   "fetched": 24,
+   "in_window": 10
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
    "fetched": 20,
-   "in_window": 17
+   "in_window": 15
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 18,
-   "in_window": 9
+   "fetched": 16,
+   "in_window": 7
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 18,
-   "in_window": 12
+   "fetched": 19,
+   "in_window": 11
   },
   {
    "topic": "监管",
@@ -42,71 +42,160 @@
    "topic": "中资券商",
    "q": "券商 香港 虚拟资产交易 升级",
    "fetched": 12,
-   "in_window": 2
+   "in_window": 1
   },
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 17,
-   "in_window": 6
+   "fetched": 15,
+   "in_window": 5
   },
   {
    "topic": "竞品",
    "q": "HashKey",
-   "fetched": 18,
+   "fetched": 19,
    "in_window": 13
   },
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 11,
+   "fetched": 10,
    "in_window": 0
   },
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
-   "fetched": 28,
-   "in_window": 7
+   "fetched": 23,
+   "in_window": 3
   },
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 12,
+   "fetched": 11,
    "in_window": 0
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 32,
-   "in_window": 16
+   "fetched": 33,
+   "in_window": 15
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 43,
-   "in_window": 28
+   "fetched": 39,
+   "in_window": 32
   },
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
-   "fetched": 12,
+   "fetched": 13,
    "in_window": 0
   },
   {
    "topic": "机构需求",
    "q": "Hong Kong family office crypto allocation",
-   "fetched": 15,
-   "in_window": 4
+   "fetched": 14,
+   "in_window": 2
   },
   {
    "topic": "SFC 新闻稿",
    "q": "https://www.sfc.hk/en/RSS-Feeds/Press-releases",
-   "fetched": 6,
-   "in_window": 6
+   "fetched": 5,
+   "in_window": 5
   }
  ],
- "articles": 143,
+ "articles": 129,
  "stories": [
+  {
+   "id": "stellarstokenizedassetmarkethits55basins",
+   "title": "Stellar's Tokenized Asset Market Hits $5.5B as Institutional Adoption Accelerates",
+   "date": "2026-11-13",
+   "last": "2026-11-13",
+   "ts": "2026-11-13T00:24+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Stellar's Tokenized Asset Market Hits $5.5B as Institutional Adoption Accelerates",
+     "src": "CoinCodex",
+     "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPd25KQmxVNEsza2w1d0JoSGdJeDFoeXhzRnpBdDRMUHpXb1NIMElUaXpMZk5TRGFQa1hsSVppNWMwTXR1RnpHbHZ3YkpCcDBWdWtWb0gxSUI2bnhUemVwV2UyejN0N3BIMlZNQmw1dk9qUU0xR2h2cUVtWkd5bWpuenZxekRKRFpzZHl1dkRjc1V3N3JReTJmSHBJbjVPNWxqQkg0ck1MN0pNZTUyYU5DVVVzeDJTQQ?oc=5",
+     "date": "2026-11-13",
+     "ts": "2026-11-13T00:24+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "金管局及证监会合办研讨会探讨香港代币化生态圈发展",
+   "title": "金管局及证监会合办研讨会 探讨香港代币化生态圈发展",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T18:20+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 6,
+   "articles": [
+    {
+     "title": "金管局及证监会合办研讨会 探讨香港代币化生态圈发展",
+     "src": "香港电台网站",
+     "url": "https://gbcode.rthk.hk/TuniS/news.rthk.hk/rthk/ch/component/k2/1877563-20261112.htm",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T18:20+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "香港金管局与证监会合办研讨会推动代币化生态圈发展并拓展Ensemble项目合作机遇_滚动新闻_财经",
+     "src": "证券之星",
+     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5TblJHTG1HaE5EdUJvRzEwMml4XzY4cFU4cVBvODBjTGhqV1Z5ZjhUbXZkaWxoNVB3VE96NHhobjQ4SzdRTU1LMmpzMnk1TTMzVG1IMGtrTE9ZSmM3eGdjeQ?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T16:55+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "金管局及证监会合办研讨会 探讨香港代币化生态圈发展",
+     "src": "RTHK",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNUWl2c0xkcnA0elc3d3I1U3JZczJIZ1JUVzlvbTlRbnQ3WFEzMi1vbVhEMU03N0JhaXVmNXhyT01zVHlsWHRUN2s0VjU0X2QtdmdoVzIxSGZydU8tN0ZWc0M3OXBsS1ZjY09qcXlkNjM0NjRqU28yWGFoMFppd0tHVlhXR0RfcjRjVWZhVjJuNFJSeGdBTVU5QmE4Nlk3Sm80a0k0?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T18:20+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港证监会与金管局合办代币化生态圈发展研讨会",
+     "src": "BlockBeats",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE4yTWxYY1ZxSUQtWDZranJGYjdYM2VOZFZEYWN2dWNiOGV4VzlnSkxsSXZ2UFlYYnlJSzFpQkYwUm1na0FKWDN5dzNxblNvWVR5NGdsenFn?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T00:25+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "金管局及證監會合辦研討會 探討香港代幣化生態圈發展",
+     "src": "RTHK News",
+     "url": "https://news.google.com/rss/articles/CBMib0FVX3lxTE1wZmNVdU02YzMzRUZtejIxS0FpYS1vYWFNOUxDOTRVYTBpbklfM21Xa2dNVmpsQkotZHh4YWY3RlFNNDctbGRhVV9rdDNWS2Y3dHl3M3ZHaU9VQW5Wd1l6Wll0TnFKQmwxWFk4YlpfQQ?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T18:20+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港金管局与证监会合办研讨会 推动代币化生态圈发展并拓展Ensemble项目合作机遇",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1100664216_323087",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T17:02+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
   {
    "id": "standardcharteredpilotstokenizedfundliqu",
    "title": "Standard Chartered pilots tokenized fund liquidity facility",
@@ -117,7 +206,7 @@
     "RWA",
     "监管"
    ],
-   "n": 3,
+   "n": 4,
    "articles": [
     {
      "title": "Standard Chartered pilots tokenized fund liquidity facility",
@@ -144,11 +233,11 @@
      "via": "Google"
     },
     {
-     "title": "Standard Chartered Launches Tokenized Deposits in Hong Kong",
-     "src": "Coinfomania",
-     "url": "https://coinfomania.com/standard-chartered-launches-tokenized-deposits-in-hong-kong/",
+     "title": "Hong Kong Regulators Push Tokenized Finance Toward 24-Hour Trading",
+     "src": "China Money Network",
+     "url": "https://www.chinamoneynetwork.com/2026/11/12/hong-kong-regulators-push-tokenized-finance-toward-24-hour-trading",
      "date": "2026-11-12",
-     "ts": "2026-11-12T00:00+08:00",
+     "ts": "2026-11-12T10:12+08:00",
      "via": "Bing"
     }
    ],
@@ -157,38 +246,31 @@
    "role": "监管"
   },
   {
-   "id": "香港金管局与证监会合办研讨会推动代币化生态圈发展并拓展ensemble项目合作机",
-   "title": "香港金管局与证监会合办研讨会 推动代币化生态圈发展并拓展Ensemble项目合作机遇",
+   "id": "hongkongmonetaryauthorityandsecuritiesan",
+   "title": "Hong Kong Monetary Authority and Securities and Futures Commission Join Forces: Tokenized Funds Launch 24-Hour Trading",
    "date": "2026-11-12",
    "last": "2026-11-12",
-   "ts": "2026-11-12T16:55+08:00",
+   "ts": "2026-11-12T18:56+08:00",
    "topics": [
+    "RWA",
     "监管"
    ],
-   "n": 3,
+   "n": 2,
    "articles": [
     {
-     "title": "香港金管局与证监会合办研讨会 推动代币化生态圈发展并拓展Ensemble项目合作机遇",
-     "src": "同花顺财经",
-     "url": "https://news.10jqka.com.cn/20261112/c681759633.shtml",
+     "title": "Hong Kong Monetary Authority and Securities and Futures Commission Join Forces: Tokenized Funds Launch 24-Hour Trading",
+     "src": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE12eFVINmZob1hWYmVjZlNJUTZvdl9tVzA2eURxZU9xX1FDU0pLTzZGc3M2bUozbjhLb3VCQXJlU0Z1aGZqR1M5VlpFcTZZbXNDQTRNdjhhZHlZZzFrOFlLeHJEU3p2MUM3RlE0Q1R1Z1lkeG9sYkE?oc=5",
      "date": "2026-11-12",
-     "ts": "2026-11-12T03:01+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "香港金管局与证监会合办研讨会推动代币化生态圈发展并拓展Ensemble项目合作机遇_滚动新闻_财经",
-     "src": "证券之星",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTE5TblJHTG1HaE5EdUJvRzEwMml4XzY4cFU4cVBvODBjTGhqV1Z5ZjhUbXZkaWxoNVB3VE96NHhobjQ4SzdRTU1LMmpzMnk1TTMzVG1IMGtrTE9ZSmM3eGdjeQ?oc=5",
-     "date": "2026-11-12",
-     "ts": "2026-11-12T16:55+08:00",
+     "ts": "2026-11-12T18:56+08:00",
      "via": "Google"
     },
     {
-     "title": "香港金管局与证监会合办研讨会 推动代币化生态圈发展并拓展Ensemble项目合作机遇",
-     "src": "新浪财经",
-     "url": "https://finance.sina.com.cn/stock/hkstock/hkstocknews/2026-11-12/doc-iniynppc3796153.shtml",
+     "title": "Hong Kong Monetary Authority and Securities and Futures Commission Join Forces: Tokenized Funds Launch 24-Hour Trading",
+     "src": "finance.biggo",
+     "url": "https://finance.biggo.com/news/c608b30c-6a7f-47a1-b8d1-a244f0a72bce",
      "date": "2026-11-12",
-     "ts": "2026-11-12T02:55+08:00",
+     "ts": "2026-11-12T02:56+08:00",
      "via": "Bing"
     }
    ],
@@ -229,22 +311,103 @@
    "role": "监管"
   },
   {
-   "id": "香港证监会香港代币化发展正从试验阶段迈向商业应用",
-   "title": "香港证监会：香港代币化发展正从试验阶段迈向商业应用",
+   "id": "hongkongtokenizationmovestowardcommercia",
+   "title": "Hong Kong Tokenization Moves Toward Commercial Use, Regulator Says",
    "date": "2026-11-12",
    "last": "2026-11-12",
-   "ts": "2026-11-12T08:20+08:00",
+   "ts": "2026-11-12T23:52+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "Hong Kong Tokenization Moves Toward Commercial Use, Regulator Says",
+     "src": "Caixin Global",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOSS1NNHFweWhmYXZWY3NNdDdZSHZCM1lSWV94WFpkNVoxa1NNNE12YkJicHhqaFZsTDRvalhncFR4amhJVnhuUmpjYThkVlR0cmNhNTIzQUV0Q0JyUE1QRjNjVWtETDB0NzE3ZEVQV3JoSE41ZmNTSzBtZGlnazcwbEowNk4zcmJTTDQ1VlRUWjdkNGxmWHlVczgtNndDdkhoYkNXRHRTVlRfTURSVm1ZX2x4ek5rRVBIa2tIZQ?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T23:52+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong SFC Says Tokenization Is Moving From Pilot Phase to Commercial Use",
+     "src": "Binance",
+     "url": "https://www.binance.com/en/square/post/387405087617192",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T08:35+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "cfi旗下cfix获迪拜vara原则性批准88万亿美元交易量巨头的数字资产野心",
+   "title": "CFI旗下CFIX获迪拜VARA原则性批准：8.8万亿美元交易量巨头的数字资产野心",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T17:18+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "香港证监会：香港代币化发展正从试验阶段迈向商业应用",
-     "src": "chaincatcher",
-     "url": "https://www.chaincatcher.com/article/2304110",
+     "title": "CFI旗下CFIX获迪拜VARA原则性批准：8.8万亿美元交易量巨头的数字资产野心",
+     "src": "区块周刊BlockWeeks",
+     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE94OWZ4LURKeXhFc2R3UjhnVkJ1cDBObHh3ZTFFOGVGeDVmcW1tOUlGenl1eGpOZzN2dVVNZXNWc2ltOHZXbnBfc3Rn?oc=5",
      "date": "2026-11-12",
-     "ts": "2026-11-12T08:20+08:00",
+     "ts": "2026-11-12T17:18+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "港元稳定币走向全球香港不能只有发行权",
+   "title": "港元稳定币走向全球，香港不能只有发行权",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T17:42+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "港元稳定币走向全球，香港不能只有发行权",
+     "src": "风闻",
+     "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE82U1p5bndPM0xBdHJ2VnhMTTV2am8yWEVobjVmMUszYTh1ZEZGQ3hfUGpnTU9tQTNmRVJZWHRfQkdiQ1ItSG94djZjVTR5RllTWGNYU0g5SEtJYWdjNDJ5NEs3a19YQUZDalE?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T17:42+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "英国持牌银行griffin完成2000万美元b轮融资将推出稳定币服务",
+   "title": "英国持牌银行 Griffin 完成 2000 万美元 B 轮融资，将推出稳定币服务",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T18:11+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "英国持牌银行 Griffin 完成 2000 万美元 B 轮融资，将推出稳定币服务",
+     "src": "腾讯网",
+     "url": "https://news.qq.com/rain/a/20261112A0C2J900",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T18:11+08:00",
      "via": "Bing"
     }
    ],
@@ -269,6 +432,30 @@
      "url": "https://news.iresearch.cn/content/202611/573456.shtml",
      "date": "2026-11-12",
      "ts": "2026-11-12T08:18+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "美国持牌银行sofi将稳定币sofiusd扩展至polygon",
+   "title": "美国持牌银行 SoFi 将稳定币 SoFiUSD 扩展至 Polygon",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T06:03+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "美国持牌银行 SoFi 将稳定币 SoFiUSD 扩展至 Polygon",
+     "src": "foresightnews",
+     "url": "https://foresightnews.pro/news/detail/117547",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T06:03+08:00",
      "via": "Bing"
     }
    ],
@@ -310,6 +497,54 @@
    "role": "监管"
   },
   {
+   "id": "yeruizhangcryptoprofileprojectsfundingro",
+   "title": "Yerui Zhang — Crypto Profile, Projects & Funding Rounds",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T17:41+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Yerui Zhang — Crypto Profile, Projects & Funding Rounds",
+     "src": "CryptoRank",
+     "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE83MkEzbzZyWjFmYmVJTDhrNllDN3lYUkZRUjllOVhJeE55alROWU1STVd5QURBR2Y0WERGZUZHQ0ZTQTB1TC1qNWExLXYyZHdRZjFV?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T17:41+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "香港证监会香港代币化发展从试验阶段迈向商业应用",
+   "title": "香港证监会：香港代币化发展从试验阶段迈向商业应用",
+   "date": "2026-11-12",
+   "last": "2026-11-12",
+   "ts": "2026-11-12T18:38+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港证监会：香港代币化发展从试验阶段迈向商业应用",
+     "src": "财新",
+     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTE1nVVAwTE9ndll2TU5pR2hmTFh3OTNPYjF4XzhQaXQyenZqd3NTN0JpMzJtSUY4NDktOS1TT2pSN3lCdmhPNEFKVzlEYUMxVjNuNVd1WWY4U0ExZGd5enJOenNwWEc?oc=5",
+     "date": "2026-11-12",
+     "ts": "2026-11-12T18:38+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "消费rwa不是取代电商而是商业的连接层",
    "title": "消费 RWA 不是取代电商，而是商业的连接层",
    "date": "2026-11-12",
@@ -327,54 +562,6 @@
      "date": "2026-11-12",
      "ts": "2026-11-12T10:19+08:00",
      "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "kraken母公司payward重磅扩张一次性上线200只英国与欧洲代币化股票",
-   "title": "Kraken 母公司 Payward 重磅扩张：一次性上线 200+ 只英国与欧洲代币化股票",
-   "date": "2026-11-12",
-   "last": "2026-11-12",
-   "ts": "2026-11-12T14:20+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Kraken 母公司 Payward 重磅扩张：一次性上线 200+ 只英国与欧洲代币化股票",
-     "src": "区块周刊BlockWeeks",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTFA1STRPRzNZQ2EySUw1aG9wVjQ5MXJBbjQtTjIxcEtjUVRWT3A2cTRHYlg3NnVZSWw0T1ZVMERMVldNcEdhLVFvVmNB?oc=5",
-     "date": "2026-11-12",
-     "ts": "2026-11-12T14:20+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "hongkongsfcsaystokenizationismovingfromp",
-   "title": "Hong Kong SFC Says Tokenization Is Moving From Pilot Phase to Commercial Use",
-   "date": "2026-11-12",
-   "last": "2026-11-12",
-   "ts": "2026-11-12T08:35+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong SFC Says Tokenization Is Moving From Pilot Phase to Commercial Use",
-     "src": "Binance",
-     "url": "https://www.binance.com/en/square/post/387405087617192",
-     "date": "2026-11-12",
-     "ts": "2026-11-12T08:35+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -404,38 +591,6 @@
    "sfc": true,
    "hits": [],
    "role": "监管"
-  },
-  {
-   "id": "代币化的最后一公里不在链上在风险账簿里",
-   "title": "代币化的最后一公里，不在链上，在风险账簿里",
-   "date": "2026-11-11",
-   "last": "2026-11-11",
-   "ts": "2026-11-11T10:00+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "代币化的最后一公里，不在链上，在风险账簿里",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1yQ0I5dVNGZ0VYVGRFSDk4Y3lOZkNHQTJTcWphWUo1c3prTllDcWxLd2ozUzhMRmJpR2xETlRteFZ5SVVOOVg2Vm5qQmVkTHNxQjFDeTd4anUycmlzdF9Ua1JjX0Mwc2Y3QmdLb2c2eHh1eVNPTkxHdG93MmdXXzA?oc=5",
-     "date": "2026-11-11",
-     "ts": "2026-11-11T10:00+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "代幣化的最後一公里 不在鏈上 在風險賬簿里",
-     "src": "Anue鉅亨",
-     "url": "https://news.cnyes.com/news/id/6658127",
-     "date": "2026-11-11",
-     "ts": "2026-11-11T09:30+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
   },
   {
    "id": "newspeechbykelvinwongpanelchairsremarksa",
@@ -576,6 +731,30 @@
    "role": "竞品动态"
   },
   {
+   "id": "代币化的最后一公里不在链上在风险账簿里",
+   "title": "代币化的最后一公里，不在链上，在风险账簿里",
+   "date": "2026-11-11",
+   "last": "2026-11-11",
+   "ts": "2026-11-11T10:00+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "代币化的最后一公里，不在链上，在风险账簿里",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE1yQ0I5dVNGZ0VYVGRFSDk4Y3lOZkNHQTJTcWphWUo1c3prTllDcWxLd2ozUzhMRmJpR2xETlRteFZ5SVVOOVg2Vm5qQmVkTHNxQjFDeTd4anUycmlzdF9Ua1JjX0Mwc2Y3QmdLb2c2eHh1eVNPTkxHdG93MmdXXzA?oc=5",
+     "date": "2026-11-11",
+     "ts": "2026-11-11T10:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "plumeceochris稳定币已经验证rwa模式下一个机会在哪里",
    "title": "Plume CEO Chris：稳定币已经验证 RWA 模式，下一个机会在哪里？",
    "date": "2026-11-11",
@@ -656,6 +835,30 @@
    "role": "资讯"
   },
   {
+   "id": "nyseandavalanchewhattokenizedsettlementm",
+   "title": "NYSE and Avalanche: what tokenized settlement means for AVAX",
+   "date": "2026-11-11",
+   "last": "2026-11-11",
+   "ts": "2026-11-11T05:14+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "NYSE and Avalanche: what tokenized settlement means for AVAX",
+     "src": "CryptoTicker.io",
+     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBlVVlOUU5GcGFwY3IwajFHamJEcFctRXRzM2k3OVBjczZ3VnhoZ2RMQVhuMThjSlEtS2dGMjQ2MXVZeW9zVGN6UFRBOFpPM2tucnJoNkxGd3hBS0czVkUta0ZzMVlPX2FIUkMwWDA0bTNIb25INlpBeA?oc=5",
+     "date": "2026-11-11",
+     "ts": "2026-11-11T05:14+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "stablecoinsupplyfallstoayeartodatelowcry",
    "title": "📉 Stablecoin supply falls to a year-to-date low; Crypto.com launches Rips in its App",
    "date": "2026-11-11",
@@ -704,46 +907,22 @@
    "role": "资讯"
   },
   {
-   "id": "goldmansachscitiamongbankssaidtocommit27",
-   "title": "Goldman Sachs, Citi among banks said to commit $270 million to stablecoin venture",
+   "id": "plumeaffiliatelandsbrokerdealerlicenseto",
+   "title": "Plume affiliate lands broker-dealer license to bring real U.S. assets onchain",
    "date": "2026-11-11",
    "last": "2026-11-11",
-   "ts": "2026-11-11T01:32+08:00",
+   "ts": "2026-11-11T00:08+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Goldman Sachs, Citi among banks said to commit $270 million to stablecoin venture",
+     "title": "Plume affiliate lands broker-dealer license to bring real U.S. assets onchain",
      "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOa05LTXMyLUZkczhwYzZLTjVBMDRsWUhQcTdxaV9QQUhfczVGN2tFWUI0MDZxQUZWREpXZEJkazF6TXZRcTBrR29zcG9Wa0h4SEd2YzZVQld5SG5GWVhScWZ6VkpJNGdGNl9hX2N2SWN6VDRhWi05YndwWVZxVl9IdWhfVDYwcDVsb3ZIZGdLMmVENXBILXdiYlRRZ1RtZ3hGT1JWQ0ZqZWlhVmVqbXhrOTBQZVRWakNhemNWdW43VkVldldQUUE?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxNb09IdVo1OGs3LVVGVGRYRjBpanJybzRpZ3l0d0c1R0NoQmpEdTR1Y19NeV9kOXZPUlpCNVV6ejFCN1ZNVzY2NFZXeVRQUE5wZWFQbHIwYTBLbVZuZ1RkOF9hdUVvYW4wLVN2ZEtyVEJtRnNXdzZCZ2FIMGd2SFFjbVEwcnUyYlEzT0RjdEJvcG9OTHBjT1N0LXpxcVBjX3l1RjlCSkZBdlNhczZtWlJNTkNyeThRUmdSWHlkMGlUaDlnMTRGQnFrY2dNMi1iTVVCcjJ3Q1FMOXFVWmtKRXZ0WERn?oc=5",
      "date": "2026-11-11",
-     "ts": "2026-11-11T01:32+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "nyseandavalanchewhattokenizedsettlementm",
-   "title": "NYSE and Avalanche: what tokenized settlement means for AVAX",
-   "date": "2026-11-11",
-   "last": "2026-11-11",
-   "ts": "2026-11-11T05:14+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "NYSE and Avalanche: what tokenized settlement means for AVAX",
-     "src": "CryptoTicker.io",
-     "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTFBlVVlOUU5GcGFwY3IwajFHamJEcFctRXRzM2k3OVBjczZ3VnhoZ2RMQVhuMThjSlEtS2dGMjQ2MXVZeW9zVGN6UFRBOFpPM2tucnJoNkxGd3hBS0czVkUta0ZzMVlPX2FIUkMwWDA0bTNIb25INlpBeA?oc=5",
-     "date": "2026-11-11",
-     "ts": "2026-11-11T05:14+08:00",
+     "ts": "2026-11-11T00:08+08:00",
      "via": "Google"
     }
    ],
@@ -1228,30 +1407,6 @@
    "role": "竞品动态"
   },
   {
-   "id": "pharosnetwork集成fireblocksrealfi资产接入机构级托管",
-   "title": "Pharos Network 集成 Fireblocks，RealFi 资产接入机构级托管工作流",
-   "date": "2026-11-10",
-   "last": "2026-11-10",
-   "ts": "2026-11-10T04:00+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Pharos Network 集成 Fireblocks，RealFi 资产接入机构级托管工作流",
-     "src": "ForesightNews",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Kc3VtSXl5U0o4NkhPb0RodklpSlBlSjVNcm1vbExuVWZ2NFAwLUFjWWxsRU1PQmc0ZlR6QzEtdGN0Z3VtaE9PZHJ5VnpFc1N0XzJ5MDg0dzVrUDQ?oc=5",
-     "date": "2026-11-10",
-     "ts": "2026-11-10T04:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "bybitrwaearn扩展链上渠道引入由sbi资产管理操盘的日本高息股策略jp",
    "title": "Bybit RWA Earn 擴展鏈上渠道 引入由 SBI 資產管理操盤的日本高息股策略 JPE",
    "date": "2026-11-10",
@@ -1369,6 +1524,54 @@
     }
    ],
    "role": "线索"
+  },
+  {
+   "id": "securitizereportsrecord5billionintokeniz",
+   "title": "Securitize Reports Record $5 Billion in Tokenized Assets as Ondo Claims the Lead",
+   "date": "2026-11-10",
+   "last": "2026-11-10",
+   "ts": "2026-11-10T15:15+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Securitize Reports Record $5 Billion in Tokenized Assets as Ondo Claims the Lead",
+     "src": "Finance Magnates",
+     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNT1p1OVNlNlp2X2p1dENUbjNxQ1R3dUxMMUhSUWppa1NtdlNxQW9wQ09BQ19XTC1PZFJQLTM3bVNyVk12OWdNNDYzNFUzM1hRdUlVQnhtRWFTZ3dNanY5Z0ZIWGYyOWJyeXF2WlZ5ZzZnVlpBYkxiYjRaNlBEaVhwUjBaTnZMUXVJT1NHQ2NZWjFvMFZtLWVobzM2TWtJcWIwWDhIX0ZHZG5XX3VzM05JNzl4d2phUENLSFZuaQ?oc=5",
+     "date": "2026-11-10",
+     "ts": "2026-11-10T15:15+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "thecryptowalletthatgrewupinsidetelegrami",
+   "title": "The crypto wallet that grew up inside Telegram is striking out on its own",
+   "date": "2026-11-10",
+   "last": "2026-11-10",
+   "ts": "2026-11-10T17:59+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "The crypto wallet that grew up inside Telegram is striking out on its own",
+     "src": "CoinDesk",
+     "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxPMHlJQURuQm9SWUJLYlJMMVFGcWRKZ2UzZVBnUFotS1RqcWdNOTNZd3BPdlRWRHZtWVNlMFRETmpUNUFEdS1hZkZZc1VGYUIzT3lkNWpfazlBSUhSUHpmRnB0d0o1OHRBbk16MWlEaDZHeWx0X3VMaUt2QUF2eVU2ZG5zOHN5RHJhVkZ2dUI1TnZxNmZJRC1OUmx0UFB3Q0JIV2tqd24wcGZzS1Rfd1g0UHpqS1NreVNCdlE?oc=5",
+     "date": "2026-11-10",
+     "ts": "2026-11-10T17:59+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "tokenizedgoldranks22ndbyaumamongglobalgo",
@@ -1563,22 +1766,22 @@
    "role": "资讯"
   },
   {
-   "id": "91代币化美股藏于alpacarwa帝国垄断与sec改革作者智通财经",
-   "title": "91% 代幣化美股藏於 Alpaca：RWA 帝國壟斷與 SEC 改革 作者 智通財經",
+   "id": "中国国务院报告定调rwa潘功胜亲口列入非法金融",
+   "title": "中國國務院報告定調RWA：潘功勝親口列入非法金融",
    "date": "2026-11-09",
    "last": "2026-11-09",
-   "ts": "2026-11-09T22:59+08:00",
+   "ts": "2026-11-09T13:22+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "91% 代幣化美股藏於 Alpaca：RWA 帝國壟斷與 SEC 改革 作者 智通財經",
-     "src": "Investing.com 香港 - 股市報價& 財經新聞",
-     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTE1nOFh6Z0xqdXJKa0UxdGM1LS1pZjFYR1Y5R0FVbzhISWVYVTlUQUpqdWkzVXhESW5RSDJLN2RjVXlYaEZTRmxjV25nQXVFUy1kenRMX1l3UEhONDFpQ0E3TnFfaHl0UkJOV2dEUVgyaUo?oc=5",
+     "title": "中國國務院報告定調RWA：潘功勝親口列入非法金融",
+     "src": "動區動趨",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPWDRVbGY5RjNZMDd0eXpwSFF6OHRrT1NCUTZHNGZkRTRZRDQtNUZfTlpNR3JQOXduVk14eG5ueF9DS2xKTkRNUG9HRHc3Rmo4amhsRXNrOTNVdVM0bWtlUHo3enpqYTd4VkpGU1Ezb1BMc0FCZjA1a2VQMnV3eEo3WF9qWHJOSmVtNC11d3pJcXlMNERpUFlLSUpNUXd0UHEwbnRN?oc=5",
      "date": "2026-11-09",
-     "ts": "2026-11-09T22:59+08:00",
+     "ts": "2026-11-09T13:22+08:00",
      "via": "Google"
     }
    ],
@@ -1587,22 +1790,46 @@
    "role": "资讯"
   },
   {
-   "id": "stablecoinmarketcapisfrozenthemoneyinsid",
-   "title": "Stablecoin market cap is frozen. The money inside it isn’t",
+   "id": "cryptoswotusspotbitcoinetfssaw4302millio",
+   "title": "Crypto SWOT: U.S. spot bitcoin ETFs saw $430.2 million in net outflows on November 5",
    "date": "2026-11-09",
    "last": "2026-11-09",
-   "ts": "2026-11-09T03:16+08:00",
+   "ts": "2026-11-09T23:00+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Stablecoin market cap is frozen. The money inside it isn’t",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxPMk9zVHZ6aDBkQnEwUFp5VkdoMGNWUVJ5allCemtiWEhZZFRUcFVacUZfRG9WVGhHMzZiNFFLM0ItWDB4S2Y4MjdlQTdzNUwtakNWY28xMWIyZmVId0F2THNwbzdQS0JFbFB6Z2QtWXBNTXk5NUloM05aZGFpNEZhb0hJOVZRYnMwQ2FlbFhjSm1iVDhZOUY1RFdfWVNvbFhH?oc=5",
+     "title": "Crypto SWOT: U.S. spot bitcoin ETFs saw $430.2 million in net outflows on November 5",
+     "src": "Kitco",
+     "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPamw1UERHRmY2ZEs3NHhEQlc4NTNhYzgzX0J3Rk00cUI0VGl6ZThXdkItNDZNR2VIVm4tR2lyNDZjNndlYXo5YkFfSU5pM3pFMXhBa0JKN0NSVXRyS3VnNHQxaXdzT2JveU16OFUzOF9IU3NUQnAxdDJRNFdaRnhvUFhUcGUzYVZ5RkZZbVpkNzhvOXh3RnQwTTVRQnBUdDF0d0xHTEFlTjZoREpkUU5DV3JRRmw?oc=5",
      "date": "2026-11-09",
-     "ts": "2026-11-09T03:16+08:00",
+     "ts": "2026-11-09T23:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "bitcoinbullscantrelyonetfflowscryptodail",
+   "title": "Bitcoin bulls can't rely on ETF flows: Crypto Daily",
+   "date": "2026-11-09",
+   "last": "2026-11-09",
+   "ts": "2026-11-09T20:30+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Bitcoin bulls can't rely on ETF flows: Crypto Daily",
+     "src": "CoinDesk",
+     "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQQVNnbl9sRXFYQ1ZoMWZBOUtUeWZ3SHVHU051ck9zcTgxc3VId1pIQ0pWcHQzN3RsNFN5LWI5NG92dXhiTTlIUDFyQk1kU2Z4Um9GOFZwUnhiUTM0NkdwUXVNRVJTZUJLbnNoZkxjVmtha2dLbUVhWmwydEJUZzMzcV95UlhUMWhjdFhGTA?oc=5",
+     "date": "2026-11-09",
+     "ts": "2026-11-09T20:30+08:00",
      "via": "Google"
     }
    ],
@@ -1627,30 +1854,6 @@
      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPYjVSSVd2VUJ1dm5QaTViNGsxNEJkcG5RdWU3UFdldzhhd3hzbHIyWkxzdE8yVUNpLS1NRFdtaDVaOXZMXzJ5QVpFY2FWbThHMlp0US1VeVdfdjI0ekktVDlWWm91OGFhUS11MXdTcE9UUGJxSjhZYm9OMDkwNFZKaTlXLUpjSVVRcnEzVjE4YWswOVVVNGpMbFJOcEFOa2kxNGc?oc=5",
      "date": "2026-11-09",
      "ts": "2026-11-09T03:30+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "cryptohacksbinancerecoverymexcbantokeniz",
-   "title": "Crypto Hacks, Binance Recovery, MEXC Ban & Tokenized Stocks News",
-   "date": "2026-11-09",
-   "last": "2026-11-09",
-   "ts": "2026-11-09T20:29+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Crypto Hacks, Binance Recovery, MEXC Ban & Tokenized Stocks News",
-     "src": "StealthEX",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNMVhnZFhaM0p2cUlGSXp2dEhuZFJ1TXZrSWFKcU1QTG1rbXdHaHgwV3VMdVhvYzl6UTcyTWhxeXBDS2hFeXhCZTd0Q21wUWJIdUw4UzdFNDZpY3VSRXRlZ3VjTFpqNlJsMV8yaDJ0elVUNVk0ZzJDNFl0THZ0RHVRSF9BVUpNemJfaVJfXzVpSjE?oc=5",
-     "date": "2026-11-09",
-     "ts": "2026-11-09T20:29+08:00",
      "via": "Google"
     }
    ],
@@ -1708,30 +1911,6 @@
      "date": "2026-11-08",
      "ts": "2026-11-08T10:17+08:00",
      "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "欧盟亚洲还是美国谁将在加密货币业务的监管竞赛中胜出",
-   "title": "欧盟、亚洲还是美国：谁将在加密货币业务的监管竞赛中胜出？",
-   "date": "2026-11-08",
-   "last": "2026-11-08",
-   "ts": "2026-11-08T10:35+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "欧盟、亚洲还是美国：谁将在加密货币业务的监管竞赛中胜出？",
-     "src": "Bitcoin News",
-     "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOc1ZGekx2cF9zeUtHMEJ4S1duRHZYaWtQbHFiN3N2d1lCOUVmdjZxVDBfSFItTW45NlVrY21MZmhaYXBfQUlJdXQzNUQzVGNzWnJQNnVtYTl1cVBYTW1GRTZRQ2RGc25xb0lmbkstZ011RDBPWkZsaVZSN0ZnRXAwWmNqMkVFRzU4eUtiOWl6VkZDZnIwY1VjWmFtT0ZzOW9NWGhYS0oydDVFdHNJT25LcjBFZDZwUThmeXpxZWUya1F0bjVoR3l6Y3pHNlVjandENjEyeFRKanJDb0UtV2gyTGRnNVNGcTRGbnc?oc=5",
-     "date": "2026-11-08",
-     "ts": "2026-11-08T10:35+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
@@ -1859,30 +2038,6 @@
    "role": "资讯"
   },
   {
-   "id": "解读国务院金融工作报告rwa是非法金融活动吗",
-   "title": "解读国务院金融工作报告，RWA 是非法金融活动吗？",
-   "date": "2026-11-08",
-   "last": "2026-11-08",
-   "ts": "2026-11-08T17:28+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "解读国务院金融工作报告，RWA 是非法金融活动吗？",
-     "src": "ForesightNews",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1mUjdBdGFXQWxjaWhZaGtTXzdqS1RONGtTV1ZWZThWejF4MHZiZDIxU3h1bWxXeFhUUlZhOERwMGlzSHowR3BlYi1nVDhTbUxhYnRfS1dZMHR2Nnc?oc=5",
-     "date": "2026-11-08",
-     "ts": "2026-11-08T17:28+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "rwa周刊香港证监会拟试点代币化黄金etf渣打在港推出企业端代币化存款服务",
    "title": "RWA周刊：香港证监会拟试点代币化黄金ETF；渣打在港推出企业端代币化存款服务",
    "date": "2026-11-06",
@@ -1980,6 +2135,30 @@
    "role": "监管"
   },
   {
+   "id": "香港证监会收紧误导性称衔降低投资者误判风险",
+   "title": "香港证监会收紧误导性称衔，降低投资者误判风险",
+   "date": "2026-11-07",
+   "last": "2026-11-07",
+   "ts": "2026-11-07T14:40+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港证监会收紧误导性称衔，降低投资者误判风险",
+     "src": "feng.ifeng.com",
+     "url": "https://feng.ifeng.com/c/8xrITcsDyGG",
+     "date": "2026-11-07",
+     "ts": "2026-11-07T14:40+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "限制范围拟延伸至可在虚拟资产平台交易或结算的资产香港证监会推进修例",
    "title": "限制范围拟延伸至可在虚拟资产平台交易或结算的资产，香港证监会推进修例",
    "date": "2026-11-07",
@@ -2021,6 +2200,30 @@
      "date": "2026-11-07",
      "ts": "2026-11-07T00:15+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongsfcproposesrulesonuseofvirtualas",
+   "title": "Hong Kong SFC Proposes Rules on Use of Virtual Asset-Related Terms, Including “Crypto” and “Exchange”",
+   "date": "2026-11-07",
+   "last": "2026-11-07",
+   "ts": "2026-11-07T04:04+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong SFC Proposes Rules on Use of Virtual Asset-Related Terms, Including “Crypto” and “Exchange”",
+     "src": "panews.io",
+     "url": "https://panews.io/articles/01a1b42e-8268-71f1-9742-53e48909d993",
+     "date": "2026-11-07",
+     "ts": "2026-11-07T04:04+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2173,7 +2376,6 @@
    "last": "2026-11-06",
    "ts": "2026-11-06T15:06+08:00",
    "topics": [
-    "RWA",
     "监管",
     "竞品"
    ],
@@ -2251,84 +2453,6 @@
    "role": "竞品动态"
   },
   {
-   "id": "香港黄金交易所旗下数码黄金项目goldzip启动香港数码黄金拓展计划正式上线ex",
-   "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
-   "date": "2026-11-05",
-   "last": "2026-11-06",
-   "ts": "2026-11-06T18:15+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
-     "src": "經濟日報",
-     "url": "https://money.udn.com/money/story/123828/9858762",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T11:00+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
-     "src": "BusinessFocus",
-     "url": "https://news.google.com/rss/articles/CBMi3ANBVV95cUxQVGNuVVotSXltdFZhNFBSVGE2a1djRFBBMkZic0hCUXZfRlZtVHpiVUU5TVhWZ2VoMFFoV3ZGX1ZVbXZLSDQ1LUxRYVd6VXBaVlZsR2p4SzRxSFVLVlBUdVFkcFRLQktVcE54QV80b2dzTGRZWjVhbVhSNi0wSEk1TkYxSXV5WEZ6VUlKRzNwZFZ4aVg2VEJaeTBiWVV0M2FfOXdMT01LRlNSSEVCVk4zNngtZzZJQ2trdy1lWTJRcndTM0JUemdNZVU0Slp3M20xeUs3WDd1WWlIcEc3dW4xenJtaXpXS0IzUmJpeUlYNWg1eVVRbkwzdnRVMTZaOG9JMmFNS1R3dUpBSjhuUUtDZDhMdnk0RlZrOVBVVjlTbDZqZVF2Z05UZUFBSUR2R1dtQ0pmd3F2WEdSM2hKcFhZVDB2bGltU1NZamotVTFJcmhQOVRMZ2dSY2ZzOU5YSG1uQldhZEFhc1c5VGhJTVF1NWZyaTluR3ltZTlYUkg3b1ZKUTV2WkVHWmIzM0owTW01XzBRY3RScGNaRy1ySlY4b2NBM0xHbHRuc3BlQ1pBMHd6cmVnVzBEbWJnM09xWEZ2bkItdnJEWUlyQ3N5emN5dVZPLVQ3RG5jTzd4Yg?oc=5",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T17:50+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
-     "src": "世界新聞網",
-     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1Ec0thT011OUM1dlY1czJkMEJyWGhIWmpJdndEZkoxbTE3S1U0dmRhdjlZTFlwa1BLSlEwTldhQ2tEZlAyaE5wNEVtZ09ObHQ4V3hkYlJOSnA3S010R3hIbWR2VWhIUk1ESnVRWDUxanYxZW9xODRaa09DQkdvQQ?oc=5",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T18:15+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "EX.IO",
-     "kind": "竞品",
-     "firms": []
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
-   "id": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结滚",
-   "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结_滚动新闻",
-   "date": "2026-11-06",
-   "last": "2026-11-06",
-   "ts": "2026-11-06T18:48+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结_滚动新闻",
-     "src": "证券之星",
-     "url": "https://news.google.com/rss/articles/CBMiZEFVX3lxTFBzQlY2UzVIVUhuc3Y4M0JOOHpGM0ZNbU5Ua3FiVzhJejJ2VUJoWjNZMGxOVHh2ZE9CcER2Qk1fWmpERS05ejBPNTk3RWJJSmV1Z0N3cmdhYXU0UE9JZko3SDFmVUQ?oc=5",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T18:40+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结",
-     "src": "同花顺财经股票频道",
-     "url": "https://stock.10jqka.com.cn/20261106/c681564538.shtml",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T18:48+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "接券商通知两家中资银行暂停在港部分银证转账服务客户资金划拨将迁移至替代渠道",
    "title": "接券商通知，两家中资银行暂停在港部分银证转账服务，客户资金划拨将迁移至替代渠道",
    "date": "2026-11-06",
@@ -2361,52 +2485,42 @@
    "role": "中资券商动态"
   },
   {
-   "id": "以确定性筑底以流动性破局香港数字资产发展由立规矩迈向活市场",
-   "title": "以确定性筑底 以流动性破局——香港数字资产发展由“立规矩”迈向“活市场”",
+   "id": "香港黄金交易所旗下数码黄金项目goldzip启动香港数码黄金拓展计划正式上线ex",
+   "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
    "date": "2026-11-06",
    "last": "2026-11-06",
-   "ts": "2026-11-06T01:27+08:00",
+   "ts": "2026-11-06T18:15+08:00",
    "topics": [
-    "监管"
+    "竞品"
    ],
-   "n": 1,
+   "n": 2,
    "articles": [
     {
-     "title": "以确定性筑底 以流动性破局——香港数字资产发展由“立规矩”迈向“活市场”",
-     "src": "https://www.hkong.cn/",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBYLXgzVFVaOFphSWZnSDg1Q3J6bzAxSVJxSVhTODVWS25Xb3FaSHB6clhwbkVCbTVzYzY2Wk5fMU45TE5WRDZqYTVfVnRzWnJ6TGh6TA?oc=5",
+     "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
+     "src": "BusinessFocus",
+     "url": "https://news.google.com/rss/articles/CBMi3ANBVV95cUxQVGNuVVotSXltdFZhNFBSVGE2a1djRFBBMkZic0hCUXZfRlZtVHpiVUU5TVhWZ2VoMFFoV3ZGX1ZVbXZLSDQ1LUxRYVd6VXBaVlZsR2p4SzRxSFVLVlBUdVFkcFRLQktVcE54QV80b2dzTGRZWjVhbVhSNi0wSEk1TkYxSXV5WEZ6VUlKRzNwZFZ4aVg2VEJaeTBiWVV0M2FfOXdMT01LRlNSSEVCVk4zNngtZzZJQ2trdy1lWTJRcndTM0JUemdNZVU0Slp3M20xeUs3WDd1WWlIcEc3dW4xenJtaXpXS0IzUmJpeUlYNWg1eVVRbkwzdnRVMTZaOG9JMmFNS1R3dUpBSjhuUUtDZDhMdnk0RlZrOVBVVjlTbDZqZVF2Z05UZUFBSUR2R1dtQ0pmd3F2WEdSM2hKcFhZVDB2bGltU1NZamotVTFJcmhQOVRMZ2dSY2ZzOU5YSG1uQldhZEFhc1c5VGhJTVF1NWZyaTluR3ltZTlYUkg3b1ZKUTV2WkVHWmIzM0owTW01XzBRY3RScGNaRy1ySlY4b2NBM0xHbHRuc3BlQ1pBMHd6cmVnVzBEbWJnM09xWEZ2bkItdnJEWUlyQ3N5emN5dVZPLVQ3RG5jTzd4Yg?oc=5",
      "date": "2026-11-06",
-     "ts": "2026-11-06T01:27+08:00",
+     "ts": "2026-11-06T17:50+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港黃金交易所旗下數碼黃金項目 GoldZip 啟動「香港數碼黃金拓展計劃」正式上線 EX.IO",
+     "src": "世界新聞網",
+     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1Ec0thT011OUM1dlY1czJkMEJyWGhIWmpJdndEZkoxbTE3S1U0dmRhdjlZTFlwa1BLSlEwTldhQ2tEZlAyaE5wNEVtZ09ObHQ4V3hkYlJOSnA3S010R3hIbWR2VWhIUk1ESnVRWDUxanYxZW9xODRaa09DQkdvQQ?oc=5",
+     "date": "2026-11-06",
+     "ts": "2026-11-06T18:15+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港发出首批稳定币发行人牌照",
-   "title": "香港發出首批穩定幣發行人牌照",
-   "date": "2026-11-06",
-   "last": "2026-11-06",
-   "ts": "2026-11-06T00:53+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
+   "hits": [
     {
-     "title": "香港發出首批穩定幣發行人牌照",
-     "src": "OneBullEx",
-     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPZkIyQ0g0eHdwVGJvbEpBcXMwTkRhUTBiRUdDSjA5M3JEdkd2S1p4S0xKMWJ3MmtlTGJwUUJSZmdHVjRhRXVkSmhyVWVUeUpNdjhBb3cyS3hyMXpzTjNCeHlRMFJpdGczS25ZejBXbVVFU1BsbE51dVhNUXI3RVYxcjlVQTh1c2o5TFdMZ1pLR29YNXdLQ0NuQVFGS0JGOEZKMEVGdFBMcF9DWlc2MEpVZlg2VnMzYm03Q0UxbEZ6elFfMmFWMy1wUA?oc=5",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T00:53+08:00",
-     "via": "Google"
+     "brand": "EX.IO",
+     "kind": "竞品",
+     "firms": []
     }
    ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
+   "role": "竞品动态"
   },
   {
    "id": "香港立法会通过加密资产申报条例2027年落地carf接轨全球反避税标准",
@@ -2454,7 +2568,7 @@
     {
      "title": "證監會擬立法限制不受規管公司名稱 禁用「加密貨幣交易平台」",
      "src": "星島頭條",
-     "url": "https://news.google.com/rss/articles/CBMimwNBVV95cUxQNlhWMFdiTzc2cElhUm1tZXJnTXlJRncwTmU4eGQtR0FoY1d2dWhkSVg1WTZ4cE1Ec3JJV25jbUtwVnk4VERudHFHdUY5clVObk5VUWE1d0RMM1JFUkhNMDdnNUNTNm9yNHA4aFR0b2hudXg2ZkJ4Q3lBbmFjVVRIMTFkaVlnWk9HNFRrSXJHdVp4TXltWTZpRUJ5RzRxcXR3a1R0ckNlYUk0Y1ZHT2ZwS241Ym1iVzhxMVJIX0dCRHA5ckFaQ29WbDhFNjV6SWFsd29xcE8zdi1sZmdRYjlQQnctZWxxbDd6a2NOQ0RPMWt4MWhwMkhJMjBSLWk1bWFOb1J5RXhfenQ4OVBlZFdUQUhxcWdjWldXeDhQMUc1RjVOZkxEUkJ6LXl6cS1wSllzMjZ0WWlxR1JqdVd4Rzdxd2tRM01Dc1VoTXBmc3A1Q3I0YnA0aFM5eDVmNXoxbGVxVTJNZVdPMi04MUxfZG5ZX3N3R2ZIMFBKekgwVlZGOG9Ed3F3U2J0Q1lyeFdqVzZtTnBIUnBESm1hY0k?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMimwNBVV95cUxNLUpwZ2VHTFRKd0hqbVd2RVhPYW5TbVBjY0p2ak9pYS1PSGlVYTNOZ0FvWUtab2RSREVHOHhRaU83TzdNQmlMbkZ6LUhISmxVcWoteDFzRE1GU3E1aDIxNXVJLTJXNTBzS0dpNU5kb0ZHRlRKaW9PdVZFd1ZSaFRmSWl5Z19RSm52UjlkMUtuWEkzVzh5dHhycXZCTDFtcVFwYnkwT05lbDBKbFV0anJxSXp0dlRpQmhPS2t6M1J1RWpveldSMzBTTnZqaVNETmVNUHloNFFqcUlUeDNFLXZSQjVlY1V6cjV5VVhfZEFwLVBrYVFacHAtbnpURXFDSjNfSV81ZjU2MXNQSFI4Si1nMGNNOURzVXhCOHAzakFYZW9lTHNua3EyOHgzWURMOWpOZlRvNkZHb1hVME9aQ2R0UVNPemc3MDB4S3Z1NGZveVhnZk1sc0U0VnJnMDlpUkhBelctTWFMZHNsOF9MVzFJYl92X0Y3Yi13aEFwV2dSYUc4VEJXUkxXVExKYWtFdTkzT0hKTFZseXRHb3c?oc=5",
      "date": "2026-11-06",
      "ts": "2026-11-06T18:01+08:00",
      "via": "Google"
@@ -2489,23 +2603,23 @@
    "role": "监管"
   },
   {
-   "id": "稳定币正在重塑跨境支付的成本结构但真正的难题仍在本地",
-   "title": "穩定幣正在重塑跨境支付的成本結構，但真正的難題仍在本地",
+   "id": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结",
+   "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结",
    "date": "2026-11-06",
    "last": "2026-11-06",
-   "ts": "2026-11-06T04:25+08:00",
+   "ts": "2026-11-06T18:48+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "穩定幣正在重塑跨境支付的成本結構，但真正的難題仍在本地",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQWEs3YWVLTHBRZHdTMTRJc1ozczdMUkg5dEJFSHA0blZ0ellaU3U4bVFVYmpBWTRYcHV2NHJtZUVrbzZhQS16RkYzSF90dUUtS3ctUGdVNEREdURLaUFGYUtuQmZWVWpod29QYWVDM2lLdjFPbjkydTFVQUlWMWVOS3Q1akw1QQ?oc=5",
+     "title": "香港证监会就进一步限制不受规管的机构使用具误导性的名称以保障投资者发表咨询总结",
+     "src": "同花顺财经股票频道",
+     "url": "https://stock.10jqka.com.cn/20261106/c681564538.shtml",
      "date": "2026-11-06",
-     "ts": "2026-11-06T04:25+08:00",
-     "via": "Google"
+     "ts": "2026-11-06T18:48+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2569,22 +2683,22 @@
    "role": "资讯"
   },
   {
-   "id": "standardcharteredandsbibackcryptoinsurer",
-   "title": "Standard Chartered and SBI back crypto insurer Soter as funding reaches $23.5 million",
+   "id": "trumpbackedworldlibertyfinancialplanstok",
+   "title": "Trump-backed World Liberty Financial plans token buyback after 66% year-to-date slide",
    "date": "2026-11-06",
    "last": "2026-11-06",
-   "ts": "2026-11-06T00:49+08:00",
+   "ts": "2026-11-06T16:04+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Standard Chartered and SBI back crypto insurer Soter as funding reaches $23.5 million",
+     "title": "Trump-backed World Liberty Financial plans token buyback after 66% year-to-date slide",
      "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOYzNKOU42dnl3cUZmZVlVYVpHLTFhWE5pTmxJT09KRmNCR3g4aDd1c1YxOGE1UExORlAzMF9KMnZ1bmFpWlRucXpkRDRWcnFzQ25lT3RzcGx0dTc3OEVST2lJNE1zRk5iSmstUVhLZ1cydW9jSER0RUYycVUySDk5WnZGX1FaYVA3UUxJXzkwMWxsVV9mdnhpWG9DLVdBay0wWEVOeXRIa3c1S2s4SHE4U3VXOFlsTVE?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNYjNPRnlUbmh4cTVqaHdOQXV1eno4SVRhRTNnUm4wNDg5eTJZVXlCMHcxR1M5NXdhSVExeVYyVkpKOFJ0dWNtWTk3RC1ab0JRVjEtUFRCMGlGbnhGeWJTUld0MnR2YlBhTzRsUG9rUGZYLUY3VXlZb0xQSHV0Y1lBTTlaUmJuSDA2YklxQ0loc3lhOEl2TlpESWd1TF9MckE4YzQ5VkNSUUlpdUVEV0xqVzFOLWkzYmFyTFY1bFRpa0xkNzVWX1lEYg?oc=5",
      "date": "2026-11-06",
-     "ts": "2026-11-06T00:49+08:00",
+     "ts": "2026-11-06T16:04+08:00",
      "via": "Google"
     }
    ],
@@ -2609,30 +2723,6 @@
      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPTWdnUlJRUEFmeVh1Zmk5REMxNHRjb0tYUFVQdE1WZHh3RlJMME4tTHEwblNpSjNGX2d5QTBJb3VYV0dXYlNyTE43WTV1OW1tdTZLQ1g1dnhmcW9GTWhBQk5nQlY3cTdnLWl4amdxSWFuYVUtX2JlVkZHb1gwQl9NY084cmNBV2wwZWQxYTFMYw?oc=5",
      "date": "2026-11-06",
      "ts": "2026-11-06T02:29+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "cryptoforadvisorswhereinvestorsstakecryp",
-   "title": "Crypto for Advisors: Where investors stake crypto shapes how much of the reward they keep",
-   "date": "2026-11-06",
-   "last": "2026-11-06",
-   "ts": "2026-11-06T00:13+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Crypto for Advisors: Where investors stake crypto shapes how much of the reward they keep",
-     "src": "CoinDesk",
-     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOSHVXbjZGVzczNDJabkRHWlFxQjJReEdUMlpHVnlNc1FvWHpRUU5MS05KbUxXNF80YlZORDdPWXBIUEc5WmJvcGlNY0p2QU9UR1NmUVJSSmxGZ1A5YnhQX3RjdGJ6U1gzY1ZiX0lObFZrMHQ5ZmlFdlRjTUdBUFBYSXRtRWdVZkF1M0tnQS1jbXJleEdTUmMxcXlteDQ2UWZoTlY2RG9EVEpwblB6czg0eWhFMno5cU8zZW10M1plWnQwWUNQenJsNWhxZmdndmJYR19ySHRrM3o?oc=5",
-     "date": "2026-11-06",
-     "ts": "2026-11-06T00:13+08:00",
      "via": "Google"
     }
    ],
@@ -2681,440 +2771,6 @@
      "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR187",
      "date": "2026-11-06",
      "ts": "2026-11-06T17:01+08:00",
-     "via": "SFC"
-    }
-   ],
-   "sfc": true,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "财库局国际虚拟资产交易平台只要合规均可向证监会提出申请牌照数字经济",
-   "title": "財庫局：國際虛擬資產交易平台只要合規均可向證監會提出申請牌照- 數字經濟",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T20:29+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 3,
-   "articles": [
-    {
-     "title": "財庫局：國際虛擬資產交易平台只要合規均可向證監會提出申請牌照- 數字經濟",
-     "src": "香港文匯報",
-     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1TZjZBOFZYOXNDa1ByYmtHc2N2bzcySVFOVWdQbS0wUThiMWhPZDVVTGdMYVAyQi00QmJYcXVtaXJZdnlJVkRIaUhROGpfT2pFVFVCN2hFNXdMRTl3QUJYWWpkLVFqZ0JLMEFpRUNkTWtRSGV4LThZ?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T20:29+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港财库局：国际虚拟资产交易平台只要合规均可向证监会提出申请牌照",
-     "src": "腾讯网",
-     "url": "https://news.qq.com/rain/a/20261105A0DEI700",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T19:44+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "香港财库局：国际虚拟资产交易平台符合监管要求即可申请牌照，目前已有 13 家持牌平台",
-     "src": "techflowpost",
-     "url": "https://www.techflowpost.com/newsletter/143158",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T11:49+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "汇丰港元稳定币redcoin正式上线payme香港合规稳定币版图再添一极",
-   "title": "汇丰港元稳定币 RedCoin 正式上线PayMe，香港合规稳定币版图再添一极",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T15:27+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "汇丰港元稳定币 RedCoin 正式上线PayMe，香港合规稳定币版图再添一极",
-     "src": "cj",
-     "url": "https://cj.sina.com.cn/articles/view/3660929192/da3558a802701yqaq",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T15:27+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "从redcoin看香港金融中心的新支点一枚稳定币背后的全链条棋局",
-   "title": "从 RedCoin 看香港金融中心的新支点：一枚稳定币背后的全链条棋局",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T15:16+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "从 RedCoin 看香港金融中心的新支点：一枚稳定币背后的全链条棋局",
-     "src": "cj",
-     "url": "https://cj.sina.com.cn/articles/view/3660929192/da3558a800101yq9w",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T15:16+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "alchemypaysecuresmississippimoneytransmi",
-   "title": "Alchemy Pay Secures Mississippi Money Transmitter License, Expanding U.S. Regulatory Coverage to 20 States",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T12:42+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Alchemy Pay Secures Mississippi Money Transmitter License, Expanding U.S. Regulatory Coverage to 20 States",
-     "src": "PR Newswire",
-     "url": "https://www.prnewswire.com/news-releases/alchemy-pay-secures-mississippi-money-transmitter-license-expanding-us-regulatory-coverage-to-20-states-302930722.html",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T12:42+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "hongkongcryptoexchangesfacenewreportingr",
-   "title": "Hong Kong Crypto Exchanges Face New Reporting Rules",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T10:13+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong Crypto Exchanges Face New Reporting Rules",
-     "src": "CoinCentral",
-     "url": "https://coincentral.com/hong-kong-crypto-exchanges-face-new-reporting-rules/",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T10:13+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "hongkongpreparesnewvirtualassetregimeand",
-   "title": "Hong Kong prepares new virtual asset regime and wider tax breaks",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T07:25+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong prepares new virtual asset regime and wider tax breaks",
-     "src": "Insurance Asia on MSN",
-     "url": "https://www.msn.com/en-xl/money/financial-regulation/hong-kong-prepares-new-virtual-asset-regime-and-wider-tax-breaks/ar-AA2gRt5C",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T07:25+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港证监会sfc要求身份认证技术升级飞天诚信fidosecuritykey助力互",
-   "title": "香港证监会（SFC）要求身份认证技术升级 飞天诚信FIDO Security Key助力互联网券商",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T16:40+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港证监会（SFC）要求身份认证技术升级 飞天诚信FIDO Security Key助力互联网券商",
-     "src": "新浪财经",
-     "url": "https://finance.sina.com.cn/roll/2026-11-05/doc-inixsrrw9411825.shtml",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T16:40+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
-  },
-  {
-   "id": "港客首入金平均24万老虎证券上季入资人数创新高或加码投港",
-   "title": "港客首入金平均24万！老虎证券︰上季入资人数创新高 或加码投港",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T18:44+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "港客首入金平均24万！老虎证券︰上季入资人数创新高 或加码投港",
-     "src": "HK01",
-     "url": "https://news.google.com/rss/articles/CBMiuANBVV95cUxNMndIcjNoZXRkakZ1ZjQ2UTFMLUNwV3AwTkZqU2ZpS1NGdlBrYlY5Z2JwS0dvUmdnRlNPclhhbkZOTmg5RDQyR1Z6UDVJeXowV1ZTWFRBbndFTWhGa3FPOXJoNExSUXJHbTlXcVI2dEpsWW5ZUjhRT21kTDJxMTZPbW5QS1FRUnJCdWQ3ZXpHQXNPZXUtRnlJVmN3aC1FZnc0WmVwcllfQ0ZFRjhqYUJnYURKZ3h5NE1qeDdxczJqcXhuVmZnLWJianIybG1nVEV0a1I2NVQ5eV9xVVdZbHNnWW5YN2otalNZOUM5UGhCMlNGZThCSFRSaDcyM1U1bDBhUmlCQ3RJS05tYzRDcnFXZnROQnJwYUo2QnFQcmFFS203RlBMcGUxaXp3aW8tTEZ0RWxiNzNxbjkxcjM4LWNsbFh1THJ6dkVHU3hXLUxDcmtXSjlaZmpxSDdvRzg2NldjTEJBOF82ZlhXRzByMUhfU3l2QXcwMER6bGRBRUVldktSMDlJdVhldGF1UUFHcC1TaTA1bGlwcGswcEk4TWhhS25jQXpFYnhlLUV6aWtzRV9XYVpZT2x4Ug?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T18:44+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "Tiger",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BMU940",
-       "en": "Tiger Brokers (HK) Global Limited",
-       "zh": "老虎證券（香港）環球有限公司",
-       "ras": [
-        "T1",
-        "T2",
-        "T4",
-        "T5",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
-   "id": "xiaofengofhashkeygroupdigitalfinancialin",
-   "title": "Xiao Feng of HashKey Group: Digital Financial Infrastructure to Reshape Global Financial Hubs",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T00:43+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Xiao Feng of HashKey Group: Digital Financial Infrastructure to Reshape Global Financial Hubs",
-     "src": "kucoin",
-     "url": "https://www.kucoin.com/news/flash/hashkey-group-s-xiao-feng-digital-financial-infrastructure-to-reshape-global-financial-hubs",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T00:43+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
-   "id": "致富证券成为首家于港交所综合基金平台完成基金申购的券商",
-   "title": "致富證券成為首家於港交所綜合基金平台完成基金申購的券商",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T20:01+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "致富證券成為首家於港交所綜合基金平台完成基金申購的券商",
-     "src": "經濟日報",
-     "url": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE5vcUxLX3B3QllwWXg4ZU5aQ1dmZ0VaY3BVV1RaclFWVFJ6VVNrSXFycGZ0QXdxVHJOV2pQVXhBVERIdkltYm84TUVRRTB3dnBRQkZHaDBCWXlQT1lo0gFiQVVfeXFMTW9vaElyOEt2aFZQdEZIX3F5eE5CVUtmRGRyTGw0SElaMjZlRHZQel80QWlzeUVLSV9kQ3VpSWt4RnRaT0NPWFlVcm0yTmlpZzZ4ZHc0YWdMRnNoNjl1YjVXdlE?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T20:01+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "ustarpay宣布与bitgobanktrust达成数位资产托管合作为加密资产",
-   "title": "UstarPay 宣布與BitGo Bank & Trust 達成數位資產託管合作，為加密資產實際支付應用奠定信任基礎| 國際現場| 商情",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T22:00+08:00",
-   "topics": [
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "UstarPay 宣布與BitGo Bank & Trust 達成數位資產託管合作，為加密資產實際支付應用奠定信任基礎| 國際現場| 商情",
-     "src": "經濟日報",
-     "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1Oa2VHUmZLTGtiZ21oNThMSEZrVWluQlV5YjZUR3NVRVFDcExmWG0xZW5ta3JlYXQ2ei13N0tKcE5xcnNGRVZoWHBHa3RVR285QW82MEVXaWdJd1U?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T22:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "台湾债市破18兆柜买推债券大计划聚焦rwa代币化与双挂牌等3大策略",
-   "title": "台灣債市破18兆！櫃買推債券大計畫 聚焦RWA代幣化與雙掛牌等3大策略",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T20:01+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "台灣債市破18兆！櫃買推債券大計畫 聚焦RWA代幣化與雙掛牌等3大策略",
-     "src": "Yahoo 財經",
-     "url": "https://news.google.com/rss/articles/CBMirANBVV95cUxNYzNBOWRKak5pNkpNbHdSb1BGLTd4OGRfWk1KcmFhYlljVndIX0dYNHFydGNkbEVjdnQzZmppTG0zeEZpdlVOVTBYd3JjZ2VpeFc1OEZnNkZGbDNsdERSa0g1dy1HVHFJZ25uVFBFR21PR1VNTGljd2Fwc3I0UF9FV3kyenA1UW1hbzRCMTgtTFN2cFliMzlZMUphZHBFWWI5cGplZ0pwdFN0WHBYVl95Tk1ybXlZVFhoa2I1YWo3X0NjeWFCeWJpNXlvX3Z1ZUVhaXVvT2dIeTBONUtmYlhXOWpGMDlpQ2FHUXg5eVZpWTJnTy1CMk5EMzdLeElRSHZvT01YeEJ2MGtNNFhFbzdqTXZFNmtGQy1zeVRwNVhoMVV6azlRZ0ZrTlMwU3hWZjNMRnBNcVhrUWhFZU9GWlI4OEpNaXQ0d2Y1NmUwZjh3cHJzSkVZbDdyNUtsRHhiTW5uM2ozUjFuM0tyNllZR0dhaVhRT0hxdXZXMWtDZ1dwdHVXS0lMXzhSVl9YRmFjM0g2ZEhoN3VpZnVmSmRhQXd1LV9YczE3NGdmQUd0Yw?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T20:01+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "marketviewsdoestherecentbinancehacksetba",
-   "title": "Market Views: Does the recent Binance hack set back Asian institutional crypto adoption?",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T22:23+08:00",
-   "topics": [
-    "机构需求"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Market Views: Does the recent Binance hack set back Asian institutional crypto adoption?",
-     "src": "AsianInvestor",
-     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxNQnBQaEVLVFNRdk9yTkFDaXY0U0JKcDI4RFZJdTZFc1BEUzk0Z2tseElUQm5tUVBpY0dXWEx5aU1SR3lLNjlyNkZlWHpheGZLdnFvX2JpSlNzUWEyWW01MW5vRjI1TzlqcVhpZlExOGpJUjIzUDFneDVZRHoxNDhEVHJIa3NYYnlETi0wakxhWHhwMTJUc0tNdF9SeVprc1R1UEMwbVlzaHRuZlhvcldyVWlOS3NXRnNSZWF0N2ZWUENsaE0?oc=5",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T22:23+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "hongkongcryptotraderswillhavetaxresidenc",
-   "title": "Hong Kong Crypto Traders Will Have Tax Residence Checked Starting in 2027",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T10:42+08:00",
-   "topics": [
-    "机构需求"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Hong Kong Crypto Traders Will Have Tax Residence Checked Starting in 2027",
-     "src": "CoinCentral",
-     "url": "https://coincentral.com/hong-kong-crypto-traders-will-have-tax-residence-checked-starting-in-2027/",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T10:42+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "newspeechbykelvinwongkeynotespeechatpwma",
-   "title": "New speech by Kelvin Wong: Keynote speech at PWMA Wealth Management Industry Summit 2026",
-   "date": "2026-11-05",
-   "last": "2026-11-05",
-   "ts": "2026-11-05T12:21+08:00",
-   "topics": [
-    "SFC 其他"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "New speech by Kelvin Wong: Keynote speech at PWMA Wealth Management Industry Summit 2026",
-     "src": "SFC",
-     "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR186",
-     "date": "2026-11-05",
-     "ts": "2026-11-05T12:21+08:00",
      "via": "SFC"
     }
    ],
