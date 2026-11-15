@@ -25,11 +25,26 @@ jobs:
         id: check
         run: |
           TODAY=$(date -u +%Y-%m-%d)
-          RUNS=$(gh run list \
-            --workflow=daily_report.yml \
-            --repo "$GITHUB_REPOSITORY" \
-            --json createdAt,conclusion \
-            --jq "[.[] | select(.createdAt | startswith(\"$TODAY\")) | select(.conclusion == \"success\")] | length")
+          # 这一步只是去重闸，但它失败会连带跳过整天的日报：shell 是 bash -e，
+          # gh run list 非零退出就直接 exit 1，needs.check 失败后 daily-report 任务被 skip。
+          # 2026-11-13 就是这么丢了一期：gh 撞上 HTTP 503，当天 18:00 的日报没发，
+          # 守护器想补发又没有 actions:write（见 report_guardian.yml）。
+          # 现在重试三次；三次都拿不到答案就按「今天还没发」放行 —— 宁可重发也不要漏发。
+          RUNS=""
+          for i in 1 2 3; do
+            RUNS=$(gh run list \
+              --workflow=daily_report.yml \
+              --repo "$GITHUB_REPOSITORY" \
+              --json createdAt,conclusion \
+              --jq "[.[] | select(.createdAt | startswith(\"$TODAY\")) | select(.conclusion == \"success\")] | length") && break
+            echo "[Check] gh run list attempt $i failed."
+            RUNS=""
+            if [ "$i" -lt 3 ]; then sleep 10; fi
+          done
+          if [ -z "$RUNS" ]; then
+            echo "[Check] Cannot read run history (GitHub API failed 3x). Assuming not run yet."
+            RUNS=0
+          fi
           echo "Successful runs today: $RUNS"
           if [ "$RUNS" -gt "0" ]; then
             echo "should_run=false" >> $GITHUB_OUTPUT

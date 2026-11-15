@@ -10,6 +10,13 @@ on:
 jobs:
   guard:
     runs-on: ubuntu-latest
+    # gh workflow run 调的是 actions/workflows/*/dispatches，需要 actions: write。
+    # 本仓库默认 GITHUB_TOKEN 只有读权限，所以这个守护任务从上线起就补发不了：
+    # 2026-11-13 它正确判断出日报缺失，然后倒在
+    # 「HTTP 403: Resource not accessible by integration」上，那天的日报最终没发出去。
+    permissions:
+      contents: read
+      actions: write
     steps:
       - name: Check if daily report ran today, trigger if missed
         run: |
@@ -24,12 +31,26 @@ jobs:
             exit 0
           fi
 
-          # 检查今天 daily_report 是否已成功运行或正在运行
-          RUNS=$(gh run list \
-            --workflow=daily_report.yml \
-            --repo "$GITHUB_REPOSITORY" \
-            --json createdAt,status,conclusion \
-            --jq "[.[] | select(.createdAt | startswith(\"$TODAY\")) | select(.conclusion == \"success\" or .status == \"in_progress\")] | length")
+          # 检查今天 daily_report 是否已成功运行或正在运行。
+          # gh run list 会偶发 503（见 daily_report.yml 里的同一道闸），重试三次。
+          RUNS=""
+          for i in 1 2 3; do
+            RUNS=$(gh run list \
+              --workflow=daily_report.yml \
+              --repo "$GITHUB_REPOSITORY" \
+              --json createdAt,status,conclusion \
+              --jq "[.[] | select(.createdAt | startswith(\"$TODAY\")) | select(.conclusion == \"success\" or .status == \"in_progress\")] | length") && break
+            echo "[Guardian] gh run list attempt $i failed."
+            RUNS=""
+            if [ "$i" -lt 3 ]; then sleep 10; fi
+          done
+
+          # 查不到就当「没发」去补发：daily_report.yml 的 check 任务才是去重的那一关，
+          # 它会在真的已经发过时跳过。守护器宁可多敲一次门，也不要因为自己查不到而放弃补发。
+          if [ -z "$RUNS" ]; then
+            echo "[Guardian] Cannot read run history (GitHub API failed 3x). Triggering anyway; daily_report's own check will dedupe."
+            RUNS=0
+          fi
 
           echo "[Guardian] Successful/in-progress runs today: $RUNS"
 
