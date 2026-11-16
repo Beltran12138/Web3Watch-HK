@@ -42,9 +42,10 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-16
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-17
 
 - **[HashKey RWA推出「hToken」系列首款产品，提供一站式发行解决方案](https://www.theblockbeats.info/flash/373181)** (2026-10-22 | Alpha 82)
+- **[HashKey将被纳入MSCI全球微型股指数，国际化布局与机构级基础设施持续获认可](https://www.theblockbeats.info/flash/377546)** (2026-11-16 | Alpha 78)
 - **[HashKey Adopts Tokenised Deposit for Cross-Market Treasury and Liquidity Management on Standard Chartered’s Blockchain Platform](https://group.hashkey.com/en/hashkey-adopts-tokenised-deposit-for-cross-market-treasury-and-liquidity-management-on-standard-chartereds-blockchain-platform/)** (2026-11-03 | Alpha 78)
 - **[HashKey On-Chain and RD Technologies Form Deep Partnership to Support On-Chain Testing for RDUSD](https://group.hashkey.com/en/hashkey-on-chain-and-rd-technologies-form-deep-partnership-to-support-on-chain-testing-for-rdusd/)** (2026-11-02 | Alpha 78)
 - **[HashKey Exchange Collaborates with Baillie Gifford to Explore Potential Opportunities in Tokenised Investment Products](https://group.hashkey.com/en/hashkey-exchange-collaborates-with-baillie-gifford-to-explore-potential-opportunities-in-tokenised-investment-products/)** (2026-11-02 | Alpha 78)
