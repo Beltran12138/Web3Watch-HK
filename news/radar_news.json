@@ -1,5 +1,5 @@
 {
- "built": "2026-11-17T02:38+08:00",
+ "built": "2026-11-17T10:57+08:00",
  "since": "2026-11-10",
  "log": [
   {
@@ -11,43 +11,43 @@
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 18,
-   "in_window": 9
+   "fetched": 7,
+   "in_window": 7
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 21,
+   "fetched": 22,
    "in_window": 12
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 13,
-   "in_window": 10
+   "fetched": 12,
+   "in_window": 9
   },
   {
    "topic": "监管",
    "q": "Hong Kong stablecoin licence HKMA",
    "fetched": 18,
-   "in_window": 16
+   "in_window": 17
   },
   {
    "topic": "中资券商",
    "q": "中资券商 虚拟资产 香港",
-   "fetched": 13,
+   "fetched": 2,
    "in_window": 1
   },
   {
    "topic": "中资券商",
    "q": "券商 香港 虚拟资产交易 升级",
    "fetched": 12,
-   "in_window": 0
+   "in_window": 1
   },
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 15,
+   "fetched": 14,
    "in_window": 4
   },
   {
@@ -59,32 +59,32 @@
   {
    "topic": "竞品",
    "q": "OSL 数字资产",
-   "fetched": 10,
+   "fetched": 2,
    "in_window": 0
   },
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
-   "fetched": 15,
+   "fetched": 3,
    "in_window": 0
   },
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 9,
+   "fetched": 12,
    "in_window": 0
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 27,
-   "in_window": 10
+   "fetched": 16,
+   "in_window": 8
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
    "fetched": 33,
-   "in_window": 27
+   "in_window": 29
   },
   {
    "topic": "机构需求",
@@ -105,27 +105,27 @@
    "in_window": 5
   }
  ],
- "articles": 122,
+ "articles": 121,
  "stories": [
   {
    "id": "hongkongtargetsyearendbilltowidencryptol",
    "title": "Hong Kong Targets Year-End Bill to Widen Crypto Licensing",
    "date": "2026-11-16",
-   "last": "2026-11-16",
-   "ts": "2026-11-16T21:22+08:00",
+   "last": "2026-11-17",
+   "ts": "2026-11-17T08:00+08:00",
    "topics": [
     "RWA",
     "机构需求",
     "监管"
    ],
-   "n": 5,
+   "n": 7,
    "articles": [
     {
      "title": "Hong Kong Targets Year-End Bill to Widen Crypto Licensing",
      "src": "The Defiant",
      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQaWNWNGhSNWxXTjhQQlJtUktWaEVGTDBlY0FTNnh6MDQ3VUVBMHlXdi00d2Zkd2xOc0FlR2tMMGZmNjRTSHhQTHNUaW1DUFpRTkJ0dW9HQlJFbGVCVTlWZTY5S2ZtUWxQdkdrSXQxTjJXd0NGRjF1V2cxODhTVnoybHFsSmdzb0M2ckh1WXJaM3BoRlZyWC02OGlkOVNqYlA2?oc=5",
      "date": "2026-11-16",
-     "ts": "2026-11-16T21:22+08:00",
+     "ts": "2026-11-16T20:22+08:00",
      "via": "Google"
     },
     {
@@ -167,6 +167,22 @@
      "date": "2026-11-16",
      "ts": "2026-11-16T20:43+08:00",
      "via": "Google"
+    },
+    {
+     "title": "Hong Kong Reaffirms Year-End Crypto Licensing Bill as Tokenized Funds Expand",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNUEpxY1pJcUY2ZzA0N1QwbmhTX1pETklWeXEycFZFUWRmVVFwZkZfVGItcm1pRk12SHh3TWkwYUtCd3BmRzhqWGQ3MXBWb1UyTG9KRWwxVDkzSEZvNXo3dTdaS283QnF0QktxeUlZU3VHWFhzY1Y0dnFIYm9QNkJLNVRUcndQMW9sLVJlejBvSklpQkFyWWRKSVd2YmhMR3lXRWdJUFpGTW9uUk5CY3NnRVV2MnIyWllOQ2ZiNHdRc0FiVTJIcXN6YkF4NUNqUkE?oc=5",
+     "date": "2026-11-17",
+     "ts": "2026-11-17T08:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong Reaffirms Year-End Crypto Licensing Bill as Tokenized Funds Expand",
+     "src": "NewsBTC",
+     "url": "https://www.newsbtc.com/regulation/hong-kong-chan-crypto-licensing-bill-tokenized-funds/",
+     "date": "2026-11-17",
+     "ts": "2026-11-17T00:00+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -243,7 +259,7 @@
    "title": "HKMA Expands Cross-Border Tokenised Payments Collaboration",
    "date": "2026-11-16",
    "last": "2026-11-16",
-   "ts": "2026-11-16T19:13+08:00",
+   "ts": "2026-11-16T23:12+08:00",
    "topics": [
     "RWA",
     "监管"
@@ -263,7 +279,7 @@
      "src": "The Defiant",
      "url": "https://news.google.com/rss/articles/CBMiogFBVV95cUxOa1E3bVh4Wl9STlJFWm50R21mWUVETHVDakhLR0hoenRwVkN6WkR2OGRqRzR6M1JCQmUyRU5PM3pXUUtYZE4xZE5qaWdwUGNLT1l5ejFEeG9ORFFaWGFNcDB0eWpCSENUT25GTl93cndaMl92MDVMSHFzbTdqUlk1TGota2xGWnB3Y09kQnNsOVRBVGpNNXZYcGVwNGZkZzRfN1E?oc=5",
      "date": "2026-11-16",
-     "ts": "2026-11-16T08:18+08:00",
+     "ts": "2026-11-16T23:12+08:00",
      "via": "Google"
     },
     {
@@ -272,6 +288,38 @@
      "url": "https://www.cryptopolitan.com/hkma-swift-tokenized-deposits-cross-border/",
      "date": "2026-11-16",
      "ts": "2026-11-16T17:30+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "陈茂波香港将扩展虚拟资产监管制度计划年底前提交条例草案",
+   "title": "陈茂波：香港将扩展虚拟资产监管制度 计划年底前提交条例草案",
+   "date": "2026-11-16",
+   "last": "2026-11-16",
+   "ts": "2026-11-16T16:24+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "陈茂波：香港将扩展虚拟资产监管制度 计划年底前提交条例草案",
+     "src": "搜狐",
+     "url": "https://www.sohu.com/a/1102285889_114984",
+     "date": "2026-11-16",
+     "ts": "2026-11-16T16:24+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "陈茂波：香港将扩展虚拟资产监管制度 计划年底前提交条例草案",
+     "src": "feng.ifeng.com",
+     "url": "https://feng.ifeng.com/c/8y6MzjR2CuF",
+     "date": "2026-11-16",
+     "ts": "2026-11-16T16:24+08:00",
      "via": "Bing"
     }
    ],
@@ -376,36 +424,36 @@
    "role": "竞品动态"
   },
   {
-   "id": "hubbisdigitalassetsforumhongkong2026",
-   "title": "HUBBIS DIGITAL ASSETS FORUM – HONG KONG 2026",
+   "id": "香港中资券商开始关停内地投资者零结余账户",
+   "title": "香港中资券商开始关停内地投资者零结余账户",
    "date": "2026-11-16",
    "last": "2026-11-16",
-   "ts": "2026-11-16T18:37+08:00",
+   "ts": "2026-11-16T19:15+08:00",
    "topics": [
-    "监管"
+    "中资券商"
    ],
    "n": 2,
    "articles": [
     {
-     "title": "HUBBIS DIGITAL ASSETS FORUM – HONG KONG 2026",
-     "src": "Hubbis",
-     "url": "https://hubbis.com/event/hubbis-digital-assets-forum-hong-kong-2026-2026-11-17/",
+     "title": "香港中资券商开始关停内地投资者零结余账户",
+     "src": "财新",
+     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE92SDBQbjJQTzhkZVItak1IQmI4SXZhUGlhZ1N1WHVwVVV3TDhFQjB1cUY3ME5peTZsMWVYV1hhbTNZYktjclRqMWItRXhLbHJDR3dmelpqOXByOE9BYnJrZll3?oc=5",
      "date": "2026-11-16",
-     "ts": "2026-11-16T18:37+08:00",
-     "via": "Bing"
+     "ts": "2026-11-16T19:15+08:00",
+     "via": "Google"
     },
     {
-     "title": "Hong Kong Outlines Regulatory Approach for AI and Digital Assets",
-     "src": "OpenGov Asia",
-     "url": "https://opengovasia.com/hong-kong-outlines-regulatory-approach-for-ai-and-digital-assets/",
+     "title": "香港中资券商开始关停内地投资者零结余账户",
+     "src": "财新网金融频道",
+     "url": "https://finance.caixin.com/m/2026-11-16/102505438.html",
      "date": "2026-11-16",
-     "ts": "2026-11-16T07:37+08:00",
+     "ts": "2026-11-16T19:15+08:00",
      "via": "Bing"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "监管"
+   "role": "中资券商动态"
   },
   {
    "id": "hashkeytojoinmsciglobalmicrocapindexesaf",
@@ -498,30 +546,6 @@
    "role": "监管"
   },
   {
-   "id": "陈茂波香港将扩展虚拟资产监管制度计划年底前提交条例草案",
-   "title": "陈茂波：香港将扩展虚拟资产监管制度 计划年底前提交条例草案",
-   "date": "2026-11-16",
-   "last": "2026-11-16",
-   "ts": "2026-11-16T08:33+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "陈茂波：香港将扩展虚拟资产监管制度 计划年底前提交条例草案",
-     "src": "新浪财经",
-     "url": "https://finance.sina.com.cn/stock/hkstock/hkstocknews/2026-11-16/doc-iniyxirc2458204.shtml",
-     "date": "2026-11-16",
-     "ts": "2026-11-16T08:33+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "陈茂波香港面向公众发售的代币化基金一年增长约7倍",
    "title": "陈茂波：香港面向公众发售的代币化基金一年增长约 7 倍",
    "date": "2026-11-16",
@@ -538,6 +562,79 @@
      "url": "https://a.foresightnews.pro/news/detail/117813",
      "date": "2026-11-16",
      "ts": "2026-11-16T00:46+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "digitalassetsrecentupdatesseptemberandoc",
+   "title": "Digital Assets Recent Updates – September and October 2026",
+   "date": "2026-11-16",
+   "last": "2026-11-16",
+   "ts": "2026-11-16T00:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Digital Assets Recent Updates – September and October 2026",
+     "src": "Gibson Dunn",
+     "url": "https://www.gibsondunn.com/digital-assets-recent-updates-september-and-october-2026/",
+     "date": "2026-11-16",
+     "ts": "2026-11-16T00:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "swiftandhongkongmonetaryauthoritytesttok",
+   "title": "Swift and Hong Kong Monetary Authority Test Tokenized Deposits for Cross-Border Transactions",
+   "date": "2026-11-16",
+   "last": "2026-11-16",
+   "ts": "2026-11-16T20:07+08:00",
+   "topics": [
+    "RWA",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Swift and Hong Kong Monetary Authority Test Tokenized Deposits for Cross-Border Transactions",
+     "src": "PYMNTS.com",
+     "url": "https://www.pymnts.com/news/cross-border-payments/2026/swift-and-hong-kong-monetary-authority-test-tokenized-deposits-for-cross-border-transactions/",
+     "date": "2026-11-16",
+     "ts": "2026-11-16T20:07+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongoutlinesregulatoryapproachforaia",
+   "title": "Hong Kong Outlines Regulatory Approach for AI and Digital Assets",
+   "date": "2026-11-16",
+   "last": "2026-11-16",
+   "ts": "2026-11-16T07:37+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong Outlines Regulatory Approach for AI and Digital Assets",
+     "src": "OpenGov Asia",
+     "url": "https://opengovasia.com/hong-kong-outlines-regulatory-approach-for-ai-and-digital-assets/",
+     "date": "2026-11-16",
+     "ts": "2026-11-16T07:37+08:00",
      "via": "Bing"
     }
    ],
@@ -568,30 +665,6 @@
    "sfc": false,
    "hits": [],
    "role": "监管"
-  },
-  {
-   "id": "香港中资券商开始关停内地投资者零结余账户",
-   "title": "香港中资券商开始关停内地投资者零结余账户",
-   "date": "2026-11-16",
-   "last": "2026-11-16",
-   "ts": "2026-11-16T19:15+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港中资券商开始关停内地投资者零结余账户",
-     "src": "财新",
-     "url": "https://news.google.com/rss/articles/CBMiYkFVX3lxTE92SDBQbjJQTzhkZVItak1IQmI4SXZhUGlhZ1N1WHVwVVV3TDhFQjB1cUY3ME5peTZsMWVYV1hhbTNZYktjclRqMWItRXhLbHJDR3dmelpqOXByOE9BYnJrZll3?oc=5",
-     "date": "2026-11-16",
-     "ts": "2026-11-16T19:15+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
   },
   {
    "id": "hashkeyplatformtokenpricehsk",
@@ -759,23 +832,47 @@
    "role": "资讯"
   },
   {
-   "id": "jpmorganskinexysanddbsrollout247tokenize",
-   "title": "JPMorgan’s Kinexys and DBS roll out 24/7 tokenized deposits to first Ant International",
+   "id": "dbsandjpmorganlaunch247tokenizeddollartr",
+   "title": "DBS and JPMorgan Launch 24/7 Tokenized Dollar Transfers Across Borders",
    "date": "2026-11-16",
    "last": "2026-11-16",
-   "ts": "2026-11-16T21:32+08:00",
+   "ts": "2026-11-16T18:59+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "JPMorgan’s Kinexys and DBS roll out 24/7 tokenized deposits to first Ant International",
-     "src": "Crypto Economy",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9odjdXTU9fSmQtVkRKd0NEanlDVEFmUzVXTlVOcEE3eTh1bC1vMFFiOXZPLVc2Rk5UZ3FVS0EtNlZsdjdrTkE5WDlqV2MwdmtnUTZ1aTFWZU1tZFRITEJGVldXZ0FwdklRX1F4cWdOcUpnRHRyNFQyUlRPOWZsdE0?oc=5",
+     "title": "DBS and JPMorgan Launch 24/7 Tokenized Dollar Transfers Across Borders",
+     "src": "NewsBTC",
+     "url": "https://www.newsbtc.com/news/blockchain/dbs-jpmorgan-tokenized-deposits-us-singapore-launch/",
      "date": "2026-11-16",
-     "ts": "2026-11-16T21:32+08:00",
-     "via": "Google"
+     "ts": "2026-11-16T18:59+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "jpmorganlinkstokenizeddepositswithdbsfor",
+   "title": "JPMorgan Links Tokenized Deposits With DBS for 24/7 USD Payments",
+   "date": "2026-11-16",
+   "last": "2026-11-16",
+   "ts": "2026-11-16T11:55+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "JPMorgan Links Tokenized Deposits With DBS for 24/7 USD Payments",
+     "src": "Crypto News Flash",
+     "url": "https://www.crypto-news-flash.com/jpmorgan-dbs-tokenized-deposits-24-7-usd-payments/",
+     "date": "2026-11-16",
+     "ts": "2026-11-16T11:55+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1105,6 +1202,30 @@
    "role": "监管"
   },
   {
+   "id": "chinascryptoparadoxaboomingmarketdespite",
+   "title": "China’s crypto paradox: A booming market despite the ban?",
+   "date": "2026-11-14",
+   "last": "2026-11-14",
+   "ts": "2026-11-14T00:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "China’s crypto paradox: A booming market despite the ban?",
+     "src": "tradersunion",
+     "url": "https://tradersunion.com/news/editors-picks/show/4225975-chinas-crypto-paradox/",
+     "date": "2026-11-14",
+     "ts": "2026-11-14T00:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "哈萨克斯坦计划2027年一季度发行代币化政府债券",
    "title": "哈萨克斯坦计划2027年一季度发行代币化政府债券",
    "date": "2026-11-14",
@@ -1281,38 +1402,6 @@
    "role": "监管"
   },
   {
-   "id": "alfargrouppartnerswithassetotolaunchasia",
-   "title": "AlfaR Group Partners with Asseto to Launch Asia's First Digital Transfer Agency Services Platform For Tokenized Assets",
-   "date": "2026-11-13",
-   "last": "2026-11-13",
-   "ts": "2026-11-13T18:16+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "AlfaR Group Partners with Asseto to Launch Asia's First Digital Transfer Agency Services Platform For Tokenized Assets",
-     "src": "markets.businessinsider.com",
-     "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPYlg1QW5Ba0RyN1pzY0VDLUJvdEh1OWhDbmxrS05qc3dScGlyOGczMWJHQjdJQ0pSdmszWXBBbjVnSThmdjM2aXIwNGs5ZzRmZzJlYllxUklpaVI3cWJOV082Q1VHM3FIdUU0cVBEbjZWNEh3S0dpdm1uRG11Qy1qdHRXS1BfamtyS2FLTWtfbXpHTEdzLWI0bGMxQi1UU0VKZ0l2VVk1S1ZNT0Npei1PSi05S1IzMnFjVDV5NDU0MW9ycXNMSDk0SzQ0dFlsSDNfZER2TksxWlI4MEYxZjlmbXlwWjFMX3hKeVgxdHByd0hzZzlpZUZSRnlnX3hrTWVWNGhyWHhPdTE?oc=5",
-     "date": "2026-11-13",
-     "ts": "2026-11-13T18:16+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "AlfaR Group Partners With Asseto to Launch Asia's First Digital Transfer Agency Services Platform for Tokenized Assets",
-     "src": "eznewswire.com",
-     "url": "https://www.eznewswire.com/newsroom/alfar-group-asseto-digital-transfer-agency-platform",
-     "date": "2026-11-13",
-     "ts": "2026-11-13T13:38+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "鲲集团获发证监会第149号牌明年拟推代币化投资产品分销服务",
    "title": "鲲集团获发证监会第1、4、9号牌 明年拟推代币化投资产品分销服务",
    "date": "2026-11-13",
@@ -1473,23 +1562,23 @@
    "role": "监管"
   },
   {
-   "id": "中资券商超500亿加注境外券业双向开放提速外资忙进场花旗证券预计明年开业",
-   "title": "中资券商超500亿加注境外！券业双向开放提速，外资忙进场，花旗证券预计明年开业",
+   "id": "香港代币化正式从试点走向商业落地",
+   "title": "香港代币化正式从试点走向商业落地",
    "date": "2026-11-13",
    "last": "2026-11-13",
-   "ts": "2026-11-13T18:08+08:00",
+   "ts": "2026-11-13T10:57+08:00",
    "topics": [
     "中资券商"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "中资券商超500亿加注境外！券业双向开放提速，外资忙进场，花旗证券预计明年开业",
-     "src": "Sohu",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPT01GbFUxM1I0R21MbS1CQXF1Z09qRk5fUlE4QTNPbmxObU9wTmF0RVNHdmlJLTJQQm80SXVOWWZKWng1cDZDVnZLT2lLUmcxdjRaZnV0ZmNLLURKS0NVN25pRVRrcG95TVJlbkI5MHJBUHZSTm5Gc05PcmpwWEZGRl90eDltcUhV?oc=5",
+     "title": "香港代币化正式从试点走向商业落地",
+     "src": "新浪财经",
+     "url": "https://finance.sina.com.cn/blockchain/roll/2026-11-13/doc-iniypzqc1110595.shtml",
      "date": "2026-11-13",
-     "ts": "2026-11-13T18:08+08:00",
-     "via": "Google"
+     "ts": "2026-11-13T10:57+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1553,6 +1642,30 @@
     }
    ],
    "role": "竞品动态"
+  },
+  {
+   "id": "bnbchainnewsecosystemslidedeceleratesasm",
+   "title": "BNB Chain News: Ecosystem Slide Decelerates as Messari Reports 228% RWA Growth",
+   "date": "2026-11-13",
+   "last": "2026-11-13",
+   "ts": "2026-11-13T04:00+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "BNB Chain News: Ecosystem Slide Decelerates as Messari Reports 228% RWA Growth",
+     "src": "CoinMarketCap",
+     "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQWks5X0REX0lvWVVsLXNhTmRzYXY0bnFKZUdEazVEVXhnbHNMSFRNUUlQQnh3Q3R3Wm94UUVhX2RtR05OZVU4dmE5QlB5cE5Vd2ZiNkcwdU5Ha3BKcDZLQnB4SmFaVWdPbHZPR3pkQTdDdVJ4dnJpOWlNTE1EQ0dtS0RGM3RoaVhsUzF1WktwOW1BMGl2X3JNOHk3R1hkb1ItLWxPZXZvOWh2RW52LUdId0pTd2tfcm1NTlQxaG5HTUx1Tjg?oc=5",
+     "date": "2026-11-13",
+     "ts": "2026-11-13T04:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "hashkeyexchangeannounceshkd100000spotcas",
@@ -1637,6 +1750,30 @@
    "role": "资讯"
   },
   {
+   "id": "alfargrouppartnerswithassetotolaunchasia",
+   "title": "AlfaR Group Partners with Asseto to Launch Asia's First Digital Transfer Agency Services Platform For Tokenized Assets",
+   "date": "2026-11-13",
+   "last": "2026-11-13",
+   "ts": "2026-11-13T18:16+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "AlfaR Group Partners with Asseto to Launch Asia's First Digital Transfer Agency Services Platform For Tokenized Assets",
+     "src": "markets.businessinsider.com",
+     "url": "https://news.google.com/rss/articles/CBMiiAJBVV95cUxPYlg1QW5Ba0RyN1pzY0VDLUJvdEh1OWhDbmxrS05qc3dScGlyOGczMWJHQjdJQ0pSdmszWXBBbjVnSThmdjM2aXIwNGs5ZzRmZzJlYllxUklpaVI3cWJOV082Q1VHM3FIdUU0cVBEbjZWNEh3S0dpdm1uRG11Qy1qdHRXS1BfamtyS2FLTWtfbXpHTEdzLWI0bGMxQi1UU0VKZ0l2VVk1S1ZNT0Npei1PSi05S1IzMnFjVDV5NDU0MW9ycXNMSDk0SzQ0dFlsSDNfZER2TksxWlI4MEYxZjlmbXlwWjFMX3hKeVgxdHByd0hzZzlpZUZSRnlnX3hrTWVWNGhyWHhPdTE?oc=5",
+     "date": "2026-11-13",
+     "ts": "2026-11-13T18:16+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "fundmanagersareincreasingcryptoallocatio",
    "title": "Fund Managers Are Increasing Crypto Allocations, Showing Interest in HYPE, NEAR and Other Alts",
    "date": "2026-11-13",
@@ -1669,7 +1806,7 @@
    "topics": [
     "监管"
    ],
-   "n": 6,
+   "n": 5,
    "articles": [
     {
      "title": "香港金管局与证监会合办研讨会 推动代币化生态圈发展并拓展Ensemble项目合作机遇",
@@ -1710,14 +1847,6 @@
      "date": "2026-11-12",
      "ts": "2026-11-12T18:20+08:00",
      "via": "Google"
-    },
-    {
-     "title": "香港金管局与证监会合办研讨会 推动代币化生态圈发展并拓展Ensemble项目合作机遇",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1100668707_122014422",
-     "date": "2026-11-12",
-     "ts": "2026-11-12T17:10+08:00",
-     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -2048,30 +2177,6 @@
    "role": "监管"
   },
   {
-   "id": "plumeceochris稳定币已经验证rwa模式下一个机会在哪里",
-   "title": "Plume CEO Chris：稳定币已经验证 RWA 模式，下一个机会在哪里？",
-   "date": "2026-11-11",
-   "last": "2026-11-11",
-   "ts": "2026-11-11T18:18+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Plume CEO Chris：稳定币已经验证 RWA 模式，下一个机会在哪里？",
-     "src": "吴说",
-     "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPcGU3R1pqeWkxemRvOGNfQ3VyMUx2WDE0ektHMmZTVkZIUFpmMUZzTWE1Y2RkMDBIZmstM1FqUzRCaUtmcUVQdDVzTE15NzNtRk1ONHNhMHI5RGMtbENkZVdjODlGTzlQSDM0QnVpQVVmVk44YkNGRi1lWDBIVmh4dHAwc1VEYWh2aVdHbFY3aV82R3E4YXM5c284eEQzc1BwaWdaV0pzVDk?oc=5",
-     "date": "2026-11-11",
-     "ts": "2026-11-11T18:18+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "meetspikothelargesttokenizedfundinthewor",
    "title": "Meet Spiko, the largest tokenized fund in the world you’ve probably never heard about",
    "date": "2026-11-11",
@@ -2088,30 +2193,6 @@
      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxOaDd3UFRGX1Jqc19uMzdCakprcDJkMER2ZEpQNHpuanlMMXlnQVAxaE1WZEY0bWxKMkZkZmxGTEpXa2hwQy0zMzI4c1lqemxVZ3p3dG9hSThaR2tkbzI4eVRNelhKZUIySm5jVFZhNFUtUW03RUw0TnRCU0E0bmdKYnU3dC1fUzRfWVhQdHd2bGVvbU1LTUFYV2YwaG5DZTJjQThiLTZxckhwOHRRY1ltajVMVV9QQWhQcHhkZHRHVlVGUXVXd3FueQ?oc=5",
      "date": "2026-11-11",
      "ts": "2026-11-11T20:57+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "okxicetolaunch247tradingintokenizedussec",
-   "title": "OKXICE to launch 24/7 trading in tokenized US securities",
-   "date": "2026-11-11",
-   "last": "2026-11-11",
-   "ts": "2026-11-11T21:09+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "OKXICE to launch 24/7 trading in tokenized US securities",
-     "src": "Reuters",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPdlFwOHROYVRvS2JSbzkwWUo0OHZNNGh0U2FiVE1vT3Brdy1VNU9GY0xGcVQtcVZySElMaktnWkZPcFlpNW1pY3ZlVlpYX0ZzZWlHMXJ0MDhaTzV5T0c2UGZfWHVMbGZRWDFkVjlXa2ZrY1RZVEpVZ2gyR3pzV2hKUi1yQXoxZzg4T3lsNXJzVF90RE05ZDBFcnl0cjRVamFfdEdBVQ?oc=5",
-     "date": "2026-11-11",
-     "ts": "2026-11-11T21:09+08:00",
      "via": "Google"
     }
    ],
@@ -2314,66 +2395,6 @@
    "role": "监管"
   },
   {
-   "id": "victoryfintechwinshongkongcryptolicense",
-   "title": "Victory Fintech Wins Hong Kong Crypto License",
-   "date": "2026-11-10",
-   "last": "2026-11-10",
-   "ts": "2026-11-10T10:44+08:00",
-   "topics": [
-    "监管",
-    "竞品"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Victory Fintech Wins Hong Kong Crypto License",
-     "src": "CoinMarketCap",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQdm9vNEk4OGQ1bzVENlhLanNpeW5pNEtnUUxYSDB6U2xmY3kzLU9Ga2xnWkNNX1hxRTRJdFNjSEpLdzlaV3BDejlFV0pycXJGNWFSdE9lcjJQVllPNHBPSXZ1SDZlRUNGUzJqVlludkNpRG52YU92ZlVKSGZvaTdZV2VFc2lPZUd5amxNS25vUXY?oc=5",
-     "date": "2026-11-10",
-     "ts": "2026-11-10T10:44+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "Victory",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BTF116",
-       "en": "Victory Fintech Company Limited",
-       "zh": "勝利數碼科技有限公司",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "ABN091",
-       "en": "Victory Securities Company Limited",
-       "zh": "勝利證券有限公司",
-       "ras": [
-        "T1",
-        "T2",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
    "id": "hkmawarnsoffakehsbcandhkdaptokensamidsta",
    "title": "HKMA Warns of Fake HSBC and HKDAP Tokens Amid Stablecoin Rollout",
    "date": "2026-11-10",
@@ -2472,30 +2493,6 @@
      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1SQm1vMnFCVHhNODVubDNxdmdDT0RXYU5kN3dZTnRoa2FRQW5GbEF1cUJCY3liZ0xlMFZ4WER2TGx5dldySVo1SEFCT2lreUE?oc=5",
      "date": "2026-11-10",
      "ts": "2026-11-10T22:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
-   "id": "bybitrwaearn扩展链上渠道引入由sbi资产管理操盘的日本高息股策略jp",
-   "title": "Bybit RWA Earn 擴展鏈上渠道 引入由 SBI 資產管理操盤的日本高息股策略 JPE",
-   "date": "2026-11-10",
-   "last": "2026-11-10",
-   "ts": "2026-11-10T05:02+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "Bybit RWA Earn 擴展鏈上渠道 引入由 SBI 資產管理操盤的日本高息股策略 JPE",
-     "src": "Yellow.com",
-     "url": "https://news.google.com/rss/articles/CBMihwNBVV95cUxPTjFzN05Ra01DdHVwZWMxMzBVRHpHUGJWVjExTDVHa3N5UmVyRW90c1lxdEgyRDdpZXpaZWNhY2pxV1lweTJmRWNpLTE1cDNvRUhRLTJ0Q09saERNMjZLMG55NktHV3pXYVZyQVRiUmhxSHdyYjN6TGlfYWtZZ0NRUnJoMnlOMWFQbjdhcjNnQjMxRzhDM1V3MjdyNENVSGhkMjVhZWRzMnRkVXdBdjZ5WmpDRHNTbU5KQ0U5WnRfT1gyVktUblJJdjlObmc3bEcxcmg3QVZ0ZkZBOGdnY25YNWxlbEpkMDl2TXI3SWZld1MtMERiZzY0NHhXeHR0MnROTVVQQTlOU3dTM0U4UGEtNjNmWHhsT1NHRUVHM0hkT2lnVGo1Rjh4VVNXVlBtSTdtUEYwRHRJekd6X2xuZVdFWXdkOF91NGlPckdjajhxUkxVb1dCTGMxOWxrRFpGdGtIVkhzTGJNMHZCdzJCREJOS1lCQWhYMml5aXBmZzdpcURxZnJucFdV?oc=5",
-     "date": "2026-11-10",
-     "ts": "2026-11-10T05:02+08:00",
      "via": "Google"
     }
    ],
