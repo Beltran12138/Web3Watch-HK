@@ -47,17 +47,17 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-17
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-18
 
 - **[美国监管机构再次调查Polymarket是否违反2022年达成的和解协议](https://www.theblockbeats.info/flash/374026)** (2026-10-28 | Alpha 100)
 - **[[SFC] SFC welcomes launch of Platform and Nominee Services on Integrated Fund Platform](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR175)** (2026-10-28 | Alpha 95)
 - **[[SFC通函] Circular to applicants seeking SFC authorisation of unit trusts and mutual funds - Launch of a new Fund Authorisation Simple Track (FASTrack)](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC68)** (2026-10-28 | Alpha 95)
 - **[香港计划年底前推出法案扩大加密货币牌照覆盖范围](https://www.techub.news/articleDetail/fbd01000-967a-4a42-bc05-2c399e54b24f)** (2026-11-16 | Alpha 88)
+- **[[SFC] SFC bans Kim Chung Wan for life for serious misconduct](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR195)** (2026-11-17 | Alpha 88)
 - **[[SFC] SFC concludes consultation on further restricting use of misleading names by unregulated entities to protect investors](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR187)** (2026-11-06 | Alpha 88)
 - **[香港证监会拟限制未持牌机构使用误导性名称，监管范围延伸至虚拟资产交易平台](https://www.theblockbeats.info/flash/376075)** (2026-11-07 | Alpha 88)
 - **[MEXC CEO回应美国监管问题：正寻求建设性互动并已启动相关审查](https://www.theblockbeats.info/flash/376127)** (2026-11-07 | Alpha 88)
 - **[[SFC] SFC approves first-ever secondary trading of tokenised public funds](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR174)** (2026-10-26 | Alpha 85)
 - **[[SFC] SFC issues guidance to support enhancements to Hong Kong’s retail fund regime](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR176)** (2026-10-28 | Alpha 85)
-- **[[SFC通函] Supplemental circular to management companies of SFC-authorised funds on liquidity risk management](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC67)** (2026-10-28 | Alpha 85)
 
 <!-- AUTO_NEWS_END -->
