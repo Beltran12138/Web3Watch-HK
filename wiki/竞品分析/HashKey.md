@@ -42,15 +42,17 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-18
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-19
 
 - **[HashKey RWA推出「hToken」系列首款产品，提供一站式发行解决方案](https://www.theblockbeats.info/flash/373181)** (2026-10-22 | Alpha 82)
 - **[HashKey将被纳入MSCI全球微型股指数，国际化布局与机构级基础设施持续获认可](https://www.theblockbeats.info/flash/377546)** (2026-11-16 | Alpha 78)
 - **[HashKey Adopts Tokenised Deposit for Cross-Market Treasury and Liquidity Management on Standard Chartered’s Blockchain Platform](https://group.hashkey.com/en/hashkey-adopts-tokenised-deposit-for-cross-market-treasury-and-liquidity-management-on-standard-chartereds-blockchain-platform/)** (2026-11-03 | Alpha 78)
+- **[HashKey Capital携手Epoch推出RWA贸易融资策略，以数字资本联结实体经济](https://www.theblockbeats.info/flash/377891)** (2026-11-18 | Alpha 78)
 - **[HashKey On-Chain and RD Technologies Form Deep Partnership to Support On-Chain Testing for RDUSD](https://group.hashkey.com/en/hashkey-on-chain-and-rd-technologies-form-deep-partnership-to-support-on-chain-testing-for-rdusd/)** (2026-11-02 | Alpha 78)
 - **[HashKey Exchange Collaborates with Baillie Gifford to Explore Potential Opportunities in Tokenised Investment Products](https://group.hashkey.com/en/hashkey-exchange-collaborates-with-baillie-gifford-to-explore-potential-opportunities-in-tokenised-investment-products/)** (2026-11-02 | Alpha 78)
 - **[HashKey Group joined the HKMA's EnsembleTX as an Industry Pioneer](https://www.prnewswire.com/apac/news-releases/hashkey-group-joined-the-hkmas-ensembletx-as-an-industry-pioneer-302926536.html)** (2026-11-03 | Alpha 78)
 - **[HashKey Group joined the HKMA’s EnsembleTX as an Industry Pioneer](https://group.hashkey.com/en/hashkey-group-joined-the-hkmas-ensembletx-as-an-industry-pioneer/)** (2026-11-03 | Alpha 78)
+- **[HSK Chain and Base Collaborate to Connect Asia’s Premier Onchain Asset with Global Liquidity](https://group.hashkey.com/en/hsk-chain-and-base-collaborate-to-connect-asias-premier-onchain-asset-with-global-liquidity/)** (2026-11-18 | Alpha 78)
 - **[HashKey RWA Launches First Product Under the HashKey “hToken” Series, Advancing Traditional Financial Asset Tokenisation Through a One-Stop Issuance Solution](https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/)** (2026-10-26 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
