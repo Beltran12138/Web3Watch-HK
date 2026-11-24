@@ -1,30 +1,30 @@
 {
- "built": "2026-11-24T04:17+08:00",
+ "built": "2026-11-24T12:50+08:00",
  "since": "2026-11-17",
  "log": [
   {
    "topic": "监管",
    "q": "香港 虚拟资产 牌照",
-   "fetched": 26,
-   "in_window": 26
+   "fetched": 35,
+   "in_window": 34
   },
   {
    "topic": "监管",
    "q": "证监会 虚拟资产 交易平台",
-   "fetched": 33,
-   "in_window": 24
+   "fetched": 37,
+   "in_window": 29
   },
   {
    "topic": "监管",
    "q": "香港 稳定币 牌照",
-   "fetched": 24,
-   "in_window": 15
+   "fetched": 23,
+   "in_window": 13
   },
   {
    "topic": "监管",
    "q": "Hong Kong SFC virtual asset licence",
-   "fetched": 53,
-   "in_window": 52
+   "fetched": 56,
+   "in_window": 54
   },
   {
    "topic": "监管",
@@ -47,7 +47,7 @@
   {
    "topic": "中资券商",
    "q": "中资券商 香港 内地客户",
-   "fetched": 16,
+   "fetched": 17,
    "in_window": 6
   },
   {
@@ -65,175 +65,60 @@
   {
    "topic": "竞品",
    "q": "EX.IO 香港",
-   "fetched": 15,
-   "in_window": 8
+   "fetched": 14,
+   "in_window": 7
   },
   {
    "topic": "竞品",
    "q": "HKbitEX OR 香港数字资产交易所",
-   "fetched": 12,
+   "fetched": 11,
    "in_window": 4
   },
   {
    "topic": "RWA",
    "q": "香港 RWA 代币化",
-   "fetched": 22,
+   "fetched": 21,
    "in_window": 9
   },
   {
    "topic": "RWA",
    "q": "Hong Kong tokenized fund",
-   "fetched": 41,
-   "in_window": 32
+   "fetched": 69,
+   "in_window": 47
   },
   {
    "topic": "机构需求",
    "q": "家族办公室 加密资产 配置 香港",
-   "fetched": 11,
+   "fetched": 12,
    "in_window": 1
   },
   {
    "topic": "机构需求",
    "q": "Hong Kong family office crypto allocation",
-   "fetched": 13,
+   "fetched": 12,
    "in_window": 1
   },
   {
    "topic": "SFC 新闻稿",
    "q": "https://www.sfc.hk/en/RSS-Feeds/Press-releases",
-   "fetched": 4,
-   "in_window": 4
+   "fetched": 5,
+   "in_window": 5
   }
  ],
- "articles": 230,
+ "articles": 258,
  "stories": [
   {
-   "id": "hsbcopenstokenizedfundsubscriptionswithr",
-   "title": "HSBC Opens Tokenized Fund Subscriptions With RedCoin",
-   "date": "2026-11-19",
-   "last": "2026-11-23",
-   "ts": "2026-11-23T16:43+08:00",
+   "id": "hongkongmovestobringcryptoassetmanagersa",
+   "title": "Hong Kong moves to bring crypto asset managers and custodians under SFC oversight",
+   "date": "2026-11-20",
+   "last": "2026-11-24",
+   "ts": "2026-11-24T11:20+08:00",
    "topics": [
     "RWA",
     "监管",
     "竞品"
    ],
-   "n": 17,
-   "articles": [
-    {
-     "title": "HSBC Opens Tokenized Fund Subscriptions With RedCoin",
-     "src": "The Defiant",
-     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUkxzcGNVS0tCc1V6ODJ5S1A2eTNya1Y0QldPSzJ3OTVINURMVjd5VzQ5TGtROUp2NHkzaEtKNXZiS3VHSDJGVVZ6dnpuMlRYRDV4VVRPWEJNam1NQ2xLQ0prek56dG5Wd2NpU05VMGtFVFc1QmZPWHZpeDRHQVZ0NEVSbnJjLUNjX1ZoeDRiNVJ1RWhJWVdROEt5ZXl2N0xWQ3F3dg?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T15:34+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC launches Ethereum-based tokenized fund using its RedCoin stablecoin",
-     "src": "Crypto News",
-     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA1SGloek5nRTd5UTY0MTFodjBTVEN6SmxOYy11Z3drMlVLbV9ueXJvbGdtZE84ZFBNRXRWcDBxLTcyaUNlZjllUFd5SkJBZTZCZXUxSnRrLWZBbjNvQldiOGVjUHhHclA0SmJqVXFPN3BfN3Q1R3dQN3Y2ckQ?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T15:50+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Opens Tokenized Money Fund to Hong Kong Retail Savers With HK$100 RedCoin Minimum",
-     "src": "BigGo Finance",
-     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9Rc0ZidE5hbmlLYnJvX1VHbTlhSDVodWIxSzdRcHd5T1d3LUxONUpldmJwcnd1WXNGcE1rMjVVaTY2NlhFRW53cTh2Y2lYSm9JZDJmbzhDTmtXTjl5V1R5bkwwWUZ4S0laaEZhd3hOYWVJRmVja3c?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T19:26+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC opens tokenized money fund to retail investors at HK$100 via RedCoin",
-     "src": "Dealroom",
-     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONndOc1ctbFZHRUx3THJCS0gzSll6aGVmbXJMbDQyR0xtNVU2Uk9LNWtTVmp4djJUN2tuRmFNLXRFTHpmcGRIaTM5Yjc4b2ZtYzg1RkxGdW1SMXc3dnRpbmNfajh1ZENnU29SYWZiTmRTXzZxQ1dxZHJnUC1fb1NwN0VWdWhlRUJsR2RGYTlDMUNKd0xUNmprV2NhWTdSa2d1MjZ6T01VRFZZTzg?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T16:48+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Launches Tokenized Fund Accepting its RedCoin Stablecoin",
-     "src": "CoinGape",
-     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQeDVUbV9HMjUzYmFBaW9HY3JXTVphNXFfUFV3dGxuXzVBQWlzRlB3VFZWcjhqZHFVMHQwd09fdndtV29ueTZZZUlpal9Rc0xxOWQ5VzFLQVFRTGVSRVdMUEtqdTV5dUlPaUZ5cXhtMVRFaHZHQ29ibkZUbDBuR1F5d2c3Q1JkOF9nNlAw?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T19:14+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Lets Customers Buy Tokenized Hong Kong Fund With RedCoin",
-     "src": "www.tokenpost.com",
-     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mMndZTHEwVHRlLUNpbWc5WTRXRWM5LXRsNHZDRHR6NDM4T05rZnd0SUpQeWZPRy1ZNDBEblI4am9aMDY1S2lvNGZIUWFiRU1WWG1TN2hqOVY?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T15:59+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Opens Tokenized Money Market Fund to RedCoin Stablecoin",
-     "src": "CoinLaw",
-     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9YYVhCdEgwYXJFRjRXaVJreEtHQjdCMDRwUGxmUngtWExJQnVRYUl3dGUwWWpqeGJDRG1jTG9zZlVpM2h2VEk5ck5pa0JtZEdIYXkzRl91V19UcFJPelhEUFlFSklEakZ3dENkQQ?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T20:52+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Opens Tokenized Fund to Hong Kong Savers for Just HK$100 in RedCoin",
-     "src": "Blockonomi",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOZ0hjS1B2ZC1sR0E4dkJFdkdVaVdPUm02eFJfUkdweUs0VXFDeVdwYy1zOUpjYWFNOElOMFlGUE96VEJIdkhhbHRQLU1MR0FWQzJLMG9ucGQwd3RLUzd4YTdyNnZpbThfaExDaTh1QVNEN2l2UDRzNjV0eUd4MWp0Qi1NcURta2hBbDNHWWtiQktETlJnUURmVFJ3Zw?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T18:28+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [
-    {
-     "brand": "HashKey",
-     "kind": "竞品",
-     "firms": [
-      {
-       "ce": "BPL992",
-       "en": "Hash Blockchain Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T7",
-        "VATP"
-       ],
-       "va": []
-      },
-      {
-       "ce": "BOP237",
-       "en": "HashKey Capital Limited",
-       "zh": "",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管",
-        "VA交易",
-        "VA咨询",
-        "VA引荐"
-       ]
-      }
-     ]
-    }
-   ],
-   "role": "竞品动态"
-  },
-  {
-   "id": "hongkongmovestobringcryptoassetmanagersa",
-   "title": "Hong Kong moves to bring crypto asset managers and custodians under SFC oversight",
-   "date": "2026-11-20",
-   "last": "2026-11-23",
-   "ts": "2026-11-23T10:29+08:00",
-   "topics": [
-    "监管",
-    "竞品"
-   ],
-   "n": 17,
+   "n": 16,
    "articles": [
     {
      "title": "Hong Kong moves to bring crypto asset managers and custodians under SFC oversight",
@@ -260,22 +145,6 @@
      "via": "Google"
     },
     {
-     "title": "Hong Kong proposes tighter oversight of crypto brokers and custodians — CoinDesk",
-     "src": "UA.NEWS",
-     "url": "https://ua.news/en/dovkolo-svitu/gonkong-zaproponuvav-posiliti-nagliad-za-kriptobrokerami-ta-zberigachami-coindesk",
-     "date": "2026-11-20",
-     "ts": "2026-11-20T16:42+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Hong Kong expands crypto licensing regime to asset managers and custodians",
-     "src": "tradersunion",
-     "url": "https://tradersunion.com/news/cryptocurrency-news/show/4341680-hong-kong-crypto-licensing-expansion/",
-     "date": "2026-11-20",
-     "ts": "2026-11-20T14:55+08:00",
-     "via": "Bing"
-    },
-    {
      "title": "Hong Kong publishes crypto licensing bill to regulate dealers, advisers, asset managers, custodians",
      "src": "Crypto News",
      "url": "https://crypto.news/hong-kong-crypto-licensing-bill-virtual-asset-services/",
@@ -298,6 +167,186 @@
      "date": "2026-11-21",
      "ts": "2026-11-21T05:45+08:00",
      "via": "Google"
+    },
+    {
+     "title": "Hong Kong pushes to bring crypto custodians, advisers under licensing rules",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNWkt6emRBc2o0Y2ZvRjFWNElpNzAydmhaSXJtR3lldzNSU1RsVjFwbHpweEIwVlZMZjRqZ1NfVXhJamhBNkhtZklVVVpVRFpFV29qaVZBYS00NUVZdFoxekk5aFlqUVpmZ20tQmZ3cG8tRWF4SHBIWTk3blFPWUlVaGJLYlBzbnphbEdwTEFDVXVjYjJIQnNUd0ktME1yTC1ZdXpFUmcwZEljMUFwZXJXcXU4aUlEaGdDMkdqWGFwVTRob1RxQTR3dl8wWlAtN29DUktRaQ?oc=5",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T13:40+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong Publishes Bill to Regulate Crypto Dealers, Advisers and Custodians",
+     "src": "CoinMarketCap",
+     "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQVi12cXFiZW1TR3lzSGYybTZfNWFoOE15QjBNd3V3VXB1YmxHeG9PbGZtdHRwdHFEdTVyT0YxWEktWEhwb0ZJa2JfcHpVY1dGOTRRMFRDTlNNYkRvd3hCcUpFRG1pTGRxTkt1N0pfZjdra1Q5Yk9CWEFRQzJFM2xXQXVQcVZKUURGTWhqRE1oRzgtMlY5emd4bFE3OU5XYzdV?oc=5",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T03:12+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "移动支付网早报1124建行3人收支付罚单香港新增1家可疑虚拟资产交易平台",
+   "title": "移动支付网早报11.24：建行3人收支付罚单，香港新增1家可疑虚拟资产交易平台",
+   "date": "2026-11-23",
+   "last": "2026-11-24",
+   "ts": "2026-11-24T08:40+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "移动支付网早报11.24：建行3人收支付罚单，香港新增1家可疑虚拟资产交易平台",
+     "src": "mpaypass",
+     "url": "https://www.mpaypass.com.cn/news/202611/24084939.html",
+     "date": "2026-11-23",
+     "ts": "2026-11-23T18:40+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "移动支付网早报11.24：建行3人收支付罚单，香港新增1家可疑虚拟资产交易平台",
+     "src": "移动支付网",
+     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE05MU1VRzJrSndXRzZHU3lFbmMxQmVlRW1MeVQ3Q2hPajU2TFhmbjk2dkZ5MEVIX0xsaWhDQVVScVBEdFZUeHluREtvWmFHeUZOdDVYZTdVSTlZcGtBN0JpQjhwdw?oc=5",
+     "date": "2026-11-24",
+     "ts": "2026-11-24T08:40+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "newspeechbykelvinwongremarksatchinaamcof",
+   "title": "New speech by Kelvin Wong: Remarks at ChinaAMC Offshore RMB Bond ETF Launch Ceremony",
+   "date": "2026-11-23",
+   "last": "2026-11-24",
+   "ts": "2026-11-24T10:00+08:00",
+   "topics": [
+    "SFC 其他"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "New speech by Kelvin Wong: Remarks at ChinaAMC Offshore RMB Bond ETF Launch Ceremony",
+     "src": "SFC",
+     "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR196",
+     "date": "2026-11-23",
+     "ts": "2026-11-23T09:52+08:00",
+     "via": "SFC"
+    },
+    {
+     "title": "New speech by Kelvin Wong: Remarks at Listing Ceremony of the First Company under the New Uncertificated Securities Market Regime",
+     "src": "SFC",
+     "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR198",
+     "date": "2026-11-24",
+     "ts": "2026-11-24T10:00+08:00",
+     "via": "SFC"
+    }
+   ],
+   "sfc": true,
+   "hits": [
+    {
+     "brand": "华夏基金",
+     "kind": "公募",
+     "firms": [
+      {
+       "ce": "ARS988",
+       "en": "China Asset Management (Hong Kong) Limited",
+       "zh": "華夏基金(香港)有限公司",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "线索"
+  },
+  {
+   "id": "hyperliquid被证监会列为可疑虚拟资产交易平台数字经济",
+   "title": "Hyperliquid被證監會列為可疑虛擬資產交易平台- 數字經濟",
+   "date": "2026-11-19",
+   "last": "2026-11-23",
+   "ts": "2026-11-23T17:19+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 15,
+   "articles": [
+    {
+     "title": "Hyperliquid被證監會列為可疑虛擬資產交易平台- 數字經濟",
+     "src": "香港文匯報",
+     "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE1XdTh2VXFZcmt4VG1kVFh4SzB2emo0bUpnSVVqSnRFTC1ic0laOHBISmpvZHBtOV82S1J6dDFFbzU0RzZ5ZHQ1NkVJNmJjaHJ2YWZFcUp0dEVHTFk0UHVySTIwaGFELXQwUmU3LUNvdnpnbkMweUxr?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T21:56+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hyperliquid 被香港證監會列入「可疑交易平台名單」",
+     "src": "動區動趨",
+     "url": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQZUo1akttSWNhbVF1ZWxkNGZ4TllvUUpId3RNMG40MFRBNnpwMFpuR2M1RnIwSlVOaGVRWXgtZEtybkF3YzQwV3FaU1FKeWhxXzBuVWVkbmFjd0kyXzN6eUFQSnhYSjZCQkJCZ3EwSEV0ZGU0cWZUWHFQV0I2dURrUTZjNFlFTVprSFQ2cDBfanF3eVZyd2tONWRhSVk5YnRxakJiZ3p3?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T21:34+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hyperliquid遭香港證監會列入可疑平台名單 HYPE月跌逾12%",
+     "src": "蕃新聞",
+     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5zM0d1UHhPMDBTUFhiZ0t0QTFGSUpOckVvU1VjQUxZdWdxa2ZSZ1lua054Y25nbGtyLXJoanJyVnZvYmZIanVhcUMwSlVlNWpaY3c?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T23:53+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港將Hyperliquid列入可疑加密貨幣交易平台名單",
+     "src": "鉅亨網",
+     "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE1TbktWd0NkOTdvWFI2SzNmYlZYY1B0UnREUV9vRWVqZFkwdE43dFh1MWVDOENkUURTRmJDbzJCMDIyaFFFenZ0NTc2Qk5xY2s?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T22:06+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港证监会将“Hyperliquid/Hyperliquid Hong Kong”列为可疑虚拟资产交易平台",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFA5QnRMVVhqZlN4UHdsclFPRGFuMFl2MW5BZGgyOXZmeXo3MDUtQ3BJZHMtbG9mMWlhRXRPSERWZGdEYWtQSUZCZm14MWo4ZnZtdTdSdUlfd19IRkFfZmluZEFIdHpwdw?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T17:52+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港证监会将「Hyperliquid/Hyperliquid Hong Kong」列为可疑虚拟资产交易平台",
+     "src": "foresightnews.pro",
+     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBkZXJJNjd2Z1Nyd2lLMW9ZRnlHQ0JwZkl0NDdfbUc2UDYwLUo2c1d3cnhnajZ0QnZBUlAxMTlzODgzX05nNDB3QW1GZ3F5SGVNRmx5SnZ0MA?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T01:52+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港将Hyperliquid列入可疑加密货币交易平台名单",
+     "src": "BlockBeats",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE0yUXRYa2hDSUtENERISlJjV2pZa083UXdtbjFCS2FuTEFRYnU4WUxCQmtTV1NZNUYydmowZ3B1RWU0LWYycjk1MDhXYnF1RXQ4QnNRV19R?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T20:47+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "重磅！香港证监会将Hyperliquid列入可疑平台名单，亚洲监管围堵升级",
+     "src": "区块周刊BlockWeeks",
+     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1VdFExTXdtVE9ZZy1HM0RJOTBDMkFISF9xYmtXdGFES1oxMHNOTGc3ckN5NkdKLWd1TWVoVERqWG9ieGprX183TUt3?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T21:12+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -311,6 +360,7 @@
    "last": "2026-11-23",
    "ts": "2026-11-23T22:11+08:00",
    "topics": [
+    "RWA",
     "监管"
    ],
    "n": 15,
@@ -385,60 +435,120 @@
    "role": "监管"
   },
   {
-   "id": "香港证监会hyperliquid为可疑虚拟资产交易平台",
-   "title": "香港证监会：Hyperliquid为可疑虚拟资产交易平台",
-   "date": "2026-11-23",
+   "id": "hsbcopenstokenizedfundsubscriptionswithr",
+   "title": "HSBC Opens Tokenized Fund Subscriptions With RedCoin",
+   "date": "2026-11-19",
    "last": "2026-11-23",
-   "ts": "2026-11-23T17:19+08:00",
+   "ts": "2026-11-23T16:43+08:00",
    "topics": [
-    "监管"
+    "RWA",
+    "监管",
+    "竞品"
    ],
-   "n": 4,
+   "n": 13,
    "articles": [
     {
-     "title": "香港证监会：Hyperliquid为可疑虚拟资产交易平台",
-     "src": "移动支付网",
-     "url": "https://news.google.com/rss/articles/CBMiY0FVX3lxTE9BYzJVX1hFd2JPRThpbkFEYU8zU1UyYUhFSnAyQmNzdzRzWURvN1ozZ3VkTE5LNTJjZnhFU0VwSkxFM3ZZVy13TDEtOFpWTkdsVXFvVjdWcWFBdldZTnVscGZndw?oc=5",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T14:44+08:00",
+     "title": "HSBC Opens Tokenized Fund Subscriptions With RedCoin",
+     "src": "The Defiant",
+     "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUkxzcGNVS0tCc1V6ODJ5S1A2eTNya1Y0QldPSzJ3OTVINURMVjd5VzQ5TGtROUp2NHkzaEtKNXZiS3VHSDJGVVZ6dnpuMlRYRDV4VVRPWEJNam1NQ2xLQ0prek56dG5Wd2NpU05VMGtFVFc1QmZPWHZpeDRHQVZ0NEVSbnJjLUNjX1ZoeDRiNVJ1RWhJWVdROEt5ZXl2N0xWQ3F3dg?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T15:34+08:00",
      "via": "Google"
     },
     {
-     "title": "香港证监会：Hyperliquid为可疑虚拟资产交易平台",
-     "src": "mpaypass",
-     "url": "https://www.mpaypass.com.cn/news/202611/23144643.html",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T14:44+08:00",
+     "title": "HSBC Opens Tokenized Money Fund to Hong Kong Retail Savers With HK$100 RedCoin Minimum",
+     "src": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE9Rc0ZidE5hbmlLYnJvX1VHbTlhSDVodWIxSzdRcHd5T1d3LUxONUpldmJwcnd1WXNGcE1rMjVVaTY2NlhFRW53cTh2Y2lYSm9JZDJmbzhDTmtXTjl5V1R5bkwwWUZ4S0laaEZhd3hOYWVJRmVja3c?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T19:26+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC launches Ethereum-based tokenized fund using its RedCoin stablecoin",
+     "src": "Crypto News",
+     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA1SGloek5nRTd5UTY0MTFodjBTVEN6SmxOYy11Z3drMlVLbV9ueXJvbGdtZE84ZFBNRXRWcDBxLTcyaUNlZjllUFd5SkJBZTZCZXUxSnRrLWZBbjNvQldiOGVjUHhHclA0SmJqVXFPN3BfN3Q1R3dQN3Y2ckQ?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T15:50+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC Launches Tokenized Fund Accepting its RedCoin Stablecoin",
+     "src": "CoinGape",
+     "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxQeDVUbV9HMjUzYmFBaW9HY3JXTVphNXFfUFV3dGxuXzVBQWlzRlB3VFZWcjhqZHFVMHQwd09fdndtV29ueTZZZUlpal9Rc0xxOWQ5VzFLQVFRTGVSRVdMUEtqdTV5dUlPaUZ5cXhtMVRFaHZHQ29ibkZUbDBuR1F5d2c3Q1JkOF9nNlAw?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T19:14+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC opens tokenized money fund to retail investors at HK$100 via RedCoin",
+     "src": "Dealroom",
+     "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxONndOc1ctbFZHRUx3THJCS0gzSll6aGVmbXJMbDQyR0xtNVU2Uk9LNWtTVmp4djJUN2tuRmFNLXRFTHpmcGRIaTM5Yjc4b2ZtYzg1RkxGdW1SMXc3dnRpbmNfajh1ZENnU29SYWZiTmRTXzZxQ1dxZHJnUC1fb1NwN0VWdWhlRUJsR2RGYTlDMUNKd0xUNmprV2NhWTdSa2d1MjZ6T01VRFZZTzg?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T16:48+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC Lets Customers Buy Tokenized Hong Kong Fund With RedCoin",
+     "src": "TOKENPOST",
+     "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE9mMndZTHEwVHRlLUNpbWc5WTRXRWM5LXRsNHZDRHR6NDM4T05rZnd0SUpQeWZPRy1ZNDBEblI4am9aMDY1S2lvNGZIUWFiRU1WWG1TN2hqOVY?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T15:59+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC Opens Tokenized Money Market Fund to RedCoin Stablecoin",
+     "src": "CoinLaw",
+     "url": "https://news.google.com/rss/articles/CBMibEFVX3lxTE9YYVhCdEgwYXJFRjRXaVJreEtHQjdCMDRwUGxmUngtWExJQnVRYUl3dGUwWWpqeGJDRG1jTG9zZlVpM2h2VEk5ck5pa0JtZEdIYXkzRl91V19UcFJPelhEUFlFSklEakZ3dENkQQ?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T20:52+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC RedCoin Opens Its Tokenized Hong Kong Dollar Fund to Holders for HK$100",
+     "src": "The Coin Republic",
+     "url": "https://www.thecoinrepublic.com/2026/11/19/hsbc-redcoin-opens-its-tokenized-hong-kong-dollar-fund-to-holders-for-hk100/",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T18:29+08:00",
      "via": "Bing"
-    },
-    {
-     "title": "香港将 Hyperliquid 列入“可疑”加密平台名单",
-     "src": "中金网",
-     "url": "https://www.cngold.com.cn/202611233464278964.html",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T00:00+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "香港证监会：Hyperliquid为可疑虚拟资产交易平台",
-     "src": "Sohu",
-     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPQ3FMS1ZZR0hoSExKMXpxaG5KeHNIb093TUl1X1I0ZU03aE5hOXE1TkdBMDdSS0Vmb1JrUVJNSFZoMkxkNm5GcWExMzlEcG9jclhQSGJSNkJ2MHdtUDVURUs2NjhzaWtQeXRudEFaVk9ldGtEWUZ3OFBPWm9HZHhHNkh3WjRYT0JC?oc=5",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T17:19+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会：Hyperliquid为可疑虚拟资产交易平台",
-     "src": "移动支付网",
-     "url": "https://news.google.com/rss/articles/CBMiYEFVX3lxTFBHSmFMTFVINUVTdFFScVh3cVdJTENOUXk3WVUyQVU3QktBdFdyX29ORERZSVFJZVExSW12UlFhVlAtXzQ3MEExSU1vcjRoNmN3N2VTanY3cGt4ZzlEcXNJTQ?oc=5",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T14:44+08:00",
-     "via": "Google"
     }
    ],
    "sfc": false,
-   "hits": [],
-   "role": "监管"
+   "hits": [
+    {
+     "brand": "HashKey",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "BPL992",
+       "en": "Hash Blockchain Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T7",
+        "VATP"
+       ],
+       "va": []
+      },
+      {
+       "ce": "BOP237",
+       "en": "HashKey Capital Limited",
+       "zh": "",
+       "ras": [
+        "T1",
+        "T4",
+        "T9"
+       ],
+       "va": [
+        "VA资管",
+        "VA交易",
+        "VA咨询",
+        "VA引荐"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
   },
   {
    "id": "香港打击虚拟资产业务冒牌宣传冒称牌照申请人可判监两年违规使用称衔可罚10万港元",
@@ -449,7 +559,7 @@
    "topics": [
     "监管"
    ],
-   "n": 3,
+   "n": 4,
    "articles": [
     {
      "title": "香港打击虚拟资产业务冒牌宣传：冒称牌照申请人可判监两年，违规使用称衔可罚10万港元",
@@ -457,6 +567,14 @@
      "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE14aDZ5MS11NUlMSTV4RFlsaVd6blB4N0Y4dEZrSFdreW9SWlVvUWh0bXZnSVgxeDZMR0tGZ2ttbE92YmtaTlBpVWxEUXR2UEJCZXZ3N1V4VG1nLWZZbFI1S1lzREdiUQ?oc=5",
      "date": "2026-11-21",
      "ts": "2026-11-21T10:49+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港拟新增虚拟资产称衔管制罪行，冒称牌照申请人可判监两年",
+     "src": "腾讯新闻",
+     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE9pU0VtRlJLcVBBa2JraUcwMXNUT1lxTTNkSXc5MGFXUUxLQlY2RU9ha3hQSS1uMGo4VldGSzc0NDJNMWZObmtYUzR2RHNuWHlzSUNXd213?oc=5",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T10:54+08:00",
      "via": "Google"
     },
     {
@@ -568,7 +686,7 @@
    "title": "从宣布到刊宪：香港虚拟资产法案进入首读倒计时",
    "date": "2026-11-23",
    "last": "2026-11-23",
-   "ts": "2026-11-23T06:30+08:00",
+   "ts": "2026-11-23T20:32+08:00",
    "topics": [
     "监管",
     "竞品"
@@ -577,18 +695,18 @@
    "articles": [
     {
      "title": "从宣布到刊宪：香港虚拟资产法案进入首读倒计时",
-     "src": "foresightnews",
-     "url": "https://foresightnews.pro/article/detail/101847",
+     "src": "a.foresightnews.pro",
+     "url": "https://a.foresightnews.pro/article/detail/101847",
      "date": "2026-11-23",
-     "ts": "2026-11-23T04:31+08:00",
+     "ts": "2026-11-23T20:32+08:00",
      "via": "Bing"
     },
     {
      "title": "从宣布到刊宪：香港虚拟资产法案进入首读倒计时",
-     "src": "a.foresightnews.pro",
-     "url": "https://a.foresightnews.pro/article/detail/101847",
+     "src": "foresightnews",
+     "url": "https://foresightnews.pro/article/detail/101847",
      "date": "2026-11-23",
-     "ts": "2026-11-23T06:30+08:00",
+     "ts": "2026-11-23T04:31+08:00",
      "via": "Bing"
     }
    ],
@@ -597,31 +715,31 @@
    "role": "监管"
   },
   {
-   "id": "dtcpay率先支持visa稳定币资金流转拓展跨境付款新路径",
-   "title": "dtcpay 率先支持 Visa 稳定币资金流转，拓展跨境付款新路径",
+   "id": "香港推动将加密托管商和顾问纳入许可监管规则",
+   "title": "香港推动将加密托管商和顾问纳入许可监管规则",
    "date": "2026-11-23",
    "last": "2026-11-23",
-   "ts": "2026-11-23T15:12+08:00",
+   "ts": "2026-11-23T11:36+08:00",
    "topics": [
     "监管"
    ],
    "n": 2,
    "articles": [
     {
-     "title": "dtcpay 率先支持 Visa 稳定币资金流转，拓展跨境付款新路径",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1kUDRJRDg3YVBqQkFNZi1EVDJ0Z1ZCNXFZQ0M5Ym9aUG43aHlqNEQxVmJOWDVzMXRTMjBQYWlLN01fVnJaZGEzWUk3LUR6S2RrMEpqbWlWZGdEQTNmMkdwTzNBeF9BZw?oc=5",
+     "title": "香港推动将加密托管商和顾问纳入许可监管规则",
+     "src": "中金网",
+     "url": "https://www.cngold.com.cn/202611233844174816.html",
      "date": "2026-11-23",
-     "ts": "2026-11-23T15:01+08:00",
-     "via": "Google"
+     "ts": "2026-11-23T00:00+08:00",
+     "via": "Bing"
     },
     {
-     "title": "dtcpay率先支持Visa稳定币资金流转，拓展跨境付款新路径",
-     "src": "ODAILY",
-     "url": "https://www.odaily.news/zh-CN/newsflash/537716",
+     "title": "香港推动将加密托管商和顾问纳入许可监管规则",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBvTk9sMlNLREdpcnc4VkpRXy1HQnFGMlJTT2VTSzIzNm9VRnlTa3ZHT3AyV29CZldnOExkTkpSWUxwUF9VWXBRVUc2UUE1aktLd3EzaE9naGFzczhtUk5XR1FpOUk1NFV6NUZsN05YTXo?oc=5",
      "date": "2026-11-23",
-     "ts": "2026-11-23T15:12+08:00",
-     "via": "Bing"
+     "ts": "2026-11-23T11:36+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -672,37 +790,14 @@
    "role": "线索"
   },
   {
-   "id": "香港推动将加密托管商和顾问纳入许可监管规则",
-   "title": "香港推动将加密托管商和顾问纳入许可监管规则",
-   "date": "2026-11-23",
-   "last": "2026-11-23",
-   "ts": "2026-11-23T00:00+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港推动将加密托管商和顾问纳入许可监管规则",
-     "src": "中金网",
-     "url": "https://www.cngold.com.cn/202611233844174816.html",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T00:00+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "香港探索智能体ai打击加密犯罪稳定币占非法交易量84",
    "title": "香港探索智能体AI打击加密犯罪，稳定币占非法交易量84%",
    "date": "2026-11-23",
    "last": "2026-11-23",
    "ts": "2026-11-23T07:53+08:00",
    "topics": [
-    "监管"
+    "监管",
+    "竞品"
    ],
    "n": 1,
    "articles": [
@@ -713,6 +808,78 @@
      "date": "2026-11-23",
      "ts": "2026-11-23T07:53+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "韩国金融服务委员会将于2026年公布涵盖牌照与银行稳定币的加密法草案",
+   "title": "韩国金融服务委员会将于2026年公布涵盖牌照与银行稳定币的加密法草案",
+   "date": "2026-11-23",
+   "last": "2026-11-23",
+   "ts": "2026-11-23T18:22+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "韩国金融服务委员会将于2026年公布涵盖牌照与银行稳定币的加密法草案",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxQOWNoY0xKU0pRbG5KdUEyMzBpeTZsSmlQSTNkdDd2UTJUektKQzFWWnRSdDdyZmZtMGIybG1RVFJVcGlrWkFZaHlhZXhaSUNaY3hhVDB1SmNyTTdsNVJ5UW9sV2lVV0dnZThhUXVTZWNWeUhQcVpzeEVCX2xwalIxYzd0VDhvNmpJaEpnMU03dzMyV1Z1ZGFCY1M1NGR4UDRlQzlZRWpMV0t5Sm9hdTluYVV4cHgzaTcwQTM2VXpJVWh2dm5GSWgtWVVzdFhQM01FSVBxZDVjSHE?oc=5",
+     "date": "2026-11-23",
+     "ts": "2026-11-23T18:22+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "dtcpay率先支持visa稳定币资金流转拓展跨境付款新路径",
+   "title": "dtcpay 率先支持 Visa 稳定币资金流转，拓展跨境付款新路径",
+   "date": "2026-11-23",
+   "last": "2026-11-23",
+   "ts": "2026-11-23T15:01+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "dtcpay 率先支持 Visa 稳定币资金流转，拓展跨境付款新路径",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTE1kUDRJRDg3YVBqQkFNZi1EVDJ0Z1ZCNXFZQ0M5Ym9aUG43aHlqNEQxVmJOWDVzMXRTMjBQYWlLN01fVnJaZGEzWUk3LUR6S2RrMEpqbWlWZGdEQTNmMkdwTzNBeF9BZw?oc=5",
+     "date": "2026-11-23",
+     "ts": "2026-11-23T15:01+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongtightenscryptooversightasrussiao",
+   "title": "Hong Kong Tightens Crypto Oversight as Russia Opens Door to Bitcoin Trading",
+   "date": "2026-11-23",
+   "last": "2026-11-23",
+   "ts": "2026-11-23T00:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong Tightens Crypto Oversight as Russia Opens Door to Bitcoin Trading",
+     "src": "Tekedia",
+     "url": "https://www.tekedia.com/hong-kong-tightens-crypto-oversight-as-russia-opens-door-to-bitcoin-trading/",
+     "date": "2026-11-23",
+     "ts": "2026-11-23T00:00+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -768,11 +935,35 @@
    "role": "监管"
   },
   {
+   "id": "hongkongwajibkanlisensisfcbagikustodiand",
+   "title": "Hong Kong Wajibkan Lisensi SFC bagi Kustodian dan Penasihat Kripto",
+   "date": "2026-11-23",
+   "last": "2026-11-23",
+   "ts": "2026-11-23T20:03+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong Wajibkan Lisensi SFC bagi Kustodian dan Penasihat Kripto",
+     "src": "portalkripto",
+     "url": "https://www.portalkripto.com/hong-kong-wajibkan-lisensi-sfc-bagi-kustodian-dan-penasihat-kripto/",
+     "date": "2026-11-23",
+     "ts": "2026-11-23T20:03+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
    "id": "理财新思维现金管理新思维代币化如何提升港元资金运用灵活性",
    "title": "【理財新思維】現金管理新思維：代幣化如何提升港元資金運用靈活性？",
    "date": "2026-11-23",
    "last": "2026-11-23",
-   "ts": "2026-11-23T05:00+08:00",
+   "ts": "2026-11-23T14:24+08:00",
    "topics": [
     "RWA"
    ],
@@ -781,9 +972,9 @@
     {
      "title": "【理財新思維】現金管理新思維：代幣化如何提升港元資金運用靈活性？",
      "src": "信報網站",
-     "url": "https://news.google.com/rss/articles/CBMi1gNBVV95cUxNREQ4WDRTWTc0LW9QRDhta2Q1Zk9IaHZidzk3TFhSWGpWYU9XWWMtMTlXRkRjNFJwdzZjSk03cEdnNjlzUUpwNU1iTDYxbFR6cS1STjBIU0NtV1BqNXU4dGkyYlZZSzV2anZhMmN5b2tMN0haSFA1dlRrcHBkRk9TVHo4NTF3NFgyN09fMHY1c202SURjNnI1OFVjYklWWC04Z2dPeDJJbG5sdnI5aTAycmYtZF9nd3dtSXl4NHlYVVlZcXNRS3RoY2tqOEIwWk5lNjkwWElJemRHaUYzUWFmUk1XMFVKMmhlV0dfaUx3Nm5iaG42MUN5b0lnMzlRVGpFQ0M0S183SUIxdkhJdDNhZUJtNjNLeE9lbHFxajUzMy1fVU50T1NUWjI4a3R3V3ZDZ2s1cDI5Y0lLWm4zaUUxZG5EWm9fQVNJTzVseU1wYjNzdElZRzFNMHZZTVR6ZGlIRUlzeE9MMHNNaU4xVk9rWjF6bTJ5SFM2enNzQUJ0WU5OUFhHdUZWakJOTlpUaVhNM1ZLOGlXckxULVA1UnlfTzJLbzNZSTUwMnlLZVNwRGUxNWpqSW91ZUY5TWQzQlp1SUdsTTV3MTNGOUpvRmxueW05SFM5Zw?oc=5",
+     "url": "https://news.google.com/rss/articles/CBMi3wVBVV95cUxNRGtQcFdGcDVkRmVaTll0WHNubHg2VE1zSzZwLXBrcWN6bWNrSWoycUo0RjRmUW1mZEJmUG9ldGhWUExoYmU1cTJSZDdyMGlmQ0dkTGpCQV84QmhDZXZSTW9UemxMc0w2WkRRblMzR2Z1X0NReTZKLUdVSkt1OWJzZVFkQm0zbHZnYU1xcWRNS1ZyU196bk5veG55YWJJc1lLU1l4ak9VdjNsanRPZDFOdXlYM0lmNWhDY3R6TkZzOVRoVGJLNjBadEotQ2w1SlFyUnF6UjVxaEFiTHV4ZEZpZllwZmdCdnlPT3NYb3hQQVoyWFRfTFZjNzZ6eG5paDJpTkZQcjVidE1CVGJzbW9BcDdnTDNBT0FsbVA0TmttVkwtLUQ1OWc4Qi1aeGVQYThoNDc0NVBaZGFCU0tweWpjbThVaUhPdmNoSEh5bGZYV1JZOUNtYl9pUzlEeWxDRnZxS2syMGgySUEyYTVDRkFaSlpOdG5Fajc0N3FLRlR5eEM2bWd3NWF0QjdUZ3pUSUxhZ19KZmxwUzNCdEU1NmdjWHAwLUo2UmtRRHZYQkFCRmFmVkQwQ2tfa2wzWGY3ZnFjbG1OSVRTNkJ0RHFlZTFtSDdMZVVQVHNOajdRM19OWGVubE9DbWtORDZzNEZDODRuWmhieUY1dUJ2UjBzZVZwNHZLRGEteGJYUVJDTW53Tngyc09CYl8zY3NXNVZoZk5aV2hObF9GQ1NrNzdvYjNaczdSWWZvYVpxMWliX1docVNUWWJVQVMwVEU0ZS15NnJZU1JiSU5jOEhJMnZQTW5jSHRzRmdnVldkV3gwb2pURjRIZWhKU1NlRE0wUW1TY3BEZDI5QWQwTllGaURnR0ZnWFFIR1A0dnpFZmZXSGVWSXpaU0NBbUNXYk02VUdTQ3FVUDhiY0RQQXVlU01PRWZ2dGVONGNRc0E3YUw3NkFKYjg2anl1SVRvOHFaVlJ5SU0?oc=5",
      "date": "2026-11-23",
-     "ts": "2026-11-23T05:00+08:00",
+     "ts": "2026-11-23T14:24+08:00",
      "via": "Google"
     }
    ],
@@ -864,48 +1055,52 @@
    "role": "监管"
   },
   {
-   "id": "newspeechbykelvinwongremarksatchinaamcof",
-   "title": "New speech by Kelvin Wong: Remarks at ChinaAMC Offshore RMB Bond ETF Launch Ceremony",
-   "date": "2026-11-23",
-   "last": "2026-11-23",
-   "ts": "2026-11-23T09:52+08:00",
+   "id": "hsbcintroducestokenizedshareclassof24bil",
+   "title": "HSBC Introduces Tokenized Share Class of $2.4 Billion Hong Kong Money Market Fund",
+   "date": "2026-11-19",
+   "last": "2026-11-22",
+   "ts": "2026-11-22T02:18+08:00",
    "topics": [
-    "SFC 其他"
+    "RWA"
    ],
-   "n": 1,
+   "n": 4,
    "articles": [
     {
-     "title": "New speech by Kelvin Wong: Remarks at ChinaAMC Offshore RMB Bond ETF Launch Ceremony",
-     "src": "SFC",
-     "url": "https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR196",
-     "date": "2026-11-23",
-     "ts": "2026-11-23T09:52+08:00",
-     "via": "SFC"
-    }
-   ],
-   "sfc": true,
-   "hits": [
+     "title": "HSBC Introduces Tokenized Share Class of $2.4 Billion Hong Kong Money Market Fund",
+     "src": "FinanceFeeds",
+     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObWV6Skh0Z3Q3QWl5MmpHTllFblgycDdxc2hHYWJ4VzNiVHduS01qbDIzUjJ4aXdLRzdYZmd1cVBmUnp0N091UmxRYTBuWlJWSG9PdDZlT3NJaTYtWmxsRDgyUEFIYTRkdmNpUlVuTXBBSTh5RTF4bFc0eG1UZmg3WmJaQjRyUXZ2RHgtejFnY0pROHp0Tmh5ell4TEY3TmNKUnhJMGNsV09XZw?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T15:54+08:00",
+     "via": "Google"
+    },
     {
-     "brand": "华夏基金",
-     "kind": "公募",
-     "firms": [
-      {
-       "ce": "ARS988",
-       "en": "China Asset Management (Hong Kong) Limited",
-       "zh": "華夏基金(香港)有限公司",
-       "ras": [
-        "T1",
-        "T4",
-        "T9"
-       ],
-       "va": [
-        "VA资管"
-       ]
-      }
-     ]
+     "title": "HSBC Launches Ethereum-Based Tokenized Money Market Fund in Hong Kong",
+     "src": "Serrari Group",
+     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcnB5Y0lwQWVhckFzblBqbXlzakw0OGVpMWhpR0MtWk1YUzhYSDVmRUFDVHRMVlpSUnBDdkxNVVVZOHE4NjBZY0s5S0xWeVB6XzZTNUR3QnJOZ3h0SkJ3bDNsQm5ydUxqbzAxTTdmU2l6bV9xYVJlZWlaMFZ0TnVqN3pVcjd4YkQxeThZZUNPV0dBbXBOSnIwX2pFZw?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T16:56+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "HSBC expands tokenized fund offering on Ethereum for Hong Kong savers",
+     "src": "tradersunion",
+     "url": "https://tradersunion.com/news/cryptocurrency-news/show/4358824-hsbc-tokenized-fund-ethereum-hongkong/",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T18:18+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "HSBC expands tokenized fund offering on Ethereum for Hong Kong savers",
+     "src": "Traders Union",
+     "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOdFhGaHAwczdDdmJTd3gwVjFvODdORF9pLU44M0NfTUI5N29mVHoxQW84T0JieEUzLVRic2VZOXptRnB2SjFuNkJ1dXd6eVRHcG82cUlfS2JFcUVwZFVmd1pKZHVDVGRmR0ZvdTItWXpDcFZUWkFTaS1Eb0VleHlnRTRxdTZYY1NETFU3bm5CdTFnQjZKQUJPc213cHIwUGdoQVRF?oc=5",
+     "date": "2026-11-22",
+     "ts": "2026-11-22T02:18+08:00",
+     "via": "Google"
     }
    ],
-   "role": "线索"
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "相约apec见证金融力量区域券商出海如何破局山西证券不拼规模拼精度",
@@ -983,6 +1178,39 @@
     }
    ],
    "role": "线索"
+  },
+  {
+   "id": "新火集团以约1000万美元参与高腾比特币etf基石投资助力高腾拓展数字资产产品布",
+   "title": "新火集团以约1,000万美元参与高腾比特币ETF基石投资，助力高腾拓展数字资产产品布局",
+   "date": "2026-11-19",
+   "last": "2026-11-22",
+   "ts": "2026-11-22T01:51+08:00",
+   "topics": [
+    "中资券商",
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "新火集团以约1,000万美元参与高腾比特币ETF基石投资，助力高腾拓展数字资产产品布局",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE8zSDR1Tng0UXZwYXh4bG51TmUxV1ZJd3F0czlwT2NSTEZoMzczUFI5ZGc3amRwN1ltRkVjcm9QVE9YSnZJTUN2SkNmclYxRlNSc1ZCcGpmazRYWnpHRUxIUVUwQUNQaWlyVVdYQUd3emhCcTlVOUpmR21hY1dzN0k?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T19:37+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "新火集團以約1,000萬美元參與高騰比特幣ETF基石投資，助力高騰拓展數字資產產品佈局",
+     "src": "PANews",
+     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxOamZJb0tLQjN4ZklvRHhrSTQyRjN0Nk5oZzVlMFlmSXB4YThPcFN5TWdZamJmQ0IzdGNLUkRsZjlndU5VV1Z5bEdFTHZzVFpJU2gwOHF4T2JCOVQ2c1pLMzlfY0s4UVEtX3hUallRYWlKT2cwc0xqTi0za0JFaG1ELWhaaV9rdw?oc=5",
+     "date": "2026-11-22",
+     "ts": "2026-11-22T01:51+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "港拟扩虚拟资产发牌四类服务纳证监规管",
@@ -1140,6 +1368,54 @@
    "role": "资讯"
   },
   {
+   "id": "asiasweeklytop10cryptonewsrussiatoletfun",
+   "title": "Asia's weekly TOP10 crypto news: Russia to Let Funds Hold Crypto, South Korea Digital Asset Bill Due This Month and Top10 News",
+   "date": "2026-11-22",
+   "last": "2026-11-22",
+   "ts": "2026-11-22T18:58+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Asia's weekly TOP10 crypto news: Russia to Let Funds Hold Crypto, South Korea Digital Asset Bill Due This Month and Top10 News",
+     "src": "Substack",
+     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA1YktPSU1DaWxYVGlUUks0SWI4V0JfemJPWHpzbWk2YTBIcDA5ZHlFMGh3OHVrTElyXzRSQ1hpOHBOUC1GeGxIMExodUF1cVVlTFZMTmVUamxPcEJRUFJxaDBCS1UzbjNxNFA3RnRialE0XzRTOXVJRkJmU0c?oc=5",
+     "date": "2026-11-22",
+     "ts": "2026-11-22T18:58+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "vaneckbreakswithgeminiandmovescustodyofi",
+   "title": "VanEck breaks with Gemini and moves custody of its ETFs to Coinbase",
+   "date": "2026-11-22",
+   "last": "2026-11-22",
+   "ts": "2026-11-22T00:56+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "VanEck breaks with Gemini and moves custody of its ETFs to Coinbase",
+     "src": "Observatorio Blockchain",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQRVZWMFZxcUFYYmk0ckcwTGFXay0tQ1VyUW8tZTJWdFNVaTBaYmVXa3UwRFNMT2RxMElKbDNjMmkzdGoxYlZTZlVSVDdiSzd0ZFlqYzcyMl9zWDd5UDRuUDlxZXI3UGtDUVNvT192ODZ4M19TOUtWQVhlR2FSUE95Wi1qTGxsX09kaVE?oc=5",
+     "date": "2026-11-22",
+     "ts": "2026-11-22T00:56+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "hsbcsethereumfundandthefutureofcryptoban",
    "title": "HSBC’s Ethereum Fund and the Future of Crypto Banking",
    "date": "2026-11-22",
@@ -1162,6 +1438,46 @@
    "sfc": false,
    "hits": [],
    "role": "资讯"
+  },
+  {
+   "id": "香港拟将虚拟资产交易咨询管理及托管服务纳入证监会发牌监管",
+   "title": "香港拟将虚拟资产交易、咨询、管理及托管服务纳入证监会发牌监管",
+   "date": "2026-11-20",
+   "last": "2026-11-21",
+   "ts": "2026-11-21T05:44+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 3,
+   "articles": [
+    {
+     "title": "香港拟将虚拟资产交易、咨询、管理及托管服务纳入证监会发牌监管",
+     "src": "PANews",
+     "url": "https://www.panewslab.com/zh/articles/01a1f859-a562-74ae-9434-98393a29646a",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T09:46+08:00",
+     "via": "Bing"
+    },
+    {
+     "title": "香港拟将虚拟资产交易、咨询、管理及托管服务纳入证监会发牌监管",
+     "src": "TradingView",
+     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBWaHlHdG5kS1lFaUdyVWFEc3gwLTR0SDFSano2QTAtWXRMMHZoUnJnSnBxRlF0M3g1Tl9hRk1vZ3ZxLUMzWk9WbmpKTWFqV0laQ3VLVVFaY0VuNUFfYmo3bGlONXozdw?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T17:46+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "香港拟将虚拟资产交易、咨询、管理及托管纳入牌照监管，法案将于 12 月 2 日首读",
+     "src": "techflowpost",
+     "url": "https://www.techflowpost.com/newsletter/146102",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T05:44+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
   },
   {
    "id": "香港刊宪虚拟资产服务法例修订草案监管范围扩展至交易投顾管理托管四类业务",
@@ -1196,31 +1512,31 @@
    "role": "监管"
   },
   {
-   "id": "香港拟将虚拟资产交易咨询管理及托管服务纳入证监会发牌监管",
-   "title": "香港拟将虚拟资产交易、咨询、管理及托管服务纳入证监会发牌监管",
-   "date": "2026-11-20",
+   "id": "香港扩大加密货币监管经纪顾问托管等四大服务纳入发牌",
+   "title": "香港擴大加密貨幣監管 經紀顧問託管等四大服務納入發牌",
+   "date": "2026-11-21",
    "last": "2026-11-21",
-   "ts": "2026-11-21T05:44+08:00",
+   "ts": "2026-11-21T07:33+08:00",
    "topics": [
     "监管"
    ],
    "n": 2,
    "articles": [
     {
-     "title": "香港拟将虚拟资产交易、咨询、管理及托管服务纳入证监会发牌监管",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFBWaHlHdG5kS1lFaUdyVWFEc3gwLTR0SDFSano2QTAtWXRMMHZoUnJnSnBxRlF0M3g1Tl9hRk1vZ3ZxLUMzWk9WbmpKTWFqV0laQ3VLVVFaY0VuNUFfYmo3bGlONXozdw?oc=5",
-     "date": "2026-11-20",
-     "ts": "2026-11-20T17:46+08:00",
+     "title": "香港擴大加密貨幣監管 經紀顧問託管等四大服務納入發牌",
+     "src": "商傳媒",
+     "url": "https://news.google.com/rss/articles/CBMioANBVV95cUxQS3hUY2JvZGhQMnZxZ01iNGxsZDJwQlROTzV5SmFoTWtYMlk2VWY0VWJ4TVBCWDNyd0ZPQ2xXU2pkNkkyNXotd2ExX1N4WEE1V2tHelB1dzEzRG1mSzdIMWpWZXZnem9mWjRENUtDblBpNFZqSzl2LW1jNGMzRGYwdmFWQ1FtdnRTQnhzaFhuQk9Vby1GTEVCVlVUZUsyekJiRHJtaFZyWk9CMUxMUFVlNlhscnhlenc0QmhTZmZQN1MyOXI0T1FUZGw5OWRwR01WNWdtRnNhdzdENFpDc3BsUDBrT1ZyNTZQRjROcHY4YjZsRlNUTWpCLTNmMXpnRUE0eXlKa0JCdHpSVWdkM3BLbVRQQlBfeFgzNmxDTUJBUGlIdEFPNEk1SEFHNDJ1N3hvZDFlVGxFM0NPSjNBTmc0N2xDTVZkNUkzYlVaR3VlalJ1WHRZY0kwS29rUjZGcXgwUTU5OTlaaXFrTVc0WXFvWGNla2JiWDkyRHFZUkt2cEJlTjNDY2R3aVpLeV9qY1JzUThnN25PNU45cE91Rjd5Vw?oc=5",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T07:33+08:00",
      "via": "Google"
     },
     {
-     "title": "香港拟将虚拟资产交易、咨询、管理及托管纳入牌照监管，法案将于 12 月 2 日首读",
-     "src": "techflowpost",
-     "url": "https://www.techflowpost.com/newsletter/146102",
+     "title": "香港擴大加密貨幣監管 經紀顧問託管等四大服務納入發牌",
+     "src": "LIFE 生活網",
+     "url": "https://news.google.com/rss/articles/CBMi9AJBVV95cUxPQ3RYTnRYVHVLUFhSVUJ5M2t6WXhDR2xVNDd0LVZfbUQ0Nmw3MFdSU1o5SW9iUEhkak84OGxoaXA3SUJndkwxVGpCcG4wWGlTb1hDVkstbWk4LXJnc0d3WEg2aEtfMVRHUHp0TExYVDVJdndjbHJPZWVrVkZNTmhTOHR6dFJ1UHFIN1czM3NpZERUUFExRXNNbGl3ZWtGWk11UG1mRmhvbndnYURfb3ZaV25XUHV5SVJCRDR0cEEzWEFoMWpjZ1V0ajU4dmNZRWtnRzFzZVVmZFMycC0wYktkYXNaVXlkeF9YUURoS3JKUC1VTE9lSXVHSTQ3Q0ZuazlQX1dvbXNQa1NXTnVoN2pmNlRhWk1zai11SzZTRm9vYjBtNTcxeVU1cVFJTnF5V240V0ZzU3p1cGFsQTBHWFF0bUhMd1RzOElnVFpNejdTaGM1Q1lBQmJOVTctZ2RXT3FqSGlZbThSRGVVa1NhUGVRaFVRWjQ?oc=5",
      "date": "2026-11-21",
-     "ts": "2026-11-21T05:44+08:00",
-     "via": "Bing"
+     "ts": "2026-11-21T07:33+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -1284,23 +1600,71 @@
    "role": "监管"
   },
   {
-   "id": "香港扩大加密货币监管经纪顾问托管等四大服务纳入发牌",
-   "title": "香港擴大加密貨幣監管 經紀顧問託管等四大服務納入發牌",
+   "id": "香港对虚拟资产虚假推广引入罚款及监禁期限",
+   "title": "香港對虛擬資產虛假推廣引入罰款及監禁期限",
    "date": "2026-11-21",
    "last": "2026-11-21",
-   "ts": "2026-11-21T07:33+08:00",
+   "ts": "2026-11-21T11:54+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "香港擴大加密貨幣監管 經紀顧問託管等四大服務納入發牌",
-     "src": "商傳媒",
-     "url": "https://news.google.com/rss/articles/CBMioANBVV95cUxQS3hUY2JvZGhQMnZxZ01iNGxsZDJwQlROTzV5SmFoTWtYMlk2VWY0VWJ4TVBCWDNyd0ZPQ2xXU2pkNkkyNXotd2ExX1N4WEE1V2tHelB1dzEzRG1mSzdIMWpWZXZnem9mWjRENUtDblBpNFZqSzl2LW1jNGMzRGYwdmFWQ1FtdnRTQnhzaFhuQk9Vby1GTEVCVlVUZUsyekJiRHJtaFZyWk9CMUxMUFVlNlhscnhlenc0QmhTZmZQN1MyOXI0T1FUZGw5OWRwR01WNWdtRnNhdzdENFpDc3BsUDBrT1ZyNTZQRjROcHY4YjZsRlNUTWpCLTNmMXpnRUE0eXlKa0JCdHpSVWdkM3BLbVRQQlBfeFgzNmxDTUJBUGlIdEFPNEk1SEFHNDJ1N3hvZDFlVGxFM0NPSjNBTmc0N2xDTVZkNUkzYlVaR3VlalJ1WHRZY0kwS29rUjZGcXgwUTU5OTlaaXFrTVc0WXFvWGNla2JiWDkyRHFZUkt2cEJlTjNDY2R3aVpLeV9qY1JzUThnN25PNU45cE91Rjd5Vw?oc=5",
+     "title": "香港對虛擬資產虛假推廣引入罰款及監禁期限",
+     "src": "KuCoin",
+     "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQd19Cb3lDUnlqRmZVdnFTbnBZY2V0TlRHOFBiUFVfdWZLM0xoQld5MTRHTFVGYTFvQjB3eW52YmZDZ2F5dTRieWl2ZHlSZmJ4QmpoVTlRVTJzTHowODlRZ2F4NHI3YldTT0V3NGNYaFBIcV9pRVhJRGJXcXRtQVFrYm9BSnRGbXdDVDFXalJrYzVhZktveEwzRmRVNF9rM25pZzJwWTlzVjRRUlVVWHVTRFNra293d3Zm?oc=5",
      "date": "2026-11-21",
-     "ts": "2026-11-21T07:33+08:00",
+     "ts": "2026-11-21T11:54+08:00",
      "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "金管会合办多国监理交流分享台湾虚拟资产专法进展",
+   "title": "金管會合辦多國監理交流 分享台灣虛擬資產專法進展",
+   "date": "2026-11-21",
+   "last": "2026-11-21",
+   "ts": "2026-11-21T15:42+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "金管會合辦多國監理交流 分享台灣虛擬資產專法進展",
+     "src": "LIFE 生活網",
+     "url": "https://news.google.com/rss/articles/CBMi3AJBVV95cUxPTFk3NnpwRl9BeXhJd1FQeVlpWjJBMFVDd3FyOHJsOWk2WDZjc240SFVTTVk5TGRjQ0ZjXzItSTFIdzlNblBtQTZMSnBtSXhKU1UyNFpocTc4Vy02b1g4NWhZenAxUGJtVk9IckVCSkU2WWpMSVZtV2puUVRuRXBmZjRQYk9VMlNlczVYVlQ5Nnh6MFNWV0VoNXU0Q2ZOb3NZZmVEUVBOd0JGNDEtSFFiYkVhNlJ4VHR6RElmZGhqYWRUSTNYazlDN3ZRVXdBbklwVjFfUlVMQ3NwR2dtMHJQRGEzb0pXbUV2dFNBYThOTkg5OHg4QlV3R25UeGcwTjNnMzVfd1hnVlAweGR6RXQyS2pVN3pUcEgwdUVmRTBzQl8zNGg1ckxadTJrY2s0a3M2TEtSQVUwTk1YZEpuOHRudk5UZ25LbmV3Tkd1bEZySkFUVnpsMFZuRjlrYzI?oc=5",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T15:42+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongpublieunprojetdeloipourétendrele",
+   "title": "Hong Kong publie un projet de loi pour étendre les licences crypto au-delà des plateformes de négociation",
+   "date": "2026-11-21",
+   "last": "2026-11-21",
+   "ts": "2026-11-21T16:09+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong publie un projet de loi pour étendre les licences crypto au-delà des plateformes de négociation",
+     "src": "FinanceFeeds",
+     "url": "https://financefeeds.com/fr/hong-kong-projet-loi-licences-crypto-elargies/",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T16:09+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
@@ -1356,6 +1720,30 @@
    "role": "资讯"
   },
   {
+   "id": "ecbpresidentlagardesayseuropestokenizeda",
+   "title": "ECB President Lagarde Says Europe’s Tokenized Asset Window Is Closing At €23 Billion",
+   "date": "2026-11-21",
+   "last": "2026-11-21",
+   "ts": "2026-11-21T00:44+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "ECB President Lagarde Says Europe’s Tokenized Asset Window Is Closing At €23 Billion",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxOV3IwdzVnc2RJMkNEVk5QeW5BNXJrUG1OcHhUVVR1TGhUeDdXbk5DLWFyM3dyQ25Pc0RheE0yLU9peTBZTXF2THFucFZZdTRoTTF5SkVIRHRvM3Nnd01FU3ZZR3QxbnFoLWU3cXpaU1YyYVlXRHVwSHh3ZFQ1UmRTWWZFNnllcDNjamZ5VHhTX3RlNzRaeWN4Q0NmeXhvOVNHZ21NX1JwOXRkeEFBZjlXeFBkYWhHZDRIMGJlMC1aVlM?oc=5",
+     "date": "2026-11-21",
+     "ts": "2026-11-21T00:44+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "bestcryptotoinvestinxrprecoveryorpepetoa",
    "title": "Best Crypto to Invest In: XRP Recovery or Pepeto After HSBC’s $13 Tokenized Fund?",
    "date": "2026-11-21",
@@ -1384,7 +1772,7 @@
    "title": "Hong Kong SFC Flags Hyperliquid as a Suspicious Trading Platform",
    "date": "2026-11-18",
    "last": "2026-11-20",
-   "ts": "2026-11-20T09:57+08:00",
+   "ts": "2026-11-20T18:16+08:00",
    "topics": [
     "监管",
     "竞品"
@@ -1432,19 +1820,19 @@
      "via": "Google"
     },
     {
-     "title": "Hong Kong's SFC flags Hyperliquid as an unlicen...",
-     "src": "Pluang",
-     "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxOQ19ib0I3bEZfWm9saW1KRzlqaGdiUVdIeWpLcEtuUkRoRjdWUEdJTnJoYkQzZDRuY1dBbjNoNC0tTktyMDY5RmNnMXRJSFI1TjE5d2dMZE84cmNNbFNhZHpXVGh3eWdJcUp5Q3JlYVExamE1a0Y3WTBrb0R4OFBnM1BIb1ZJNTQ5SlJMTEZfcVA2bW5SSkRB?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T18:14+08:00",
-     "via": "Google"
-    },
-    {
      "title": "Hong Kong Flags Hyperliquid as Unlicensed in SFC Alert",
      "src": "The Crypto Times",
      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPOVdqVGJ2cmNlOGNZclgwQzdmQ3lBa3RSVkluT0FmbUlmSjg0WUd0blFaaWNrMWx5UUZoeXRUcXFKTkQzYW16Yk1JcWJmVVRkeFVueU5UVEw0X2J5eHBLZ0dwdHJxNWUxZW5NWEJxSENBcFJ1dlA4UVpETEx6THNhTjdGZTBINi1GYXdZamw1RmlWajVtdUxtS0hKU3BYUUZ3STV0cWZ1VU8?oc=5",
      "date": "2026-11-19",
      "ts": "2026-11-19T20:00+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "Hong Kong SFC Adds Hyperliquid and Hyperliquid Hong Kong to Suspicious Trading Platforms",
+     "src": "Hokanews",
+     "url": "https://news.google.com/rss/articles/CBMifEFVX3lxTFA2MktEQzE0VDNVSFpBSHg2WlVMQlR0U19TU3cxeVhzcC1NQmdFVEdoMzZwLXVYSHhuYUVPQ1JlZzRZUnVmcWxLN2NhLXl2NF9yUTNhWWQzaVRuY1A0bEVrNVhad2gwZlRLRHQ3Wjk5a0F6NGRYVF95bUN5aXk?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T21:24+08:00",
      "via": "Google"
     },
     {
@@ -1584,38 +1972,6 @@
    "role": "竞品动态"
   },
   {
-   "id": "hsbcintroducestokenizedshareclassof24bil",
-   "title": "HSBC Introduces Tokenized Share Class of $2.4 Billion Hong Kong Money Market Fund",
-   "date": "2026-11-19",
-   "last": "2026-11-20",
-   "ts": "2026-11-20T16:56+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 2,
-   "articles": [
-    {
-     "title": "HSBC Introduces Tokenized Share Class of $2.4 Billion Hong Kong Money Market Fund",
-     "src": "FinanceFeeds",
-     "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxObWV6Skh0Z3Q3QWl5MmpHTllFblgycDdxc2hHYWJ4VzNiVHduS01qbDIzUjJ4aXdLRzdYZmd1cVBmUnp0N091UmxRYTBuWlJWSG9PdDZlT3NJaTYtWmxsRDgyUEFIYTRkdmNpUlVuTXBBSTh5RTF4bFc0eG1UZmg3WmJaQjRyUXZ2RHgtejFnY0pROHp0Tmh5ell4TEY3TmNKUnhJMGNsV09XZw?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T15:54+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HSBC Launches Ethereum-Based Tokenized Money Market Fund in Hong Kong",
-     "src": "Serrari Group",
-     "url": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNcnB5Y0lwQWVhckFzblBqbXlzakw0OGVpMWhpR0MtWk1YUzhYSDVmRUFDVHRMVlpSUnBDdkxNVVVZOHE4NjBZY0s5S0xWeVB6XzZTNUR3QnJOZ3h0SkJ3bDNsQm5ydUxqbzAxTTdmU2l6bV9xYVJlZWlaMFZ0TnVqN3pVcjd4YkQxeThZZUNPV0dBbXBOSnIwX2pFZw?oc=5",
-     "date": "2026-11-20",
-     "ts": "2026-11-20T16:56+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "代币化国库券的战场已从发行移到抵押品",
    "title": "代幣化國庫券的戰場 已從發行移到抵押品",
    "date": "2026-11-20",
@@ -1641,6 +1997,38 @@
      "date": "2026-11-20",
      "ts": "2026-11-20T00:32+08:00",
      "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "代币化股票再创38亿美元新高是当下加密货币最大牛市吗",
+   "title": "代币化股票再创38亿美元新高 是当下加密货币最大牛市吗？",
+   "date": "2026-11-20",
+   "last": "2026-11-20",
+   "ts": "2026-11-20T19:35+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 2,
+   "articles": [
+    {
+     "title": "代币化股票再创38亿美元新高 是当下加密货币最大牛市吗？",
+     "src": "富途牛牛",
+     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxObXcxLWdwb3VjeTlteS1IUVVvV0cyaGtVS1ZoOXpjTXNkcEZtWC1ha2w0eUhrWXVCRXIwZVlmdklDUVYwSzJPM3dnOTV3alFrSjY4QVhBQzhibkFxbkxvdVhxVHloUW9jbF91ZXVnMV9UMGxHME5NTzhrR0o1clM2djNDMFl0OWJQaDlaVDZCeWM?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T19:35+08:00",
+     "via": "Google"
+    },
+    {
+     "title": "代幣化股票再創38億美元新高 是當下加密貨幣最大牛市嗎？",
+     "src": "Yahoo 財經",
+     "url": "https://news.google.com/rss/articles/CBMiggNBVV95cUxOeDc1R0VBY3RYS005dXVZazVnUXM5bkEzZDJXRURIdVlZVWE1b1IzdkIxZVF2NTgyMF9KQXFMQ3hwcU5nQjlMSnBpNlJfQVY3bUhhVllZdzBpc2QtWkZXMU1QZnlXdHFUMGk4aGRHXzMzdnh1cG45N3ExMDdURHNWLXRKTWRtWE9VN2hSOVpTNEY0R1dFWjAtU29WUDBVR0Y0eTYyc3A2UGRZcEhaaDRTdGVRY3owc2dTemJpSUtPTDcyT2RVbWtRZklYS2lkeGMzckJYUTEtLUhiMkNEU1p1bDZjV3lENjhPR1V3NEYydkNPcEllRHpZWTlNQ1ZnalVtVTN1Ujd3TXRGLUNuUGp5MGFWdjhiTTVoNTMzVnJqVFZfd1R3elNOQ19fZF9peGdURGlxcnNSLTV2QmdQVS1aSHdjUnRZLVdmN1U3cWtoZjRra3F2R1VPLVJGb3JIMlpXQVJVYkhNWTc2R1lFOVF0dzFTc2diRXBuaVZYU3Ywdjctdw?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T19:35+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -1899,30 +2287,6 @@
    "role": "资讯"
   },
   {
-   "id": "代币化股票再创38亿美元新高是当下加密货币最大牛市吗",
-   "title": "代币化股票再创38亿美元新高 是当下加密货币最大牛市吗？",
-   "date": "2026-11-20",
-   "last": "2026-11-20",
-   "ts": "2026-11-20T19:35+08:00",
-   "topics": [
-    "RWA"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "代币化股票再创38亿美元新高 是当下加密货币最大牛市吗？",
-     "src": "富途牛牛",
-     "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxObXcxLWdwb3VjeTlteS1IUVVvV0cyaGtVS1ZoOXpjTXNkcEZtWC1ha2w0eUhrWXVCRXIwZVlmdklDUVYwSzJPM3dnOTV3alFrSjY4QVhBQzhibkFxbkxvdVhxVHloUW9jbF91ZXVnMV9UMGxHME5NTzhrR0o1clM2djNDMFl0OWJQaDlaVDZCeWM?oc=5",
-     "date": "2026-11-20",
-     "ts": "2026-11-20T19:35+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "资讯"
-  },
-  {
    "id": "艾德金融新加坡与1exchange签署合作备忘录探索代币化实体资产及区块链领域合",
    "title": "艾德金融新加坡與1exchange簽署合作備忘錄探索代幣化實體資產及區塊鏈領域合作- 國際新聞",
    "date": "2026-11-20",
@@ -1971,84 +2335,100 @@
    "role": "资讯"
   },
   {
-   "id": "重磅香港证监会将hyperliquid列入可疑平台名单亚洲监管围堵升级",
-   "title": "重磅！香港证监会将Hyperliquid列入可疑平台名单，亚洲监管围堵升级",
-   "date": "2026-11-19",
-   "last": "2026-11-19",
-   "ts": "2026-11-19T23:53+08:00",
+   "id": "hsbcunveilsitsfirstretailtokenizedmmfwit",
+   "title": "HSBC unveils its first retail tokenized MMF with RedCoin as onramp",
+   "date": "2026-11-20",
+   "last": "2026-11-20",
+   "ts": "2026-11-20T22:43+08:00",
    "topics": [
-    "监管"
+    "RWA"
    ],
-   "n": 11,
+   "n": 1,
    "articles": [
     {
-     "title": "重磅！香港证监会将Hyperliquid列入可疑平台名单，亚洲监管围堵升级",
-     "src": "区块周刊BlockWeeks",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1VdFExTXdtVE9ZZy1HM0RJOTBDMkFISF9xYmtXdGFES1oxMHNOTGc3ckN5NkdKLWd1TWVoVERqWG9ieGprX183TUt3?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T21:12+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hyperliquid遭香港證監會列入可疑平台名單 HYPE月跌逾12%",
-     "src": "蕃新聞",
-     "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE5zM0d1UHhPMDBTUFhiZ0t0QTFGSUpOckVvU1VjQUxZdWdxa2ZSZ1lua054Y25nbGtyLXJoanJyVnZvYmZIanVhcUMwSlVlNWpaY3c?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T23:53+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会将Hyperliquid列入可疑虚拟资产交易平台名单，称其涉嫌未经许可在港运营",
-     "src": "腾讯网",
-     "url": "https://news.qq.com/rain/a/20261119A0ESK700",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T20:49+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "香港证监会将“Hyperliquid/Hyperliquid Hong Kong”列为可疑虚拟资产交易平台",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMiZkFVX3lxTFA5QnRMVVhqZlN4UHdsclFPRGFuMFl2MW5BZGgyOXZmeXo3MDUtQ3BJZHMtbG9mMWlhRXRPSERWZGdEYWtQSUZCZm14MWo4ZnZtdTdSdUlfd19IRkFfZmluZEFIdHpwdw?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T17:52+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会将「Hyperliquid/Hyperliquid Hong Kong」列为可疑虚拟资产交易平台",
-     "src": "ForesightNews",
-     "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFBkZXJJNjd2Z1Nyd2lLMW9ZRnlHQ0JwZkl0NDdfbUc2UDYwLUo2c1d3cnhnajZ0QnZBUlAxMTlzODgzX05nNDB3QW1GZ3F5SGVNRmx5SnZ0MA?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T01:52+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港将Hyperliquid列入可疑加密货币交易平台名单",
-     "src": "BlockBeats",
-     "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE0yUXRYa2hDSUtENERISlJjV2pZa083UXdtbjFCS2FuTEFRYnU4WUxCQmtTV1NZNUYydmowZ3B1RWU0LWYycjk1MDhXYnF1RXQ4QnNRV19R?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T20:47+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会将Hyperliquid标记为可疑交易平台，HYPE价格能否维持在65美元？",
-     "src": "WEEX",
-     "url": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxPbGV3WXg1R3N2Y2I5aWVkTnFMekRheWJqbWpmanVPMUxmbVpWV0d0TTEwRGxkc2pJMGlSNmZtWGJKZjVWd1B5X3pzbTdGX3BQcDh4SGJILUgzMzFjd0J1Qzk5MW10NnFBRW9rR3k4ZENqS25FZ24tMHk2Nk5taXFtbDJjUE9wREt0eXFvczRCZ0V4blpPbFRodXA4a3RhbUc5WlRES3VVa2d1ZU05RFhNSjNHUlNrMWJHWDFDdTB3X1c5eUR3ZzZuQzhZRm5VcWNfSThnOGc4Sm9BbXlJeEMwbm9YRQ?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T02:49+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港证监会点名 Hyperliquid 列入可疑名单，涉嫌无牌在港揽客？",
-     "src": "深潮TechFlow",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBYOWtFTTFBcy1YSmk3dWFYRGdBV1Z0eDY5akxZZWJfYjQ0dFNiczVVTE01Zl92c2ZpYkhmeEhUUDhFS1FLYXlPTkwySFI5OE5TMjg1UQ?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T19:36+08:00",
+     "title": "HSBC unveils its first retail tokenized MMF with RedCoin as onramp",
+     "src": "Ledger Insights",
+     "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNdnhGWERDVTVPb1FZZXRjWkhUY2xNQUVBX2JWWnd5R0h1WS1ycm95MUh1UG5IeF9UWm9DczVHSFFOVnI3dWZ6b2loLU9raVozRTFUaVFyMnR1WkhtX29SWDJpamR2SjBDVXNEZUZydklrZ0lGdzBSbGJlVEtRZmwtdWNTZ2FIZHZPU29QU0E2RUNEamE5blZkVHhzdFB0R28?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T22:43+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "监管"
+   "role": "资讯"
+  },
+  {
+   "id": "bankingstanchartcompletestestsforcrossba",
+   "title": "BANKING | StanChart Completes Tests for Cross-Bank Tokenised Dollar Payments that Settle Within Minutes",
+   "date": "2026-11-20",
+   "last": "2026-11-20",
+   "ts": "2026-11-20T20:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "BANKING | StanChart Completes Tests for Cross-Bank Tokenised Dollar Payments that Settle Within Minutes",
+     "src": "BitKE",
+     "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNVW00UnM0VHBFS1NBc1hBc0VfVWRrMlk1THBlUTVjNDlINk5OcHRjTGxER2VZM3QzU0Y2RTM2dmFmLVpVT0t4VVF4eGM2b2dZZlVEbHBhLXk5NHdVaUVIVG1aalNjSFU3QnFZMmNaR0RYWUFlSWF2WHVYaTdmY2x1R0U0VTNCUXk3?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T20:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "mexconchaindailyreportanthropicipodrawss",
+   "title": "MEXC On-Chain Daily Report: Anthropic IPO Draws Strong Demand on Debut, Tokenized Stocks Accelerate On-Chain",
+   "date": "2026-11-20",
+   "last": "2026-11-20",
+   "ts": "2026-11-20T08:21+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "MEXC On-Chain Daily Report: Anthropic IPO Draws Strong Demand on Debut, Tokenized Stocks Accelerate On-Chain",
+     "src": "MEXC",
+     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1uREE2V3hVTGRCNHFuSEZnTU5md2N2Rkl0MDR2NXJyYUdITGFOQ3dyUWZYNmNjMlU3UDZ1ektRVW9zVEtBYTA4MnVmdEJaVDRENDU2c1JMNmJxV0otc3JkZXVFNXpqeTExSGVCSjBHTWc4RDVzcDlsdWVTenJPUQ?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T08:21+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "allfundsselectssolanatoexpandtokenizedfu",
+   "title": "Allfunds Selects Solana to Expand Tokenized Fund Distribution to Institutional Investors",
+   "date": "2026-11-20",
+   "last": "2026-11-20",
+   "ts": "2026-11-20T23:55+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Allfunds Selects Solana to Expand Tokenized Fund Distribution to Institutional Investors",
+     "src": "Hokanews",
+     "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE5fVUljcjl3UktaMGJGQkgwQ0RFYjZteU9YRkY2TkFxTmFZR1hjNEpaNS16WjJubG5YOUNLa05PaUtBRldjcmh2b2ZmX1hibmtoOXUxVFJ4WnBXS2k4RHVHT3RMNmFJZjdpOFg4YnIwanJESWpodGJkRkZLVQ?oc=5",
+     "date": "2026-11-20",
+     "ts": "2026-11-20T23:55+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "bankregulatorfloatsonchainaiagentforcryp",
@@ -2089,6 +2469,7 @@
    "last": "2026-11-19",
    "ts": "2026-11-19T15:38+08:00",
    "topics": [
+    "监管",
     "竞品"
    ],
    "n": 2,
@@ -2112,7 +2493,7 @@
    ],
    "sfc": false,
    "hits": [],
-   "role": "资讯"
+   "role": "监管"
   },
   {
    "id": "antlinkstokenizeddepositsandfundsinwhale",
@@ -2147,30 +2528,6 @@
    "role": "资讯"
   },
   {
-   "id": "香港虚拟资产服务监管草案刊宪拟纳入交易及托管等四类服务",
-   "title": "香港虚拟资产服务监管草案刊宪：拟纳入交易及托管等四类服务",
-   "date": "2026-11-19",
-   "last": "2026-11-19",
-   "ts": "2026-11-19T19:19+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港虚拟资产服务监管草案刊宪：拟纳入交易及托管等四类服务",
-     "src": "chaincatcher",
-     "url": "https://www.chaincatcher.com/article/2306675",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T19:19+08:00",
-     "via": "Bing"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "香港证监会就hyperliquid发出警示引发对hype的新一轮质疑",
    "title": "香港证监会就 Hyperliquid 发出警示 引发对 HYPE 的新一轮质疑",
    "date": "2026-11-19",
@@ -2187,54 +2544,6 @@
      "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9FRU9ESmhaTkF4RXNXYnRCSVFSUjlwRG5nVlZ3eGgxNDRDU3JxbW8xMjR2RFYybFZWNjY5VUx5T1hLbnNnb29IeHE4X2tYRi0yYWRtdA?oc=5",
      "date": "2026-11-19",
      "ts": "2026-11-19T22:03+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "参议员要求财政部将稳定币安全港扩展至州级发行商",
-   "title": "参议员要求财政部将稳定币安全港扩展至州级发行商",
-   "date": "2026-11-19",
-   "last": "2026-11-19",
-   "ts": "2026-11-19T05:43+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "参议员要求财政部将稳定币安全港扩展至州级发行商",
-     "src": "OneBullEx",
-     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUmt5aGdqZE5DVE15VDFlUERGWnVMWkVTZEdFUFdXekZYUzhFcFBuOTJHTU9VX1Z3cDFXN3F0TnVaNjNNc3JhY2dLRWJrUjBjX0k2Zm1qcDk2NWJyZ3ZBLU9kUXBGY2Y3TkhpdDlBRlZNbEZPN0FVSjBvUGFyTktURG5KcEpGdFNRa0FUVG5OWFBQU3NkeGFNQlB6cUE2OWpmejIxSDdFZUpMOU92N3FzZnpENUNqb1diQ0dwbFRNYlVGdkxQWWVDTUpEQlVJT1hTNUNzWHhBRTZGZw?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T05:43+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "香港金管局重磅表态拟打造链上ai智能体围剿加密犯罪稳定币监管谨慎起步",
-   "title": "香港金管局重磅表态：拟打造\"链上AI智能体\"围剿加密犯罪，稳定币监管谨慎起步",
-   "date": "2026-11-19",
-   "last": "2026-11-19",
-   "ts": "2026-11-19T01:56+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "香港金管局重磅表态：拟打造\"链上AI智能体\"围剿加密犯罪，稳定币监管谨慎起步",
-     "src": "区块周刊BlockWeeks",
-     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1FMUJJaXZzdy1XNzZRSmswT1BFcVRoM0pCYUxOcUZ1SkQ3LWV3NnNZSHhFS3J3UGJJWWZlSHhPZFNMZWppa2dFZUJn?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T01:56+08:00",
      "via": "Google"
     }
    ],
@@ -2267,22 +2576,46 @@
    "role": "监管"
   },
   {
-   "id": "汇丰允许客户以稳定币redcoin申购港元货币基金吴说区块链",
-   "title": "汇丰允许客户以稳定币RedCoin 申购港元货币基金- 吴说区块链",
+   "id": "香港金管局重磅表态拟打造链上ai智能体围剿加密犯罪稳定币监管谨慎起步",
+   "title": "香港金管局重磅表态：拟打造\"链上AI智能体\"围剿加密犯罪，稳定币监管谨慎起步",
    "date": "2026-11-19",
    "last": "2026-11-19",
-   "ts": "2026-11-19T16:15+08:00",
+   "ts": "2026-11-19T01:56+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "汇丰允许客户以稳定币RedCoin 申购港元货币基金- 吴说区块链",
-     "src": "Howl.Link",
-     "url": "https://news.google.com/rss/articles/CBMiO0FVX3lxTE9ESkVseWRwd3l3UFJxZV8zUm5IR2V2ZFY2WlNsZElDRmxnUXl1XzZWeUV6UUVsNTRsN3pj?oc=5",
+     "title": "香港金管局重磅表态：拟打造\"链上AI智能体\"围剿加密犯罪，稳定币监管谨慎起步",
+     "src": "区块周刊BlockWeeks",
+     "url": "https://news.google.com/rss/articles/CBMiSkFVX3lxTE1FMUJJaXZzdy1XNzZRSmswT1BFcVRoM0pCYUxOcUZ1SkQ3LWV3NnNZSHhFS3J3UGJJWWZlSHhPZFNMZWppa2dFZUJn?oc=5",
      "date": "2026-11-19",
-     "ts": "2026-11-19T16:15+08:00",
+     "ts": "2026-11-19T01:56+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "参议员要求财政部将稳定币安全港扩展至州级发行商",
+   "title": "参议员要求财政部将稳定币安全港扩展至州级发行商",
+   "date": "2026-11-19",
+   "last": "2026-11-19",
+   "ts": "2026-11-19T05:43+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "参议员要求财政部将稳定币安全港扩展至州级发行商",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxPUmt5aGdqZE5DVE15VDFlUERGWnVMWkVTZEdFUFdXekZYUzhFcFBuOTJHTU9VX1Z3cDFXN3F0TnVaNjNNc3JhY2dLRWJrUjBjX0k2Zm1qcDk2NWJyZ3ZBLU9kUXBGY2Y3TkhpdDlBRlZNbEZPN0FVSjBvUGFyTktURG5KcEpGdFNRa0FUVG5OWFBQU3NkeGFNQlB6cUE2OWpmejIxSDdFZUpMOU92N3FzZnpENUNqb1diQ0dwbFRNYlVGdkxQWWVDTUpEQlVJT1hTNUNzWHhBRTZGZw?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T05:43+08:00",
      "via": "Google"
     }
    ],
@@ -2315,22 +2648,22 @@
    "role": "监管"
   },
   {
-   "id": "四方精创300468sz数字人民币稳定币双线布局曝光但营收占比不足3真相太扎心",
-   "title": "四方精创(300468.SZ)数字人民币+稳定币双线布局曝光！但营收占比不足3%，真相太扎心",
+   "id": "四方精创300468sz涉及数字人民币和稳定币发行人咨询相关业务对收入贡献有限",
+   "title": "四方精创(300468.SZ)：涉及数字人民币和稳定币发行人咨询相关业务对收入贡献有限",
    "date": "2026-11-19",
    "last": "2026-11-19",
-   "ts": "2026-11-19T21:06+08:00",
+   "ts": "2026-11-19T12:56+08:00",
    "topics": [
     "监管"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "四方精创(300468.SZ)数字人民币+稳定币双线布局曝光！但营收占比不足3%，真相太扎心",
-     "src": "搜狐",
-     "url": "https://www.sohu.com/a/1103797522_122066679",
+     "title": "四方精创(300468.SZ)：涉及数字人民币和稳定币发行人咨询相关业务对收入贡献有限",
+     "src": "新浪财经",
+     "url": "https://finance.sina.com.cn/stock/bxjj/2026-11-19/doc-inizhrsf0915234.shtml",
      "date": "2026-11-19",
-     "ts": "2026-11-19T21:06+08:00",
+     "ts": "2026-11-19T12:56+08:00",
      "via": "Bing"
     }
    ],
@@ -2422,54 +2755,6 @@
    "role": "监管"
   },
   {
-   "id": "slowmisthkmamassive150billicit84stableco",
-   "title": "SlowMist HKMA Massive: $150B Illicit, 84% Stablecoins",
-   "date": "2026-11-19",
-   "last": "2026-11-19",
-   "ts": "2026-11-19T00:00+08:00",
-   "topics": [
-    "监管"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "SlowMist HKMA Massive: $150B Illicit, 84% Stablecoins",
-     "src": "TronWeekly",
-     "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9RN29ZaVJVeUdjaHpvbmtDLVVrNl9teDhwMmh0SlAyVTFVU2NKQXVlWllrNEgzVVNVRmgxNGFzNFVZQ1pMZk1XNmlYLVNOSGdZcWRGZVlRZXd0d3pjU0RhSDFvWjJyUDVKVkVLZEtNQXpuZkE?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T00:00+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
-   "id": "新火集团以约1000万美元参与高腾比特币etf基石投资助力高腾拓展数字资产产品布",
-   "title": "新火集团以约1,000万美元参与高腾比特币ETF基石投资，助力高腾拓展数字资产产品布局",
-   "date": "2026-11-19",
-   "last": "2026-11-19",
-   "ts": "2026-11-19T19:37+08:00",
-   "topics": [
-    "中资券商"
-   ],
-   "n": 1,
-   "articles": [
-    {
-     "title": "新火集团以约1,000万美元参与高腾比特币ETF基石投资，助力高腾拓展数字资产产品布局",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE8zSDR1Tng0UXZwYXh4bG51TmUxV1ZJd3F0czlwT2NSTEZoMzczUFI5ZGc3amRwN1ltRkVjcm9QVE9YSnZJTUN2SkNmclYxRlNSc1ZCcGpmazRYWnpHRUxIUVUwQUNQaWlyVVdYQUd3emhCcTlVOUpmR21hY1dzN0k?oc=5",
-     "date": "2026-11-19",
-     "ts": "2026-11-19T19:37+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "中资券商动态"
-  },
-  {
    "id": "相约apec见证金融力量25年三次东道主中国证券业的国际化角色进阶券商中资资本",
    "title": "相约APEC 见证金融力量｜25年三次东道主，中国证券业的国际化角色进阶_券商_中资_资本",
    "date": "2026-11-19",
@@ -2542,6 +2827,126 @@
    "role": "资讯"
   },
   {
+   "id": "tokenizationfidelityseesa600billionmarke",
+   "title": "Tokenization: Fidelity Sees a $600 Billion Market Emerging",
+   "date": "2026-11-19",
+   "last": "2026-11-19",
+   "ts": "2026-11-19T13:59+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Tokenization: Fidelity Sees a $600 Billion Market Emerging",
+     "src": "finews.com",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQaWFQREF1Zl96a0FaTDFDdGlrM0sxZE9DbnpNam9PUlJJNHVNdDV0QjRjSEZsbWVJMEo0dEx4cEFmUExmcDNfVHVQRmJWWU16dlIxVVhXR285UDY2eWtxUXZOZWljemU5QWk4QTlZSHEwcGFSZmlpQ25xMEVmRVlEUHRyaUMxcjdyanMtOUFxbEFwOVoyRnp4ZVN3U2hJazlYZnhVa1JuUU9qQXhRUzFjZnhMQjVuMXV3dGVwU1pyaw?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T13:59+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "standardcharteredandocbctestcrossbordert",
+   "title": "Standard Chartered and OCBC Test Cross-Border Tokenized Deposit Transfers",
+   "date": "2026-11-19",
+   "last": "2026-11-19",
+   "ts": "2026-11-19T15:33+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Standard Chartered and OCBC Test Cross-Border Tokenized Deposit Transfers",
+     "src": "ForkLog",
+     "url": "https://news.google.com/rss/articles/CBMingFBVV95cUxORFpvZnBnVjF1ZV9xSXVhRVBDczdTSzFqajN0NHdCZFlPcWxQWGpvSUFWOWo4MExvRmJiMXNXQWlIZ1B3dXNaeUxxMXprOWY0eDdhd2c4anJfWmJILWdTRnlXMlRKbGVwekJMNWVBdjVHOHBFY0x1SnNXMGZBa0N1Uld0WGd1bHJETG1udEUtY2FxUDg3R3VaN0d4OVppQQ?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T15:33+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "futuannouncesthirdquarter2026unauditedfi",
+   "title": "Futu Announces Third Quarter 2026 Unaudited Financial Results",
+   "date": "2026-11-19",
+   "last": "2026-11-19",
+   "ts": "2026-11-19T16:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Futu Announces Third Quarter 2026 Unaudited Financial Results",
+     "src": "FinancialContent",
+     "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNMHBGeG0xUEZFb0c0cGRfWl90bkQ1SlhWNHJWTFRKQm4tQ1lSMUoyREFJNVZoTGpqMmRzNUhjMXRXc25mam15c2ZTaTI1dlRUbER5QTVybGozUlZYV1V3N1FDWC0xWnlnNnZuc1d0WU84aHJsal9DVXA0eWVvUHBXTm8tUHNCZUtiUC1HcXdFanpsdXNFUHBhdFRETEdQdzhIZ0NYWGhYU3JMbWlPaWVSNTdXamQwX2otbG40bVFIQnBDcVlmRnVoQWlB?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T16:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "Futu",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "AZT137",
+       "en": "Futu Securities International (Hong Kong) Limited",
+       "zh": "富途證券國際(香港)有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T7",
+        "T9"
+       ],
+       "va": [
+        "VA交易"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "visaopensstablecoinfundingtoeligiblevisa",
+   "title": "Visa Opens Stablecoin Funding To Eligible Visa Direct Clients Across Asia-Pacific",
+   "date": "2026-11-19",
+   "last": "2026-11-19",
+   "ts": "2026-11-19T00:43+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Visa Opens Stablecoin Funding To Eligible Visa Direct Clients Across Asia-Pacific",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxQY0Raekw5dFBZUmJyYTlPdkd1eUcyaFFpak9wQkpiNnp3SEt4ZFBKUzdwd21LZE9QUHhvMWRyVkRrVFZIcFJ6MVpCcmVMYlp1cjBNWUlMVF93N2plVFVFVS00N1ZDa0JWUGpMVDBhS0xjSFJkYy1PeFQ5UWExVWgwcWpQVnhQdGNaSUZnOFptRGR6ZVhLYk5SSVVjLUVLMHdXNGJsRmg5alpJQmlGSjVSNEZMd1JOMjBzd2FlblFB?oc=5",
+     "date": "2026-11-19",
+     "ts": "2026-11-19T00:43+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "hongkongmonetaryauthorityhkmahighlightsa",
    "title": "Hong Kong Monetary Authority (HKMA) Highlights Agentic AI Potential for Strengthening Anti-Money Laundering Controls on Digital Assets",
    "date": "2026-11-19",
@@ -2590,64 +2995,16 @@
    "role": "资讯"
   },
   {
-   "id": "hkmaandswifttesttokeniseddepositsforcros",
-   "title": "HKMA and Swift test tokenised deposits for cross-border payments",
-   "date": "2026-11-17",
-   "last": "2026-11-18",
-   "ts": "2026-11-18T18:30+08:00",
-   "topics": [
-    "RWA",
-    "监管"
-   ],
-   "n": 4,
-   "articles": [
-    {
-     "title": "HKMA and Swift test tokenised deposits for cross-border payments",
-     "src": "Yahoo Finance",
-     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNUHNOOGo3X2U4M25NdGRheWlob2NxM0J3bTdKZGowbWFTVkQwZXpCWmVHRG5IdFBYZTdScFB4UEEwM193UUdkS1RKLU0wRHYyUzFnOUJ0UWRSZDFJdDVHRWZFUDR0WDFydXdEZFBUdkFYd3h1OEhpZ0h5c3k3UEhJZGxpZWhEME0?oc=5",
-     "date": "2026-11-17",
-     "ts": "2026-11-17T15:11+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "HKMA, SWIFT Explore 24/7 Tokenized Deposits For Global Payments",
-     "src": "TronWeekly",
-     "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE5yNTlRWHVPb1ltdU1JOUhPNmtiSUdtbEJXR0U1bm1tR0wyRzdsNzljM0tBV3hFaXZjRHh6aGlNZUZsVmF5TVJQZVBROVhCVmpyZ3pYcFJmbTJLeHdGdW94YUZCSlhSZjBUd3lmVmlPNUhXc2NLQXRHNGhQS3JqcGs?oc=5",
-     "date": "2026-11-18",
-     "ts": "2026-11-18T18:30+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hong Kong, SWIFT explore 24/7 tokenized deposit payments",
-     "src": "Crypto News",
-     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBxWU9zSkctd2VlaXptMzA1S3RDY2FGb0RMZkIyOURCcTRLc2VaTzRlaFdHdU83TE96Uk12MWllQk5BcXRXN2Ftdlo2SmxQUVd1VG40em5fdzdSNlJ4MFpmdnNhV3RkQnRGN0d1OWFWcU5WZw?oc=5",
-     "date": "2026-11-18",
-     "ts": "2026-11-18T01:34+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "Hong Kong Banks Explore 24/7 Tokenized Payments with SWIFT",
-     "src": "Crypto Economy",
-     "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOYllETzJyNTllUkljejVyS0E3Z0ZGMlZHcXRVdnFKaTJ0TjRrSXI3UlFIX1pGbWxla2RRRTFNMUFQdVdmUFNYRVRPRzFuTnotV1ZfOEd6MDdGSjJqUDQwanBzTjN1ay1YaS1kdWQ2MWFNczVHV2IxX1VnUGM1djdJRzFOQ1V3MGcwSXg3S19WMA?oc=5",
-     "date": "2026-11-18",
-     "ts": "2026-11-18T09:21+08:00",
-     "via": "Google"
-    }
-   ],
-   "sfc": false,
-   "hits": [],
-   "role": "监管"
-  },
-  {
    "id": "hongkongcentralbankeyesagenticaitocombat",
    "title": "Hong Kong central bank eyes agentic AI to combat crypto money laundering",
    "date": "2026-11-18",
    "last": "2026-11-18",
-   "ts": "2026-11-18T19:15+08:00",
+   "ts": "2026-11-18T23:55+08:00",
    "topics": [
+    "RWA",
     "监管"
    ],
-   "n": 2,
+   "n": 3,
    "articles": [
     {
      "title": "Hong Kong central bank eyes agentic AI to combat crypto money laundering",
@@ -2664,6 +3021,14 @@
      "date": "2026-11-18",
      "ts": "2026-11-18T19:15+08:00",
      "via": "Google"
+    },
+    {
+     "title": "Hong Kong Pushes Banks to Deploy AI Agents Against Stablecoin Money Laundering",
+     "src": "BigGo Finance",
+     "url": "https://news.google.com/rss/articles/CBMidkFVX3lxTE45bFlJbGxrRTBmUjlqcFpiT0Z2cXdIWWxBWTdqLTFFemNDdUp0Zk5NQV9LRjJpY1JQMnFIa2RsSnB5aVRpZ3JVQUVLM3A0ZnMxVVZ4VEwxb2JTZW1DX3ZjZVlwendUeEt2clVXbDBRSmlFMDFrX1E?oc=5",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T23:55+08:00",
+     "via": "Google"
     }
    ],
    "sfc": false,
@@ -2671,36 +3036,37 @@
    "role": "监管"
   },
   {
-   "id": "香港金管局与swift研究代币化存款跨境支付互通",
-   "title": "香港金管局与Swift研究代币化存款跨境支付互通",
+   "id": "hkmaandswifttesttokeniseddepositsforcros",
+   "title": "HKMA and Swift test tokenised deposits for cross-border payments",
    "date": "2026-11-17",
    "last": "2026-11-18",
-   "ts": "2026-11-18T01:44+08:00",
+   "ts": "2026-11-18T01:34+08:00",
    "topics": [
-    "竞品"
+    "RWA",
+    "监管"
    ],
-   "n": 1,
+   "n": 2,
    "articles": [
     {
-     "title": "香港金管局与Swift研究代币化存款跨境支付互通",
-     "src": "OneBullEx",
-     "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxOa0ZhR1pfeVNuVUQ3RjRGQ1dSU3hPLUZFcjJTVFE1V1N6S1RrNlYwbGRuNlVBXzFfUzVxVUF4NW5uc0Z5Umk1R2lHbGExNW4zZzVpbjJsalJDcnlqMzE2ZkxFcVlaYmc3bjZlRWxhUFN5cFZiRzA4SVhIRmxOZDJIYzQySHd6a3BwaTZoSHFGS2xRQkNZV2FndUhHQ1RJVWJkRlNHMmM4MEFCR2pGZmtfNmw4Z212OWd6bVpmQg?oc=5",
+     "title": "HKMA and Swift test tokenised deposits for cross-border payments",
+     "src": "Yahoo Finance",
+     "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxNUHNOOGo3X2U4M25NdGRheWlob2NxM0J3bTdKZGowbWFTVkQwZXpCWmVHRG5IdFBYZTdScFB4UEEwM193UUdkS1RKLU0wRHYyUzFnOUJ0UWRSZDFJdDVHRWZFUDR0WDFydXdEZFBUdkFYd3h1OEhpZ0h5c3k3UEhJZGxpZWhEME0?oc=5",
      "date": "2026-11-17",
-     "ts": "2026-11-17T07:43+08:00",
+     "ts": "2026-11-17T15:11+08:00",
      "via": "Google"
     },
     {
-     "title": "香港金管局携手SWIFT及三大银行推进代币化存款跨境支付",
-     "src": "OneBullEx",
-     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQUVdCNl9kM19nZkM1T3JJcFlOSGJKaklfdXd5NWhCSjVJeTFKYmVqOUxaQThrQnZiUmc4aTlLUUhtM3N5RHNwY1p6dVBFZjg1SjBZaVoxWTR6a25wLVhFYW9vN0lYNW5HSGs3UC1ybjc4YzFYeUFRY3JxT3dTU0NCVTRhLWJsUUhnaWpHVC1zSFlRbk93Uld2N19kR3ZXOXRKZFg5OU9CU2N3OVN4ZFBnTlNOZTRjMmcyOUZqSy1aem5XLVExUnF3OGpDNzNjZGpt?oc=5",
+     "title": "Hong Kong, SWIFT explore 24/7 tokenized deposit payments",
+     "src": "Crypto News",
+     "url": "https://news.google.com/rss/articles/CBMickFVX3lxTFBxWU9zSkctd2VlaXptMzA1S3RDY2FGb0RMZkIyOURCcTRLc2VaTzRlaFdHdU83TE96Uk12MWllQk5BcXRXN2Ftdlo2SmxQUVd1VG40em5fdzdSNlJ4MFpmdnNhV3RkQnRGN0d1OWFWcU5WZw?oc=5",
      "date": "2026-11-18",
-     "ts": "2026-11-18T01:44+08:00",
+     "ts": "2026-11-18T01:34+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "资讯"
+   "role": "监管"
   },
   {
    "id": "香港金管局探索智能体ai实时监控区块链并冻结加密资金",
@@ -2720,6 +3086,102 @@
      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNZEZNZmJQa0R0WFpMNnU0c0lObFRBekZtdllUdXE0TUJEMGpMcFNXR1NiX0NkRkpmUVBLWGhSbnlTZ1R1cGVFOXF4ZGl1VDNMSXJaY2RLbXVmRndZNXVRZjJPZDJncGR5T1h6SmYteHZQeW51YzF6Rkc4c3F0cDM4YkRMMjJUbGota3NLUG0wSE9sbERHamFtU2lXVHAxbG1TazZDeDdpd1hwWTl2anRBYWtjeUVabjNNMkpka3IxU040Rzl1?oc=5",
      "date": "2026-11-18",
      "ts": "2026-11-18T19:13+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "富途信托推出数字资产家族信托支持btc及eth等主流资产",
+   "title": "富途信托推出「数字资产家族信托」，支持 BTC 及 ETH 等主流资产",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T17:57+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "富途信托推出「数字资产家族信托」，支持 BTC 及 ETH 等主流资产",
+     "src": "a.foresightnews.pro",
+     "url": "https://a.foresightnews.pro/news/detail/118063",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T17:57+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [
+    {
+     "brand": "Futu",
+     "kind": "竞品",
+     "firms": [
+      {
+       "ce": "AZT137",
+       "en": "Futu Securities International (Hong Kong) Limited",
+       "zh": "富途證券國際(香港)有限公司",
+       "ras": [
+        "T1",
+        "T2",
+        "T3",
+        "T4",
+        "T5",
+        "T7",
+        "T9"
+       ],
+       "va": [
+        "VA交易"
+       ]
+      }
+     ]
+    }
+   ],
+   "role": "竞品动态"
+  },
+  {
+   "id": "香港和swift探索全天候代币化存款支付",
+   "title": "香港和 SWIFT 探索全天候代币化存款支付",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T00:00+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港和 SWIFT 探索全天候代币化存款支付",
+     "src": "ZAKER",
+     "url": "https://www.myzaker.com/article/6afd19dcb15ec04e9721dcf3",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T00:00+08:00",
+     "via": "Bing"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "监管"
+  },
+  {
+   "id": "hongkongtoexploreaiagentsforcombatingcry",
+   "title": "Hong Kong to Explore AI Agents for Combating Crypto Crimes",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T19:29+08:00",
+   "topics": [
+    "监管"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Hong Kong to Explore AI Agents for Combating Crypto Crimes",
+     "src": "ForkLog",
+     "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQYUQ4bWUtX1A2RDMtb2ttSVI4NUtwUU9BaE9wQUdVVmRud0daTUJGUWQyWWtkY0VWSzBna1I1eFJEUG1tMVNqTkZiR2ZfUGY4Q3JFS0E3QldPQzI5NHpOaHNVa3kwNjRqaEcxN1dCdUlsSDl2YVZ2cmNsZkFZUGtDd1NUcC1nSXdwMmc?oc=5",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T19:29+08:00",
      "via": "Google"
     }
    ],
@@ -2834,6 +3296,30 @@
    "role": "资讯"
   },
   {
+   "id": "香港金管局携手swift及三大银行推进代币化存款跨境支付",
+   "title": "香港金管局携手SWIFT及三大银行推进代币化存款跨境支付",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T01:44+08:00",
+   "topics": [
+    "竞品"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "香港金管局携手SWIFT及三大银行推进代币化存款跨境支付",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxQUVdCNl9kM19nZkM1T3JJcFlOSGJKaklfdXd5NWhCSjVJeTFKYmVqOUxaQThrQnZiUmc4aTlLUUhtM3N5RHNwY1p6dVBFZjg1SjBZaVoxWTR6a25wLVhFYW9vN0lYNW5HSGs3UC1ybjc4YzFYeUFRY3JxT3dTU0NCVTRhLWJsUUhnaWpHVC1zSFlRbk93Uld2N19kR3ZXOXRKZFg5OU9CU2N3OVN4ZFBnTlNOZTRjMmcyOUZqSy1aem5XLVExUnF3OGpDNzNjZGpt?oc=5",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T01:44+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
    "id": "香港金管局确认银行测试swift账本与ensemble项目的247代币化支付",
    "title": "香港金管局确认银行测试SWIFT账本与Ensemble项目的24/7代币化支付",
    "date": "2026-11-18",
@@ -2848,14 +3334,6 @@
      "title": "香港金管局确认银行测试SWIFT账本与Ensemble项目的24/7代币化支付",
      "src": "OneBullEx",
      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNbWJwQUdyVHpDODgxcmhxWWNSTXFkTHJYMjJ1WkhLT1k1Qy1Cby15U2hmQ0NZaTJaQXIwS1RxWmVBclo4eFV1aFZVQW1yem1EN29GaUVja0d1U3dybHFQT1NVbzFHamxBMWtaelpBQ2VJc0k1YVlRS3JJc2hFUGRUQks0dXFqS1NOeHl5eGxMRTZ3SzBXaWhyTDZtQlRkUzM2N2F1OV9DM2xHNThKWUFSU09CRmpTNFh6NXRKdnRDeENpb1g1eGc?oc=5",
-     "date": "2026-11-18",
-     "ts": "2026-11-18T07:12+08:00",
-     "via": "Google"
-    },
-    {
-     "title": "香港金管局證實銀行測試SWIFT帳本與Ensemble計畫的24/7代幣化支付",
-     "src": "OneBullEx",
-     "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQYXY0emxwRGRuRThyeGYycjNiZkdhSDVWTkhzeFI5STNjWG9DV3hoUDJIQmRxV0hES0lEeEhCdUY5ckZIajI1V0hkMlpqcG12Tlp5M3p2bjZsdTZMVDl6bEFrTGRHbERkZGpCTG5jTEtmczdxYVpsaWcwS1dJZHJGNnlILVFFNzJtd3ZKY1o5ZjMxUmpwZVZlTTU2bzZydENKY1NJM0lWN1ctVWZrVXlSWVo0MXJEMHZTTV96MzdyTFczZFBqOWc?oc=5",
      "date": "2026-11-18",
      "ts": "2026-11-18T07:12+08:00",
      "via": "Google"
@@ -2890,37 +3368,76 @@
    "role": "资讯"
   },
   {
-   "id": "solanabreakpoint2026伦敦手记solana的成人礼和代币超级周",
-   "title": "Solana Breakpoint 2026 伦敦手记：Solana 的成人礼和代币超级周期",
-   "date": "2026-11-17",
-   "last": "2026-11-17",
-   "ts": "2026-11-17T12:39+08:00",
+   "id": "hkmaacceleratesaipushforbankstotrackcryp",
+   "title": "HKMA accelerates AI push for banks to track crypto crime before funds vanish",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T23:23+08:00",
    "topics": [
-    "RWA",
-    "中资券商"
+    "RWA"
    ],
-   "n": 2,
+   "n": 1,
    "articles": [
     {
-     "title": "Solana Breakpoint 2026 伦敦手记：Solana 的成人礼和代币超级周期",
-     "src": "techflowpost",
-     "url": "https://www.techflowpost.com/article/35425",
-     "date": "2026-11-17",
-     "ts": "2026-11-17T00:05+08:00",
-     "via": "Bing"
-    },
-    {
-     "title": "Solana Breakpoint 2026 伦敦手记：Solana 的成人礼和代币超级周期",
-     "src": "深潮TechFlow",
-     "url": "https://news.google.com/rss/articles/CBMiVEFVX3lxTE9JS28zVlU0ckxCMUpacFZuSm5zZE9WSlJBUUdtRW1TQlNiWEpORkdjUzNMRDhnaVA2RTJ2NTBlWVpVV3FjVC1lc195NUc5X0VaTmVTNw?oc=5",
-     "date": "2026-11-17",
-     "ts": "2026-11-17T12:39+08:00",
+     "title": "HKMA accelerates AI push for banks to track crypto crime before funds vanish",
+     "src": "CoinDesk",
+     "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNVlB2V0pEaXh5dHdjSE9yVVkwN2x0N1l2WV9FNVNaakV1VlcxbXZMWnlELTBaMDl3OXR4dFRwZldxNF9WOXJlOTFZRnFGYW5fV0pjODNUY05GWGxOdHBCS3RISERDaUN0emltRjhzRlpxYW1RQVh1RlZjSnN0U25sTkNlOXR0YmF6RkFQY2FnLWlaWXBpZHhkOHctSzNTSUhKaVY4aXlraXBSdi16WVR3RW5DaU1YLVZRZWM1QjR3UQ?oc=5",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T23:23+08:00",
      "via": "Google"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "中资券商动态"
+   "role": "资讯"
+  },
+  {
+   "id": "redstonepriceredpricelivechartsandmarket",
+   "title": "Redstone Price, RED Price, Live Charts, and Marketcap: redstone token, how much does a red, red coin",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T16:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "Redstone Price, RED Price, Live Charts, and Marketcap: redstone token, how much does a red, red coin",
+     "src": "Coinbase",
+     "url": "https://news.google.com/rss/articles/CBMiUEFVX3lxTE1pM0g4N1VQRl9Rbk8xcE1YOEo4dHFsTXlQZkFiUmVqNHdHclZfcWJrOURwN3ZjYUF3UERfSEZNVmxVb2Q0d0ZNdGpxY1VCOEFy?oc=5",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T16:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
+  },
+  {
+   "id": "blackrockscryptoportfoliokeyinvestmentsi",
+   "title": "BlackRock's Crypto Portfolio: Key Investments In 2026",
+   "date": "2026-11-18",
+   "last": "2026-11-18",
+   "ts": "2026-11-18T16:00+08:00",
+   "topics": [
+    "RWA"
+   ],
+   "n": 1,
+   "articles": [
+    {
+     "title": "BlackRock's Crypto Portfolio: Key Investments In 2026",
+     "src": "Traders Union",
+     "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE1VTWZ3YUZKc1NKcnQwbU5ib3pKX20ycEw0TmIyZHNrR0JsZ0plUjZ0dXJKTC1ZZ1RabWliTWFDSTVSRUxkRG90ZHRacnFWOExtbk8wekZZaFN5MkRRX0NSVFVCaVhQckFTQ0FjMWVJbHFibXhwRi1DSUNtb05NUQ?oc=5",
+     "date": "2026-11-18",
+     "ts": "2026-11-18T16:00+08:00",
+     "via": "Google"
+    }
+   ],
+   "sfc": false,
+   "hits": [],
+   "role": "资讯"
   },
   {
    "id": "osl推出visa加密卡oslcard支援稳定币消费持卡人可享比特币回赠数字经济",
@@ -2984,28 +3501,28 @@
    "role": "竞品动态"
   },
   {
-   "id": "稳定币正在重塑跨境支付的成本结构但真正的难题仍在本地",
-   "title": "穩定幣正在重塑跨境支付的成本結構，但真正的難題仍在本地",
+   "id": "solanabreakpoint2026伦敦手记solana的成人礼和代币超级周",
+   "title": "Solana Breakpoint 2026 伦敦手记：Solana 的成人礼和代币超级周期",
    "date": "2026-11-17",
    "last": "2026-11-17",
-   "ts": "2026-11-17T10:01+08:00",
+   "ts": "2026-11-17T00:05+08:00",
    "topics": [
-    "监管"
+    "中资券商"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "穩定幣正在重塑跨境支付的成本結構，但真正的難題仍在本地",
-     "src": "PANews",
-     "url": "https://news.google.com/rss/articles/CBMihgFBVV95cUxQWEs3YWVLTHBRZHdTMTRJc1ozczdMUkg5dEJFSHA0blZ0ellaU3U4bVFVYmpBWTRYcHV2NHJtZUVrbzZhQS16RkYzSF90dUUtS3ctUGdVNEREdURLaUFGYUtuQmZWVWpod29QYWVDM2lLdjFPbjkydTFVQUlWMWVOS3Q1akw1QQ?oc=5",
+     "title": "Solana Breakpoint 2026 伦敦手记：Solana 的成人礼和代币超级周期",
+     "src": "techflowpost",
+     "url": "https://www.techflowpost.com/article/35425",
      "date": "2026-11-17",
-     "ts": "2026-11-17T10:01+08:00",
-     "via": "Google"
+     "ts": "2026-11-17T00:05+08:00",
+     "via": "Bing"
     }
    ],
    "sfc": false,
    "hits": [],
-   "role": "监管"
+   "role": "中资券商动态"
   },
   {
    "id": "新浪券商热点小时报丨2026年11月17日18时今日实时券商热点速递",
@@ -3138,22 +3655,22 @@
    "role": "资讯"
   },
   {
-   "id": "hongkongreaffirmsyearendcryptolicensingb",
-   "title": "Hong Kong Reaffirms Year-End Crypto Licensing Bill as Tokenized Funds Expand",
+   "id": "invescostablecoinreservefundtokenizedsha",
+   "title": "Invesco Stablecoin Reserve Fund Tokenized Shares Now Live On 22 June 2026",
    "date": "2026-11-17",
    "last": "2026-11-17",
-   "ts": "2026-11-17T08:00+08:00",
+   "ts": "2026-11-17T13:14+08:00",
    "topics": [
     "RWA"
    ],
    "n": 1,
    "articles": [
     {
-     "title": "Hong Kong Reaffirms Year-End Crypto Licensing Bill as Tokenized Funds Expand",
-     "src": "TradingView",
-     "url": "https://news.google.com/rss/articles/CBMizwFBVV95cUxNUEpxY1pJcUY2ZzA0N1QwbmhTX1pETklWeXEycFZFUWRmVVFwZkZfVGItcm1pRk12SHh3TWkwYUtCd3BmRzhqWGQ3MXBWb1UyTG9KRWwxVDkzSEZvNXo3dTdaS283QnF0QktxeUlZU3VHWFhzY1Y0dnFIYm9QNkJLNVRUcndQMW9sLVJlejBvSklpQkFyWWRKSVd2YmhMR3lXRWdJUFpGTW9uUk5CY3NnRVV2MnIyWllOQ2ZiNHdRc0FiVTJIcXN6YkF4NUNqUkE?oc=5",
+     "title": "Invesco Stablecoin Reserve Fund Tokenized Shares Now Live On 22 June 2026",
+     "src": "OneBullEx",
+     "url": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPaG5rSVlLbmRaLVp4cFFYX1BYUjdkN3NiQzRDSGxNVVpkSGpVNDgzdzl4S2pMRFV0a1cwQ25RSXBZUWttRjFkMnBqMURWMWVzd1ZxYW02bWNhU0tqRjZhT1ctVjFRMjBQMVFLMENmYnczQ2EtdnN3bmxQamdDd3RJclhJLTBzQVpYc3BrU0ljdDBtYkFKVUx0cHVWSnA0dFZQMnMwM1BVVnpva2J5czNOOVlYSQ?oc=5",
      "date": "2026-11-17",
-     "ts": "2026-11-17T08:00+08:00",
+     "ts": "2026-11-17T13:14+08:00",
      "via": "Google"
     }
    ],
