@@ -42,7 +42,7 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-25
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-26
 
 - **[HashKey将被纳入MSCI全球微型股指数，国际化布局与机构级基础设施持续获认可](https://www.theblockbeats.info/flash/377546)** (2026-11-16 | Alpha 78)
 - **[HashKey Adopts Tokenised Deposit for Cross-Market Treasury and Liquidity Management on Standard Chartered’s Blockchain Platform](https://group.hashkey.com/en/hashkey-adopts-tokenised-deposit-for-cross-market-treasury-and-liquidity-management-on-standard-chartereds-blockchain-platform/)** (2026-11-03 | Alpha 78)
@@ -53,6 +53,6 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 - **[HashKey Group joined the HKMA’s EnsembleTX as an Industry Pioneer](https://group.hashkey.com/en/hashkey-group-joined-the-hkmas-ensembletx-as-an-industry-pioneer/)** (2026-11-03 | Alpha 78)
 - **[HSK Chain and Base Collaborate to Connect Asia’s Premier Onchain Asset with Global Liquidity](https://group.hashkey.com/en/hsk-chain-and-base-collaborate-to-connect-asias-premier-onchain-asset-with-global-liquidity/)** (2026-11-18 | Alpha 78)
 - **[HashKey Exchange 成为高腾比特币 ETF 子托管人，该 ETF 今日在港交所上市](https://www.techub.news/articleDetail/3e194f79-beb2-4132-a046-24fb11bddce6)** (2026-11-20 | Alpha 78)
-- **[HashKey RWA Launches First Product Under the HashKey “hToken” Series, Advancing Traditional Financial Asset Tokenisation Through a One-Stop Issuance Solution](https://group.hashkey.com/en/hashkey-rwa-launches-first-product-under-the-hashkey-htoken-series-advancing-traditional-financial-asset-tokenisation-through-a-one-stop-issuance-solution/)** (2026-10-26 | Alpha 75)
+- **[HashKey to Be Included in the MSCI Global Micro Cap Indexes, Gaining Broader Recognition with Its International Footprint and Institutional-Grade Infrastructure](https://group.hashkey.com/en/hashkey-to-be-included-in-the-msci-global-micro-cap-indexes-gaining-broader-recognition-with-its-international-footprint-and-institutional-grade-infrastructure/)** (2026-11-18 | Alpha 75)
 
 <!-- AUTO_NEWS_END -->
