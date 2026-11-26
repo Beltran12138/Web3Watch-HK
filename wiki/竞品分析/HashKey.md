@@ -42,7 +42,7 @@ sources: [HashKey官网, SFC公告, 公开媒体报道]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-26
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-27
 
 - **[HashKey将被纳入MSCI全球微型股指数，国际化布局与机构级基础设施持续获认可](https://www.theblockbeats.info/flash/377546)** (2026-11-16 | Alpha 78)
 - **[HashKey Adopts Tokenised Deposit for Cross-Market Treasury and Liquidity Management on Standard Chartered’s Blockchain Platform](https://group.hashkey.com/en/hashkey-adopts-tokenised-deposit-for-cross-market-treasury-and-liquidity-management-on-standard-chartereds-blockchain-platform/)** (2026-11-03 | Alpha 78)
