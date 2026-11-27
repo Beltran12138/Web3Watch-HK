@@ -47,11 +47,8 @@ sources: [SFC官网, 官方通告, 政府公报]
 <!-- AUTO_NEWS_START -->
 ## 📡 最新动态（自动更新）
 
-> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-27
+> 来源：Web3Watch-HK · 近30天 Alpha≥60 文章 · 上次更新：2026-11-28
 
-- **[美国监管机构再次调查Polymarket是否违反2022年达成的和解协议](https://www.theblockbeats.info/flash/374026)** (2026-10-28 | Alpha 100)
-- **[[SFC] SFC welcomes launch of Platform and Nominee Services on Integrated Fund Platform](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR175)** (2026-10-28 | Alpha 95)
-- **[[SFC通函] Circular to applicants seeking SFC authorisation of unit trusts and mutual funds - Launch of a new Fund Authorisation Simple Track (FASTrack)](https://apps.sfc.hk/edistributionWeb/gateway/EN/circular/doc?refNo=26EC68)** (2026-10-28 | Alpha 95)
 - **[香港证监会出手！Hyperliquid 突遭点名，列入可疑平台名单！](https://www.techub.news/articleDetail/eb948002-23b7-44b1-a3d2-6763ff345e24)** (2026-11-19 | Alpha 88)
 - **[香港计划年底前推出法案扩大加密货币牌照覆盖范围](https://www.techub.news/articleDetail/fbd01000-967a-4a42-bc05-2c399e54b24f)** (2026-11-16 | Alpha 88)
 - **[香港证监会点名 Hyperliquid 列入可疑名单，涉嫌无牌在港揽客？](https://www.techflowpost.com/article/35533)** (2026-11-19 | Alpha 88)
@@ -59,5 +56,8 @@ sources: [SFC官网, 官方通告, 政府公报]
 - **[[SFC] SFC concludes consultation on further restricting use of misleading names by unregulated entities to protect investors](https://apps.sfc.hk/edistributionWeb/gateway/EN/news-and-announcements/news/doc?refNo=26PR187)** (2026-11-06 | Alpha 88)
 - **[香港证监会拟限制未持牌机构使用误导性名称，监管范围延伸至虚拟资产交易平台](https://www.theblockbeats.info/flash/376075)** (2026-11-07 | Alpha 88)
 - **[MEXC CEO回应美国监管问题：正寻求建设性互动并已启动相关审查](https://www.theblockbeats.info/flash/376127)** (2026-11-07 | Alpha 88)
+- **[香港拟将加密货币牌照规则扩展至经纪商、顾问及托管人](https://www.techub.news/articleDetail/c3d1f7e9-b162-4f05-8643-f24e251a9323)** (2026-11-20 | Alpha 88)
+- **[香港打击虚拟资产业务冒牌宣传：冒称牌照申请人可判监两年，违规使用称衔可罚10万港元](https://www.theblockbeats.info/flash/378499)** (2026-11-21 | Alpha 88)
+- **[香港拟立法打击虚假加密牌照申请，最高可判监禁两年](https://www.techub.news/articleDetail/2c81f078-385d-48e5-a594-7729a34bb7c4)** (2026-11-21 | Alpha 88)
 
 <!-- AUTO_NEWS_END -->
